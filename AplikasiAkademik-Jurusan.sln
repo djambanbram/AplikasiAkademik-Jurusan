@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainAplikasi", "MainAplikasi\MainAplikasi.csproj", "{5EACBC18-884D-4AA2-9C1A-E9C4D817ECD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KelasMahasiswa", "KelasMahasiswa\KelasMahasiswa.csproj", "{9EA707E7-E4B9-446E-A000-64A9BEC7722B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiService", "ApiService\ApiService.csproj", "{3FBC94B0-CEB9-473C-B54A-95721926DDA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EACBC18-884D-4AA2-9C1A-E9C4D817ECD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EACBC18-884D-4AA2-9C1A-E9C4D817ECD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EACBC18-884D-4AA2-9C1A-E9C4D817ECD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EACBC18-884D-4AA2-9C1A-E9C4D817ECD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA707E7-E4B9-446E-A000-64A9BEC7722B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA707E7-E4B9-446E-A000-64A9BEC7722B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA707E7-E4B9-446E-A000-64A9BEC7722B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA707E7-E4B9-446E-A000-64A9BEC7722B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FBC94B0-CEB9-473C-B54A-95721926DDA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FBC94B0-CEB9-473C-B54A-95721926DDA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FBC94B0-CEB9-473C-B54A-95721926DDA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FBC94B0-CEB9-473C-B54A-95721926DDA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

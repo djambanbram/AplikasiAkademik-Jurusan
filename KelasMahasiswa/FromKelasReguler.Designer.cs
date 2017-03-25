@@ -154,6 +154,7 @@ namespace KelasMahasiswa
             this.cmbProgramStudi.Name = "cmbProgramStudi";
             this.cmbProgramStudi.Size = new System.Drawing.Size(361, 24);
             this.cmbProgramStudi.TabIndex = 4;
+            this.cmbProgramStudi.SelectedIndexChanged += new System.EventHandler(this.cmbProgramStudi_SelectedIndexChanged);
             // 
             // autoLabel2
             // 
@@ -173,6 +174,7 @@ namespace KelasMahasiswa
             this.cmbFakultas.Name = "cmbFakultas";
             this.cmbFakultas.Size = new System.Drawing.Size(361, 24);
             this.cmbFakultas.TabIndex = 2;
+            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
             // 
             // gradientPanel2
             // 
@@ -312,7 +314,6 @@ namespace KelasMahasiswa
             this.progressBar1.Size = new System.Drawing.Size(201, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 3;
-            this.progressBar1.Visible = false;
             // 
             // FromKelasReguler
             // 

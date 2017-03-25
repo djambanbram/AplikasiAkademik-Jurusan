@@ -17,6 +17,8 @@ using ApiService;
 using System.Configuration;
 using System.Net.Http;
 using Newtonsoft.Json;
+using KelasMahasiswa.Models;
+using KelasMahasiswa.Lib;
 
 namespace KelasMahasiswa
 {
@@ -42,32 +44,79 @@ namespace KelasMahasiswa
 
         private async void FromKelasReguler_Load(object sender, EventArgs e)
         {
-            HttpResponseMessage response = await webApi.Get(UrlGetFakultas);
-            if (response.IsSuccessStatusCode)
+            CommonFunction.FormLoading(this, progressBar1, true);
+
+            HttpResponseMessage responseFakultas = await webApi.Get(UrlGetFakultas);
+
+            if (!responseFakultas.IsSuccessStatusCode)
             {
-                List<dynamic> listFakultas = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                foreach (var item in listFakultas)
-                {
-                    cmbFakultas.Items.Add(Convert.ToString(item.KodeFakultas));
-                }
-                //cmbFakultas.DisplayMember = "NamaFakultas";
-                //cmbFakultas.ValueMember = "KodeFakultas";
-
-                //listFakultas.Insert(0, new { NamaFakultas = "Pilih" });
-                //var material = new BindingList<dynamic>(listFakultas);
-                //cmbFakultas.DataSource = material;
-                //cmbFakultas.DisplayMember = "NamaFakultas";
-                //cmbFakultas.ValueMember = "KodeFakultas";
-
-
-                //List<dynamic> listProdi = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                //List<dynamic> listProgram = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                //List<dynamic> listJenajng;
+                MessageBox.Show(responseFakultas.ReasonPhrase);
             }
-            else
+
+            List<Fakultas> listFakultas = JsonConvert.DeserializeObject<List<Fakultas>>(responseFakultas.Content.ReadAsStringAsync().Result);
+            listFakultas.Insert(0, new Fakultas() { NamaFakultas = "Pilih", KodeFakultas = "0" });
+            cmbFakultas.DataSource = listFakultas;
+            cmbFakultas.DisplayMember = "NamaFakultas";
+            cmbFakultas.ValueMember = "KodeFakultas";
+            cmbFakultas.SelectedIndex = 0;
+
+            CommonFunction.FormLoading(this, progressBar1, false);
+        }
+
+        private async void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFakultas.SelectedIndex <= 0)
             {
-                MessageBox.Show(response.ReasonPhrase);
+                return;
             }
+            CommonFunction.FormLoading(this, progressBar1, true);
+
+            var kodeFakultas = cmbFakultas.SelectedValue.ToString();
+            HttpResponseMessage responseProdi = await webApi.Post(UrlGetProdiByFakultas, JsonConvert.SerializeObject(kodeFakultas));
+
+            if (!responseProdi.IsSuccessStatusCode)
+            {
+                MessageBox.Show(responseProdi.ReasonPhrase);
+            }
+
+            List<ProgramStudi> listProdi = JsonConvert.DeserializeObject<List<ProgramStudi>>(responseProdi.Content.ReadAsStringAsync().Result);
+            listProdi.ForEach(delegate (ProgramStudi ps)
+            {
+                ps.NamaProdi = string.Format("{0}-{1}", ps.Jenjang, ps.NamaProdi.Split(';')[0]);
+            });
+            listProdi = listProdi.OrderBy(ps => ps.Jenjang).ToList();
+            listProdi.Insert(0, new ProgramStudi() { Id = Guid.Empty, IdProdi = "0", NamaProdi = "Pilih", Jenjang = "0" });
+            cmbProgramStudi.DataSource = listProdi;
+            cmbProgramStudi.DisplayMember = "NamaProdi";
+            cmbProgramStudi.ValueMember = "Id";
+            cmbProgramStudi.SelectedIndex = 0;
+
+            CommonFunction.FormLoading(this, progressBar1, false);
+        }
+
+        private async void cmbProgramStudi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbProgramStudi.SelectedIndex <= 0)
+            {
+                return;
+            }
+            CommonFunction.FormLoading(this, progressBar1, true);
+
+            var idProdi = Guid.Parse(cmbProgramStudi.SelectedValue.ToString());
+            HttpResponseMessage responseProgram = await webApi.Post(UrlGetProgramByProdi, JsonConvert.SerializeObject(idProdi));
+            if (!responseProgram.IsSuccessStatusCode)
+            {
+                MessageBox.Show(responseProgram.ReasonPhrase);
+            }
+
+            List<ProgramProdi> listProgram = JsonConvert.DeserializeObject<List<ProgramProdi>>(responseProgram.Content.ReadAsStringAsync().Result);
+            listProgram.Insert(0, new ProgramProdi() { IdProdi = Guid.Empty, KodeProgram = "0", NamaProdi = "0", NamaProgram = "Pilih" });
+            cmbProgram.DataSource = listProgram;
+            cmbProgram.DisplayMember = "NamaProgram";
+            cmbProgram.ValueMember = "KodeProgram";
+            cmbProgram.SelectedIndex = 0;
+
+            CommonFunction.FormLoading(this, progressBar1, false);
         }
     }
 }

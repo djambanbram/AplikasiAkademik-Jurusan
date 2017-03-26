@@ -19,7 +19,8 @@ namespace MainAplikasi
 {
     public partial class FormMainAplikasi : Syncfusion.Windows.Forms.MetroForm
     {
-        private FromKelasReguler formKelasReguler;
+        private FormKelasReguler formKelasReguler;
+        private FormKelasCampuran formKelasCampuran;
 
         public FormMainAplikasi()
         {
@@ -32,11 +33,21 @@ namespace MainAplikasi
             {
                 if(formKelasReguler == null || formKelasReguler.IsDisposed)
                 {
-                    formKelasReguler = new FromKelasReguler();
+                    formKelasReguler = new FormKelasReguler();
                     formKelasReguler.MdiParent = this;
                 }
                 formKelasReguler.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
+            }
+            if (e.XPTaskBarItem.Name == "itemKelasCampuran")
+            {
+                if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
+                {
+                    formKelasCampuran = new FormKelasCampuran();
+                    formKelasCampuran.MdiParent = this;
+                }
+                formKelasCampuran.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(formKelasCampuran);
             }
         }
 

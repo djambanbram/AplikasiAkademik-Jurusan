@@ -7,7 +7,7 @@
 #endregion
 namespace KelasMahasiswa
 {
-    partial class FromKelasReguler
+    partial class FormKelasReguler
     {
         /// <summary>
         /// Required designer variable.
@@ -315,7 +315,7 @@ namespace KelasMahasiswa
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 3;
             // 
-            // FromKelasReguler
+            // FormKelasReguler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -324,9 +324,9 @@ namespace KelasMahasiswa
             this.Controls.Add(this.gradientPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gradientPanel1);
-            this.Name = "FromKelasReguler";
-            this.Text = "KelasReguler";
-            this.Load += new System.EventHandler(this.FromKelasReguler_Load);
+            this.Name = "FormKelasReguler";
+            this.Text = "Kelas Reguler";
+            this.Load += new System.EventHandler(this.FormKelasReguler_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();

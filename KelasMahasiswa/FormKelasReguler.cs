@@ -22,7 +22,7 @@ using KelasMahasiswa.Lib;
 
 namespace KelasMahasiswa
 {
-    public partial class FromKelasReguler : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormKelasReguler : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
 
@@ -31,7 +31,7 @@ namespace KelasMahasiswa
         private string UrlGetProdiByFakultas = baseAddress + "/jurusan_api/api/organisasi/get_prodi_by_fakultas";
         private string UrlGetProgramByProdi = baseAddress + "/jurusan_api/api/organisasi/get_program_by_prodi";
 
-        public FromKelasReguler()
+        public FormKelasReguler()
         {
             InitializeComponent();
             webApi = new WebApi();
@@ -42,7 +42,7 @@ namespace KelasMahasiswa
             Close();
         }
 
-        private async void FromKelasReguler_Load(object sender, EventArgs e)
+        private async void FormKelasReguler_Load(object sender, EventArgs e)
         {
             CommonFunction.FormLoading(this, progressBar1, true);
 

@@ -53,6 +53,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -74,11 +75,11 @@
     <Compile Include="FormKelasCampuran.Designer.cs">
       <DependentUpon>FormKelasCampuran.cs</DependentUpon>
     </Compile>
-    <Compile Include="FromKelasReguler.cs">
+    <Compile Include="FormKelasReguler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FromKelasReguler.Designer.cs">
-      <DependentUpon>FromKelasReguler.cs</DependentUpon>
+    <Compile Include="FormKelasReguler.Designer.cs">
+      <DependentUpon>FormKelasReguler.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\CommonFunction.cs" />
     <Compile Include="Models\Organisasi.cs" />
@@ -86,8 +87,8 @@
     <EmbeddedResource Include="FormKelasCampuran.resx">
       <DependentUpon>FormKelasCampuran.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FromKelasReguler.resx">
-      <DependentUpon>FromKelasReguler.cs</DependentUpon>
+    <EmbeddedResource Include="FormKelasReguler.resx">
+      <DependentUpon>FormKelasReguler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

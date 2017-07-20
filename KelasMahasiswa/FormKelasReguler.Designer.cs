@@ -7,7 +7,7 @@
 #endregion
 namespace KelasMahasiswa
 {
-    partial class FromKelasReguler
+    partial class FormKelasReguler
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@ namespace KelasMahasiswa
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.cmbProdi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.cmbProgramStudi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
@@ -62,7 +62,7 @@ namespace KelasMahasiswa
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbProgramStudi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
@@ -84,7 +84,7 @@ namespace KelasMahasiswa
             this.gradientPanel1.Controls.Add(this.autoLabel4);
             this.gradientPanel1.Controls.Add(this.autoLabel3);
             this.gradientPanel1.Controls.Add(this.cmbProgram);
-            this.gradientPanel1.Controls.Add(this.cmbProdi);
+            this.gradientPanel1.Controls.Add(this.cmbProgramStudi);
             this.gradientPanel1.Controls.Add(this.autoLabel2);
             this.gradientPanel1.Controls.Add(this.cmbFakultas);
             this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -145,16 +145,16 @@ namespace KelasMahasiswa
             this.cmbProgram.Size = new System.Drawing.Size(361, 24);
             this.cmbProgram.TabIndex = 5;
             // 
-            // cmbProdi
+            // cmbProgramStudi
             // 
-            this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(361, 24);
-            this.cmbProdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProdi.Location = new System.Drawing.Point(123, 39);
-            this.cmbProdi.Name = "cmbProdi";
-            this.cmbProdi.Size = new System.Drawing.Size(361, 24);
-            this.cmbProdi.TabIndex = 4;
-            this.cmbProdi.SelectedIndexChanged += new System.EventHandler(this.cmbProdi_SelectedIndexChanged);
+            this.cmbProgramStudi.BeforeTouchSize = new System.Drawing.Size(361, 24);
+            this.cmbProgramStudi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProgramStudi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProgramStudi.Location = new System.Drawing.Point(123, 39);
+            this.cmbProgramStudi.Name = "cmbProgramStudi";
+            this.cmbProgramStudi.Size = new System.Drawing.Size(361, 24);
+            this.cmbProgramStudi.TabIndex = 4;
+            this.cmbProgramStudi.SelectedIndexChanged += new System.EventHandler(this.cmbProgramStudi_SelectedIndexChanged);
             // 
             // autoLabel2
             // 
@@ -309,14 +309,13 @@ namespace KelasMahasiswa
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(357, 3);
+            this.progressBar1.Location = new System.Drawing.Point(479, 3);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(323, 30);
+            this.progressBar1.Size = new System.Drawing.Size(201, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 3;
-            this.progressBar1.Visible = false;
             // 
-            // FromKelasReguler
+            // FormKelasReguler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -325,14 +324,14 @@ namespace KelasMahasiswa
             this.Controls.Add(this.gradientPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gradientPanel1);
-            this.Name = "FromKelasReguler";
-            this.Text = "KelasReguler";
-            this.Load += new System.EventHandler(this.FromKelasReguler_Load);
+            this.Name = "FormKelasReguler";
+            this.Text = "Kelas Reguler";
+            this.Load += new System.EventHandler(this.FormKelasReguler_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbProgramStudi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
@@ -352,7 +351,7 @@ namespace KelasMahasiswa
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProgram;
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProdi;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProgramStudi;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbFakultas;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;

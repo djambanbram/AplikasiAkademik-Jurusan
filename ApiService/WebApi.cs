@@ -9,7 +9,7 @@ namespace ApiService
 {
     public class WebApi
     {
-        public async Task<HttpResponseMessage> Post(string path, string jsonData = "")
+        public async Task<HttpResponseMessage> Post(string path, string jsonData)
         {
             using (var client = new HttpClient())
             {

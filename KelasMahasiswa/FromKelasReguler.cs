@@ -17,22 +17,27 @@ using ApiService;
 using System.Configuration;
 using System.Net.Http;
 using Newtonsoft.Json;
+using ClassModel;
 
 namespace KelasMahasiswa
 {
     public partial class FromKelasReguler : Syncfusion.Windows.Forms.MetroForm
     {
-        public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-
-        private WebApi webApi;
-        private string UrlGetFakultas = baseAddress + "/jurusan_api/api/organisasi/get_fakultas";
-        private string UrlGetProdiByFakultas = baseAddress + "/jurusan_api/api/organisasi/get_prodi_by_fakultas";
-        private string UrlGetProgramByProdi = baseAddress + "/jurusan_api/api/organisasi/get_program_by_prodi";
+        private List<Fakultas> listFakultas;
+        private List<Prodi> listProdi;
+        private List<Program> listProgram;
 
         public FromKelasReguler()
         {
             InitializeComponent();
-            webApi = new WebApi();
+        }
+        private void Loading(bool isLoading)
+        {
+            gradientPanel1.Enabled = !isLoading;
+            gradientPanel2.Enabled = !isLoading;
+            flowLayoutPanel1.Enabled = !isLoading;
+
+            progressBar1.Visible = isLoading;
         }
 
         private void btnTutup_Click(object sender, EventArgs e)
@@ -40,33 +45,41 @@ namespace KelasMahasiswa
             Close();
         }
 
-        private async void FromKelasReguler_Load(object sender, EventArgs e)
+        private void FromKelasReguler_Load(object sender, EventArgs e)
         {
-            HttpResponseMessage response = await webApi.Get(UrlGetFakultas);
-            if (response.IsSuccessStatusCode)
+            listFakultas = new List<Fakultas>(Organisasi.listFakultas);
+            listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
+            cmbFakultas.DataSource = listFakultas;
+            cmbFakultas.DisplayMember = "NamaFakultas";
+            cmbFakultas.ValueMember = "KodeFakultas";
+            cmbFakultas.SelectedIndex = 0;
+        }
+
+        private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFakultas.SelectedIndex != 0)
             {
-                List<dynamic> listFakultas = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                foreach (var item in listFakultas)
-                {
-                    cmbFakultas.Items.Add(Convert.ToString(item.KodeFakultas));
-                }
-                //cmbFakultas.DisplayMember = "NamaFakultas";
-                //cmbFakultas.ValueMember = "KodeFakultas";
-
-                //listFakultas.Insert(0, new { NamaFakultas = "Pilih" });
-                //var material = new BindingList<dynamic>(listFakultas);
-                //cmbFakultas.DataSource = material;
-                //cmbFakultas.DisplayMember = "NamaFakultas";
-                //cmbFakultas.ValueMember = "KodeFakultas";
-
-
-                //List<dynamic> listProdi = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                //List<dynamic> listProgram = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                //List<dynamic> listJenajng;
+                string kodeFakultas = cmbFakultas.SelectedValue.ToString();
+                listProdi = new List<Prodi>(Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList());
+                listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
+                cmbProdi.DataSource = listProdi;
+                cmbProdi.DisplayMember = "NamaProdi";
+                cmbProdi.ValueMember = "Uid";
+                cmbProdi.SelectedIndex = 0;
             }
-            else
+        }
+
+        private void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbProdi.SelectedIndex != 0 || cmbFakultas.SelectedIndex != 0)
             {
-                MessageBox.Show(response.ReasonPhrase);
+                string UidProdi = cmbProdi.SelectedValue.ToString();
+                listProgram = new List<Program>(Organisasi.listProgram.Where(pr => pr.Prodi.Uid == UidProdi).ToList());
+                listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
+                cmbProgram.DataSource = listProgram;
+                cmbProgram.DisplayMember = "NamaProgram";
+                cmbProgram.ValueMember = "KodeProgram";
+                cmbProgram.SelectedIndex = 0;
             }
         }
     }

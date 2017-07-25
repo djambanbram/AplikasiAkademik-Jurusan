@@ -14,25 +14,37 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KelasMahasiswa;
+using MataKuliah;
+using MataKuliah.DataBindding;
+using System.Net.Http;
+using ApiService;
+using Newtonsoft.Json;
+using System.Configuration;
+using ClassModel;
+using MainAplikasi.DataBindding;
 
 namespace MainAplikasi
 {
     public partial class FormMainAplikasi : Syncfusion.Windows.Forms.MetroForm
     {
-        private FormKelasReguler formKelasReguler;
-        private FormKelasCampuran formKelasCampuran;
-        private FormKelasRemidial formKelasRemidial;
+        private FromKelasReguler formKelasReguler;
 
         public FormMainAplikasi()
         {
             InitializeComponent();
+            webApi = new WebApi();
+        }
+
+        private void Loading(bool isLoading)
+        {
+            xpTaskBar1.Enabled = !isLoading;
         }
 
         private void boxKelas_ItemClick(object sender, Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickArgs e)
         {
-            if(e.XPTaskBarItem.Name == "itemKelasReguler")
+            if (e.XPTaskBarItem.Name == "itemKelasReguler")
             {
-                if(formKelasReguler == null || formKelasReguler.IsDisposed)
+                if (formKelasReguler == null || formKelasReguler.IsDisposed)
                 {
                     formKelasReguler = new FormKelasReguler();
                     formKelasReguler.MdiParent = this;
@@ -40,31 +52,39 @@ namespace MainAplikasi
                 formKelasReguler.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
             }
-            else if (e.XPTaskBarItem.Name == "itemKelasCampuran")
-            {
-                if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
-                {
-                    formKelasCampuran = new FormKelasCampuran();
-                    formKelasCampuran.MdiParent = this;
-                }
-                formKelasCampuran.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formKelasCampuran);
-            }
-            else if (e.XPTaskBarItem.Name == "itemKelasRemidial")
-            {
-                if (formKelasRemidial == null || formKelasRemidial.IsDisposed)
-                {
-                    formKelasRemidial = new FormKelasRemidial();
-                    formKelasRemidial.MdiParent = this;
-                }
-                formKelasRemidial.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formKelasRemidial);
-            }
         }
 
         private void FormMainAplikasi_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.ExitThread();
+        }
+
+        private async void FormMainAplikasi_Load(object sender, EventArgs e)
+        {
+            Loading(true);
+
+            response = await webApi.Post(URLGetProgramAll);
+            if (response.IsSuccessStatusCode)
+            {
+                List<dynamic> oListProgram = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                OrganisasiBinding organisasiBinding = new OrganisasiBinding(oListProgram);
+            }
+
+            response = await webApi.Post(URLGetKategoriMK);
+            if (response.IsSuccessStatusCode)
+            {
+                List<dynamic> oListKategoriMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                KategoriMKBinding kategoriMKBinding = new KategoriMKBinding(oListKategoriMK);
+            }
+
+            response = await webApi.Post(URLGetSifatMK);
+            if (response.IsSuccessStatusCode)
+            {
+                List<dynamic> oListSifatMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                SifatMKBinding sifatMKBinding = new SifatMKBinding(oListSifatMK);
+            }
+
+            Loading(false);
         }
     }
 }

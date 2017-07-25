@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9EA707E7-E4B9-446E-A000-64A9BEC7722B}</ProjectGuid>
+    <ProjectGuid>{121BAB73-94A7-4161-AAF2-8330314CD590}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KelasMahasiswa</RootNamespace>
-    <AssemblyName>KelasMahasiswa</AssemblyName>
+    <RootNamespace>MataKuliah</RootNamespace>
+    <AssemblyName>MataKuliah</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,11 +39,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Syncfusion.Grid.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Grid.Windows, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Windows, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SpellChecker.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -53,8 +53,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,40 +62,18 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormKelasCampuran.cs">
+    <Compile Include="DataBinding\ClassBinding.cs" />
+    <Compile Include="FormDataMataKuliah.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormKelasCampuran.Designer.cs">
-      <DependentUpon>FormKelasCampuran.cs</DependentUpon>
+    <Compile Include="FormDataMataKuliah.Designer.cs">
+      <DependentUpon>FormDataMataKuliah.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormKelasReguler.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormKelasReguler.Designer.cs">
-      <DependentUpon>FormKelasReguler.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormKelasRemidial.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormKelasRemidial.Designer.cs">
-      <DependentUpon>FormKelasRemidial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\CommonFunction.cs" />
-    <Compile Include="Models\Organisasi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormKelasCampuran.resx">
-      <DependentUpon>FormKelasCampuran.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormKelasReguler.resx">
-      <DependentUpon>FormKelasReguler.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormKelasRemidial.resx">
-      <DependentUpon>FormKelasRemidial.cs</DependentUpon>
+    <EmbeddedResource Include="FormDataMataKuliah.resx">
+      <DependentUpon>FormDataMataKuliah.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

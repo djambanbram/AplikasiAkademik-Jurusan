@@ -47,6 +47,7 @@
     <Reference Include="Syncfusion.Tools.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Windows, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
@@ -65,6 +66,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBindding\MataKuliahBinding.cs" />
+    <Compile Include="DataBindding\OrganisasiBinding.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,9 +121,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApiService\ApiService.csproj">
+      <Project>{3FBC94B0-CEB9-473C-B54A-95721926DDA4}</Project>
+      <Name>ApiService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassModel\ClassModel.csproj">
+      <Project>{9EC38DF1-A396-4BDF-B23A-B5CA2FF2562C}</Project>
+      <Name>ClassModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KelasMahasiswa\KelasMahasiswa.csproj">
       <Project>{9ea707e7-e4b9-446e-a000-64a9bec7722b}</Project>
       <Name>KelasMahasiswa</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MataKuliah\MataKuliah.csproj">
+      <Project>{121BAB73-94A7-4161-AAF2-8330314CD590}</Project>
+      <Name>MataKuliah</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

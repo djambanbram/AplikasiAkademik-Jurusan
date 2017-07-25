@@ -43,6 +43,14 @@ namespace MataKuliah
             this.txtNamaMKEn = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.txtNamaMK = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.dgvMataKuliah = new System.Windows.Forms.DataGridView();
+            this.Nomor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SemesterDitawarkan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SifatMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TahunMulai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -78,13 +86,6 @@ namespace MataKuliah
             this.btnTambah = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnBatal = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnEdit = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SemesterDitawarkan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SifatMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TahunMulai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtSksPraktikum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSksTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAliasMK)).BeginInit();
@@ -110,75 +111,88 @@ namespace MataKuliah
             // 
             // txtSksPraktikum
             // 
-            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSksPraktikum.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSksPraktikum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSksPraktikum.Location = new System.Drawing.Point(145, 153);
+            this.txtSksPraktikum.Location = new System.Drawing.Point(148, 123);
             this.txtSksPraktikum.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtSksPraktikum.Name = "txtSksPraktikum";
-            this.txtSksPraktikum.Size = new System.Drawing.Size(318, 25);
+            this.txtSksPraktikum.Size = new System.Drawing.Size(75, 25);
             this.txtSksPraktikum.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtSksPraktikum.TabIndex = 24;
+            this.txtSksPraktikum.TabIndex = 7;
+            this.txtSksPraktikum.Tag = "tb";
+            this.txtSksPraktikum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numeric_only);
+            this.txtSksPraktikum.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // txtSksTotal
             // 
-            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSksTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSksTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSksTotal.Location = new System.Drawing.Point(145, 123);
+            this.txtSksTotal.Location = new System.Drawing.Point(148, 93);
             this.txtSksTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtSksTotal.Name = "txtSksTotal";
-            this.txtSksTotal.Size = new System.Drawing.Size(318, 25);
+            this.txtSksTotal.Size = new System.Drawing.Size(75, 25);
             this.txtSksTotal.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtSksTotal.TabIndex = 23;
+            this.txtSksTotal.TabIndex = 6;
+            this.txtSksTotal.Tag = "tb";
+            this.txtSksTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numeric_only);
+            this.txtSksTotal.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // txtAliasMK
             // 
-            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtAliasMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAliasMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAliasMK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAliasMK.Location = new System.Drawing.Point(145, 63);
+            this.txtAliasMK.Location = new System.Drawing.Point(148, 63);
             this.txtAliasMK.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtAliasMK.Name = "txtAliasMK";
-            this.txtAliasMK.Size = new System.Drawing.Size(318, 25);
+            this.txtAliasMK.Size = new System.Drawing.Size(315, 25);
             this.txtAliasMK.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtAliasMK.TabIndex = 21;
+            this.txtAliasMK.TabIndex = 5;
+            this.txtAliasMK.Tag = "tb";
+            this.txtAliasMK.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // txtSingkatanMK
             // 
-            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSingkatanMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSingkatanMK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSingkatanMK.Location = new System.Drawing.Point(145, 93);
+            this.txtSingkatanMK.Location = new System.Drawing.Point(589, 63);
             this.txtSingkatanMK.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtSingkatanMK.Name = "txtSingkatanMK";
-            this.txtSingkatanMK.Size = new System.Drawing.Size(318, 25);
+            this.txtSingkatanMK.Size = new System.Drawing.Size(358, 25);
             this.txtSingkatanMK.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtSingkatanMK.TabIndex = 20;
+            this.txtSingkatanMK.TabIndex = 12;
             // 
             // txtNamaMKEn
             // 
-            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtNamaMKEn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMKEn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMKEn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNamaMKEn.Location = new System.Drawing.Point(145, 33);
+            this.txtNamaMKEn.Location = new System.Drawing.Point(148, 33);
             this.txtNamaMKEn.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtNamaMKEn.Name = "txtNamaMKEn";
-            this.txtNamaMKEn.Size = new System.Drawing.Size(318, 25);
+            this.txtNamaMKEn.Size = new System.Drawing.Size(315, 25);
             this.txtNamaMKEn.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtNamaMKEn.TabIndex = 19;
+            this.txtNamaMKEn.TabIndex = 4;
+            this.txtNamaMKEn.Tag = "tb";
+            this.txtNamaMKEn.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // txtNamaMK
             // 
-            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtNamaMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNamaMK.Location = new System.Drawing.Point(145, 3);
+            this.txtNamaMK.Location = new System.Drawing.Point(148, 3);
             this.txtNamaMK.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtNamaMK.Name = "txtNamaMK";
-            this.txtNamaMK.Size = new System.Drawing.Size(318, 25);
+            this.txtNamaMK.Size = new System.Drawing.Size(315, 25);
             this.txtNamaMK.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtNamaMK.TabIndex = 17;
+            this.txtNamaMK.TabIndex = 3;
+            this.txtNamaMK.Tag = "tb";
+            this.txtNamaMK.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // dgvMataKuliah
             // 
@@ -188,6 +202,7 @@ namespace MataKuliah
             this.dgvMataKuliah.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvMataKuliah.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMataKuliah.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nomor,
             this.Kode,
             this.MataKuliah,
             this.Sks,
@@ -198,6 +213,7 @@ namespace MataKuliah
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMataKuliah, 4);
             this.dgvMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMataKuliah.Location = new System.Drawing.Point(3, 216);
+            this.dgvMataKuliah.MultiSelect = false;
             this.dgvMataKuliah.Name = "dgvMataKuliah";
             this.dgvMataKuliah.ReadOnly = true;
             this.dgvMataKuliah.RowHeadersVisible = false;
@@ -206,58 +222,115 @@ namespace MataKuliah
             this.dgvMataKuliah.TabIndex = 0;
             this.dgvMataKuliah.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMataKuliah_CellClick);
             // 
+            // Nomor
+            // 
+            this.Nomor.HeaderText = "No.";
+            this.Nomor.Name = "Nomor";
+            this.Nomor.ReadOnly = true;
+            this.Nomor.Width = 50;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.ReadOnly = true;
+            this.Kode.Width = 70;
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.HeaderText = "Mata Kuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            this.MataKuliah.ReadOnly = true;
+            this.MataKuliah.Width = 300;
+            // 
+            // Sks
+            // 
+            this.Sks.HeaderText = "Sks Total";
+            this.Sks.Name = "Sks";
+            this.Sks.ReadOnly = true;
+            // 
+            // SksPraktikum
+            // 
+            this.SksPraktikum.HeaderText = "Sks Praktikum";
+            this.SksPraktikum.Name = "SksPraktikum";
+            this.SksPraktikum.ReadOnly = true;
+            // 
+            // SemesterDitawarkan
+            // 
+            this.SemesterDitawarkan.HeaderText = "Semester";
+            this.SemesterDitawarkan.Name = "SemesterDitawarkan";
+            this.SemesterDitawarkan.ReadOnly = true;
+            // 
+            // SifatMk
+            // 
+            this.SifatMk.HeaderText = "Sifat MK";
+            this.SifatMk.Name = "SifatMk";
+            this.SifatMk.ReadOnly = true;
+            // 
+            // TahunMulai
+            // 
+            this.TahunMulai.HeaderText = "Tahun Berlaku";
+            this.TahunMulai.Name = "TahunMulai";
+            this.TahunMulai.ReadOnly = true;
+            // 
             // autoLabel3
             // 
+            this.autoLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoLabel3.Location = new System.Drawing.Point(3, 0);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(67, 17);
+            this.autoLabel3.Size = new System.Drawing.Size(139, 30);
             this.autoLabel3.TabIndex = 3;
-            this.autoLabel3.Text = "Nama MK";
+            this.autoLabel3.Text = "Nama MK*";
             this.autoLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel4
             // 
+            this.autoLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoLabel4.Location = new System.Drawing.Point(3, 30);
             this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(120, 17);
+            this.autoLabel4.Size = new System.Drawing.Size(139, 30);
             this.autoLabel4.TabIndex = 4;
-            this.autoLabel4.Text = "Nama MK (English)";
+            this.autoLabel4.Text = "Nama MK (English)*";
             this.autoLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel5
             // 
+            this.autoLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoLabel5.Location = new System.Drawing.Point(3, 60);
             this.autoLabel5.Name = "autoLabel5";
-            this.autoLabel5.Size = new System.Drawing.Size(59, 17);
+            this.autoLabel5.Size = new System.Drawing.Size(139, 30);
             this.autoLabel5.TabIndex = 5;
-            this.autoLabel5.Text = "Alias MK";
+            this.autoLabel5.Text = "Singkatan MK*";
             this.autoLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel6
             // 
-            this.autoLabel6.Location = new System.Drawing.Point(3, 120);
+            this.autoLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel6.Location = new System.Drawing.Point(3, 90);
             this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(62, 17);
+            this.autoLabel6.Size = new System.Drawing.Size(139, 30);
             this.autoLabel6.TabIndex = 6;
-            this.autoLabel6.Text = "SKS Total";
+            this.autoLabel6.Text = "SKS Total*";
             this.autoLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel7
             // 
-            this.autoLabel7.Location = new System.Drawing.Point(3, 150);
+            this.autoLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel7.Location = new System.Drawing.Point(3, 120);
             this.autoLabel7.Name = "autoLabel7";
-            this.autoLabel7.Size = new System.Drawing.Size(84, 17);
+            this.autoLabel7.Size = new System.Drawing.Size(139, 30);
             this.autoLabel7.TabIndex = 7;
-            this.autoLabel7.Text = "SKS Pratikum";
+            this.autoLabel7.Text = "SKS Pratikum*";
             this.autoLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel8
             // 
-            this.autoLabel8.Location = new System.Drawing.Point(3, 180);
+            this.autoLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel8.Location = new System.Drawing.Point(3, 150);
             this.autoLabel8.Name = "autoLabel8";
-            this.autoLabel8.Size = new System.Drawing.Size(129, 17);
+            this.autoLabel8.Size = new System.Drawing.Size(139, 30);
             this.autoLabel8.TabIndex = 8;
-            this.autoLabel8.Text = "Semester Penawaran";
+            this.autoLabel8.Text = "Semester Penawaran*";
             this.autoLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel9
@@ -267,7 +340,7 @@ namespace MataKuliah
             this.autoLabel9.Name = "autoLabel9";
             this.autoLabel9.Size = new System.Drawing.Size(114, 30);
             this.autoLabel9.TabIndex = 9;
-            this.autoLabel9.Text = "Kategori MK";
+            this.autoLabel9.Text = "Kategori MK*";
             this.autoLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel10
@@ -277,26 +350,27 @@ namespace MataKuliah
             this.autoLabel10.Name = "autoLabel10";
             this.autoLabel10.Size = new System.Drawing.Size(114, 30);
             this.autoLabel10.TabIndex = 10;
-            this.autoLabel10.Text = "Sifat MK";
+            this.autoLabel10.Text = "Sifat MK*";
             this.autoLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel13
             // 
-            this.autoLabel13.Location = new System.Drawing.Point(3, 90);
+            this.autoLabel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel13.Location = new System.Drawing.Point(469, 60);
             this.autoLabel13.Name = "autoLabel13";
-            this.autoLabel13.Size = new System.Drawing.Size(88, 17);
+            this.autoLabel13.Size = new System.Drawing.Size(114, 30);
             this.autoLabel13.TabIndex = 13;
-            this.autoLabel13.Text = "Singkatan MK";
+            this.autoLabel13.Text = "Singkatan Kelas";
             this.autoLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel11
             // 
             this.autoLabel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.autoLabel11.Location = new System.Drawing.Point(469, 60);
+            this.autoLabel11.Location = new System.Drawing.Point(3, 180);
             this.autoLabel11.Name = "autoLabel11";
-            this.autoLabel11.Size = new System.Drawing.Size(114, 30);
+            this.autoLabel11.Size = new System.Drawing.Size(139, 33);
             this.autoLabel11.TabIndex = 11;
-            this.autoLabel11.Text = "Tahun Berlaku";
+            this.autoLabel11.Text = "Tahun Berlaku*";
             this.autoLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox1
@@ -336,7 +410,7 @@ namespace MataKuliah
             // 
             // txtKodeMKPengganti
             // 
-            this.txtKodeMKPengganti.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtKodeMKPengganti.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtKodeMKPengganti.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtKodeMKPengganti.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKodeMKPengganti.Location = new System.Drawing.Point(148, 3);
@@ -368,7 +442,7 @@ namespace MataKuliah
             // 
             // txtNamaMKPengganti
             // 
-            this.txtNamaMKPengganti.BeforeTouchSize = new System.Drawing.Size(321, 25);
+            this.txtNamaMKPengganti.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.tableLayoutPanel2.SetColumnSpan(this.txtNamaMKPengganti, 3);
             this.txtNamaMKPengganti.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMKPengganti.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -389,8 +463,9 @@ namespace MataKuliah
             this.btnCari.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(76, 24);
-            this.btnCari.TabIndex = 24;
+            this.btnCari.TabIndex = 13;
             this.btnCari.Text = "Cari";
+            this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
             // 
             // btnKosongkan
             // 
@@ -402,38 +477,38 @@ namespace MataKuliah
             this.btnKosongkan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnKosongkan.Name = "btnKosongkan";
             this.btnKosongkan.Size = new System.Drawing.Size(132, 24);
-            this.btnKosongkan.TabIndex = 25;
+            this.btnKosongkan.TabIndex = 14;
             this.btnKosongkan.Text = "Kosongkan";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 321F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 364F));
             this.tableLayoutPanel1.Controls.Add(this.cmbSifatMK, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvMataKuliah, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel9, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel10, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtSingkatanMK, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.cmbKategoriMK, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.autoLabel13, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtNamaMK, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtNamaMKEn, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtAliasMK, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.autoLabel8, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.cmbSemesterPenawaran, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.autoLabel7, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.txtSksPraktikum, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.autoLabel6, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtSksTotal, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.autoLabel13, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtSingkatanMK, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.autoLabel11, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cmbTahunBerlaku, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtSksTotal, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.autoLabel6, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.autoLabel7, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtSksPraktikum, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cmbSemesterPenawaran, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.autoLabel8, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.autoLabel11, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cmbTahunBerlaku, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 76);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -457,7 +532,9 @@ namespace MataKuliah
             this.cmbSifatMK.Location = new System.Drawing.Point(589, 33);
             this.cmbSifatMK.Name = "cmbSifatMK";
             this.cmbSifatMK.Size = new System.Drawing.Size(175, 25);
-            this.cmbSifatMK.TabIndex = 28;
+            this.cmbSifatMK.TabIndex = 11;
+            this.cmbSifatMK.Tag = "cb";
+            this.cmbSifatMK.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // cmbKategoriMK
             // 
@@ -467,16 +544,21 @@ namespace MataKuliah
             this.cmbKategoriMK.Location = new System.Drawing.Point(589, 3);
             this.cmbKategoriMK.Name = "cmbKategoriMK";
             this.cmbKategoriMK.Size = new System.Drawing.Size(175, 25);
-            this.cmbKategoriMK.TabIndex = 29;
+            this.cmbKategoriMK.TabIndex = 10;
+            this.cmbKategoriMK.Tag = "cb";
+            this.cmbKategoriMK.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // cmbSemesterPenawaran
             // 
             this.cmbSemesterPenawaran.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.cmbSemesterPenawaran.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSemesterPenawaran.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSemesterPenawaran.Location = new System.Drawing.Point(145, 183);
+            this.cmbSemesterPenawaran.Location = new System.Drawing.Point(148, 153);
             this.cmbSemesterPenawaran.Name = "cmbSemesterPenawaran";
             this.cmbSemesterPenawaran.Size = new System.Drawing.Size(75, 25);
-            this.cmbSemesterPenawaran.TabIndex = 31;
+            this.cmbSemesterPenawaran.TabIndex = 8;
+            this.cmbSemesterPenawaran.Tag = "cb";
+            this.cmbSemesterPenawaran.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // cmbTahunBerlaku
             // 
@@ -484,10 +566,12 @@ namespace MataKuliah
             this.cmbTahunBerlaku.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTahunBerlaku.DropDownWidth = 130;
             this.cmbTahunBerlaku.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTahunBerlaku.Location = new System.Drawing.Point(589, 63);
+            this.cmbTahunBerlaku.Location = new System.Drawing.Point(148, 183);
             this.cmbTahunBerlaku.Name = "cmbTahunBerlaku";
             this.cmbTahunBerlaku.Size = new System.Drawing.Size(175, 25);
-            this.cmbTahunBerlaku.TabIndex = 30;
+            this.cmbTahunBerlaku.TabIndex = 9;
+            this.cmbTahunBerlaku.Tag = "cb";
+            this.cmbTahunBerlaku.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // autoLabel1
             // 
@@ -527,7 +611,7 @@ namespace MataKuliah
             this.cmbProdi.Location = new System.Drawing.Point(115, 37);
             this.cmbProdi.Name = "cmbProdi";
             this.cmbProdi.Size = new System.Drawing.Size(361, 24);
-            this.cmbProdi.TabIndex = 7;
+            this.cmbProdi.TabIndex = 2;
             this.cmbProdi.SelectedIndexChanged += new System.EventHandler(this.cmbProdi_SelectedIndexChanged);
             // 
             // cmbFakultas
@@ -538,7 +622,7 @@ namespace MataKuliah
             this.cmbFakultas.Location = new System.Drawing.Point(115, 6);
             this.cmbFakultas.Name = "cmbFakultas";
             this.cmbFakultas.Size = new System.Drawing.Size(361, 25);
-            this.cmbFakultas.TabIndex = 3;
+            this.cmbFakultas.TabIndex = 1;
             this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
             // 
             // btnTutup
@@ -631,50 +715,6 @@ namespace MataKuliah
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // Kode
-            // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.Name = "Kode";
-            this.Kode.ReadOnly = true;
-            this.Kode.Width = 70;
-            // 
-            // MataKuliah
-            // 
-            this.MataKuliah.HeaderText = "Mata Kuliah";
-            this.MataKuliah.Name = "MataKuliah";
-            this.MataKuliah.ReadOnly = true;
-            this.MataKuliah.Width = 300;
-            // 
-            // Sks
-            // 
-            this.Sks.HeaderText = "Sks Total";
-            this.Sks.Name = "Sks";
-            this.Sks.ReadOnly = true;
-            // 
-            // SksPraktikum
-            // 
-            this.SksPraktikum.HeaderText = "Sks Praktikum";
-            this.SksPraktikum.Name = "SksPraktikum";
-            this.SksPraktikum.ReadOnly = true;
-            // 
-            // SemesterDitawarkan
-            // 
-            this.SemesterDitawarkan.HeaderText = "Semester";
-            this.SemesterDitawarkan.Name = "SemesterDitawarkan";
-            this.SemesterDitawarkan.ReadOnly = true;
-            // 
-            // SifatMk
-            // 
-            this.SifatMk.HeaderText = "Sifat MK";
-            this.SifatMk.Name = "SifatMk";
-            this.SifatMk.ReadOnly = true;
-            // 
-            // TahunMulai
-            // 
-            this.TahunMulai.HeaderText = "Tahun Berlaku";
-            this.TahunMulai.Name = "TahunMulai";
-            this.TahunMulai.ReadOnly = true;
-            // 
             // FormDataMataKuliah
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -687,7 +727,7 @@ namespace MataKuliah
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormDataMataKuliah";
-            this.Text = "MetroForm1";
+            this.Text = "Data Mata Kuliah";
             this.Load += new System.EventHandler(this.FormDataMataKuliah_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSksPraktikum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSksTotal)).EndInit();
@@ -761,6 +801,7 @@ namespace MataKuliah
         private Syncfusion.Windows.Forms.ButtonAdv btnTambah;
         private Syncfusion.Windows.Forms.ButtonAdv btnBatal;
         private Syncfusion.Windows.Forms.ButtonAdv btnEdit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nomor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sks;

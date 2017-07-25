@@ -41,6 +41,7 @@ namespace MainAplikasi
             this.boxKelas = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.boxMataKuliah = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.tabbedMDIManager1 = new Syncfusion.Windows.Forms.Tools.TabbedMDIManager(this.components);
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).BeginInit();
@@ -113,11 +114,22 @@ namespace MainAplikasi
             this.tabbedMDIManager1.ImageSize = new System.Drawing.Size(16, 16);
             this.tabbedMDIManager1.NeedUpdateHostedForm = false;
             // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.autoLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Location = new System.Drawing.Point(244, 0);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(64, 17);
+            this.autoLabel1.TabIndex = 2;
+            this.autoLabel1.Text = "Loading...";
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 489);
+            this.Controls.Add(this.autoLabel1);
             this.Controls.Add(this.xpTaskBar1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.IsMdiContainer = true;
@@ -132,6 +144,7 @@ namespace MainAplikasi
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -141,5 +154,6 @@ namespace MainAplikasi
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxKelas;
         private Syncfusion.Windows.Forms.Tools.TabbedMDIManager tabbedMDIManager1;
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxMataKuliah;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
     }
 }

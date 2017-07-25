@@ -18,19 +18,49 @@ namespace MataKuliah.DataBinding
                 m.Kode = item.Kode;
                 m.MataKuliah = item.MataKuliah;
                 m.MataKuliahEn = item.MataKuliahEn;
-                m.Alias = item.Alias;
+                m.SingkatanMK = item.Alias;
                 m.SingkatanKelas = item.SingkatanKelas;
                 m.Sks = item.Sks;
                 m.SksPraktikum = item.SksPraktikum;
                 m.SemesterDitawarkan = item.SemesterDitawarkan;
-                m.KategoriMk = item.KategoriMk;
+                m.KategoriMK = item.KategoriMK;
                 m.KodeSifatMK = item.KodeSifatMK;
                 m.SifatMK = item.SifatMK;
                 m.TahunMulai = item.TahunMulai;
-                m.UidProdi = item.IdProdi;
+                m.IdProdi = item.IdProdi;
                 listMK.Add(m);
             }
             ClassModel.MataKuliah.listDataMataKuliah = listMK;
+        }
+    }
+
+    class MataKuliahPrasyaratBinding
+    {
+        private List<ClassModel.DataMataKuliahPrasyarat> listMK;
+        public MataKuliahPrasyaratBinding(List<dynamic> listSerialized)
+        {
+            listMK = new List<ClassModel.DataMataKuliahPrasyarat>();
+            foreach (var item in listSerialized)
+            {
+                ClassModel.DataMataKuliahPrasyarat m = new ClassModel.DataMataKuliahPrasyarat();
+                m.Kode = item.Kode;
+                m.MataKuliah = item.MataKuliah;
+                m.MataKuliahEn = item.MataKuliahEn;
+                m.SingkatanMK = item.Alias;
+                m.SingkatanKelas = item.SingkatanKelas;
+                m.Sks = item.Sks;
+                m.SksPraktikum = item.SksPraktikum;
+                m.SemesterDitawarkan = item.SemesterDitawarkan;
+                m.KategoriMK = item.KategoriMK;
+                m.KodeSifatMK = item.KodeSifatMK;
+                m.SifatMK = item.SifatMK;
+                m.TahunMulai = item.TahunMulai;
+                m.IdProdi = item.IdProdi;
+                m.KodePrasyarat = item.KodePrasyarat;
+                m.MataKuliahPrasyarat = item.MataKuliahPrasyarat;
+                listMK.Add(m);
+            }
+            ClassModel.MataKuliah.listDataMataKuliahPrasyarat = listMK;
         }
     }
 

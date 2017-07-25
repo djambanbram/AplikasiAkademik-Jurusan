@@ -66,7 +66,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBindding\MataKuliahBinding.cs" />
     <Compile Include="DataBindding\OrganisasiBinding.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>

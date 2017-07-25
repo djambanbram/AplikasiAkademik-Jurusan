@@ -21,7 +21,6 @@ using ApiService;
 using Newtonsoft.Json;
 using System.Configuration;
 using ClassModel;
-using MainAplikasi.DataBindding;
 
 namespace MainAplikasi
 {
@@ -29,12 +28,11 @@ namespace MainAplikasi
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetProgramAll = baseAddress + "/jurusan_api/api/organisasi/get_program_all";
-        private string URLGetKategoriMK = baseAddress + "/jurusan_api/api/kurikulum/get_kategori_mk";
-        private string URLGetSifatMK = baseAddress + "/jurusan_api/api/kurikulum/get_sifat_mk";
 
         private WebApi webApi;
-        private FromKelasReguler formKelasReguler;
+        //private FromKelasReguler formKelasReguler;
         private FormDataMataKuliah formDataMataKuliah;
+        private FormMataKuliahPrasyarat formMataKuliahPrasyarat;
         private HttpResponseMessage response;
 
         public FormMainAplikasi()
@@ -46,20 +44,21 @@ namespace MainAplikasi
         private void Loading(bool isLoading)
         {
             xpTaskBar1.Enabled = !isLoading;
+            autoLabel1.Visible = isLoading;
         }
 
         private void boxKelas_ItemClick(object sender, Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickArgs e)
         {
-            if (e.XPTaskBarItem.Name == "itemKelasReguler")
-            {
-                if (formKelasReguler == null || formKelasReguler.IsDisposed)
-                {
-                    formKelasReguler = new FromKelasReguler();
-                    formKelasReguler.MdiParent = this;
-                }
-                formKelasReguler.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
-            }
+            //if (e.XPTaskBarItem.Name == "itemKelasReguler")
+            //{
+            //    if (formKelasReguler == null || formKelasReguler.IsDisposed)
+            //    {
+            //        formKelasReguler = new FromKelasReguler();
+            //        formKelasReguler.MdiParent = this;
+            //    }
+            //    formKelasReguler.Show();
+            //    tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
+            //}
             if (e.XPTaskBarItem.Name == "itemMataKuliah")
             {
                 if (formDataMataKuliah == null || formDataMataKuliah.IsDisposed)
@@ -69,6 +68,16 @@ namespace MainAplikasi
                 }
                 formDataMataKuliah.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formDataMataKuliah);
+            }
+            if (e.XPTaskBarItem.Name == "itemMKPrasyarat")
+            {
+                if (formMataKuliahPrasyarat == null || formMataKuliahPrasyarat.IsDisposed)
+                {
+                    formMataKuliahPrasyarat = new FormMataKuliahPrasyarat();
+                    formMataKuliahPrasyarat.MdiParent = this;
+                }
+                formMataKuliahPrasyarat.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(formMataKuliahPrasyarat);
             }
         }
 
@@ -81,25 +90,11 @@ namespace MainAplikasi
         {
             Loading(true);
 
-            response = await webApi.Post(URLGetProgramAll);
+            response = await webApi.Post(URLGetProgramAll, string.Empty, false);
             if (response.IsSuccessStatusCode)
             {
                 List<dynamic> oListProgram = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
                 OrganisasiBinding organisasiBinding = new OrganisasiBinding(oListProgram);
-            }
-
-            response = await webApi.Post(URLGetKategoriMK);
-            if (response.IsSuccessStatusCode)
-            {
-                List<dynamic> oListKategoriMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                KategoriMKBinding kategoriMKBinding = new KategoriMKBinding(oListKategoriMK);
-            }
-
-            response = await webApi.Post(URLGetSifatMK);
-            if (response.IsSuccessStatusCode)
-            {
-                List<dynamic> oListSifatMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                SifatMKBinding sifatMKBinding = new SifatMKBinding(oListSifatMK);
             }
 
             Loading(false);

@@ -5,24 +5,24 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using ApiService;
+using KelasMahasiswa.Lib;
+using KelasMahasiswa.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
-using ApiService;
-using System.Configuration;
-using System.Net.Http;
-using Newtonsoft.Json;
-using KelasMahasiswa.Models;
-using KelasMahasiswa.Lib;
 
 namespace KelasMahasiswa
 {
-    public partial class FormKelasReguler : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormKelasRemidial : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
 
@@ -31,18 +31,13 @@ namespace KelasMahasiswa
         private string UrlGetProdiByFakultas = baseAddress + "/jurusan_api/api/organisasi/get_prodi_by_fakultas";
         private string UrlGetProgramByProdi = baseAddress + "/jurusan_api/api/organisasi/get_program_by_prodi";
 
-        public FormKelasReguler()
+        public FormKelasRemidial()
         {
             InitializeComponent();
             webApi = new WebApi();
         }
 
-        private void btnTutup_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private async void FormKelasReguler_Load(object sender, EventArgs e)
+        private async void FormKelasRemidial_Load(object sender, EventArgs e)
         {
             CommonFunction.FormLoading(this, progressBar1, true);
 
@@ -118,6 +113,11 @@ namespace KelasMahasiswa
             cmbProgram.SelectedIndex = 0;
 
             CommonFunction.FormLoading(this, progressBar1, false);
+        }
+
+        private void btnTutup_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

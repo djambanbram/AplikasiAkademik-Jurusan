@@ -69,6 +69,7 @@ namespace KelasMahasiswa
             cmbProgramStudi.DisplayMember = "NamaProdi";
             cmbProgramStudi.ValueMember = "Id";
             cmbProgramStudi.SelectedIndex = 0;
+            cmbProgram.DataSource = null;
 
             CommonFunction.FormLoading(this, progressBar1, false);
         }

@@ -21,6 +21,7 @@ namespace MainAplikasi
     {
         private FormKelasReguler formKelasReguler;
         private FormKelasCampuran formKelasCampuran;
+        private FormKelasRemidial formKelasRemidial;
 
         public FormMainAplikasi()
         {
@@ -39,7 +40,7 @@ namespace MainAplikasi
                 formKelasReguler.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
             }
-            if (e.XPTaskBarItem.Name == "itemKelasCampuran")
+            else if (e.XPTaskBarItem.Name == "itemKelasCampuran")
             {
                 if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
                 {
@@ -48,6 +49,16 @@ namespace MainAplikasi
                 }
                 formKelasCampuran.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formKelasCampuran);
+            }
+            else if (e.XPTaskBarItem.Name == "itemKelasRemidial")
+            {
+                if (formKelasRemidial == null || formKelasRemidial.IsDisposed)
+                {
+                    formKelasRemidial = new FormKelasRemidial();
+                    formKelasRemidial.MdiParent = this;
+                }
+                formKelasRemidial.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(formKelasRemidial);
             }
         }
 

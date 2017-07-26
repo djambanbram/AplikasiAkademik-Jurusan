@@ -94,6 +94,7 @@
       <DependentUpon>FormMataKuliahPrasyarat.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\CommonLib.cs" />
+    <Compile Include="Lib\DragandDrop.cs" />
     <Compile Include="Listener\IMataKuliah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DialogForm\FormMKPengganti.resx">

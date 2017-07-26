@@ -9,6 +9,7 @@ using AdvancedDataGridView;
 using ApiService;
 using ClassModel;
 using MataKuliah.DataBinding;
+using MataKuliah.Lib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataGridView;
 
 namespace MataKuliah
 {
@@ -32,9 +34,15 @@ namespace MataKuliah
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk";
         private string URLGetMKPrasyarat = baseAddress + "/jurusan_api/api/kurikulum/get_mk_prasyarat";
+        private string URLSaveMKPrasyarat = baseAddress + "/jurusan_api/api/kurikulum/save_mk_prasyarat";
+        private string URLDelMKPrasyarat = baseAddress + "/jurusan_api/api/kurikulum/del_mk_prasyarat";
+
 
         private string UidProdiDipilih;
-        private string KodeMKDipilih;
+        private DragandDrop dragAndDropAdd;
+        private DragandDrop dragAndDropDelete;
+        private dynamic valueMKPrasyaratAdd;
+        private dynamic valueMKPrasyaratDelete;
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -45,10 +53,13 @@ namespace MataKuliah
         {
             InitializeComponent();
             webApi = new WebApi();
+            dragAndDropAdd = new DragandDrop();
+            dragAndDropDelete = new DragandDrop();
 
             dgvMKPrasyarat.Columns.Add(new TreeGridColumn() { Name = "Node", HeaderText = "", Width = 30 });
             dgvMKPrasyarat.Columns.Add(new DataGridViewTextBoxColumn() { Name = "tKode", HeaderText = "Kode", Width = 50 });
             dgvMKPrasyarat.Columns.Add(new DataGridViewTextBoxColumn() { Name = "tMataKuliah", HeaderText = "Mata Kuliah", Width = 350 });
+            dgvMKPrasyarat.Columns.Add(new DataGridViewTextBoxColumn() { Name = "tParent", HeaderText = "Parent", Width = 30 });
 
         }
 
@@ -132,7 +143,7 @@ namespace MataKuliah
                 dgvMKPrasyarat.Nodes.Clear();
                 foreach (DataMataKuliah dataMK in ClassModel.MataKuliah.listDataMataKuliah)
                 {
-                    dgvMKPrasyarat.Nodes.Add(null, dataMK.Kode, dataMK.MataKuliah);
+                    dgvMKPrasyarat.Nodes.Add(null, dataMK.Kode, dataMK.MataKuliah, "1");
                 }
 
                 response = await webApi.Post(URLGetMKPrasyarat, jsonData, true);
@@ -144,12 +155,11 @@ namespace MataKuliah
 
                     foreach (TreeGridNode tree in dgvMKPrasyarat.Nodes)
                     {
-                        TreeGridNode tgnNodes = tree;
                         foreach (DataMataKuliahPrasyarat prasy in listDataMKPrasyarat)
                         {
                             if (tree.Cells["tKode"].Value.ToString().Trim() == prasy.Kode.Trim())
                             {
-                                TreeGridNode tgn = tgnNodes.Nodes.Add(null, prasy.KodePrasyarat, prasy.MataKuliahPrasyarat);
+                                TreeGridNode tgn = tree.Nodes.Add(null, prasy.KodePrasyarat, prasy.MataKuliahPrasyarat, "0");
                                 tgn.DefaultCellStyle.BackColor = Color.LightGray;
                             }
                         }
@@ -162,52 +172,47 @@ namespace MataKuliah
             }
         }
 
-        private void dgvMataKuliah_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
-
-        private Rectangle dragBoxFromMouseDown;
-        private dynamic valueFromMouseDown;
-
         private void dgvMataKuliah_MouseMove(object sender, MouseEventArgs e)
         {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                // If the mouse moves outside the rectangle, start the drag.
-                if (dragBoxFromMouseDown != Rectangle.Empty && !dragBoxFromMouseDown.Contains(e.X, e.Y))
-                {
-                    // Proceed with the drag and drop, passing in the list item.                    
-                    DragDropEffects dropEffect = dgvMataKuliah.DoDragDrop(valueFromMouseDown, DragDropEffects.Copy);
-                }
-            }
+            dragAndDropAdd.DragMove(e, dgvMataKuliah, valueMKPrasyaratAdd);
+        }
+
+        private void dgvMKPrasyarat_MouseMove(object sender, MouseEventArgs e)
+        {
+            dragAndDropDelete.DragMove(e, dgvMKPrasyarat, valueMKPrasyaratDelete);
         }
 
         private void dgvMataKuliah_MouseDown(object sender, MouseEventArgs e)
         {
-            // Get the index of the item the mouse is below.
-            var hittestInfo = dgvMataKuliah.HitTest(e.X, e.Y);
-
-            if (hittestInfo.RowIndex != -1 && hittestInfo.ColumnIndex != -1)
+            var hitTestInfo = dragAndDropAdd.DragMouseDownFirst(e, dgvMKPrasyarat);
+            if (hitTestInfo != null)
             {
-                var kodeMK = dgvMataKuliah.Rows[hittestInfo.RowIndex].Cells["Kode"].Value;
-                var namaMK = dgvMataKuliah.Rows[hittestInfo.RowIndex].Cells["MataKuliah"].Value;
-                valueFromMouseDown = new { kodeMK, namaMK };
-                if (valueFromMouseDown != null)
-                {
-                    // Remember the point where the mouse down occurred. 
-                    // The DragSize indicates the size that the mouse can move 
-                    // before a drag event should be started.                
-                    Size dragSize = SystemInformation.DragSize;
+                var kodeMK = dgvMataKuliah.Rows[hitTestInfo.RowIndex].Cells["Kode"].Value;
+                var namaMK = dgvMataKuliah.Rows[hitTestInfo.RowIndex].Cells["MataKuliah"].Value;
+                valueMKPrasyaratAdd = new { kodeMK, namaMK };
+                dragAndDropAdd.DragMouseDownSecond(e, dgvMKPrasyarat, hitTestInfo, valueMKPrasyaratAdd);
+            }
+        }
 
-                    // Create a rectangle using the DragSize, with the mouse position being
-                    // at the center of the rectangle.
-                    dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize);
+        private void dgvMKPrasyarat_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hitTestInfo = dragAndDropDelete.DragMouseDownFirst(e, dgvMKPrasyarat);
+            if (hitTestInfo != null)
+            {
+                if (dgvMKPrasyarat.Rows[hitTestInfo.RowIndex].Cells["tParent"].Value.ToString() == "0")
+                {
+                    var kodeMKPrasyarat = dgvMKPrasyarat.Rows[hitTestInfo.RowIndex].Cells["tKode"].Value;
+                    var kodeMK = dgvMKPrasyarat.GetNodeForRow(hitTestInfo.RowIndex).Parent.Cells["tkode"].Value;
+                    var rowChild = dgvMKPrasyarat.GetNodeForRow(hitTestInfo.RowIndex).Parent.Nodes.IndexOf(dgvMKPrasyarat.Rows[hitTestInfo.RowIndex] as TreeGridNode);
+                    var rowCurrent = hitTestInfo.RowIndex;
+                    valueMKPrasyaratDelete = new { kodeMKPrasyarat, kodeMK, rowChild, rowCurrent };
+                    dragAndDropDelete.DragMouseDownSecond(e, dgvMataKuliah, hitTestInfo, valueMKPrasyaratDelete);
+                }
+                else
+                {
+                    valueMKPrasyaratDelete = null;
                 }
             }
-            else
-                // Reset the rectangle if the mouse is not over an item in the ListBox.
-                dragBoxFromMouseDown = Rectangle.Empty;
         }
 
         private void dgvMKPrasyarat_DragEnter(object sender, DragEventArgs e)
@@ -220,22 +225,79 @@ namespace MataKuliah
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void dgvMKPrasyarat_DragDrop(object sender, DragEventArgs e)
+        private void dgvMataKuliah_DragEnter(object sender, DragEventArgs e)
         {
-            // The mouse locations are relative to the screen, so they must be 
-            // converted to client coordinates.
-            Point clientPoint = dgvMKPrasyarat.PointToClient(new Point(e.X, e.Y));
+            e.Effect = DragDropEffects.Copy;
+        }
 
-            // If the drag operation was a copy then add the row to the other control.
-            if (e.Effect == DragDropEffects.Copy)
+        private void dgvMataKuliah_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private async void dgvMKPrasyarat_DragDrop(object sender, DragEventArgs e)
+        {
+            if (valueMKPrasyaratAdd == null)
             {
-                string cellvalue = valueFromMouseDown.kodeMK;//e.Data.GetData(typeof(string)) as string;
-                var hittest = dgvMKPrasyarat.HitTest(clientPoint.X, clientPoint.Y);
-                if (hittest.ColumnIndex != -1
-                    && hittest.RowIndex != -1)
-                    dgvMKPrasyarat[hittest.ColumnIndex, hittest.RowIndex].Value = cellvalue;
-                //MessageBox.Show(cellvalue);
+                return;
             }
+            var hitTest = dragAndDropAdd.DragDrop(e, dgvMKPrasyarat);
+            if (hitTest != null)
+            {
+                if (dgvMKPrasyarat["tParent", hitTest.RowIndex].Value.ToString() == "1")
+                {
+                    //save prasyarat
+                    DataMataKuliahPrasyarat mkPrasyarat = new DataMataKuliahPrasyarat();
+                    mkPrasyarat.Kode = dgvMKPrasyarat["tKode", hitTest.RowIndex].Value.ToString();
+                    mkPrasyarat.KodePrasyarat = valueMKPrasyaratAdd.kodeMK;
+                    string jsonData = JsonConvert.SerializeObject(mkPrasyarat);
+                    Console.Write(jsonData);
+                    response = await webApi.Post(URLSaveMKPrasyarat, jsonData, true);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TreeGridNode tgnNodes = dgvMKPrasyarat.Rows[hitTest.RowIndex] as TreeGridNode;
+                        TreeGridNode tgn = tgnNodes.Nodes.Add(null, valueMKPrasyaratAdd.kodeMK, valueMKPrasyaratAdd.namaMK, "0");
+                        tgn.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        MessageBox.Show(webApi.ReturnMessage(response));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Drag di mata kuliah yang perlu prasyarat (baris berwarna putih)");
+                }
+            }
+            valueMKPrasyaratAdd = null;
+        }
+
+        private async void dgvMataKuliah_DragDrop(object sender, DragEventArgs e)
+        {
+            if (valueMKPrasyaratDelete == null)
+            {
+                return;
+            }
+            var hitTest = dragAndDropDelete.DragDrop(e, dgvMataKuliah);
+
+            //Delete prasyarat
+            DataMataKuliahPrasyarat mkPrasyarat = new DataMataKuliahPrasyarat();
+            mkPrasyarat.Kode = valueMKPrasyaratDelete.kodeMK;
+            mkPrasyarat.KodePrasyarat = valueMKPrasyaratDelete.kodeMKPrasyarat;
+            int rowDel = valueMKPrasyaratDelete.rowChild;
+            int rowCurrent = valueMKPrasyaratDelete.rowCurrent;
+            string jsonData = JsonConvert.SerializeObject(mkPrasyarat);
+            response = await webApi.Post(URLDelMKPrasyarat, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                var nodeParent = dgvMKPrasyarat.GetNodeForRow(rowCurrent).Parent;
+                if (nodeParent.HasChildren)
+                {
+                    nodeParent.Nodes.RemoveAt(rowDel);
+                }
+            }
+            valueMKPrasyaratDelete = null;
+
         }
 
         private void btnTutup_Click(object sender, EventArgs e)

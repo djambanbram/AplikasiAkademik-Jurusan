@@ -44,13 +44,13 @@ namespace MataKuliah
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
             this.dgvMKPrasyarat = new AdvancedDataGridView.TreeGridView();
             this.dgvMataKuliah = new System.Windows.Forms.DataGridView();
-            this.Nomor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridGroupingControl1 = new Syncfusion.Windows.Forms.Grid.Grouping.GridGroupingControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.Nomor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
@@ -156,6 +156,8 @@ namespace MataKuliah
             this.dgvMKPrasyarat.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMKPrasyarat_DragDrop);
             this.dgvMKPrasyarat.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMKPrasyarat_DragEnter);
             this.dgvMKPrasyarat.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMKPrasyarat_DragOver);
+            this.dgvMKPrasyarat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMKPrasyarat_MouseDown);
+            this.dgvMKPrasyarat.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMKPrasyarat_MouseMove);
             // 
             // dgvMataKuliah
             // 
@@ -178,29 +180,11 @@ namespace MataKuliah
             this.dgvMataKuliah.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMataKuliah.Size = new System.Drawing.Size(422, 326);
             this.dgvMataKuliah.TabIndex = 1;
+            this.dgvMataKuliah.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragDrop);
+            this.dgvMataKuliah.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragEnter);
+            this.dgvMataKuliah.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragOver);
             this.dgvMataKuliah.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseDown);
             this.dgvMataKuliah.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseMove);
-            // 
-            // Nomor
-            // 
-            this.Nomor.HeaderText = "No.";
-            this.Nomor.Name = "Nomor";
-            this.Nomor.ReadOnly = true;
-            this.Nomor.Width = 50;
-            // 
-            // Kode
-            // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.Name = "Kode";
-            this.Kode.ReadOnly = true;
-            this.Kode.Width = 70;
-            // 
-            // MataKuliah
-            // 
-            this.MataKuliah.HeaderText = "Mata Kuliah";
-            this.MataKuliah.Name = "MataKuliah";
-            this.MataKuliah.ReadOnly = true;
-            this.MataKuliah.Width = 300;
             // 
             // gridGroupingControl1
             // 
@@ -236,12 +220,33 @@ namespace MataKuliah
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(541, 3);
+            this.progressBar1.Location = new System.Drawing.Point(496, 3);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(214, 30);
+            this.progressBar1.Size = new System.Drawing.Size(259, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
+            // 
+            // Nomor
+            // 
+            this.Nomor.HeaderText = "No.";
+            this.Nomor.Name = "Nomor";
+            this.Nomor.ReadOnly = true;
+            this.Nomor.Width = 50;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.ReadOnly = true;
+            this.Kode.Width = 70;
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliah.HeaderText = "Mata Kuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            this.MataKuliah.ReadOnly = true;
             // 
             // FormMataKuliahPrasyarat
             // 
@@ -284,12 +289,12 @@ namespace MataKuliah
         private Syncfusion.Windows.Forms.Tools.SplitContainerAdv splitContainerAdv1;
         private Syncfusion.Windows.Forms.Grid.Grouping.GridGroupingControl gridGroupingControl1;
         private System.Windows.Forms.DataGridView dgvMataKuliah;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nomor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private AdvancedDataGridView.TreeGridView dgvMKPrasyarat;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nomor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
     }
 }

@@ -79,6 +79,12 @@
     <Compile Include="FormMainAplikasi.Designer.cs">
       <DependentUpon>FormMainAplikasi.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTahunAkademik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTahunAkademik.Designer.cs">
+      <DependentUpon>FormTahunAkademik.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormLogin.resx">
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMainAplikasi.resx">
       <DependentUpon>FormMainAplikasi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTahunAkademik.resx">
+      <DependentUpon>FormTahunAkademik.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,6 +135,10 @@
     <ProjectReference Include="..\MataKuliah\MataKuliah.csproj">
       <Project>{121BAB73-94A7-4161-AAF2-8330314CD590}</Project>
       <Name>MataKuliah</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PenawaranKurikulum\PenawaranKurikulum.csproj">
+      <Project>{826BD3A4-86BB-48C7-A78E-CC1FF68B800B}</Project>
+      <Name>PenawaranKurikulum</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

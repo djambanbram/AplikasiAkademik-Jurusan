@@ -21,6 +21,7 @@ using ApiService;
 using Newtonsoft.Json;
 using System.Configuration;
 using ClassModel;
+using PenawaranKurikulum;
 
 namespace MainAplikasi
 {
@@ -30,9 +31,11 @@ namespace MainAplikasi
         private string URLGetProgramAll = baseAddress + "/jurusan_api/api/organisasi/get_program_all";
 
         private WebApi webApi;
-        //private FromKelasReguler formKelasReguler;
+        private FormKelasReguler formKelasReguler;
         private FormDataMataKuliah formDataMataKuliah;
         private FormMataKuliahPrasyarat formMataKuliahPrasyarat;
+        private FormAlokasiMK formAlokasiMK;
+
         private HttpResponseMessage response;
 
         public FormMainAplikasi()
@@ -49,16 +52,16 @@ namespace MainAplikasi
 
         private void boxKelas_ItemClick(object sender, Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickArgs e)
         {
-            //if (e.XPTaskBarItem.Name == "itemKelasReguler")
-            //{
-            //    if (formKelasReguler == null || formKelasReguler.IsDisposed)
-            //    {
-            //        formKelasReguler = new FromKelasReguler();
-            //        formKelasReguler.MdiParent = this;
-            //    }
-            //    formKelasReguler.Show();
-            //    tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
-            //}
+            if (e.XPTaskBarItem.Name == "itemKelasReguler")
+            {
+                if (formKelasReguler == null || formKelasReguler.IsDisposed)
+                {
+                    formKelasReguler = new FormKelasReguler();
+                    formKelasReguler.MdiParent = this;
+                }
+                formKelasReguler.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
+            }
             if (e.XPTaskBarItem.Name == "itemMataKuliah")
             {
                 if (formDataMataKuliah == null || formDataMataKuliah.IsDisposed)
@@ -78,6 +81,16 @@ namespace MainAplikasi
                 }
                 formMataKuliahPrasyarat.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formMataKuliahPrasyarat);
+            }
+            if (e.XPTaskBarItem.Name == "itemAlokasiMK")
+            {
+                if (formAlokasiMK == null || formAlokasiMK.IsDisposed)
+                {
+                    formAlokasiMK = new FormAlokasiMK();
+                    formAlokasiMK.MdiParent = this;
+                }
+                formAlokasiMK.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(formAlokasiMK);
             }
         }
 

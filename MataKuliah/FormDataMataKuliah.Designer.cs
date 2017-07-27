@@ -111,7 +111,7 @@ namespace MataKuliah
             // 
             // txtSksPraktikum
             // 
-            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(205, 22);
             this.txtSksPraktikum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksPraktikum.Location = new System.Drawing.Point(148, 123);
             this.txtSksPraktikum.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -125,7 +125,7 @@ namespace MataKuliah
             // 
             // txtSksTotal
             // 
-            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(205, 22);
             this.txtSksTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksTotal.Location = new System.Drawing.Point(148, 93);
             this.txtSksTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -139,7 +139,7 @@ namespace MataKuliah
             // 
             // txtAliasMK
             // 
-            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(205, 22);
             this.txtAliasMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAliasMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAliasMK.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -154,7 +154,7 @@ namespace MataKuliah
             // 
             // txtSingkatanMK
             // 
-            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(205, 22);
             this.txtSingkatanMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSingkatanMK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSingkatanMK.Location = new System.Drawing.Point(589, 63);
@@ -166,7 +166,7 @@ namespace MataKuliah
             // 
             // txtNamaMKEn
             // 
-            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(205, 22);
             this.txtNamaMKEn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMKEn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMKEn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -181,7 +181,7 @@ namespace MataKuliah
             // 
             // txtNamaMK
             // 
-            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(205, 22);
             this.txtNamaMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMK.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -526,49 +526,49 @@ namespace MataKuliah
             // 
             // cmbSifatMK
             // 
-            this.cmbSifatMK.BeforeTouchSize = new System.Drawing.Size(175, 21);
+            this.cmbSifatMK.BeforeTouchSize = new System.Drawing.Size(175, 25);
             this.cmbSifatMK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSifatMK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSifatMK.Location = new System.Drawing.Point(589, 33);
             this.cmbSifatMK.Name = "cmbSifatMK";
-            this.cmbSifatMK.Size = new System.Drawing.Size(175, 21);
+            this.cmbSifatMK.Size = new System.Drawing.Size(175, 25);
             this.cmbSifatMK.TabIndex = 11;
             this.cmbSifatMK.Tag = "cb";
             this.cmbSifatMK.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // cmbKategoriMK
             // 
-            this.cmbKategoriMK.BeforeTouchSize = new System.Drawing.Size(175, 21);
+            this.cmbKategoriMK.BeforeTouchSize = new System.Drawing.Size(175, 25);
             this.cmbKategoriMK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKategoriMK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKategoriMK.Location = new System.Drawing.Point(589, 3);
             this.cmbKategoriMK.Name = "cmbKategoriMK";
-            this.cmbKategoriMK.Size = new System.Drawing.Size(175, 21);
+            this.cmbKategoriMK.Size = new System.Drawing.Size(175, 25);
             this.cmbKategoriMK.TabIndex = 10;
             this.cmbKategoriMK.Tag = "cb";
             this.cmbKategoriMK.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // cmbSemesterPenawaran
             // 
-            this.cmbSemesterPenawaran.BeforeTouchSize = new System.Drawing.Size(75, 21);
+            this.cmbSemesterPenawaran.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.cmbSemesterPenawaran.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSemesterPenawaran.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSemesterPenawaran.Location = new System.Drawing.Point(148, 153);
             this.cmbSemesterPenawaran.Name = "cmbSemesterPenawaran";
-            this.cmbSemesterPenawaran.Size = new System.Drawing.Size(75, 21);
+            this.cmbSemesterPenawaran.Size = new System.Drawing.Size(75, 25);
             this.cmbSemesterPenawaran.TabIndex = 8;
             this.cmbSemesterPenawaran.Tag = "cb";
             this.cmbSemesterPenawaran.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // cmbTahunBerlaku
             // 
-            this.cmbTahunBerlaku.BeforeTouchSize = new System.Drawing.Size(175, 21);
+            this.cmbTahunBerlaku.BeforeTouchSize = new System.Drawing.Size(175, 25);
             this.cmbTahunBerlaku.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTahunBerlaku.DropDownWidth = 130;
             this.cmbTahunBerlaku.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTahunBerlaku.Location = new System.Drawing.Point(148, 183);
             this.cmbTahunBerlaku.Name = "cmbTahunBerlaku";
-            this.cmbTahunBerlaku.Size = new System.Drawing.Size(175, 21);
+            this.cmbTahunBerlaku.Size = new System.Drawing.Size(175, 25);
             this.cmbTahunBerlaku.TabIndex = 9;
             this.cmbTahunBerlaku.Tag = "cb";
             this.cmbTahunBerlaku.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
@@ -605,23 +605,23 @@ namespace MataKuliah
             // 
             // cmbProdi
             // 
-            this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(361, 21);
+            this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(361, 24);
             this.cmbProdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProdi.Location = new System.Drawing.Point(115, 37);
             this.cmbProdi.Name = "cmbProdi";
-            this.cmbProdi.Size = new System.Drawing.Size(361, 21);
+            this.cmbProdi.Size = new System.Drawing.Size(361, 24);
             this.cmbProdi.TabIndex = 2;
             this.cmbProdi.SelectedIndexChanged += new System.EventHandler(this.cmbProdi_SelectedIndexChanged);
             // 
             // cmbFakultas
             // 
-            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(361, 21);
+            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(361, 25);
             this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFakultas.Location = new System.Drawing.Point(115, 6);
             this.cmbFakultas.Name = "cmbFakultas";
-            this.cmbFakultas.Size = new System.Drawing.Size(361, 21);
+            this.cmbFakultas.Size = new System.Drawing.Size(361, 25);
             this.cmbFakultas.TabIndex = 1;
             this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
             // 

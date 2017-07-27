@@ -41,7 +41,7 @@ namespace KelasMahasiswa
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFakultas.SelectedIndex != 0)
+            if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                 listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
@@ -56,7 +56,7 @@ namespace KelasMahasiswa
 
         private void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFakultas.SelectedIndex != 0 && cmbProdi.SelectedIndex != 0)
+            if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
             {
                 string idProdi = cmbProdi.SelectedValue.ToString();
                 listProgram = Organisasi.listProgram.Where(program => program.Prodi.Uid == idProdi).ToList();

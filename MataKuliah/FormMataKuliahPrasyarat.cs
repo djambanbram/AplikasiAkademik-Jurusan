@@ -83,7 +83,7 @@ namespace MataKuliah
 
         private async void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbProdi.SelectedIndex != 0)
+            if (cmbProdi.SelectedIndex > 0)
             {
                 UidProdiDipilih = cmbProdi.SelectedValue.ToString();
                 Loading(true);
@@ -95,7 +95,7 @@ namespace MataKuliah
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFakultas.SelectedIndex != 0)
+            if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                 listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();

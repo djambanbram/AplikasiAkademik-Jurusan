@@ -130,7 +130,7 @@ namespace MataKuliah
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFakultas.SelectedIndex != 0)
+            if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                 listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
@@ -194,9 +194,9 @@ namespace MataKuliah
         private async void btnSimpan_Click(object sender, EventArgs e)
         {
             Loading(true);
-            Tuple<bool, string> t = CommonLib.IsValidControlValidation(txtNamaMK, txtNamaMKEn, txtAliasMK, txtSksTotal, txtSksPraktikum, 
+            Tuple<bool, string> t = CommonLib.IsValidControlValidation(txtNamaMK, txtNamaMKEn, txtAliasMK, txtSksTotal, txtSksPraktikum,
                                     cmbSemesterPenawaran, cmbTahunBerlaku, cmbKategoriMK, cmbSifatMK);
-            if(!t.Item1)
+            if (!t.Item1)
             {
                 MessageBox.Show(t.Item2);
                 Loading(false);
@@ -302,7 +302,7 @@ namespace MataKuliah
         private async void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvMataKuliah.Rows.Clear();
-            if (cmbProdi.SelectedIndex != 0)
+            if (cmbProdi.SelectedIndex > 0)
             {
                 string jenjang = Organisasi.listProdi.Find(p => p.Uid == cmbProdi.SelectedValue.ToString()).Jenjang;
 

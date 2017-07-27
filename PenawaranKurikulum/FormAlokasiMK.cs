@@ -38,7 +38,9 @@ namespace PenawaranKurikulum
 
         private List<int> listAngkatan;
         private DragandDrop dragAndDropAdd;
+        private DragandDrop dragAndDropDelete;
         private dynamic valueMKPrasyaratAdd;
+        private dynamic valueMKPrasyaratDelete;
 
         public FormAlokasiMK()
         {
@@ -51,6 +53,7 @@ namespace PenawaranKurikulum
             }
             listAngkatan.Add(1998);
             dragAndDropAdd = new DragandDrop();
+            dragAndDropDelete = new DragandDrop();
         }
 
         private void Loading(bool isLoading)
@@ -73,7 +76,7 @@ namespace PenawaranKurikulum
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFakultas.SelectedIndex != 0)
+            if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                 listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
@@ -87,7 +90,7 @@ namespace PenawaranKurikulum
 
         private void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFakultas.SelectedIndex != 0 && cmbProdi.SelectedIndex != 0)
+            if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
             {
                 string idProdi = cmbProdi.SelectedValue.ToString();
                 listProgram = Organisasi.listProgram.Where(program => program.Prodi.Uid == idProdi).ToList();
@@ -162,7 +165,7 @@ namespace PenawaranKurikulum
                 foreach (MataKuliahDitawarkan mk in ClassModel.MataKuliah.listMataKuliahSudahDitawarkan)
                 {
                     dgvMktsd.Rows.Add(
-                        no,
+                        false,
                         mk.Angkatan,
                         mk.Kode,
                         mk.MataKuliah,
@@ -192,10 +195,88 @@ namespace PenawaranKurikulum
             var hitTestInfo = dragAndDropAdd.DragMouseDownFirst(e, dgvMK);
             if (hitTestInfo != null)
             {
-                var kodeMK = dgvMK.Rows[hitTestInfo.RowIndex].Cells["Kode"].Value;
-                var namaMK = dgvMK.Rows[hitTestInfo.RowIndex].Cells["MataKuliah"].Value;
-                valueMKPrasyaratAdd = new { kodeMK, namaMK };
+                //Mandatory Data
+                var KodeProgram = cmbProgram.SelectedValue.ToString();
+                var Semester = LoginAccess.KodeSemester;
+                var TahunAkademik = LoginAccess.TahunAkademik;
+                var Angkatan = dgvMK.Rows[hitTestInfo.RowIndex].Cells["Angkatan"].Value;
+                var Kode = dgvMK.Rows[hitTestInfo.RowIndex].Cells["Kode"].Value;
+                var IsT = dgvMK.Rows[hitTestInfo.RowIndex].Cells["T"].Value;
+                var IsP = dgvMK.Rows[hitTestInfo.RowIndex].Cells["P"].Value;
+                var IsTP = dgvMK.Rows[hitTestInfo.RowIndex].Cells["TP"].Value;
+                var DaftarKelasMK = dgvMK.Rows[hitTestInfo.RowIndex].Cells["DaftarKelasMK"].Value;
+
+                var MataKuliah = dgvMK.Rows[hitTestInfo.RowIndex].Cells["MataKuliah"].Value;
+                var SifatMK = dgvMK.Rows[hitTestInfo.RowIndex].Cells["SifatMK"].Value;
+                var SksTeori = dgvMK.Rows[hitTestInfo.RowIndex].Cells["SksTeori"].Value;
+                var SksPraktikum = dgvMK.Rows[hitTestInfo.RowIndex].Cells["SksPraktikum"].Value;
+                var SemesterDitawarkan = dgvMK.Rows[hitTestInfo.RowIndex].Cells["Semester"].Value;
+
+                var numRow = hitTestInfo.RowIndex;
+                valueMKPrasyaratAdd = new
+                {
+                    KodeProgram,
+                    Semester,
+                    TahunAkademik,
+                    Angkatan,
+                    Kode,
+                    IsT,
+                    IsP,
+                    IsTP,
+                    DaftarKelasMK,
+                    MataKuliah,
+                    SifatMK,
+                    SksTeori,
+                    SksPraktikum,
+                    SemesterDitawarkan,
+                    numRow
+                };
                 dragAndDropAdd.DragMouseDownSecond(e, dgvMktsd, hitTestInfo, valueMKPrasyaratAdd);
+            }
+        }
+
+        private void dgvMktsd_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hitTestInfo = dragAndDropDelete.DragMouseDownFirst(e, dgvMktsd);
+            if (hitTestInfo != null)
+            {
+                //Mandatory Data
+                var KodeProgram = cmbProgram.SelectedValue.ToString();
+                var Semester = LoginAccess.KodeSemester;
+                var TahunAkademik = LoginAccess.TahunAkademik;
+                var Angkatan = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["AngkatanBerlaku"].Value;
+                var Kode = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mKode"].Value;
+
+                var IsT = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["jenisMK"].Value.ToString().Trim() == "T" ? true : false;
+                var IsP = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["jenisMK"].Value.ToString().Trim() == "P" ? true : false;
+                var IsTP = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["jenisMK"].Value.ToString().Trim() == "TP" ? true : false;
+                var MataKuliah = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mMataKuliah"].Value;
+                var SksTeori = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mSksTeori"].Value;
+                var SksPraktikum = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mSksPraktikum"].Value;
+                var SifatMK = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mSifatMK"].Value;
+                var SemesterDitawarkan = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mSemester"].Value;
+                var DaftarKelasMK = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mDaftarKelasMK"].Value;
+
+                var numRow = hitTestInfo.RowIndex;
+                valueMKPrasyaratDelete = new
+                {
+                    KodeProgram,
+                    Semester,
+                    TahunAkademik,
+                    Angkatan,
+                    Kode,
+                    IsT,
+                    IsP,
+                    IsTP,
+                    MataKuliah,
+                    SksTeori,
+                    SksPraktikum,
+                    SifatMK,
+                    SemesterDitawarkan,
+                    DaftarKelasMK,
+                    numRow
+                };
+                dragAndDropDelete.DragMouseDownSecond(e, dgvMK, hitTestInfo, valueMKPrasyaratDelete);
             }
         }
 
@@ -209,24 +290,135 @@ namespace PenawaranKurikulum
             e.Effect = DragDropEffects.Copy;
         }
 
+        private void dgvMktsd_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
         private void dgvMK_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void dgvMktsd_MouseDown(object sender, MouseEventArgs e)
+        private void dgvMktsd_DragEnter(object sender, DragEventArgs e)
         {
-
+            e.Effect = DragDropEffects.Copy;
         }
 
         private void dgvMktsd_MouseMove(object sender, MouseEventArgs e)
         {
+            dragAndDropDelete.DragMove(e, dgvMktsd, valueMKPrasyaratDelete);
+        }
+
+        private void dgvMK_DragDrop(object sender, DragEventArgs e)
+        {
+            if (valueMKPrasyaratDelete == null)
+            {
+                return;
+            }
+            var hitTest = dragAndDropDelete.DragDrop(e, dgvMK);
+
+            dgvMK.Rows.Add(
+                false,
+                valueMKPrasyaratDelete.SemesterDitawarkan,
+                valueMKPrasyaratDelete.Angkatan,
+                valueMKPrasyaratDelete.Kode,
+                valueMKPrasyaratDelete.MataKuliah,
+                valueMKPrasyaratDelete.SifatMK,
+                valueMKPrasyaratDelete.SksTeori,
+                valueMKPrasyaratDelete.SksPraktikum,
+                valueMKPrasyaratDelete.IsT,
+                valueMKPrasyaratDelete.IsP,
+                valueMKPrasyaratDelete.IsTP,
+                valueMKPrasyaratDelete.DaftarKelasMK);
+
+            string jsonData = JsonConvert.SerializeObject(valueMKPrasyaratDelete);
+
+            dgvMktsd.Rows.RemoveAt(valueMKPrasyaratDelete.numRow);
+            valueMKPrasyaratDelete = null;
+        }
+
+        private void dgvMktsd_DragDrop(object sender, DragEventArgs e)
+        {
+            if (valueMKPrasyaratAdd == null)
+            {
+                return;
+            }
+            var hitTest = dragAndDropAdd.DragDrop(e, dgvMktsd);
+
+            string jenisMK = string.Empty;
+            if (Convert.ToBoolean(valueMKPrasyaratAdd.IsT))
+            {
+                jenisMK = "T";
+            }
+            else if (Convert.ToBoolean(valueMKPrasyaratAdd.IsP))
+            {
+                jenisMK = "P";
+            }
+            else if (Convert.ToBoolean(valueMKPrasyaratAdd.IsTP))
+            {
+                jenisMK = "TP";
+            }
+
+
+            dgvMktsd.Rows.Add(
+                false,
+                valueMKPrasyaratAdd.SemesterDitawarkan,
+                valueMKPrasyaratAdd.Angkatan,
+                valueMKPrasyaratAdd.Kode,
+                valueMKPrasyaratAdd.MataKuliah,
+                valueMKPrasyaratAdd.SifatMK,
+                valueMKPrasyaratAdd.SksTeori,
+                valueMKPrasyaratAdd.SksPraktikum,
+                jenisMK,
+                valueMKPrasyaratAdd.DaftarKelasMK);
+
+            string jsonData = JsonConvert.SerializeObject(valueMKPrasyaratAdd);
+
+            dgvMK.Rows.RemoveAt(valueMKPrasyaratAdd.numRow);
+
+            valueMKPrasyaratAdd = null;
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void dgvMktsd_DragOver(object sender, DragEventArgs e)
+        private void btnTawarkan_Click(object sender, EventArgs e)
         {
-            e.Effect = DragDropEffects.Copy;
+            foreach(DataGridViewRow dgvRow in dgvMK.Rows)
+            {
+                if(Convert.ToBoolean(dgvRow.Cells["Pilih"].Value))
+                {
+                    var jenisMK = string.Empty;
+                    if(Convert.ToBoolean(dgvRow.Cells["T"].Value))
+                    {
+                        jenisMK = "T";
+                    }
+                    else if (Convert.ToBoolean(dgvRow.Cells["P"].Value))
+                    {
+                        jenisMK = "P";
+                    }
+                    else if (Convert.ToBoolean(dgvRow.Cells["TP"].Value))
+                    {
+                        jenisMK = "TP";
+                    }
+
+                    valueMKPrasyaratAdd = new {
+                        TahunAkademik = LoginAccess.TahunAkademik,
+                        Semester = LoginAccess.KodeSemester,
+                        KodeProgram = cmbProgram.SelectedValue.ToString(),
+                        Kode = dgvRow.Cells["Kode"].Value.ToString(),
+                        Angkatan = dgvRow.Cells["Angkatan"].Value.ToString(),
+                        JenisMK = jenisMK,
+                        DaftarKelasMK = Convert.ToBoolean(dgvRow.Cells["DaftarKelasMK"].Value)
+                    };
+
+                    string jsonData = JsonConvert.SerializeObject(valueMKPrasyaratAdd);
+                }
+            }
+            valueMKPrasyaratAdd = null;
         }
     }
 }

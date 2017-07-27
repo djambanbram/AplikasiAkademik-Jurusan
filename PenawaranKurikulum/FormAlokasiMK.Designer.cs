@@ -36,7 +36,7 @@ namespace PenawaranKurikulum
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -52,6 +52,20 @@ namespace PenawaranKurikulum
             this.dgvMK = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvMktsd = new System.Windows.Forms.DataGridView();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnTawarkan = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.mHapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mSemester = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AngkatanBerlaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mSifatMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mSksTeori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mSksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JenisMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mDaftarKelasMK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Pilih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Angkatan = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -59,16 +73,11 @@ namespace PenawaranKurikulum
             this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SifatMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksTeori = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksPrak = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.T = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.P = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DaftarKelasMK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AngkatanBerlaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pJenis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -83,6 +92,8 @@ namespace PenawaranKurikulum
             ((System.ComponentModel.ISupportInitialize)(this.dgvMK)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMktsd)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gradientPanel2
@@ -208,17 +219,18 @@ namespace PenawaranKurikulum
             // 
             this.splitContainerAdv1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainerAdv1.Size = new System.Drawing.Size(857, 340);
-            this.splitContainerAdv1.SplitterDistance = 180;
+            this.splitContainerAdv1.SplitterDistance = 150;
             this.splitContainerAdv1.TabIndex = 11;
             this.splitContainerAdv1.Text = "splitContainerAdv1";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvMK);
+            this.groupBox1.Controls.Add(this.flowLayoutPanel2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(857, 180);
+            this.groupBox1.Size = new System.Drawing.Size(857, 150);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mata Kuliah";
@@ -230,14 +242,14 @@ namespace PenawaranKurikulum
             this.dgvMK.AllowUserToDeleteRows = false;
             this.dgvMK.AllowUserToResizeRows = false;
             this.dgvMK.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMK.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Pilih,
@@ -247,7 +259,7 @@ namespace PenawaranKurikulum
             this.MataKuliah,
             this.SifatMK,
             this.SksTeori,
-            this.SksPrak,
+            this.SksPraktikum,
             this.T,
             this.P,
             this.TP,
@@ -258,9 +270,10 @@ namespace PenawaranKurikulum
             this.dgvMK.Name = "dgvMK";
             this.dgvMK.RowHeadersVisible = false;
             this.dgvMK.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMK.Size = new System.Drawing.Size(851, 156);
+            this.dgvMK.Size = new System.Drawing.Size(851, 93);
             this.dgvMK.TabIndex = 0;
             this.dgvMK.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvMK_DataError);
+            this.dgvMK.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMK_DragDrop);
             this.dgvMK.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMK_DragEnter);
             this.dgvMK.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMK_DragOver);
             this.dgvMK.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMK_MouseDown);
@@ -269,10 +282,11 @@ namespace PenawaranKurikulum
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvMktsd);
+            this.groupBox2.Controls.Add(this.flowLayoutPanel3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(857, 153);
+            this.groupBox2.Size = new System.Drawing.Size(857, 183);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mata Kuliah Akan Ditawarkan";
@@ -286,11 +300,16 @@ namespace PenawaranKurikulum
             this.dgvMktsd.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvMktsd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMktsd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.mHapus,
+            this.mSemester,
             this.AngkatanBerlaku,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.pJenis});
+            this.mKode,
+            this.mMataKuliah,
+            this.mSifatMK,
+            this.mSksTeori,
+            this.mSksPraktikum,
+            this.JenisMK,
+            this.mDaftarKelasMK});
             this.dgvMktsd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMktsd.Location = new System.Drawing.Point(3, 21);
             this.dgvMktsd.MultiSelect = false;
@@ -298,11 +317,124 @@ namespace PenawaranKurikulum
             this.dgvMktsd.ReadOnly = true;
             this.dgvMktsd.RowHeadersVisible = false;
             this.dgvMktsd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMktsd.Size = new System.Drawing.Size(851, 129);
+            this.dgvMktsd.Size = new System.Drawing.Size(851, 126);
             this.dgvMktsd.TabIndex = 0;
+            this.dgvMktsd.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMktsd_DragDrop);
+            this.dgvMktsd.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMktsd_DragEnter);
             this.dgvMktsd.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMktsd_DragOver);
             this.dgvMktsd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMktsd_MouseDown);
             this.dgvMktsd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMktsd_MouseMove);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.btnTawarkan);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 114);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(851, 33);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // btnTawarkan
+            // 
+            this.btnTawarkan.BeforeTouchSize = new System.Drawing.Size(96, 28);
+            this.btnTawarkan.IsBackStageButton = false;
+            this.btnTawarkan.Location = new System.Drawing.Point(3, 3);
+            this.btnTawarkan.Name = "btnTawarkan";
+            this.btnTawarkan.Size = new System.Drawing.Size(96, 28);
+            this.btnTawarkan.TabIndex = 0;
+            this.btnTawarkan.Text = "Tawarkan";
+            this.btnTawarkan.Click += new System.EventHandler(this.btnTawarkan_Click);
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnHapus);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 147);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(851, 33);
+            this.flowLayoutPanel3.TabIndex = 2;
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.BeforeTouchSize = new System.Drawing.Size(96, 28);
+            this.btnHapus.IsBackStageButton = false;
+            this.btnHapus.Location = new System.Drawing.Point(3, 3);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(96, 28);
+            this.btnHapus.TabIndex = 0;
+            this.btnHapus.Text = "Hapus";
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
+            // 
+            // mHapus
+            // 
+            this.mHapus.HeaderText = "Pilih";
+            this.mHapus.Name = "mHapus";
+            this.mHapus.ReadOnly = true;
+            this.mHapus.Width = 50;
+            // 
+            // mSemester
+            // 
+            this.mSemester.HeaderText = "Semester Ditawarkan";
+            this.mSemester.Name = "mSemester";
+            this.mSemester.ReadOnly = true;
+            this.mSemester.Visible = false;
+            // 
+            // AngkatanBerlaku
+            // 
+            this.AngkatanBerlaku.HeaderText = "Angkatan";
+            this.AngkatanBerlaku.Name = "AngkatanBerlaku";
+            this.AngkatanBerlaku.ReadOnly = true;
+            this.AngkatanBerlaku.Width = 70;
+            // 
+            // mKode
+            // 
+            this.mKode.HeaderText = "Kode";
+            this.mKode.Name = "mKode";
+            this.mKode.ReadOnly = true;
+            this.mKode.Width = 70;
+            // 
+            // mMataKuliah
+            // 
+            this.mMataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mMataKuliah.HeaderText = "MataKuliah";
+            this.mMataKuliah.Name = "mMataKuliah";
+            this.mMataKuliah.ReadOnly = true;
+            // 
+            // mSifatMK
+            // 
+            this.mSifatMK.HeaderText = "Sifat MK";
+            this.mSifatMK.Name = "mSifatMK";
+            this.mSifatMK.ReadOnly = true;
+            this.mSifatMK.Visible = false;
+            // 
+            // mSksTeori
+            // 
+            this.mSksTeori.HeaderText = "Sks Teori";
+            this.mSksTeori.Name = "mSksTeori";
+            this.mSksTeori.ReadOnly = true;
+            this.mSksTeori.Visible = false;
+            // 
+            // mSksPraktikum
+            // 
+            this.mSksPraktikum.HeaderText = "Sks Praktikum";
+            this.mSksPraktikum.Name = "mSksPraktikum";
+            this.mSksPraktikum.ReadOnly = true;
+            this.mSksPraktikum.Visible = false;
+            // 
+            // JenisMK
+            // 
+            this.JenisMK.HeaderText = "Jenis MK";
+            this.JenisMK.Name = "JenisMK";
+            this.JenisMK.ReadOnly = true;
+            // 
+            // mDaftarKelasMK
+            // 
+            this.mDaftarKelasMK.HeaderText = "Daftar Kelas";
+            this.mDaftarKelasMK.Name = "mDaftarKelasMK";
+            this.mDaftarKelasMK.ReadOnly = true;
+            this.mDaftarKelasMK.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.mDaftarKelasMK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.mDaftarKelasMK.Visible = false;
             // 
             // Pilih
             // 
@@ -354,11 +486,11 @@ namespace PenawaranKurikulum
             this.SksTeori.ReadOnly = true;
             this.SksTeori.Width = 50;
             // 
-            // SksPrak
+            // SksPraktikum
             // 
-            this.SksPrak.HeaderText = "Sks Praktikum";
-            this.SksPrak.Name = "SksPrak";
-            this.SksPrak.Width = 70;
+            this.SksPraktikum.HeaderText = "Sks Praktikum";
+            this.SksPraktikum.Name = "SksPraktikum";
+            this.SksPraktikum.Width = 70;
             // 
             // T
             // 
@@ -385,40 +517,6 @@ namespace PenawaranKurikulum
             this.DaftarKelasMK.HeaderText = "Daftar Kelas";
             this.DaftarKelasMK.Name = "DaftarKelasMK";
             this.DaftarKelasMK.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "No";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // AngkatanBerlaku
-            // 
-            this.AngkatanBerlaku.HeaderText = "Angkatan";
-            this.AngkatanBerlaku.Name = "AngkatanBerlaku";
-            this.AngkatanBerlaku.ReadOnly = true;
-            this.AngkatanBerlaku.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Kode";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "MataKuliah";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // pJenis
-            // 
-            this.pJenis.HeaderText = "Jenis MK";
-            this.pJenis.Name = "pJenis";
-            this.pJenis.ReadOnly = true;
             // 
             // FormAlokasiMK
             // 
@@ -449,6 +547,8 @@ namespace PenawaranKurikulum
             ((System.ComponentModel.ISupportInitialize)(this.dgvMK)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMktsd)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -470,6 +570,20 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvMktsd;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private Syncfusion.Windows.Forms.ButtonAdv btnTawarkan;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Syncfusion.Windows.Forms.ButtonAdv btnHapus;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn mHapus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSemester;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AngkatanBerlaku;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mKode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mMataKuliah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSifatMK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSksTeori;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSksPraktikum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JenisMK;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn mDaftarKelasMK;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Pilih;
         private System.Windows.Forms.DataGridViewTextBoxColumn Semester;
         private System.Windows.Forms.DataGridViewComboBoxColumn Angkatan;
@@ -477,15 +591,10 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn SifatMK;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksTeori;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SksPrak;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SksPraktikum;
         private System.Windows.Forms.DataGridViewCheckBoxColumn T;
         private System.Windows.Forms.DataGridViewCheckBoxColumn P;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TP;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaftarKelasMK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AngkatanBerlaku;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pJenis;
     }
 }

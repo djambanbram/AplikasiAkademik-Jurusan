@@ -42,7 +42,6 @@ namespace MainAplikasi
             this.boxMataKuliah = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.boxPenawaranMK = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.tabbedMDIManager1 = new Syncfusion.Windows.Forms.Tools.TabbedMDIManager(this.components);
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
@@ -145,21 +144,12 @@ namespace MainAplikasi
             this.tabbedMDIManager1.ImageSize = new System.Drawing.Size(16, 16);
             this.tabbedMDIManager1.NeedUpdateHostedForm = false;
             // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.autoLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel1.Location = new System.Drawing.Point(285, 0);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(64, 17);
-            this.autoLabel1.TabIndex = 2;
-            this.autoLabel1.Text = "Loading...";
-            // 
             // statusStrip1
             // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stripLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(285, 384);
+            this.statusStrip1.Location = new System.Drawing.Point(285, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(537, 22);
             this.statusStrip1.TabIndex = 3;
@@ -178,7 +168,6 @@ namespace MainAplikasi
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(822, 406);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.autoLabel1);
             this.Controls.Add(this.xpTaskBar1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -208,7 +197,6 @@ namespace MainAplikasi
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxKelas;
         private Syncfusion.Windows.Forms.Tools.TabbedMDIManager tabbedMDIManager1;
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxMataKuliah;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxPenawaranMK;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel stripLabel;

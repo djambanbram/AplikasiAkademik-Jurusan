@@ -37,7 +37,6 @@ namespace MainAplikasi
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
@@ -70,7 +69,14 @@ namespace MainAplikasi
             else
             {
                 Error error = JsonConvert.DeserializeObject<Error>(response.Content.ReadAsStringAsync().Result);
-                MessageBox.Show(error.error_description);
+                if (error.error == null)
+                {
+                    MessageBox.Show(webApi.ReturnMessage(response));
+                }
+                else
+                {
+                    MessageBox.Show(error.error_description);
+                }
             }
 
             Enabled = true;

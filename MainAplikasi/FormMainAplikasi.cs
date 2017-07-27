@@ -47,7 +47,6 @@ namespace MainAplikasi
         private void Loading(bool isLoading)
         {
             xpTaskBar1.Enabled = !isLoading;
-            autoLabel1.Visible = isLoading;
         }
 
         private void boxKelas_ItemClick(object sender, Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickArgs e)
@@ -102,16 +101,20 @@ namespace MainAplikasi
         private async void FormMainAplikasi_Load(object sender, EventArgs e)
         {
             Loading(true);
-
+            stripLabel.Text = "Loading...";
             response = await webApi.Post(URLGetProgramAll, string.Empty, false);
             if (response.IsSuccessStatusCode)
             {
                 List<dynamic> oListProgram = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
                 OrganisasiBinding organisasiBinding = new OrganisasiBinding(oListProgram);
             }
-            stripLabel.Text = string.Format("Tahun Akademik {0} Semester {1}", LoginAccess.TahunAkademik, LoginAccess.Semester);
-
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+            
             Loading(false);
+            stripLabel.Text = string.Format("Version: {0} | Tahun Akademik {1} Semester {2}", Application.ProductVersion, LoginAccess.TahunAkademik, LoginAccess.Semester);
         }
     }
 }

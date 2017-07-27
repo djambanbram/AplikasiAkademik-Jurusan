@@ -109,6 +109,7 @@ namespace MainAplikasi
                 List<dynamic> oListProgram = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
                 OrganisasiBinding organisasiBinding = new OrganisasiBinding(oListProgram);
             }
+            stripLabel.Text = string.Format("Tahun Akademik {0} Semester {1}", LoginAccess.TahunAkademik, LoginAccess.Semester);
 
             Loading(false);
         }

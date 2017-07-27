@@ -12,6 +12,8 @@ namespace ClassModel
         public static List<SifatMK> listSifatMK;
         public static List<DataMataKuliah> listDataMataKuliah;
         public static List<DataMataKuliahPrasyarat> listDataMataKuliahPrasyarat;
+        public static List<MataKuliahDitawarkan> listMataKuliahBelumDitawarkan;
+        public static List<MataKuliahDitawarkan> listMataKuliahSudahDitawarkan;
     }
 
     public class KategoriMK
@@ -49,5 +51,19 @@ namespace ClassModel
     {
         public string KodePrasyarat { get; set; }
         public string MataKuliahPrasyarat { get; set; }
+    }
+
+    public class MataKuliahDitawarkan
+    {
+        public int SemesterDitawarkan { get; set; }
+        public int Angkatan { get; set; }
+        public string Kode { get; set; }
+        public string MataKuliah { get; set; }
+        public string KodeSifatMK { get; set; }
+        public string SifatMK { get; set; }
+        public int SksTeori { get; set; }
+        public int SksPraktikum { get; set; }
+        public string JenisMK { get; set; }
+        public string DaftarKelasMK { get; set; }
     }
 }

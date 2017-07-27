@@ -19,6 +19,7 @@ namespace MainAplikasi
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLLogin = baseAddress + "/account_api/verify";
+        private string URLInitTahun = baseAddress + "/jurusan_api/api/data_support/init_tahun_aktif";
 
         private HttpResponseMessage response;
         private WebApi webApi;
@@ -47,12 +48,21 @@ namespace MainAplikasi
 
             Enabled = false;
             response = await webApi.Post(URLLogin, listValue);
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 LoginAccess.username = JObject.Parse(response.Content.ReadAsStringAsync().Result)["userName"].ToString();
-                LoginAccess.token_type= JObject.Parse(response.Content.ReadAsStringAsync().Result)["token_type"].ToString();
+                LoginAccess.token_type = JObject.Parse(response.Content.ReadAsStringAsync().Result)["token_type"].ToString();
                 LoginAccess.access_token = JObject.Parse(response.Content.ReadAsStringAsync().Result)["access_token"].ToString();
                 LoginAccess.expires_in = JObject.Parse(response.Content.ReadAsStringAsync().Result)["expires_in"].ToString();
+                
+                response = await webApi.Post(URLInitTahun, string.Empty, false);
+                if (response.IsSuccessStatusCode)
+                {
+                    LoginAccess.TahunAkademik = JObject.Parse(response.Content.ReadAsStringAsync().Result)["TahunAkademik"].ToString();
+                    LoginAccess.Semester = JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Nama"].ToString();
+                    LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
+                    LoginAccess.KodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
+                }
 
                 Hide();
                 new FormMainAplikasi().Show();
@@ -62,6 +72,7 @@ namespace MainAplikasi
                 Error error = JsonConvert.DeserializeObject<Error>(response.Content.ReadAsStringAsync().Result);
                 MessageBox.Show(error.error_description);
             }
+
             Enabled = true;
         }
 

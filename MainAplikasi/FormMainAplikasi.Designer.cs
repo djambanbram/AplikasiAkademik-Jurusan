@@ -40,14 +40,17 @@ namespace MainAplikasi
             this.xpTaskBar1 = new Syncfusion.Windows.Forms.Tools.XPTaskBar();
             this.boxKelas = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.boxMataKuliah = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.boxPenawaranMK = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.tabbedMDIManager1 = new Syncfusion.Windows.Forms.Tools.TabbedMDIManager(this.components);
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.boxPenawaranMK = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.stripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxPenawaranMK)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpTaskBar1
@@ -113,23 +116,6 @@ namespace MainAplikasi
             this.boxMataKuliah.Text = "Mata Kuliah";
             this.boxMataKuliah.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
             // 
-            // tabbedMDIManager1
-            // 
-            this.tabbedMDIManager1.AttachedTo = this;
-            this.tabbedMDIManager1.CloseButtonBackColor = System.Drawing.Color.White;
-            this.tabbedMDIManager1.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabbedMDIManager1.NeedUpdateHostedForm = false;
-            // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.autoLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel1.Location = new System.Drawing.Point(285, 0);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(64, 17);
-            this.autoLabel1.TabIndex = 2;
-            this.autoLabel1.Text = "Loading...";
-            // 
             // boxPenawaranMK
             // 
             this.boxPenawaranMK.AnimationDelay = 10;
@@ -152,12 +138,46 @@ namespace MainAplikasi
             this.boxPenawaranMK.Text = "Penawaran MK";
             this.boxPenawaranMK.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
             // 
+            // tabbedMDIManager1
+            // 
+            this.tabbedMDIManager1.AttachedTo = this;
+            this.tabbedMDIManager1.CloseButtonBackColor = System.Drawing.Color.White;
+            this.tabbedMDIManager1.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabbedMDIManager1.NeedUpdateHostedForm = false;
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.autoLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Location = new System.Drawing.Point(285, 0);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(64, 17);
+            this.autoLabel1.TabIndex = 2;
+            this.autoLabel1.Text = "Loading...";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stripLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(285, 384);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(537, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // stripLabel
+            // 
+            this.stripLabel.Name = "stripLabel";
+            this.stripLabel.Size = new System.Drawing.Size(118, 17);
+            this.stripLabel.Text = "toolStripStatusLabel1";
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(822, 406);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.autoLabel1);
             this.Controls.Add(this.xpTaskBar1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -175,6 +195,8 @@ namespace MainAplikasi
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxPenawaranMK)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +210,7 @@ namespace MainAplikasi
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxMataKuliah;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxPenawaranMK;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel stripLabel;
     }
 }

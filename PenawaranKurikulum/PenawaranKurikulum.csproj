@@ -86,6 +86,8 @@
     <Compile Include="FormAlokasiMK.Designer.cs">
       <DependentUpon>FormAlokasiMK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lib\CommonLib.cs" />
+    <Compile Include="Lib\DragandDrop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAlokasiMK.resx">
       <DependentUpon>FormAlokasiMK.cs</DependentUpon>

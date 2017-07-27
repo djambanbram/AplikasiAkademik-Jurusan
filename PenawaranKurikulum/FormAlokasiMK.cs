@@ -9,6 +9,7 @@ using ApiService;
 using ClassModel;
 using Newtonsoft.Json;
 using PenawaranKurikulum.DataBinding;
+using PenawaranKurikulum.Lib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,8 @@ namespace PenawaranKurikulum
         private HttpResponseMessage response;
 
         private List<int> listAngkatan;
+        private DragandDrop dragAndDropAdd;
+        private dynamic valueMKPrasyaratAdd;
 
         public FormAlokasiMK()
         {
@@ -47,6 +50,7 @@ namespace PenawaranKurikulum
                 listAngkatan.Add(i);
             }
             listAngkatan.Add(1998);
+            dragAndDropAdd = new DragandDrop();
         }
 
         private void Loading(bool isLoading)
@@ -181,6 +185,48 @@ namespace PenawaranKurikulum
         private void dgvMK_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+        private void dgvMK_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hitTestInfo = dragAndDropAdd.DragMouseDownFirst(e, dgvMK);
+            if (hitTestInfo != null)
+            {
+                var kodeMK = dgvMK.Rows[hitTestInfo.RowIndex].Cells["Kode"].Value;
+                var namaMK = dgvMK.Rows[hitTestInfo.RowIndex].Cells["MataKuliah"].Value;
+                valueMKPrasyaratAdd = new { kodeMK, namaMK };
+                dragAndDropAdd.DragMouseDownSecond(e, dgvMktsd, hitTestInfo, valueMKPrasyaratAdd);
+            }
+        }
+
+        private void dgvMK_MouseMove(object sender, MouseEventArgs e)
+        {
+            dragAndDropAdd.DragMove(e, dgvMK, valueMKPrasyaratAdd);
+        }
+
+        private void dgvMK_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMK_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMktsd_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dgvMktsd_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dgvMktsd_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
         }
     }
 }

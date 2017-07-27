@@ -36,7 +36,7 @@ namespace PenawaranKurikulum
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -230,14 +230,14 @@ namespace PenawaranKurikulum
             this.dgvMK.AllowUserToDeleteRows = false;
             this.dgvMK.AllowUserToResizeRows = false;
             this.dgvMK.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMK.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Pilih,
@@ -254,12 +254,17 @@ namespace PenawaranKurikulum
             this.DaftarKelasMK});
             this.dgvMK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMK.Location = new System.Drawing.Point(3, 21);
+            this.dgvMK.MultiSelect = false;
             this.dgvMK.Name = "dgvMK";
             this.dgvMK.RowHeadersVisible = false;
             this.dgvMK.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMK.Size = new System.Drawing.Size(851, 156);
             this.dgvMK.TabIndex = 0;
             this.dgvMK.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvMK_DataError);
+            this.dgvMK.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMK_DragEnter);
+            this.dgvMK.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMK_DragOver);
+            this.dgvMK.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMK_MouseDown);
+            this.dgvMK.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMK_MouseMove);
             // 
             // groupBox2
             // 
@@ -288,12 +293,16 @@ namespace PenawaranKurikulum
             this.pJenis});
             this.dgvMktsd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMktsd.Location = new System.Drawing.Point(3, 21);
+            this.dgvMktsd.MultiSelect = false;
             this.dgvMktsd.Name = "dgvMktsd";
             this.dgvMktsd.ReadOnly = true;
             this.dgvMktsd.RowHeadersVisible = false;
             this.dgvMktsd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMktsd.Size = new System.Drawing.Size(851, 129);
             this.dgvMktsd.TabIndex = 0;
+            this.dgvMktsd.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMktsd_DragOver);
+            this.dgvMktsd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMktsd_MouseDown);
+            this.dgvMktsd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMktsd_MouseMove);
             // 
             // Pilih
             // 

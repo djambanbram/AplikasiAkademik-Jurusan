@@ -184,7 +184,7 @@ namespace MataKuliah
 
         private void dgvMataKuliah_MouseDown(object sender, MouseEventArgs e)
         {
-            var hitTestInfo = dragAndDropAdd.DragMouseDownFirst(e, dgvMKPrasyarat);
+            var hitTestInfo = dragAndDropAdd.DragMouseDownFirst(e, dgvMataKuliah);
             if (hitTestInfo != null)
             {
                 var kodeMK = dgvMataKuliah.Rows[hitTestInfo.RowIndex].Cells["Kode"].Value;

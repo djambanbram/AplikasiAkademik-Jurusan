@@ -111,7 +111,7 @@ namespace MataKuliah
             // 
             // txtSksPraktikum
             // 
-            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(205, 22);
+            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSksPraktikum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksPraktikum.Location = new System.Drawing.Point(148, 123);
             this.txtSksPraktikum.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -125,7 +125,7 @@ namespace MataKuliah
             // 
             // txtSksTotal
             // 
-            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(205, 22);
+            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSksTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksTotal.Location = new System.Drawing.Point(148, 93);
             this.txtSksTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -139,7 +139,7 @@ namespace MataKuliah
             // 
             // txtAliasMK
             // 
-            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(205, 22);
+            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtAliasMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAliasMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAliasMK.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -154,7 +154,7 @@ namespace MataKuliah
             // 
             // txtSingkatanMK
             // 
-            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(205, 22);
+            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSingkatanMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSingkatanMK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSingkatanMK.Location = new System.Drawing.Point(589, 63);
@@ -166,7 +166,7 @@ namespace MataKuliah
             // 
             // txtNamaMKEn
             // 
-            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(205, 22);
+            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtNamaMKEn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMKEn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMKEn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -181,7 +181,7 @@ namespace MataKuliah
             // 
             // txtNamaMK
             // 
-            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(205, 22);
+            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtNamaMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMK.Dock = System.Windows.Forms.DockStyle.Fill;

@@ -146,10 +146,9 @@ namespace MainAplikasi
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stripLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(285, 0);
+            this.statusStrip1.Location = new System.Drawing.Point(285, 384);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(537, 22);
             this.statusStrip1.TabIndex = 3;

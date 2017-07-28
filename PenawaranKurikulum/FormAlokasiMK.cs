@@ -28,6 +28,8 @@ namespace PenawaranKurikulum
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMKBelumDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_belum_ditawarkan";
         private string URLGetMKSudahDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan";
+        private string URLSaveMKDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/save_penawaran_mk";
+        private string URLDelMKDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/del_penawaran_mk";
 
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
@@ -114,8 +116,8 @@ namespace PenawaranKurikulum
             Loading(true);
 
             //Force Data 
-            var data = new { TahunAkademik = "2017/2018", KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = 1, IdProdi = cmbProdi.SelectedValue.ToString() };
-            //var data = new { TahunAkademik = LoginAccess.TahunAkademik, KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
+            //var data = new { TahunAkademik = "2017/2018", KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = 1, IdProdi = cmbProdi.SelectedValue.ToString() };
+            var data = new { TahunAkademik = LoginAccess.TahunAkademik, KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
 
             string jsonData = JsonConvert.SerializeObject(data);
 
@@ -166,10 +168,15 @@ namespace PenawaranKurikulum
                 {
                     dgvMktsd.Rows.Add(
                         false,
+                        mk.SemesterDitawarkan,
                         mk.Angkatan,
                         mk.Kode,
                         mk.MataKuliah,
-                        mk.JenisMK);
+                        mk.SifatMK,
+                        mk.SksTeori, 
+                        mk.SksPraktikum,
+                        mk.JenisMK,
+                        mk.DaftarKelasMK);
                     no++;
                 }
             }
@@ -310,7 +317,7 @@ namespace PenawaranKurikulum
             dragAndDropDelete.DragMove(e, dgvMktsd, valueMKPrasyaratDelete);
         }
 
-        private void dgvMK_DragDrop(object sender, DragEventArgs e)
+        private async void dgvMK_DragDrop(object sender, DragEventArgs e)
         {
             if (valueMKPrasyaratDelete == null)
             {
@@ -318,27 +325,44 @@ namespace PenawaranKurikulum
             }
             var hitTest = dragAndDropDelete.DragDrop(e, dgvMK);
 
-            dgvMK.Rows.Add(
-                false,
-                valueMKPrasyaratDelete.SemesterDitawarkan,
-                valueMKPrasyaratDelete.Angkatan,
-                valueMKPrasyaratDelete.Kode,
-                valueMKPrasyaratDelete.MataKuliah,
-                valueMKPrasyaratDelete.SifatMK,
-                valueMKPrasyaratDelete.SksTeori,
-                valueMKPrasyaratDelete.SksPraktikum,
-                valueMKPrasyaratDelete.IsT,
-                valueMKPrasyaratDelete.IsP,
-                valueMKPrasyaratDelete.IsTP,
-                valueMKPrasyaratDelete.DaftarKelasMK);
+            Loading(true);
+            var dataDelete = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                KodeJurusan = cmbProgram.SelectedValue.ToString(),
+                Kode = valueMKPrasyaratDelete.Kode
+            };
 
-            string jsonData = JsonConvert.SerializeObject(valueMKPrasyaratDelete);
+            string jsonData = JsonConvert.SerializeObject(dataDelete);
+            response = await webApi.Post(URLDelMKDitawarkan, jsonData, true);
+            if(response.IsSuccessStatusCode)
+            {
+                dgvMK.Rows.Add(
+                    false,
+                    valueMKPrasyaratDelete.SemesterDitawarkan,
+                    valueMKPrasyaratDelete.Angkatan,
+                    valueMKPrasyaratDelete.Kode,
+                    valueMKPrasyaratDelete.MataKuliah,
+                    valueMKPrasyaratDelete.SifatMK,
+                    valueMKPrasyaratDelete.SksTeori,
+                    valueMKPrasyaratDelete.SksPraktikum,
+                    valueMKPrasyaratDelete.IsT,
+                    valueMKPrasyaratDelete.IsP,
+                    valueMKPrasyaratDelete.IsTP,
+                    valueMKPrasyaratDelete.DaftarKelasMK);
 
-            dgvMktsd.Rows.RemoveAt(valueMKPrasyaratDelete.numRow);
+                dgvMktsd.Rows.RemoveAt(valueMKPrasyaratDelete.numRow);
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
             valueMKPrasyaratDelete = null;
+            Loading(false);
         }
 
-        private void dgvMktsd_DragDrop(object sender, DragEventArgs e)
+        private async void dgvMktsd_DragDrop(object sender, DragEventArgs e)
         {
             if (valueMKPrasyaratAdd == null)
             {
@@ -360,39 +384,122 @@ namespace PenawaranKurikulum
                 jenisMK = "TP";
             }
 
+            Loading(true);
 
-            dgvMktsd.Rows.Add(
-                false,
-                valueMKPrasyaratAdd.SemesterDitawarkan,
-                valueMKPrasyaratAdd.Angkatan,
-                valueMKPrasyaratAdd.Kode,
-                valueMKPrasyaratAdd.MataKuliah,
-                valueMKPrasyaratAdd.SifatMK,
-                valueMKPrasyaratAdd.SksTeori,
-                valueMKPrasyaratAdd.SksPraktikum,
-                jenisMK,
-                valueMKPrasyaratAdd.DaftarKelasMK);
+            var dataSave = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                KodeJurusan = cmbProgram.SelectedValue.ToString(),
+                Kode = valueMKPrasyaratAdd.Kode,
+                Angkatan = valueMKPrasyaratAdd.Angkatan,
+                JenisMK = jenisMK,
+                DaftarKelasMK = valueMKPrasyaratAdd.DaftarKelasMK
+            };
+            string jsonData = JsonConvert.SerializeObject(dataSave);
+            response = await webApi.Post(URLSaveMKDitawarkan, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                dgvMktsd.Rows.Add(
+                    false,
+                    valueMKPrasyaratAdd.SemesterDitawarkan,
+                    valueMKPrasyaratAdd.Angkatan,
+                    valueMKPrasyaratAdd.Kode,
+                    valueMKPrasyaratAdd.MataKuliah,
+                    valueMKPrasyaratAdd.SifatMK,
+                    valueMKPrasyaratAdd.SksTeori,
+                    valueMKPrasyaratAdd.SksPraktikum,
+                    jenisMK,
+                    valueMKPrasyaratAdd.DaftarKelasMK);
 
-            string jsonData = JsonConvert.SerializeObject(valueMKPrasyaratAdd);
-
-            dgvMK.Rows.RemoveAt(valueMKPrasyaratAdd.numRow);
+                dgvMK.Rows.RemoveAt(valueMKPrasyaratAdd.numRow);
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
 
             valueMKPrasyaratAdd = null;
+            Loading(false);
         }
 
-        private void btnHapus_Click(object sender, EventArgs e)
+        private async void btnHapus_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnTawarkan_Click(object sender, EventArgs e)
-        {
-            foreach(DataGridViewRow dgvRow in dgvMK.Rows)
+            if(dgvMktsd.Rows.Count == 0)
             {
-                if(Convert.ToBoolean(dgvRow.Cells["Pilih"].Value))
+                return;
+            }
+
+            Loading(true);
+            List<DataGridViewRow> listRemoveRow = new List<DataGridViewRow>();
+            foreach (DataGridViewRow dgvRow in dgvMktsd.Rows)
+            {
+                if (Convert.ToBoolean(dgvRow.Cells["mHapus"].Value))
                 {
+                    listRemoveRow.Add(dgvRow);
+
+                    var KodeProgram = cmbProgram.SelectedValue.ToString();
+                    var Semester = LoginAccess.KodeSemester;
+                    var TahunAkademik = LoginAccess.TahunAkademik;
+                    var Angkatan = dgvRow.Cells["AngkatanBerlaku"].Value;
+                    var Kode = dgvRow.Cells["mKode"].Value;
+
+                    var IsT = dgvRow.Cells["jenisMK"].Value.ToString().Trim() == "T" ? true : false;
+                    var IsP = dgvRow.Cells["jenisMK"].Value.ToString().Trim() == "P" ? true : false;
+                    var IsTP = dgvRow.Cells["jenisMK"].Value.ToString().Trim() == "TP" ? true : false;
+                    var MataKuliah = dgvRow.Cells["mMataKuliah"].Value;
+                    var SksTeori = dgvRow.Cells["mSksTeori"].Value;
+                    var SksPraktikum = dgvRow.Cells["mSksPraktikum"].Value;
+                    var SifatMK = dgvRow.Cells["mSifatMK"].Value;
+                    var SemesterDitawarkan = dgvRow.Cells["mSemester"].Value;
+                    var DaftarKelasMK = dgvRow.Cells["mDaftarKelasMK"].Value;
+
+                    var dataDelete = new
+                    {
+                        TahunAkademik = LoginAccess.TahunAkademik,
+                        Semester = LoginAccess.KodeSemester,
+                        KodeJurusan = cmbProgram.SelectedValue.ToString(),
+                        Kode = Kode
+                    };
+
+                    string jsonData = JsonConvert.SerializeObject(dataDelete);
+                    response = await webApi.Post(URLDelMKDitawarkan, jsonData, true);
+                    if(response.IsSuccessStatusCode)
+                    {
+                        dgvMK.Rows.Add(false, SemesterDitawarkan, Angkatan, Kode, MataKuliah, SifatMK, SksTeori, SksPraktikum, IsT, IsP, IsTP, DaftarKelasMK);
+                    }
+                    else
+                    {
+                        MessageBox.Show(webApi.ReturnMessage(response));
+                    }
+                }
+            }
+            listRemoveRow.ForEach(delegate (DataGridViewRow dgv)
+            {
+                dgvMktsd.Rows.Remove(dgv);
+            });
+
+            valueMKPrasyaratDelete = null;
+            Loading(false);
+        }
+
+        private async void btnTawarkan_Click(object sender, EventArgs e)
+        {
+            if(dgvMK.Rows.Count == 0)
+            {
+                return;
+            }
+
+            Loading(true);
+            List<DataGridViewRow> listRemoveRow = new List<DataGridViewRow>();
+            foreach (DataGridViewRow dgvRow in dgvMK.Rows)
+            {
+                if (Convert.ToBoolean(dgvRow.Cells["Pilih"].Value))
+                {
+                    listRemoveRow.Add(dgvRow);
+
                     var jenisMK = string.Empty;
-                    if(Convert.ToBoolean(dgvRow.Cells["T"].Value))
+                    if (Convert.ToBoolean(dgvRow.Cells["T"].Value))
                     {
                         jenisMK = "T";
                     }
@@ -405,20 +512,68 @@ namespace PenawaranKurikulum
                         jenisMK = "TP";
                     }
 
-                    valueMKPrasyaratAdd = new {
+                    var KodeProgram = cmbProgram.SelectedValue.ToString();
+                    var Semester = LoginAccess.KodeSemester;
+                    var TahunAkademik = LoginAccess.TahunAkademik;
+                    var Angkatan = dgvRow.Cells["Angkatan"].Value;
+                    var Kode = dgvRow.Cells["Kode"].Value;
+                    var IsT = dgvRow.Cells["T"].Value;
+                    var IsP = dgvRow.Cells["P"].Value;
+                    var IsTP = dgvRow.Cells["TP"].Value;
+                    var DaftarKelasMK = Convert.ToBoolean(dgvRow.Cells["DaftarKelasMK"].Value);
+
+                    var MataKuliah = dgvRow.Cells["MataKuliah"].Value;
+                    var SifatMK = dgvRow.Cells["SifatMK"].Value;
+                    var SksTeori = dgvRow.Cells["SksTeori"].Value;
+                    var SksPraktikum = dgvRow.Cells["SksPraktikum"].Value;
+                    var SemesterDitawarkan = dgvRow.Cells["Semester"].Value;
+
+                    var dataSave = new
+                    {
                         TahunAkademik = LoginAccess.TahunAkademik,
                         Semester = LoginAccess.KodeSemester,
-                        KodeProgram = cmbProgram.SelectedValue.ToString(),
-                        Kode = dgvRow.Cells["Kode"].Value.ToString(),
-                        Angkatan = dgvRow.Cells["Angkatan"].Value.ToString(),
+                        KodeJurusan = cmbProgram.SelectedValue.ToString(),
+                        Kode = Kode,
+                        Angkatan = Angkatan,
                         JenisMK = jenisMK,
-                        DaftarKelasMK = Convert.ToBoolean(dgvRow.Cells["DaftarKelasMK"].Value)
+                        DaftarKelasMK = DaftarKelasMK
                     };
-
-                    string jsonData = JsonConvert.SerializeObject(valueMKPrasyaratAdd);
+                    string jsonData = JsonConvert.SerializeObject(dataSave);
+                    response = await webApi.Post(URLSaveMKDitawarkan, jsonData, true);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        dgvMktsd.Rows.Add(false, SemesterDitawarkan, Angkatan, Kode, MataKuliah, SifatMK, SksTeori, SksPraktikum, jenisMK, DaftarKelasMK);
+                    }
+                    else
+                    {
+                        MessageBox.Show(webApi.ReturnMessage(response));
+                    }
                 }
             }
+
+            listRemoveRow.ForEach(delegate (DataGridViewRow dgv)
+            {
+                dgvMK.Rows.Remove(dgv);
+            });
             valueMKPrasyaratAdd = null;
+            Loading(false);
+        }
+
+        private void dgvMK_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 2)
+            {
+                if (dgvMK.Rows.Count > 0)
+                {
+                    DataGridViewComboBoxCell cb = dgvMK.Rows[e.RowIndex].Cells["Angkatan"] as DataGridViewComboBoxCell;
+                    cb.Value = int.Parse(cb.Value.ToString());
+                }
+            }
+        }
+
+        private void dgvMK_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            dgvMK.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
     }
 }

@@ -57,10 +57,15 @@ namespace MainAplikasi
                 response = await webApi.Post(URLInitTahun, string.Empty, false);
                 if (response.IsSuccessStatusCode)
                 {
-                    LoginAccess.TahunAkademik = JObject.Parse(response.Content.ReadAsStringAsync().Result)["TahunAkademik"].ToString();
-                    LoginAccess.Semester = JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Nama"].ToString();
-                    LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
-                    LoginAccess.KodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
+                    //LoginAccess.TahunAkademik = JObject.Parse(response.Content.ReadAsStringAsync().Result)["TahunAkademik"].ToString();
+                    //LoginAccess.Semester = JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Nama"].ToString();
+                    //LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
+                    //LoginAccess.KodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
+
+                    LoginAccess.TahunAkademik = "2017/2018";
+                    LoginAccess.Semester = "Ganjil";
+                    LoginAccess.IdTahun = 51;
+                    LoginAccess.KodeSemester = 1;
                 }
 
                 Hide();

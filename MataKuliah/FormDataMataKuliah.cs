@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -405,6 +406,11 @@ namespace MataKuliah
                 ToolTip toolTip = new ToolTip();
                 toolTip.Show("Data ini wajib diisi", tb, 0, 0, 3000);
             }
+
+            if(((TextBox)sender).Name == "txtAliasMK")
+            {
+                txtSingkatanMK.Text = Regex.Replace(txtAliasMK.Text, @"\W+", "");
+            }
         }
 
         private void comboBox_Validating(object sender, CancelEventArgs e)
@@ -414,6 +420,14 @@ namespace MataKuliah
             {
                 ToolTip toolTip = new ToolTip();
                 toolTip.Show("Data ini wajib diisi", cb, 0, 0, 3000);
+            }
+        }
+
+        private void txtSingkatanMK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Space || !char.IsLetterOrDigit(e.KeyChar)) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
             }
         }
     }

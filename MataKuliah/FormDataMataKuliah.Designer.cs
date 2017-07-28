@@ -163,6 +163,7 @@ namespace MataKuliah
             this.txtSingkatanMK.Size = new System.Drawing.Size(358, 25);
             this.txtSingkatanMK.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtSingkatanMK.TabIndex = 12;
+            this.txtSingkatanMK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSingkatanMK_KeyPress);
             // 
             // txtNamaMKEn
             // 

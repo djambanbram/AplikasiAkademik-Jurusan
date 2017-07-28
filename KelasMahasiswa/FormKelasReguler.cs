@@ -5,13 +5,18 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using ApiService;
 using ClassModel;
+using KelasMahasiswa.DataBinging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,6 +24,13 @@ namespace KelasMahasiswa
 {
     public partial class FormKelasReguler : Syncfusion.Windows.Forms.MetroForm
     {
+        public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
+        private string URLGetKelasMhs = baseAddress + "/jurusan_api/api/kelas/get_kelas_mhs";
+        private string URLGetKelasAktif = baseAddress + "/jurusan_api/api/kelas/get_kelas_reguler";
+
+        private WebApi webApi;
+        private HttpResponseMessage response;
+
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
         private List<Program> listProgram;
@@ -26,6 +38,15 @@ namespace KelasMahasiswa
         public FormKelasReguler()
         {
             InitializeComponent();
+            webApi = new WebApi();
+        }
+
+        private void Loading(bool isLoading)
+        {
+            splitContainerAdv1.Enabled = !isLoading;
+            gradientPanel2.Enabled = !isLoading;
+            flowLayoutPanel1.Enabled = !isLoading;
+            progressBar1.Visible = isLoading;
         }
 
         private void FormKelasReguler_Load(object sender, EventArgs e)
@@ -50,7 +71,6 @@ namespace KelasMahasiswa
                 cmbProdi.DisplayMember = "NamaProdi";
                 cmbProdi.ValueMember = "Uid";
                 cmbProdi.SelectedIndex = 0;
-                cmbProgram.SelectedIndex = 0;
             }
         }
 
@@ -71,6 +91,61 @@ namespace KelasMahasiswa
         private void btnTutup_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private async void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbProgram.SelectedIndex > 0)
+            {
+                Loading(true);
+                var dataKelasMhs = new { KodeJurusan = cmbProgram.SelectedValue.ToString(), TahunAkademik=LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester };
+                string jsonData = JsonConvert.SerializeObject(dataKelasMhs);
+                response = await webApi.Post(URLGetKelasMhs, jsonData, true);
+                if(response.IsSuccessStatusCode)
+                {
+                    List<dynamic> oListKelasMhs = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                    KelasMhsBinding kelasBinding = new KelasMhsBinding(oListKelasMhs);
+
+                    dgvJumlahKelas.Rows.Clear();
+                    int no = 1;
+                    foreach(KelasMhs kls in ClassModel.Kelas.listKelasMhs)
+                    {
+                        dgvJumlahKelas.Rows.Add(no, kls.Tha, kls.Jumlahkelas, kls.Aktif);
+                        no++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(webApi.ReturnMessage(response));
+                }
+
+
+                response = await webApi.Post(URLGetKelasAktif, jsonData, true);
+                if (response.IsSuccessStatusCode)
+                {
+                    List<dynamic> oListKelasAktif = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                    KelasAktifBinding kelasBinding = new KelasAktifBinding(oListKelasAktif);
+
+                    dgvKelasAktif.Rows.Clear();
+                    int no = 1;
+                    foreach (KelasAktif kls in ClassModel.Kelas.listKelasAktif)
+                    {
+                        dgvKelasAktif.Rows.Add(no, kls.NamaKelas, kls.Angkatan, kls.SemesterDitawarkan, kls.JumlahMHS);
+                        no++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(webApi.ReturnMessage(response));
+                }
+
+                Loading(false);
+            }
+        }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

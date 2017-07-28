@@ -8,6 +8,7 @@
 using ApiService;
 using ClassModel;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PenawaranKurikulum.DataBinding;
 using PenawaranKurikulum.Lib;
 using System;
@@ -30,6 +31,7 @@ namespace PenawaranKurikulum
         private string URLGetMKSudahDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan";
         private string URLSaveMKDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/save_penawaran_mk";
         private string URLDelMKDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/del_penawaran_mk";
+        private string URLCekMKSudahDiambilMhs = baseAddress + "/jurusan_api/api/kurikulum/is_mk_diambil_mhs";
 
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
@@ -173,7 +175,7 @@ namespace PenawaranKurikulum
                         mk.Kode,
                         mk.MataKuliah,
                         mk.SifatMK,
-                        mk.SksTeori, 
+                        mk.SksTeori,
                         mk.SksPraktikum,
                         mk.JenisMK,
                         mk.DaftarKelasMK);
@@ -323,9 +325,10 @@ namespace PenawaranKurikulum
             {
                 return;
             }
-            var hitTest = dragAndDropDelete.DragDrop(e, dgvMK);
 
+            var hitTest = dragAndDropDelete.DragDrop(e, dgvMK);
             Loading(true);
+
             var dataDelete = new
             {
                 TahunAkademik = LoginAccess.TahunAkademik,
@@ -333,10 +336,33 @@ namespace PenawaranKurikulum
                 KodeJurusan = cmbProgram.SelectedValue.ToString(),
                 Kode = valueMKPrasyaratDelete.Kode
             };
-
             string jsonData = JsonConvert.SerializeObject(dataDelete);
+            int isMKSudahDiambil = 1;
+            response = await webApi.Post(URLCekMKSudahDiambilMhs, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                isMKSudahDiambil = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Status"].ToString());
+                if (isMKSudahDiambil == 1)
+                {
+                    DialogResult dr = MessageBox.Show(
+                        string.Format("Mata kuliah {0}({1}) sudah diambil oleh mahasiswa, apakah akan dihapus?", valueMKPrasyaratDelete.MataKuliah, Kode),
+                        "Warning",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+                    if (dr == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                return;
+            }
+
             response = await webApi.Post(URLDelMKDitawarkan, jsonData, true);
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 dgvMK.Rows.Add(
                     false,
@@ -358,6 +384,7 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+
             valueMKPrasyaratDelete = null;
             Loading(false);
         }
@@ -425,7 +452,7 @@ namespace PenawaranKurikulum
 
         private async void btnHapus_Click(object sender, EventArgs e)
         {
-            if(dgvMktsd.Rows.Count == 0)
+            if (dgvMktsd.Rows.Count == 0)
             {
                 return;
             }
@@ -436,7 +463,6 @@ namespace PenawaranKurikulum
             {
                 if (Convert.ToBoolean(dgvRow.Cells["mHapus"].Value))
                 {
-                    listRemoveRow.Add(dgvRow);
 
                     var KodeProgram = cmbProgram.SelectedValue.ToString();
                     var Semester = LoginAccess.KodeSemester;
@@ -461,10 +487,35 @@ namespace PenawaranKurikulum
                         KodeJurusan = cmbProgram.SelectedValue.ToString(),
                         Kode = Kode
                     };
-
                     string jsonData = JsonConvert.SerializeObject(dataDelete);
+
+                    int isMKSudahDiambil = 1;
+                    response = await webApi.Post(URLCekMKSudahDiambilMhs, jsonData, true);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        isMKSudahDiambil = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Status"].ToString());
+                        if (isMKSudahDiambil == 1)
+                        {
+                            DialogResult dr = MessageBox.Show(
+                                string.Format("Mata kuliah {0}({1}) sudah diambil oleh mahasiswa, apakah akan dihapus?", valueMKPrasyaratDelete.MataKuliah, Kode),
+                                "Warning",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning);
+                            if (dr == DialogResult.No)
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(webApi.ReturnMessage(response));
+                        return;
+                    }
+
+                    listRemoveRow.Add(dgvRow);
                     response = await webApi.Post(URLDelMKDitawarkan, jsonData, true);
-                    if(response.IsSuccessStatusCode)
+                    if (response.IsSuccessStatusCode)
                     {
                         dgvMK.Rows.Add(false, SemesterDitawarkan, Angkatan, Kode, MataKuliah, SifatMK, SksTeori, SksPraktikum, IsT, IsP, IsTP, DaftarKelasMK);
                     }
@@ -485,7 +536,7 @@ namespace PenawaranKurikulum
 
         private async void btnTawarkan_Click(object sender, EventArgs e)
         {
-            if(dgvMK.Rows.Count == 0)
+            if (dgvMK.Rows.Count == 0)
             {
                 return;
             }
@@ -561,7 +612,7 @@ namespace PenawaranKurikulum
 
         private void dgvMK_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 2)
+            if (e.ColumnIndex == 2)
             {
                 if (dgvMK.Rows.Count > 0)
                 {

@@ -53,6 +53,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -69,6 +70,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBinging\Kelas.cs" />
+    <Compile Include="Dialog\DialogCreateKelasCampuran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogCreateKelasCampuran.Designer.cs">
+      <DependentUpon>DialogCreateKelasCampuran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKelasCampuran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKelasCampuran.Designer.cs">
+      <DependentUpon>FormKelasCampuran.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormKelasReguler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +89,12 @@
       <DependentUpon>FormKelasReguler.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog\DialogCreateKelasCampuran.resx">
+      <DependentUpon>DialogCreateKelasCampuran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKelasCampuran.resx">
+      <DependentUpon>FormKelasCampuran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormKelasReguler.resx">
       <DependentUpon>FormKelasReguler.cs</DependentUpon>
     </EmbeddedResource>

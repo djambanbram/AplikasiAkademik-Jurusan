@@ -32,6 +32,7 @@ namespace MainAplikasi
 
         private WebApi webApi;
         private FormKelasReguler formKelasReguler;
+        private FormKelasCampuran formKelasCampuran;
         private FormDataMataKuliah formDataMataKuliah;
         private FormMataKuliahPrasyarat formMataKuliahPrasyarat;
         private FormAlokasiMK formAlokasiMK;
@@ -61,7 +62,17 @@ namespace MainAplikasi
                 formKelasReguler.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
             }
-            if (e.XPTaskBarItem.Name == "itemMataKuliah")
+           else if (e.XPTaskBarItem.Name == "itemKelasCampuran")
+            {
+                if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
+                {
+                    formKelasCampuran = new FormKelasCampuran();
+                    formKelasCampuran.MdiParent = this;
+                }
+                formKelasCampuran.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(formKelasCampuran);
+            }
+            else if (e.XPTaskBarItem.Name == "itemMataKuliah")
             {
                 if (formDataMataKuliah == null || formDataMataKuliah.IsDisposed)
                 {
@@ -71,7 +82,7 @@ namespace MainAplikasi
                 formDataMataKuliah.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formDataMataKuliah);
             }
-            if (e.XPTaskBarItem.Name == "itemMKPrasyarat")
+            else if (e.XPTaskBarItem.Name == "itemMKPrasyarat")
             {
                 if (formMataKuliahPrasyarat == null || formMataKuliahPrasyarat.IsDisposed)
                 {
@@ -81,7 +92,7 @@ namespace MainAplikasi
                 formMataKuliahPrasyarat.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formMataKuliahPrasyarat);
             }
-            if (e.XPTaskBarItem.Name == "itemAlokasiMK")
+            else if (e.XPTaskBarItem.Name == "itemAlokasiMK")
             {
                 if (formAlokasiMK == null || formAlokasiMK.IsDisposed)
                 {

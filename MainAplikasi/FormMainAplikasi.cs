@@ -36,6 +36,7 @@ namespace MainAplikasi
         private FormDataMataKuliah formDataMataKuliah;
         private FormMataKuliahPrasyarat formMataKuliahPrasyarat;
         private FormAlokasiMK formAlokasiMK;
+        private FormAlokasiDosen formAlokasiDosen;
 
         private HttpResponseMessage response;
 
@@ -101,6 +102,16 @@ namespace MainAplikasi
                 }
                 formAlokasiMK.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formAlokasiMK);
+            }
+            else if (e.XPTaskBarItem.Name == "itemAlokasiDosen")
+            {
+                if (formAlokasiDosen == null || formAlokasiDosen.IsDisposed)
+                {
+                    formAlokasiDosen = new FormAlokasiDosen();
+                    formAlokasiDosen.MdiParent = this;
+                }
+                formAlokasiDosen.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(formAlokasiDosen);
             }
         }
 

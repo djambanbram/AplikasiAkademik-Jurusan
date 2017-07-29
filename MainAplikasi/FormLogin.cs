@@ -1,4 +1,5 @@
 ﻿using ApiService;
+using ClassModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -20,6 +21,7 @@ namespace MainAplikasi
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLLogin = baseAddress + "/account_api/verify";
         private string URLInitTahun = baseAddress + "/jurusan_api/api/data_support/init_tahun_aktif";
+        private string URLInitSemester = baseAddress + "/jurusan_api/api/data_support/init_data_semester";
 
         private HttpResponseMessage response;
         private WebApi webApi;
@@ -53,7 +55,7 @@ namespace MainAplikasi
                 LoginAccess.token_type = JObject.Parse(response.Content.ReadAsStringAsync().Result)["token_type"].ToString();
                 LoginAccess.access_token = JObject.Parse(response.Content.ReadAsStringAsync().Result)["access_token"].ToString();
                 LoginAccess.expires_in = JObject.Parse(response.Content.ReadAsStringAsync().Result)["expires_in"].ToString();
-                
+
                 response = await webApi.Post(URLInitTahun, string.Empty, false);
                 if (response.IsSuccessStatusCode)
                 {
@@ -62,13 +64,24 @@ namespace MainAplikasi
                     //LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
                     //LoginAccess.KodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
 
-                    LoginAccess.TahunAkademik = "2017/2018";
+                    LoginAccess.TahunAkademik = "2016/2017";
                     LoginAccess.Semester = "Ganjil";
-                    LoginAccess.IdTahun = 51;
+                    LoginAccess.IdTahun = 44;
                     LoginAccess.KodeSemester = 1;
 
                     Hide();
                     new FormMainAplikasi().Show();
+                }
+                else
+                {
+                    MessageBox.Show(webApi.ReturnMessage(response));
+                }
+
+                response = await webApi.Post(URLInitSemester, string.Empty, false);
+                if (response.IsSuccessStatusCode)
+                {
+                    List<DataSemester> listSemester = JsonConvert.DeserializeObject<List<DataSemester>>(response.Content.ReadAsStringAsync().Result);
+                    Akademik.listDataSemester = listSemester;
                 }
                 else
                 {

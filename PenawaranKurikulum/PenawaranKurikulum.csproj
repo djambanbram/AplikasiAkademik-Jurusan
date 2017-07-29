@@ -82,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBinding\MataKuliahDitawarkan.cs" />
+    <Compile Include="FormAlokasiDosen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlokasiDosen.Designer.cs">
+      <DependentUpon>FormAlokasiDosen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAlokasiMK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="Lib\CommonLib.cs" />
     <Compile Include="Lib\DragandDrop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAlokasiDosen.resx">
+      <DependentUpon>FormAlokasiDosen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAlokasiMK.resx">
       <DependentUpon>FormAlokasiMK.cs</DependentUpon>
     </EmbeddedResource>

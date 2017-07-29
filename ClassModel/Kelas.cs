@@ -10,6 +10,7 @@ namespace ClassModel
     {
         public static List<KelasMhs> listKelasMhs;
         public static List<KelasAktif> listKelasAktif;
+        public static List<KelasCampuranAktif> listKelasCampuranAktif;
     }
 
     public class KelasMhs
@@ -25,5 +26,12 @@ namespace ClassModel
         public int Angkatan { get; set; }
         public int SemesterDitawarkan { get; set; }
         public int JumlahMHS { get; set; }
+    }
+
+    public class KelasCampuranAktif : KelasAktif
+    {
+        public int IdKelas { get; set; }
+        public string Kode { get; set; }
+        public string MataKuliah { get; set; }
     }
 }

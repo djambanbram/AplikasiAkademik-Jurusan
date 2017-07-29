@@ -48,12 +48,23 @@ namespace KelasMahasiswa
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvJumlahKelas = new System.Windows.Forms.DataGridView();
+            this.dgvMKCampuran = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvKelasAktif = new System.Windows.Forms.DataGridView();
+            this.dgvKelasCampuran = new System.Windows.Forms.DataGridView();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCreateKelas = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.hapusKelasCampuranToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IdKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
@@ -65,12 +76,13 @@ namespace KelasMahasiswa
             this.splitContainerAdv1.Panel2.SuspendLayout();
             this.splitContainerAdv1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJumlahKelas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKCampuran)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKelasAktif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKelasCampuran)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -201,7 +213,7 @@ namespace KelasMahasiswa
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvJumlahKelas);
+            this.groupBox1.Controls.Add(this.dgvMKCampuran);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -210,25 +222,30 @@ namespace KelasMahasiswa
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Daftar MK Campuran";
             // 
-            // dgvJumlahKelas
+            // dgvMKCampuran
             // 
-            this.dgvJumlahKelas.AllowUserToAddRows = false;
-            this.dgvJumlahKelas.AllowUserToDeleteRows = false;
-            this.dgvJumlahKelas.AllowUserToResizeRows = false;
-            this.dgvJumlahKelas.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvJumlahKelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJumlahKelas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvJumlahKelas.Location = new System.Drawing.Point(3, 21);
-            this.dgvJumlahKelas.Name = "dgvJumlahKelas";
-            this.dgvJumlahKelas.ReadOnly = true;
-            this.dgvJumlahKelas.RowHeadersVisible = false;
-            this.dgvJumlahKelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvJumlahKelas.Size = new System.Drawing.Size(403, 227);
-            this.dgvJumlahKelas.TabIndex = 11;
+            this.dgvMKCampuran.AllowUserToAddRows = false;
+            this.dgvMKCampuran.AllowUserToDeleteRows = false;
+            this.dgvMKCampuran.AllowUserToResizeRows = false;
+            this.dgvMKCampuran.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvMKCampuran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMKCampuran.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.No,
+            this.Kode,
+            this.MataKuliah,
+            this.JumlahKelas});
+            this.dgvMKCampuran.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMKCampuran.Location = new System.Drawing.Point(3, 21);
+            this.dgvMKCampuran.Name = "dgvMKCampuran";
+            this.dgvMKCampuran.ReadOnly = true;
+            this.dgvMKCampuran.RowHeadersVisible = false;
+            this.dgvMKCampuran.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMKCampuran.Size = new System.Drawing.Size(403, 227);
+            this.dgvMKCampuran.TabIndex = 11;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgvKelasAktif);
+            this.groupBox2.Controls.Add(this.dgvKelasCampuran);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
@@ -237,21 +254,29 @@ namespace KelasMahasiswa
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Daftar Kelas Campuran";
             // 
-            // dgvKelasAktif
+            // dgvKelasCampuran
             // 
-            this.dgvKelasAktif.AllowUserToAddRows = false;
-            this.dgvKelasAktif.AllowUserToDeleteRows = false;
-            this.dgvKelasAktif.AllowUserToResizeRows = false;
-            this.dgvKelasAktif.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvKelasAktif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKelasAktif.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvKelasAktif.Location = new System.Drawing.Point(3, 21);
-            this.dgvKelasAktif.Name = "dgvKelasAktif";
-            this.dgvKelasAktif.ReadOnly = true;
-            this.dgvKelasAktif.RowHeadersVisible = false;
-            this.dgvKelasAktif.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKelasAktif.Size = new System.Drawing.Size(397, 227);
-            this.dgvKelasAktif.TabIndex = 10;
+            this.dgvKelasCampuran.AllowUserToAddRows = false;
+            this.dgvKelasCampuran.AllowUserToDeleteRows = false;
+            this.dgvKelasCampuran.AllowUserToResizeRows = false;
+            this.dgvKelasCampuran.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvKelasCampuran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKelasCampuran.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdKelas,
+            this.kNo,
+            this.kKode,
+            this.kMataKuliah,
+            this.NamaKelas});
+            this.dgvKelasCampuran.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvKelasCampuran.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvKelasCampuran.Location = new System.Drawing.Point(3, 21);
+            this.dgvKelasCampuran.Name = "dgvKelasCampuran";
+            this.dgvKelasCampuran.ReadOnly = true;
+            this.dgvKelasCampuran.RowHeadersVisible = false;
+            this.dgvKelasCampuran.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvKelasCampuran.Size = new System.Drawing.Size(397, 227);
+            this.dgvKelasCampuran.TabIndex = 10;
+            this.dgvKelasCampuran.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvKelasCampuran_MouseDown);
             // 
             // gradientPanel1
             // 
@@ -285,6 +310,83 @@ namespace KelasMahasiswa
             this.btnCreateKelas.Text = "Create Kelas";
             this.btnCreateKelas.Click += new System.EventHandler(this.btnCreateKelas_Click);
             // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 45;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.ReadOnly = true;
+            this.Kode.Width = 70;
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliah.HeaderText = "Mata Kuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            this.MataKuliah.ReadOnly = true;
+            // 
+            // JumlahKelas
+            // 
+            this.JumlahKelas.HeaderText = "Jumlah Kelas";
+            this.JumlahKelas.Name = "JumlahKelas";
+            this.JumlahKelas.ReadOnly = true;
+            this.JumlahKelas.Width = 60;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hapusKelasCampuranToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(198, 26);
+            // 
+            // hapusKelasCampuranToolStripMenuItem
+            // 
+            this.hapusKelasCampuranToolStripMenuItem.Name = "hapusKelasCampuranToolStripMenuItem";
+            this.hapusKelasCampuranToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.hapusKelasCampuranToolStripMenuItem.Text = "Hapus Kelas Campuran";
+            this.hapusKelasCampuranToolStripMenuItem.Click += new System.EventHandler(this.hapusKelasCampuranToolStripMenuItem_Click);
+            // 
+            // IdKelas
+            // 
+            this.IdKelas.HeaderText = "IdKelas";
+            this.IdKelas.Name = "IdKelas";
+            this.IdKelas.ReadOnly = true;
+            this.IdKelas.Visible = false;
+            // 
+            // kNo
+            // 
+            this.kNo.HeaderText = "No";
+            this.kNo.Name = "kNo";
+            this.kNo.ReadOnly = true;
+            this.kNo.Width = 40;
+            // 
+            // kKode
+            // 
+            this.kKode.HeaderText = "Kode";
+            this.kKode.Name = "kKode";
+            this.kKode.ReadOnly = true;
+            this.kKode.Width = 70;
+            // 
+            // kMataKuliah
+            // 
+            this.kMataKuliah.HeaderText = "Mata Kuliah";
+            this.kMataKuliah.Name = "kMataKuliah";
+            this.kMataKuliah.ReadOnly = true;
+            this.kMataKuliah.Width = 200;
+            // 
+            // NamaKelas
+            // 
+            this.NamaKelas.HeaderText = "Nama Kelas";
+            this.NamaKelas.Name = "NamaKelas";
+            this.NamaKelas.ReadOnly = true;
+            this.NamaKelas.Width = 200;
+            // 
             // FormKelasCampuran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -311,12 +413,13 @@ namespace KelasMahasiswa
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAdv1)).EndInit();
             this.splitContainerAdv1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJumlahKelas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKCampuran)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKelasAktif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKelasCampuran)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -335,11 +438,22 @@ namespace KelasMahasiswa
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.SplitContainerAdv splitContainerAdv1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvJumlahKelas;
+        private System.Windows.Forms.DataGridView dgvMKCampuran;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dgvKelasAktif;
+        private System.Windows.Forms.DataGridView dgvKelasCampuran;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Syncfusion.Windows.Forms.ButtonAdv btnCreateKelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JumlahKelas;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem hapusKelasCampuranToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdKelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kKode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kMataKuliah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaKelas;
     }
 }

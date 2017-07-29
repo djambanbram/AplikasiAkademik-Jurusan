@@ -56,16 +56,6 @@ namespace PenawaranKurikulum
             this.dgvMktsd = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.mHapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.mSemester = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AngkatanBerlaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mSifatMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mSksTeori = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mSksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JenisMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mDaftarKelasMK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Pilih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Angkatan = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -78,6 +68,16 @@ namespace PenawaranKurikulum
             this.P = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DaftarKelasMK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mHapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mSemester = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AngkatanBerlaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mSifatMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mSksTeori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mSksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JenisMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mDaftarKelasMK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -365,75 +365,13 @@ namespace PenawaranKurikulum
             this.btnHapus.Text = "Hapus";
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
-            // mHapus
-            // 
-            this.mHapus.HeaderText = "Pilih";
-            this.mHapus.Name = "mHapus";
-            this.mHapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.mHapus.Width = 50;
-            // 
-            // mSemester
-            // 
-            this.mSemester.HeaderText = "Semester Ditawarkan";
-            this.mSemester.Name = "mSemester";
-            this.mSemester.Visible = false;
-            // 
-            // AngkatanBerlaku
-            // 
-            this.AngkatanBerlaku.HeaderText = "Angkatan";
-            this.AngkatanBerlaku.Name = "AngkatanBerlaku";
-            this.AngkatanBerlaku.Width = 70;
-            // 
-            // mKode
-            // 
-            this.mKode.HeaderText = "Kode";
-            this.mKode.Name = "mKode";
-            this.mKode.Width = 70;
-            // 
-            // mMataKuliah
-            // 
-            this.mMataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mMataKuliah.HeaderText = "Mata Kuliah";
-            this.mMataKuliah.Name = "mMataKuliah";
-            // 
-            // mSifatMK
-            // 
-            this.mSifatMK.HeaderText = "Sifat MK";
-            this.mSifatMK.Name = "mSifatMK";
-            this.mSifatMK.Visible = false;
-            // 
-            // mSksTeori
-            // 
-            this.mSksTeori.HeaderText = "Sks Teori";
-            this.mSksTeori.Name = "mSksTeori";
-            this.mSksTeori.Visible = false;
-            // 
-            // mSksPraktikum
-            // 
-            this.mSksPraktikum.HeaderText = "Sks Praktikum";
-            this.mSksPraktikum.Name = "mSksPraktikum";
-            this.mSksPraktikum.Visible = false;
-            // 
-            // JenisMK
-            // 
-            this.JenisMK.HeaderText = "Jenis MK";
-            this.JenisMK.Name = "JenisMK";
-            // 
-            // mDaftarKelasMK
-            // 
-            this.mDaftarKelasMK.HeaderText = "Daftar Kelas";
-            this.mDaftarKelasMK.Name = "mDaftarKelasMK";
-            this.mDaftarKelasMK.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.mDaftarKelasMK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.mDaftarKelasMK.Visible = false;
-            // 
             // Pilih
             // 
             this.Pilih.HeaderText = "Pilih";
             this.Pilih.Name = "Pilih";
             this.Pilih.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Pilih.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Pilih.Width = 50;
+            this.Pilih.Width = 40;
             // 
             // Semester
             // 
@@ -516,6 +454,68 @@ namespace PenawaranKurikulum
             this.DaftarKelasMK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.DaftarKelasMK.Width = 70;
             // 
+            // mHapus
+            // 
+            this.mHapus.HeaderText = "Pilih";
+            this.mHapus.Name = "mHapus";
+            this.mHapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.mHapus.Width = 50;
+            // 
+            // mSemester
+            // 
+            this.mSemester.HeaderText = "Semester";
+            this.mSemester.Name = "mSemester";
+            this.mSemester.Width = 80;
+            // 
+            // AngkatanBerlaku
+            // 
+            this.AngkatanBerlaku.HeaderText = "Angkatan";
+            this.AngkatanBerlaku.Name = "AngkatanBerlaku";
+            this.AngkatanBerlaku.Width = 70;
+            // 
+            // mKode
+            // 
+            this.mKode.HeaderText = "Kode";
+            this.mKode.Name = "mKode";
+            this.mKode.Width = 70;
+            // 
+            // mMataKuliah
+            // 
+            this.mMataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mMataKuliah.HeaderText = "Mata Kuliah";
+            this.mMataKuliah.Name = "mMataKuliah";
+            // 
+            // mSifatMK
+            // 
+            this.mSifatMK.HeaderText = "Sifat MK";
+            this.mSifatMK.Name = "mSifatMK";
+            this.mSifatMK.Visible = false;
+            // 
+            // mSksTeori
+            // 
+            this.mSksTeori.HeaderText = "Sks Teori";
+            this.mSksTeori.Name = "mSksTeori";
+            this.mSksTeori.Visible = false;
+            // 
+            // mSksPraktikum
+            // 
+            this.mSksPraktikum.HeaderText = "Sks Praktikum";
+            this.mSksPraktikum.Name = "mSksPraktikum";
+            this.mSksPraktikum.Visible = false;
+            // 
+            // JenisMK
+            // 
+            this.JenisMK.HeaderText = "Jenis MK";
+            this.JenisMK.Name = "JenisMK";
+            // 
+            // mDaftarKelasMK
+            // 
+            this.mDaftarKelasMK.HeaderText = "Daftar Kelas";
+            this.mDaftarKelasMK.Name = "mDaftarKelasMK";
+            this.mDaftarKelasMK.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.mDaftarKelasMK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.mDaftarKelasMK.Visible = false;
+            // 
             // FormAlokasiMK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -572,16 +572,6 @@ namespace PenawaranKurikulum
         private Syncfusion.Windows.Forms.ButtonAdv btnTawarkan;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Syncfusion.Windows.Forms.ButtonAdv btnHapus;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn mHapus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mSemester;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AngkatanBerlaku;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mKode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mMataKuliah;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mSifatMK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mSksTeori;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mSksPraktikum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JenisMK;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn mDaftarKelasMK;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Pilih;
         private System.Windows.Forms.DataGridViewTextBoxColumn Semester;
         private System.Windows.Forms.DataGridViewComboBoxColumn Angkatan;
@@ -594,5 +584,15 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridViewCheckBoxColumn P;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TP;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaftarKelasMK;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn mHapus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSemester;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AngkatanBerlaku;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mKode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mMataKuliah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSifatMK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSksTeori;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mSksPraktikum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JenisMK;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn mDaftarKelasMK;
     }
 }

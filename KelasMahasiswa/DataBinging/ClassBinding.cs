@@ -36,6 +36,7 @@ namespace KelasMahasiswa.DataBinging
             foreach (var item in listSerializable)
             {
                 KelasAktif k = new KelasAktif();
+                k.IdKelas = item.IdKelas;
                 k.NamaKelas = item.NamaKelas;
                 k.Angkatan = item.Angkatan;
                 k.SemesterDitawarkan = item.SemesterDitawarkan;

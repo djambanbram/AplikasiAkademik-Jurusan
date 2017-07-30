@@ -9,6 +9,7 @@ using ApiService;
 using ClassModel;
 using KelasMahasiswa.DataBinging;
 using KelasMahasiswa.Dialog;
+using KelasMahasiswa.Listener;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,12 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KelasMahasiswa
 {
-    public partial class FormKelasCampuran : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormKelasCampuran : Syncfusion.Windows.Forms.MetroForm, IKelas
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMKCampuranDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_campuran_sudah_ditawarkan";
@@ -106,47 +108,52 @@ namespace KelasMahasiswa
 
             if (cmbProgram.SelectedIndex > 0)
             {
-                var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, KodeJurusan = kodeProgramDipilih };
-                var jsonData = JsonConvert.SerializeObject(data);
-                response = await webApi.Post(URLGetMKCampuranDitawarkan, jsonData, true);
-                if (response.IsSuccessStatusCode)
-                {
-                    dgvMKCampuran.Rows.Clear();
-                    List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                    MataKuliahCampuranBinding mkBinding = new MataKuliahCampuranBinding(oListMK);
-
-                    int no = 1;
-                    foreach (DataMataKuliahCampuran mk in ClassModel.MataKuliah.listDataMataKuliahCampuran)
-                    {
-                        dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas);
-                        no++;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(webApi.ReturnMessage(response));
-                }
-
-                response = await webApi.Post(URLGetKelasCampuran, jsonData, true);
-                if (response.IsSuccessStatusCode)
-                {
-                    dgvKelasCampuran.Rows.Clear();
-                    List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                    KelasCampuranAktifBinding mkBinding = new KelasCampuranAktifBinding(oListMK);
-
-                    int no = 1;
-                    foreach (KelasCampuranAktif mk in ClassModel.Kelas.listKelasCampuranAktif)
-                    {
-                        dgvKelasCampuran.Rows.Add(mk.IdKelas, no, mk.Kode, mk.MataKuliah, mk.NamaKelas);
-                        no++;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(webApi.ReturnMessage(response));
-                }
+                await LoadKelas();
             }
             Loading(false);
+        }
+
+        private async Task LoadKelas()
+        {
+            var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, KodeJurusan = kodeProgramDipilih };
+            var jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLGetMKCampuranDitawarkan, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                dgvMKCampuran.Rows.Clear();
+                List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                MataKuliahCampuranBinding mkBinding = new MataKuliahCampuranBinding(oListMK);
+
+                int no = 1;
+                foreach (DataMataKuliahCampuran mk in ClassModel.MataKuliah.listDataMataKuliahCampuran)
+                {
+                    dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas);
+                    no++;
+                }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+
+            response = await webApi.Post(URLGetKelasCampuran, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                dgvKelasCampuran.Rows.Clear();
+                List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                KelasCampuranAktifBinding mkBinding = new KelasCampuranAktifBinding(oListMK);
+
+                int no = 1;
+                foreach (KelasCampuranAktif mk in ClassModel.Kelas.listKelasCampuranAktif)
+                {
+                    dgvKelasCampuran.Rows.Add(mk.IdKelas, no, mk.Kode, mk.MataKuliah, mk.NamaKelas);
+                    no++;
+                }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
         }
 
         private void btnCreateKelas_Click(object sender, EventArgs e)
@@ -158,7 +165,7 @@ namespace KelasMahasiswa
 
             if (dialogCreateKelasCampuran == null || dialogCreateKelasCampuran.IsDisposed)
             {
-                dialogCreateKelasCampuran = new DialogCreateKelasCampuran(kodeProgramDipilih);
+                dialogCreateKelasCampuran = new DialogCreateKelasCampuran(kodeProgramDipilih, this);
             }
             dialogCreateKelasCampuran.ShowDialog(this);
         }
@@ -166,7 +173,12 @@ namespace KelasMahasiswa
         private void dgvKelasCampuran_MouseDown(object sender, MouseEventArgs e)
         {
             var hittest = dgvKelasCampuran.HitTest(e.X, e.Y);
-            if(hittest.RowIndex != -1 && hittest.ColumnIndex != -1)
+            if (hittest.ColumnIndex < 0 || hittest.RowIndex < 0)
+            {
+                return;
+            }
+
+            if (hittest.RowIndex != -1 && hittest.ColumnIndex != -1)
             {
                 dgvKelasCampuran.ClearSelection();
                 dgvKelasCampuran.Rows[hittest.RowIndex].Selected = true;
@@ -216,7 +228,14 @@ namespace KelasMahasiswa
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+            dataDel = null;
+            Loading(false);
+        }
 
+        public async void loadKelas()
+        {
+            Loading(true);
+            await LoadKelas();
             Loading(false);
         }
     }

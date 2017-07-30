@@ -22,6 +22,7 @@ namespace ClassModel
 
     public class KelasAktif
     {
+        public string IdKelas { get; set; }
         public string NamaKelas { get; set; }
         public int Angkatan { get; set; }
         public int SemesterDitawarkan { get; set; }
@@ -30,7 +31,6 @@ namespace ClassModel
 
     public class KelasCampuranAktif : KelasAktif
     {
-        public int IdKelas { get; set; }
         public string Kode { get; set; }
         public string MataKuliah { get; set; }
     }

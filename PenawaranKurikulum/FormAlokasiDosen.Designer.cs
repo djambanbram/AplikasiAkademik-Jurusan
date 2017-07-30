@@ -36,7 +36,13 @@ namespace PenawaranKurikulum
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.rad4 = new System.Windows.Forms.RadioButton();
+            this.rad3 = new System.Windows.Forms.RadioButton();
+            this.rad2 = new System.Windows.Forms.RadioButton();
+            this.rad1 = new System.Windows.Forms.RadioButton();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -46,17 +52,38 @@ namespace PenawaranKurikulum
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rad1 = new System.Windows.Forms.RadioButton();
-            this.rad2 = new System.Windows.Forms.RadioButton();
-            this.rad3 = new System.Windows.Forms.RadioButton();
-            this.rad4 = new System.Windows.Forms.RadioButton();
+            this.dgvAlokasi = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.hapusAlokasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setSemuaKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvDataDosen = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SKSMengajar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlokasi)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAdv1)).BeginInit();
+            this.splitContainerAdv1.Panel1.SuspendLayout();
+            this.splitContainerAdv1.Panel2.SuspendLayout();
+            this.splitContainerAdv1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel2
@@ -78,6 +105,64 @@ namespace PenawaranKurikulum
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(875, 131);
             this.gradientPanel2.TabIndex = 11;
+            // 
+            // rad4
+            // 
+            this.rad4.AutoSize = true;
+            this.rad4.Location = new System.Drawing.Point(328, 97);
+            this.rad4.Name = "rad4";
+            this.rad4.Size = new System.Drawing.Size(65, 21);
+            this.rad4.TabIndex = 16;
+            this.rad4.TabStop = true;
+            this.rad4.Text = "Sem. 1";
+            this.rad4.UseVisualStyleBackColor = true;
+            this.rad4.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad3
+            // 
+            this.rad3.AutoSize = true;
+            this.rad3.Location = new System.Drawing.Point(257, 97);
+            this.rad3.Name = "rad3";
+            this.rad3.Size = new System.Drawing.Size(65, 21);
+            this.rad3.TabIndex = 15;
+            this.rad3.TabStop = true;
+            this.rad3.Text = "Sem. 1";
+            this.rad3.UseVisualStyleBackColor = true;
+            this.rad3.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad2
+            // 
+            this.rad2.AutoSize = true;
+            this.rad2.Location = new System.Drawing.Point(186, 97);
+            this.rad2.Name = "rad2";
+            this.rad2.Size = new System.Drawing.Size(65, 21);
+            this.rad2.TabIndex = 14;
+            this.rad2.TabStop = true;
+            this.rad2.Text = "Sem. 1";
+            this.rad2.UseVisualStyleBackColor = true;
+            this.rad2.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad1
+            // 
+            this.rad1.AutoSize = true;
+            this.rad1.Checked = true;
+            this.rad1.Location = new System.Drawing.Point(115, 97);
+            this.rad1.Name = "rad1";
+            this.rad1.Size = new System.Drawing.Size(65, 21);
+            this.rad1.TabIndex = 13;
+            this.rad1.TabStop = true;
+            this.rad1.Text = "Sem. 1";
+            this.rad1.UseVisualStyleBackColor = true;
+            this.rad1.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Location = new System.Drawing.Point(7, 99);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(66, 16);
+            this.autoLabel3.TabIndex = 12;
+            this.autoLabel3.Text = "Semester";
             // 
             // autoLabel2
             // 
@@ -171,63 +256,193 @@ namespace PenawaranKurikulum
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
             // 
-            // autoLabel3
+            // dgvAlokasi
             // 
-            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel3.Location = new System.Drawing.Point(7, 99);
-            this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(66, 16);
-            this.autoLabel3.TabIndex = 12;
-            this.autoLabel3.Text = "Semester";
+            this.dgvAlokasi.AllowDrop = true;
+            this.dgvAlokasi.AllowUserToAddRows = false;
+            this.dgvAlokasi.AllowUserToDeleteRows = false;
+            this.dgvAlokasi.AllowUserToResizeColumns = false;
+            this.dgvAlokasi.AllowUserToResizeRows = false;
+            this.dgvAlokasi.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlokasi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvAlokasi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlokasi.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvAlokasi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAlokasi.Location = new System.Drawing.Point(3, 21);
+            this.dgvAlokasi.MultiSelect = false;
+            this.dgvAlokasi.Name = "dgvAlokasi";
+            this.dgvAlokasi.ReadOnly = true;
+            this.dgvAlokasi.RowHeadersVisible = false;
+            this.dgvAlokasi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvAlokasi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvAlokasi.Size = new System.Drawing.Size(869, 136);
+            this.dgvAlokasi.TabIndex = 13;
+            this.dgvAlokasi.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvAlokasi_CellPainting);
+            this.dgvAlokasi.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvAlokasi_ColumnWidthChanged);
+            this.dgvAlokasi.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvAlokasi_Scroll);
+            this.dgvAlokasi.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvAlokasi_DragDrop);
+            this.dgvAlokasi.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvAlokasi_DragEnter);
+            this.dgvAlokasi.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvAlokasi_DragOver);
+            this.dgvAlokasi.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvAlokasi_Paint);
+            this.dgvAlokasi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvAlokasi_MouseDown);
             // 
-            // rad1
+            // contextMenuStrip1
             // 
-            this.rad1.AutoSize = true;
-            this.rad1.Checked = true;
-            this.rad1.Location = new System.Drawing.Point(115, 97);
-            this.rad1.Name = "rad1";
-            this.rad1.Size = new System.Drawing.Size(65, 21);
-            this.rad1.TabIndex = 13;
-            this.rad1.TabStop = true;
-            this.rad1.Text = "Sem. 1";
-            this.rad1.UseVisualStyleBackColor = true;
-            this.rad1.CheckedChanged += new System.EventHandler(this.radioChecked);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hapusAlokasiToolStripMenuItem,
+            this.setSemuaKelasToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(262, 70);
             // 
-            // rad2
+            // hapusAlokasiToolStripMenuItem
             // 
-            this.rad2.AutoSize = true;
-            this.rad2.Location = new System.Drawing.Point(186, 97);
-            this.rad2.Name = "rad2";
-            this.rad2.Size = new System.Drawing.Size(65, 21);
-            this.rad2.TabIndex = 14;
-            this.rad2.TabStop = true;
-            this.rad2.Text = "Sem. 1";
-            this.rad2.UseVisualStyleBackColor = true;
-            this.rad2.CheckedChanged += new System.EventHandler(this.radioChecked);
+            this.hapusAlokasiToolStripMenuItem.Name = "hapusAlokasiToolStripMenuItem";
+            this.hapusAlokasiToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.hapusAlokasiToolStripMenuItem.Text = "Hapus Alokasi";
+            this.hapusAlokasiToolStripMenuItem.Click += new System.EventHandler(this.hapusAlokasiToolStripMenuItem_Click);
             // 
-            // rad3
+            // setSemuaKelasToolStripMenuItem
             // 
-            this.rad3.AutoSize = true;
-            this.rad3.Location = new System.Drawing.Point(257, 97);
-            this.rad3.Name = "rad3";
-            this.rad3.Size = new System.Drawing.Size(65, 21);
-            this.rad3.TabIndex = 15;
-            this.rad3.TabStop = true;
-            this.rad3.Text = "Sem. 1";
-            this.rad3.UseVisualStyleBackColor = true;
-            this.rad3.CheckedChanged += new System.EventHandler(this.radioChecked);
+            this.setSemuaKelasToolStripMenuItem.Name = "setSemuaKelasToolStripMenuItem";
+            this.setSemuaKelasToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.setSemuaKelasToolStripMenuItem.Text = "Set Dosen ke Semua Kelas di Bawah";
+            this.setSemuaKelasToolStripMenuItem.Click += new System.EventHandler(this.setSemuaKelasToolStripMenuItem_Click);
             // 
-            // rad4
+            // groupBox1
             // 
-            this.rad4.AutoSize = true;
-            this.rad4.Location = new System.Drawing.Point(328, 97);
-            this.rad4.Name = "rad4";
-            this.rad4.Size = new System.Drawing.Size(65, 21);
-            this.rad4.TabIndex = 16;
-            this.rad4.TabStop = true;
-            this.rad4.Text = "Sem. 1";
-            this.rad4.UseVisualStyleBackColor = true;
-            this.rad4.CheckedChanged += new System.EventHandler(this.radioChecked);
+            this.groupBox1.Controls.Add(this.dgvAlokasi);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(875, 160);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Alokasi Dosen";
+            // 
+            // splitContainerAdv1
+            // 
+            this.splitContainerAdv1.BeforeTouchSize = 7;
+            this.splitContainerAdv1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerAdv1.Location = new System.Drawing.Point(0, 131);
+            this.splitContainerAdv1.Name = "splitContainerAdv1";
+            this.splitContainerAdv1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            // 
+            // splitContainerAdv1.Panel1
+            // 
+            this.splitContainerAdv1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainerAdv1.Panel2
+            // 
+            this.splitContainerAdv1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainerAdv1.Size = new System.Drawing.Size(875, 327);
+            this.splitContainerAdv1.SplitterDistance = 160;
+            this.splitContainerAdv1.TabIndex = 16;
+            this.splitContainerAdv1.Text = "splitContainerAdv1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvDataDosen);
+            this.groupBox2.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(875, 160);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Data Dosen";
+            // 
+            // dgvDataDosen
+            // 
+            this.dgvDataDosen.AllowDrop = true;
+            this.dgvDataDosen.AllowUserToAddRows = false;
+            this.dgvDataDosen.AllowUserToDeleteRows = false;
+            this.dgvDataDosen.AllowUserToResizeRows = false;
+            this.dgvDataDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvDataDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDataDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.No,
+            this.NIK,
+            this.Nama,
+            this.SKSMengajar});
+            this.dgvDataDosen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDataDosen.Location = new System.Drawing.Point(3, 52);
+            this.dgvDataDosen.MultiSelect = false;
+            this.dgvDataDosen.Name = "dgvDataDosen";
+            this.dgvDataDosen.ReadOnly = true;
+            this.dgvDataDosen.RowHeadersVisible = false;
+            this.dgvDataDosen.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvDataDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDataDosen.Size = new System.Drawing.Size(869, 105);
+            this.dgvDataDosen.TabIndex = 0;
+            this.dgvDataDosen.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDataDosen_DragEnter);
+            this.dgvDataDosen.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvDataDosen_DragOver);
+            this.dgvDataDosen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvDataDosen_MouseDown);
+            this.dgvDataDosen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvDataDosen_MouseMove);
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 70;
+            // 
+            // NIK
+            // 
+            this.NIK.HeaderText = "NIK";
+            this.NIK.Name = "NIK";
+            this.NIK.ReadOnly = true;
+            // 
+            // Nama
+            // 
+            this.Nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            // 
+            // SKSMengajar
+            // 
+            this.SKSMengajar.HeaderText = "SKS Mengajar";
+            this.SKSMengajar.Name = "SKSMengajar";
+            this.SKSMengajar.ReadOnly = true;
+            this.SKSMengajar.Width = 80;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.autoLabel4);
+            this.flowLayoutPanel2.Controls.Add(this.textBoxExt1);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 21);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(869, 31);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // autoLabel4
+            // 
+            this.autoLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel4.Location = new System.Drawing.Point(3, 0);
+            this.autoLabel4.Name = "autoLabel4";
+            this.autoLabel4.Size = new System.Drawing.Size(84, 31);
+            this.autoLabel4.TabIndex = 0;
+            this.autoLabel4.Text = "Nama Dosen";
+            this.autoLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxExt1
+            // 
+            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.textBoxExt1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxExt1.Location = new System.Drawing.Point(93, 3);
+            this.textBoxExt1.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.textBoxExt1.Name = "textBoxExt1";
+            this.textBoxExt1.Size = new System.Drawing.Size(280, 25);
+            this.textBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.textBoxExt1.TabIndex = 1;
             // 
             // FormAlokasiDosen
             // 
@@ -235,6 +450,7 @@ namespace PenawaranKurikulum
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(875, 496);
+            this.Controls.Add(this.splitContainerAdv1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gradientPanel2);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -249,6 +465,18 @@ namespace PenawaranKurikulum
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlokasi)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.splitContainerAdv1.Panel1.ResumeLayout(false);
+            this.splitContainerAdv1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAdv1)).EndInit();
+            this.splitContainerAdv1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,5 +498,20 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.RadioButton rad3;
         private System.Windows.Forms.RadioButton rad2;
         private System.Windows.Forms.RadioButton rad1;
+        private System.Windows.Forms.DataGridView dgvAlokasi;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Syncfusion.Windows.Forms.Tools.SplitContainerAdv splitContainerAdv1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgvDataDosen;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SKSMengajar;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem hapusAlokasiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setSemuaKelasToolStripMenuItem;
     }
 }

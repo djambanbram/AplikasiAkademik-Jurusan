@@ -7,6 +7,7 @@
 #endregion
 using ApiService;
 using ClassModel;
+using KelasMahasiswa.Listener;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,14 @@ namespace KelasMahasiswa.Dialog
         private WebApi webApi;
         private HttpResponseMessage response;
 
-        public DialogCreateKelasCampuran(string kodeProgram)
+        private IKelas iKelas;
+
+        public DialogCreateKelasCampuran(string kodeProgram, IKelas iKelas)
         {
             InitializeComponent();
             KodeProgram = kodeProgram;
             webApi = new WebApi();
+            this.iKelas = iKelas;
         }
 
         private void Loading(bool isLoading)
@@ -74,6 +78,7 @@ namespace KelasMahasiswa.Dialog
                 txtNamaKelas.Text = string.Empty;
                 txtKode.Text = string.Empty;
                 txtMataKuliah.Text = string.Empty;
+                iKelas.loadKelas();
             }
             else
             {

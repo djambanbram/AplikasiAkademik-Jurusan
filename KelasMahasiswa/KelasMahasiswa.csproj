@@ -88,6 +88,7 @@
     <Compile Include="FormKelasReguler.Designer.cs">
       <DependentUpon>FormKelasReguler.cs</DependentUpon>
     </Compile>
+    <Compile Include="Listener\IKelas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dialog\DialogCreateKelasCampuran.resx">
       <DependentUpon>DialogCreateKelasCampuran.cs</DependentUpon>

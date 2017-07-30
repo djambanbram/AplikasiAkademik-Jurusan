@@ -75,6 +75,7 @@ namespace MainAplikasi
                 else
                 {
                     MessageBox.Show(webApi.ReturnMessage(response));
+                    return;
                 }
 
                 response = await webApi.Post(URLInitSemester, string.Empty, false);

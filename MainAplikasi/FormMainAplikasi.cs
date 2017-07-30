@@ -113,6 +113,10 @@ namespace MainAplikasi
                 formAlokasiDosen.Show();
                 tabbedMDIManager1.UpdateActiveTabHost(formAlokasiDosen);
             }
+            else if (e.XPTaskBarItem.Name == "itemKeluar")
+            {
+                Application.ExitThread();
+            }
         }
 
         private void FormMainAplikasi_FormClosed(object sender, FormClosedEventArgs e)
@@ -136,7 +140,7 @@ namespace MainAplikasi
             }
             
             Loading(false);
-            stripLabel.Text = string.Format("Version: {0} | Tahun Akademik {1} Semester {2}", Application.ProductVersion, LoginAccess.TahunAkademik, LoginAccess.Semester);
+            stripLabel.Text = string.Format("{0} | Version: {1} | Tahun Akademik {2} Semester {3}", Application.ProductName, Application.ProductVersion, LoginAccess.TahunAkademik, LoginAccess.Semester);
         }
     }
 }

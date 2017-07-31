@@ -38,6 +38,7 @@ namespace PenawaranKurikulum
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.radCampuran = new System.Windows.Forms.RadioButton();
             this.rad4 = new System.Windows.Forms.RadioButton();
             this.rad3 = new System.Windows.Forms.RadioButton();
             this.rad2 = new System.Windows.Forms.RadioButton();
@@ -62,11 +63,11 @@ namespace PenawaranKurikulum
             this.dgvDataDosen = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SKSMengajar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.txtCariDosen = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -83,12 +84,13 @@ namespace PenawaranKurikulum
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCariDosen)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel2
             // 
             this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel2.Controls.Add(this.radCampuran);
             this.gradientPanel2.Controls.Add(this.rad4);
             this.gradientPanel2.Controls.Add(this.rad3);
             this.gradientPanel2.Controls.Add(this.rad2);
@@ -105,6 +107,18 @@ namespace PenawaranKurikulum
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(875, 131);
             this.gradientPanel2.TabIndex = 11;
+            // 
+            // radCampuran
+            // 
+            this.radCampuran.AutoSize = true;
+            this.radCampuran.Location = new System.Drawing.Point(399, 97);
+            this.radCampuran.Name = "radCampuran";
+            this.radCampuran.Size = new System.Drawing.Size(110, 21);
+            this.radCampuran.TabIndex = 17;
+            this.radCampuran.TabStop = true;
+            this.radCampuran.Text = "MK Campuran";
+            this.radCampuran.UseVisualStyleBackColor = true;
+            this.radCampuran.CheckedChanged += new System.EventHandler(this.radioChecked);
             // 
             // rad4
             // 
@@ -299,20 +313,20 @@ namespace PenawaranKurikulum
             this.hapusAlokasiToolStripMenuItem,
             this.setSemuaKelasToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(262, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 48);
             // 
             // hapusAlokasiToolStripMenuItem
             // 
             this.hapusAlokasiToolStripMenuItem.Name = "hapusAlokasiToolStripMenuItem";
-            this.hapusAlokasiToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.hapusAlokasiToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.hapusAlokasiToolStripMenuItem.Text = "Hapus Alokasi";
             this.hapusAlokasiToolStripMenuItem.Click += new System.EventHandler(this.hapusAlokasiToolStripMenuItem_Click);
             // 
             // setSemuaKelasToolStripMenuItem
             // 
             this.setSemuaKelasToolStripMenuItem.Name = "setSemuaKelasToolStripMenuItem";
-            this.setSemuaKelasToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.setSemuaKelasToolStripMenuItem.Text = "Set Dosen ke Semua Kelas di Bawah";
+            this.setSemuaKelasToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.setSemuaKelasToolStripMenuItem.Text = "Set Dosen ke Semua Kelas...";
             this.setSemuaKelasToolStripMenuItem.Click += new System.EventHandler(this.setSemuaKelasToolStripMenuItem_Click);
             // 
             // groupBox1
@@ -369,7 +383,7 @@ namespace PenawaranKurikulum
             this.dgvDataDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
             this.NIK,
-            this.Nama,
+            this.NamaDosen,
             this.SKSMengajar});
             this.dgvDataDosen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDataDosen.Location = new System.Drawing.Point(3, 52);
@@ -399,12 +413,12 @@ namespace PenawaranKurikulum
             this.NIK.Name = "NIK";
             this.NIK.ReadOnly = true;
             // 
-            // Nama
+            // NamaDosen
             // 
-            this.Nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
+            this.NamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NamaDosen.HeaderText = "Nama Dosen";
+            this.NamaDosen.Name = "NamaDosen";
+            this.NamaDosen.ReadOnly = true;
             // 
             // SKSMengajar
             // 
@@ -416,7 +430,7 @@ namespace PenawaranKurikulum
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.autoLabel4);
-            this.flowLayoutPanel2.Controls.Add(this.textBoxExt1);
+            this.flowLayoutPanel2.Controls.Add(this.txtCariDosen);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 21);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -433,16 +447,17 @@ namespace PenawaranKurikulum
             this.autoLabel4.Text = "Nama Dosen";
             this.autoLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxExt1
+            // txtCariDosen
             // 
-            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(280, 25);
-            this.textBoxExt1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxExt1.Location = new System.Drawing.Point(93, 3);
-            this.textBoxExt1.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.textBoxExt1.Name = "textBoxExt1";
-            this.textBoxExt1.Size = new System.Drawing.Size(280, 25);
-            this.textBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.textBoxExt1.TabIndex = 1;
+            this.txtCariDosen.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtCariDosen.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCariDosen.Location = new System.Drawing.Point(93, 3);
+            this.txtCariDosen.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtCariDosen.Name = "txtCariDosen";
+            this.txtCariDosen.Size = new System.Drawing.Size(280, 25);
+            this.txtCariDosen.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtCariDosen.TabIndex = 1;
+            this.txtCariDosen.TextChanged += new System.EventHandler(this.txtCariDosen_TextChanged);
             // 
             // FormAlokasiDosen
             // 
@@ -476,7 +491,7 @@ namespace PenawaranKurikulum
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCariDosen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -505,13 +520,14 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridView dgvDataDosen;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SKSMengajar;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCariDosen;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem hapusAlokasiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setSemuaKelasToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SKSMengajar;
+        private System.Windows.Forms.RadioButton radCampuran;
     }
 }

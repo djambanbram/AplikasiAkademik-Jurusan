@@ -22,5 +22,10 @@ namespace PenawaranKurikulum
         {
             InitializeComponent();
         }
+
+        private void btnTutup_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

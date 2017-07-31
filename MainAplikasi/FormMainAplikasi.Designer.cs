@@ -133,11 +133,12 @@ namespace MainAplikasi
             this.boxPenawaranMK.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Mata Kuliah", System.Drawing.Color.Empty, -1, null, "", true, true, "itemAlokasiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Dosen", System.Drawing.Color.Empty, -1, null, "", true, true, "itemAlokasiDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Dosen Campuran", System.Drawing.Color.Empty, -1, null, "", true, true, "itemAlokasiDosenCampuran", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Lab. dan Mata Kuliah", System.Drawing.Color.Empty, -1, null, "", true, true, "itemAlokasiLab", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
             this.boxPenawaranMK.Location = new System.Drawing.Point(0, 174);
             this.boxPenawaranMK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxPenawaranMK.Name = "boxPenawaranMK";
-            this.boxPenawaranMK.Size = new System.Drawing.Size(281, 98);
+            this.boxPenawaranMK.Size = new System.Drawing.Size(281, 120);
             this.boxPenawaranMK.TabIndex = 2;
             this.boxPenawaranMK.Text = "Penawaran MK";
             this.boxPenawaranMK.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
@@ -153,7 +154,7 @@ namespace MainAplikasi
             this.xpTaskBarBox1.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.xpTaskBarBox1.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.xpTaskBarBox1.Location = new System.Drawing.Point(0, 272);
+            this.xpTaskBarBox1.Location = new System.Drawing.Point(0, 294);
             this.xpTaskBarBox1.Name = "xpTaskBarBox1";
             this.xpTaskBarBox1.Size = new System.Drawing.Size(281, 58);
             this.xpTaskBarBox1.TabIndex = 3;

@@ -55,4 +55,9 @@ namespace PenawaranKurikulum.DataBinding
             MataKuliah.listMataKuliahSudahDitawarkan = listMKSudahDitawarkan;
         }
     }
+
+    class AlokasiDosenBinding
+    {
+
+    }
 }

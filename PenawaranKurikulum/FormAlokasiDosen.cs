@@ -173,7 +173,7 @@ namespace PenawaranKurikulum
                 }
                 semDipilih = sem;
                 kodeProgramDipilih = cmbProgram.SelectedValue.ToString();
-                await LoadAlokasiDosen(semDipilih, kodeProgramDipilih, isModeCampuran);
+                await LoadAlokasiDosen(semDipilih, kodeProgramDipilih);
             }
             Loading(false);
         }
@@ -194,12 +194,12 @@ namespace PenawaranKurikulum
                     isModeCampuran = false;
                 }
                 kodeProgramDipilih = cmbProgram.SelectedValue.ToString();
-                await LoadAlokasiDosen(semDipilih, kodeProgramDipilih, isModeCampuran);
+                await LoadAlokasiDosen(semDipilih, kodeProgramDipilih);
             }
             Loading(false);
         }
 
-        private async Task LoadAlokasiDosen(int semester, string kodeProgram, bool isCampuran)
+        private async Task LoadAlokasiDosen(int semester, string kodeProgram)
         {
             ///Load MK Ditawarkan
             var data = new
@@ -210,6 +210,14 @@ namespace PenawaranKurikulum
                 IdProdi = cmbProdi.SelectedValue.ToString()
             };
             string jsonData = JsonConvert.SerializeObject(data);
+            await LoadMKDitawarkan(jsonData);
+            await LoadKelas(jsonData);
+            await LoadAlokasiDosen(jsonData);
+            await LoadDataDosen(jsonData);
+        }
+
+        private async Task LoadMKDitawarkan(string jsonData)
+        {
             response = await webApi.Post(URLGetMKSudahDitawarkan, jsonData, true);
             if (response.IsSuccessStatusCode)
             {
@@ -238,7 +246,7 @@ namespace PenawaranKurikulum
                 DataGridViewTextBoxColumn dgColumnKelas = new DataGridViewTextBoxColumn();
                 dgColumnKelas.Name = "KELAS";
                 dgColumnKelas.HeaderText = "KELAS";
-                if (!isCampuran)
+                if (!isModeCampuran)
                 {
                     dgColumnKelas.Width = 100;
                 }
@@ -254,13 +262,13 @@ namespace PenawaranKurikulum
                 dgColumnKelas.Frozen = true;
                 dgvAlokasi.Columns.Add(dgColumnKelas);
 
-                if (!isCampuran)
+                if (!isModeCampuran)
                 {
                     listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.SemesterDitawarkan == semDipilih && m.KodeSifatMK == "W").ToList();
                 }
                 else
                 {
-                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K").ToList();
+                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K").OrderBy(mk => mk.Kode).ToList();
                 }
 
                 foreach (MataKuliahDitawarkan mk in listTemp)
@@ -292,9 +300,12 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+        }
 
+        private async Task LoadKelas(string jsonData)
+        {
             ///Load Kelas
-            if (!isCampuran)
+            if (!isModeCampuran)
             {
                 response = await webApi.Post(URLGetKelasAktif, jsonData, true);
             }
@@ -304,7 +315,7 @@ namespace PenawaranKurikulum
             }
             if (response.IsSuccessStatusCode)
             {
-                if (!isCampuran)
+                if (!isModeCampuran)
                 {
                     listKelasAktif = JsonConvert.DeserializeObject<List<KelasAktif>>(response.Content.ReadAsStringAsync().Result).Where(kls => kls.SemesterDitawarkan == semDipilih).ToList();
                     foreach (KelasAktif item in listKelasAktif)
@@ -314,7 +325,7 @@ namespace PenawaranKurikulum
                 }
                 else
                 {
-                    listKelasCampuranAktif = JsonConvert.DeserializeObject<List<KelasCampuranAktif>>(response.Content.ReadAsStringAsync().Result);
+                    listKelasCampuranAktif = JsonConvert.DeserializeObject<List<KelasCampuranAktif>>(response.Content.ReadAsStringAsync().Result).OrderBy(kls => kls.Kode).ToList();
                     foreach (KelasCampuranAktif item in listKelasCampuranAktif)
                     {
                         dgvAlokasi.Rows.Add(item.Kode, item.IdKelas, item.NamaKelas);
@@ -333,7 +344,7 @@ namespace PenawaranKurikulum
                     dgc.DefaultCellStyle.BackColor = Color.LightGray;
                 }
 
-                if (isCampuran)
+                if (isModeCampuran)
                 {
                     foreach (DataGridViewRow dgr in dgvAlokasi.Rows)
                     {
@@ -344,7 +355,10 @@ namespace PenawaranKurikulum
                     }
                 }
             }
+        }
 
+        private async Task LoadAlokasiDosen(string jsonData)
+        {
             ///Load AlokasiDosen
             response = await webApi.Post(URLGetDosenMengajar, jsonData, true);
             if (response.IsSuccessStatusCode)
@@ -363,7 +377,7 @@ namespace PenawaranKurikulum
                         string kode = dgColumn.Name.Split('-')[0];
                         string jenisMataKuliah = dgColumn.HeaderText.Contains('T') ? "T" : "P";
                         int sks = int.Parse(dgColumn.HeaderText[0].ToString());
-                        if (!isCampuran)
+                        if (!isModeCampuran)
                         {
                             alokasi = listAlokasiDosenMengajar.Find(
                                                                     a => a.IdKelas == idKelas
@@ -395,8 +409,10 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+        }
 
-
+        private async Task LoadDataDosen(string jsonData)
+        {
             //Load data dosen
             response = await webApi.Post(URLGetDataDosen, jsonData, true);
             if (response.IsSuccessStatusCode)
@@ -410,6 +426,10 @@ namespace PenawaranKurikulum
                     dgvDataDosen.Rows.Add(no, item.Nik, item.NamaDosen, item.Sks);
                     no++;
                 }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
             }
         }
 
@@ -437,10 +457,10 @@ namespace PenawaranKurikulum
                 listKodeMK.Add(string.Format("{0} - {1}", listTemp[i].Kode, listTemp[i].MataKuliah));
             }
 
-            for (int j = 0 + 3; j <= (listKodeMK.Count + 3) * 2;)
+            for (int j = 3; j < (listKodeMK.Count * 2) + 3;)
             {
                 Rectangle r1 = this.dgvAlokasi.GetCellDisplayRectangle(j, -1, true);
-                int w2 = this.dgvAlokasi.GetCellDisplayRectangle(j + 1, -1, true).Width;
+                int w2 = this.dgvAlokasi.GetCellDisplayRectangle(j, -1, true).Width;
                 r1.X += 1;
                 r1.Y += 1;
                 r1.Width = r1.Width + w2 - 2;
@@ -532,7 +552,7 @@ namespace PenawaranKurikulum
                 return;
             }
 
-            if(hittest.ColumnIndex == 2)
+            if (hittest.ColumnIndex == 2)
             {
                 contextMenuStrip1.Items[0].Text = "Hapus Alokasi";
                 contextMenuStrip1.Items[0].Enabled = false;
@@ -603,9 +623,9 @@ namespace PenawaranKurikulum
                 return;
             }
 
-            if(isModeCampuran)
+            if (isModeCampuran)
             {
-                if(dgvAlokasi.Rows[hittest.RowIndex].Cells["Kode"].Value.ToString() != dgvAlokasi.Columns[hittest.ColumnIndex].Name.Split('-')[0].ToString())
+                if (dgvAlokasi.Rows[hittest.RowIndex].Cells["Kode"].Value.ToString() != dgvAlokasi.Columns[hittest.ColumnIndex].Name.Split('-')[0].ToString())
                 {
                     return;
                 }
@@ -640,6 +660,7 @@ namespace PenawaranKurikulum
 
                 dgvAlokasi.Rows[hittest.RowIndex].Cells[hittest.ColumnIndex].Value = valueAdd.NamaDosen;
                 dgvAlokasi.Rows[hittest.RowIndex].Cells[hittest.ColumnIndex].Tag = valueAdd.Nik;
+                await LoadDataDosen(jsonData);
             }
             else
             {
@@ -666,6 +687,7 @@ namespace PenawaranKurikulum
                 int col = valueDeleteOrSet.ColNum;
                 dgvAlokasi.Rows[row].Cells[col].Value = null;
                 dgvAlokasi.Rows[row].Cells[col].Tag = null;
+                await LoadDataDosen(jsonData);
             }
             else
             {
@@ -712,7 +734,7 @@ namespace PenawaranKurikulum
                 }
 
             }
-            await LoadAlokasiDosen(semDipilih, kodeProgramDipilih, isModeCampuran);
+            await LoadAlokasiDosen(semDipilih, kodeProgramDipilih);
             Loading(false);
             valueDeleteOrSet = null;
         }

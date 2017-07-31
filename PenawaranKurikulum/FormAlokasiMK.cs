@@ -351,6 +351,8 @@ namespace PenawaranKurikulum
                         MessageBoxIcon.Warning);
                     if (dr == DialogResult.No)
                     {
+                        Loading(false);
+                        valueMKPrasyaratDelete = null;
                         return;
                     }
                 }
@@ -358,6 +360,8 @@ namespace PenawaranKurikulum
             else
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
+                valueMKPrasyaratDelete = null;
+                Loading(false);
                 return;
             }
 
@@ -510,6 +514,7 @@ namespace PenawaranKurikulum
                     else
                     {
                         MessageBox.Show(webApi.ReturnMessage(response));
+                        Loading(false);
                         return;
                     }
 

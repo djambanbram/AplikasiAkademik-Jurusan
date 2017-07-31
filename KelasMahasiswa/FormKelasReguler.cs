@@ -56,7 +56,6 @@ namespace KelasMahasiswa
 
         private void FormKelasReguler_Load(object sender, EventArgs e)
         {
-
             listFakultas = new List<Fakultas>(Organisasi.listFakultas);
             listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
             cmbFakultas.DataSource = listFakultas;

@@ -22,6 +22,7 @@ using Newtonsoft.Json;
 using System.Configuration;
 using ClassModel;
 using PenawaranKurikulum;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace MainAplikasi
 {
@@ -54,6 +55,7 @@ namespace MainAplikasi
 
         private void boxKelas_ItemClick(object sender, Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickArgs e)
         {
+            Form form = null;
             if (e.XPTaskBarItem.Name == "itemKelasReguler")
             {
                 if (formKelasReguler == null || formKelasReguler.IsDisposed)
@@ -61,18 +63,18 @@ namespace MainAplikasi
                     formKelasReguler = new FormKelasReguler();
                     formKelasReguler.MdiParent = this;
                 }
-                formKelasReguler.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formKelasReguler);
+                form = formKelasReguler;
             }
-           else if (e.XPTaskBarItem.Name == "itemKelasCampuran")
+            else if (e.XPTaskBarItem.Name == "itemKelasCampuran")
             {
-                if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
-                {
-                    formKelasCampuran = new FormKelasCampuran();
-                    formKelasCampuran.MdiParent = this;
-                }
-                formKelasCampuran.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formKelasCampuran);
+                //if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
+                //{
+                //    formKelasCampuran = new FormKelasCampuran();
+                //    formKelasCampuran.MdiParent = this;
+                //}
+                //    form = formKelasCampuran;
+                XPTaskBarItem item = e.XPTaskBarItem;
+                menuKelasCampuran.Show(item.Parent as Control, new Point(item.Bounds.Width, item.Bounds.Y));
             }
             else if (e.XPTaskBarItem.Name == "itemMataKuliah")
             {
@@ -81,8 +83,7 @@ namespace MainAplikasi
                     formDataMataKuliah = new FormDataMataKuliah();
                     formDataMataKuliah.MdiParent = this;
                 }
-                formDataMataKuliah.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formDataMataKuliah);
+                form = formDataMataKuliah;
             }
             else if (e.XPTaskBarItem.Name == "itemMKPrasyarat")
             {
@@ -91,8 +92,7 @@ namespace MainAplikasi
                     formMataKuliahPrasyarat = new FormMataKuliahPrasyarat();
                     formMataKuliahPrasyarat.MdiParent = this;
                 }
-                formMataKuliahPrasyarat.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formMataKuliahPrasyarat);
+                form = formMataKuliahPrasyarat;
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiMK")
             {
@@ -101,18 +101,18 @@ namespace MainAplikasi
                     formAlokasiMK = new FormAlokasiMK();
                     formAlokasiMK.MdiParent = this;
                 }
-                formAlokasiMK.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formAlokasiMK);
+                form = formAlokasiMK;
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiDosen")
             {
-                if (formAlokasiDosen == null || formAlokasiDosen.IsDisposed)
-                {
-                    formAlokasiDosen = new FormAlokasiDosen();
-                    formAlokasiDosen.MdiParent = this;
-                }
-                formAlokasiDosen.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formAlokasiDosen);
+                //if (formAlokasiDosen == null || formAlokasiDosen.IsDisposed)
+                //{
+                //    formAlokasiDosen = new FormAlokasiDosen();
+                //    formAlokasiDosen.MdiParent = this;
+                //}
+                //form = formAlokasiDosen;
+                XPTaskBarItem item = e.XPTaskBarItem;
+                menuAlokasiDosen.Show(item.Parent as Control, new Point(item.Bounds.Width, item.Bounds.Y));
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiLabMK")
             {
@@ -121,12 +121,16 @@ namespace MainAplikasi
                     formAlokasiLabMK = new FormAlokasiLabMK();
                     formAlokasiLabMK.MdiParent = this;
                 }
-                formAlokasiLabMK.Show();
-                tabbedMDIManager1.UpdateActiveTabHost(formAlokasiLabMK);
+                form = formAlokasiLabMK;
             }
             else if (e.XPTaskBarItem.Name == "itemKeluar")
             {
                 Application.ExitThread();
+            }
+            if (form != null && !form.IsDisposed)
+            {
+                form.Show();
+                tabbedMDIManager1.UpdateActiveTabHost(form);
             }
         }
 
@@ -149,9 +153,31 @@ namespace MainAplikasi
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
-            
+
             Loading(false);
             stripLabel.Text = string.Format("{0} | Version: {1} | Tahun Akademik {2} Semester {3}", Application.ProductName, Application.ProductVersion, LoginAccess.TahunAkademik, LoginAccess.Semester);
+        }
+
+        private void menuItemSatuProgramKelasCampuran_Click(object sender, EventArgs e)
+        {
+            if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
+            {
+                formKelasCampuran = new FormKelasCampuran();
+                formKelasCampuran.MdiParent = this;
+            }
+            formKelasCampuran.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formKelasCampuran);
+        }
+
+        private void menuItemSatuProgramAlokasiDosen_Click(object sender, EventArgs e)
+        {
+            if (formAlokasiDosen == null || formAlokasiDosen.IsDisposed)
+            {
+                formAlokasiDosen = new FormAlokasiDosen();
+                formAlokasiDosen.MdiParent = this;
+            }
+            formAlokasiDosen.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formAlokasiDosen);
         }
     }
 }

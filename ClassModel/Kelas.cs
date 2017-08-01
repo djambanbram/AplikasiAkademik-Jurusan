@@ -37,7 +37,7 @@ namespace ClassModel
 
     public class MemberKelas : KelasCampuranAktif
     {
-        public int Jumlahkelas { get; set; }
+        public int JumlahKelas { get; set; }
         public string Ruang { get; set; }
     }
 }

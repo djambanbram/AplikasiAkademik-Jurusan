@@ -155,7 +155,13 @@ namespace KelasMahasiswa
 
         private async void btnGenerate_Click(object sender, EventArgs e)
         {
+            if (cmbProgram.SelectedIndex < 0 || string.IsNullOrEmpty(kodeProgramDipilih))
+            {
+                return;
+            }
+
             Loading(true);
+            
             var dataGenerate = new
             {
                 TahunAkademik = LoginAccess.TahunAkademik,
@@ -167,6 +173,8 @@ namespace KelasMahasiswa
             response = await webApi.Post(URLGenerateKelasReguler, jsonData, true);
             MessageBox.Show(webApi.ReturnMessage(response));
             await LoadKelas(kodeProgramDipilih);
+
+            kodeProgramDipilih = string.Empty;
             Loading(false);
 
         }

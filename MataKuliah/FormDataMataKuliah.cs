@@ -159,6 +159,7 @@ namespace MataKuliah
             btnBatal.Visible = true;
             btnEdit.Visible = false;
             btnTambah.Visible = false;
+            btnNonAktifMK.Visible = false;
             txtSingkatanMK.Enabled = false;
 
             IsEditField(false);
@@ -176,6 +177,7 @@ namespace MataKuliah
             btnBatal.Visible = true;
             btnEdit.Visible = false;
             btnTambah.Visible = false;
+            btnNonAktifMK.Visible = false;
 
             IsEditField(true);
             KodeMKDipilih = dgvMataKuliah.SelectedRows[0].Cells["Kode"].Value.ToString();
@@ -187,6 +189,7 @@ namespace MataKuliah
             btnBatal.Visible = false;
             btnEdit.Visible = true;
             btnTambah.Visible = true;
+            btnNonAktifMK.Visible = true;
 
             EnableField(false);
             ResetField();
@@ -247,6 +250,7 @@ namespace MataKuliah
             btnBatal.Visible = false;
             btnEdit.Visible = true;
             btnTambah.Visible = true;
+            btnNonAktifMK.Visible = true;
 
             EnableField(false);
             ResetField();
@@ -429,6 +433,24 @@ namespace MataKuliah
             {
                 e.Handled = true;
             }
+        }
+
+        private async void btnNonAktifMK_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(txtNamaMK.Text) || string.IsNullOrWhiteSpace(txtNamaMKEn.Text))
+            {
+                return;
+            }
+
+            KodeMKDipilih = dgvMataKuliah.SelectedRows[0].Cells["Kode"].Value.ToString();
+            string mataKuliah = txtNamaMK.Text;
+            DialogResult dr = MessageBox.Show(string.Format("Mata kuliah {0} ({1}) akan di non-aktif kan tanpa adanya pengganti mata kuliah.\nApakah akan melanjutkan proses?", mataKuliah, KodeMKDipilih), "Perhatian", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(dr == DialogResult.No)
+            {
+                return;
+            }
+
+            await LoadMK();
         }
     }
 }

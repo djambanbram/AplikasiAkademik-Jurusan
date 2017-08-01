@@ -10,6 +10,7 @@ using ApiService;
 using ClassModel;
 using Newtonsoft.Json;
 using PenawaranKurikulum.DataBinding;
+using PenawaranKurikulum.Lib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,10 +41,18 @@ namespace PenawaranKurikulum
         private string kodeProgramDipilih;
         private string idProdiDipilih;
 
+        private DragandDrop dragAndDropAdd;
+        private DragandDrop dragAndDropDelete;
+
+        private dynamic valueAdd;
+        private dynamic valueDelete;
+
         public FormAlokasiLabMK()
         {
             InitializeComponent();
             webApi = new WebApi();
+            dragAndDropAdd = new DragandDrop();
+            dragAndDropDelete = new DragandDrop();
         }
 
         private void btnTutup_Click(object sender, EventArgs e)
@@ -142,7 +151,7 @@ namespace PenawaranKurikulum
                     listRuangan = listRuangan.Where(r => r.IsDipakaiPraktikum == 1).ToList();
                     foreach (var item in listRuangan)
                     {
-                        dgvDaftarLab.Nodes.Add(null, item.Ruang);
+                        dgvDaftarLab.Nodes.Add(null, item.Ruang, null, null, null, "1");
                     }
                 }
                 else
@@ -162,11 +171,12 @@ namespace PenawaranKurikulum
                         {
                             if (tgn.Cells["Ruang"].Value.ToString() == item.Ruang)
                             {
-                                tgn.Nodes.Add(null, item.Kode, item.Ruang, item.MataKuliah);
+                                tgn.Nodes.Add(null, item.Ruang, item.Kode, item.MataKuliah, item.JumlahKelas, "0");
                                 tgn.Nodes[i].DefaultCellStyle.BackColor = Color.LightGray;
                                 i++;
                             }
                         }
+                        tgn.Expand();
                         i = 0;
                     }
                 }
@@ -177,6 +187,151 @@ namespace PenawaranKurikulum
 
                 Loading(false);
             }
+        }
+
+        private void dgvDaftarLab_MouseMove(object sender, MouseEventArgs e)
+        {
+            dragAndDropDelete.DragMove(e, dgvDaftarLab, valueDelete);
+        }
+
+        private void dgvDaftarLab_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hittest = dragAndDropDelete.DragMouseDownFirst(e, dgvDaftarLab);
+            if (hittest == null)
+            {
+                return;
+            }
+
+            if (hittest.RowIndex < 0 || hittest.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            if (dgvDaftarLab.Rows[hittest.RowIndex].Cells["Parent"].Value.ToString() == "1")
+            {
+                valueDelete = null;
+                return;
+            }
+
+            TreeGridNode dgRow = dgvDaftarLab.Rows[hittest.RowIndex] as TreeGridNode;
+
+            valueDelete = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                KodeJurusan = kodeProgramDipilih,
+                IdProdi = idProdiDipilih,
+                Kode = dgRow.Cells["tKode"].Value.ToString(),
+                Ruang = dgRow.Cells["Ruang"].Value.ToString(),
+                JumlahKelas = dgRow.Cells["tJumlahKelas"].Value.ToString(),
+                RowChild = dgRow.Parent.Nodes.IndexOf(dgRow),
+                RowCurrent = hittest.RowIndex
+            };
+            dragAndDropDelete.DragMouseDownSecond(e, dgvMKPraktikum, hittest, valueDelete);
+        }
+
+        private void dgvDaftarLab_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvDaftarLab_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvDaftarLab_DragDrop(object sender, DragEventArgs e)
+        {
+            if (valueAdd == null)
+            {
+                return;
+            }
+
+            var hittest = dragAndDropAdd.DragDrop(e, dgvDaftarLab);
+            if (hittest == null)
+            {
+                return;
+            }
+            if (hittest.RowIndex < 0 || hittest.ColumnIndex < 0)
+            {
+                return;
+            }
+            if(dgvDaftarLab.Rows[hittest.RowIndex].Cells["Parent"].Value.ToString() == "0")
+            {
+                MessageBox.Show("Drag di mata kuliah yang perlu prasyarat (baris berwarna putih)");
+                valueAdd = null;
+                return;
+            }
+
+            //Add Alokasi Lab
+            TreeGridNode nodeParent = dgvDaftarLab.Rows[hittest.RowIndex] as TreeGridNode;
+            TreeGridNode nodeChild = nodeParent.Nodes.Add(null, nodeParent.Cells["Ruang"].Value.ToString(), valueAdd.Kode, valueAdd.MataKuliah, valueAdd.JumlahKelas, "0");
+            nodeChild.DefaultCellStyle.BackColor = Color.LightGray;
+            valueAdd = null;
+        }
+
+        private void dgvMKPraktikum_MouseMove(object sender, MouseEventArgs e)
+        {
+            dragAndDropAdd.DragMove(e, dgvMKPraktikum, valueAdd);
+        }
+
+        private void dgvMKPraktikum_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hittest = dragAndDropAdd.DragMouseDownFirst(e, dgvMKPraktikum);
+            if (hittest == null)
+            {
+                return;
+            }
+
+            if (hittest.RowIndex < 0 || hittest.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            DataGridViewRow dgRow = dgvMKPraktikum.Rows[hittest.RowIndex];
+
+            valueAdd = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                KodeJurusan = kodeProgramDipilih,
+                IdProdi = idProdiDipilih,
+                Kode = dgRow.Cells["Kode"].Value.ToString(),
+                JumlahKelas = int.Parse(dgRow.Cells["JumlahKelas"].Value.ToString()),
+                MataKuliah = dgRow.Cells["MataKuliah"].Value.ToString()
+            };
+
+            dragAndDropAdd.DragMouseDownSecond(e, dgvDaftarLab, hittest, valueAdd);
+        }
+
+        private void dgvMKPraktikum_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMKPraktikum_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMKPraktikum_DragDrop(object sender, DragEventArgs e)
+        {
+            if (valueDelete == null)
+            {
+                return;
+            }
+            var hittest = dragAndDropDelete.DragDrop(e, dgvMKPraktikum);
+
+            int rowParent = valueDelete.RowCurrent;
+            int rowDel = valueDelete.RowChild;
+
+            //Delete Alokasi Lab
+            var nodeParent = dgvDaftarLab.GetNodeForRow(rowParent).Parent;
+            if(nodeParent.HasChildren)
+            {
+                nodeParent.Nodes.RemoveAt(rowDel);
+            }
+            valueDelete = null;
         }
     }
 }

@@ -471,7 +471,7 @@ namespace PenawaranKurikulum
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormAlokasiDosen";
-            this.Text = "Alokasi Dosen Mengajar (MK Wajib)";
+            this.Text = "Alokasi Dosen Mengajar";
             this.Load += new System.EventHandler(this.FormAlokasiDosen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);

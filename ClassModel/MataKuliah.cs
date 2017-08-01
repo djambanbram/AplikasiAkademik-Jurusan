@@ -73,5 +73,6 @@ namespace ClassModel
         public int SksPraktikum { get; set; }
         public string JenisMK { get; set; }
         public string DaftarKelasMK { get; set; }
+        public int JumlahKelas { get; set; }
     }
 }

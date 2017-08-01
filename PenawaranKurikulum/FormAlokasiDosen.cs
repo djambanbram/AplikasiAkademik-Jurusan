@@ -426,6 +426,8 @@ namespace PenawaranKurikulum
                     dgvDataDosen.Rows.Add(no, item.Nik, item.NamaDosen, item.Sks);
                     no++;
                 }
+
+                txtCariDosen_TextChanged(new object(), new EventArgs());
             }
             else
             {

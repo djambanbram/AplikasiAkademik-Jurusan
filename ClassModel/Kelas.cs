@@ -34,4 +34,10 @@ namespace ClassModel
         public string Kode { get; set; }
         public string MataKuliah { get; set; }
     }
+
+    public class MemberKelas : KelasCampuranAktif
+    {
+        public int Jumlahkelas { get; set; }
+        public string Ruang { get; set; }
+    }
 }

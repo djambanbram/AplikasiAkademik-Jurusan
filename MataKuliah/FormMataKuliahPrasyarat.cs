@@ -59,7 +59,7 @@ namespace MataKuliah
             dgvMKPrasyarat.Columns.Add(new TreeGridColumn() { Name = "Node", HeaderText = "", Width = 30 });
             dgvMKPrasyarat.Columns.Add(new DataGridViewTextBoxColumn() { Name = "tKode", HeaderText = "Kode", Width = 50 });
             dgvMKPrasyarat.Columns.Add(new DataGridViewTextBoxColumn() { Name = "tMataKuliah", HeaderText = "Mata Kuliah", Width = 350 });
-            dgvMKPrasyarat.Columns.Add(new DataGridViewTextBoxColumn() { Name = "tParent", HeaderText = "Parent", Width = 30 });
+            dgvMKPrasyarat.Columns.Add(new DataGridViewTextBoxColumn() { Name = "tParent", HeaderText = "Parent", Width = 30, Visible = false });
 
         }
 

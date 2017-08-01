@@ -50,6 +50,7 @@ namespace PenawaranKurikulum.DataBinding
                 m.SksPraktikum = item.SksPraktikum;
                 m.JenisMK = item.JenisMK;
                 m.DaftarKelasMK = item.DaftarKelasMK;
+                m.JumlahKelas = item.JumlahKelas;
                 listMKSudahDitawarkan.Add(m);
             }
             MataKuliah.listMataKuliahSudahDitawarkan = listMKSudahDitawarkan;

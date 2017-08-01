@@ -345,7 +345,7 @@ namespace PenawaranKurikulum
                 if (isMKSudahDiambil == 1)
                 {
                     DialogResult dr = MessageBox.Show(
-                        string.Format("Mata kuliah {0}({1}) sudah diambil oleh mahasiswa, apakah akan dihapus?", valueMKPrasyaratDelete.MataKuliah, Kode),
+                        string.Format("Mata kuliah {0} ({1}) sudah diambil oleh mahasiswa, apakah akan dihapus?", valueMKPrasyaratDelete.MataKuliah, valueMKPrasyaratDelete.Kode),
                         "Warning",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning);
@@ -501,7 +501,7 @@ namespace PenawaranKurikulum
                         if (isMKSudahDiambil == 1)
                         {
                             DialogResult dr = MessageBox.Show(
-                                string.Format("Mata kuliah {0}({1}) sudah diambil oleh mahasiswa, apakah akan dihapus?", valueMKPrasyaratDelete.MataKuliah, Kode),
+                                string.Format("Mata kuliah {0} ({1}) sudah diambil oleh mahasiswa, apakah akan dihapus?", MataKuliah, Kode),
                                 "Warning",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Warning);

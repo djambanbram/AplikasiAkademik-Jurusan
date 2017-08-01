@@ -57,6 +57,10 @@ namespace PenawaranKurikulum
             this.JumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDaftarLab = new AdvancedDataGridView.TreeGridView();
+            this.Node = new AdvancedDataGridView.TreeGridColumn();
+            this.Ruang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
@@ -291,14 +295,51 @@ namespace PenawaranKurikulum
             // 
             this.dgvDaftarLab.AllowUserToAddRows = false;
             this.dgvDaftarLab.AllowUserToDeleteRows = false;
+            this.dgvDaftarLab.AllowUserToResizeRows = false;
             this.dgvDaftarLab.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvDaftarLab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Node,
+            this.Ruang,
+            this.tKode,
+            this.tMataKuliah});
             this.dgvDaftarLab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDaftarLab.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDaftarLab.ImageList = null;
             this.dgvDaftarLab.Location = new System.Drawing.Point(3, 21);
             this.dgvDaftarLab.Name = "dgvDaftarLab";
+            this.dgvDaftarLab.RowHeadersVisible = false;
+            this.dgvDaftarLab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDaftarLab.Size = new System.Drawing.Size(410, 288);
             this.dgvDaftarLab.TabIndex = 0;
+            // 
+            // Node
+            // 
+            this.Node.DefaultNodeImage = null;
+            this.Node.HeaderText = "";
+            this.Node.Name = "Node";
+            this.Node.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Node.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Node.Width = 40;
+            // 
+            // Ruang
+            // 
+            this.Ruang.HeaderText = "Ruang";
+            this.Ruang.Name = "Ruang";
+            this.Ruang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // tKode
+            // 
+            this.tKode.HeaderText = "Kode";
+            this.tKode.Name = "tKode";
+            this.tKode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.tKode.Width = 80;
+            // 
+            // tMataKuliah
+            // 
+            this.tMataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tMataKuliah.HeaderText = "Mata Kuliah";
+            this.tMataKuliah.Name = "tMataKuliah";
+            this.tMataKuliah.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FormAlokasiLabMK
             // 
@@ -356,5 +397,9 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridViewTextBoxColumn SksPraktikum;
         private System.Windows.Forms.DataGridViewTextBoxColumn JumlahKelas;
         private AdvancedDataGridView.TreeGridView dgvDaftarLab;
+        private AdvancedDataGridView.TreeGridColumn Node;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ruang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tKode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tMataKuliah;
     }
 }

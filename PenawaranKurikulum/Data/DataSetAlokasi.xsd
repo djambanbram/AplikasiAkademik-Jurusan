@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetAlokasi" targetNamespace="http://tempuri.org/DataSetAlokasi.xsd" xmlns:mstns="http://tempuri.org/DataSetAlokasi.xsd" xmlns="http://tempuri.org/DataSetAlokasi.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetAlokasi" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetAlokasi" msprop:Generator_UserDSName="DataSetAlokasi">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MataKuliahDitawarkan" msprop:Generator_TableClassName="MataKuliahDitawarkanDataTable" msprop:Generator_TableVarName="tableMataKuliahDitawarkan" msprop:Generator_TablePropName="MataKuliahDitawarkan" msprop:Generator_RowDeletingName="MataKuliahDitawarkanRowDeleting" msprop:Generator_RowChangingName="MataKuliahDitawarkanRowChanging" msprop:Generator_RowEvHandlerName="MataKuliahDitawarkanRowChangeEventHandler" msprop:Generator_RowDeletedName="MataKuliahDitawarkanRowDeleted" msprop:Generator_UserTableName="MataKuliahDitawarkan" msprop:Generator_RowChangedName="MataKuliahDitawarkanRowChanged" msprop:Generator_RowEvArgName="MataKuliahDitawarkanRowChangeEvent" msprop:Generator_RowClassName="MataKuliahDitawarkanRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Kode" msprop:Generator_ColumnVarNameInTable="columnKode" msprop:Generator_ColumnPropNameInRow="Kode" msprop:Generator_ColumnPropNameInTable="KodeColumn" msprop:Generator_UserColumnName="Kode" type="xs:string" minOccurs="0" />
+              <xs:element name="MataKuliah" msprop:Generator_ColumnVarNameInTable="columnMataKuliah" msprop:Generator_ColumnPropNameInRow="MataKuliah" msprop:Generator_ColumnPropNameInTable="MataKuliahColumn" msprop:Generator_UserColumnName="MataKuliah" type="xs:string" minOccurs="0" />
+              <xs:element name="Angkatan" msprop:Generator_ColumnVarNameInTable="columnAngkatan" msprop:Generator_ColumnPropNameInRow="Angkatan" msprop:Generator_ColumnPropNameInTable="AngkatanColumn" msprop:Generator_UserColumnName="Angkatan" type="xs:string" minOccurs="0" />
+              <xs:element name="KodeSifatMK" msprop:Generator_ColumnVarNameInTable="columnKodeSifatMK" msprop:Generator_ColumnPropNameInRow="KodeSifatMK" msprop:Generator_ColumnPropNameInTable="KodeSifatMKColumn" msprop:Generator_UserColumnName="KodeSifatMK" type="xs:string" minOccurs="0" />
+              <xs:element name="SksTeori" msprop:Generator_ColumnVarNameInTable="columnSksTeori" msprop:Generator_ColumnPropNameInRow="SksTeori" msprop:Generator_ColumnPropNameInTable="SksTeoriColumn" msprop:Generator_UserColumnName="SksTeori" type="xs:string" minOccurs="0" />
+              <xs:element name="SksPraktikum" msprop:Generator_ColumnVarNameInTable="columnSksPraktikum" msprop:Generator_ColumnPropNameInRow="SksPraktikum" msprop:Generator_ColumnPropNameInTable="SksPraktikumColumn" msprop:Generator_UserColumnName="SksPraktikum" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

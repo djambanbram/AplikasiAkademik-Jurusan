@@ -248,7 +248,7 @@ namespace MainAplikasi
             this.menuItemSatuProgramAlokasiDosen,
             this.menuItemLintasProgramAlokasiDosen});
             this.menuAlokasiDosen.Name = "menuAlokasiDosen";
-            this.menuAlokasiDosen.Size = new System.Drawing.Size(155, 70);
+            this.menuAlokasiDosen.Size = new System.Drawing.Size(155, 48);
             // 
             // menuItemSatuProgramAlokasiDosen
             // 
@@ -268,10 +268,10 @@ namespace MainAplikasi
             // 
             this.menuLaporanMataKuliah.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.mataKuliahPrasyaratToolStripMenuItem});
+            this.mataKuliahPrasyaratToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.menuLaporanMataKuliah.Name = "menuAlokasiDosen";
-            this.menuLaporanMataKuliah.Size = new System.Drawing.Size(189, 70);
+            this.menuLaporanMataKuliah.Size = new System.Drawing.Size(189, 92);
             // 
             // toolStripMenuItem1
             // 
@@ -285,12 +285,14 @@ namespace MainAplikasi
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(188, 22);
             this.toolStripMenuItem2.Text = "Alokasi Mata Kuliah";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // mataKuliahPrasyaratToolStripMenuItem
             // 
             this.mataKuliahPrasyaratToolStripMenuItem.Name = "mataKuliahPrasyaratToolStripMenuItem";
             this.mataKuliahPrasyaratToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.mataKuliahPrasyaratToolStripMenuItem.Text = "Mata Kuliah Prasyarat";
+            this.mataKuliahPrasyaratToolStripMenuItem.Click += new System.EventHandler(this.mataKuliahPrasyaratToolStripMenuItem_Click);
             // 
             // FormMainAplikasi
             // 

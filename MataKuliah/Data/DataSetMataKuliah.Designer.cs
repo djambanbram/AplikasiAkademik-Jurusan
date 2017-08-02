@@ -26,6 +26,8 @@ namespace MataKuliah.Data {
         
         private DataMataKuliahDataTable tableDataMataKuliah;
         
+        private MKPrasyaratDataTable tableMKPrasyarat;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace MataKuliah.Data {
                 if ((ds.Tables["DataMataKuliah"] != null)) {
                     base.Tables.Add(new DataMataKuliahDataTable(ds.Tables["DataMataKuliah"]));
                 }
+                if ((ds.Tables["MKPrasyarat"] != null)) {
+                    base.Tables.Add(new MKPrasyaratDataTable(ds.Tables["MKPrasyarat"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace MataKuliah.Data {
         public DataMataKuliahDataTable DataMataKuliah {
             get {
                 return this.tableDataMataKuliah;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MKPrasyaratDataTable MKPrasyarat {
+            get {
+                return this.tableMKPrasyarat;
             }
         }
         
@@ -155,6 +170,9 @@ namespace MataKuliah.Data {
                 if ((ds.Tables["DataMataKuliah"] != null)) {
                     base.Tables.Add(new DataMataKuliahDataTable(ds.Tables["DataMataKuliah"]));
                 }
+                if ((ds.Tables["MKPrasyarat"] != null)) {
+                    base.Tables.Add(new MKPrasyaratDataTable(ds.Tables["MKPrasyarat"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace MataKuliah.Data {
                     this.tableDataMataKuliah.InitVars();
                 }
             }
+            this.tableMKPrasyarat = ((MKPrasyaratDataTable)(base.Tables["MKPrasyarat"]));
+            if ((initTable == true)) {
+                if ((this.tableMKPrasyarat != null)) {
+                    this.tableMKPrasyarat.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace MataKuliah.Data {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDataMataKuliah = new DataMataKuliahDataTable();
             base.Tables.Add(this.tableDataMataKuliah);
+            this.tableMKPrasyarat = new MKPrasyaratDataTable();
+            base.Tables.Add(this.tableMKPrasyarat);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeDataMataKuliah() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeMKPrasyarat() {
             return false;
         }
         
@@ -272,6 +304,9 @@ namespace MataKuliah.Data {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DataMataKuliahRowChangeEventHandler(object sender, DataMataKuliahRowChangeEvent e);
         
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void MKPrasyaratRowChangeEventHandler(object sender, MKPrasyaratRowChangeEvent e);
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
@@ -294,8 +329,6 @@ namespace MataKuliah.Data {
             private global::System.Data.DataColumn columnSifatMK;
             
             private global::System.Data.DataColumn columnKategoriMK;
-            
-            private global::System.Data.DataColumn columnNo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -396,14 +429,6 @@ namespace MataKuliah.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NoColumn {
-                get {
-                    return this.columnNo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -439,7 +464,7 @@ namespace MataKuliah.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataMataKuliahRow AddDataMataKuliahRow(string Kode, string MataKuliah, string MataKuliahEn, string Sks, string SksPraktikum, string SemesterDitawarkan, string SifatMK, string KategoriMK, string No) {
+            public DataMataKuliahRow AddDataMataKuliahRow(string Kode, string MataKuliah, string MataKuliahEn, string Sks, string SksPraktikum, string SemesterDitawarkan, string SifatMK, string KategoriMK) {
                 DataMataKuliahRow rowDataMataKuliahRow = ((DataMataKuliahRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Kode,
@@ -449,8 +474,7 @@ namespace MataKuliah.Data {
                         SksPraktikum,
                         SemesterDitawarkan,
                         SifatMK,
-                        KategoriMK,
-                        No};
+                        KategoriMK};
                 rowDataMataKuliahRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataMataKuliahRow);
                 return rowDataMataKuliahRow;
@@ -481,7 +505,6 @@ namespace MataKuliah.Data {
                 this.columnSemesterDitawarkan = base.Columns["SemesterDitawarkan"];
                 this.columnSifatMK = base.Columns["SifatMK"];
                 this.columnKategoriMK = base.Columns["KategoriMK"];
-                this.columnNo = base.Columns["No"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -503,8 +526,6 @@ namespace MataKuliah.Data {
                 base.Columns.Add(this.columnSifatMK);
                 this.columnKategoriMK = new global::System.Data.DataColumn("KategoriMK", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKategoriMK);
-                this.columnNo = new global::System.Data.DataColumn("No", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -591,6 +612,309 @@ namespace MataKuliah.Data {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DataMataKuliahDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MKPrasyaratDataTable : global::System.Data.TypedTableBase<MKPrasyaratRow> {
+            
+            private global::System.Data.DataColumn columnKode;
+            
+            private global::System.Data.DataColumn columnMataKuliah;
+            
+            private global::System.Data.DataColumn columnKodePrasyarat;
+            
+            private global::System.Data.DataColumn columnMataKuliahPrasyarat;
+            
+            private global::System.Data.DataColumn columnSks;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MKPrasyaratDataTable() {
+                this.TableName = "MKPrasyarat";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal MKPrasyaratDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected MKPrasyaratDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn KodeColumn {
+                get {
+                    return this.columnKode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MataKuliahColumn {
+                get {
+                    return this.columnMataKuliah;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn KodePrasyaratColumn {
+                get {
+                    return this.columnKodePrasyarat;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MataKuliahPrasyaratColumn {
+                get {
+                    return this.columnMataKuliahPrasyarat;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SksColumn {
+                get {
+                    return this.columnSks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MKPrasyaratRow this[int index] {
+                get {
+                    return ((MKPrasyaratRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MKPrasyaratRowChangeEventHandler MKPrasyaratRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MKPrasyaratRowChangeEventHandler MKPrasyaratRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MKPrasyaratRowChangeEventHandler MKPrasyaratRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MKPrasyaratRowChangeEventHandler MKPrasyaratRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddMKPrasyaratRow(MKPrasyaratRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MKPrasyaratRow AddMKPrasyaratRow(string Kode, string MataKuliah, string KodePrasyarat, string MataKuliahPrasyarat, string Sks) {
+                MKPrasyaratRow rowMKPrasyaratRow = ((MKPrasyaratRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Kode,
+                        MataKuliah,
+                        KodePrasyarat,
+                        MataKuliahPrasyarat,
+                        Sks};
+                rowMKPrasyaratRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMKPrasyaratRow);
+                return rowMKPrasyaratRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                MKPrasyaratDataTable cln = ((MKPrasyaratDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MKPrasyaratDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnKode = base.Columns["Kode"];
+                this.columnMataKuliah = base.Columns["MataKuliah"];
+                this.columnKodePrasyarat = base.Columns["KodePrasyarat"];
+                this.columnMataKuliahPrasyarat = base.Columns["MataKuliahPrasyarat"];
+                this.columnSks = base.Columns["Sks"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnKode = new global::System.Data.DataColumn("Kode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKode);
+                this.columnMataKuliah = new global::System.Data.DataColumn("MataKuliah", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMataKuliah);
+                this.columnKodePrasyarat = new global::System.Data.DataColumn("KodePrasyarat", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKodePrasyarat);
+                this.columnMataKuliahPrasyarat = new global::System.Data.DataColumn("MataKuliahPrasyarat", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMataKuliahPrasyarat);
+                this.columnSks = new global::System.Data.DataColumn("Sks", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSks);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MKPrasyaratRow NewMKPrasyaratRow() {
+                return ((MKPrasyaratRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MKPrasyaratRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(MKPrasyaratRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MKPrasyaratRowChanged != null)) {
+                    this.MKPrasyaratRowChanged(this, new MKPrasyaratRowChangeEvent(((MKPrasyaratRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MKPrasyaratRowChanging != null)) {
+                    this.MKPrasyaratRowChanging(this, new MKPrasyaratRowChangeEvent(((MKPrasyaratRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MKPrasyaratRowDeleted != null)) {
+                    this.MKPrasyaratRowDeleted(this, new MKPrasyaratRowChangeEvent(((MKPrasyaratRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MKPrasyaratRowDeleting != null)) {
+                    this.MKPrasyaratRowDeleting(this, new MKPrasyaratRowChangeEvent(((MKPrasyaratRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveMKPrasyaratRow(MKPrasyaratRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSetMataKuliah ds = new DataSetMataKuliah();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MKPrasyaratDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -775,22 +1099,6 @@ namespace MataKuliah.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string No {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataMataKuliah.NoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'No\' in table \'DataMataKuliah\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataMataKuliah.NoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsKodeNull() {
                 return this.IsNull(this.tableDataMataKuliah.KodeColumn);
             }
@@ -884,17 +1192,160 @@ namespace MataKuliah.Data {
             public void SetKategoriMKNull() {
                 this[this.tableDataMataKuliah.KategoriMKColumn] = global::System.Convert.DBNull;
             }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class MKPrasyaratRow : global::System.Data.DataRow {
+            
+            private MKPrasyaratDataTable tableMKPrasyarat;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNoNull() {
-                return this.IsNull(this.tableDataMataKuliah.NoColumn);
+            internal MKPrasyaratRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMKPrasyarat = ((MKPrasyaratDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNoNull() {
-                this[this.tableDataMataKuliah.NoColumn] = global::System.Convert.DBNull;
+            public string Kode {
+                get {
+                    try {
+                        return ((string)(this[this.tableMKPrasyarat.KodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kode\' in table \'MKPrasyarat\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMKPrasyarat.KodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MataKuliah {
+                get {
+                    try {
+                        return ((string)(this[this.tableMKPrasyarat.MataKuliahColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MataKuliah\' in table \'MKPrasyarat\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMKPrasyarat.MataKuliahColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string KodePrasyarat {
+                get {
+                    try {
+                        return ((string)(this[this.tableMKPrasyarat.KodePrasyaratColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KodePrasyarat\' in table \'MKPrasyarat\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMKPrasyarat.KodePrasyaratColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MataKuliahPrasyarat {
+                get {
+                    try {
+                        return ((string)(this[this.tableMKPrasyarat.MataKuliahPrasyaratColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MataKuliahPrasyarat\' in table \'MKPrasyarat\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMKPrasyarat.MataKuliahPrasyaratColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Sks {
+                get {
+                    try {
+                        return ((string)(this[this.tableMKPrasyarat.SksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Sks\' in table \'MKPrasyarat\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMKPrasyarat.SksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKodeNull() {
+                return this.IsNull(this.tableMKPrasyarat.KodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKodeNull() {
+                this[this.tableMKPrasyarat.KodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMataKuliahNull() {
+                return this.IsNull(this.tableMKPrasyarat.MataKuliahColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMataKuliahNull() {
+                this[this.tableMKPrasyarat.MataKuliahColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKodePrasyaratNull() {
+                return this.IsNull(this.tableMKPrasyarat.KodePrasyaratColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKodePrasyaratNull() {
+                this[this.tableMKPrasyarat.KodePrasyaratColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMataKuliahPrasyaratNull() {
+                return this.IsNull(this.tableMKPrasyarat.MataKuliahPrasyaratColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMataKuliahPrasyaratNull() {
+                this[this.tableMKPrasyarat.MataKuliahPrasyaratColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSksNull() {
+                return this.IsNull(this.tableMKPrasyarat.SksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSksNull() {
+                this[this.tableMKPrasyarat.SksColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -918,6 +1369,40 @@ namespace MataKuliah.Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataMataKuliahRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class MKPrasyaratRowChangeEvent : global::System.EventArgs {
+            
+            private MKPrasyaratRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MKPrasyaratRowChangeEvent(MKPrasyaratRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MKPrasyaratRow Row {
                 get {
                     return this.eventRow;
                 }

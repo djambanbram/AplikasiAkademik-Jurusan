@@ -111,6 +111,12 @@
     <Compile Include="Report\FormReportDataMK.Designer.cs">
       <DependentUpon>FormReportDataMK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\FormReportMKPrasyarat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormReportMKPrasyarat.Designer.cs">
+      <DependentUpon>FormReportMKPrasyarat.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DialogForm\FormMKPengganti.resx">
       <DependentUpon>FormMKPengganti.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,8 +136,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ReportView\ReportDataMK.rdlc" />
+    <EmbeddedResource Include="ReportView\ReportMKPrasyarat.rdlc" />
     <EmbeddedResource Include="Report\FormReportDataMK.resx">
       <DependentUpon>FormReportDataMK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormReportMKPrasyarat.resx">
+      <DependentUpon>FormReportMKPrasyarat.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\DataSetMataKuliah.xsc">
       <DependentUpon>DataSetMataKuliah.xsd</DependentUpon>

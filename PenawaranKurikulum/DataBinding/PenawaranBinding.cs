@@ -16,7 +16,7 @@ namespace PenawaranKurikulum.DataBinding
             foreach (var item in listSerialized)
             {
                 MataKuliahDitawarkan m = new MataKuliahDitawarkan();
-                m.SemesterDitawarkan = item.Semester;
+                m.SemesterDitawarkan = item.Semester == null ? 0 : item.Semester;
                 m.Angkatan = item.Angkatan;
                 m.Kode = item.Kode;
                 m.MataKuliah = item.MataKuliah;

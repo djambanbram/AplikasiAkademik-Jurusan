@@ -24,6 +24,7 @@ using ClassModel;
 using PenawaranKurikulum;
 using Syncfusion.Windows.Forms.Tools;
 using MataKuliah.Report;
+using PenawaranKurikulum.Report;
 
 namespace MainAplikasi
 {
@@ -40,7 +41,10 @@ namespace MainAplikasi
         private FormAlokasiMK formAlokasiMK;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
+
         private FormReportDataMK formReportDataMK;
+        private FormReportMKPrasyarat formReportMKPrasyarat;
+        private FormReportAlokasiMK formReportAlokasiMK;
 
         private HttpResponseMessage response;
 
@@ -184,6 +188,28 @@ namespace MainAplikasi
             }
             formReportDataMK.Show();
             tabbedMDIManager1.UpdateActiveTabHost(formReportDataMK);
+        }
+
+        private void mataKuliahPrasyaratToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formReportMKPrasyarat == null || formReportMKPrasyarat.IsDisposed)
+            {
+                formReportMKPrasyarat = new FormReportMKPrasyarat();
+                formReportMKPrasyarat.MdiParent = this;
+            }
+            formReportMKPrasyarat.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formReportMKPrasyarat);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (formReportAlokasiMK == null || formReportAlokasiMK.IsDisposed)
+            {
+                formReportAlokasiMK = new FormReportAlokasiMK();
+                formReportAlokasiMK.MdiParent = this;
+            }
+            formReportAlokasiMK.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formReportAlokasiMK);
         }
     }
 }

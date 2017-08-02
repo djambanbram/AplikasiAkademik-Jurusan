@@ -47,6 +47,8 @@ namespace PenawaranKurikulum
             this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvDaftarLab = new AdvancedDataGridView.TreeGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvMKPraktikum = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,13 +57,16 @@ namespace PenawaranKurikulum
             this.SksT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvDaftarLab = new AdvancedDataGridView.TreeGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ubahJumlahKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Node = new AdvancedDataGridView.TreeGridColumn();
             this.Ruang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tJumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeProgram = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaProgram = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Parent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
@@ -73,10 +78,11 @@ namespace PenawaranKurikulum
             this.splitContainerAdv1.Panel1.SuspendLayout();
             this.splitContainerAdv1.Panel2.SuspendLayout();
             this.splitContainerAdv1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMKPraktikum)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDaftarLab)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKPraktikum)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -88,14 +94,14 @@ namespace PenawaranKurikulum
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 415);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(845, 38);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1037, 38);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
             // btnTutup
             // 
             this.btnTutup.BeforeTouchSize = new System.Drawing.Size(113, 30);
             this.btnTutup.IsBackStageButton = false;
-            this.btnTutup.Location = new System.Drawing.Point(729, 4);
+            this.btnTutup.Location = new System.Drawing.Point(921, 4);
             this.btnTutup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTutup.Name = "btnTutup";
             this.btnTutup.Size = new System.Drawing.Size(113, 30);
@@ -105,7 +111,7 @@ namespace PenawaranKurikulum
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(440, 3);
+            this.progressBar1.Location = new System.Drawing.Point(632, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(283, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -124,7 +130,7 @@ namespace PenawaranKurikulum
             this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(845, 103);
+            this.gradientPanel2.Size = new System.Drawing.Size(1037, 103);
             this.gradientPanel2.TabIndex = 11;
             // 
             // autoLabel2
@@ -200,10 +206,56 @@ namespace PenawaranKurikulum
             // splitContainerAdv1.Panel2
             // 
             this.splitContainerAdv1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainerAdv1.Size = new System.Drawing.Size(845, 312);
-            this.splitContainerAdv1.SplitterDistance = 422;
+            this.splitContainerAdv1.Size = new System.Drawing.Size(1037, 312);
+            this.splitContainerAdv1.SplitterDistance = 517;
             this.splitContainerAdv1.TabIndex = 13;
             this.splitContainerAdv1.Text = "splitContainerAdv1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvDaftarLab);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(517, 312);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Daftar Lab";
+            // 
+            // dgvDaftarLab
+            // 
+            this.dgvDaftarLab.AllowDrop = true;
+            this.dgvDaftarLab.AllowUserToAddRows = false;
+            this.dgvDaftarLab.AllowUserToDeleteRows = false;
+            this.dgvDaftarLab.AllowUserToResizeRows = false;
+            this.dgvDaftarLab.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvDaftarLab.ColumnHeadersHeight = 50;
+            this.dgvDaftarLab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Node,
+            this.Ruang,
+            this.tKode,
+            this.tMataKuliah,
+            this.tJumlahKelas,
+            this.TotalKelas,
+            this.KodeProgram,
+            this.NamaProgram,
+            this.Parent});
+            this.dgvDaftarLab.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvDaftarLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDaftarLab.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvDaftarLab.ImageList = null;
+            this.dgvDaftarLab.Location = new System.Drawing.Point(3, 21);
+            this.dgvDaftarLab.MultiSelect = false;
+            this.dgvDaftarLab.Name = "dgvDaftarLab";
+            this.dgvDaftarLab.RowHeadersVisible = false;
+            this.dgvDaftarLab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDaftarLab.Size = new System.Drawing.Size(511, 288);
+            this.dgvDaftarLab.TabIndex = 0;
+            this.dgvDaftarLab.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDaftarLab_DragDrop);
+            this.dgvDaftarLab.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDaftarLab_DragEnter);
+            this.dgvDaftarLab.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvDaftarLab_DragOver);
+            this.dgvDaftarLab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvDaftarLab_MouseDown);
+            this.dgvDaftarLab.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvDaftarLab_MouseMove);
             // 
             // groupBox1
             // 
@@ -211,7 +263,7 @@ namespace PenawaranKurikulum
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(416, 312);
+            this.groupBox1.Size = new System.Drawing.Size(513, 312);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mata Kuliah Praktikum";
@@ -233,11 +285,12 @@ namespace PenawaranKurikulum
             this.JumlahKelas});
             this.dgvMKPraktikum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMKPraktikum.Location = new System.Drawing.Point(3, 21);
+            this.dgvMKPraktikum.MultiSelect = false;
             this.dgvMKPraktikum.Name = "dgvMKPraktikum";
             this.dgvMKPraktikum.ReadOnly = true;
             this.dgvMKPraktikum.RowHeadersVisible = false;
             this.dgvMKPraktikum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMKPraktikum.Size = new System.Drawing.Size(410, 288);
+            this.dgvMKPraktikum.Size = new System.Drawing.Size(507, 288);
             this.dgvMKPraktikum.TabIndex = 11;
             this.dgvMKPraktikum.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMKPraktikum_DragDrop);
             this.dgvMKPraktikum.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMKPraktikum_DragEnter);
@@ -288,46 +341,19 @@ namespace PenawaranKurikulum
             this.JumlahKelas.ReadOnly = true;
             this.JumlahKelas.Width = 50;
             // 
-            // groupBox2
+            // contextMenuStrip1
             // 
-            this.groupBox2.Controls.Add(this.dgvDaftarLab);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(422, 312);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Daftar Lab";
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ubahJumlahKelasToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 26);
             // 
-            // dgvDaftarLab
+            // ubahJumlahKelasToolStripMenuItem
             // 
-            this.dgvDaftarLab.AllowDrop = true;
-            this.dgvDaftarLab.AllowUserToAddRows = false;
-            this.dgvDaftarLab.AllowUserToDeleteRows = false;
-            this.dgvDaftarLab.AllowUserToResizeRows = false;
-            this.dgvDaftarLab.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvDaftarLab.ColumnHeadersHeight = 50;
-            this.dgvDaftarLab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Node,
-            this.Ruang,
-            this.tKode,
-            this.tMataKuliah,
-            this.tJumlahKelas,
-            this.Parent});
-            this.dgvDaftarLab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDaftarLab.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvDaftarLab.ImageList = null;
-            this.dgvDaftarLab.Location = new System.Drawing.Point(3, 21);
-            this.dgvDaftarLab.Name = "dgvDaftarLab";
-            this.dgvDaftarLab.RowHeadersVisible = false;
-            this.dgvDaftarLab.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDaftarLab.Size = new System.Drawing.Size(416, 288);
-            this.dgvDaftarLab.TabIndex = 0;
-            this.dgvDaftarLab.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvDaftarLab_DragDrop);
-            this.dgvDaftarLab.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDaftarLab_DragEnter);
-            this.dgvDaftarLab.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvDaftarLab_DragOver);
-            this.dgvDaftarLab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvDaftarLab_MouseDown);
-            this.dgvDaftarLab.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvDaftarLab_MouseMove);
+            this.ubahJumlahKelasToolStripMenuItem.Name = "ubahJumlahKelasToolStripMenuItem";
+            this.ubahJumlahKelasToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ubahJumlahKelasToolStripMenuItem.Text = "Ubah Jumlah Kelas";
+            this.ubahJumlahKelasToolStripMenuItem.Click += new System.EventHandler(this.ubahJumlahKelasToolStripMenuItem_Click);
             // 
             // Node
             // 
@@ -336,7 +362,7 @@ namespace PenawaranKurikulum
             this.Node.Name = "Node";
             this.Node.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Node.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Node.Width = 40;
+            this.Node.Width = 25;
             // 
             // Ruang
             // 
@@ -366,6 +392,27 @@ namespace PenawaranKurikulum
             this.tJumlahKelas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.tJumlahKelas.Width = 60;
             // 
+            // TotalKelas
+            // 
+            this.TotalKelas.HeaderText = "Total Kelas";
+            this.TotalKelas.Name = "TotalKelas";
+            this.TotalKelas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TotalKelas.Visible = false;
+            // 
+            // KodeProgram
+            // 
+            this.KodeProgram.HeaderText = "Kode Program";
+            this.KodeProgram.Name = "KodeProgram";
+            this.KodeProgram.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.KodeProgram.Visible = false;
+            // 
+            // NamaProgram
+            // 
+            this.NamaProgram.HeaderText = "Nama Program";
+            this.NamaProgram.Name = "NamaProgram";
+            this.NamaProgram.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NamaProgram.Width = 150;
+            // 
             // Parent
             // 
             this.Parent.HeaderText = "Parent";
@@ -378,7 +425,7 @@ namespace PenawaranKurikulum
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(845, 453);
+            this.ClientSize = new System.Drawing.Size(1037, 453);
             this.Controls.Add(this.splitContainerAdv1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gradientPanel2);
@@ -398,10 +445,11 @@ namespace PenawaranKurikulum
             this.splitContainerAdv1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAdv1)).EndInit();
             this.splitContainerAdv1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMKPraktikum)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDaftarLab)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKPraktikum)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -429,11 +477,16 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridViewTextBoxColumn SksPraktikum;
         private System.Windows.Forms.DataGridViewTextBoxColumn JumlahKelas;
         private AdvancedDataGridView.TreeGridView dgvDaftarLab;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ubahJumlahKelasToolStripMenuItem;
         private AdvancedDataGridView.TreeGridColumn Node;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ruang;
         private System.Windows.Forms.DataGridViewTextBoxColumn tKode;
         private System.Windows.Forms.DataGridViewTextBoxColumn tMataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn tJumlahKelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalKelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KodeProgram;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaProgram;
         private System.Windows.Forms.DataGridViewTextBoxColumn Parent;
     }
 }

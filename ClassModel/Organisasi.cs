@@ -13,6 +13,14 @@ namespace ClassModel
         public static List<Fakultas> listFakultas;
     }
 
+    public class Department
+    {
+        public string KodeDepartment { get; set; }
+        public string NamaDepartment { get; set; }
+        public string NikKepala { get; set; }
+        public string NamaKepala { get; set; }
+    }
+
     public class Program
     {
         public string KodeProgram { get; set; }
@@ -26,6 +34,7 @@ namespace ClassModel
         public string IdProdi { get; set; }
         public string NamaProdi { get; set; }
         public string Jenjang { get; set; }
+        public string KodeProgramReguler { get; set; }
         public Fakultas Fakultas { get; set; }
     }
 

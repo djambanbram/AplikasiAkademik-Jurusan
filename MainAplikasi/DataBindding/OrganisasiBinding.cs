@@ -24,7 +24,7 @@ namespace MataKuliah.DataBindding
                 Program p = new Program();
                 p.KodeProgram = item.KodeProgram;
                 p.NamaProgram = item.NamaProgram;
-                p.Prodi = new Prodi() { Uid = item.Uid, IdProdi = item.IdProdi, NamaProdi = item.NamaProdi, Jenjang = item.Jenjang };
+                p.Prodi = new Prodi() { Uid = item.Uid, IdProdi = item.IdProdi, NamaProdi = item.NamaProdi, Jenjang = item.Jenjang, KodeProgramReguler = item.KodeProgramReguler };
                 p.Prodi.Fakultas = new Fakultas() { KodeFakultas = item.KodeFakultas, NamaFakultas = item.NamaFakultas };
                 listProgram.Add(p);
                 listProgram = listProgram.OrderBy(pr2 => pr2.Prodi.Jenjang).OrderBy(pr2 => pr2.NamaProgram).ToList();
@@ -37,6 +37,7 @@ namespace MataKuliah.DataBindding
                 p.IdProdi = program.Prodi.IdProdi;
                 p.Jenjang = program.Prodi.Jenjang;
                 p.NamaProdi = string.Format("{0} - {1}", program.Prodi.NamaProdi.Split(';')[0], program.Prodi.Jenjang);
+                p.KodeProgramReguler = program.Prodi.KodeProgramReguler;
                 listProdi.Add(p);
                 listProdi = listProdi.OrderBy(pr1 => pr1.Jenjang).OrderBy(pr2 => pr2.NamaProdi).ToList();
 

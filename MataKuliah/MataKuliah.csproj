@@ -41,6 +41,8 @@
     <Reference Include="ExpandableGridView">
       <HintPath>..\dll Lib\ExpandableGridView.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -59,6 +61,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +78,11 @@
   <ItemGroup>
     <Compile Include="DataBinding\ClassBinding.cs" />
     <Compile Include="DataBinding\MataKuliahBinding.cs" />
+    <Compile Include="Data\DataSetMataKuliah.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetMataKuliah.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DialogForm\FormMKPengganti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +105,12 @@
     <Compile Include="Lib\DragandDrop.cs" />
     <Compile Include="Listener\IMataKuliah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\FormReportDataMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormReportDataMK.Designer.cs">
+      <DependentUpon>FormReportDataMK.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DialogForm\FormMKPengganti.resx">
       <DependentUpon>FormMKPengganti.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +129,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReportView\ReportDataMK.rdlc" />
+    <EmbeddedResource Include="Report\FormReportDataMK.resx">
+      <DependentUpon>FormReportDataMK.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\DataSetMataKuliah.xsc">
+      <DependentUpon>DataSetMataKuliah.xsd</DependentUpon>
+    </None>
+    <None Include="Data\DataSetMataKuliah.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetMataKuliah.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\DataSetMataKuliah.xss">
+      <DependentUpon>DataSetMataKuliah.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

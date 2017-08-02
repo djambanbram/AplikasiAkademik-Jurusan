@@ -37,7 +37,10 @@ namespace ClassModel
 
     public class MemberKelas : KelasCampuranAktif
     {
+        public string KodeProgram { get; set; }
+        public string NamaProgram { get; set; }
         public int JumlahKelas { get; set; }
+        public int TotalKelas { get; set; }
         public string Ruang { get; set; }
     }
 }

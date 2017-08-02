@@ -20,9 +20,9 @@ namespace PenawaranKurikulum.Dialog
 {
     public partial class DialogSetDosenKelas : Syncfusion.Windows.Forms.MetroForm
     {
-        private IRefreshAlokasi iRefreshAlokasi;
+        private IRefreshAlokasiDosen iRefreshAlokasi;
 
-        public DialogSetDosenKelas(IRefreshAlokasi iRefreshAlokasi, List<KelasAktif> listKelasAktif, dynamic data)
+        public DialogSetDosenKelas(IRefreshAlokasiDosen iRefreshAlokasi, List<KelasAktif> listKelasAktif, dynamic data)
         {
             InitializeComponent();
 

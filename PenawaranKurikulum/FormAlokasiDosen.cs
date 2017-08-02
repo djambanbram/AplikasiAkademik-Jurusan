@@ -27,7 +27,7 @@ using static System.Windows.Forms.DataGridView;
 
 namespace PenawaranKurikulum
 {
-    public partial class FormAlokasiDosen : Syncfusion.Windows.Forms.MetroForm, IRefreshAlokasi
+    public partial class FormAlokasiDosen : Syncfusion.Windows.Forms.MetroForm, IRefreshAlokasiDosen
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMKSudahDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan";

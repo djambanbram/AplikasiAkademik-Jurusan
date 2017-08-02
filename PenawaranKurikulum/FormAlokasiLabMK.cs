@@ -10,7 +10,9 @@ using ApiService;
 using ClassModel;
 using Newtonsoft.Json;
 using PenawaranKurikulum.DataBinding;
+using PenawaranKurikulum.Dialog;
 using PenawaranKurikulum.Lib;
+using PenawaranKurikulum.Listener;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,16 +22,20 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PenawaranKurikulum
 {
-    public partial class FormAlokasiLabMK : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormAlokasiLabMK : Syncfusion.Windows.Forms.MetroForm, IRefreshAlokasiRuang
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMKSudahDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan";
         private string URLGetRuangan = baseAddress + "/jurusan_api/api/kelas/get_ruangan";
-        private string URLGetMemberRuangan = baseAddress + "/jurusan_api/api/kelas/get_member_ruangan";
+        private string URLGetMemberRuangan = baseAddress + "/jurusan_api/api/kelas/get_member_lab";
+        private string URLSaveMemberRuangan = baseAddress + "/jurusan_api/api/kelas/save_member_lab";
+        private string URLDelMemberRuangan = baseAddress + "/jurusan_api/api/kelas/del_member_lab";
+        private string URLUpdateMemberRuangan = baseAddress + "/jurusan_api/api/kelas/update_member_lab";
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -37,6 +43,7 @@ namespace PenawaranKurikulum
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
         private List<Program> listProgram;
+        private List<MemberKelas> listMemberRuangan;
 
         private string kodeProgramDipilih;
         private string idProdiDipilih;
@@ -46,6 +53,7 @@ namespace PenawaranKurikulum
 
         private dynamic valueAdd;
         private dynamic valueDelete;
+        private dynamic valueUpdate;
 
         public FormAlokasiLabMK()
         {
@@ -122,70 +130,81 @@ namespace PenawaranKurikulum
 
                 string jsonData = JsonConvert.SerializeObject(data);
 
-                //Load Mata Kuliah
-                response = await webApi.Post(URLGetMKSudahDitawarkan, jsonData, true);
-                if (response.IsSuccessStatusCode)
-                {
-                    List<dynamic> oListMkSudahDitawarkan = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                    MataKuliahSudahDitawarkanBinding mkBinding = new MataKuliahSudahDitawarkanBinding(oListMkSudahDitawarkan);
-                    dgvMKPraktikum.Rows.Clear();
-                    List<MataKuliahDitawarkan> tempList = new List<MataKuliahDitawarkan>(ClassModel.MataKuliah.listMataKuliahSudahDitawarkan);
-                    int no = 1;
-                    foreach (MataKuliahDitawarkan mk in tempList.Where(mktsd => mktsd.SksPraktikum != 0).ToList())
-                    {
-                        dgvMKPraktikum.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.SksTeori, mk.SksPraktikum, mk.JumlahKelas);
-                        no++;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(webApi.ReturnMessage(response));
-                }
-
-                //Load Ruangan
-                response = await webApi.Post(URLGetRuangan, string.Empty, true);
-                dgvDaftarLab.Nodes.Clear();
-                if (response.IsSuccessStatusCode)
-                {
-                    List<dynamic> listRuangan = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-                    listRuangan = listRuangan.Where(r => r.IsDipakaiPraktikum == 1).ToList();
-                    foreach (var item in listRuangan)
-                    {
-                        dgvDaftarLab.Nodes.Add(null, item.Ruang, null, null, null, "1");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(webApi.ReturnMessage(response));
-                }
-
-                //Load member ruangan
-                response = await webApi.Post(URLGetMemberRuangan, jsonData, true);
-                if (response.IsSuccessStatusCode)
-                {
-                    List<MemberKelas> listMemberRuangan = JsonConvert.DeserializeObject<List<MemberKelas>>(response.Content.ReadAsStringAsync().Result);
-                    foreach (TreeGridNode tgn in dgvDaftarLab.Nodes)
-                    {
-                        int i = 0;
-                        foreach (var item in listMemberRuangan)
-                        {
-                            if (tgn.Cells["Ruang"].Value.ToString() == item.Ruang)
-                            {
-                                tgn.Nodes.Add(null, item.Ruang, item.Kode, item.MataKuliah, item.JumlahKelas, "0");
-                                tgn.Nodes[i].DefaultCellStyle.BackColor = Color.LightGray;
-                                i++;
-                            }
-                        }
-                        tgn.Expand();
-                        i = 0;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(webApi.ReturnMessage(response)); ;
-                }
+                await LoadMK(jsonData);
+                await LoadLabDanMember(jsonData);
 
                 Loading(false);
+            }
+        }
+
+        private async Task LoadMK(string jsonData)
+        {
+
+            //Load Mata Kuliah
+            response = await webApi.Post(URLGetMKSudahDitawarkan, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                List<dynamic> oListMkSudahDitawarkan = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                MataKuliahSudahDitawarkanBinding mkBinding = new MataKuliahSudahDitawarkanBinding(oListMkSudahDitawarkan);
+                dgvMKPraktikum.Rows.Clear();
+                List<MataKuliahDitawarkan> tempList = new List<MataKuliahDitawarkan>(ClassModel.MataKuliah.listMataKuliahSudahDitawarkan);
+                int no = 1;
+                foreach (MataKuliahDitawarkan mk in tempList.Where(mktsd => mktsd.SksPraktikum != 0).ToList())
+                {
+                    dgvMKPraktikum.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.SksTeori, mk.SksPraktikum, mk.JumlahKelas);
+                    no++;
+                }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+        }
+
+        private async Task LoadLabDanMember(string jsonData)
+        {
+
+            //Load Ruangan
+            response = await webApi.Post(URLGetRuangan, string.Empty, true);
+            dgvDaftarLab.Nodes.Clear();
+            if (response.IsSuccessStatusCode)
+            {
+                List<dynamic> listRuangan = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                listRuangan = listRuangan.Where(r => r.IsDipakaiPraktikum == 1).ToList();
+                foreach (var item in listRuangan)
+                {
+                    dgvDaftarLab.Nodes.Add(null, item.Ruang, null, null, null, null, null, null, "1");
+                }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+
+            //Load member ruangan
+            response = await webApi.Post(URLGetMemberRuangan, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                listMemberRuangan = JsonConvert.DeserializeObject<List<MemberKelas>>(response.Content.ReadAsStringAsync().Result);
+                foreach (TreeGridNode tgn in dgvDaftarLab.Nodes)
+                {
+                    int i = 0;
+                    foreach (var item in listMemberRuangan)
+                    {
+                        if (tgn.Cells["Ruang"].Value.ToString() == item.Ruang)
+                        {
+                            tgn.Nodes.Add(null, null, item.Kode, item.MataKuliah, item.JumlahKelas, item.TotalKelas, item.KodeProgram, item.NamaProgram, "0");
+                            tgn.Nodes[i].DefaultCellStyle.BackColor = Color.LightGray;
+                            i++;
+                        }
+                    }
+                    tgn.Expand();
+                    i = 0;
+                }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response)); ;
             }
         }
 
@@ -196,6 +215,42 @@ namespace PenawaranKurikulum
 
         private void dgvDaftarLab_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hittestRightClick = dgvDaftarLab.HitTest(e.X, e.Y);
+                if (hittestRightClick.ColumnIndex < 0 || hittestRightClick.RowIndex < 0)
+                {
+                    contextMenuStrip1.Items[0].Enabled = false;
+                    return;
+                }
+                if (dgvDaftarLab.Rows[hittestRightClick.RowIndex].Cells["Parent"].Value.ToString() == "1")
+                {
+                    contextMenuStrip1.Items[0].Enabled = false;
+                    return;
+                }
+
+                contextMenuStrip1.Items[0].Enabled = true;
+                DataGridViewRow dgvRow = dgvDaftarLab.Rows[hittestRightClick.RowIndex];
+                string kode = dgvRow.Cells["tKode"].Value.ToString();
+                string ruang = dgvDaftarLab.GetNodeForRow(hittestRightClick.RowIndex).Parent.Cells["Ruang"].Value.ToString();
+                string mataKuliah = dgvRow.Cells["tMataKuliah"].Value.ToString();
+                string totalKelas = dgvRow.Cells["TotalKelas"].Value.ToString();
+                string jmlKelas = dgvRow.Cells["tJumlahKelas"].Value.ToString();
+                string namaProgram = dgvRow.Cells["NamaProgram"].Value.ToString();
+
+                valueUpdate = new
+                {
+                    kode,
+                    ruang,
+                    mataKuliah,
+                    totalKelas,
+                    jmlKelas,
+                    namaProgram
+                };
+                return;
+            }
+
+
             var hittest = dragAndDropDelete.DragMouseDownFirst(e, dgvDaftarLab);
             if (hittest == null)
             {
@@ -222,7 +277,7 @@ namespace PenawaranKurikulum
                 KodeJurusan = kodeProgramDipilih,
                 IdProdi = idProdiDipilih,
                 Kode = dgRow.Cells["tKode"].Value.ToString(),
-                Ruang = dgRow.Cells["Ruang"].Value.ToString(),
+                Ruang = dgRow.Parent.Cells["Ruang"].Value.ToString(),
                 JumlahKelas = dgRow.Cells["tJumlahKelas"].Value.ToString(),
                 RowChild = dgRow.Parent.Nodes.IndexOf(dgRow),
                 RowCurrent = hittest.RowIndex
@@ -256,17 +311,25 @@ namespace PenawaranKurikulum
             {
                 return;
             }
-            if(dgvDaftarLab.Rows[hittest.RowIndex].Cells["Parent"].Value.ToString() == "0")
+            if (dgvDaftarLab.Rows[hittest.RowIndex].Cells["Parent"].Value.ToString() == "0")
             {
                 MessageBox.Show("Drag di mata kuliah yang perlu prasyarat (baris berwarna putih)");
                 valueAdd = null;
                 return;
             }
 
-            //Add Alokasi Lab
             TreeGridNode nodeParent = dgvDaftarLab.Rows[hittest.RowIndex] as TreeGridNode;
-            TreeGridNode nodeChild = nodeParent.Nodes.Add(null, nodeParent.Cells["Ruang"].Value.ToString(), valueAdd.Kode, valueAdd.MataKuliah, valueAdd.JumlahKelas, "0");
-            nodeChild.DefaultCellStyle.BackColor = Color.LightGray;
+            using (var dialogSetJumlahKelas = new DialogSetJumlahKelas(listMemberRuangan,
+                nodeParent.Cells["Ruang"].Value.ToString(),
+                valueAdd.Kode,
+                valueAdd.MataKuliah,
+                valueAdd.JumlahKelas,
+                cmbProgram.Text,
+                this
+                ))
+            {
+                dialogSetJumlahKelas.ShowDialog(this);
+            }
             valueAdd = null;
         }
 
@@ -314,7 +377,7 @@ namespace PenawaranKurikulum
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void dgvMKPraktikum_DragDrop(object sender, DragEventArgs e)
+        private async void dgvMKPraktikum_DragDrop(object sender, DragEventArgs e)
         {
             if (valueDelete == null)
             {
@@ -326,12 +389,86 @@ namespace PenawaranKurikulum
             int rowDel = valueDelete.RowChild;
 
             //Delete Alokasi Lab
-            var nodeParent = dgvDaftarLab.GetNodeForRow(rowParent).Parent;
-            if(nodeParent.HasChildren)
+
+            string jsonData = JsonConvert.SerializeObject(valueDelete);
+            response = await webApi.Post(URLDelMemberRuangan, jsonData, true);
+            if (response.IsSuccessStatusCode)
             {
-                nodeParent.Nodes.RemoveAt(rowDel);
+                var nodeParent = dgvDaftarLab.GetNodeForRow(rowParent).Parent;
+                if (nodeParent.HasChildren)
+                {
+                    nodeParent.Nodes.RemoveAt(rowDel);
+                }
             }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+
+            await LoadLabDanMember(jsonData);
             valueDelete = null;
+        }
+
+        public async void saveJumlahKelas(string ruang, int jumlahKelas, string kode)
+        {
+            var dataSave = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                KodeJurusan = kodeProgramDipilih,
+                IdProdi = idProdiDipilih,
+                Ruang = ruang,
+                JumlahKelas = jumlahKelas,
+                Kode = kode
+            };
+            string jsonData = JsonConvert.SerializeObject(dataSave);
+
+            response = await webApi.Post(URLSaveMemberRuangan, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+
+            await LoadLabDanMember(jsonData);
+
+            valueAdd = null;
+            Loading(false);
+        }
+
+        public async void updateJumlahKelas(string ruang, int jumlahKelas, string kode)
+        {
+            var dataSave = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                KodeJurusan = kodeProgramDipilih,
+                IdProdi = idProdiDipilih,
+                Ruang = ruang,
+                JumlahKelas = jumlahKelas,
+                Kode = kode
+            };
+            string jsonData = JsonConvert.SerializeObject(dataSave);
+
+            response = await webApi.Post(URLUpdateMemberRuangan, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+
+            await LoadLabDanMember(jsonData);
+        }
+
+        private void ubahJumlahKelasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(valueUpdate == null)
+            {
+                return;
+            }
+
+            using (var dialogSetJumlahKelas = new DialogSetJumlahKelas(valueUpdate.ruang, valueUpdate.kode, valueUpdate.mataKuliah, int.Parse(valueUpdate.totalKelas), int.Parse(valueUpdate.jmlKelas), valueUpdate.namaProgram, this))
+            {
+                dialogSetJumlahKelas.ShowDialog(this);
+            }
         }
     }
 }

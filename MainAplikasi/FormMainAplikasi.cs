@@ -23,6 +23,7 @@ using System.Configuration;
 using ClassModel;
 using PenawaranKurikulum;
 using Syncfusion.Windows.Forms.Tools;
+using MataKuliah.Report;
 
 namespace MainAplikasi
 {
@@ -39,6 +40,7 @@ namespace MainAplikasi
         private FormAlokasiMK formAlokasiMK;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
+        private FormReportDataMK formReportDataMK;
 
         private HttpResponseMessage response;
 
@@ -67,12 +69,6 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemKelasCampuran")
             {
-                //if (formKelasCampuran == null || formKelasCampuran.IsDisposed)
-                //{
-                //    formKelasCampuran = new FormKelasCampuran();
-                //    formKelasCampuran.MdiParent = this;
-                //}
-                //    form = formKelasCampuran;
                 XPTaskBarItem item = e.XPTaskBarItem;
                 menuKelasCampuran.Show(item.Parent as Control, new Point(item.Bounds.Width, item.Bounds.Y));
             }
@@ -105,12 +101,6 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiDosen")
             {
-                //if (formAlokasiDosen == null || formAlokasiDosen.IsDisposed)
-                //{
-                //    formAlokasiDosen = new FormAlokasiDosen();
-                //    formAlokasiDosen.MdiParent = this;
-                //}
-                //form = formAlokasiDosen;
                 XPTaskBarItem item = e.XPTaskBarItem;
                 menuAlokasiDosen.Show(item.Parent as Control, new Point(item.Bounds.Width, item.Bounds.Y));
             }
@@ -122,6 +112,11 @@ namespace MainAplikasi
                     formAlokasiLabMK.MdiParent = this;
                 }
                 form = formAlokasiLabMK;
+            }
+            else if (e.XPTaskBarItem.Name == "itemLaporanMK")
+            {
+                XPTaskBarItem item = e.XPTaskBarItem;
+                menuLaporanMataKuliah.Show(item.Parent as Control, new Point(item.Bounds.Width, item.Bounds.Y));
             }
             else if (e.XPTaskBarItem.Name == "itemKeluar")
             {
@@ -178,6 +173,17 @@ namespace MainAplikasi
             }
             formAlokasiDosen.Show();
             tabbedMDIManager1.UpdateActiveTabHost(formAlokasiDosen);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (formReportDataMK == null || formReportDataMK.IsDisposed)
+            {
+                formReportDataMK = new FormReportDataMK();
+                formReportDataMK.MdiParent = this;
+            }
+            formReportDataMK.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formReportDataMK);
         }
     }
 }

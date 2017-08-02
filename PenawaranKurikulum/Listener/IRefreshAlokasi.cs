@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace PenawaranKurikulum.Listener
 {
-    public interface IRefreshAlokasi
+    public interface IRefreshAlokasiDosen
     {
         void saveMultiKelas(List<int> listIdKelas);
+    }
+
+    public interface IRefreshAlokasiRuang
+    {
+        void saveJumlahKelas(string ruang, int jumlahKelas, string kode);
+        void updateJumlahKelas(string ruang, int jumlahKelas, string kode);
     }
 }

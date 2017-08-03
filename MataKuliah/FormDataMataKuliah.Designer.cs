@@ -223,6 +223,7 @@ namespace MataKuliah
             this.dgvMataKuliah.Size = new System.Drawing.Size(944, 112);
             this.dgvMataKuliah.TabIndex = 0;
             this.dgvMataKuliah.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMataKuliah_CellClick);
+            this.dgvMataKuliah.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvMataKuliah_KeyUp);
             // 
             // Nomor
             // 

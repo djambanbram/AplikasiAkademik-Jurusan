@@ -30,6 +30,13 @@ namespace MainAplikasi
         {
             InitializeComponent();
             webApi = new WebApi();
+#if DEBUG
+            txtUsername.Text = "bangkit@amikom.ac.id";
+            txtPassword.Text = "OpK3u@ngan";
+#else
+            txtUsername.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+#endif
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -59,20 +66,30 @@ namespace MainAplikasi
                 response = await webApi.Post(URLInitTahun, string.Empty, false);
                 if (response.IsSuccessStatusCode)
                 {
-                    //LoginAccess.TahunAkademik = JObject.Parse(response.Content.ReadAsStringAsync().Result)["TahunAkademik"].ToString();
-                    //LoginAccess.Semester = JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Nama"].ToString();
-                    //LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
-                    //LoginAccess.KodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
+#if !DEBUG
+                    var kodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
+                    if (kodeSemester == 7 || kodeSemester == 8)
+                    {
+                        MessageBox.Show("Aplikasi belum support untuk semester remidial");
+                        Enabled = true;
+                        return;
+                    }
 
-                    //LoginAccess.TahunAkademik = "2017/2018";
-                    //LoginAccess.Semester = "Ganjil";
-                    //LoginAccess.IdTahun = 51;
-                    //LoginAccess.KodeSemester = 1;
-
-                    LoginAccess.TahunAkademik = "2016/2017";
+                    LoginAccess.TahunAkademik = JObject.Parse(response.Content.ReadAsStringAsync().Result)["TahunAkademik"].ToString();
+                    LoginAccess.Semester = JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Nama"].ToString();
+                    LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
+                    LoginAccess.KodeSemester = kodeSemester;
+#else
+                    LoginAccess.TahunAkademik = "2017/2018";
                     LoginAccess.Semester = "Ganjil";
-                    LoginAccess.IdTahun = 44;
+                    LoginAccess.IdTahun = 51;
                     LoginAccess.KodeSemester = 1;
+
+                    //LoginAccess.TahunAkademik = "2016/2017";
+                    //LoginAccess.Semester = "Ganjil";
+                    //LoginAccess.IdTahun = 44;
+                    //LoginAccess.KodeSemester = 1;
+#endif
 
                     Hide();
                     new FormMainAplikasi().Show();
@@ -80,6 +97,7 @@ namespace MainAplikasi
                 else
                 {
                     MessageBox.Show(webApi.ReturnMessage(response));
+                    Enabled = true;
                     return;
                 }
 

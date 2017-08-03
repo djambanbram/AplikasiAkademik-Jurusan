@@ -71,6 +71,7 @@ namespace MataKuliah
             tableLayoutPanel1.Enabled = !isLoading;
             gradientPanel2.Enabled = !isLoading;
             tableLayoutPanel2.Enabled = !isLoading;
+            flowLayoutPanel1.Enabled = !isLoading;
             progressBar1.Visible = isLoading;
         }
 
@@ -378,7 +379,7 @@ namespace MataKuliah
             txtSksTotal.Text = dataMk.Sks.ToString();
             txtSksPraktikum.Text = dataMk.SksPraktikum.ToString();
             cmbSemesterPenawaran.Text = dataMk.SemesterDitawarkan.ToString();
-            cmbKategoriMK.Text = dataMk.KategoriMK.Trim();
+            cmbKategoriMK.Text = dataMk.KategoriMK == null ? string.Empty : dataMk.KategoriMK.Trim();
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
 
@@ -461,13 +462,13 @@ namespace MataKuliah
             };
             string jsonData = JsonConvert.SerializeObject(deldata);
             response = await webApi.Post(URLDeleteMK, jsonData, true); ;
-            if(!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
                 Loading(false);
                 return;
             }
-            
+
             await LoadMK();
             Loading(false);
 
@@ -479,6 +480,29 @@ namespace MataKuliah
 
             EnableField(false);
             ResetField();
+        }
+
+        private void dgvMataKuliah_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if (e.RowIndex < 0)
+            //{
+            //    return;
+            //}
+            btnBatal_Click(sender, e);
+
+            string kodeMk = dgvMataKuliah.SelectedRows[0].Cells["Kode"].Value.ToString();
+
+            DataMataKuliah dataMk = ClassModel.MataKuliah.listDataMataKuliah.Find(d => d.Kode == kodeMk);
+            txtNamaMK.Text = dataMk.MataKuliah;
+            txtNamaMKEn.Text = dataMk.MataKuliahEn;
+            txtAliasMK.Text = dataMk.SingkatanMK;
+            txtSingkatanMK.Text = dataMk.SingkatanKelas;
+            txtSksTotal.Text = dataMk.Sks.ToString();
+            txtSksPraktikum.Text = dataMk.SksPraktikum.ToString();
+            cmbSemesterPenawaran.Text = dataMk.SemesterDitawarkan.ToString();
+            cmbKategoriMK.Text = dataMk.KategoriMK == null ? string.Empty : dataMk.KategoriMK.Trim();
+            cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
+            cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
         }
     }
 }

@@ -168,9 +168,9 @@ namespace MainAplikasi
             this.BoxLaporan.HotTrackColor = System.Drawing.Color.Empty;
             this.BoxLaporan.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxLaporan.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Kelas", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanKelas", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("XPTaskBarItem0", System.Drawing.Color.Empty, -1, null, "", true, true, "XPTaskBarItem0", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxLaporan.Location = new System.Drawing.Point(0, 272);
             this.BoxLaporan.Name = "BoxLaporan";
             this.BoxLaporan.Size = new System.Drawing.Size(264, 106);
@@ -273,7 +273,7 @@ namespace MainAplikasi
             this.toolStripMenuItem2,
             this.alokasiLabToolStripMenuItem});
             this.menuLaporanMataKuliah.Name = "menuAlokasiDosen";
-            this.menuLaporanMataKuliah.Size = new System.Drawing.Size(189, 114);
+            this.menuLaporanMataKuliah.Size = new System.Drawing.Size(189, 92);
             // 
             // toolStripMenuItem1
             // 
@@ -317,7 +317,7 @@ namespace MainAplikasi
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormMainAplikasi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AppJurusan - Desktop";
+            this.Text = "Aplikasi Program Studi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMainAplikasi_FormClosed);
             this.Load += new System.EventHandler(this.FormMainAplikasi_Load);

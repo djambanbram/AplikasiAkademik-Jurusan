@@ -121,7 +121,7 @@
             this.MinimizeBox = false;
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormLogin";
+            this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).EndInit();
             this.ResumeLayout(false);

@@ -92,6 +92,15 @@ namespace KelasMahasiswa
             if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
             {
                 string idProdi = cmbProdi.SelectedValue.ToString();
+
+                var jenjangProdi = Organisasi.listProdi.Find(prodi => prodi.Uid == idProdi).Jenjang;
+                if (jenjangProdi == "S2")
+                {
+                    MessageBox.Show("Kelas campuran untuk prodi jenjang S2 masih dalam tahap pengembangan");
+                    cmbProdi.SelectedIndex = 0;
+                    return;
+                }
+
                 listProgram = Organisasi.listProgram.Where(program => program.Prodi.Uid == idProdi).ToList();
                 listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
                 cmbProgram.DataSource = listProgram;

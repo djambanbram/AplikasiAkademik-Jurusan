@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Aplikasi Kurikulum dan Penawaran Mata Kuliah")]
+[assembly: AssemblyTitle("Aplikasi Program Studi")]
 [assembly: AssemblyDescription("Aplikasi untuk keperluan kurikulum dan pengajaran")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Direktorat Innovation Center - Universitas AMIKOM Yogyakarta")]
-[assembly: AssemblyProduct("Aplikasi Kurikulum dan Penawaran Mata Kuliah")]
+[assembly: AssemblyProduct("Aplikasi Program Studi")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

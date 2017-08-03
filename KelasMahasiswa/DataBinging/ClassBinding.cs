@@ -84,10 +84,10 @@ namespace KelasMahasiswa.DataBinging
                 m.MataKuliahEn = item.MataKuliahEn;
                 m.SingkatanMK = item.Alias;
                 m.SingkatanKelas = item.SingkatanKelas;
-                m.Sks = item.Sks;
+                m.Sks = item.SksTeori;
                 m.SksPraktikum = item.SksPraktikum;
-                m.SemesterDitawarkan = item.SemesterDitawarkan;
-                m.KategoriMK = item.KategoriMK;
+                //m.SemesterDitawarkan = item.SemesterDitawarkan;
+                //m.KategoriMK = item.KategoriMK;
                 m.KodeSifatMK = item.KodeSifatMK;
                 m.SifatMK = item.SifatMK;
                 m.JenisMK = item.JenisMK;

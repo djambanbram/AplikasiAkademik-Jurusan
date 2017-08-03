@@ -151,7 +151,7 @@ namespace PenawaranKurikulum
                 int no = 1;
                 foreach (MataKuliahDitawarkan mk in tempList.Where(mktsd => mktsd.SksPraktikum != 0).ToList())
                 {
-                    dgvMKPraktikum.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.SksTeori, mk.SksPraktikum, mk.JumlahKelas);
+                    dgvMKPraktikum.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.SksTeori, mk.SksPraktikum, mk.JumlahKelasPraktikum);
                     no++;
                 }
             }
@@ -275,6 +275,7 @@ namespace PenawaranKurikulum
                 TahunAkademik = LoginAccess.TahunAkademik,
                 Semester = LoginAccess.KodeSemester,
                 KodeJurusan = kodeProgramDipilih,
+                KodeJurusanMKDel = dgRow.Cells["KodeProgram"].Value.ToString(),
                 IdProdi = idProdiDipilih,
                 Kode = dgRow.Cells["tKode"].Value.ToString(),
                 Ruang = dgRow.Parent.Cells["Ruang"].Value.ToString(),
@@ -388,8 +389,13 @@ namespace PenawaranKurikulum
             int rowParent = valueDelete.RowCurrent;
             int rowDel = valueDelete.RowChild;
 
-            //Delete Alokasi Lab
+            if(valueDelete.KodeJurusanMKDel != valueDelete.KodeJurusan)
+            {
+                MessageBox.Show("Anda tidak bisa menghapus alokasi jurusan lain");
+                return;
+            }
 
+            //Delete Alokasi Lab
             string jsonData = JsonConvert.SerializeObject(valueDelete);
             response = await webApi.Post(URLDelMemberRuangan, jsonData, true);
             if (response.IsSuccessStatusCode)
@@ -427,6 +433,8 @@ namespace PenawaranKurikulum
             if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
             }
 
             await LoadLabDanMember(jsonData);
@@ -453,6 +461,7 @@ namespace PenawaranKurikulum
             if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
+                return;
             }
 
             await LoadLabDanMember(jsonData);

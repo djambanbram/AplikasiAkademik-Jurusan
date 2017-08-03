@@ -103,9 +103,11 @@ namespace KelasMahasiswa.Dialog
                 txtKode.Text = string.Empty;
                 txtMataKuliah.Text = string.Empty;
 
-                listTemp1 = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran);
+                listTemp1 = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran).
+                    Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
+                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
                 int no = 1;
-                foreach (DataMataKuliahCampuran mk in ClassModel.MataKuliah.listDataMataKuliahCampuran)
+                foreach (DataMataKuliahCampuran mk in listTemp1)
                 {
                     dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas, mk.SingkatanKelas);
                     no++;

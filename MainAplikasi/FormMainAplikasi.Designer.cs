@@ -54,8 +54,9 @@ namespace MainAplikasi
             this.menuItemLintasProgramAlokasiDosen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLaporanMataKuliah = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mataKuliahPrasyaratToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.alokasiLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -269,9 +270,10 @@ namespace MainAplikasi
             this.menuLaporanMataKuliah.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.mataKuliahPrasyaratToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.alokasiLabToolStripMenuItem});
             this.menuLaporanMataKuliah.Name = "menuAlokasiDosen";
-            this.menuLaporanMataKuliah.Size = new System.Drawing.Size(189, 92);
+            this.menuLaporanMataKuliah.Size = new System.Drawing.Size(189, 114);
             // 
             // toolStripMenuItem1
             // 
@@ -280,6 +282,13 @@ namespace MainAplikasi
             this.toolStripMenuItem1.Text = "Data Mata Kuliah";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // mataKuliahPrasyaratToolStripMenuItem
+            // 
+            this.mataKuliahPrasyaratToolStripMenuItem.Name = "mataKuliahPrasyaratToolStripMenuItem";
+            this.mataKuliahPrasyaratToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.mataKuliahPrasyaratToolStripMenuItem.Text = "Mata Kuliah Prasyarat";
+            this.mataKuliahPrasyaratToolStripMenuItem.Click += new System.EventHandler(this.mataKuliahPrasyaratToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
@@ -287,12 +296,12 @@ namespace MainAplikasi
             this.toolStripMenuItem2.Text = "Alokasi Mata Kuliah";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
-            // mataKuliahPrasyaratToolStripMenuItem
+            // alokasiLabToolStripMenuItem
             // 
-            this.mataKuliahPrasyaratToolStripMenuItem.Name = "mataKuliahPrasyaratToolStripMenuItem";
-            this.mataKuliahPrasyaratToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.mataKuliahPrasyaratToolStripMenuItem.Text = "Mata Kuliah Prasyarat";
-            this.mataKuliahPrasyaratToolStripMenuItem.Click += new System.EventHandler(this.mataKuliahPrasyaratToolStripMenuItem_Click);
+            this.alokasiLabToolStripMenuItem.Name = "alokasiLabToolStripMenuItem";
+            this.alokasiLabToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.alokasiLabToolStripMenuItem.Text = "Alokasi Lab";
+            this.alokasiLabToolStripMenuItem.Click += new System.EventHandler(this.alokasiLabToolStripMenuItem_Click);
             // 
             // FormMainAplikasi
             // 
@@ -350,5 +359,6 @@ namespace MainAplikasi
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mataKuliahPrasyaratToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alokasiLabToolStripMenuItem;
     }
 }

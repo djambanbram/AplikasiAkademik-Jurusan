@@ -28,7 +28,7 @@ namespace KelasMahasiswa
     public partial class FormKelasCampuran : Syncfusion.Windows.Forms.MetroForm, IKelas
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLGetMKCampuranDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_campuran_sudah_ditawarkan";
+        private string URLGetMKDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan";
         private string URLGetKelasCampuran = baseAddress + "/jurusan_api/api/kelas/get_kelas_campuran";
         private string URLDelKelasCampuran = baseAddress + "/jurusan_api/api/kelas/del_kelas_campuran";
 
@@ -117,15 +117,17 @@ namespace KelasMahasiswa
         {
             var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, KodeJurusan = kodeProgramDipilih };
             var jsonData = JsonConvert.SerializeObject(data);
-            response = await webApi.Post(URLGetMKCampuranDitawarkan, jsonData, true);
+            response = await webApi.Post(URLGetMKDitawarkan, jsonData, true);
             if (response.IsSuccessStatusCode)
             {
                 dgvMKCampuran.Rows.Clear();
                 List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
                 MataKuliahCampuranBinding mkBinding = new MataKuliahCampuranBinding(oListMK);
-
+                List<DataMataKuliahCampuran> listMKCampuran = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran);
+                listMKCampuran = listMKCampuran.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
+                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
                 int no = 1;
-                foreach (DataMataKuliahCampuran mk in ClassModel.MataKuliah.listDataMataKuliahCampuran)
+                foreach (DataMataKuliahCampuran mk in listMKCampuran)
                 {
                     dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas);
                     no++;
@@ -210,15 +212,18 @@ namespace KelasMahasiswa
 
             var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, KodeJurusan = kodeProgramDipilih };
             var jsonData = JsonConvert.SerializeObject(data);
-            response = await webApi.Post(URLGetMKCampuranDitawarkan, jsonData, true);
+            response = await webApi.Post(URLGetMKDitawarkan, jsonData, true);
             if (response.IsSuccessStatusCode)
             {
                 dgvMKCampuran.Rows.Clear();
                 List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
                 MataKuliahCampuranBinding mkBinding = new MataKuliahCampuranBinding(oListMK);
+                List<DataMataKuliahCampuran> listMKCampuran = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran);
+                listMKCampuran = listMKCampuran.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
+                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
 
                 int no = 1;
-                foreach (DataMataKuliahCampuran mk in ClassModel.MataKuliah.listDataMataKuliahCampuran)
+                foreach (DataMataKuliahCampuran mk in listMKCampuran)
                 {
                     dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas);
                     no++;

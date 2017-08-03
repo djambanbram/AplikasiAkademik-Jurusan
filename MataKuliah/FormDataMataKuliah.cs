@@ -37,6 +37,7 @@ namespace MataKuliah
         private string URLGetKategoriMK = baseAddress + "/jurusan_api/api/kurikulum/get_kategori_mk";
         private string URLGetSifatMK = baseAddress + "/jurusan_api/api/kurikulum/get_sifat_mk";
         private string URLSaveMK = baseAddress + "/jurusan_api/api/kurikulum/save_mk";
+        private string URLDeleteMK = baseAddress + "/jurusan_api/api/kurikulum/non_aktifkan_mk";
 
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
@@ -154,6 +155,7 @@ namespace MataKuliah
             {
                 return;
             }
+            KodeMKDipilih = string.Empty;
 
             btnSimpan.Visible = true;
             btnBatal.Visible = true;
@@ -411,7 +413,7 @@ namespace MataKuliah
                 toolTip.Show("Data ini wajib diisi", tb, 0, 0, 3000);
             }
 
-            if(((TextBox)sender).Name == "txtAliasMK")
+            if (((TextBox)sender).Name == "txtAliasMK")
             {
                 txtSingkatanMK.Text = Regex.Replace(txtAliasMK.Text, @"\W+", "");
             }
@@ -437,7 +439,7 @@ namespace MataKuliah
 
         private async void btnNonAktifMK_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txtNamaMK.Text) || string.IsNullOrWhiteSpace(txtNamaMKEn.Text))
+            if (string.IsNullOrWhiteSpace(txtNamaMK.Text) || string.IsNullOrWhiteSpace(txtNamaMKEn.Text))
             {
                 return;
             }
@@ -445,12 +447,38 @@ namespace MataKuliah
             KodeMKDipilih = dgvMataKuliah.SelectedRows[0].Cells["Kode"].Value.ToString();
             string mataKuliah = txtNamaMK.Text;
             DialogResult dr = MessageBox.Show(string.Format("Mata kuliah {0} ({1}) akan di non-aktif kan tanpa adanya pengganti mata kuliah.\nApakah akan melanjutkan proses?", mataKuliah, KodeMKDipilih), "Perhatian", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(dr == DialogResult.No)
+            if (dr == DialogResult.No)
             {
                 return;
             }
 
+            Loading(true);
+            var deldata = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                Kode = KodeMKDipilih
+            };
+            string jsonData = JsonConvert.SerializeObject(deldata);
+            response = await webApi.Post(URLDeleteMK, jsonData, true); ;
+            if(!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            
             await LoadMK();
+            Loading(false);
+
+            btnSimpan.Visible = false;
+            btnBatal.Visible = false;
+            btnEdit.Visible = true;
+            btnTambah.Visible = true;
+            btnNonAktifMK.Visible = true;
+
+            EnableField(false);
+            ResetField();
         }
     }
 }

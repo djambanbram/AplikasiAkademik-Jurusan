@@ -80,7 +80,7 @@ namespace PenawaranKurikulum.Dialog
             txtTotalKelas.Text = TotalKelas.ToString();
             txtKelasTeralokasi.Text = KelasTeralokasi.ToString();
             txtProgram.Text = NamaProgram;
-            numSetJumlahKelas.Maximum = TotalKelas;
+            numSetJumlahKelas.Maximum = TotalKelas - KelasTeralokasi;
         }
 
         private void btnTutup_Click(object sender, EventArgs e)

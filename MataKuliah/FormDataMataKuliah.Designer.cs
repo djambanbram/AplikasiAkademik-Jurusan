@@ -82,11 +82,11 @@ namespace MataKuliah
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnNonAktifMK = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnTambah = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnBatal = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnEdit = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.btnNonAktifMK = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.txtSksPraktikum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSksTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAliasMK)).BeginInit();
@@ -112,7 +112,7 @@ namespace MataKuliah
             // 
             // txtSksPraktikum
             // 
-            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSksPraktikum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksPraktikum.Location = new System.Drawing.Point(148, 123);
             this.txtSksPraktikum.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -126,7 +126,7 @@ namespace MataKuliah
             // 
             // txtSksTotal
             // 
-            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSksTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksTotal.Location = new System.Drawing.Point(148, 93);
             this.txtSksTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -140,7 +140,7 @@ namespace MataKuliah
             // 
             // txtAliasMK
             // 
-            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtAliasMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAliasMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAliasMK.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -155,7 +155,7 @@ namespace MataKuliah
             // 
             // txtSingkatanMK
             // 
-            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtSingkatanMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSingkatanMK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSingkatanMK.Location = new System.Drawing.Point(589, 63);
@@ -168,7 +168,7 @@ namespace MataKuliah
             // 
             // txtNamaMKEn
             // 
-            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtNamaMKEn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMKEn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMKEn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -183,7 +183,7 @@ namespace MataKuliah
             // 
             // txtNamaMK
             // 
-            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtNamaMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMK.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -412,7 +412,7 @@ namespace MataKuliah
             // 
             // txtKodeMKPengganti
             // 
-            this.txtKodeMKPengganti.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtKodeMKPengganti.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.txtKodeMKPengganti.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtKodeMKPengganti.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKodeMKPengganti.Location = new System.Drawing.Point(148, 3);
@@ -444,7 +444,7 @@ namespace MataKuliah
             // 
             // txtNamaMKPengganti
             // 
-            this.txtNamaMKPengganti.BeforeTouchSize = new System.Drawing.Size(280, 25);
+            this.txtNamaMKPengganti.BeforeTouchSize = new System.Drawing.Size(75, 25);
             this.tableLayoutPanel2.SetColumnSpan(this.txtNamaMKPengganti, 3);
             this.txtNamaMKPengganti.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMKPengganti.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -665,6 +665,21 @@ namespace MataKuliah
             this.flowLayoutPanel1.Size = new System.Drawing.Size(950, 38);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
+            // btnNonAktifMK
+            // 
+            this.btnNonAktifMK.BackColor = System.Drawing.Color.Red;
+            this.btnNonAktifMK.BeforeTouchSize = new System.Drawing.Size(130, 30);
+            this.btnNonAktifMK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNonAktifMK.ForeColor = System.Drawing.Color.White;
+            this.btnNonAktifMK.IsBackStageButton = false;
+            this.btnNonAktifMK.Location = new System.Drawing.Point(698, 4);
+            this.btnNonAktifMK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnNonAktifMK.Name = "btnNonAktifMK";
+            this.btnNonAktifMK.Size = new System.Drawing.Size(130, 30);
+            this.btnNonAktifMK.TabIndex = 6;
+            this.btnNonAktifMK.Text = "Non Aktifkan MK";
+            this.btnNonAktifMK.Click += new System.EventHandler(this.btnNonAktifMK_Click);
+            // 
             // btnSimpan
             // 
             this.btnSimpan.BackColor = System.Drawing.Color.Wheat;
@@ -717,21 +732,6 @@ namespace MataKuliah
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnNonAktifMK
-            // 
-            this.btnNonAktifMK.BackColor = System.Drawing.Color.Red;
-            this.btnNonAktifMK.BeforeTouchSize = new System.Drawing.Size(130, 30);
-            this.btnNonAktifMK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNonAktifMK.ForeColor = System.Drawing.Color.White;
-            this.btnNonAktifMK.IsBackStageButton = false;
-            this.btnNonAktifMK.Location = new System.Drawing.Point(698, 4);
-            this.btnNonAktifMK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnNonAktifMK.Name = "btnNonAktifMK";
-            this.btnNonAktifMK.Size = new System.Drawing.Size(130, 30);
-            this.btnNonAktifMK.TabIndex = 6;
-            this.btnNonAktifMK.Text = "Non Aktifkan MK";
-            this.btnNonAktifMK.Click += new System.EventHandler(this.btnNonAktifMK_Click);
             // 
             // FormDataMataKuliah
             // 

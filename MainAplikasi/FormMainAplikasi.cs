@@ -45,6 +45,8 @@ namespace MainAplikasi
         private FormReportDataMK formReportDataMK;
         private FormReportMKPrasyarat formReportMKPrasyarat;
         private FormReportAlokasiMK formReportAlokasiMK;
+        private FormReportAlokasiLabMK formReportAlokasiLabMK;
+        private FormReportAlokasiDosen formReportAlokasiDosen;
 
         private HttpResponseMessage response;
 
@@ -126,6 +128,16 @@ namespace MainAplikasi
             {
                 Application.ExitThread();
             }
+            else if (e.XPTaskBarItem.Name == "itemLaporanDosen")
+            {
+                if (formReportAlokasiDosen == null || formReportAlokasiDosen.IsDisposed)
+                {
+                    formReportAlokasiDosen = new FormReportAlokasiDosen();
+                    formReportAlokasiDosen.MdiParent = this;
+                }
+                form = formReportAlokasiDosen;
+            }
+            
             if (form != null && !form.IsDisposed)
             {
                 form.Show();
@@ -210,6 +222,17 @@ namespace MainAplikasi
             }
             formReportAlokasiMK.Show();
             tabbedMDIManager1.UpdateActiveTabHost(formReportAlokasiMK);
+        }
+
+        private void alokasiLabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formReportAlokasiLabMK == null || formReportAlokasiLabMK.IsDisposed)
+            {
+                formReportAlokasiLabMK = new FormReportAlokasiLabMK();
+                formReportAlokasiLabMK.MdiParent = this;
+            }
+            formReportAlokasiLabMK.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formReportAlokasiLabMK);
         }
     }
 }

@@ -49,6 +49,8 @@ namespace PenawaranKurikulum
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDaftarLab = new AdvancedDataGridView.TreeGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ubahJumlahKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvMKPraktikum = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,8 +59,6 @@ namespace PenawaranKurikulum
             this.SksT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ubahJumlahKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Node = new AdvancedDataGridView.TreeGridColumn();
             this.Ruang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,9 +80,9 @@ namespace PenawaranKurikulum
             this.splitContainerAdv1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDaftarLab)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMKPraktikum)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -257,6 +257,20 @@ namespace PenawaranKurikulum
             this.dgvDaftarLab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvDaftarLab_MouseDown);
             this.dgvDaftarLab.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvDaftarLab_MouseMove);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ubahJumlahKelasToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 26);
+            // 
+            // ubahJumlahKelasToolStripMenuItem
+            // 
+            this.ubahJumlahKelasToolStripMenuItem.Name = "ubahJumlahKelasToolStripMenuItem";
+            this.ubahJumlahKelasToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ubahJumlahKelasToolStripMenuItem.Text = "Ubah Jumlah Kelas";
+            this.ubahJumlahKelasToolStripMenuItem.Click += new System.EventHandler(this.ubahJumlahKelasToolStripMenuItem_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvMKPraktikum);
@@ -341,20 +355,6 @@ namespace PenawaranKurikulum
             this.JumlahKelas.ReadOnly = true;
             this.JumlahKelas.Width = 50;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ubahJumlahKelasToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 26);
-            // 
-            // ubahJumlahKelasToolStripMenuItem
-            // 
-            this.ubahJumlahKelasToolStripMenuItem.Name = "ubahJumlahKelasToolStripMenuItem";
-            this.ubahJumlahKelasToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.ubahJumlahKelasToolStripMenuItem.Text = "Ubah Jumlah Kelas";
-            this.ubahJumlahKelasToolStripMenuItem.Click += new System.EventHandler(this.ubahJumlahKelasToolStripMenuItem_Click);
-            // 
             // Node
             // 
             this.Node.DefaultNodeImage = null;
@@ -376,7 +376,7 @@ namespace PenawaranKurikulum
             this.tKode.HeaderText = "Kode";
             this.tKode.Name = "tKode";
             this.tKode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.tKode.Width = 70;
+            this.tKode.Width = 60;
             // 
             // tMataKuliah
             // 
@@ -411,7 +411,7 @@ namespace PenawaranKurikulum
             this.NamaProgram.HeaderText = "Nama Program";
             this.NamaProgram.Name = "NamaProgram";
             this.NamaProgram.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NamaProgram.Width = 150;
+            this.NamaProgram.Width = 130;
             // 
             // Parent
             // 
@@ -447,9 +447,9 @@ namespace PenawaranKurikulum
             this.splitContainerAdv1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDaftarLab)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMKPraktikum)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

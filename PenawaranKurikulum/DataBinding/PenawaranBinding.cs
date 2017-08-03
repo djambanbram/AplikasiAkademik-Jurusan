@@ -51,6 +51,8 @@ namespace PenawaranKurikulum.DataBinding
                 m.JenisMK = item.JenisMK;
                 m.DaftarKelasMK = item.DaftarKelasMK;
                 m.JumlahKelas = item.JumlahKelas;
+                m.JumlahKelasTeori = item.JumlahKelasTeori;
+                m.JumlahKelasPraktikum = item.JumlahKelasPraktikum;
                 listMKSudahDitawarkan.Add(m);
             }
             MataKuliah.listMataKuliahSudahDitawarkan = listMKSudahDitawarkan;

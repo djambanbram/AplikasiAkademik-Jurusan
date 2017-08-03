@@ -42,5 +42,6 @@ namespace ClassModel
         public int JumlahKelas { get; set; }
         public int TotalKelas { get; set; }
         public string Ruang { get; set; }
+        public int SksPraktikum { get; set; }
     }
 }

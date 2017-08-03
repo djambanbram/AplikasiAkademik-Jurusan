@@ -9,7 +9,6 @@ using ApiService;
 using ClassModel;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
-using PenawaranKurikulum.DataBinding;
 using PenawaranKurikulum.Lib;
 using System;
 using System.Collections.Generic;
@@ -25,29 +24,31 @@ using System.Windows.Forms;
 
 namespace PenawaranKurikulum.Report
 {
-    public partial class FormReportAlokasiMK : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormReportAlokasiDosen : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDepartment = baseAddress + "/jurusan_api/api/organisasi/get_department";
-        private string URLGetMKSudahDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan";
         private string URLGetDosenMengajar = baseAddress + "/jurusan_api/api/pengajaran/get_dosen_mengajar";
 
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
         private List<Program> listProgram;
         private List<Department> listDepartment;
-
         private WebApi webApi;
         private HttpResponseMessage response;
 
-
-        public FormReportAlokasiMK()
+        public FormReportAlokasiDosen()
         {
             InitializeComponent();
             webApi = new WebApi();
         }
 
-        private async void FormReportAlokasiMK_Load(object sender, EventArgs e)
+        private void btnTutup_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private async void FormReportAlokasiDosen_Load(object sender, EventArgs e)
         {
             listFakultas = new List<Fakultas>(Organisasi.listFakultas);
             listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
@@ -66,12 +67,6 @@ namespace PenawaranKurikulum.Report
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
 
-            //this.reportViewer1.RefreshReport();
-        }
-
-        private void btnTutup_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,7 +101,7 @@ namespace PenawaranKurikulum.Report
         {
             if (cmbProdi.SelectedIndex == 0 || cmbProgram.SelectedIndex == 0)
             {
-                return; 
+                return;
             }
             string idProdi = cmbProdi.SelectedValue.ToString();
 
@@ -114,38 +109,40 @@ namespace PenawaranKurikulum.Report
 
             string jsonData = JsonConvert.SerializeObject(data);
 
-            response = await webApi.Post(URLGetMKSudahDitawarkan, jsonData, true);
-            if (!response.IsSuccessStatusCode)
+            response = await webApi.Post(URLGetDosenMengajar, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                List<AlokasiDosenMengajar> listAlokasiDosenMengajar = JsonConvert.DeserializeObject<List<AlokasiDosenMengajar>>(response.Content.ReadAsStringAsync().Result);
+
+                string KodeProgramReguler = Organisasi.listProdi.Find(pr => pr.Uid == idProdi).KodeProgramReguler;
+                List<ReportParameter> listParams = new List<ReportParameter>();
+                listParams.Add(new ReportParameter("ProgramStudi", Organisasi.listProdi.Find(pr => pr.Uid == cmbProdi.SelectedValue.ToString()).NamaProdi));
+                listParams.Add(new ReportParameter("Fakultas", Organisasi.listFakultas.Find(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).NamaFakultas));
+                listParams.Add(new ReportParameter("TanggalCetak", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
+                listParams.Add(new ReportParameter("Dekan", listDepartment.Find(d => d.KodeDepartment == cmbFakultas.SelectedValue.ToString()).NamaKepala));
+                listParams.Add(new ReportParameter("NikDekan", listDepartment.Find(d => d.KodeDepartment == cmbFakultas.SelectedValue.ToString()).NikKepala));
+                listParams.Add(new ReportParameter("Kaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NamaKepala));
+                listParams.Add(new ReportParameter("NikKaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NikKepala));
+                listParams.Add(new ReportParameter("TahunAkademik", LoginAccess.TahunAkademik));
+                listParams.Add(new ReportParameter("Semester", LoginAccess.Semester));
+                listParams.Add(new ReportParameter("Program", cmbProgram.Text));
+
+                DataTable dtAlokasiDosen = CommonLib.ToDataTable(listAlokasiDosenMengajar);
+
+                reportViewer1.LocalReport.SetParameters(listParams);
+                IDataReader dr = dtAlokasiDosen.CreateDataReader();
+                dataSetAlokasi.Tables["AlokasiDosen"].Clear();
+                dataSetAlokasi.Tables["AlokasiDosen"].Load(dr);
+                dr.Close();
+                reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+                reportViewer1.ZoomMode = ZoomMode.Percent;
+                reportViewer1.LocalReport.Refresh();
+                reportViewer1.RefreshReport();
+            }
+            else
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
-                return;
             }
-            List<dynamic> oListMkSudahDitawarkan = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-            MataKuliahSudahDitawarkanBinding mkBinding = new MataKuliahSudahDitawarkanBinding(oListMkSudahDitawarkan);
-
-
-            string KodeProgramReguler = Organisasi.listProdi.Find(pr => pr.Uid == idProdi).KodeProgramReguler;
-            List<ReportParameter> listParams = new List<ReportParameter>();
-            listParams.Add(new ReportParameter("ProgramStudi", Organisasi.listProdi.Find(pr => pr.Uid == cmbProdi.SelectedValue.ToString()).NamaProdi));
-            listParams.Add(new ReportParameter("Fakultas", Organisasi.listFakultas.Find(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).NamaFakultas));
-            listParams.Add(new ReportParameter("TanggalCetak", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
-            listParams.Add(new ReportParameter("Dekan", listDepartment.Find(d => d.KodeDepartment == cmbFakultas.SelectedValue.ToString()).NamaKepala));
-            listParams.Add(new ReportParameter("NikDekan", listDepartment.Find(d => d.KodeDepartment == cmbFakultas.SelectedValue.ToString()).NikKepala));
-            listParams.Add(new ReportParameter("Kaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NamaKepala));
-            listParams.Add(new ReportParameter("NikKaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NikKepala));
-            listParams.Add(new ReportParameter("TahunAkademik", LoginAccess.TahunAkademik));
-            listParams.Add(new ReportParameter("Semester", LoginAccess.Semester));
-            DataTable dtMKDitawarkan = CommonLib.ToDataTable(MataKuliah.listMataKuliahSudahDitawarkan);
-
-            reportViewer1.LocalReport.SetParameters(listParams);
-            IDataReader dr = dtMKDitawarkan.CreateDataReader();
-            dataSetAlokasi.Tables["MataKuliahDitawarkan"].Clear();
-            dataSetAlokasi.Tables["MataKuliahDitawarkan"].Load(dr);
-            dr.Close();
-            reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
-            reportViewer1.ZoomMode = ZoomMode.Percent;
-            reportViewer1.LocalReport.Refresh();
-            reportViewer1.RefreshReport();
         }
     }
 }

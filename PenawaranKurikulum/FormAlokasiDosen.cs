@@ -268,7 +268,8 @@ namespace PenawaranKurikulum
                 }
                 else
                 {
-                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K").OrderBy(mk => mk.Kode).ToList();
+                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
+                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
                 }
 
                 foreach (MataKuliahDitawarkan mk in listTemp)

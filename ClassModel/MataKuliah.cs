@@ -58,6 +58,8 @@ namespace ClassModel
     {
         public string JenisMK { get; set; }
         public int JumlahKelas { get; set; }
+        public int JumlahKelasTeori { get; set; }
+        public int JumlahKelasPraktikum { get; set; }
 
     }
 
@@ -74,5 +76,7 @@ namespace ClassModel
         public string JenisMK { get; set; }
         public string DaftarKelasMK { get; set; }
         public int JumlahKelas { get; set; }
+        public int JumlahKelasTeori { get; set; }
+        public int JumlahKelasPraktikum { get; set; }
     }
 }

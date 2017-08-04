@@ -80,15 +80,15 @@ namespace MainAplikasi
                     LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
                     LoginAccess.KodeSemester = kodeSemester;
 #else
-                    LoginAccess.TahunAkademik = "2017/2018";
-                    LoginAccess.Semester = "Ganjil";
-                    LoginAccess.IdTahun = 51;
-                    LoginAccess.KodeSemester = 1;
-
-                    //LoginAccess.TahunAkademik = "2016/2017";
+                    //LoginAccess.TahunAkademik = "2017/2018";
                     //LoginAccess.Semester = "Ganjil";
-                    //LoginAccess.IdTahun = 44;
+                    //LoginAccess.IdTahun = 51;
                     //LoginAccess.KodeSemester = 1;
+
+                    LoginAccess.TahunAkademik = "2016/2017";
+                    LoginAccess.Semester = "Ganjil";
+                    LoginAccess.IdTahun = 44;
+                    LoginAccess.KodeSemester = 1;
 #endif
 
                     Hide();

@@ -57,6 +57,11 @@ namespace MainAplikasi
             this.mataKuliahPrasyaratToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.alokasiLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imgListMataKuliahBox = new System.Windows.Forms.ImageList(this.components);
+            this.imgListKelasBox = new System.Windows.Forms.ImageList(this.components);
+            this.imgPenawaranMKBox = new System.Windows.Forms.ImageList(this.components);
+            this.imgLaporanBox = new System.Windows.Forms.ImageList(this.components);
+            this.imgKeluarBox = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -99,13 +104,15 @@ namespace MainAplikasi
             this.boxMataKuliah.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
             this.boxMataKuliah.HeaderForeColor = System.Drawing.Color.White;
             this.boxMataKuliah.HeaderImageIndex = 0;
+            this.boxMataKuliah.HeaderImageList = this.imgListMataKuliahBox;
             this.boxMataKuliah.HitTaskBoxArea = false;
             this.boxMataKuliah.HotTrackColor = System.Drawing.Color.CornflowerBlue;
+            this.boxMataKuliah.ImageList = this.imgListMataKuliahBox;
             this.boxMataKuliah.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.boxMataKuliah.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Data Mata Kuliah", System.Drawing.Color.Empty, -1, null, "", true, true, "itemMataKuliah", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Mata Kuliah Prasyarat", System.Drawing.Color.Empty, -1, null, "", true, true, "itemMKPrasyarat", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Mata Kuliah Konsentrasi", System.Drawing.Color.Empty, -1, null, "", true, true, "itemMKKonsentrasi", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Data Mata Kuliah", System.Drawing.Color.Empty, 1, null, "", true, true, "itemMataKuliah", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Mata Kuliah Prasyarat", System.Drawing.Color.Empty, 2, null, "", true, true, "itemMKPrasyarat", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Mata Kuliah Konsentrasi", System.Drawing.Color.Empty, 3, null, "", true, true, "itemMKKonsentrasi", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
             this.boxMataKuliah.Location = new System.Drawing.Point(0, 0);
             this.boxMataKuliah.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxMataKuliah.Name = "boxMataKuliah";
@@ -122,12 +129,14 @@ namespace MainAplikasi
             this.boxKelas.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
             this.boxKelas.HeaderForeColor = System.Drawing.Color.White;
             this.boxKelas.HeaderImageIndex = 0;
+            this.boxKelas.HeaderImageList = this.imgListKelasBox;
             this.boxKelas.HitTaskBoxArea = false;
             this.boxKelas.HotTrackColor = System.Drawing.Color.CornflowerBlue;
+            this.boxKelas.ImageList = this.imgListKelasBox;
             this.boxKelas.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.boxKelas.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Reguler", System.Drawing.Color.Empty, -1, null, "", true, true, "itemKelasReguler", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Campuran", System.Drawing.Color.Empty, -1, null, "", true, true, "itemKelasCampuran", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Reguler", System.Drawing.Color.Empty, 1, null, "", true, true, "itemKelasReguler", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Campuran", System.Drawing.Color.Empty, 2, null, "", true, true, "itemKelasCampuran", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.boxKelas.Location = new System.Drawing.Point(0, 98);
             this.boxKelas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxKelas.Name = "boxKelas";
@@ -144,13 +153,15 @@ namespace MainAplikasi
             this.boxPenawaranMK.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
             this.boxPenawaranMK.HeaderForeColor = System.Drawing.Color.White;
             this.boxPenawaranMK.HeaderImageIndex = 0;
+            this.boxPenawaranMK.HeaderImageList = this.imgPenawaranMKBox;
             this.boxPenawaranMK.HitTaskBoxArea = false;
             this.boxPenawaranMK.HotTrackColor = System.Drawing.Color.CornflowerBlue;
+            this.boxPenawaranMK.ImageList = this.imgPenawaranMKBox;
             this.boxPenawaranMK.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.boxPenawaranMK.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Mata Kuliah", System.Drawing.Color.Empty, -1, null, "", true, true, "itemAlokasiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Dosen", System.Drawing.Color.Empty, -1, null, "", true, true, "itemAlokasiDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Lab. dan Mata Kuliah", System.Drawing.Color.Empty, -1, null, "", true, true, "itemAlokasiLabMK", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Mata Kuliah", System.Drawing.Color.Empty, 1, null, "", true, true, "itemAlokasiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemAlokasiDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Lab. dan Mata Kuliah", System.Drawing.Color.Empty, 3, null, "", true, true, "itemAlokasiLabMK", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
             this.boxPenawaranMK.Location = new System.Drawing.Point(0, 174);
             this.boxPenawaranMK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxPenawaranMK.Name = "boxPenawaranMK";
@@ -163,13 +174,15 @@ namespace MainAplikasi
             // 
             this.BoxLaporan.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
             this.BoxLaporan.HeaderForeColor = System.Drawing.Color.White;
-            this.BoxLaporan.HeaderImageIndex = -1;
+            this.BoxLaporan.HeaderImageIndex = 0;
+            this.BoxLaporan.HeaderImageList = this.imgLaporanBox;
             this.BoxLaporan.HitTaskBoxArea = false;
             this.BoxLaporan.HotTrackColor = System.Drawing.Color.Empty;
+            this.BoxLaporan.ImageList = this.imgLaporanBox;
             this.BoxLaporan.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxLaporan.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, 1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxLaporan.Location = new System.Drawing.Point(0, 272);
             this.BoxLaporan.Name = "BoxLaporan";
             this.BoxLaporan.Size = new System.Drawing.Size(264, 82);
@@ -182,12 +195,14 @@ namespace MainAplikasi
             this.BoxKeluar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BoxKeluar.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
             this.BoxKeluar.HeaderForeColor = System.Drawing.Color.White;
-            this.BoxKeluar.HeaderImageIndex = -1;
+            this.BoxKeluar.HeaderImageIndex = 1;
+            this.BoxKeluar.HeaderImageList = this.imgKeluarBox;
             this.BoxKeluar.HitTaskBoxArea = false;
             this.BoxKeluar.HotTrackColor = System.Drawing.Color.CornflowerBlue;
+            this.BoxKeluar.ImageList = this.imgKeluarBox;
             this.BoxKeluar.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxKeluar.Location = new System.Drawing.Point(0, 354);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 58);
@@ -302,6 +317,47 @@ namespace MainAplikasi
             this.alokasiLabToolStripMenuItem.Text = "Alokasi Lab";
             this.alokasiLabToolStripMenuItem.Click += new System.EventHandler(this.alokasiLabToolStripMenuItem_Click);
             // 
+            // imgListMataKuliahBox
+            // 
+            this.imgListMataKuliahBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListMataKuliahBox.ImageStream")));
+            this.imgListMataKuliahBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgListMataKuliahBox.Images.SetKeyName(0, "agenda-1.png");
+            this.imgListMataKuliahBox.Images.SetKeyName(1, "archives.png");
+            this.imgListMataKuliahBox.Images.SetKeyName(2, "blocks.png");
+            this.imgListMataKuliahBox.Images.SetKeyName(3, "cells.png");
+            // 
+            // imgListKelasBox
+            // 
+            this.imgListKelasBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListKelasBox.ImageStream")));
+            this.imgListKelasBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgListKelasBox.Images.SetKeyName(0, "idea.png");
+            this.imgListKelasBox.Images.SetKeyName(1, "abacus.png");
+            this.imgListKelasBox.Images.SetKeyName(2, "watercolor.png");
+            // 
+            // imgPenawaranMKBox
+            // 
+            this.imgPenawaranMKBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgPenawaranMKBox.ImageStream")));
+            this.imgPenawaranMKBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgPenawaranMKBox.Images.SetKeyName(0, "id-card.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(1, "open-book-2.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(2, "teacher.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(3, "laptop.png");
+            // 
+            // imgLaporanBox
+            // 
+            this.imgLaporanBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLaporanBox.ImageStream")));
+            this.imgLaporanBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgLaporanBox.Images.SetKeyName(0, "printer.png");
+            this.imgLaporanBox.Images.SetKeyName(1, "paper.png");
+            this.imgLaporanBox.Images.SetKeyName(2, "blackboard-3.png");
+            // 
+            // imgKeluarBox
+            // 
+            this.imgKeluarBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgKeluarBox.ImageStream")));
+            this.imgKeluarBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgKeluarBox.Images.SetKeyName(0, "exit.png");
+            this.imgKeluarBox.Images.SetKeyName(1, "door.png");
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -312,6 +368,7 @@ namespace MainAplikasi
             this.Controls.Add(this.statusStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormMainAplikasi";
@@ -359,5 +416,10 @@ namespace MainAplikasi
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mataKuliahPrasyaratToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alokasiLabToolStripMenuItem;
+        private System.Windows.Forms.ImageList imgListMataKuliahBox;
+        private System.Windows.Forms.ImageList imgListKelasBox;
+        private System.Windows.Forms.ImageList imgPenawaranMKBox;
+        private System.Windows.Forms.ImageList imgLaporanBox;
+        private System.Windows.Forms.ImageList imgKeluarBox;
     }
 }

@@ -169,11 +169,10 @@ namespace MainAplikasi
             this.BoxLaporan.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxLaporan.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("XPTaskBarItem0", System.Drawing.Color.Empty, -1, null, "", true, true, "XPTaskBarItem0", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxLaporan.Location = new System.Drawing.Point(0, 272);
             this.BoxLaporan.Name = "BoxLaporan";
-            this.BoxLaporan.Size = new System.Drawing.Size(264, 106);
+            this.BoxLaporan.Size = new System.Drawing.Size(264, 82);
             this.BoxLaporan.TabIndex = 4;
             this.BoxLaporan.Text = "Laporan";
             this.BoxLaporan.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
@@ -189,7 +188,7 @@ namespace MainAplikasi
             this.BoxKeluar.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, -1, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 378);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 354);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 58);
             this.BoxKeluar.TabIndex = 3;

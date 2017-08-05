@@ -68,6 +68,10 @@ namespace PenawaranKurikulum
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCariDosen = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.rad6 = new System.Windows.Forms.RadioButton();
+            this.rad5 = new System.Windows.Forms.RadioButton();
+            this.rad7 = new System.Windows.Forms.RadioButton();
+            this.rad8 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -90,6 +94,10 @@ namespace PenawaranKurikulum
             // gradientPanel2
             // 
             this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel2.Controls.Add(this.rad8);
+            this.gradientPanel2.Controls.Add(this.rad7);
+            this.gradientPanel2.Controls.Add(this.rad5);
+            this.gradientPanel2.Controls.Add(this.rad6);
             this.gradientPanel2.Controls.Add(this.radCampuran);
             this.gradientPanel2.Controls.Add(this.rad4);
             this.gradientPanel2.Controls.Add(this.rad3);
@@ -105,13 +113,13 @@ namespace PenawaranKurikulum
             this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(875, 131);
+            this.gradientPanel2.Size = new System.Drawing.Size(875, 156);
             this.gradientPanel2.TabIndex = 11;
             // 
             // radCampuran
             // 
             this.radCampuran.AutoSize = true;
-            this.radCampuran.Location = new System.Drawing.Point(399, 97);
+            this.radCampuran.Location = new System.Drawing.Point(399, 124);
             this.radCampuran.Name = "radCampuran";
             this.radCampuran.Size = new System.Drawing.Size(110, 21);
             this.radCampuran.TabIndex = 17;
@@ -296,7 +304,7 @@ namespace PenawaranKurikulum
             this.dgvAlokasi.RowHeadersVisible = false;
             this.dgvAlokasi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvAlokasi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAlokasi.Size = new System.Drawing.Size(869, 136);
+            this.dgvAlokasi.Size = new System.Drawing.Size(869, 123);
             this.dgvAlokasi.TabIndex = 13;
             this.dgvAlokasi.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvAlokasi_CellPainting);
             this.dgvAlokasi.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvAlokasi_ColumnWidthChanged);
@@ -335,7 +343,7 @@ namespace PenawaranKurikulum
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(875, 160);
+            this.groupBox1.Size = new System.Drawing.Size(875, 147);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alokasi Dosen";
@@ -344,7 +352,7 @@ namespace PenawaranKurikulum
             // 
             this.splitContainerAdv1.BeforeTouchSize = 7;
             this.splitContainerAdv1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerAdv1.Location = new System.Drawing.Point(0, 131);
+            this.splitContainerAdv1.Location = new System.Drawing.Point(0, 156);
             this.splitContainerAdv1.Name = "splitContainerAdv1";
             this.splitContainerAdv1.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
@@ -355,8 +363,8 @@ namespace PenawaranKurikulum
             // splitContainerAdv1.Panel2
             // 
             this.splitContainerAdv1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainerAdv1.Size = new System.Drawing.Size(875, 327);
-            this.splitContainerAdv1.SplitterDistance = 160;
+            this.splitContainerAdv1.Size = new System.Drawing.Size(875, 302);
+            this.splitContainerAdv1.SplitterDistance = 147;
             this.splitContainerAdv1.TabIndex = 16;
             this.splitContainerAdv1.Text = "splitContainerAdv1";
             // 
@@ -367,7 +375,7 @@ namespace PenawaranKurikulum
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(875, 160);
+            this.groupBox2.Size = new System.Drawing.Size(875, 148);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data Dosen";
@@ -393,7 +401,7 @@ namespace PenawaranKurikulum
             this.dgvDataDosen.RowHeadersVisible = false;
             this.dgvDataDosen.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDataDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataDosen.Size = new System.Drawing.Size(869, 105);
+            this.dgvDataDosen.Size = new System.Drawing.Size(869, 93);
             this.dgvDataDosen.TabIndex = 0;
             this.dgvDataDosen.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDataDosen_DragEnter);
             this.dgvDataDosen.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvDataDosen_DragOver);
@@ -458,6 +466,54 @@ namespace PenawaranKurikulum
             this.txtCariDosen.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCariDosen.TabIndex = 1;
             this.txtCariDosen.TextChanged += new System.EventHandler(this.txtCariDosen_TextChanged);
+            // 
+            // rad6
+            // 
+            this.rad6.AutoSize = true;
+            this.rad6.Location = new System.Drawing.Point(186, 124);
+            this.rad6.Name = "rad6";
+            this.rad6.Size = new System.Drawing.Size(65, 21);
+            this.rad6.TabIndex = 18;
+            this.rad6.TabStop = true;
+            this.rad6.Text = "Sem. 1";
+            this.rad6.UseVisualStyleBackColor = true;
+            this.rad6.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad5
+            // 
+            this.rad5.AutoSize = true;
+            this.rad5.Location = new System.Drawing.Point(115, 124);
+            this.rad5.Name = "rad5";
+            this.rad5.Size = new System.Drawing.Size(65, 21);
+            this.rad5.TabIndex = 19;
+            this.rad5.TabStop = true;
+            this.rad5.Text = "Sem. 1";
+            this.rad5.UseVisualStyleBackColor = true;
+            this.rad5.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad7
+            // 
+            this.rad7.AutoSize = true;
+            this.rad7.Location = new System.Drawing.Point(257, 124);
+            this.rad7.Name = "rad7";
+            this.rad7.Size = new System.Drawing.Size(65, 21);
+            this.rad7.TabIndex = 20;
+            this.rad7.TabStop = true;
+            this.rad7.Text = "Sem. 1";
+            this.rad7.UseVisualStyleBackColor = true;
+            this.rad7.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad8
+            // 
+            this.rad8.AutoSize = true;
+            this.rad8.Location = new System.Drawing.Point(328, 124);
+            this.rad8.Name = "rad8";
+            this.rad8.Size = new System.Drawing.Size(65, 21);
+            this.rad8.TabIndex = 21;
+            this.rad8.TabStop = true;
+            this.rad8.Text = "Sem. 1";
+            this.rad8.UseVisualStyleBackColor = true;
+            this.rad8.CheckedChanged += new System.EventHandler(this.radioChecked);
             // 
             // FormAlokasiDosen
             // 
@@ -529,5 +585,9 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosen;
         private System.Windows.Forms.DataGridViewTextBoxColumn SKSMengajar;
         private System.Windows.Forms.RadioButton radCampuran;
+        private System.Windows.Forms.RadioButton rad5;
+        private System.Windows.Forms.RadioButton rad6;
+        private System.Windows.Forms.RadioButton rad8;
+        private System.Windows.Forms.RadioButton rad7;
     }
 }

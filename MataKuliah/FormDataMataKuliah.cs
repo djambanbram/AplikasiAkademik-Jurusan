@@ -351,7 +351,7 @@ namespace MataKuliah
                 int nomor = 1;
                 foreach (DataMataKuliah dataMK in ClassModel.MataKuliah.listDataMataKuliah)
                 {
-                    dgvMataKuliah.Rows.Add(nomor, dataMK.Kode, dataMK.MataKuliah, dataMK.Sks, dataMK.SksPraktikum, dataMK.SemesterDitawarkan, dataMK.SifatMK, dataMK.TahunMulai);
+                    dgvMataKuliah.Rows.Add(nomor, dataMK.Kode, dataMK.MataKuliah, dataMK.Sks, dataMK.SksPraktikum, dataMK.SemesterDitawarkan, dataMK.SifatMK, dataMK.TahunMulai, Convert.ToBoolean(dataMK.IsTugasAkhir));
                     nomor++;
                 }
             }
@@ -359,6 +359,7 @@ namespace MataKuliah
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+            dgvMataKuliah.PerformLayout();
         }
 
         private void dgvMataKuliah_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -382,6 +383,7 @@ namespace MataKuliah
             cmbKategoriMK.Text = dataMk.KategoriMK == null ? string.Empty : dataMk.KategoriMK.Trim();
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
+            cbIsSkripsi.Checked = dataMk.IsTugasAkhir;
 
         }
 
@@ -503,6 +505,7 @@ namespace MataKuliah
             cmbKategoriMK.Text = dataMk.KategoriMK == null ? string.Empty : dataMk.KategoriMK.Trim();
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
+            cbIsSkripsi.Checked = dataMk.IsTugasAkhir;
         }
     }
 }

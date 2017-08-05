@@ -46,6 +46,7 @@ namespace ClassModel
         public string KodeProgram { get; set; }
         public int Sampai { get; set; }
         public string KodeKesetaraan { get; set; }
+        public bool IsTugasAkhir { get; set; }
     }
 
     public class DataMataKuliahPrasyarat : DataMataKuliah
@@ -78,5 +79,19 @@ namespace ClassModel
         public int JumlahKelas { get; set; }
         public int JumlahKelasTeori { get; set; }
         public int JumlahKelasPraktikum { get; set; }
+    }
+
+    public class MasterKonsentrasi
+    {
+        public int IdKonsentrasi { get; set; }
+        public string NamaKonsentrasi { get; set; }
+        public string NamaKonsentrasiEn { get; set; }
+
+        public string SingkatanKonsentrasi { get; set; }
+    }
+
+    public class MataKuliahKonsentrasi : DataMataKuliah
+    {
+        public int IdKonsentrasi { get; set; }
     }
 }

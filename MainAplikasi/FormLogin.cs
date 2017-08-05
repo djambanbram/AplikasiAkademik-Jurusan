@@ -85,6 +85,12 @@ namespace MainAplikasi
                     //LoginAccess.IdTahun = 51;
                     //LoginAccess.KodeSemester = 1;
 
+                    //var kodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
+                    //LoginAccess.TahunAkademik = JObject.Parse(response.Content.ReadAsStringAsync().Result)["TahunAkademik"].ToString();
+                    //LoginAccess.Semester = JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Nama"].ToString();
+                    //LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
+                    //LoginAccess.KodeSemester = kodeSemester;
+
                     LoginAccess.TahunAkademik = "2016/2017";
                     LoginAccess.Semester = "Ganjil";
                     LoginAccess.IdTahun = 44;

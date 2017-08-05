@@ -38,6 +38,7 @@ namespace MainAplikasi
         private FormKelasCampuran formKelasCampuran;
         private FormDataMataKuliah formDataMataKuliah;
         private FormMataKuliahPrasyarat formMataKuliahPrasyarat;
+        private FormMataKuliahKonsentrasi formMataKuliahKonsentrasi;
         private FormAlokasiMK formAlokasiMK;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
@@ -96,6 +97,17 @@ namespace MainAplikasi
                 }
                 form = formMataKuliahPrasyarat;
             }
+            else if (e.XPTaskBarItem.Name == "itemMKKonsentrasi")
+            {
+                MessageBox.Show("Fitur ini belum di aktifkan");
+                return;
+                if (formMataKuliahKonsentrasi == null || formMataKuliahKonsentrasi.IsDisposed)
+                {
+                    formMataKuliahKonsentrasi = new FormMataKuliahKonsentrasi();
+                    formMataKuliahKonsentrasi.MdiParent = this;
+                }
+                form = formMataKuliahKonsentrasi;
+            }
             else if (e.XPTaskBarItem.Name == "itemAlokasiMK")
             {
                 if (formAlokasiMK == null || formAlokasiMK.IsDisposed)
@@ -137,7 +149,7 @@ namespace MainAplikasi
                 }
                 form = formReportAlokasiDosen;
             }
-            
+
             if (form != null && !form.IsDisposed)
             {
                 form.Show();

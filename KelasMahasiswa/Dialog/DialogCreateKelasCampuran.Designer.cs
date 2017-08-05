@@ -38,6 +38,7 @@ namespace KelasMahasiswa.Dialog
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -49,18 +50,17 @@ namespace KelasMahasiswa.Dialog
             this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SingkatanKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtMataKuliah = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.txtKode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtNamaKelas = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.numJumlahKelas = new System.Windows.Forms.NumericUpDown();
             this.btnCreate = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.numKuota = new System.Windows.Forms.NumericUpDown();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtKode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.txtMataKuliah = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).BeginInit();
@@ -70,11 +70,11 @@ namespace KelasMahasiswa.Dialog
             this.splitContainerAdv1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMKCampuran)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMataKuliah)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamaKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlahKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKuota)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMataKuliah)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -100,6 +100,15 @@ namespace KelasMahasiswa.Dialog
             this.btnTutup.TabIndex = 0;
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(521, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(214, 30);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 2;
+            this.progressBar1.Visible = false;
             // 
             // flowLayoutPanel2
             // 
@@ -168,6 +177,7 @@ namespace KelasMahasiswa.Dialog
             this.SingkatanKelas});
             this.dgvMKCampuran.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMKCampuran.Location = new System.Drawing.Point(0, 31);
+            this.dgvMKCampuran.MultiSelect = false;
             this.dgvMKCampuran.Name = "dgvMKCampuran";
             this.dgvMKCampuran.ReadOnly = true;
             this.dgvMKCampuran.RowHeadersVisible = false;
@@ -175,6 +185,7 @@ namespace KelasMahasiswa.Dialog
             this.dgvMKCampuran.Size = new System.Drawing.Size(447, 325);
             this.dgvMKCampuran.TabIndex = 14;
             this.dgvMKCampuran.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMKCampuran_CellClick);
+            this.dgvMKCampuran.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvMKCampuran_KeyUp);
             // 
             // No
             // 
@@ -215,7 +226,7 @@ namespace KelasMahasiswa.Dialog
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 294F));
             this.tableLayoutPanel1.Controls.Add(this.txtMataKuliah, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtKode, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel6, 0, 0);
@@ -240,6 +251,52 @@ namespace KelasMahasiswa.Dialog
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 356);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // txtMataKuliah
+            // 
+            this.txtMataKuliah.BeforeTouchSize = new System.Drawing.Size(288, 25);
+            this.txtMataKuliah.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMataKuliah.Enabled = false;
+            this.txtMataKuliah.Location = new System.Drawing.Point(108, 33);
+            this.txtMataKuliah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtMataKuliah.Name = "txtMataKuliah";
+            this.txtMataKuliah.Size = new System.Drawing.Size(288, 25);
+            this.txtMataKuliah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtMataKuliah.TabIndex = 11;
+            // 
+            // txtKode
+            // 
+            this.txtKode.BeforeTouchSize = new System.Drawing.Size(288, 25);
+            this.txtKode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtKode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKode.Enabled = false;
+            this.txtKode.Location = new System.Drawing.Point(108, 3);
+            this.txtKode.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtKode.Name = "txtKode";
+            this.txtKode.Size = new System.Drawing.Size(288, 25);
+            this.txtKode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtKode.TabIndex = 10;
+            // 
+            // autoLabel6
+            // 
+            this.autoLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel6.Location = new System.Drawing.Point(3, 0);
+            this.autoLabel6.Name = "autoLabel6";
+            this.autoLabel6.Size = new System.Drawing.Size(99, 30);
+            this.autoLabel6.TabIndex = 9;
+            this.autoLabel6.Text = "Kode";
+            this.autoLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel3.Location = new System.Drawing.Point(3, 120);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(99, 30);
+            this.autoLabel3.TabIndex = 6;
+            this.autoLabel3.Text = "Kuota";
+            this.autoLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel4
             // 
@@ -266,7 +323,6 @@ namespace KelasMahasiswa.Dialog
             this.txtNamaKelas.BeforeTouchSize = new System.Drawing.Size(288, 25);
             this.txtNamaKelas.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaKelas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNamaKelas.Enabled = false;
             this.txtNamaKelas.Location = new System.Drawing.Point(108, 63);
             this.txtNamaKelas.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtNamaKelas.Name = "txtNamaKelas";
@@ -302,16 +358,6 @@ namespace KelasMahasiswa.Dialog
             this.btnCreate.Text = "Create";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // autoLabel3
-            // 
-            this.autoLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.autoLabel3.Location = new System.Drawing.Point(3, 120);
-            this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(99, 30);
-            this.autoLabel3.TabIndex = 6;
-            this.autoLabel3.Text = "Kuota";
-            this.autoLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // numKuota
             // 
             this.numKuota.Location = new System.Drawing.Point(108, 123);
@@ -338,51 +384,6 @@ namespace KelasMahasiswa.Dialog
             this.autoLabel5.TabIndex = 8;
             this.autoLabel5.Text = "Mata Kuliah";
             this.autoLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // autoLabel6
-            // 
-            this.autoLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.autoLabel6.Location = new System.Drawing.Point(3, 0);
-            this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(99, 30);
-            this.autoLabel6.TabIndex = 9;
-            this.autoLabel6.Text = "Kode";
-            this.autoLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtKode
-            // 
-            this.txtKode.BeforeTouchSize = new System.Drawing.Size(288, 25);
-            this.txtKode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtKode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKode.Enabled = false;
-            this.txtKode.Location = new System.Drawing.Point(108, 3);
-            this.txtKode.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtKode.Name = "txtKode";
-            this.txtKode.Size = new System.Drawing.Size(288, 25);
-            this.txtKode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtKode.TabIndex = 10;
-            // 
-            // txtMataKuliah
-            // 
-            this.txtMataKuliah.BeforeTouchSize = new System.Drawing.Size(288, 25);
-            this.txtMataKuliah.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMataKuliah.Enabled = false;
-            this.txtMataKuliah.Location = new System.Drawing.Point(108, 33);
-            this.txtMataKuliah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtMataKuliah.Name = "txtMataKuliah";
-            this.txtMataKuliah.Size = new System.Drawing.Size(288, 25);
-            this.txtMataKuliah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtMataKuliah.TabIndex = 11;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(521, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(214, 30);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 2;
-            this.progressBar1.Visible = false;
             // 
             // DialogCreateKelasCampuran
             // 
@@ -411,11 +412,11 @@ namespace KelasMahasiswa.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.dgvMKCampuran)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMataKuliah)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamaKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlahKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKuota)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMataKuliah)).EndInit();
             this.ResumeLayout(false);
 
         }

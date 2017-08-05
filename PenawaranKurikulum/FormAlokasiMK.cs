@@ -187,6 +187,8 @@ namespace PenawaranKurikulum
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
             Loading(false);
+            dgvMK.PerformLayout();
+            dgvMktsd.PerformLayout();
         }
 
         private void btnTutup_Click(object sender, EventArgs e)

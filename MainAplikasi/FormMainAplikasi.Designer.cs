@@ -39,10 +39,15 @@ namespace MainAplikasi
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainAplikasi));
             this.xpTaskBar1 = new Syncfusion.Windows.Forms.Tools.XPTaskBar();
             this.boxMataKuliah = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.imgListMataKuliahBox = new System.Windows.Forms.ImageList(this.components);
             this.boxKelas = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.imgListKelasBox = new System.Windows.Forms.ImageList(this.components);
             this.boxPenawaranMK = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.imgPenawaranMKBox = new System.Windows.Forms.ImageList(this.components);
             this.BoxLaporan = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.imgLaporanBox = new System.Windows.Forms.ImageList(this.components);
             this.BoxKeluar = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.imgKeluarBox = new System.Windows.Forms.ImageList(this.components);
             this.tabbedMDIManager1 = new Syncfusion.Windows.Forms.Tools.TabbedMDIManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stripLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,11 +62,6 @@ namespace MainAplikasi
             this.mataKuliahPrasyaratToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.alokasiLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imgListMataKuliahBox = new System.Windows.Forms.ImageList(this.components);
-            this.imgListKelasBox = new System.Windows.Forms.ImageList(this.components);
-            this.imgPenawaranMKBox = new System.Windows.Forms.ImageList(this.components);
-            this.imgLaporanBox = new System.Windows.Forms.ImageList(this.components);
-            this.imgKeluarBox = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -112,14 +112,23 @@ namespace MainAplikasi
             this.boxMataKuliah.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Data Mata Kuliah", System.Drawing.Color.Empty, 1, null, "", true, true, "itemMataKuliah", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Mata Kuliah Prasyarat", System.Drawing.Color.Empty, 2, null, "", true, true, "itemMKPrasyarat", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Mata Kuliah Konsentrasi", System.Drawing.Color.Empty, 3, null, "", true, true, "itemMKKonsentrasi", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Mata Kuliah Konsentrasi", System.Drawing.Color.Empty, 3, null, "", false, true, "itemMKKonsentrasi", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
             this.boxMataKuliah.Location = new System.Drawing.Point(0, 0);
             this.boxMataKuliah.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxMataKuliah.Name = "boxMataKuliah";
-            this.boxMataKuliah.Size = new System.Drawing.Size(264, 98);
+            this.boxMataKuliah.Size = new System.Drawing.Size(264, 76);
             this.boxMataKuliah.TabIndex = 1;
             this.boxMataKuliah.Text = "Mata Kuliah";
             this.boxMataKuliah.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
+            // 
+            // imgListMataKuliahBox
+            // 
+            this.imgListMataKuliahBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListMataKuliahBox.ImageStream")));
+            this.imgListMataKuliahBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgListMataKuliahBox.Images.SetKeyName(0, "agenda-1.png");
+            this.imgListMataKuliahBox.Images.SetKeyName(1, "archives.png");
+            this.imgListMataKuliahBox.Images.SetKeyName(2, "blocks.png");
+            this.imgListMataKuliahBox.Images.SetKeyName(3, "cells.png");
             // 
             // boxKelas
             // 
@@ -137,13 +146,21 @@ namespace MainAplikasi
             this.boxKelas.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Reguler", System.Drawing.Color.Empty, 1, null, "", true, true, "itemKelasReguler", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Campuran", System.Drawing.Color.Empty, 2, null, "", true, true, "itemKelasCampuran", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.boxKelas.Location = new System.Drawing.Point(0, 98);
+            this.boxKelas.Location = new System.Drawing.Point(0, 76);
             this.boxKelas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxKelas.Name = "boxKelas";
             this.boxKelas.Size = new System.Drawing.Size(264, 76);
             this.boxKelas.TabIndex = 0;
             this.boxKelas.Text = "Kelas";
             this.boxKelas.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
+            // 
+            // imgListKelasBox
+            // 
+            this.imgListKelasBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListKelasBox.ImageStream")));
+            this.imgListKelasBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgListKelasBox.Images.SetKeyName(0, "idea.png");
+            this.imgListKelasBox.Images.SetKeyName(1, "abacus.png");
+            this.imgListKelasBox.Images.SetKeyName(2, "watercolor.png");
             // 
             // boxPenawaranMK
             // 
@@ -162,13 +179,22 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Mata Kuliah", System.Drawing.Color.Empty, 1, null, "", true, true, "itemAlokasiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemAlokasiDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Lab. dan Mata Kuliah", System.Drawing.Color.Empty, 3, null, "", true, true, "itemAlokasiLabMK", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
-            this.boxPenawaranMK.Location = new System.Drawing.Point(0, 174);
+            this.boxPenawaranMK.Location = new System.Drawing.Point(0, 152);
             this.boxPenawaranMK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxPenawaranMK.Name = "boxPenawaranMK";
             this.boxPenawaranMK.Size = new System.Drawing.Size(264, 98);
             this.boxPenawaranMK.TabIndex = 2;
             this.boxPenawaranMK.Text = "Penawaran MK";
             this.boxPenawaranMK.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
+            // 
+            // imgPenawaranMKBox
+            // 
+            this.imgPenawaranMKBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgPenawaranMKBox.ImageStream")));
+            this.imgPenawaranMKBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgPenawaranMKBox.Images.SetKeyName(0, "id-card.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(1, "open-book-2.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(2, "teacher.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(3, "laptop.png");
             // 
             // BoxLaporan
             // 
@@ -183,12 +209,20 @@ namespace MainAplikasi
             this.BoxLaporan.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, 1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxLaporan.Location = new System.Drawing.Point(0, 272);
+            this.BoxLaporan.Location = new System.Drawing.Point(0, 250);
             this.BoxLaporan.Name = "BoxLaporan";
             this.BoxLaporan.Size = new System.Drawing.Size(264, 82);
             this.BoxLaporan.TabIndex = 4;
             this.BoxLaporan.Text = "Laporan";
             this.BoxLaporan.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
+            // 
+            // imgLaporanBox
+            // 
+            this.imgLaporanBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLaporanBox.ImageStream")));
+            this.imgLaporanBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgLaporanBox.Images.SetKeyName(0, "printer.png");
+            this.imgLaporanBox.Images.SetKeyName(1, "paper.png");
+            this.imgLaporanBox.Images.SetKeyName(2, "blackboard-3.png");
             // 
             // BoxKeluar
             // 
@@ -203,12 +237,19 @@ namespace MainAplikasi
             this.BoxKeluar.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 354);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 332);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 58);
             this.BoxKeluar.TabIndex = 3;
             this.BoxKeluar.Text = "Keluar";
             this.BoxKeluar.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
+            // 
+            // imgKeluarBox
+            // 
+            this.imgKeluarBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgKeluarBox.ImageStream")));
+            this.imgKeluarBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgKeluarBox.Images.SetKeyName(0, "exit.png");
+            this.imgKeluarBox.Images.SetKeyName(1, "door.png");
             // 
             // tabbedMDIManager1
             // 
@@ -316,47 +357,6 @@ namespace MainAplikasi
             this.alokasiLabToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.alokasiLabToolStripMenuItem.Text = "Alokasi Lab";
             this.alokasiLabToolStripMenuItem.Click += new System.EventHandler(this.alokasiLabToolStripMenuItem_Click);
-            // 
-            // imgListMataKuliahBox
-            // 
-            this.imgListMataKuliahBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListMataKuliahBox.ImageStream")));
-            this.imgListMataKuliahBox.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgListMataKuliahBox.Images.SetKeyName(0, "agenda-1.png");
-            this.imgListMataKuliahBox.Images.SetKeyName(1, "archives.png");
-            this.imgListMataKuliahBox.Images.SetKeyName(2, "blocks.png");
-            this.imgListMataKuliahBox.Images.SetKeyName(3, "cells.png");
-            // 
-            // imgListKelasBox
-            // 
-            this.imgListKelasBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListKelasBox.ImageStream")));
-            this.imgListKelasBox.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgListKelasBox.Images.SetKeyName(0, "idea.png");
-            this.imgListKelasBox.Images.SetKeyName(1, "abacus.png");
-            this.imgListKelasBox.Images.SetKeyName(2, "watercolor.png");
-            // 
-            // imgPenawaranMKBox
-            // 
-            this.imgPenawaranMKBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgPenawaranMKBox.ImageStream")));
-            this.imgPenawaranMKBox.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgPenawaranMKBox.Images.SetKeyName(0, "id-card.png");
-            this.imgPenawaranMKBox.Images.SetKeyName(1, "open-book-2.png");
-            this.imgPenawaranMKBox.Images.SetKeyName(2, "teacher.png");
-            this.imgPenawaranMKBox.Images.SetKeyName(3, "laptop.png");
-            // 
-            // imgLaporanBox
-            // 
-            this.imgLaporanBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLaporanBox.ImageStream")));
-            this.imgLaporanBox.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgLaporanBox.Images.SetKeyName(0, "printer.png");
-            this.imgLaporanBox.Images.SetKeyName(1, "paper.png");
-            this.imgLaporanBox.Images.SetKeyName(2, "blackboard-3.png");
-            // 
-            // imgKeluarBox
-            // 
-            this.imgKeluarBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgKeluarBox.ImageStream")));
-            this.imgKeluarBox.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgKeluarBox.Images.SetKeyName(0, "exit.png");
-            this.imgKeluarBox.Images.SetKeyName(1, "door.png");
             // 
             // FormMainAplikasi
             // 

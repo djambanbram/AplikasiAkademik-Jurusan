@@ -57,7 +57,8 @@ namespace KelasMahasiswa.Dialog
             }
 
             Loading(true);
-            var data = new {
+            var data = new
+            {
                 PrefiksNamaKelas = txtNamaKelas.Text,
                 Kode = txtKode.Text.Trim(),
                 Kuota = int.Parse(numKuota.Value.ToString()),
@@ -69,7 +70,7 @@ namespace KelasMahasiswa.Dialog
 
             string jsonData = JsonConvert.SerializeObject(data);
             response = await webApi.Post(URLSaveKelasCampuran, jsonData, true);
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
 
@@ -119,11 +120,15 @@ namespace KelasMahasiswa.Dialog
         {
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
+                txtKode.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["Kode"].Value.ToString();
+                txtMataKuliah.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["MataKuliah"].Value.ToString();
                 if (dgvMKCampuran.Rows[e.RowIndex].Cells["SingkatanKelas"].Value != null)
                 {
-                    txtKode.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["Kode"].Value.ToString();
-                    txtMataKuliah.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["MataKuliah"].Value.ToString();
                     txtNamaKelas.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["SingkatanKelas"].Value.ToString();
+                }
+                else
+                {
+                    txtNamaKelas.Text = null;
                 }
             }
         }
@@ -136,6 +141,22 @@ namespace KelasMahasiswa.Dialog
             foreach (DataMataKuliahCampuran mk in listTemp2)
             {
                 dgvMKCampuran.Rows.Add(i, mk.Kode, mk.MataKuliah, mk.JumlahKelas, mk.SingkatanKelas);
+            }
+        }
+
+        private void dgvMKCampuran_KeyUp(object sender, KeyEventArgs e)
+        {
+            DataGridViewSelectedRowCollection dgRow = dgvMKCampuran.SelectedRows;
+
+            txtKode.Text = dgRow[0].Cells["Kode"].Value.ToString();
+            txtMataKuliah.Text = dgRow[0].Cells["MataKuliah"].Value.ToString();
+            if (dgRow[0].Cells["SingkatanKelas"].Value != null)
+            {
+                txtNamaKelas.Text = dgRow[0].Cells["SingkatanKelas"].Value.ToString();
+            }
+            else
+            {
+                txtNamaKelas.Text = null;
             }
         }
     }

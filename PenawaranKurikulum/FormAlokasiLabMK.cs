@@ -159,6 +159,7 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+            dgvMKPraktikum.PerformLayout();
         }
 
         private async Task LoadLabDanMember(string jsonData)
@@ -206,6 +207,7 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response)); ;
             }
+            dgvDaftarLab.PerformLayout();
         }
 
         private void dgvDaftarLab_MouseMove(object sender, MouseEventArgs e)

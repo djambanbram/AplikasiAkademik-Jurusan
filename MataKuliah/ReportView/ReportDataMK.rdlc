@@ -393,7 +393,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.2in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -703,7 +703,7 @@
         <DataSetName>DsDataMataKuliah</DataSetName>
         <Top>1.54042in</Top>
         <Left>0.20708in</Left>
-        <Height>0.66667in</Height>
+        <Height>0.61667in</Height>
         <Width>8.09792in</Width>
         <ZIndex>2</ZIndex>
         <Style>

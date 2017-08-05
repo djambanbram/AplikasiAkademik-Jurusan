@@ -52,6 +52,7 @@ namespace PenawaranKurikulum
 
         private int[] ganjil = { 1, 3, 5, 7 };
         private int[] genap = { 2, 4, 6, 8 };
+        private int[] allSemester = { 1, 2, 3, 4, 5, 6, 7, 8 };
 
         private int semDipilih;
         private string kodeProgramDipilih;
@@ -96,20 +97,20 @@ namespace PenawaranKurikulum
             cmbFakultas.ValueMember = "KodeFakultas";
             cmbFakultas.SelectedIndex = 0;
 
-            if (LoginAccess.KodeSemester % 2 == 1)
-            {
+            //if (LoginAccess.KodeSemester % 2 == 1)
+            //{
                 rad1.Text = "1";
-                rad2.Text = "3";
-                rad3.Text = "5";
-                rad4.Text = "7";
-            }
-            else
-            {
-                rad1.Text = "2";
-                rad2.Text = "4";
-                rad3.Text = "6";
-                rad4.Text = "8";
-            }
+                rad2.Text = "2";
+                rad3.Text = "3";
+                rad4.Text = "4";
+            //}
+            //else
+            //{
+                rad5.Text = "5";
+                rad6.Text = "6";
+                rad7.Text = "7";
+                rad8.Text = "8";
+            //}
         }
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,6 +302,7 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+            dgvAlokasi.PerformLayout();
         }
 
         private async Task LoadKelas(string jsonData)
@@ -356,6 +358,8 @@ namespace PenawaranKurikulum
                     }
                 }
             }
+            dgvAlokasi.PerformLayout();
+
         }
 
         private async Task LoadAlokasiDosen(string jsonData)
@@ -410,6 +414,7 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+            dgvAlokasi.PerformLayout();
         }
 
         private async Task LoadDataDosen(string jsonData)
@@ -434,6 +439,7 @@ namespace PenawaranKurikulum
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+            dgvDataDosen.PerformLayout();
         }
 
         void dgvAlokasi_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)

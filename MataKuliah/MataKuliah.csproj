@@ -83,6 +83,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetMataKuliah.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DialogForm\FormCreateKonsentrasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogForm\FormCreateKonsentrasi.Designer.cs">
+      <DependentUpon>FormCreateKonsentrasi.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogForm\FormMKPengganti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,12 @@
     </Compile>
     <Compile Include="FormDataMataKuliah.Designer.cs">
       <DependentUpon>FormDataMataKuliah.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMataKuliahKonsentrasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMataKuliahKonsentrasi.Designer.cs">
+      <DependentUpon>FormMataKuliahKonsentrasi.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMataKuliahPrasyarat.cs">
       <SubType>Form</SubType>
@@ -117,11 +129,17 @@
     <Compile Include="Report\FormReportMKPrasyarat.Designer.cs">
       <DependentUpon>FormReportMKPrasyarat.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DialogForm\FormCreateKonsentrasi.resx">
+      <DependentUpon>FormCreateKonsentrasi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogForm\FormMKPengganti.resx">
       <DependentUpon>FormMKPengganti.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDataMataKuliah.resx">
       <DependentUpon>FormDataMataKuliah.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMataKuliahKonsentrasi.resx">
+      <DependentUpon>FormMataKuliahKonsentrasi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMataKuliahPrasyarat.resx">
       <DependentUpon>FormMataKuliahPrasyarat.cs</DependentUpon>

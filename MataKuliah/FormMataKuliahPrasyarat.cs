@@ -131,6 +131,7 @@ namespace MataKuliah
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
+            dgvMataKuliah.PerformLayout();
         }
 
         private async Task LoadMKPrasyarat()
@@ -169,6 +170,7 @@ namespace MataKuliah
                 {
                     MessageBox.Show(webApi.ReturnMessage(response));
                 }
+                dgvMKPrasyarat.PerformLayout();
             }
         }
 

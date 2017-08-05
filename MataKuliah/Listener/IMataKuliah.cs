@@ -10,4 +10,9 @@ namespace MataKuliah.Listener
     {
         void loadMK(string kodeMK, string mataKuliah);
     }
+
+    public interface IMKKonsentrasi
+    {
+        void saveKonsentrasi(string namaKonsentrasi, string namaKonsentrasiEn, string singkatanKonsnetrasi);
+    }
 }

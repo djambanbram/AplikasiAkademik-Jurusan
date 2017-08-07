@@ -325,6 +325,7 @@ namespace MataKuliah
             this.IdKonsentrasi.HeaderText = "IdKonsentrasi";
             this.IdKonsentrasi.Name = "IdKonsentrasi";
             this.IdKonsentrasi.ReadOnly = true;
+            this.IdKonsentrasi.Visible = false;
             // 
             // kKode
             // 

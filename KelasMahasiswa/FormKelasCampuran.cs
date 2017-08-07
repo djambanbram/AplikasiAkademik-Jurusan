@@ -133,8 +133,8 @@ namespace KelasMahasiswa
                 List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
                 MataKuliahCampuranBinding mkBinding = new MataKuliahCampuranBinding(oListMK);
                 List<DataMataKuliahCampuran> listMKCampuran = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran);
-                listMKCampuran = listMKCampuran.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
-                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
+                //listMKCampuran = listMKCampuran.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
+                //                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
                 int no = 1;
                 foreach (DataMataKuliahCampuran mk in listMKCampuran)
                 {
@@ -230,8 +230,8 @@ namespace KelasMahasiswa
                 List<dynamic> oListMK = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
                 MataKuliahCampuranBinding mkBinding = new MataKuliahCampuranBinding(oListMK);
                 List<DataMataKuliahCampuran> listMKCampuran = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran);
-                listMKCampuran = listMKCampuran.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
-                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
+                //listMKCampuran = listMKCampuran.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
+                //                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
 
                 int no = 1;
                 foreach (DataMataKuliahCampuran mk in listMKCampuran)

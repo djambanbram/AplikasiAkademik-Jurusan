@@ -65,7 +65,8 @@ namespace KelasMahasiswa.Dialog
                 JumlahKelas = int.Parse(numJumlahKelas.Value.ToString()),
                 TahunAkademik = LoginAccess.TahunAkademik,
                 Semester = LoginAccess.KodeSemester,
-                KodeJurusan = KodeProgram
+                KodeJurusan = KodeProgram,
+                SemesterKelas = int.Parse(lblSemesterKelas.Text)
             };
 
             string jsonData = JsonConvert.SerializeObject(data);
@@ -104,13 +105,14 @@ namespace KelasMahasiswa.Dialog
                 txtKode.Text = string.Empty;
                 txtMataKuliah.Text = string.Empty;
 
-                listTemp1 = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran).
-                    Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
-                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
+                listTemp1 = new List<DataMataKuliahCampuran>(ClassModel.MataKuliah.listDataMataKuliahCampuran)
+                    //.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" ||
+                    //            m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList()
+                    ;
                 int no = 1;
                 foreach (DataMataKuliahCampuran mk in listTemp1)
                 {
-                    dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas, mk.SingkatanKelas);
+                    dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas, mk.SingkatanKelas, mk.SemesterDitawarkan);
                     no++;
                 }
             }
@@ -122,6 +124,7 @@ namespace KelasMahasiswa.Dialog
             {
                 txtKode.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["Kode"].Value.ToString();
                 txtMataKuliah.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["MataKuliah"].Value.ToString();
+                lblSemesterKelas.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["SemesterKelas"].Value.ToString();
                 if (dgvMKCampuran.Rows[e.RowIndex].Cells["SingkatanKelas"].Value != null)
                 {
                     txtNamaKelas.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["SingkatanKelas"].Value.ToString();
@@ -150,6 +153,7 @@ namespace KelasMahasiswa.Dialog
 
             txtKode.Text = dgRow[0].Cells["Kode"].Value.ToString();
             txtMataKuliah.Text = dgRow[0].Cells["MataKuliah"].Value.ToString();
+            lblSemesterKelas.Text = dgRow[0].Cells["SemesterKelas"].Value.ToString();
             if (dgRow[0].Cells["SingkatanKelas"].Value != null)
             {
                 txtNamaKelas.Text = dgRow[0].Cells["SingkatanKelas"].Value.ToString();

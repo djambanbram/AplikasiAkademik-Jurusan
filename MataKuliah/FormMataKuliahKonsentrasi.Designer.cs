@@ -37,6 +37,8 @@ namespace MataKuliah
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.cmbKonsentrasi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProdi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -48,20 +50,19 @@ namespace MataKuliah
             this.btnCreateKonsenttrasi = new System.Windows.Forms.Button();
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvMataKuliah = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvMKKonsentrasi = new System.Windows.Forms.DataGridView();
-            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.cmbKonsentrasi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.kNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdKonsentrasi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TahunMulai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbKonsentrasi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -71,10 +72,9 @@ namespace MataKuliah
             this.splitContainerAdv1.Panel2.SuspendLayout();
             this.splitContainerAdv1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMKKonsentrasi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbKonsentrasi)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel2
@@ -91,6 +91,26 @@ namespace MataKuliah
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(810, 107);
             this.gradientPanel2.TabIndex = 9;
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Location = new System.Drawing.Point(0, 72);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(78, 16);
+            this.autoLabel2.TabIndex = 10;
+            this.autoLabel2.Text = "Konsentrasi";
+            // 
+            // cmbKonsentrasi
+            // 
+            this.cmbKonsentrasi.BeforeTouchSize = new System.Drawing.Size(361, 24);
+            this.cmbKonsentrasi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKonsentrasi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbKonsentrasi.Location = new System.Drawing.Point(108, 70);
+            this.cmbKonsentrasi.Name = "cmbKonsentrasi";
+            this.cmbKonsentrasi.Size = new System.Drawing.Size(361, 24);
+            this.cmbKonsentrasi.TabIndex = 9;
+            this.cmbKonsentrasi.SelectedIndexChanged += new System.EventHandler(this.cmbKonsentrasi_SelectedIndexChanged);
             // 
             // autoLabel15
             // 
@@ -181,6 +201,7 @@ namespace MataKuliah
             this.btnCreateKonsenttrasi.TabIndex = 0;
             this.btnCreateKonsenttrasi.Text = "Create Konsentrasi";
             this.btnCreateKonsenttrasi.UseVisualStyleBackColor = true;
+            this.btnCreateKonsenttrasi.Click += new System.EventHandler(this.btnCreateKonsenttrasi_Click);
             // 
             // splitContainerAdv1
             // 
@@ -212,19 +233,9 @@ namespace MataKuliah
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mata Kuliah";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgvMKKonsentrasi);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(405, 283);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Mata Kuliah Kosentrasi";
-            // 
             // dgvMataKuliah
             // 
+            this.dgvMataKuliah.AllowDrop = true;
             this.dgvMataKuliah.AllowUserToAddRows = false;
             this.dgvMataKuliah.AllowUserToDeleteRows = false;
             this.dgvMataKuliah.AllowUserToResizeRows = false;
@@ -243,6 +254,11 @@ namespace MataKuliah
             this.dgvMataKuliah.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMataKuliah.Size = new System.Drawing.Size(392, 259);
             this.dgvMataKuliah.TabIndex = 0;
+            this.dgvMataKuliah.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragDrop);
+            this.dgvMataKuliah.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragEnter);
+            this.dgvMataKuliah.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragOver);
+            this.dgvMataKuliah.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseDown);
+            this.dgvMataKuliah.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseMove);
             // 
             // No
             // 
@@ -265,18 +281,30 @@ namespace MataKuliah
             this.MataKuliah.Name = "MataKuliah";
             this.MataKuliah.ReadOnly = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvMKKonsentrasi);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(405, 283);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Mata Kuliah Kosentrasi";
+            // 
             // dgvMKKonsentrasi
             // 
+            this.dgvMKKonsentrasi.AllowDrop = true;
             this.dgvMKKonsentrasi.AllowUserToAddRows = false;
             this.dgvMKKonsentrasi.AllowUserToDeleteRows = false;
             this.dgvMKKonsentrasi.AllowUserToResizeRows = false;
             this.dgvMKKonsentrasi.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvMKKonsentrasi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMKKonsentrasi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.kNo,
             this.IdKonsentrasi,
             this.kKode,
-            this.kMataKuliah});
+            this.kMataKuliah,
+            this.TahunMulai});
             this.dgvMKKonsentrasi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMKKonsentrasi.Location = new System.Drawing.Point(3, 21);
             this.dgvMKKonsentrasi.MultiSelect = false;
@@ -286,40 +314,17 @@ namespace MataKuliah
             this.dgvMKKonsentrasi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMKKonsentrasi.Size = new System.Drawing.Size(399, 259);
             this.dgvMKKonsentrasi.TabIndex = 1;
-            // 
-            // autoLabel2
-            // 
-            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.Location = new System.Drawing.Point(0, 72);
-            this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(78, 16);
-            this.autoLabel2.TabIndex = 10;
-            this.autoLabel2.Text = "Konsentrasi";
-            // 
-            // cmbKonsentrasi
-            // 
-            this.cmbKonsentrasi.BeforeTouchSize = new System.Drawing.Size(361, 24);
-            this.cmbKonsentrasi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKonsentrasi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbKonsentrasi.Location = new System.Drawing.Point(108, 70);
-            this.cmbKonsentrasi.Name = "cmbKonsentrasi";
-            this.cmbKonsentrasi.Size = new System.Drawing.Size(361, 24);
-            this.cmbKonsentrasi.TabIndex = 9;
-            this.cmbKonsentrasi.SelectedIndexChanged += new System.EventHandler(this.cmbKonsentrasi_SelectedIndexChanged);
-            // 
-            // kNo
-            // 
-            this.kNo.HeaderText = "No";
-            this.kNo.Name = "kNo";
-            this.kNo.ReadOnly = true;
-            this.kNo.Width = 50;
+            this.dgvMKKonsentrasi.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMKKonsentrasi_DragDrop);
+            this.dgvMKKonsentrasi.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMKKonsentrasi_DragEnter);
+            this.dgvMKKonsentrasi.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMKKonsentrasi_DragOver);
+            this.dgvMKKonsentrasi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMKKonsentrasi_MouseDown);
+            this.dgvMKKonsentrasi.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMKKonsentrasi_MouseMove);
             // 
             // IdKonsentrasi
             // 
             this.IdKonsentrasi.HeaderText = "IdKonsentrasi";
             this.IdKonsentrasi.Name = "IdKonsentrasi";
             this.IdKonsentrasi.ReadOnly = true;
-            this.IdKonsentrasi.Visible = false;
             // 
             // kKode
             // 
@@ -334,6 +339,13 @@ namespace MataKuliah
             this.kMataKuliah.HeaderText = "Mata Kuliah";
             this.kMataKuliah.Name = "kMataKuliah";
             this.kMataKuliah.ReadOnly = true;
+            // 
+            // TahunMulai
+            // 
+            this.TahunMulai.HeaderText = "Tahun Berlaku";
+            this.TahunMulai.Name = "TahunMulai";
+            this.TahunMulai.ReadOnly = true;
+            this.TahunMulai.Width = 60;
             // 
             // FormMataKuliahKonsentrasi
             // 
@@ -353,6 +365,7 @@ namespace MataKuliah
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbKonsentrasi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -362,10 +375,9 @@ namespace MataKuliah
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAdv1)).EndInit();
             this.splitContainerAdv1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMKKonsentrasi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbKonsentrasi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,9 +404,9 @@ namespace MataKuliah
         private System.Windows.Forms.DataGridView dgvMKKonsentrasi;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbKonsentrasi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdKonsentrasi;
         private System.Windows.Forms.DataGridViewTextBoxColumn kKode;
         private System.Windows.Forms.DataGridViewTextBoxColumn kMataKuliah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TahunMulai;
     }
 }

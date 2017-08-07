@@ -83,9 +83,9 @@ namespace MataKuliah.DialogForm
             // 
             this.autoLabel2.Location = new System.Drawing.Point(12, 44);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(150, 17);
+            this.autoLabel2.Size = new System.Drawing.Size(141, 17);
             this.autoLabel2.TabIndex = 2;
-            this.autoLabel2.Text = "Nama Konsentrasi (en) *";
+            this.autoLabel2.Text = "Nama Konsentrasi (en)";
             // 
             // txtSingkatan
             // 
@@ -147,6 +147,7 @@ namespace MataKuliah.DialogForm
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCreateKonsentrasi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create Konsentrasi Mata Kuliah";
             ((System.ComponentModel.ISupportInitialize)(this.txtNamaKonsentrasi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamaEn)).EndInit();

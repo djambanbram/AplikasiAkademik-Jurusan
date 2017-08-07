@@ -302,3 +302,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /Apps
+/MainAplikasi/Properties/app.manifest

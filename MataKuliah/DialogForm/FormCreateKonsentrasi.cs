@@ -24,12 +24,12 @@ namespace MataKuliah.DialogForm
         public FormCreateKonsentrasi(IMKKonsentrasi iMKKonsentrasi)
         {
             InitializeComponent();
+            this.iMKKonsentrasi = iMKKonsentrasi;
         }
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             if(string.IsNullOrWhiteSpace(txtNamaKonsentrasi.Text) 
-                || string.IsNullOrWhiteSpace(txtNamaEn.Text) 
                 || string.IsNullOrWhiteSpace(txtSingkatan.Text))
             {
                 MessageBox.Show("Field yang bertanda (*) harus diisi");

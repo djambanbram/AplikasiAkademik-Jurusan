@@ -25,6 +25,7 @@ using PenawaranKurikulum;
 using Syncfusion.Windows.Forms.Tools;
 using MataKuliah.Report;
 using PenawaranKurikulum.Report;
+using System.Deployment.Application;
 
 namespace MainAplikasi
 {
@@ -99,8 +100,6 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemMKKonsentrasi")
             {
-                MessageBox.Show("Fitur ini belum di aktifkan");
-                return;
                 if (formMataKuliahKonsentrasi == null || formMataKuliahKonsentrasi.IsDisposed)
                 {
                     formMataKuliahKonsentrasi = new FormMataKuliahKonsentrasi();
@@ -177,8 +176,11 @@ namespace MainAplikasi
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
 
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                stripLabel.Text = string.Format("{0} | Version: {1} | Tahun Akademik {2} Semester {3}", Application.ProductName, ApplicationDeployment.CurrentDeployment.CurrentVersion, LoginAccess.TahunAkademik, LoginAccess.Semester);
+            }
             Loading(false);
-            stripLabel.Text = string.Format("{0} | Version: {1} | Tahun Akademik {2} Semester {3}", Application.ProductName, Application.ProductVersion, LoginAccess.TahunAkademik, LoginAccess.Semester);
         }
 
         private void menuItemSatuProgramKelasCampuran_Click(object sender, EventArgs e)

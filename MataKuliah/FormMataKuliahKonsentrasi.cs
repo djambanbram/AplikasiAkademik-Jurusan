@@ -8,6 +8,9 @@
 using ApiService;
 using ClassModel;
 using MataKuliah.DataBinding;
+using MataKuliah.DialogForm;
+using MataKuliah.Lib;
+using MataKuliah.Listener;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,11 +26,14 @@ using System.Windows.Forms;
 
 namespace MataKuliah
 {
-    public partial class FormMataKuliahKonsentrasi : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormMataKuliahKonsentrasi : Syncfusion.Windows.Forms.MetroForm, IMKKonsentrasi
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk";
         private string URLGetMasterKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/get_master_konsentrasi";
+        private string URLSaveMasterKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/save_master_konsentrasi";
+        private string URLSaveMKKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/save_mk_konsentrasi";
+        private string URLDeleteMKKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/del_mk_konsentrasi";
         private string URLGetMKKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/get_mk_konsentrasi";
 
         private WebApi webApi;
@@ -39,10 +45,18 @@ namespace MataKuliah
         private string UidProdiDipilih;
         private string KodeMKDipilih;
 
+        private DragandDrop dragAndDropAdd;
+        private DragandDrop dragAndDropDelete;
+
+        private dynamic valueAdd;
+        private dynamic valueDelete;
+
         public FormMataKuliahKonsentrasi()
         {
             InitializeComponent();
             webApi = new WebApi();
+            dragAndDropAdd = new DragandDrop();
+            dragAndDropDelete = new DragandDrop();
         }
 
         private void Loading(bool isLoading)
@@ -119,6 +133,7 @@ namespace MataKuliah
 
         private async Task LoadKonsentrasi()
         {
+            cmbKonsentrasi.DataSource = null;
             MKByIdProdi m = new MKByIdProdi() { IdProdi = UidProdiDipilih };
             string jsonData = JsonConvert.SerializeObject(m);
 
@@ -138,7 +153,7 @@ namespace MataKuliah
             }
         }
 
-        private async void cmbKonsentrasi_SelectedIndexChanged(object sender, EventArgs e)
+        private async Task LoadMKKonsentrasi()
         {
             dgvMKKonsentrasi.Rows.Clear();
             if (cmbKonsentrasi.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0 && cmbFakultas.SelectedIndex > 0)
@@ -156,19 +171,168 @@ namespace MataKuliah
 
                 List<MataKuliahKonsentrasi> listMKKonsentrasi =
                     JsonConvert.DeserializeObject<List<MataKuliahKonsentrasi>>(response.Content.ReadAsStringAsync().Result);
-                int no = 1;
                 foreach (MataKuliahKonsentrasi mk in listMKKonsentrasi)
                 {
-                    dgvMKKonsentrasi.Rows.Add(no, mk.IdKonsentrasi, mk.Kode, mk.MataKuliah);
-                    no++;
+                    dgvMKKonsentrasi.Rows.Add(mk.IdKonsentrasi, mk.Kode, mk.MataKuliah, mk.TahunMulai);
                 }
                 Loading(false);
             }
         }
 
+        private async void cmbKonsentrasi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await LoadMKKonsentrasi();
+        }
+
         private void btnTutup_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public async void saveKonsentrasi(string namaKonsentrasi, string namaKonsentrasiEn, string singkatanKonsnetrasi)
+        {
+            //MessageBox.Show(string.Format("{0} {1} {2}", namaKonsentrasi, namaKonsentrasiEn, singkatanKonsnetrasi));
+            Loading(true);
+            string idProdi = UidProdiDipilih;
+            var saveData = new
+            {
+                IdProdi = idProdi,
+                NamaKonsentrasi = namaKonsentrasi,
+                NamaKonsentrasiEn = namaKonsentrasiEn,
+                SingkatanKonsentrasi = singkatanKonsnetrasi
+            };
+            string jsonData = JsonConvert.SerializeObject(saveData);
+            response = await webApi.Post(URLSaveMasterKonsentrasi, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                return;
+            }
+
+            await LoadKonsentrasi();
+            Loading(false);
+
+        }
+
+        private void btnCreateKonsenttrasi_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormCreateKonsentrasi(this))
+            {
+                form.ShowDialog(this);
+            }
+        }
+
+        private void dgvMataKuliah_MouseMove(object sender, MouseEventArgs e)
+        {
+            dragAndDropAdd.DragMove(e, dgvMataKuliah, valueAdd);
+        }
+
+        private void dgvMataKuliah_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMataKuliah_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMataKuliah_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hittest = dragAndDropAdd.DragMouseDownFirst(e, dgvMataKuliah);
+            if (hittest.RowIndex < 0 || hittest.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            string kode = dgvMataKuliah.Rows[hittest.RowIndex].Cells["Kode"].Value.ToString();
+            string mataKuliah = dgvMataKuliah.Rows[hittest.RowIndex].Cells["MataKuliah"].Value.ToString();
+            int idKonsentrasi = int.Parse(cmbKonsentrasi.SelectedValue.ToString());
+            int tahunBerlaku = DateTime.Now.Year;
+
+            valueAdd = new { Kode = kode, IdKonsentrasi = idKonsentrasi, MataKuliah = mataKuliah, TahunBerlaku = tahunBerlaku };
+            dragAndDropAdd.DragMouseDownSecond(e, dgvMKKonsentrasi, hittest, valueAdd);
+        }
+
+        private async void dgvMataKuliah_DragDrop(object sender, DragEventArgs e)
+        {
+            var hittest = dragAndDropDelete.DragDrop(e, dgvMataKuliah);
+
+            if (valueDelete == null)
+            {
+                return;
+            }
+
+            string kode = valueDelete.Kode;
+            string idKonsentrasi = valueDelete.IdKonsentrasi;
+            int tahunMulai = valueDelete.TahunMulai;
+
+            var delData = new { Kode = kode, IdKonsentrasi = idKonsentrasi, TahunMulai = tahunMulai };
+
+            string jsonData = JsonConvert.SerializeObject(delData);
+            response = await webApi.Post(URLDeleteMKKonsentrasi, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                return;
+            }
+
+            await LoadMKKonsentrasi();
+        }
+
+        private void dgvMKKonsentrasi_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMKKonsentrasi_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvMKKonsentrasi_MouseMove(object sender, MouseEventArgs e)
+        {
+            dragAndDropDelete.DragMove(e, dgvMKKonsentrasi, valueDelete);
+        }
+
+        private void dgvMKKonsentrasi_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hittest = dragAndDropDelete.DragMouseDownFirst(e, dgvMKKonsentrasi);
+            if (hittest.RowIndex < 0 || hittest.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            int tahunMulai = int.Parse(dgvMKKonsentrasi.Rows[hittest.RowIndex].Cells["TahunMulai"].Value.ToString());
+            string kode = dgvMKKonsentrasi.Rows[hittest.RowIndex].Cells["kKode"].Value.ToString();
+            string idKonsentrasi = dgvMKKonsentrasi.Rows[hittest.RowIndex].Cells["IdKonsentrasi"].Value.ToString();
+
+            valueDelete = new
+            {
+                TahunMulai = tahunMulai,
+                Kode = kode,
+                IdKonsentrasi = idKonsentrasi
+            };
+
+            dragAndDropDelete.DragMouseDownSecond(e, dgvMataKuliah, hittest, valueDelete);
+        }
+
+        private async void dgvMKKonsentrasi_DragDrop(object sender, DragEventArgs e)
+        {
+            var hittest = dragAndDropAdd.DragDrop(e, dgvMKKonsentrasi);
+            if (valueAdd == null)
+            {
+                return;
+            }
+            string jsonData = JsonConvert.SerializeObject(valueAdd);
+            response = await webApi.Post(URLSaveMKKonsentrasi, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                return;
+            }
+
+            dgvMKKonsentrasi.Rows.Add(valueAdd.IdKonsentrasi, valueAdd.Kode, valueAdd.MataKuliah, valueAdd.TahunBerlaku);
         }
     }
 }

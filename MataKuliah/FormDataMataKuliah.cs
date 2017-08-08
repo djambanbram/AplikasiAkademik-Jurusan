@@ -226,6 +226,7 @@ namespace MataKuliah
                 mk.IdProdi = UidProdiDipilih;
                 mk.SingkatanKelas = txtSingkatanMK.Text;
                 mk.KodeKesetaraan = txtKodeMKPengganti.Text;
+                mk.IsTugasAkhir = cbIsSkripsi.Checked;
 
                 string jsonData = JsonConvert.SerializeObject(mk);
                 response = await webApi.Post(URLSaveMK, jsonData, true);
@@ -239,6 +240,7 @@ namespace MataKuliah
                 mk.SksPraktikum = int.Parse(txtSksPraktikum.Text);
                 mk.SemesterDitawarkan = int.Parse(cmbSemesterPenawaran.Text);
                 mk.SingkatanKelas = txtSingkatanMK.Text;
+                mk.IsTugasAkhir = cbIsSkripsi.Checked;
 
                 string jsonData = JsonConvert.SerializeObject(mk);
                 response = await webApi.Post(URLSaveMK, jsonData, true);

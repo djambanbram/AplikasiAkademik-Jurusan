@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>ftp://172.16.24.10/jurusan_apps/</PublishUrl>
+    <PublishUrl>ftp://service.amikom.ac.id/aplikasi_program_studi/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -22,10 +22,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://172.16.24.10/jurusan_apps/</UpdateUrl>
+    <UpdateUrl>http://service.amikom.ac.id/app_prodi/</UpdateUrl>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -57,7 +57,7 @@
     <ManifestKeyFile>Aplikasi Program Studi.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -143,6 +143,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -33,6 +33,8 @@ namespace MainAplikasi
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetProgramAll = baseAddress + "/jurusan_api/api/organisasi/get_program_all";
+        private int countDown;
+        private TimeSpan time;
 
         private WebApi webApi;
         private FormKelasReguler formKelasReguler;
@@ -56,6 +58,7 @@ namespace MainAplikasi
         {
             InitializeComponent();
             webApi = new WebApi();
+            countDown = int.Parse(LoginAccess.expires_in) - 1;
         }
 
         private void Loading(bool isLoading)
@@ -247,6 +250,20 @@ namespace MainAplikasi
             }
             formReportAlokasiLabMK.Show();
             tabbedMDIManager1.UpdateActiveTabHost(formReportAlokasiLabMK);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            countDown = countDown - 1;
+            time = TimeSpan.FromSeconds(countDown);
+            stripLabelSession.Text = string.Format("{0} {1}", "Sesi anda akan habis dalam: ", time.ToString(@"hh\:mm\:ss"));
+
+            if(countDown <= 0)
+            {
+                timer1.Enabled = false;
+                MessageBox.Show("Sesi anda telah habis, silahkan login kembali");
+                Application.Restart();
+            }
         }
     }
 }

@@ -124,7 +124,15 @@ namespace KelasMahasiswa.Dialog
             {
                 txtKode.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["Kode"].Value.ToString();
                 txtMataKuliah.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["MataKuliah"].Value.ToString();
-                lblSemesterKelas.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["SemesterKelas"].Value.ToString();
+                if (dgvMKCampuran.Rows[e.RowIndex].Cells["SemesterKelas"].Value != null)
+                {
+                    lblSemesterKelas.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["SemesterKelas"].Value.ToString();
+                }
+                else
+                {
+                    lblSemesterKelas.Text = "0";
+                }
+                //lblSemesterKelas.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["SemesterKelas"].Value.ToString();
                 if (dgvMKCampuran.Rows[e.RowIndex].Cells["SingkatanKelas"].Value != null)
                 {
                     txtNamaKelas.Text = dgvMKCampuran.Rows[e.RowIndex].Cells["SingkatanKelas"].Value.ToString();

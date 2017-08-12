@@ -62,6 +62,8 @@ namespace MainAplikasi
             this.mataKuliahPrasyaratToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.alokasiLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stripLabelSession = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -263,7 +265,8 @@ namespace MainAplikasi
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stripLabel});
+            this.stripLabel,
+            this.stripLabelSession});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(822, 26);
@@ -358,6 +361,19 @@ namespace MainAplikasi
             this.alokasiLabToolStripMenuItem.Text = "Alokasi Lab";
             this.alokasiLabToolStripMenuItem.Click += new System.EventHandler(this.alokasiLabToolStripMenuItem_Click);
             // 
+            // stripLabelSession
+            // 
+            this.stripLabelSession.ForeColor = System.Drawing.Color.Red;
+            this.stripLabelSession.Name = "stripLabelSession";
+            this.stripLabelSession.Size = new System.Drawing.Size(157, 21);
+            this.stripLabelSession.Text = "toolStripStatusLabel1";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -421,5 +437,7 @@ namespace MainAplikasi
         private System.Windows.Forms.ImageList imgPenawaranMKBox;
         private System.Windows.Forms.ImageList imgLaporanBox;
         private System.Windows.Forms.ImageList imgKeluarBox;
+        private System.Windows.Forms.ToolStripStatusLabel stripLabelSession;
+        private System.Windows.Forms.Timer timer1;
     }
 }

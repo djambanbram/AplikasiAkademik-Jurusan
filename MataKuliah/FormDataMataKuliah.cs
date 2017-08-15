@@ -336,6 +336,7 @@ namespace MataKuliah
                 await LoadMK();
                 Loading(false);
             }
+            ResetField();
         }
 
         private async Task LoadMK()

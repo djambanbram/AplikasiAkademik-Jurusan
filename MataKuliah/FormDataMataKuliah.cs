@@ -301,6 +301,7 @@ namespace MataKuliah
                 txtSksPraktikum.Enabled = isEdit;
                 cmbSemesterPenawaran.Enabled = isEdit;
                 txtSingkatanMK.Enabled = isEdit;
+                txtAliasMK.Enabled = isEdit;
             }
             else
             {

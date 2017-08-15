@@ -361,6 +361,7 @@ namespace KelasMahasiswa.Dialog
             this.lblSemesterKelas.Size = new System.Drawing.Size(72, 17);
             this.lblSemesterKelas.TabIndex = 12;
             this.lblSemesterKelas.Text = "autoLabel7";
+            this.lblSemesterKelas.Visible = false;
             // 
             // No
             // 

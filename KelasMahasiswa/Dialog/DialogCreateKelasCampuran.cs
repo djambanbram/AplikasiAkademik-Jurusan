@@ -56,6 +56,12 @@ namespace KelasMahasiswa.Dialog
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtKode.Text))
+            {
+                MessageBox.Show("Mata kuliah belum dipilih, silahkan klik mata kuliah di tabel yang tersedia");
+                return;
+            }
+
             Loading(true);
             var data = new
             {

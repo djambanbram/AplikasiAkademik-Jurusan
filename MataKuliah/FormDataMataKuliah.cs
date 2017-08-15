@@ -332,11 +332,11 @@ namespace MataKuliah
                 cmbSemesterPenawaran.SelectedIndex = 0;
                 UidProdiDipilih = cmbProdi.SelectedValue.ToString();
 
+                ResetField();
                 Loading(true);
                 await LoadMK();
                 Loading(false);
             }
-            ResetField();
         }
 
         private async Task LoadMK()

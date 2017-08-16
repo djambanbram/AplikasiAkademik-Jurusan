@@ -27,9 +27,9 @@ namespace Dosen
     public partial class FormHonorDosen : Syncfusion.Windows.Forms.MetroForm, IHonorDosen
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLGetJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/get_honor_jenjang_dosen";
-        private string URLSaveJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/save_honor_jenjang_dosen";
-        private string URLDelJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/del_honor_jenjang_dosen";
+        private string URLGetHonorJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/get_honor_jenjang_dosen";
+        private string URLSaveHonorJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/save_honor_jenjang_dosen";
+        private string URLDelHonorJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/del_honor_jenjang_dosen";
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -60,10 +60,11 @@ namespace Dosen
         public async void SaveHonorDosen(HonorJenjangDosen honor)
         {
             string jsonData = JsonConvert.SerializeObject(honor);
-            response = await webApi.Post(URLSaveJenjangPendidikanDosen, jsonData, true);
+            response = await webApi.Post(URLSaveHonorJenjangPendidikanDosen, jsonData, true);
             if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
                 return;
             }
 
@@ -74,10 +75,11 @@ namespace Dosen
         {
             Loading(true);
             txtCari.Text = string.Empty;
-            response = await webApi.Post(URLGetJenjangPendidikanDosen, string.Empty, true);
+            response = await webApi.Post(URLGetHonorJenjangPendidikanDosen, string.Empty, true);
             if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Data honor gagal ditampilkan");
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
                 return;
             }
             dgvHonorDosen.Rows.Clear();
@@ -125,10 +127,11 @@ namespace Dosen
                     HonorJenjangDosen h = new HonorJenjangDosen();
                     h.IdHonorDosen = IdHonorDosen;
                     string jsonData = JsonConvert.SerializeObject(h);
-                    response = await webApi.Post(URLDelJenjangPendidikanDosen, jsonData, true);
+                    response = await webApi.Post(URLDelHonorJenjangPendidikanDosen, jsonData, true);
                     if (!response.IsSuccessStatusCode)
                     {
                         MessageBox.Show(webApi.ReturnMessage(response));
+                        Loading(false);
                         return;
                     }
                 }

@@ -25,8 +25,8 @@ namespace Dosen.Dialog
     public partial class FormTambahHonorDosen : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLGetJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/get_jenjang_pendidikan_dosen";
-        private string URLGetGolonganDosen = baseAddress + "/jurusan_api/api/dosen/get_golongan_dosen";
+        private string URLGetJenjangPendidikanDosen = baseAddress + "/karyawan_api/api/dosen/get_jenjang_pendidikan_dosen";
+        private string URLGetGolonganDosen = baseAddress + "/karyawan_api/api/dosen/get_golongan_dosen";
 
         private WebApi webApi;
         private HttpResponseMessage response;

@@ -178,6 +178,10 @@
       <Project>{9EC38DF1-A396-4BDF-B23A-B5CA2FF2562C}</Project>
       <Name>ClassModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dosen\Dosen.csproj">
+      <Project>{0BD1868D-1D22-4CC7-961A-AA32F1FEFD7B}</Project>
+      <Name>Dosen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KelasMahasiswa\KelasMahasiswa.csproj">
       <Project>{9ea707e7-e4b9-446e-a000-64a9bec7722b}</Project>
       <Name>KelasMahasiswa</Name>

@@ -44,6 +44,8 @@ namespace MainAplikasi
             this.imgListKelasBox = new System.Windows.Forms.ImageList(this.components);
             this.boxPenawaranMK = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.imgPenawaranMKBox = new System.Windows.Forms.ImageList(this.components);
+            this.boxDosen = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.imgDosen = new System.Windows.Forms.ImageList(this.components);
             this.BoxLaporan = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.imgLaporanBox = new System.Windows.Forms.ImageList(this.components);
             this.BoxKeluar = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
@@ -64,20 +66,18 @@ namespace MainAplikasi
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.alokasiLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.boxDosen = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgDosen = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxPenawaranMK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boxDosen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxLaporan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxKeluar)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuKelasCampuran.SuspendLayout();
             this.menuAlokasiDosen.SuspendLayout();
             this.menuLaporanMataKuliah.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.boxDosen)).BeginInit();
             this.SuspendLayout();
             // 
             // xpTaskBar1
@@ -202,6 +202,32 @@ namespace MainAplikasi
             this.imgPenawaranMKBox.Images.SetKeyName(2, "teacher.png");
             this.imgPenawaranMKBox.Images.SetKeyName(3, "laptop.png");
             // 
+            // boxDosen
+            // 
+            this.boxDosen.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
+            this.boxDosen.HeaderForeColor = System.Drawing.Color.White;
+            this.boxDosen.HeaderImageIndex = 0;
+            this.boxDosen.HeaderImageList = this.imgDosen;
+            this.boxDosen.HitTaskBoxArea = false;
+            this.boxDosen.HotTrackColor = System.Drawing.Color.Empty;
+            this.boxDosen.ImageList = this.imgDosen;
+            this.boxDosen.ItemBackColor = System.Drawing.Color.WhiteSmoke;
+            this.boxDosen.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Honor Dosen", System.Drawing.Color.Empty, 1, null, "", true, true, "itemHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            this.boxDosen.Location = new System.Drawing.Point(0, 272);
+            this.boxDosen.Name = "boxDosen";
+            this.boxDosen.Size = new System.Drawing.Size(264, 58);
+            this.boxDosen.TabIndex = 5;
+            this.boxDosen.Text = "Dosen";
+            this.boxDosen.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
+            // 
+            // imgDosen
+            // 
+            this.imgDosen.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgDosen.ImageStream")));
+            this.imgDosen.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgDosen.Images.SetKeyName(0, "lecture.png");
+            this.imgDosen.Images.SetKeyName(1, "change.png");
+            // 
             // BoxLaporan
             // 
             this.BoxLaporan.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
@@ -214,10 +240,11 @@ namespace MainAplikasi
             this.BoxLaporan.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxLaporan.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, 1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen Mengajar", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxLaporan.Location = new System.Drawing.Point(0, 330);
             this.BoxLaporan.Name = "BoxLaporan";
-            this.BoxLaporan.Size = new System.Drawing.Size(264, 82);
+            this.BoxLaporan.Size = new System.Drawing.Size(264, 106);
             this.BoxLaporan.TabIndex = 4;
             this.BoxLaporan.Text = "Laporan";
             this.BoxLaporan.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
@@ -229,6 +256,7 @@ namespace MainAplikasi
             this.imgLaporanBox.Images.SetKeyName(0, "printer.png");
             this.imgLaporanBox.Images.SetKeyName(1, "paper.png");
             this.imgLaporanBox.Images.SetKeyName(2, "blackboard-3.png");
+            this.imgLaporanBox.Images.SetKeyName(3, "wallet.png");
             // 
             // BoxKeluar
             // 
@@ -243,7 +271,7 @@ namespace MainAplikasi
             this.BoxKeluar.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 412);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 436);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 58);
             this.BoxKeluar.TabIndex = 3;
@@ -378,32 +406,6 @@ namespace MainAplikasi
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // boxDosen
-            // 
-            this.boxDosen.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
-            this.boxDosen.HeaderForeColor = System.Drawing.Color.White;
-            this.boxDosen.HeaderImageIndex = 0;
-            this.boxDosen.HeaderImageList = this.imgDosen;
-            this.boxDosen.HitTaskBoxArea = false;
-            this.boxDosen.HotTrackColor = System.Drawing.Color.Empty;
-            this.boxDosen.ImageList = this.imgDosen;
-            this.boxDosen.ItemBackColor = System.Drawing.Color.WhiteSmoke;
-            this.boxDosen.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Honor Dosen", System.Drawing.Color.Empty, 1, null, "", true, true, "itemHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.boxDosen.Location = new System.Drawing.Point(0, 272);
-            this.boxDosen.Name = "boxDosen";
-            this.boxDosen.Size = new System.Drawing.Size(264, 58);
-            this.boxDosen.TabIndex = 5;
-            this.boxDosen.Text = "Dosen";
-            this.boxDosen.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
-            // 
-            // imgDosen
-            // 
-            this.imgDosen.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgDosen.ImageStream")));
-            this.imgDosen.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgDosen.Images.SetKeyName(0, "lecture.png");
-            this.imgDosen.Images.SetKeyName(1, "change.png");
-            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -428,6 +430,7 @@ namespace MainAplikasi
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxPenawaranMK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boxDosen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxLaporan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxKeluar)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -435,7 +438,6 @@ namespace MainAplikasi
             this.menuKelasCampuran.ResumeLayout(false);
             this.menuAlokasiDosen.ResumeLayout(false);
             this.menuLaporanMataKuliah.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.boxDosen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

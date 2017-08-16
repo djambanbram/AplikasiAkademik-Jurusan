@@ -178,6 +178,7 @@ namespace KelasMahasiswa
                 KodeJurusan = kodeProgramDipilih,
                 IdProdi = idProdiDipilih
             };
+
             string jsonData = JsonConvert.SerializeObject(dataGenerate);
             response = await webApi.Post(URLGenerateKelasReguler, jsonData, true);
             MessageBox.Show(webApi.ReturnMessage(response));

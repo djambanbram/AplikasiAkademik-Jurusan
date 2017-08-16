@@ -26,6 +26,8 @@ using Syncfusion.Windows.Forms.Tools;
 using MataKuliah.Report;
 using PenawaranKurikulum.Report;
 using System.Deployment.Application;
+using Dosen;
+using Dosen.Report;
 
 namespace MainAplikasi
 {
@@ -45,12 +47,14 @@ namespace MainAplikasi
         private FormAlokasiMK formAlokasiMK;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
+        private FormHonorDosen formHonorDosen;
 
         private FormReportDataMK formReportDataMK;
         private FormReportMKPrasyarat formReportMKPrasyarat;
         private FormReportAlokasiMK formReportAlokasiMK;
         private FormReportAlokasiLabMK formReportAlokasiLabMK;
         private FormReportAlokasiDosen formReportAlokasiDosen;
+        private FormReportHonorDosenMengajar formReportHonorDosenMengajar;
 
         private HttpResponseMessage response;
 
@@ -133,6 +137,15 @@ namespace MainAplikasi
                 }
                 form = formAlokasiLabMK;
             }
+            else if (e.XPTaskBarItem.Name == "itemHonorDosen")
+            {
+                if (formHonorDosen == null || formHonorDosen.IsDisposed)
+                {
+                    formHonorDosen = new FormHonorDosen();
+                    formHonorDosen.MdiParent = this;
+                }
+                form = formHonorDosen;
+            }
             else if (e.XPTaskBarItem.Name == "itemLaporanMK")
             {
                 XPTaskBarItem item = e.XPTaskBarItem;
@@ -150,6 +163,15 @@ namespace MainAplikasi
                     formReportAlokasiDosen.MdiParent = this;
                 }
                 form = formReportAlokasiDosen;
+            }
+            else if (e.XPTaskBarItem.Name == "itemLaporanHonorDosen")
+            {
+                if (formReportHonorDosenMengajar == null || formReportHonorDosenMengajar.IsDisposed)
+                {
+                    formReportHonorDosenMengajar = new FormReportHonorDosenMengajar();
+                    formReportHonorDosenMengajar.MdiParent = this;
+                }
+                form = formReportHonorDosenMengajar;
             }
 
             if (form != null && !form.IsDisposed)

@@ -36,18 +36,19 @@ namespace Dosen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvJenjangDosen = new AdvancedDataGridView.TreeGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.btnTambah = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnUbah = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnTambah = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.Tree = new AdvancedDataGridView.TreeGridColumn();
             this.IdTransJenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,16 +69,17 @@ namespace Dosen
             this.dgvJenjangDosen.AllowUserToDeleteRows = false;
             this.dgvJenjangDosen.AllowUserToResizeRows = false;
             this.dgvJenjangDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJenjangDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJenjangDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvJenjangDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJenjangDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tree,
             this.IdTransJenjang,
             this.Nik,
             this.NamaDosen,
@@ -123,26 +125,6 @@ namespace Dosen
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(108, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(214, 30);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 1;
-            this.progressBar1.Visible = false;
-            // 
-            // btnTambah
-            // 
-            this.btnTambah.BeforeTouchSize = new System.Drawing.Size(113, 30);
-            this.btnTambah.IsBackStageButton = false;
-            this.btnTambah.Location = new System.Drawing.Point(328, 4);
-            this.btnTambah.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(113, 30);
-            this.btnTambah.TabIndex = 3;
-            this.btnTambah.Text = "Tambah";
-            // 
             // btnHapus
             // 
             this.btnHapus.BackColor = System.Drawing.Color.Salmon;
@@ -165,6 +147,26 @@ namespace Dosen
             this.btnUbah.Size = new System.Drawing.Size(113, 30);
             this.btnUbah.TabIndex = 4;
             this.btnUbah.Text = "Ubah";
+            // 
+            // btnTambah
+            // 
+            this.btnTambah.BeforeTouchSize = new System.Drawing.Size(113, 30);
+            this.btnTambah.IsBackStageButton = false;
+            this.btnTambah.Location = new System.Drawing.Point(328, 4);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(113, 30);
+            this.btnTambah.TabIndex = 3;
+            this.btnTambah.Text = "Tambah";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(108, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(214, 30);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 1;
+            this.progressBar1.Visible = false;
             // 
             // gradientPanel1
             // 
@@ -198,14 +200,23 @@ namespace Dosen
             // 
             // txtCari
             // 
-            this.txtCari.BeforeTouchSize = new System.Drawing.Size(239, 25);
-            this.txtCari.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCari.BeforeTouchSize = new System.Drawing.Size(250, 25);
             this.txtCari.Location = new System.Drawing.Point(40, 3);
             this.txtCari.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtCari.Name = "txtCari";
             this.txtCari.Size = new System.Drawing.Size(250, 25);
             this.txtCari.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCari.TabIndex = 1;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
+            // 
+            // Tree
+            // 
+            this.Tree.DefaultNodeImage = null;
+            this.Tree.HeaderText = "";
+            this.Tree.Name = "Tree";
+            this.Tree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tree.Width = 30;
             // 
             // IdTransJenjang
             // 
@@ -245,7 +256,7 @@ namespace Dosen
             this.Universitas.HeaderText = "Universitas";
             this.Universitas.Name = "Universitas";
             this.Universitas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Universitas.Width = 200;
+            this.Universitas.Width = 250;
             // 
             // FormJenjangPendidikanDosen
             // 
@@ -284,6 +295,7 @@ namespace Dosen
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCari;
+        private AdvancedDataGridView.TreeGridColumn Tree;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTransJenjang;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nik;
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosen;

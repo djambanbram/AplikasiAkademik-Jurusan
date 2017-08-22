@@ -5,6 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using AdvancedDataGridView;
 using ApiService;
 using Newtonsoft.Json;
 using System;
@@ -29,6 +30,7 @@ namespace Dosen
         private HttpResponseMessage response;
 
         private List<dynamic> listDetailJPDosen;
+        //private List<> listDetailJPDosenDistinct;
 
         public FormJenjangPendidikanDosen()
         {
@@ -63,12 +65,54 @@ namespace Dosen
 
             dgvJenjangDosen.Nodes.Clear();
             listDetailJPDosen = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-            foreach (var item in listDetailJPDosen)
+            var listDetailJPDosenDistinct = listDetailJPDosen.Select(jp => new { jp.Nik, jp.NamaDosen }).ToList().Distinct();
+
+            foreach (var item in listDetailJPDosenDistinct)
             {
-                dgvJenjangDosen.Rows.Add(item.IdTransJenjang, item.Nik, item.NamaDosen, item.NamaJenjang, item.NamaProgramStudi, item.NamaUniversitas);
+                dgvJenjangDosen.Nodes.Add(null, null, item.Nik, item.NamaDosen);
+            }
+
+            foreach (var tree in dgvJenjangDosen.Nodes)
+            {
+                foreach (var item in listDetailJPDosen)
+                {
+                    if (tree.Cells["Nik"].Value.ToString().Trim() == item.Nik.ToString().Trim() as string)
+                    {
+                        var tgn = tree.Nodes.Add(null, item.IdTransJenjang, null, null, item.NamaJenjang, item.NamaProgramStudi, item.NamaUniversitas) as TreeGridNode;
+                        tgn.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
+                tree.Expand();
             }
 
             Loading(false);
+        }
+
+        private void txtCari_TextChanged(object sender, EventArgs e)
+        {
+            List<dynamic> listTemp = listDetailJPDosen.Where(jp => (jp.NamaDosen.ToString() as string).ToLower().Contains(txtCari.Text.ToLower()) ||
+            (jp.Nik.ToString() as string).ToLower().Contains(txtCari.Text.ToLower())).ToList();
+
+            var listDetailJPDosenDistinct = listTemp.Select(jp => new { jp.Nik, jp.NamaDosen }).ToList().Distinct();
+
+            dgvJenjangDosen.Nodes.Clear();
+            foreach (var item in listDetailJPDosenDistinct)
+            {
+                dgvJenjangDosen.Nodes.Add(null, null, item.Nik, item.NamaDosen);
+            }
+
+            foreach (var tree in dgvJenjangDosen.Nodes)
+            {
+                foreach (var item in listTemp)
+                {
+                    if (tree.Cells["Nik"].Value.ToString().Trim() == item.Nik.ToString().Trim() as string)
+                    {
+                        var tgn = tree.Nodes.Add(null, item.IdTransJenjang, null, null, item.NamaJenjang, item.NamaProgramStudi, item.NamaUniversitas)as TreeGridNode;
+                        tgn.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
+                tree.Expand();
+            }
         }
     }
 }

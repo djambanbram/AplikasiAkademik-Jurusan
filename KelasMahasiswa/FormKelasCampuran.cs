@@ -176,11 +176,15 @@ namespace KelasMahasiswa
                 return;
             }
 
-            if (dialogCreateKelasCampuran == null || dialogCreateKelasCampuran.IsDisposed)
+            //if (dialogCreateKelasCampuran == null || dialogCreateKelasCampuran.IsDisposed)
+            //{
+            //    dialogCreateKelasCampuran = new DialogCreateKelasCampuran(kodeProgramDipilih, this);
+            //}
+
+            using (var dialog = new DialogCreateKelasCampuran(kodeProgramDipilih, this))
             {
-                dialogCreateKelasCampuran = new DialogCreateKelasCampuran(kodeProgramDipilih, this);
+                dialogCreateKelasCampuran.ShowDialog(this);
             }
-            dialogCreateKelasCampuran.ShowDialog(this);
         }
 
         private void dgvKelasCampuran_MouseDown(object sender, MouseEventArgs e)

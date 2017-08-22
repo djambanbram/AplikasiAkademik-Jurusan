@@ -48,6 +48,7 @@ namespace MainAplikasi
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
         private FormHonorDosen formHonorDosen;
+        private FormJenjangPendidikanDosen formJenjangPendidikanDosen;
 
         private FormReportDataMK formReportDataMK;
         private FormReportMKPrasyarat formReportMKPrasyarat;
@@ -145,6 +146,15 @@ namespace MainAplikasi
                     formHonorDosen.MdiParent = this;
                 }
                 form = formHonorDosen;
+            }
+            else if (e.XPTaskBarItem.Name == "itemJPDosen")
+            {
+                if (formJenjangPendidikanDosen == null || formJenjangPendidikanDosen.IsDisposed)
+                {
+                    formJenjangPendidikanDosen = new FormJenjangPendidikanDosen();
+                    formJenjangPendidikanDosen.MdiParent = this;
+                }
+                form = formJenjangPendidikanDosen;
             }
             else if (e.XPTaskBarItem.Name == "itemLaporanMK")
             {

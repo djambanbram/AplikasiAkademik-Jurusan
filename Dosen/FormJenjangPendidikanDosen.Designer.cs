@@ -36,13 +36,10 @@ namespace Dosen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvJenjangDosen = new AdvancedDataGridView.TreeGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.btnUbah = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.btnTambah = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -69,14 +66,14 @@ namespace Dosen
             this.dgvJenjangDosen.AllowUserToDeleteRows = false;
             this.dgvJenjangDosen.AllowUserToResizeRows = false;
             this.dgvJenjangDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJenjangDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJenjangDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvJenjangDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJenjangDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tree,
@@ -101,9 +98,6 @@ namespace Dosen
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
-            this.flowLayoutPanel1.Controls.Add(this.btnHapus);
-            this.flowLayoutPanel1.Controls.Add(this.btnUbah);
-            this.flowLayoutPanel1.Controls.Add(this.btnTambah);
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -125,43 +119,9 @@ namespace Dosen
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
-            // btnHapus
-            // 
-            this.btnHapus.BackColor = System.Drawing.Color.Salmon;
-            this.btnHapus.BeforeTouchSize = new System.Drawing.Size(113, 30);
-            this.btnHapus.IsBackStageButton = false;
-            this.btnHapus.Location = new System.Drawing.Point(566, 4);
-            this.btnHapus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnHapus.Name = "btnHapus";
-            this.btnHapus.Size = new System.Drawing.Size(113, 30);
-            this.btnHapus.TabIndex = 2;
-            this.btnHapus.Text = "Hapus";
-            // 
-            // btnUbah
-            // 
-            this.btnUbah.BeforeTouchSize = new System.Drawing.Size(113, 30);
-            this.btnUbah.IsBackStageButton = false;
-            this.btnUbah.Location = new System.Drawing.Point(447, 4);
-            this.btnUbah.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnUbah.Name = "btnUbah";
-            this.btnUbah.Size = new System.Drawing.Size(113, 30);
-            this.btnUbah.TabIndex = 4;
-            this.btnUbah.Text = "Ubah";
-            // 
-            // btnTambah
-            // 
-            this.btnTambah.BeforeTouchSize = new System.Drawing.Size(113, 30);
-            this.btnTambah.IsBackStageButton = false;
-            this.btnTambah.Location = new System.Drawing.Point(328, 4);
-            this.btnTambah.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(113, 30);
-            this.btnTambah.TabIndex = 3;
-            this.btnTambah.Text = "Tambah";
-            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(108, 3);
+            this.progressBar1.Location = new System.Drawing.Point(465, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(214, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -287,9 +247,6 @@ namespace Dosen
         private AdvancedDataGridView.TreeGridView dgvJenjangDosen;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
-        private Syncfusion.Windows.Forms.ButtonAdv btnHapus;
-        private Syncfusion.Windows.Forms.ButtonAdv btnUbah;
-        private Syncfusion.Windows.Forms.ButtonAdv btnTambah;
         private System.Windows.Forms.ProgressBar progressBar1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

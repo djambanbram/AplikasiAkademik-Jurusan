@@ -183,7 +183,7 @@ namespace KelasMahasiswa
 
             using (var dialog = new DialogCreateKelasCampuran(kodeProgramDipilih, this))
             {
-                dialogCreateKelasCampuran.ShowDialog(this);
+                dialog.ShowDialog(this);
             }
         }
 

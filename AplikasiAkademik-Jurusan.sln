@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PenawaranKurikulum", "Penaw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dosen", "Dosen\Dosen.csproj", "{0BD1868D-1D22-4CC7-961A-AA32F1FEFD7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonversiAlihJalur", "KonversiAlihJalur\KonversiAlihJalur.csproj", "{92EC9A14-A222-48C6-A2A5-7B1DADFDCE7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0BD1868D-1D22-4CC7-961A-AA32F1FEFD7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BD1868D-1D22-4CC7-961A-AA32F1FEFD7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BD1868D-1D22-4CC7-961A-AA32F1FEFD7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92EC9A14-A222-48C6-A2A5-7B1DADFDCE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92EC9A14-A222-48C6-A2A5-7B1DADFDCE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92EC9A14-A222-48C6-A2A5-7B1DADFDCE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92EC9A14-A222-48C6-A2A5-7B1DADFDCE7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

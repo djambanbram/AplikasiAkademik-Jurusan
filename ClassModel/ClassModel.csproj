@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Akademik.cs" />
+    <Compile Include="AlihJalur.cs" />
     <Compile Include="AlokasiDosen.cs" />
     <Compile Include="Dosen.cs" />
     <Compile Include="Kelas.cs" />

@@ -28,6 +28,7 @@ using PenawaranKurikulum.Report;
 using System.Deployment.Application;
 using Dosen;
 using Dosen.Report;
+using KonversiAlihJalur.Report;
 
 namespace MainAplikasi
 {
@@ -56,6 +57,7 @@ namespace MainAplikasi
         private FormReportAlokasiLabMK formReportAlokasiLabMK;
         private FormReportAlokasiDosen formReportAlokasiDosen;
         private FormReportHonorDosenMengajar formReportHonorDosenMengajar;
+        private FormReportHasilMatrikulasi formReportHasilMatrikulasi;
 
         private HttpResponseMessage response;
 
@@ -182,6 +184,15 @@ namespace MainAplikasi
                     formReportHonorDosenMengajar.MdiParent = this;
                 }
                 form = formReportHonorDosenMengajar;
+            }
+            else if (e.XPTaskBarItem.Name == "itemLaporanAlihJalur")
+            {
+                if (formReportHasilMatrikulasi == null || formReportHasilMatrikulasi.IsDisposed)
+                {
+                    formReportHasilMatrikulasi = new FormReportHasilMatrikulasi();
+                    formReportHasilMatrikulasi.MdiParent = this;
+                }
+                form = formReportHasilMatrikulasi;
             }
 
             if (form != null && !form.IsDisposed)

@@ -89,7 +89,7 @@
             this.txtUsername.Size = new System.Drawing.Size(205, 22);
             this.txtUsername.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtUsername.TabIndex = 6;
-            this.txtUsername.Text = "bangkit@amikom.ac.id";
+            this.txtUsername.Text = "190302038";
             // 
             // txtPassword
             // 
@@ -102,7 +102,7 @@
             this.txtPassword.Size = new System.Drawing.Size(205, 22);
             this.txtPassword.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtPassword.TabIndex = 7;
-            this.txtPassword.Text = "OpK3u@ngan";
+            this.txtPassword.Text = "FW7u@Mv!";
             // 
             // FormLogin
             // 

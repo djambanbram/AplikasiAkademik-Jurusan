@@ -44,6 +44,7 @@ namespace MainAplikasi
         private FormDataMataKuliah formDataMataKuliah;
         private FormMataKuliahPrasyarat formMataKuliahPrasyarat;
         private FormMataKuliahKonsentrasi formMataKuliahKonsentrasi;
+        private FormGrupMK formGrupMK;
         private FormAlokasiMK formAlokasiMK;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
@@ -114,6 +115,15 @@ namespace MainAplikasi
                     formMataKuliahKonsentrasi.MdiParent = this;
                 }
                 form = formMataKuliahKonsentrasi;
+            }
+            else if (e.XPTaskBarItem.Name == "itemGrupMK")
+            {
+                if (formGrupMK == null || formGrupMK.IsDisposed)
+                {
+                    formGrupMK = new FormGrupMK();
+                    formGrupMK.MdiParent = this;
+                }
+                form = formGrupMK;
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiMK")
             {

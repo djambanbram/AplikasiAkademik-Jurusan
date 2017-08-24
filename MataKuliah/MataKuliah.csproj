@@ -101,6 +101,12 @@
     <Compile Include="FormDataMataKuliah.Designer.cs">
       <DependentUpon>FormDataMataKuliah.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGrupMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGrupMK.Designer.cs">
+      <DependentUpon>FormGrupMK.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMataKuliahKonsentrasi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDataMataKuliah.resx">
       <DependentUpon>FormDataMataKuliah.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGrupMK.resx">
+      <DependentUpon>FormGrupMK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMataKuliahKonsentrasi.resx">
       <DependentUpon>FormMataKuliahKonsentrasi.cs</DependentUpon>

@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>8.06063in</Width>
+              <Width>8.075in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -388,7 +388,7 @@
                                 <Width>0.32292in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.55208in</Width>
+                                <Width>0.7in</Width>
                               </TablixColumn>
                               <TablixColumn>
                                 <Width>2.3979in</Width>
@@ -400,7 +400,7 @@
                                 <Width>0.64583in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>2.43354in</Width>
+                                <Width>2.3in</Width>
                               </TablixColumn>
                               <TablixColumn>
                                 <Width>0.51042in</Width>
@@ -986,7 +986,7 @@
                           <Top>1.4375in</Top>
                           <Left>0.00001in</Left>
                           <Height>0.5in</Height>
-                          <Width>8.06061in</Width>
+                          <Width>8.07499in</Width>
                           <ZIndex>11</ZIndex>
                           <Style>
                             <Border>
@@ -1243,7 +1243,7 @@
         <DataSetName>DsHasilMatrikulasi</DataSetName>
         <Left>0.21958in</Left>
         <Height>3.99479in</Height>
-        <Width>8.06063in</Width>
+        <Width>8.075in</Width>
         <Style>
           <Border>
             <Style>None</Style>

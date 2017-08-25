@@ -36,6 +36,7 @@ namespace MataKuliah
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -50,16 +51,23 @@ namespace MataKuliah
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.btnClear = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dgvGrupMK = new System.Windows.Forms.DataGridView();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvMataKuliah = new System.Windows.Forms.DataGridView();
             this.mKode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.btnClear = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.dgvGrupMK = new System.Windows.Forms.DataGridView();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDaftarGrup = new System.Windows.Forms.DataGridView();
+            this.NamaGrup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gMataKuliahMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -69,16 +77,17 @@ namespace MataKuliah
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel3)).BeginInit();
             this.gradientPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupMK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDaftarGrup)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
+            this.flowLayoutPanel1.Controls.Add(this.btnHapus);
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -102,7 +111,7 @@ namespace MataKuliah
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(353, 3);
+            this.progressBar1.Location = new System.Drawing.Point(234, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(360, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -231,6 +240,45 @@ namespace MataKuliah
             this.tableLayoutPanel1.Size = new System.Drawing.Size(831, 280);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // dgvMataKuliah
+            // 
+            this.dgvMataKuliah.AllowDrop = true;
+            this.dgvMataKuliah.AllowUserToAddRows = false;
+            this.dgvMataKuliah.AllowUserToDeleteRows = false;
+            this.dgvMataKuliah.AllowUserToResizeRows = false;
+            this.dgvMataKuliah.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvMataKuliah.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMataKuliah.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mKode,
+            this.mMataKuliah});
+            this.dgvMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMataKuliah.Location = new System.Drawing.Point(3, 28);
+            this.dgvMataKuliah.Name = "dgvMataKuliah";
+            this.dgvMataKuliah.ReadOnly = true;
+            this.dgvMataKuliah.RowHeadersVisible = false;
+            this.tableLayoutPanel1.SetRowSpan(this.dgvMataKuliah, 2);
+            this.dgvMataKuliah.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMataKuliah.Size = new System.Drawing.Size(322, 178);
+            this.dgvMataKuliah.TabIndex = 19;
+            this.dgvMataKuliah.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragDrop);
+            this.dgvMataKuliah.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragEnter);
+            this.dgvMataKuliah.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragOver);
+            this.dgvMataKuliah.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseDown);
+            this.dgvMataKuliah.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseMove);
+            // 
+            // mKode
+            // 
+            this.mKode.HeaderText = "Kode";
+            this.mKode.Name = "mKode";
+            this.mKode.ReadOnly = true;
+            // 
+            // mMataKuliah
+            // 
+            this.mMataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mMataKuliah.HeaderText = "Mata Kuliah";
+            this.mMataKuliah.Name = "mMataKuliah";
+            this.mMataKuliah.ReadOnly = true;
+            // 
             // gradientPanel3
             // 
             this.gradientPanel3.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
@@ -273,16 +321,6 @@ namespace MataKuliah
             this.btnSimpan.Text = "Simpan";
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 360);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(835, 62);
-            this.dataGridView1.TabIndex = 18;
-            // 
             // dgvGrupMK
             // 
             this.dgvGrupMK.AllowDrop = true;
@@ -322,44 +360,84 @@ namespace MataKuliah
             this.MataKuliah.Name = "MataKuliah";
             this.MataKuliah.ReadOnly = true;
             // 
-            // dgvMataKuliah
+            // dgvDaftarGrup
             // 
-            this.dgvMataKuliah.AllowDrop = true;
-            this.dgvMataKuliah.AllowUserToAddRows = false;
-            this.dgvMataKuliah.AllowUserToDeleteRows = false;
-            this.dgvMataKuliah.AllowUserToResizeRows = false;
-            this.dgvMataKuliah.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvMataKuliah.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMataKuliah.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mKode,
-            this.mMataKuliah});
-            this.dgvMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMataKuliah.Location = new System.Drawing.Point(3, 28);
-            this.dgvMataKuliah.Name = "dgvMataKuliah";
-            this.dgvMataKuliah.ReadOnly = true;
-            this.dgvMataKuliah.RowHeadersVisible = false;
-            this.tableLayoutPanel1.SetRowSpan(this.dgvMataKuliah, 2);
-            this.dgvMataKuliah.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMataKuliah.Size = new System.Drawing.Size(322, 178);
-            this.dgvMataKuliah.TabIndex = 19;
-            this.dgvMataKuliah.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragDrop);
-            this.dgvMataKuliah.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragEnter);
-            this.dgvMataKuliah.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvMataKuliah_DragOver);
-            this.dgvMataKuliah.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseDown);
-            this.dgvMataKuliah.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvMataKuliah_MouseMove);
+            this.dgvDaftarGrup.AllowUserToAddRows = false;
+            this.dgvDaftarGrup.AllowUserToDeleteRows = false;
+            this.dgvDaftarGrup.AllowUserToResizeRows = false;
+            this.dgvDaftarGrup.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDaftarGrup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDaftarGrup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDaftarGrup.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NamaGrup,
+            this.KodeParent,
+            this.gMataKuliah,
+            this.KodeMember,
+            this.gMataKuliahMember,
+            this.Hapus});
+            this.dgvDaftarGrup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDaftarGrup.Location = new System.Drawing.Point(0, 360);
+            this.dgvDaftarGrup.Name = "dgvDaftarGrup";
+            this.dgvDaftarGrup.RowHeadersVisible = false;
+            this.dgvDaftarGrup.Size = new System.Drawing.Size(835, 62);
+            this.dgvDaftarGrup.TabIndex = 18;
             // 
-            // mKode
+            // NamaGrup
             // 
-            this.mKode.HeaderText = "Kode";
-            this.mKode.Name = "mKode";
-            this.mKode.ReadOnly = true;
+            this.NamaGrup.HeaderText = "Nama Grup";
+            this.NamaGrup.Name = "NamaGrup";
+            this.NamaGrup.Width = 150;
             // 
-            // mMataKuliah
+            // KodeParent
             // 
-            this.mMataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mMataKuliah.HeaderText = "Mata Kuliah";
-            this.mMataKuliah.Name = "mMataKuliah";
-            this.mMataKuliah.ReadOnly = true;
+            this.KodeParent.HeaderText = "Kode";
+            this.KodeParent.Name = "KodeParent";
+            this.KodeParent.Width = 80;
+            // 
+            // gMataKuliah
+            // 
+            this.gMataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gMataKuliah.HeaderText = "Mata Kuliah";
+            this.gMataKuliah.Name = "gMataKuliah";
+            // 
+            // KodeMember
+            // 
+            this.KodeMember.HeaderText = "Kode Member";
+            this.KodeMember.Name = "KodeMember";
+            this.KodeMember.Width = 80;
+            // 
+            // gMataKuliahMember
+            // 
+            this.gMataKuliahMember.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gMataKuliahMember.HeaderText = "Mata Kuliah Member";
+            this.gMataKuliahMember.Name = "gMataKuliahMember";
+            // 
+            // Hapus
+            // 
+            this.Hapus.HeaderText = "Hapus";
+            this.Hapus.Name = "Hapus";
+            this.Hapus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Hapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Hapus.Width = 60;
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.BeforeTouchSize = new System.Drawing.Size(113, 30);
+            this.btnHapus.IsBackStageButton = false;
+            this.btnHapus.Location = new System.Drawing.Point(600, 4);
+            this.btnHapus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(113, 30);
+            this.btnHapus.TabIndex = 2;
+            this.btnHapus.Text = "Hapus";
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // FormGrupMK
             // 
@@ -367,7 +445,7 @@ namespace MataKuliah
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(835, 460);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvDaftarGrup);
             this.Controls.Add(this.gradientPanel2);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -387,12 +465,12 @@ namespace MataKuliah
             this.gradientPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel3)).EndInit();
             this.gradientPanel3.ResumeLayout(false);
             this.gradientPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupMK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDaftarGrup)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -416,12 +494,19 @@ namespace MataKuliah
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
         private Syncfusion.Windows.Forms.ButtonAdv btnClear;
         private Syncfusion.Windows.Forms.ButtonAdv btnSimpan;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDaftarGrup;
         private System.Windows.Forms.DataGridView dgvGrupMK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private System.Windows.Forms.DataGridView dgvMataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn mKode;
         private System.Windows.Forms.DataGridViewTextBoxColumn mMataKuliah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaGrup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KodeParent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMataKuliah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KodeMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gMataKuliahMember;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Hapus;
+        private Syncfusion.Windows.Forms.ButtonAdv btnHapus;
     }
 }

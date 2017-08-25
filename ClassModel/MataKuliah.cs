@@ -94,4 +94,13 @@ namespace ClassModel
     {
         public int IdKonsentrasi { get; set; }
     }
+
+    public class KuliahJoin
+    {
+        public string NamaGrup { get; set; }
+        public string KodeParent { get; set; }
+        public string MataKuliahParent { get; set; }
+        public string KodeChild { get; set; }
+        public string MataKuliahChild { get; set; }
+    }
 }

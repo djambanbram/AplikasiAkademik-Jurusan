@@ -136,7 +136,7 @@ namespace MainAplikasi
             this.imgListMataKuliahBox.Images.SetKeyName(1, "archives.png");
             this.imgListMataKuliahBox.Images.SetKeyName(2, "blocks.png");
             this.imgListMataKuliahBox.Images.SetKeyName(3, "cells.png");
-            this.imgListMataKuliahBox.Images.SetKeyName(4, "link.png");
+            this.imgListMataKuliahBox.Images.SetKeyName(4, "team.png");
             // 
             // boxKelas
             // 
@@ -247,7 +247,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen Mengajar", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxLaporan.Location = new System.Drawing.Point(0, 354);
+            this.BoxLaporan.Location = new System.Drawing.Point(0, 376);
             this.BoxLaporan.Name = "BoxLaporan";
             this.BoxLaporan.Size = new System.Drawing.Size(264, 130);
             this.BoxLaporan.TabIndex = 4;
@@ -277,7 +277,7 @@ namespace MainAplikasi
             this.BoxKeluar.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 484);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 506);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 58);
             this.BoxKeluar.TabIndex = 3;

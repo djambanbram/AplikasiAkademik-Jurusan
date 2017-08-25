@@ -29,6 +29,8 @@ namespace MataKuliah
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk";
         private string UrlSaveGrupKuliah = baseAddress + "/jurusan_api/api/kurikulum/save_kuliah_join";
+        private string UrlGetGrupKuliah = baseAddress + "/jurusan_api/api/kurikulum/get_kuliah_join";
+        private string UrlDelGrupKuliah = baseAddress + "/jurusan_api/api/kurikulum/del_kuliah_join";
 
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
@@ -55,7 +57,7 @@ namespace MataKuliah
 
         private void Loading(bool isLoading)
         {
-            dataGridView1.Enabled = !isLoading;
+            dgvDaftarGrup.Enabled = !isLoading;
             flowLayoutPanel1.Enabled = !isLoading;
             gradientPanel1.Enabled = !isLoading;
             gradientPanel2.Enabled = !isLoading;
@@ -67,7 +69,7 @@ namespace MataKuliah
             Close();
         }
 
-        private void FormMappingMataKuliahLintasProdi_Load(object sender, EventArgs e)
+        private async void FormMappingMataKuliahLintasProdi_Load(object sender, EventArgs e)
         {
             listFakultas = new List<Fakultas>(Organisasi.listFakultas);
             listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
@@ -75,6 +77,8 @@ namespace MataKuliah
             cmbFakultas.DisplayMember = "NamaFakultas";
             cmbFakultas.ValueMember = "KodeFakultas";
             cmbFakultas.SelectedIndex = 0;
+
+            await LoadGrupKuliah();
         }
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,7 +111,7 @@ namespace MataKuliah
 
             MKByIdProdi m = new MKByIdProdi() { IdProdi = UidProdiDipilih };
             string jsonData = JsonConvert.SerializeObject(m);
-
+            Loading(true);
             response = await webApi.Post(URLGetMK, jsonData, true);
             if (response.IsSuccessStatusCode)
             {
@@ -125,6 +129,29 @@ namespace MataKuliah
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
             dgvMataKuliah.PerformLayout();
+            Loading(false);
+        }
+
+        private async Task LoadGrupKuliah()
+        {
+            var dataGet = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester };
+            Loading(true);
+            var jsonData = JsonConvert.SerializeObject(dataGet);
+            response = await webApi.Post(UrlGetGrupKuliah, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+
+            dgvDaftarGrup.Rows.Clear();
+            List<KuliahJoin> listKuliahJoin = JsonConvert.DeserializeObject<List<KuliahJoin>>(response.Content.ReadAsStringAsync().Result);
+            foreach (KuliahJoin ks in listKuliahJoin)
+            {
+                dgvDaftarGrup.Rows.Add(ks.NamaGrup, ks.KodeParent, ks.MataKuliahParent, ks.KodeChild, ks.MataKuliahChild);
+            }
+            Loading(false);
         }
 
         private void dgvMataKuliah_MouseMove(object sender, MouseEventArgs e)
@@ -292,8 +319,32 @@ namespace MataKuliah
                 MessageBox.Show(webApi.ReturnMessage(response));
                 return;
             }
+            dgvGrupMK.Rows.Clear();
+            txtNamaGrup.Text = string.Empty;
+            await LoadGrupKuliah();
+        }
 
+        private async void btnHapus_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvDaftarGrup.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Hapus"].Value) == true)
+                {
+                    var dataDel = new
+                    {
+                        TahunAkademik = LoginAccess.TahunAkademik,
+                        Semester = LoginAccess.KodeSemester,
+                        Kode = row.Cells["KodeParent"].Value.ToString(),
+                        KodeMember = row.Cells["KodeMember"].Value.ToString(),
+                        NamaGrup = row.Cells["NamaGrup"].Value.ToString()
+                    };
 
+                    var jsonData = JsonConvert.SerializeObject(dataDel);
+                    response = await webApi.Post(UrlDelGrupKuliah, jsonData, true);
+                }
+            }
+
+            await LoadGrupKuliah();
         }
     }
 }

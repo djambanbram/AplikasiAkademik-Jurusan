@@ -30,7 +30,7 @@
     <SuiteName>IC</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>aplikasi_program_studi.htm</WebPage>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -185,6 +185,10 @@
     <ProjectReference Include="..\KelasMahasiswa\KelasMahasiswa.csproj">
       <Project>{9ea707e7-e4b9-446e-a000-64a9bec7722b}</Project>
       <Name>KelasMahasiswa</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KonversiAlihJalur\KonversiAlihJalur.csproj">
+      <Project>{92ec9a14-a222-48c6-a2a5-7b1dadfdce7a}</Project>
+      <Name>KonversiAlihJalur</Name>
     </ProjectReference>
     <ProjectReference Include="..\MataKuliah\MataKuliah.csproj">
       <Project>{121BAB73-94A7-4161-AAF2-8330314CD590}</Project>

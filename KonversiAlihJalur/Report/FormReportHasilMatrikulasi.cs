@@ -192,11 +192,16 @@ namespace KonversiAlihJalur.Report
                 List<HasilMatrikulasiMhs> listTemp = new List<HasilMatrikulasiMhs>();
                 foreach (DataGridViewRow row in dgvMhs.Rows)
                 {
-                    if (Convert.ToBoolean(row.Cells["Pilih"].Value.ToString()) == true)
+                    if (Convert.ToBoolean(row.Cells["Pilih"].Value) == true)
                     {
-                        HasilMatrikulasiMhs hasil = new HasilMatrikulasiMhs();
-                        hasil = listHasilMatrikulasi.Find(h => h.NpmLama == row.Cells["Npm"].Value.ToString());
-                        listTemp.Add(hasil);
+                        MessageBox.Show(row.Cells["Npm"].Value.ToString());
+                        foreach (HasilMatrikulasiMhs h in listHasilMatrikulasi)
+                        {
+                            if (h.NpmLama == row.Cells["Npm"].Value.ToString())
+                            {
+                                listTemp.Add(h);
+                            }
+                        }
                     }
                 }
 

@@ -72,6 +72,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetAlihJalur.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FormMatrikulasiCalonAlihJalur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMatrikulasiCalonAlihJalur.Designer.cs">
+      <DependentUpon>FormMatrikulasiCalonAlihJalur.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\CommonLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\FormReportHasilMatrikulasi.cs">
@@ -80,6 +86,9 @@
     <Compile Include="Report\FormReportHasilMatrikulasi.Designer.cs">
       <DependentUpon>FormReportHasilMatrikulasi.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormMatrikulasiCalonAlihJalur.resx">
+      <DependentUpon>FormMatrikulasiCalonAlihJalur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

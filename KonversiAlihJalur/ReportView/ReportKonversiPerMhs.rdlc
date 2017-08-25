@@ -37,9 +37,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Left>0.00001in</Left>
+                          <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>8.06062in</Width>
+                          <Width>7.56583in</Width>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -69,9 +69,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.27861in</Top>
-                          <Left>0.00002in</Left>
+                          <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.12312in</Width>
+                          <Width>0.96245in</Width>
                           <ZIndex>1</ZIndex>
                           <Style>
                             <Border>
@@ -102,9 +102,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.47861in</Top>
-                          <Left>0.00002in</Left>
+                          <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.12312in</Width>
+                          <Width>0.96245in</Width>
                           <ZIndex>2</ZIndex>
                           <Style>
                             <Border>
@@ -135,9 +135,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.67861in</Top>
-                          <Left>0.00001in</Left>
+                          <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.12312in</Width>
+                          <Width>0.96244in</Width>
                           <ZIndex>3</ZIndex>
                           <Style>
                             <Border>
@@ -168,9 +168,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.87861in</Top>
-                          <Left>0.00002in</Left>
+                          <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.12312in</Width>
+                          <Width>0.96245in</Width>
                           <ZIndex>4</ZIndex>
                           <Style>
                             <Border>
@@ -190,7 +190,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PT ASAL</Value>
+                                  <Value>PT Asal</Value>
                                   <Style>
                                     <FontFamily>times New Roman</FontFamily>
                                   </Style>
@@ -201,9 +201,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>1.07861in</Top>
-                          <Left>0.00002in</Left>
+                          <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.12312in</Width>
+                          <Width>0.96245in</Width>
                           <ZIndex>5</ZIndex>
                           <Style>
                             <Border>
@@ -234,9 +234,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.27861in</Top>
-                          <Left>1.12314in</Left>
+                          <Left>1.21245in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.9375in</Width>
+                          <Width>6.60338in</Width>
                           <ZIndex>6</ZIndex>
                           <Style>
                             <Border>
@@ -267,9 +267,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.47861in</Top>
-                          <Left>1.12314in</Left>
+                          <Left>1.21245in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.9375in</Width>
+                          <Width>6.60338in</Width>
                           <ZIndex>7</ZIndex>
                           <Style>
                             <Border>
@@ -300,9 +300,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.67861in</Top>
-                          <Left>1.12314in</Left>
+                          <Left>1.21245in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.9375in</Width>
+                          <Width>6.60338in</Width>
                           <ZIndex>8</ZIndex>
                           <Style>
                             <Border>
@@ -333,9 +333,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.87861in</Top>
-                          <Left>1.12314in</Left>
+                          <Left>1.21245in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.9375in</Width>
+                          <Width>6.60338in</Width>
                           <ZIndex>9</ZIndex>
                           <Style>
                             <Border>
@@ -366,9 +366,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>1.07861in</Top>
-                          <Left>1.12314in</Left>
+                          <Left>1.21245in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.9375in</Width>
+                          <Width>6.60338in</Width>
                           <ZIndex>10</ZIndex>
                           <Style>
                             <Border>
@@ -385,28 +385,28 @@
                           <TablixBody>
                             <TablixColumns>
                               <TablixColumn>
-                                <Width>0.32292in</Width>
+                                <Width>0.32151in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.7in</Width>
+                                <Width>0.69859in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>2.3979in</Width>
+                                <Width>2.09859in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.51042in</Width>
+                                <Width>0.50901in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.64583in</Width>
+                                <Width>0.64442in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>2.3in</Width>
+                                <Width>2.09859in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.51042in</Width>
+                                <Width>0.50901in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.6875in</Width>
+                                <Width>0.68609in</Width>
                               </TablixColumn>
                             </TablixColumns>
                             <TablixRows>
@@ -716,7 +716,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!Nomor.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style>
@@ -748,7 +750,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!KodeD3.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style />
@@ -778,7 +782,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!MataKuliahD3.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style />
@@ -808,7 +814,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!SksD3.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style>
@@ -840,7 +848,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!Kode.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style />
@@ -870,7 +880,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!MataKuliah.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style />
@@ -900,7 +912,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!Sks.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style>
@@ -932,7 +946,9 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!Nilai.Value</Value>
-                                                <Style />
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style>
@@ -954,6 +970,87 @@
                                       </Textbox>
                                     </CellContents>
                                   </TablixCell>
+                                </TablixCells>
+                              </TablixRow>
+                              <TablixRow>
+                                <Height>0.25in</Height>
+                                <TablixCells>
+                                  <TablixCell>
+                                    <CellContents>
+                                      <Textbox Name="Textbox34">
+                                        <CanGrow>true</CanGrow>
+                                        <KeepTogether>true</KeepTogether>
+                                        <Paragraphs>
+                                          <Paragraph>
+                                            <TextRuns>
+                                              <TextRun>
+                                                <Value>Jumlah SKS</Value>
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
+                                              </TextRun>
+                                            </TextRuns>
+                                            <Style>
+                                              <TextAlign>Center</TextAlign>
+                                            </Style>
+                                          </Paragraph>
+                                        </Paragraphs>
+                                        <rd:DefaultName>Textbox34</rd:DefaultName>
+                                        <Style>
+                                          <Border>
+                                            <Style>Solid</Style>
+                                          </Border>
+                                          <VerticalAlign>Middle</VerticalAlign>
+                                          <PaddingLeft>2pt</PaddingLeft>
+                                          <PaddingRight>2pt</PaddingRight>
+                                          <PaddingTop>2pt</PaddingTop>
+                                          <PaddingBottom>2pt</PaddingBottom>
+                                        </Style>
+                                      </Textbox>
+                                      <ColSpan>6</ColSpan>
+                                    </CellContents>
+                                  </TablixCell>
+                                  <TablixCell />
+                                  <TablixCell />
+                                  <TablixCell />
+                                  <TablixCell />
+                                  <TablixCell />
+                                  <TablixCell>
+                                    <CellContents>
+                                      <Textbox Name="Textbox43">
+                                        <CanGrow>true</CanGrow>
+                                        <KeepTogether>true</KeepTogether>
+                                        <Paragraphs>
+                                          <Paragraph>
+                                            <TextRuns>
+                                              <TextRun>
+                                                <Value>=SUM(int32.Parse(Fields!Sks.Value.ToString()))</Value>
+                                                <Style>
+                                                  <FontFamily>Times New Roman</FontFamily>
+                                                </Style>
+                                              </TextRun>
+                                            </TextRuns>
+                                            <Style>
+                                              <TextAlign>Center</TextAlign>
+                                            </Style>
+                                          </Paragraph>
+                                        </Paragraphs>
+                                        <rd:DefaultName>Textbox43</rd:DefaultName>
+                                        <Style>
+                                          <Border>
+                                            <Style>Solid</Style>
+                                          </Border>
+                                          <VerticalAlign>Middle</VerticalAlign>
+                                          <PaddingLeft>2pt</PaddingLeft>
+                                          <PaddingRight>2pt</PaddingRight>
+                                          <PaddingTop>2pt</PaddingTop>
+                                          <PaddingBottom>2pt</PaddingBottom>
+                                        </Style>
+                                      </Textbox>
+                                      <ColSpan>2</ColSpan>
+                                    </CellContents>
+                                  </TablixCell>
+                                  <TablixCell />
                                 </TablixCells>
                               </TablixRow>
                             </TablixRows>
@@ -978,15 +1075,21 @@
                               </TablixMember>
                               <TablixMember>
                                 <Group Name="Details1" />
+                                <TablixMembers>
+                                  <TablixMember />
+                                </TablixMembers>
+                              </TablixMember>
+                              <TablixMember>
+                                <KeepWithGroup>Before</KeepWithGroup>
                               </TablixMember>
                             </TablixMembers>
                           </TablixRowHierarchy>
                           <RepeatColumnHeaders>true</RepeatColumnHeaders>
                           <DataSetName>DsHasilMatrikulasi</DataSetName>
                           <Top>1.4375in</Top>
-                          <Left>0.00001in</Left>
-                          <Height>0.5in</Height>
-                          <Width>8.07499in</Width>
+                          <Left>0.25in</Left>
+                          <Height>0.75in</Height>
+                          <Width>7.56581in</Width>
                           <ZIndex>11</ZIndex>
                           <Style>
                             <Border>
@@ -1013,7 +1116,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>2.29479in</Top>
+                          <Top>2.41979in</Top>
                           <Left>0.17313in</Left>
                           <Height>0.25in</Height>
                           <Width>3.11666in</Width>
@@ -1049,7 +1152,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>3.29479in</Top>
+                          <Top>3.49479in</Top>
                           <Left>0.15625in</Left>
                           <Height>0.25in</Height>
                           <Width>3.11666in</Width>
@@ -1085,7 +1188,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>3.29479in</Top>
+                          <Top>3.49479in</Top>
                           <Left>4.44604in</Left>
                           <Height>0.25in</Height>
                           <Width>3.36979in</Width>
@@ -1120,7 +1223,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>2.29479in</Top>
+                          <Top>2.41979in</Top>
                           <Left>4.44604in</Left>
                           <Height>0.25in</Height>
                           <Width>3.38667in</Width>
@@ -1155,7 +1258,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>2.09479in</Top>
+                          <Top>2.21979in</Top>
                           <Left>4.44604in</Left>
                           <Height>0.25in</Height>
                           <Width>3.38667in</Width>
@@ -1191,7 +1294,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>3.49479in</Top>
+                          <Top>3.69479in</Top>
                           <Left>4.44604in</Left>
                           <Height>0.25in</Height>
                           <Width>3.36979in</Width>
@@ -1266,7 +1369,7 @@
           <Value>logo_amikom_satu_warna</Value>
           <Sizing>FitProportional</Sizing>
           <Top>0.1625in</Top>
-          <Left>0.21958in</Left>
+          <Left>0.46958in</Left>
           <Height>0.68181in</Height>
           <Width>0.6875in</Width>
           <Style>
@@ -1312,7 +1415,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.1625in</Top>
-          <Left>0.97167in</Left>
+          <Left>1.22167in</Left>
           <Height>0.68181in</Height>
           <Width>3.15625in</Width>
           <ZIndex>1</ZIndex>
@@ -1351,7 +1454,7 @@
           <Top>0.275in</Top>
           <Left>4.66563in</Left>
           <Height>0.18181in</Height>
-          <Width>3.61458in</Width>
+          <Width>3.38666in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1402,7 +1505,7 @@
           <Top>0.425in</Top>
           <Left>4.66563in</Left>
           <Height>0.34848in</Height>
-          <Width>3.61458in</Width>
+          <Width>3.38666in</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -1416,9 +1519,9 @@
         </Textbox>
         <Line Name="Line1">
           <Top>0.93625in</Top>
-          <Left>0.21958in</Left>
+          <Left>0.46958in</Left>
           <Height>0in</Height>
-          <Width>8.06063in</Width>
+          <Width>7.58271in</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1433,6 +1536,7 @@
         </Border>
       </Style>
     </PageHeader>
+    <BottomMargin>0.7in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>

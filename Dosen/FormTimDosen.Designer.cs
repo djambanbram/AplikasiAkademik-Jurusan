@@ -36,7 +36,7 @@ namespace Dosen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -59,6 +59,9 @@ namespace Dosen
             this.txtNamaGrup = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.cmbProdi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -68,9 +71,6 @@ namespace Dosen
             this.aNamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.comboBoxAdv1 = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.cmbProdi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
@@ -84,11 +84,11 @@ namespace Dosen
             ((System.ComponentModel.ISupportInitialize)(this.txtNamaGrup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTimDosen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxAdv1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTimDosen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxAdv1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -315,6 +315,7 @@ namespace Dosen
             this.btnClear.Size = new System.Drawing.Size(124, 30);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSimpan
             // 
@@ -363,6 +364,39 @@ namespace Dosen
             this.gradientPanel1.Size = new System.Drawing.Size(797, 94);
             this.gradientPanel1.TabIndex = 21;
             // 
+            // cmbProgram
+            // 
+            this.cmbProgram.BeforeTouchSize = new System.Drawing.Size(361, 24);
+            this.cmbProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProgram.Location = new System.Drawing.Point(108, 64);
+            this.cmbProgram.Name = "cmbProgram";
+            this.cmbProgram.Size = new System.Drawing.Size(361, 24);
+            this.cmbProgram.TabIndex = 19;
+            this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
+            // 
+            // cmbProdi
+            // 
+            this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(361, 24);
+            this.cmbProdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProdi.Location = new System.Drawing.Point(108, 34);
+            this.cmbProdi.Name = "cmbProdi";
+            this.cmbProdi.Size = new System.Drawing.Size(361, 24);
+            this.cmbProdi.TabIndex = 18;
+            this.cmbProdi.SelectedIndexChanged += new System.EventHandler(this.cmbProdi_SelectedIndexChanged);
+            // 
+            // cmbFakultas
+            // 
+            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(361, 25);
+            this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFakultas.Location = new System.Drawing.Point(108, 3);
+            this.cmbFakultas.Name = "cmbFakultas";
+            this.cmbFakultas.Size = new System.Drawing.Size(361, 25);
+            this.cmbFakultas.TabIndex = 17;
+            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
+            // 
             // autoLabel3
             // 
             this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -395,14 +429,14 @@ namespace Dosen
             this.dgvTimDosen.AllowUserToDeleteRows = false;
             this.dgvTimDosen.AllowUserToResizeRows = false;
             this.dgvTimDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTimDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTimDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTimDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NamaTim,
@@ -452,39 +486,6 @@ namespace Dosen
             this.comboBoxAdv1.Size = new System.Drawing.Size(341, 21);
             this.comboBoxAdv1.TabIndex = 13;
             // 
-            // cmbProgram
-            // 
-            this.cmbProgram.BeforeTouchSize = new System.Drawing.Size(361, 24);
-            this.cmbProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProgram.Location = new System.Drawing.Point(108, 64);
-            this.cmbProgram.Name = "cmbProgram";
-            this.cmbProgram.Size = new System.Drawing.Size(361, 24);
-            this.cmbProgram.TabIndex = 19;
-            this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
-            // 
-            // cmbProdi
-            // 
-            this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(361, 24);
-            this.cmbProdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProdi.Location = new System.Drawing.Point(108, 34);
-            this.cmbProdi.Name = "cmbProdi";
-            this.cmbProdi.Size = new System.Drawing.Size(361, 24);
-            this.cmbProdi.TabIndex = 18;
-            this.cmbProdi.SelectedIndexChanged += new System.EventHandler(this.cmbProdi_SelectedIndexChanged);
-            // 
-            // cmbFakultas
-            // 
-            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(361, 25);
-            this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFakultas.Location = new System.Drawing.Point(108, 3);
-            this.cmbFakultas.Name = "cmbFakultas";
-            this.cmbFakultas.Size = new System.Drawing.Size(361, 25);
-            this.cmbFakultas.TabIndex = 17;
-            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
-            // 
             // FormTimDosen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -515,11 +516,11 @@ namespace Dosen
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTimDosen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxAdv1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTimDosen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxAdv1)).EndInit();
             this.ResumeLayout(false);
 
         }

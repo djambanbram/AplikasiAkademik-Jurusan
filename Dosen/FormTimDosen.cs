@@ -263,6 +263,8 @@ namespace Dosen
             }
 
             await LoadTimDosen();
+            dgvAddTim.Rows.Clear();
+            txtNamaGrup.Text = string.Empty;
 
             Loading(false);
         }
@@ -330,6 +332,12 @@ namespace Dosen
                 }
             }
             await LoadTimDosen();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            dgvAddTim.Rows.Clear();
+            txtNamaGrup.Text = string.Empty;
         }
     }
 }

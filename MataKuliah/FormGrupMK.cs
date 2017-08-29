@@ -280,6 +280,7 @@ namespace MataKuliah
         private void btnClear_Click(object sender, EventArgs e)
         {
             dgvGrupMK.Rows.Clear();
+            txtNamaGrup.Text = string.Empty;
         }
 
         private async void btnSimpan_Click(object sender, EventArgs e)

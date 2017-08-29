@@ -35,4 +35,11 @@ namespace ClassModel
         public string NamaGolongan { get; set; }
         public string Pangkat { get; set; }
     }
+
+    public class TimDosen
+    {
+        public string NamaTim { get; set; }
+        public string Nik { get; set; }
+        public string NamaDosen { get; set; }
+    }
 }

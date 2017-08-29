@@ -49,6 +49,7 @@ namespace MainAplikasi
         private FormAlokasiMK formAlokasiMK;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
+        private FormTimDosen formTimDosen;
         private FormHonorDosen formHonorDosen;
         private FormJenjangPendidikanDosen formJenjangPendidikanDosen;
 
@@ -149,6 +150,15 @@ namespace MainAplikasi
                     formAlokasiLabMK.MdiParent = this;
                 }
                 form = formAlokasiLabMK;
+            }
+            else if (e.XPTaskBarItem.Name == "itemTimDosen")
+            {
+                if (formTimDosen == null || formTimDosen.IsDisposed)
+                {
+                    formTimDosen = new FormTimDosen();
+                    formTimDosen.MdiParent = this;
+                }
+                form = formTimDosen;
             }
             else if (e.XPTaskBarItem.Name == "itemHonorDosen")
             {
@@ -311,7 +321,7 @@ namespace MainAplikasi
             time = TimeSpan.FromSeconds(countDown);
             stripLabelSession.Text = string.Format("{0} {1}", "Sesi anda akan habis dalam: ", time.ToString(@"hh\:mm\:ss"));
 
-            if(countDown <= 0)
+            if (countDown <= 0)
             {
                 timer1.Enabled = false;
                 MessageBox.Show("Sesi anda telah habis, silahkan login kembali");

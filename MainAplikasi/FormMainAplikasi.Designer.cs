@@ -66,6 +66,12 @@ namespace MainAplikasi
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.alokasiLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.menuLaporanDosen = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.alokasiDosenMengajarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kesanggupanDosenMengajarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kesediaanDosenMengajarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.koordinatorMataKuliahToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dosenWaliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -78,6 +84,7 @@ namespace MainAplikasi
             this.menuKelasCampuran.SuspendLayout();
             this.menuAlokasiDosen.SuspendLayout();
             this.menuLaporanMataKuliah.SuspendLayout();
+            this.menuLaporanDosen.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpTaskBar1
@@ -246,7 +253,7 @@ namespace MainAplikasi
             this.BoxLaporan.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxLaporan.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, 1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen Mengajar", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen Mengajar", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxLaporan.Location = new System.Drawing.Point(0, 400);
@@ -414,6 +421,48 @@ namespace MainAplikasi
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // menuLaporanDosen
+            // 
+            this.menuLaporanDosen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alokasiDosenMengajarToolStripMenuItem,
+            this.kesanggupanDosenMengajarToolStripMenuItem,
+            this.kesediaanDosenMengajarToolStripMenuItem,
+            this.koordinatorMataKuliahToolStripMenuItem,
+            this.dosenWaliToolStripMenuItem});
+            this.menuLaporanDosen.Name = "menuAlokasiDosen";
+            this.menuLaporanDosen.Size = new System.Drawing.Size(236, 136);
+            // 
+            // alokasiDosenMengajarToolStripMenuItem
+            // 
+            this.alokasiDosenMengajarToolStripMenuItem.Name = "alokasiDosenMengajarToolStripMenuItem";
+            this.alokasiDosenMengajarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.alokasiDosenMengajarToolStripMenuItem.Text = "Alokasi Dosen Mengajar";
+            this.alokasiDosenMengajarToolStripMenuItem.Click += new System.EventHandler(this.alokasiDosenMengajarToolStripMenuItem_Click);
+            // 
+            // kesanggupanDosenMengajarToolStripMenuItem
+            // 
+            this.kesanggupanDosenMengajarToolStripMenuItem.Name = "kesanggupanDosenMengajarToolStripMenuItem";
+            this.kesanggupanDosenMengajarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.kesanggupanDosenMengajarToolStripMenuItem.Text = "Kesanggupan Dosen Mengajar";
+            // 
+            // kesediaanDosenMengajarToolStripMenuItem
+            // 
+            this.kesediaanDosenMengajarToolStripMenuItem.Name = "kesediaanDosenMengajarToolStripMenuItem";
+            this.kesediaanDosenMengajarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.kesediaanDosenMengajarToolStripMenuItem.Text = "Kesediaan Dosen Mengajar";
+            // 
+            // koordinatorMataKuliahToolStripMenuItem
+            // 
+            this.koordinatorMataKuliahToolStripMenuItem.Name = "koordinatorMataKuliahToolStripMenuItem";
+            this.koordinatorMataKuliahToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.koordinatorMataKuliahToolStripMenuItem.Text = "Koordinator Mata Kuliah";
+            // 
+            // dosenWaliToolStripMenuItem
+            // 
+            this.dosenWaliToolStripMenuItem.Name = "dosenWaliToolStripMenuItem";
+            this.dosenWaliToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.dosenWaliToolStripMenuItem.Text = "Dosen Wali";
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -446,6 +495,7 @@ namespace MainAplikasi
             this.menuKelasCampuran.ResumeLayout(false);
             this.menuAlokasiDosen.ResumeLayout(false);
             this.menuLaporanMataKuliah.ResumeLayout(false);
+            this.menuLaporanDosen.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,5 +532,11 @@ namespace MainAplikasi
         private System.Windows.Forms.Timer timer1;
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxDosen;
         private System.Windows.Forms.ImageList imgDosen;
+        private System.Windows.Forms.ContextMenuStrip menuLaporanDosen;
+        private System.Windows.Forms.ToolStripMenuItem alokasiDosenMengajarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kesanggupanDosenMengajarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kesediaanDosenMengajarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem koordinatorMataKuliahToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dosenWaliToolStripMenuItem;
     }
 }

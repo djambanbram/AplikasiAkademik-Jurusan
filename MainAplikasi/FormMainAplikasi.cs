@@ -189,12 +189,14 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemLaporanDosen")
             {
-                if (formReportAlokasiDosen == null || formReportAlokasiDosen.IsDisposed)
-                {
-                    formReportAlokasiDosen = new FormReportAlokasiDosen();
-                    formReportAlokasiDosen.MdiParent = this;
-                }
-                form = formReportAlokasiDosen;
+                XPTaskBarItem item = e.XPTaskBarItem;
+                menuLaporanDosen.Show(item.Parent as Control, new Point(item.Bounds.Width, item.Bounds.Y));
+                //if (formReportAlokasiDosen == null || formReportAlokasiDosen.IsDisposed)
+                //{
+                //    formReportAlokasiDosen = new FormReportAlokasiDosen();
+                //    formReportAlokasiDosen.MdiParent = this;
+                //}
+                //form = formReportAlokasiDosen;
             }
             else if (e.XPTaskBarItem.Name == "itemLaporanHonorDosen")
             {
@@ -327,6 +329,17 @@ namespace MainAplikasi
                 MessageBox.Show("Sesi anda telah habis, silahkan login kembali");
                 Application.Restart();
             }
+        }
+
+        private void alokasiDosenMengajarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formReportAlokasiDosen == null || formReportAlokasiDosen.IsDisposed)
+            {
+                formReportAlokasiDosen = new FormReportAlokasiDosen();
+                formReportAlokasiDosen.MdiParent = this;
+            }
+            formReportAlokasiDosen.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formReportAlokasiDosen);
         }
     }
 }

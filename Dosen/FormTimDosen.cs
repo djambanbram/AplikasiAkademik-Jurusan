@@ -329,6 +329,11 @@ namespace Dosen
 
                     var jsonData = JsonConvert.SerializeObject(dataDel);
                     response = await webApi.Post(URLDelTimDosen, jsonData, true);
+                    if(!response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show(webApi.ReturnMessage(response));
+                        break;
+                    }
                 }
             }
             await LoadTimDosen();

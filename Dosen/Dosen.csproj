@@ -44,6 +44,8 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -59,6 +61,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +73,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DsDosen.cs">
+      <DependentUpon>DsDosen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DsDosen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsDosen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FormSetTanggalKumpulKesanggupan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormSetTanggalKumpulKesanggupan.Designer.cs">
+      <DependentUpon>FormSetTanggalKumpulKesanggupan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\FormTambahHonorDosen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +121,15 @@
     <Compile Include="Report\FormReportHonorDosenMengajar.Designer.cs">
       <DependentUpon>FormReportHonorDosenMengajar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\FormReportKesanggupanDosen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormReportKesanggupanDosen.Designer.cs">
+      <DependentUpon>FormReportKesanggupanDosen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Dialog\FormSetTanggalKumpulKesanggupan.resx">
+      <DependentUpon>FormSetTanggalKumpulKesanggupan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\FormTambahHonorDosen.resx">
       <DependentUpon>FormTambahHonorDosen.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,9 +151,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReportView\ReportKesanggupanDosen.rdlc" />
     <EmbeddedResource Include="Report\FormReportHonorDosenMengajar.resx">
       <DependentUpon>FormReportHonorDosenMengajar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormReportKesanggupanDosen.resx">
+      <DependentUpon>FormReportKesanggupanDosen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\DsDosen.xsc">
+      <DependentUpon>DsDosen.xsd</DependentUpon>
+    </None>
+    <None Include="Data\DsDosen.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsDosen.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\DsDosen.xss">
+      <DependentUpon>DsDosen.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

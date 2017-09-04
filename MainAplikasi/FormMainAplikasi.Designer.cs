@@ -444,6 +444,7 @@ namespace MainAplikasi
             this.kesanggupanDosenMengajarToolStripMenuItem.Name = "kesanggupanDosenMengajarToolStripMenuItem";
             this.kesanggupanDosenMengajarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.kesanggupanDosenMengajarToolStripMenuItem.Text = "Kesanggupan Dosen Mengajar";
+            this.kesanggupanDosenMengajarToolStripMenuItem.Click += new System.EventHandler(this.kesanggupanDosenMengajarToolStripMenuItem_Click);
             // 
             // kesediaanDosenMengajarToolStripMenuItem
             // 

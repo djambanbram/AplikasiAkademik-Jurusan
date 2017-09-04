@@ -18,6 +18,10 @@ namespace ClassModel
         public string NamaDosen { get; set; }
         public string JenisMataKuliah { get; set; }
         public int Sks { get; set; }
+        public string KodeFakultas { get; set; }
+        public string NamaFakultas { get; set; }
+        public string Jenjang { get; set; }
+        public string KodeKelas { get; set; }
 
     }
 

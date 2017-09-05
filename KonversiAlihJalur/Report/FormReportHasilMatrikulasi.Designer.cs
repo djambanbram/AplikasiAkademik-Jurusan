@@ -171,6 +171,7 @@ namespace KonversiAlihJalur.Report
             // 
             this.dgvMhs.AllowUserToAddRows = false;
             this.dgvMhs.AllowUserToDeleteRows = false;
+            this.dgvMhs.AllowUserToResizeRows = false;
             this.dgvMhs.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvMhs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMhs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -186,6 +187,7 @@ namespace KonversiAlihJalur.Report
             this.dgvMhs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMhs.Size = new System.Drawing.Size(398, 265);
             this.dgvMhs.TabIndex = 20;
+            this.dgvMhs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMhs_CellContentClick);
             this.dgvMhs.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMhs_ColumnHeaderMouseClick);
             // 
             // No
@@ -245,7 +247,6 @@ namespace KonversiAlihJalur.Report
             // 
             // printDipilihToolStripMenuItem
             // 
-            this.printDipilihToolStripMenuItem.Enabled = false;
             this.printDipilihToolStripMenuItem.Name = "printDipilihToolStripMenuItem";
             this.printDipilihToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.printDipilihToolStripMenuItem.Text = "Print Dipilih";

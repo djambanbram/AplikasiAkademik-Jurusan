@@ -37,18 +37,17 @@ namespace Dosen.Report
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportKesanggupanDosen));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.kesanggupanDosenMengajarBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsDosen = new Dosen.Data.DsDosen();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.dgvDataDosen = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.cetakSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cetakDipilihToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dsDosen = new Dosen.Data.DsDosen();
-            this.kesanggupanDosenMengajarBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvDataDosen = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,14 +56,31 @@ namespace Dosen.Report
             this.NamaFakultas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KodeKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
+            this.gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             this.SuspendLayout();
+            // 
+            // kesanggupanDosenMengajarBindingSource
+            // 
+            this.kesanggupanDosenMengajarBindingSource.DataMember = "KesanggupanDosenMengajar";
+            this.kesanggupanDosenMengajarBindingSource.DataSource = this.dsDosen;
+            // 
+            // dsDosen
+            // 
+            this.dsDosen.DataSetName = "DsDosen";
+            this.dsDosen.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // flowLayoutPanel1
             // 
@@ -87,47 +103,25 @@ namespace Dosen.Report
             this.btnTutup.Size = new System.Drawing.Size(113, 30);
             this.btnTutup.TabIndex = 0;
             this.btnTutup.Text = "Tutup";
+            this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
             // gradientPanel1
             // 
             this.gradientPanel1.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
-            this.gradientPanel1.Controls.Add(this.dgvDataDosen);
             this.gradientPanel1.Controls.Add(this.toolStrip1);
+            this.gradientPanel1.Controls.Add(this.dgvDataDosen);
+            this.gradientPanel1.Controls.Add(this.gradientPanel2);
             this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(371, 408);
             this.gradientPanel1.TabIndex = 12;
             // 
-            // dgvDataDosen
-            // 
-            this.dgvDataDosen.AllowUserToAddRows = false;
-            this.dgvDataDosen.AllowUserToDeleteRows = false;
-            this.dgvDataDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvDataDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDataDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No,
-            this.NIK,
-            this.NamaDosen,
-            this.Pilih,
-            this.KodeFakultas,
-            this.NamaFakultas,
-            this.Jenjang,
-            this.KodeKelas});
-            this.dgvDataDosen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDataDosen.Location = new System.Drawing.Point(0, 25);
-            this.dgvDataDosen.MultiSelect = false;
-            this.dgvDataDosen.Name = "dgvDataDosen";
-            this.dgvDataDosen.RowHeadersVisible = false;
-            this.dgvDataDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataDosen.Size = new System.Drawing.Size(367, 379);
-            this.dgvDataDosen.TabIndex = 14;
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 34);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(367, 25);
             this.toolStrip1.TabIndex = 15;
@@ -157,28 +151,33 @@ namespace Dosen.Report
             this.cetakDipilihToolStripMenuItem.Name = "cetakDipilihToolStripMenuItem";
             this.cetakDipilihToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cetakDipilihToolStripMenuItem.Text = "Cetak Dipilih";
+            this.cetakDipilihToolStripMenuItem.Click += new System.EventHandler(this.cetakDipilihToolStripMenuItem_Click);
             // 
-            // reportViewer1
+            // dgvDataDosen
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "DsKesanggupanMengajar";
-            reportDataSource3.Value = this.kesanggupanDosenMengajarBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Dosen.ReportView.ReportKesanggupanDosen.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(371, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(444, 408);
-            this.reportViewer1.TabIndex = 13;
-            // 
-            // dsDosen
-            // 
-            this.dsDosen.DataSetName = "DsDosen";
-            this.dsDosen.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // kesanggupanDosenMengajarBindingSource
-            // 
-            this.kesanggupanDosenMengajarBindingSource.DataMember = "KesanggupanDosenMengajar";
-            this.kesanggupanDosenMengajarBindingSource.DataSource = this.dsDosen;
+            this.dgvDataDosen.AllowUserToAddRows = false;
+            this.dgvDataDosen.AllowUserToDeleteRows = false;
+            this.dgvDataDosen.AllowUserToResizeRows = false;
+            this.dgvDataDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvDataDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDataDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.No,
+            this.NIK,
+            this.NamaDosen,
+            this.Pilih,
+            this.KodeFakultas,
+            this.NamaFakultas,
+            this.Jenjang,
+            this.KodeKelas});
+            this.dgvDataDosen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDataDosen.Location = new System.Drawing.Point(0, 34);
+            this.dgvDataDosen.MultiSelect = false;
+            this.dgvDataDosen.Name = "dgvDataDosen";
+            this.dgvDataDosen.RowHeadersVisible = false;
+            this.dgvDataDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDataDosen.Size = new System.Drawing.Size(367, 370);
+            this.dgvDataDosen.TabIndex = 14;
+            this.dgvDataDosen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDataDosen_CellContentClick);
             // 
             // No
             // 
@@ -228,6 +227,48 @@ namespace Dosen.Report
             this.KodeKelas.Name = "KodeKelas";
             this.KodeKelas.Visible = false;
             // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel2.Controls.Add(this.cmbFakultas);
+            this.gradientPanel2.Controls.Add(this.autoLabel1);
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(367, 34);
+            this.gradientPanel2.TabIndex = 16;
+            // 
+            // cmbFakultas
+            // 
+            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(256, 25);
+            this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFakultas.Location = new System.Drawing.Point(86, 2);
+            this.cmbFakultas.Name = "cmbFakultas";
+            this.cmbFakultas.Size = new System.Drawing.Size(256, 25);
+            this.cmbFakultas.TabIndex = 1;
+            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Location = new System.Drawing.Point(8, 5);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(54, 17);
+            this.autoLabel1.TabIndex = 0;
+            this.autoLabel1.Text = "Fakultas";
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "DsKesanggupanMengajar";
+            reportDataSource2.Value = this.kesanggupanDosenMengajarBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Dosen.ReportView.ReportKesanggupanDosen.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(371, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(444, 408);
+            this.reportViewer1.TabIndex = 13;
+            // 
             // FormReportKesanggupanDosen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -242,15 +283,19 @@ namespace Dosen.Report
             this.Name = "FormReportKesanggupanDosen";
             this.Text = "Kesanggupan Dosen Mengajar";
             this.Load += new System.EventHandler(this.FormReportKesanggupanDosen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
+            this.gradientPanel2.ResumeLayout(false);
+            this.gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,5 +321,8 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaFakultas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jenjang;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeKelas;
+        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbFakultas;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
     }
 }

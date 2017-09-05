@@ -32,6 +32,7 @@ namespace Dosen.Report
         private string URLGetDosenMengajar = baseAddress + "/jurusan_api/api/pengajaran/get_dosen_mengajar_all";
 
         private List<Department> listDepartment;
+        private List<Fakultas> listFakultas;
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -48,6 +49,12 @@ namespace Dosen.Report
 
         private async void FormReportKesanggupanDosen_Load(object sender, EventArgs e)
         {
+            listFakultas = new List<Fakultas>(Organisasi.listFakultas);
+            listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
+            cmbFakultas.DataSource = listFakultas;
+            cmbFakultas.DisplayMember = "NamaFakultas";
+            cmbFakultas.ValueMember = "KodeFakultas";
+            cmbFakultas.SelectedIndex = 0;
 
             response = await webApi.Post(URLGetDepartment, string.Empty, false);
             if (response.IsSuccessStatusCode)
@@ -59,7 +66,17 @@ namespace Dosen.Report
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
 
-            var data = new { TahunAkademik = "2016/2017", Semester = 2 };
+            response = await webApi.Post(URLGetDepartment, string.Empty, false);
+            if (response.IsSuccessStatusCode)
+            {
+                listDepartment = JsonConvert.DeserializeObject<List<Department>>(response.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
+
+            var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester };
 
             string jsonData = JsonConvert.SerializeObject(data);
 
@@ -81,42 +98,99 @@ namespace Dosen.Report
                 MessageBox.Show("Dosen belum teralokasi oleh prodi");
                 return;
             }
-
-            dgvDataDosen.Rows.Clear();
-            var listNikDosen = listDosenMengajarAll.Select(d => new { d.NIK, d.NamaDosen, d.KodeFakultas, d.NamaFakultas }).Distinct().OrderBy(o => o.NIK).ToList();
-            int i = 1;
-            foreach (var item in listNikDosen)
-            {
-                dgvDataDosen.Rows.Add(i, item.NIK, item.NamaDosen, false, item.KodeFakultas, item.NamaFakultas);
-                i++;
-            }
         }
 
         private void cetakSemuaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PreviewReport(true);
+        }
+
+        private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvDataDosen.Rows.Clear();
+            if (cmbFakultas.SelectedIndex > 0)
+            {
+                var listNikDosen = listDosenMengajarAll.Select(d => new { d.NIK, d.NamaDosen, d.KodeFakultas, d.NamaFakultas }).Distinct().OrderBy(o => o.NIK).ToList().Where(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).ToList();
+                int i = 1;
+                foreach (var item in listNikDosen)
+                {
+                    dgvDataDosen.Rows.Add(i, item.NIK, item.NamaDosen, false, item.KodeFakultas, item.NamaFakultas);
+                    i++;
+                }
+            }
+            dgvDataDosen.PerformLayout();
+        }
+
+        private void btnTutup_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void cetakDipilihToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PreviewReport(false);
+        }
+
+        private void PreviewReport(bool isCetakSemua)
+        {
+            List<AlokasiDosenAll> listAlokasiDosenAll = new List<AlokasiDosenAll>();
+
+            if (dgvDataDosen.Rows.Count == 0)
+            {
+                return;
+            }
+
             using (var form = new FormSetTanggalKumpulKesanggupan())
             {
                 form.ShowDialog();
             }
 
-            List<AlokasiDosenAll> listAlokasiDosenAll = new List<AlokasiDosenAll>();
-            foreach (DataGridViewRow row in dgvDataDosen.Rows)
+            dgvDataDosen.PerformLayout();
+            if (isCetakSemua)
             {
-                listAlokasiDosenAll.Add(new AlokasiDosenAll()
+                foreach (DataGridViewRow row in dgvDataDosen.Rows)
                 {
-                    NIK = row.Cells["NIK"].Value.ToString(),
-                    NamaDosen = row.Cells["NamaDosen"].Value.ToString(),
-                    KodeFakultas = row.Cells["KodeFakultas"].Value.ToString(),
-                    NamaFakultas = row.Cells["NamaFakultas"].Value.ToString(),
-                    Dekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NamaKepala,
-                    NikDekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NikKepala,
-                    NoSurat = string.Format("{0}/{1}/AMIKOM/{2}/{3}",
-                                row.Cells["NIK"].Value.ToString().Substring(row.Cells["NIK"].Value.ToString().Length - 3, 3),
-                                row.Cells["KodeFakultas"].Value.ToString(),
-                                CommonLib.NumberToRoman(DateTime.Now.Month),
-                                DateTime.Now.Year)
-                });
+                    listAlokasiDosenAll.Add(new AlokasiDosenAll()
+                    {
+                        NIK = row.Cells["NIK"].Value.ToString(),
+                        NamaDosen = row.Cells["NamaDosen"].Value.ToString(),
+                        KodeFakultas = row.Cells["KodeFakultas"].Value.ToString(),
+                        NamaFakultas = row.Cells["NamaFakultas"].Value.ToString(),
+                        Dekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NamaKepala,
+                        NikDekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NikKepala,
+                        NoSurat = string.Format("{0}/{1}/AMIKOM/{2}/{3}",
+                                    row.Cells["NIK"].Value.ToString().Substring(row.Cells["NIK"].Value.ToString().Length - 3, 3),
+                                    row.Cells["KodeFakultas"].Value.ToString(),
+                                    CommonLib.NumberToRoman(DateTime.Now.Month),
+                                    DateTime.Now.Year)
+                    });
+                }
             }
+            else
+            {
+                foreach (DataGridViewRow row in dgvDataDosen.Rows)
+                {
+                    DataGridViewCheckBoxCell cb = row.Cells["Pilih"] as DataGridViewCheckBoxCell;
+                    if (bool.Parse(cb.Value.ToString()))
+                    {
+                        listAlokasiDosenAll.Add(new AlokasiDosenAll()
+                        {
+                            NIK = row.Cells["NIK"].Value.ToString(),
+                            NamaDosen = row.Cells["NamaDosen"].Value.ToString(),
+                            KodeFakultas = row.Cells["KodeFakultas"].Value.ToString(),
+                            NamaFakultas = row.Cells["NamaFakultas"].Value.ToString(),
+                            Dekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NamaKepala,
+                            NikDekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NikKepala,
+                            NoSurat = string.Format("{0}/{1}/AMIKOM/{2}/{3}",
+                                        row.Cells["NIK"].Value.ToString().Substring(row.Cells["NIK"].Value.ToString().Length - 3, 3),
+                                        row.Cells["KodeFakultas"].Value.ToString(),
+                                        CommonLib.NumberToRoman(DateTime.Now.Month),
+                                        DateTime.Now.Year)
+                        });
+                    }
+                }
+            }
+
 
             List<ReportParameter> listParams = new List<ReportParameter>();
 
@@ -136,6 +210,17 @@ namespace Dosen.Report
             reportViewer1.ZoomMode = ZoomMode.Percent;
             reportViewer1.LocalReport.Refresh();
             reportViewer1.RefreshReport();
+        }
+
+        private void dgvDataDosen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex != 3)
+            {
+                return;
+            }
+
+            DataGridViewCheckBoxCell cb = dgvDataDosen.Rows[e.RowIndex].Cells["Pilih"] as DataGridViewCheckBoxCell;
+            cb.Value = !bool.Parse(cb.Value.ToString());
         }
     }
 

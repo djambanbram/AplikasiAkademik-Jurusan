@@ -218,5 +218,16 @@ namespace KonversiAlihJalur.Report
             reportViewer1.LocalReport.Refresh();
             reportViewer1.RefreshReport();
         }
+
+        private void dgvMhs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 3)
+            {
+                return;
+            }
+
+            DataGridViewCheckBoxCell cb = dgvMhs.Rows[e.RowIndex].Cells["Pilih"] as DataGridViewCheckBoxCell;
+            cb.Value = !bool.Parse(cb.Value.ToString());
+        }
     }
 }

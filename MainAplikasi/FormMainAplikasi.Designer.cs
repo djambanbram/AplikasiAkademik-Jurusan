@@ -451,6 +451,7 @@ namespace MainAplikasi
             this.kesediaanDosenMengajarToolStripMenuItem.Name = "kesediaanDosenMengajarToolStripMenuItem";
             this.kesediaanDosenMengajarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.kesediaanDosenMengajarToolStripMenuItem.Text = "Kesediaan Dosen Mengajar";
+            this.kesediaanDosenMengajarToolStripMenuItem.Click += new System.EventHandler(this.kesediaanDosenMengajarToolStripMenuItem_Click);
             // 
             // koordinatorMataKuliahToolStripMenuItem
             // 

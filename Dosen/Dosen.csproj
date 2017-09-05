@@ -127,6 +127,12 @@
     <Compile Include="Report\FormReportKesanggupanDosen.Designer.cs">
       <DependentUpon>FormReportKesanggupanDosen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\FormReportKesediaanDosen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormReportKesediaanDosen.Designer.cs">
+      <DependentUpon>FormReportKesediaanDosen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dialog\FormSetTanggalKumpulKesanggupan.resx">
       <DependentUpon>FormSetTanggalKumpulKesanggupan.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,11 +158,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ReportView\ReportKesanggupanDosen.rdlc" />
+    <EmbeddedResource Include="ReportView\ReportKesediaanDosen.rdlc" />
     <EmbeddedResource Include="Report\FormReportHonorDosenMengajar.resx">
       <DependentUpon>FormReportHonorDosenMengajar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\FormReportKesanggupanDosen.resx">
       <DependentUpon>FormReportKesanggupanDosen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormReportKesediaanDosen.resx">
+      <DependentUpon>FormReportKesediaanDosen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\DsDosen.xsc">
       <DependentUpon>DsDosen.xsd</DependentUpon>

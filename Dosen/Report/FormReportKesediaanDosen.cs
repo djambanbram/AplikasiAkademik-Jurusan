@@ -7,7 +7,6 @@
 #endregion
 using ApiService;
 using ClassModel;
-using Dosen.Dialog;
 using Dosen.Lib;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
@@ -25,7 +24,7 @@ using System.Windows.Forms;
 
 namespace Dosen.Report
 {
-    public partial class FormReportKesanggupanDosen : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormReportKesediaanDosen : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDepartment = baseAddress + "/jurusan_api/api/organisasi/get_department";
@@ -33,15 +32,18 @@ namespace Dosen.Report
 
         private List<Department> listDepartment;
         private List<Fakultas> listFakultas;
+        private List<Prodi> listProdi;
+        private List<Program> listProgram;
 
         private WebApi webApi;
         private HttpResponseMessage response;
 
-        private List<AlokasiDosenMengajar> listDosenMengajarAll;
+        private List<KesanggupanMengajar> listDosenMengajarAll;
 
-        public static DateTime dateKesanggupan;
+        public string kodeProgramDipilih;
+        public string idProdiDipilih;
 
-        public FormReportKesanggupanDosen()
+        public FormReportKesediaanDosen()
         {
             InitializeComponent();
             webApi = new WebApi();
@@ -56,10 +58,8 @@ namespace Dosen.Report
             progressBar1.Visible = isLoading;
         }
 
-        private async void FormReportKesanggupanDosen_Load(object sender, EventArgs e)
+        private async void FormReportKesediaanDosen_Load(object sender, EventArgs e)
         {
-            Loading(true);
-
             listFakultas = new List<Fakultas>(Organisasi.listFakultas);
             listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
             cmbFakultas.DataSource = listFakultas;
@@ -67,6 +67,7 @@ namespace Dosen.Report
             cmbFakultas.ValueMember = "KodeFakultas";
             cmbFakultas.SelectedIndex = 0;
 
+            Loading(true);
             response = await webApi.Post(URLGetDepartment, string.Empty, false);
             if (response.IsSuccessStatusCode)
             {
@@ -92,7 +93,6 @@ namespace Dosen.Report
             }
 
             var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester };
-
             string jsonData = JsonConvert.SerializeObject(data);
 
             response = await webApi.Post(URLGetDosenMengajar, jsonData, true);
@@ -103,7 +103,7 @@ namespace Dosen.Report
                 return;
             }
 
-            listDosenMengajarAll = JsonConvert.DeserializeObject<List<AlokasiDosenMengajar>>(response.Content.ReadAsStringAsync().Result);
+            listDosenMengajarAll = JsonConvert.DeserializeObject<List<KesanggupanMengajar>>(response.Content.ReadAsStringAsync().Result);
             if (listDosenMengajarAll == null)
             {
                 Loading(false);
@@ -116,29 +116,7 @@ namespace Dosen.Report
                 MessageBox.Show("Dosen belum teralokasi oleh prodi");
                 return;
             }
-
             Loading(false);
-        }
-
-        private void cetakSemuaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PreviewReport(true);
-        }
-
-        private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dgvDataDosen.Rows.Clear();
-            if (cmbFakultas.SelectedIndex > 0)
-            {
-                var listNikDosen = listDosenMengajarAll.Select(d => new { d.NIK, d.NamaDosen, d.KodeFakultas, d.NamaFakultas }).Distinct().OrderBy(o => o.NIK).ToList().Where(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).ToList();
-                int i = 1;
-                foreach (var item in listNikDosen)
-                {
-                    dgvDataDosen.Rows.Add(i, item.NIK, item.NamaDosen, false, item.KodeFakultas, item.NamaFakultas);
-                    i++;
-                }
-            }
-            dgvDataDosen.PerformLayout();
         }
 
         private void btnTutup_Click(object sender, EventArgs e)
@@ -146,23 +124,89 @@ namespace Dosen.Report
             Close();
         }
 
+        private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFakultas.SelectedIndex > 0)
+            {
+                string kodeFakultas = cmbFakultas.SelectedValue.ToString();
+                listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
+                listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
+                cmbProdi.DataSource = listProdi;
+                cmbProdi.DisplayMember = "NamaProdi";
+                cmbProdi.ValueMember = "Uid";
+                cmbProdi.SelectedIndex = 0;
+            }
+        }
+
+        private void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            kodeProgramDipilih = null;
+            idProdiDipilih = null;
+            if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
+            {
+                string idProdi = cmbProdi.SelectedValue.ToString();
+                listProgram = Organisasi.listProgram.Where(program => program.Prodi.Uid == idProdi).ToList();
+                listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
+                cmbProgram.DataSource = listProgram;
+                cmbProgram.DisplayMember = "NamaProgram";
+                cmbProgram.ValueMember = "KodeProgram";
+                cmbProgram.SelectedIndex = 0;
+            }
+        }
+
+        private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbProgram.SelectedIndex <= 0)
+            {
+                dgvDataDosen.Rows.Clear();
+                return;
+            }
+
+            kodeProgramDipilih = cmbProgram.SelectedValue.ToString();
+            idProdiDipilih = cmbProdi.SelectedValue.ToString();
+
+
+            dgvDataDosen.Rows.Clear();
+            var listNikDosen = listDosenMengajarAll
+                .Select(x => new { x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTotal, x.SksPraktikum, x.IdProdi, x.KodeProgram })
+                .Select(y => new { y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTotal, y.IdProdi, y.KodeProgram })
+                .Distinct().Where(z => z.KodeProgram == kodeProgramDipilih)
+                .OrderBy(o => o.NamaDosen);
+
+            int i = 1;
+            foreach (var item in listNikDosen)
+            {
+                int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == kodeProgramDipilih).ToList().Count;
+                dgvDataDosen.Rows.Add(i, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, item.SksTotal, countKelas, item.JenisMataKuliah);
+                i++;
+            }
+
+            dgvDataDosen.PerformLayout();
+        }
+
+        private void cetakSemuaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cmbProgram.SelectedIndex > 0 && dgvDataDosen.Rows.Count > 0)
+            {
+                PreviewReport(true);
+            }
+        }
+
         private void cetakDipilihToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PreviewReport(false);
+            if (cmbProgram.SelectedIndex > 0 && dgvDataDosen.Rows.Count > 0)
+            {
+                PreviewReport(false);
+            }
         }
 
         private void PreviewReport(bool isCetakSemua)
         {
-            List<AlokasiDosenAll> listAlokasiDosenAll = new List<AlokasiDosenAll>();
+            List<KesediaanDosen> listKesediaanDosen = new List<KesediaanDosen>();
 
             if (dgvDataDosen.Rows.Count == 0)
             {
                 return;
-            }
-
-            using (var form = new FormSetTanggalKumpulKesanggupan())
-            {
-                form.ShowDialog();
             }
 
             dgvDataDosen.PerformLayout();
@@ -170,19 +214,17 @@ namespace Dosen.Report
             {
                 foreach (DataGridViewRow row in dgvDataDosen.Rows)
                 {
-                    listAlokasiDosenAll.Add(new AlokasiDosenAll()
+                    listKesediaanDosen.Add(new KesediaanDosen()
                     {
                         NIK = row.Cells["NIK"].Value.ToString(),
                         NamaDosen = row.Cells["NamaDosen"].Value.ToString(),
-                        KodeFakultas = row.Cells["KodeFakultas"].Value.ToString(),
-                        NamaFakultas = row.Cells["NamaFakultas"].Value.ToString(),
-                        Dekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NamaKepala,
-                        NikDekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NikKepala,
-                        NoSurat = string.Format("{0}/{1}/AMIKOM/{2}/{3}",
-                                    row.Cells["NIK"].Value.ToString().Substring(row.Cells["NIK"].Value.ToString().Length - 3, 3),
-                                    row.Cells["KodeFakultas"].Value.ToString(),
-                                    CommonLib.NumberToRoman(DateTime.Now.Month),
-                                    DateTime.Now.Year)
+                        Jenjang = row.Cells["Jenjang"].Value.ToString(),
+                        MataKuliah = row.Cells["MataKuliah"].Value.ToString(),
+                        Kode = row.Cells["Kode"].Value.ToString(),
+                        Sks = int.Parse(row.Cells["Sks"].Value.ToString()),
+                        JenisMataKuliah = row.Cells["JenisKuliah"].Value.ToString(),
+                        JumlahKelas = int.Parse(row.Cells["Jumlahkelas"].Value.ToString()),
+                        TotalSks = int.Parse(row.Cells["Sks"].Value.ToString()) * int.Parse(row.Cells["Jumlahkelas"].Value.ToString())
                     });
                 }
             }
@@ -193,19 +235,17 @@ namespace Dosen.Report
                     DataGridViewCheckBoxCell cb = row.Cells["Pilih"] as DataGridViewCheckBoxCell;
                     if (bool.Parse(cb.Value.ToString()))
                     {
-                        listAlokasiDosenAll.Add(new AlokasiDosenAll()
+                        listKesediaanDosen.Add(new KesediaanDosen()
                         {
                             NIK = row.Cells["NIK"].Value.ToString(),
                             NamaDosen = row.Cells["NamaDosen"].Value.ToString(),
-                            KodeFakultas = row.Cells["KodeFakultas"].Value.ToString(),
-                            NamaFakultas = row.Cells["NamaFakultas"].Value.ToString(),
-                            Dekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NamaKepala,
-                            NikDekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NikKepala,
-                            NoSurat = string.Format("{0}/{1}/AMIKOM/{2}/{3}",
-                                        row.Cells["NIK"].Value.ToString().Substring(row.Cells["NIK"].Value.ToString().Length - 3, 3),
-                                        row.Cells["KodeFakultas"].Value.ToString(),
-                                        CommonLib.NumberToRoman(DateTime.Now.Month),
-                                        DateTime.Now.Year)
+                            Jenjang = row.Cells["Jenjang"].Value.ToString(),
+                            MataKuliah = row.Cells["MataKuliah"].Value.ToString(),
+                            Kode = row.Cells["Kode"].Value.ToString(),
+                            Sks = int.Parse(row.Cells["Sks"].Value.ToString()),
+                            JenisMataKuliah = row.Cells["JenisKuliah"].Value.ToString(),
+                            JumlahKelas = int.Parse(row.Cells["Jumlahkelas"].Value.ToString()),
+                            TotalSks = int.Parse(row.Cells["Sks"].Value.ToString()) * int.Parse(row.Cells["Jumlahkelas"].Value.ToString())
                         });
                     }
                 }
@@ -214,17 +254,18 @@ namespace Dosen.Report
 
             List<ReportParameter> listParams = new List<ReportParameter>();
 
-            listParams.Add(new ReportParameter("TglPengesahan", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
-            listParams.Add(new ReportParameter("TglPengumpulan", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dateKesanggupan.ToString("dddd, d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
+            listParams.Add(new ReportParameter("TglPengesahan", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("    MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
             listParams.Add(new ReportParameter("Semester", LoginAccess.Semester));
             listParams.Add(new ReportParameter("TahunAkademik", LoginAccess.TahunAkademik));
+            listParams.Add(new ReportParameter("Prodi", cmbProdi.Text));
+            listParams.Add(new ReportParameter("Program", cmbProgram.Text));
 
-            DataTable dtAlokasiDosen = CommonLib.ToDataTable(listAlokasiDosenAll);
+            DataTable dtAlokasiDosen = CommonLib.ToDataTable(listKesediaanDosen);
 
             reportViewer1.LocalReport.SetParameters(listParams);
             IDataReader dr = dtAlokasiDosen.CreateDataReader();
-            dsDosen.Tables["KesanggupanDosenMengajar"].Clear();
-            dsDosen.Tables["KesanggupanDosenMengajar"].Load(dr);
+            dsDosen.Tables["KesediaanDosenMengajar"].Clear();
+            dsDosen.Tables["KesediaanDosenMengajar"].Load(dr);
             dr.Close();
             reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewer1.ZoomMode = ZoomMode.Percent;
@@ -234,7 +275,7 @@ namespace Dosen.Report
 
         private void dgvDataDosen_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 3)
+            if (e.ColumnIndex != 4)
             {
                 return;
             }
@@ -244,21 +285,13 @@ namespace Dosen.Report
         }
     }
 
-    class AlokasiDosenAll
+    class KesediaanDosen : AlokasiDosenAll
     {
-        public string NIK { get; set; }
-        public string NamaDosen { get; set; }
-        public string KodeFakultas { get; set; }
-        public string NamaFakultas { get; set; }
-        public string Dekan { get; set; }
-        public string NikDekan { get; set; }
-        public string Jenjang { get; set; }
-        public string NoSurat { get; set; }
-        public string KodeKelas { get; set; }
-        public string IdProdi { get; set; }
-        public string NamaProdi { get; set; }
-        public string KodeProgramReguler { get; set; }
-        public string KodeProgram { get; set; }
-        public string NamaProgram { get; set; }
+        public int JumlahKelas { get; set; }
+        public int TotalSks { get; set; }
+        public string Kode { get; set; }
+        public string MataKuliah { get; set; }
+        public int Sks { get; set; }
+        public string JenisMataKuliah { get; set; }
     }
 }

@@ -21,8 +21,18 @@ namespace ClassModel
         public string KodeFakultas { get; set; }
         public string NamaFakultas { get; set; }
         public string Jenjang { get; set; }
-        public string KodeKelas { get; set; }
+    }
 
+    public class KesanggupanMengajar : AlokasiDosenMengajar
+    {
+        public string KodeKelas { get; set; }
+        public string IdProdi { get; set; }
+        public string NamaProdi { get; set; }
+        public string KodeProgramReguler { get; set; }
+        public string KodeProgram { get; set; }
+        public string NamaProgram { get; set; }
+        public int SksTotal { get; set; }
+        public int SksPraktikum { get; set; }
     }
 
     public class DataDosen

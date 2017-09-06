@@ -11,7 +11,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>8.63625in</Height>
+              <Height>9.20084in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -294,6 +294,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -301,7 +302,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>3.27792in</Top>
+                          <Top>3.70292in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.25in</Height>
                           <Width>3.22916in</Width>
@@ -323,18 +324,20 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="       Dengan akan dimulainya/dilaksanakannya proses belajar mengajar Semester "+Parameters!Semester.Value+" Tahun Akademik "+Parameters!TahunAkademik.Value+" di Universitas AMIKOM Yogyakarta, untuk itu kami mohon kesediaan Bapak/Ibu sebagai tim pengajar/dosen di "+Fields!NamaFakultas.Value+" (detail mata kuliah terlampir)."</Value>
+                                  <Value>="Sehubungan dengan akan dimulainya/dilaksanakannya proses belajar mengajar Semester &lt;b&gt;"+Parameters!Semester.Value+"&lt;/b&gt; Tahun Akademik &lt;b&gt;"+Parameters!TahunAkademik.Value+"&lt;/b&gt; di &lt;b&gt;Universitas AMIKOM Yogyakarta&lt;/b&gt;, untuk itu kami mohon kesediaan Bapak/Ibu sebagai tim pengajar/dosen di &lt;b&gt;"+Fields!NamaFakultas.Value+"&lt;/b&gt; (detail mata kuliah terlampir)."</Value>
+                                  <MarkupType>HTML</MarkupType>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>3.52792in</Top>
+                          <Top>3.90292in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.575in</Height>
                           <Width>6.61458in</Width>
@@ -345,8 +348,6 @@
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <Textbox Name="Textbox11">
@@ -356,18 +357,20 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="       Berkenaan dengan hal tersebut diatas, kami melampirkan form kesediaan mengajar (sesuai matakuliah yang diampu) yang harus ditandatangani dan dikembalikan ke Ruang DAAK Unit 4 Lantai 1 Paling lambat hari "+Parameters!TglPengumpulan.Value+" dengan melampirkan:"</Value>
+                                  <Value>="Berkenaan dengan hal tersebut diatas, kami melampirkan &lt;b&gt;form kesediaan mengajar&lt;/b&gt; (sesuai matakuliah yang diampu) yang harus ditandatangani dan dikembalikan &lt;b&gt;selambat lambatnya hari "+Parameters!TglPengumpulan.Value+" dalam bentuk softcopy dengan melampirkan:&lt;/b&gt;"</Value>
+                                  <MarkupType>HTML</MarkupType>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>4.05292in</Top>
+                          <Top>4.42792in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.625in</Height>
                           <Width>6.61458in</Width>
@@ -389,18 +392,20 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="   1. Fotokopi ijazah terakhir (bagi Dosen baru dan yang belum pernah mengumpulkan)"</Value>
+                                  <Value>="   1. Softcopy Ijazah dan Transkrip Nilai S1, S2, dan S3"</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>4.62792in</Top>
+                          <Top>5.00292in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.25in</Height>
                           <Width>6.61458in</Width>
@@ -422,18 +427,20 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="   2. SK Jabatan Akademik terakhir (bagi Dosen baru dan yang belum pernah mengumpulkan)"</Value>
+                                  <Value>="   2. Softcopy SK Jabatan Akademik terakhir (bagi yang sudah memiliki jabatan fungsional)"</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>4.82792in</Top>
+                          <Top>5.20084in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.25in</Height>
                           <Width>6.61458in</Width>
@@ -455,18 +462,20 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="   3. Fotocopy KTP (Kartu Tanda Penduduk)"</Value>
+                                  <Value>="   3. Softcopy Curiculum Vitae/CV"</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>5.02792in</Top>
+                          <Top>5.40084in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.25in</Height>
                           <Width>6.61458in</Width>
@@ -488,18 +497,20 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="   4. Curiculum Vitae (CV)"</Value>
+                                  <Value>="   4. Softcopy KTP dan NPWP yang berlaku"</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>5.22792in</Top>
+                          <Top>5.60084in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.25in</Height>
                           <Width>6.61458in</Width>
@@ -521,20 +532,21 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="       Bagi mata kuliah yang praktikumnya diampu oleh Dosen lain, kami mohon Bapak/Ibu untuk berkoordinasi dengan Dosen tersebut terkait dengan kesesuaian materi."</Value>
+                                  <Value>="Bagi mata kuliah yang praktikumnya diampu oleh Dosen lain, kami mohon Bapak/Ibu untuk berkoordinasi dengan Dosen tersebut terkait dengan kesesuaian materi."</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>5.42792in</Top>
+                          <Top>6.33834in</Top>
                           <Left>0.89458in</Left>
-                          <Height>0.575in</Height>
+                          <Height>0.3875in</Height>
                           <Width>6.61458in</Width>
                           <ZIndex>15</ZIndex>
                           <Style>
@@ -561,11 +573,12 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>5.95292in</Top>
+                          <Top>6.67584in</Top>
                           <Left>0.89458in</Left>
                           <Height>0.25in</Height>
                           <Width>6.61458in</Width>
@@ -591,6 +604,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -598,10 +612,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>6.35292in</Top>
-                          <Left>0.90625in</Left>
+                          <Top>7.25084in</Top>
+                          <Left>0.88291in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.61458in</Width>
+                          <Width>6.62625in</Width>
                           <ZIndex>17</ZIndex>
                           <Style>
                             <Border>
@@ -624,6 +638,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -631,10 +646,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>6.60292in</Top>
-                          <Left>0.90625in</Left>
+                          <Top>7.65084in</Top>
+                          <Left>0.88291in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.61458in</Width>
+                          <Width>6.62625in</Width>
                           <ZIndex>18</ZIndex>
                           <Style>
                             <Border>
@@ -657,6 +672,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <TextDecoration>Underline</TextDecoration>
                                   </Style>
                                 </TextRun>
@@ -665,8 +681,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>7.60292in</Top>
-                          <Left>0.89458in</Left>
+                          <Top>8.75084in</Top>
+                          <Left>0.88291in</Left>
                           <Height>0.25in</Height>
                           <Width>6.61458in</Width>
                           <ZIndex>19</ZIndex>
@@ -691,6 +707,7 @@
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -698,8 +715,8 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>7.80292in</Top>
-                          <Left>0.89458in</Left>
+                          <Top>8.95084in</Top>
+                          <Left>0.88291in</Left>
                           <Height>0.25in</Height>
                           <Width>6.61458in</Width>
                           <ZIndex>20</ZIndex>
@@ -879,6 +896,145 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <Textbox Name="Textbox27">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>="Surat Kesediaan Mengajar dan Lampiran di atas berupa hasil scan yang disatukan dalam 1 folder dengan format file (Kesediaan-NamaDosen.zip) yang dapat diemailkan ke alamat email baak@amikom.ac.id"</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <HangingIndent>30pt</HangingIndent>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Top>5.81334in</Top>
+                          <Left>0.89458in</Left>
+                          <Height>0.575in</Height>
+                          <Width>6.61458in</Width>
+                          <ZIndex>26</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="Textbox28">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Wassalamu'alaikum Wr. Wb</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Top>6.87584in</Top>
+                          <Left>0.89458in</Left>
+                          <Height>0.25in</Height>
+                          <Width>6.61458in</Width>
+                          <ZIndex>27</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="Textbox29">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Hormat Kami,</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Top>7.45084in</Top>
+                          <Left>0.88291in</Left>
+                          <Height>0.25in</Height>
+                          <Width>6.62625in</Width>
+                          <ZIndex>28</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="Textbox30">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Assalamu'alaikum Wr. Wb</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Top>3.50292in</Top>
+                          <Left>0.89458in</Left>
+                          <Height>0.25in</Height>
+                          <Width>3.22916in</Width>
+                          <ZIndex>29</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
                       </ReportItems>
                       <KeepTogether>true</KeepTogether>
                       <Style>
@@ -913,7 +1069,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DsKesanggupanMengajar</DataSetName>
-        <Height>8.63625in</Height>
+        <Height>9.20084in</Height>
         <Width>8.5in</Width>
         <Style>
           <Border>
@@ -922,7 +1078,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>8.63625in</Height>
+    <Height>9.20084in</Height>
     <Style />
   </Body>
   <Width>8.5in</Width>

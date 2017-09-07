@@ -38,13 +38,6 @@ namespace Dosen
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvJenjangDosen = new AdvancedDataGridView.TreeGridView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.Tree = new AdvancedDataGridView.TreeGridColumn();
             this.IdTransJenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nik = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +45,13 @@ namespace Dosen
             this.JenjangPendidikan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProgramStudi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Universitas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJenjangDosen)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
@@ -94,6 +94,55 @@ namespace Dosen
             this.dgvJenjangDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvJenjangDosen.Size = new System.Drawing.Size(797, 372);
             this.dgvJenjangDosen.TabIndex = 0;
+            // 
+            // Tree
+            // 
+            this.Tree.DefaultNodeImage = null;
+            this.Tree.HeaderText = "";
+            this.Tree.Name = "Tree";
+            this.Tree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tree.Width = 30;
+            // 
+            // IdTransJenjang
+            // 
+            this.IdTransJenjang.HeaderText = "IdTransJenjang";
+            this.IdTransJenjang.Name = "IdTransJenjang";
+            this.IdTransJenjang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Nik
+            // 
+            this.Nik.HeaderText = "Nik";
+            this.Nik.Name = "Nik";
+            this.Nik.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // NamaDosen
+            // 
+            this.NamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NamaDosen.HeaderText = "NamaDosen";
+            this.NamaDosen.Name = "NamaDosen";
+            this.NamaDosen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // JenjangPendidikan
+            // 
+            this.JenjangPendidikan.HeaderText = "Jenjang Pendidikan";
+            this.JenjangPendidikan.Name = "JenjangPendidikan";
+            this.JenjangPendidikan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.JenjangPendidikan.Width = 70;
+            // 
+            // ProgramStudi
+            // 
+            this.ProgramStudi.HeaderText = "Program Studi";
+            this.ProgramStudi.Name = "ProgramStudi";
+            this.ProgramStudi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ProgramStudi.Width = 150;
+            // 
+            // Universitas
+            // 
+            this.Universitas.HeaderText = "Universitas";
+            this.Universitas.Name = "Universitas";
+            this.Universitas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Universitas.Width = 250;
             // 
             // flowLayoutPanel1
             // 
@@ -168,55 +217,6 @@ namespace Dosen
             this.txtCari.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCari.TabIndex = 1;
             this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
-            // 
-            // Tree
-            // 
-            this.Tree.DefaultNodeImage = null;
-            this.Tree.HeaderText = "";
-            this.Tree.Name = "Tree";
-            this.Tree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Tree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Tree.Width = 30;
-            // 
-            // IdTransJenjang
-            // 
-            this.IdTransJenjang.HeaderText = "IdTransJenjang";
-            this.IdTransJenjang.Name = "IdTransJenjang";
-            this.IdTransJenjang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Nik
-            // 
-            this.Nik.HeaderText = "Nik";
-            this.Nik.Name = "Nik";
-            this.Nik.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // NamaDosen
-            // 
-            this.NamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NamaDosen.HeaderText = "NamaDosen";
-            this.NamaDosen.Name = "NamaDosen";
-            this.NamaDosen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // JenjangPendidikan
-            // 
-            this.JenjangPendidikan.HeaderText = "Jenjang Pendidikan";
-            this.JenjangPendidikan.Name = "JenjangPendidikan";
-            this.JenjangPendidikan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.JenjangPendidikan.Width = 70;
-            // 
-            // ProgramStudi
-            // 
-            this.ProgramStudi.HeaderText = "Program Studi";
-            this.ProgramStudi.Name = "ProgramStudi";
-            this.ProgramStudi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ProgramStudi.Width = 150;
-            // 
-            // Universitas
-            // 
-            this.Universitas.HeaderText = "Universitas";
-            this.Universitas.Name = "Universitas";
-            this.Universitas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Universitas.Width = 250;
             // 
             // FormJenjangPendidikanDosen
             // 

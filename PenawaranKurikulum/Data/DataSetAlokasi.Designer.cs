@@ -1347,6 +1347,8 @@ namespace PenawaranKurikulum.Data {
             
             private global::System.Data.DataColumn columnKodeKelas;
             
+            private global::System.Data.DataColumn columnNo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KesediaanDosenMengajarDataTable() {
@@ -1486,6 +1488,14 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NoColumn {
+                get {
+                    return this.columnNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1521,7 +1531,7 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KesediaanDosenMengajarRow AddKesediaanDosenMengajarRow(string NIK, string NamaDosen, string Jenjang, string MataKuliah, string Kode, string Sks, string JenisMataKuliah, string JumlahKelas, string TotalSks, string NamaProgram, string SemesterDitawarkan, string KodeFakultas, string KodeKelas) {
+            public KesediaanDosenMengajarRow AddKesediaanDosenMengajarRow(string NIK, string NamaDosen, string Jenjang, string MataKuliah, string Kode, string Sks, string JenisMataKuliah, string JumlahKelas, string TotalSks, string NamaProgram, string SemesterDitawarkan, string KodeFakultas, string KodeKelas, string No) {
                 KesediaanDosenMengajarRow rowKesediaanDosenMengajarRow = ((KesediaanDosenMengajarRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NIK,
@@ -1536,7 +1546,8 @@ namespace PenawaranKurikulum.Data {
                         NamaProgram,
                         SemesterDitawarkan,
                         KodeFakultas,
-                        KodeKelas};
+                        KodeKelas,
+                        No};
                 rowKesediaanDosenMengajarRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowKesediaanDosenMengajarRow);
                 return rowKesediaanDosenMengajarRow;
@@ -1572,6 +1583,7 @@ namespace PenawaranKurikulum.Data {
                 this.columnSemesterDitawarkan = base.Columns["SemesterDitawarkan"];
                 this.columnKodeFakultas = base.Columns["KodeFakultas"];
                 this.columnKodeKelas = base.Columns["KodeKelas"];
+                this.columnNo = base.Columns["No"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1603,6 +1615,8 @@ namespace PenawaranKurikulum.Data {
                 base.Columns.Add(this.columnKodeFakultas);
                 this.columnKodeKelas = new global::System.Data.DataColumn("KodeKelas", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKodeKelas);
+                this.columnNo = new global::System.Data.DataColumn("No", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2476,6 +2490,22 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string No {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.NoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'No\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.NoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNIKNull() {
                 return this.IsNull(this.tableKesediaanDosenMengajar.NIKColumn);
             }
@@ -2628,6 +2658,18 @@ namespace PenawaranKurikulum.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetKodeKelasNull() {
                 this[this.tableKesediaanDosenMengajar.KodeKelasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNoNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.NoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNoNull() {
+                this[this.tableKesediaanDosenMengajar.NoColumn] = global::System.Convert.DBNull;
             }
         }
         

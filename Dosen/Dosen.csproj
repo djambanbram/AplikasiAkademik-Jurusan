@@ -73,9 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DsDosen.cs">
-      <DependentUpon>DsDosen.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Data\DsDosen.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +154,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReportView\ReportDosenWali.rdlc" />
     <EmbeddedResource Include="ReportView\ReportKesanggupanDosen.rdlc" />
     <EmbeddedResource Include="ReportView\ReportKesediaanDosen.rdlc" />
     <EmbeddedResource Include="Report\FormReportHonorDosenMengajar.resx">
@@ -174,7 +172,7 @@
     <None Include="Data\DsDosen.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsDosen.Designer.cs</LastGenOutput>
+      <LastGenOutput>DsDosen1.Designer.cs</LastGenOutput>
     </None>
     <None Include="Data\DsDosen.xss">
       <DependentUpon>DsDosen.xsd</DependentUpon>

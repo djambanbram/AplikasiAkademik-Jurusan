@@ -571,7 +571,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=string.Format("{0} - {1}", Fields!Nik.Value, Fields!NamaDosen.Value)</Value>
+                                                <Value>=string.Format("{0} - {1}", Fields!NIK.Value, Fields!NamaDosen.Value)</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
                                                   <FontSize>9pt</FontSize>
@@ -762,7 +762,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=sum(count(Fields!Nik.Value))</Value>
+                                                <Value>=sum(count(Fields!NIK.Value))</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
                                                   <FontSize>9pt</FontSize>
@@ -837,6 +837,7 @@
                         </Border>
                       </Style>
                     </Rectangle>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -853,7 +854,7 @@
             <TablixMember>
               <Group Name="GroupBy">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!Nik.Value</GroupExpression>
+                  <GroupExpression>=Fields!NIK.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
             </TablixMember>
@@ -911,8 +912,8 @@
           <DataField>MataKuliah</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Nik">
-          <DataField>Nik</DataField>
+        <Field Name="NIK">
+          <DataField>NIK</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NamaDosen">

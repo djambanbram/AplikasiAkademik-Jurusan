@@ -39,7 +39,7 @@ namespace Dosen.Report
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportKesediaanDosen));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.kesediaanDosenMengajarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsDosen = new Dosen.Data.DsDosen();
+            this.dsDosen = new Data.DsDosen();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();

@@ -91,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBinding\PenawaranBinding.cs" />
+    <Compile Include="Data\DataSetAlokasi.cs">
+      <DependentUpon>DataSetAlokasi.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\DataSetAlokasi.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -182,6 +185,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ReportVieew\ReportAlokasiDosen.rdlc" />
+    <EmbeddedResource Include="ReportVieew\ReportAlokasiDosenAll.rdlc" />
     <EmbeddedResource Include="ReportVieew\ReportLabMK.rdlc" />
     <EmbeddedResource Include="ReportVieew\ReportMKDitawarkan.rdlc" />
     <EmbeddedResource Include="Report\FormReportAlokasiDosen.resx">

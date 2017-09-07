@@ -75,7 +75,7 @@ namespace ClassModel
         public int SksTeori { get; set; }
         public int SksPraktikum { get; set; }
         public string JenisMK { get; set; }
-        public string DaftarKelasMK { get; set; }
+        public bool DaftarKelasMK { get; set; }
         public int JumlahKelas { get; set; }
         public int JumlahKelasTeori { get; set; }
         public int JumlahKelasPraktikum { get; set; }

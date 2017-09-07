@@ -30,6 +30,8 @@ namespace PenawaranKurikulum.Data {
         
         private AlokasiDosenDataTable tableAlokasiDosen;
         
+        private KesediaanDosenMengajarDataTable tableKesediaanDosenMengajar;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -66,6 +68,9 @@ namespace PenawaranKurikulum.Data {
                 }
                 if ((ds.Tables["AlokasiDosen"] != null)) {
                     base.Tables.Add(new AlokasiDosenDataTable(ds.Tables["AlokasiDosen"]));
+                }
+                if ((ds.Tables["KesediaanDosenMengajar"] != null)) {
+                    base.Tables.Add(new KesediaanDosenMengajarDataTable(ds.Tables["KesediaanDosenMengajar"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -112,6 +117,16 @@ namespace PenawaranKurikulum.Data {
         public AlokasiDosenDataTable AlokasiDosen {
             get {
                 return this.tableAlokasiDosen;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public KesediaanDosenMengajarDataTable KesediaanDosenMengajar {
+            get {
+                return this.tableKesediaanDosenMengajar;
             }
         }
         
@@ -191,6 +206,9 @@ namespace PenawaranKurikulum.Data {
                 if ((ds.Tables["AlokasiDosen"] != null)) {
                     base.Tables.Add(new AlokasiDosenDataTable(ds.Tables["AlokasiDosen"]));
                 }
+                if ((ds.Tables["KesediaanDosenMengajar"] != null)) {
+                    base.Tables.Add(new KesediaanDosenMengajarDataTable(ds.Tables["KesediaanDosenMengajar"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -242,6 +260,12 @@ namespace PenawaranKurikulum.Data {
                     this.tableAlokasiDosen.InitVars();
                 }
             }
+            this.tableKesediaanDosenMengajar = ((KesediaanDosenMengajarDataTable)(base.Tables["KesediaanDosenMengajar"]));
+            if ((initTable == true)) {
+                if ((this.tableKesediaanDosenMengajar != null)) {
+                    this.tableKesediaanDosenMengajar.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +282,8 @@ namespace PenawaranKurikulum.Data {
             base.Tables.Add(this.tableAlokasiLab);
             this.tableAlokasiDosen = new AlokasiDosenDataTable();
             base.Tables.Add(this.tableAlokasiDosen);
+            this.tableKesediaanDosenMengajar = new KesediaanDosenMengajarDataTable();
+            base.Tables.Add(this.tableKesediaanDosenMengajar);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -275,6 +301,12 @@ namespace PenawaranKurikulum.Data {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeAlokasiDosen() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeKesediaanDosenMengajar() {
             return false;
         }
         
@@ -341,6 +373,9 @@ namespace PenawaranKurikulum.Data {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void AlokasiDosenRowChangeEventHandler(object sender, AlokasiDosenRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void KesediaanDosenMengajarRowChangeEventHandler(object sender, KesediaanDosenMengajarRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -987,7 +1022,7 @@ namespace PenawaranKurikulum.Data {
             
             private global::System.Data.DataColumn columnMataKuliah;
             
-            private global::System.Data.DataColumn columnNik;
+            private global::System.Data.DataColumn columnNIK;
             
             private global::System.Data.DataColumn columnNamaDosen;
             
@@ -1044,9 +1079,9 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NikColumn {
+            public global::System.Data.DataColumn NIKColumn {
                 get {
-                    return this.columnNik;
+                    return this.columnNIK;
                 }
             }
             
@@ -1103,12 +1138,12 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AlokasiDosenRow AddAlokasiDosenRow(string Kode, string MataKuliah, string Nik, string NamaDosen, string JumlahKelas) {
+            public AlokasiDosenRow AddAlokasiDosenRow(string Kode, string MataKuliah, string NIK, string NamaDosen, string JumlahKelas) {
                 AlokasiDosenRow rowAlokasiDosenRow = ((AlokasiDosenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Kode,
                         MataKuliah,
-                        Nik,
+                        NIK,
                         NamaDosen,
                         JumlahKelas};
                 rowAlokasiDosenRow.ItemArray = columnValuesArray;
@@ -1135,7 +1170,7 @@ namespace PenawaranKurikulum.Data {
             internal void InitVars() {
                 this.columnKode = base.Columns["Kode"];
                 this.columnMataKuliah = base.Columns["MataKuliah"];
-                this.columnNik = base.Columns["Nik"];
+                this.columnNIK = base.Columns["NIK"];
                 this.columnNamaDosen = base.Columns["NamaDosen"];
                 this.columnJumlahKelas = base.Columns["JumlahKelas"];
             }
@@ -1147,8 +1182,8 @@ namespace PenawaranKurikulum.Data {
                 base.Columns.Add(this.columnKode);
                 this.columnMataKuliah = new global::System.Data.DataColumn("MataKuliah", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMataKuliah);
-                this.columnNik = new global::System.Data.DataColumn("Nik", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNik);
+                this.columnNIK = new global::System.Data.DataColumn("NIK", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNIK);
                 this.columnNamaDosen = new global::System.Data.DataColumn("NamaDosen", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNamaDosen);
                 this.columnJumlahKelas = new global::System.Data.DataColumn("JumlahKelas", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1239,6 +1274,421 @@ namespace PenawaranKurikulum.Data {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "AlokasiDosenDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class KesediaanDosenMengajarDataTable : global::System.Data.TypedTableBase<KesediaanDosenMengajarRow> {
+            
+            private global::System.Data.DataColumn columnNIK;
+            
+            private global::System.Data.DataColumn columnNamaDosen;
+            
+            private global::System.Data.DataColumn columnJenjang;
+            
+            private global::System.Data.DataColumn columnMataKuliah;
+            
+            private global::System.Data.DataColumn columnKode;
+            
+            private global::System.Data.DataColumn columnSks;
+            
+            private global::System.Data.DataColumn columnJenisMataKuliah;
+            
+            private global::System.Data.DataColumn columnJumlahKelas;
+            
+            private global::System.Data.DataColumn columnTotalSks;
+            
+            private global::System.Data.DataColumn columnNamaProgram;
+            
+            private global::System.Data.DataColumn columnSemesterDitawarkan;
+            
+            private global::System.Data.DataColumn columnKodeFakultas;
+            
+            private global::System.Data.DataColumn columnKodeKelas;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KesediaanDosenMengajarDataTable() {
+                this.TableName = "KesediaanDosenMengajar";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal KesediaanDosenMengajarDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected KesediaanDosenMengajarDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NIKColumn {
+                get {
+                    return this.columnNIK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NamaDosenColumn {
+                get {
+                    return this.columnNamaDosen;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JenjangColumn {
+                get {
+                    return this.columnJenjang;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MataKuliahColumn {
+                get {
+                    return this.columnMataKuliah;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn KodeColumn {
+                get {
+                    return this.columnKode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SksColumn {
+                get {
+                    return this.columnSks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JenisMataKuliahColumn {
+                get {
+                    return this.columnJenisMataKuliah;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JumlahKelasColumn {
+                get {
+                    return this.columnJumlahKelas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalSksColumn {
+                get {
+                    return this.columnTotalSks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NamaProgramColumn {
+                get {
+                    return this.columnNamaProgram;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SemesterDitawarkanColumn {
+                get {
+                    return this.columnSemesterDitawarkan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn KodeFakultasColumn {
+                get {
+                    return this.columnKodeFakultas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn KodeKelasColumn {
+                get {
+                    return this.columnKodeKelas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KesediaanDosenMengajarRow this[int index] {
+                get {
+                    return ((KesediaanDosenMengajarRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event KesediaanDosenMengajarRowChangeEventHandler KesediaanDosenMengajarRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event KesediaanDosenMengajarRowChangeEventHandler KesediaanDosenMengajarRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event KesediaanDosenMengajarRowChangeEventHandler KesediaanDosenMengajarRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event KesediaanDosenMengajarRowChangeEventHandler KesediaanDosenMengajarRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddKesediaanDosenMengajarRow(KesediaanDosenMengajarRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KesediaanDosenMengajarRow AddKesediaanDosenMengajarRow(string NIK, string NamaDosen, string Jenjang, string MataKuliah, string Kode, string Sks, string JenisMataKuliah, string JumlahKelas, string TotalSks, string NamaProgram, string SemesterDitawarkan, string KodeFakultas, string KodeKelas) {
+                KesediaanDosenMengajarRow rowKesediaanDosenMengajarRow = ((KesediaanDosenMengajarRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NIK,
+                        NamaDosen,
+                        Jenjang,
+                        MataKuliah,
+                        Kode,
+                        Sks,
+                        JenisMataKuliah,
+                        JumlahKelas,
+                        TotalSks,
+                        NamaProgram,
+                        SemesterDitawarkan,
+                        KodeFakultas,
+                        KodeKelas};
+                rowKesediaanDosenMengajarRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowKesediaanDosenMengajarRow);
+                return rowKesediaanDosenMengajarRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                KesediaanDosenMengajarDataTable cln = ((KesediaanDosenMengajarDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new KesediaanDosenMengajarDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnNIK = base.Columns["NIK"];
+                this.columnNamaDosen = base.Columns["NamaDosen"];
+                this.columnJenjang = base.Columns["Jenjang"];
+                this.columnMataKuliah = base.Columns["MataKuliah"];
+                this.columnKode = base.Columns["Kode"];
+                this.columnSks = base.Columns["Sks"];
+                this.columnJenisMataKuliah = base.Columns["JenisMataKuliah"];
+                this.columnJumlahKelas = base.Columns["JumlahKelas"];
+                this.columnTotalSks = base.Columns["TotalSks"];
+                this.columnNamaProgram = base.Columns["NamaProgram"];
+                this.columnSemesterDitawarkan = base.Columns["SemesterDitawarkan"];
+                this.columnKodeFakultas = base.Columns["KodeFakultas"];
+                this.columnKodeKelas = base.Columns["KodeKelas"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnNIK = new global::System.Data.DataColumn("NIK", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNIK);
+                this.columnNamaDosen = new global::System.Data.DataColumn("NamaDosen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNamaDosen);
+                this.columnJenjang = new global::System.Data.DataColumn("Jenjang", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJenjang);
+                this.columnMataKuliah = new global::System.Data.DataColumn("MataKuliah", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMataKuliah);
+                this.columnKode = new global::System.Data.DataColumn("Kode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKode);
+                this.columnSks = new global::System.Data.DataColumn("Sks", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSks);
+                this.columnJenisMataKuliah = new global::System.Data.DataColumn("JenisMataKuliah", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJenisMataKuliah);
+                this.columnJumlahKelas = new global::System.Data.DataColumn("JumlahKelas", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJumlahKelas);
+                this.columnTotalSks = new global::System.Data.DataColumn("TotalSks", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalSks);
+                this.columnNamaProgram = new global::System.Data.DataColumn("NamaProgram", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNamaProgram);
+                this.columnSemesterDitawarkan = new global::System.Data.DataColumn("SemesterDitawarkan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSemesterDitawarkan);
+                this.columnKodeFakultas = new global::System.Data.DataColumn("KodeFakultas", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKodeFakultas);
+                this.columnKodeKelas = new global::System.Data.DataColumn("KodeKelas", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKodeKelas);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KesediaanDosenMengajarRow NewKesediaanDosenMengajarRow() {
+                return ((KesediaanDosenMengajarRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new KesediaanDosenMengajarRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(KesediaanDosenMengajarRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.KesediaanDosenMengajarRowChanged != null)) {
+                    this.KesediaanDosenMengajarRowChanged(this, new KesediaanDosenMengajarRowChangeEvent(((KesediaanDosenMengajarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.KesediaanDosenMengajarRowChanging != null)) {
+                    this.KesediaanDosenMengajarRowChanging(this, new KesediaanDosenMengajarRowChangeEvent(((KesediaanDosenMengajarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.KesediaanDosenMengajarRowDeleted != null)) {
+                    this.KesediaanDosenMengajarRowDeleted(this, new KesediaanDosenMengajarRowChangeEvent(((KesediaanDosenMengajarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.KesediaanDosenMengajarRowDeleting != null)) {
+                    this.KesediaanDosenMengajarRowDeleting(this, new KesediaanDosenMengajarRowChangeEvent(((KesediaanDosenMengajarRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveKesediaanDosenMengajarRow(KesediaanDosenMengajarRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSetAlokasi ds = new DataSetAlokasi();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "KesediaanDosenMengajarDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1693,17 +2143,17 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nik {
+            public string NIK {
                 get {
                     try {
-                        return ((string)(this[this.tableAlokasiDosen.NikColumn]));
+                        return ((string)(this[this.tableAlokasiDosen.NIKColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Nik\' in table \'AlokasiDosen\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'NIK\' in table \'AlokasiDosen\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAlokasiDosen.NikColumn] = value;
+                    this[this.tableAlokasiDosen.NIKColumn] = value;
                 }
             }
             
@@ -1765,14 +2215,14 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNikNull() {
-                return this.IsNull(this.tableAlokasiDosen.NikColumn);
+            public bool IsNIKNull() {
+                return this.IsNull(this.tableAlokasiDosen.NIKColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNikNull() {
-                this[this.tableAlokasiDosen.NikColumn] = global::System.Convert.DBNull;
+            public void SetNIKNull() {
+                this[this.tableAlokasiDosen.NIKColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1797,6 +2247,387 @@ namespace PenawaranKurikulum.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetJumlahKelasNull() {
                 this[this.tableAlokasiDosen.JumlahKelasColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class KesediaanDosenMengajarRow : global::System.Data.DataRow {
+            
+            private KesediaanDosenMengajarDataTable tableKesediaanDosenMengajar;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal KesediaanDosenMengajarRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableKesediaanDosenMengajar = ((KesediaanDosenMengajarDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NIK {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.NIKColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NIK\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.NIKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NamaDosen {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.NamaDosenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NamaDosen\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.NamaDosenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Jenjang {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.JenjangColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Jenjang\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.JenjangColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MataKuliah {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.MataKuliahColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MataKuliah\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.MataKuliahColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Kode {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.KodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kode\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.KodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Sks {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.SksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Sks\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.SksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string JenisMataKuliah {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.JenisMataKuliahColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JenisMataKuliah\' in table \'KesediaanDosenMengajar\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.JenisMataKuliahColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string JumlahKelas {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.JumlahKelasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JumlahKelas\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.JumlahKelasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalSks {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.TotalSksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalSks\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.TotalSksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NamaProgram {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.NamaProgramColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NamaProgram\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.NamaProgramColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SemesterDitawarkan {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.SemesterDitawarkanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SemesterDitawarkan\' in table \'KesediaanDosenMengajar\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.SemesterDitawarkanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string KodeFakultas {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.KodeFakultasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KodeFakultas\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.KodeFakultasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string KodeKelas {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.KodeKelasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KodeKelas\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.KodeKelasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNIKNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.NIKColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNIKNull() {
+                this[this.tableKesediaanDosenMengajar.NIKColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNamaDosenNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.NamaDosenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNamaDosenNull() {
+                this[this.tableKesediaanDosenMengajar.NamaDosenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJenjangNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.JenjangColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJenjangNull() {
+                this[this.tableKesediaanDosenMengajar.JenjangColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMataKuliahNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.MataKuliahColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMataKuliahNull() {
+                this[this.tableKesediaanDosenMengajar.MataKuliahColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKodeNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.KodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKodeNull() {
+                this[this.tableKesediaanDosenMengajar.KodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSksNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.SksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSksNull() {
+                this[this.tableKesediaanDosenMengajar.SksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJenisMataKuliahNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.JenisMataKuliahColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJenisMataKuliahNull() {
+                this[this.tableKesediaanDosenMengajar.JenisMataKuliahColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJumlahKelasNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.JumlahKelasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJumlahKelasNull() {
+                this[this.tableKesediaanDosenMengajar.JumlahKelasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalSksNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.TotalSksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalSksNull() {
+                this[this.tableKesediaanDosenMengajar.TotalSksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNamaProgramNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.NamaProgramColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNamaProgramNull() {
+                this[this.tableKesediaanDosenMengajar.NamaProgramColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSemesterDitawarkanNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.SemesterDitawarkanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSemesterDitawarkanNull() {
+                this[this.tableKesediaanDosenMengajar.SemesterDitawarkanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKodeFakultasNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.KodeFakultasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKodeFakultasNull() {
+                this[this.tableKesediaanDosenMengajar.KodeFakultasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsKodeKelasNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.KodeKelasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetKodeKelasNull() {
+                this[this.tableKesediaanDosenMengajar.KodeKelasColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1888,6 +2719,40 @@ namespace PenawaranKurikulum.Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AlokasiDosenRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class KesediaanDosenMengajarRowChangeEvent : global::System.EventArgs {
+            
+            private KesediaanDosenMengajarRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KesediaanDosenMengajarRowChangeEvent(KesediaanDosenMengajarRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public KesediaanDosenMengajarRow Row {
                 get {
                     return this.eventRow;
                 }

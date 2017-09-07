@@ -36,7 +36,7 @@ namespace PenawaranKurikulum.Report
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -47,24 +47,20 @@ namespace PenawaranKurikulum.Report
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.dataSetAlokasi = new PenawaranKurikulum.Data.DataSetAlokasi();
-            this.alokasiDosenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetAlokasi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alokasiDosenBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource4.Name = "dsAlokasiDosen";
-            reportDataSource4.Value = this.alokasiDosenBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "dsAlokasiDosen";
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PenawaranKurikulum.ReportVieew.ReportAlokasiDosen.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 104);
             this.reportViewer1.Name = "reportViewer1";
@@ -148,6 +144,7 @@ namespace PenawaranKurikulum.Report
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
+            this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 379);
@@ -168,15 +165,14 @@ namespace PenawaranKurikulum.Report
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
-            // dataSetAlokasi
+            // progressBar1
             // 
-            this.dataSetAlokasi.DataSetName = "DataSetAlokasi";
-            this.dataSetAlokasi.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // alokasiDosenBindingSource
-            // 
-            this.alokasiDosenBindingSource.DataMember = "AlokasiDosen";
-            this.alokasiDosenBindingSource.DataSource = this.dataSetAlokasi;
+            this.progressBar1.Location = new System.Drawing.Point(430, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(268, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 3;
+            this.progressBar1.Visible = false;
             // 
             // FormReportAlokasiDosen
             // 
@@ -199,8 +195,6 @@ namespace PenawaranKurikulum.Report
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetAlokasi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alokasiDosenBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,7 +211,6 @@ namespace PenawaranKurikulum.Report
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
-        private System.Windows.Forms.BindingSource alokasiDosenBindingSource;
-        private Data.DataSetAlokasi dataSetAlokasi;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

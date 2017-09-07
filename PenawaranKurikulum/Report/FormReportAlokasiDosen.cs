@@ -20,6 +20,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PenawaranKurikulum.Report
@@ -81,7 +82,7 @@ namespace PenawaranKurikulum.Report
 
         }
 
-        private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbFakultas.SelectedIndex > 0)
             {
@@ -89,7 +90,7 @@ namespace PenawaranKurikulum.Report
                 {
                     cmbProdi.Enabled = false;
                     cmbProgram.Enabled = false;
-                    PreviewDosenAll();
+                    await PreviewDosen(true);
                 }
                 else
                 {
@@ -122,62 +123,10 @@ namespace PenawaranKurikulum.Report
 
         private async void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbProdi.SelectedIndex == 0 || cmbProgram.SelectedIndex == 0)
-            {
-                return;
-            }
-            string idProdi = cmbProdi.SelectedValue.ToString();
-
-            var data = new { TahunAkademik = LoginAccess.TahunAkademik, KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
-
-            string jsonData = JsonConvert.SerializeObject(data);
-
-            response = await webApi.Post(URLGetDosenMengajar, jsonData, true);
-            if (response.IsSuccessStatusCode)
-            {
-                List<AlokasiDosenMengajar> listAlokasiDosenMengajar = JsonConvert.DeserializeObject<List<AlokasiDosenMengajar>>(response.Content.ReadAsStringAsync().Result);
-
-                string KodeProgramReguler = Organisasi.listProdi.Find(pr => pr.Uid == idProdi).KodeProgramReguler;
-                List<ReportParameter> listParams = new List<ReportParameter>();
-                listParams.Add(new ReportParameter("ProgramStudi", Organisasi.listProdi.Find(pr => pr.Uid == cmbProdi.SelectedValue.ToString()).NamaProdi));
-                listParams.Add(new ReportParameter("Fakultas", Organisasi.listFakultas.Find(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).NamaFakultas));
-                listParams.Add(new ReportParameter("TanggalCetak", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
-                listParams.Add(new ReportParameter("Dekan", listDepartment.Find(d => d.KodeDepartment == cmbFakultas.SelectedValue.ToString()).NamaKepala));
-                listParams.Add(new ReportParameter("NikDekan", listDepartment.Find(d => d.KodeDepartment == cmbFakultas.SelectedValue.ToString()).NikKepala));
-                listParams.Add(new ReportParameter("Kaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NamaKepala));
-                listParams.Add(new ReportParameter("NikKaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NikKepala));
-                listParams.Add(new ReportParameter("TahunAkademik", LoginAccess.TahunAkademik));
-                listParams.Add(new ReportParameter("Semester", LoginAccess.Semester));
-                listParams.Add(new ReportParameter("Program", cmbProgram.Text));
-
-                DataTable dtAlokasiDosen = CommonLib.ToDataTable(listAlokasiDosenMengajar);
-
-
-                string DataSetName = string.Empty;
-                string ReportPath = string.Empty;
-                ReportDataSource rds = null;
-                ReportPath = "PenawaranKurikulum.ReportVieew.ReportAlokasiDosen.rdlc";
-                rds = new ReportDataSource("dsAlokasiDosen", listAlokasiDosenMengajar);
-                reportViewer1.LocalReport.DataSources.Clear();
-                reportViewer1.LocalReport.DataSources.Add(rds);
-                reportViewer1.LocalReport.ReportEmbeddedResource = ReportPath;
-                //IDataReader dr = dtAlokasiDosen.CreateDataReader();
-                //dataSetAlokasi.Tables["AlokasiDosen"].Clear();
-                //dataSetAlokasi.Tables["AlokasiDosen"].Load(dr);
-                //dr.Close();
-                reportViewer1.LocalReport.SetParameters(listParams);
-                reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
-                reportViewer1.ZoomMode = ZoomMode.Percent;
-                reportViewer1.LocalReport.Refresh();
-                reportViewer1.RefreshReport();
-            }
-            else
-            {
-                MessageBox.Show(webApi.ReturnMessage(response));
-            }
+            await PreviewDosen(false);
         }
 
-        private async void PreviewDosenAll()
+        private async Task PreviewDosen(bool isSemuaFakultas)
         {
             var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester };
             string jsonData = JsonConvert.SerializeObject(data);
@@ -204,34 +153,86 @@ namespace PenawaranKurikulum.Report
                 return;
             }
 
-            //MessageBox.Show(listDosenMengajarAll.Count.ToString());
-
-            var listNikDosen = listDosenMengajarAll
-                .Select(x => new { x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
-                .Select(y => new { y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
-                .Distinct()
-                .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
-
             List<KesediaanDosen> listKesediaanDosen = new List<KesediaanDosen>();
-            foreach (var item in listNikDosen)
+            List<ReportParameter> listParams = new List<ReportParameter>();
+            if (isSemuaFakultas)
             {
-                int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang).ToList().Count;
-                listKesediaanDosen.Add(new KesediaanDosen()
+                var listNikDosen = listDosenMengajarAll
+                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Distinct()
+                    .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
+
+
+                int no = 0;
+                var tempNik = string.Empty;
+                foreach (var item in listNikDosen)
                 {
-                    NIK = item.NIK,
-                    NamaDosen = item.NamaDosen,
-                    Kode = item.Kode,
-                    MataKuliah = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.MataKuliah),
-                    Jenjang = item.Jenjang,
-                    JenisMataKuliah = item.JenisMataKuliah,
-                    TotalSks = item.SksTotal,
-                    NamaProdi = item.NamaProdi,
-                    KodeProgram = item.KodeProgram,
-                    SemesterDitawarkan = item.SemesterDitawarkan,
-                    KodeFakultas = item.KodeFakultas,
-                    JumlahKelas = countKelas,
-                    KodeKelas = item.NamaProgram
-                });
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang).ToList().Count;
+
+                    if (tempNik != item.NIK)
+                    {
+                        tempNik = item.NIK;
+                        no++;
+                    }
+                    listKesediaanDosen.Add(new KesediaanDosen()
+                    {
+                        NIK = item.NIK,
+                        NamaDosen = item.NamaDosen,
+                        Kode = item.Kode,
+                        MataKuliah = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.MataKuliah.ToLower()),
+                        Jenjang = item.Jenjang,
+                        JenisMataKuliah = item.JenisMataKuliah,
+                        TotalSks = item.SksTotal,
+                        NamaProdi = item.NamaProdi,
+                        KodeProgram = item.KodeProgram,
+                        SemesterDitawarkan = item.SemesterDitawarkan,
+                        KodeFakultas = item.KodeFakultas,
+                        JumlahKelas = countKelas,
+                        KodeKelas = item.NamaAlias,
+                        No = no.ToString()
+                    });
+                }
+                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}", LoginAccess.TahunAkademik, LoginAccess.Semester.ToString().ToUpper())));
+            }
+            else
+            {
+                var listNikDosen = listDosenMengajarAll
+                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Distinct().Where( w => w.KodeProgram == cmbProgram.SelectedValue.ToString())
+                    .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
+
+                int no = 0;
+                var tempNik = string.Empty;
+                foreach (var item in listNikDosen)
+                {
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang).ToList().Count;
+
+                    if (tempNik != item.NIK)
+                    {
+                        tempNik = item.NIK;
+                        no++;
+                    }
+                    listKesediaanDosen.Add(new KesediaanDosen()
+                    {
+                        NIK = item.NIK,
+                        NamaDosen = item.NamaDosen,
+                        Kode = item.Kode,
+                        MataKuliah = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.MataKuliah.ToLower()),
+                        Jenjang = item.Jenjang,
+                        JenisMataKuliah = item.JenisMataKuliah,
+                        TotalSks = item.SksTotal,
+                        NamaProdi = item.NamaProdi,
+                        KodeProgram = item.KodeProgram,
+                        SemesterDitawarkan = item.SemesterDitawarkan,
+                        KodeFakultas = item.KodeFakultas,
+                        JumlahKelas = countKelas,
+                        KodeKelas = item.NamaAlias,
+                        No = no.ToString()
+                    });
+                }
+                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}\n{2}\nPROGRAM STUDI {3}\nPROGRAM {4}", LoginAccess.TahunAkademik, LoginAccess.Semester.ToString().ToUpper(), cmbFakultas.Text.ToUpper(), cmbProdi.Text.ToUpper(), cmbProgram.Text.ToUpper())));
             }
 
             string DataSetName = string.Empty;
@@ -242,11 +243,7 @@ namespace PenawaranKurikulum.Report
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(rds);
             reportViewer1.LocalReport.ReportEmbeddedResource = ReportPath;
-            //IDataReader dr = dtAlokasiDosen.CreateDataReader();
-            //dataSetAlokasi.Tables["AlokasiDosen"].Clear();
-            //dataSetAlokasi.Tables["AlokasiDosen"].Load(dr);
-            //dr.Close();
-            //reportViewer1.LocalReport.SetParameters(listParams);
+            reportViewer1.LocalReport.SetParameters(listParams);
             reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewer1.ZoomMode = ZoomMode.Percent;
             reportViewer1.LocalReport.Refresh();
@@ -282,5 +279,6 @@ namespace PenawaranKurikulum.Report
         public int Sks { get; set; }
         public string JenisMataKuliah { get; set; }
         public int SemesterDitawarkan { get; set; }
+        public string No { get; set; }
     }
 }

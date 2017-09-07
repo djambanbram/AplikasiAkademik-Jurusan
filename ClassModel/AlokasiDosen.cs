@@ -31,6 +31,7 @@ namespace ClassModel
         public string KodeProgramReguler { get; set; }
         public string KodeProgram { get; set; }
         public string NamaProgram { get; set; }
+        public string NamaAlias { get; set; }
         public int SksTotal { get; set; }
         public int SksPraktikum { get; set; }
     }

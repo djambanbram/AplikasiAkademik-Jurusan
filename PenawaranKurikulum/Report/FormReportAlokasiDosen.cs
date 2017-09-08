@@ -194,6 +194,8 @@ namespace PenawaranKurikulum.Report
                     });
                 }
                 listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}", LoginAccess.TahunAkademik, LoginAccess.Semester.ToString().ToUpper())));
+                listParams.Add(new ReportParameter("TanggalPengesahan", DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID"))));
+                listParams.Add(new ReportParameter("IsAllFakultas", "1"));
             }
             else
             {
@@ -232,7 +234,13 @@ namespace PenawaranKurikulum.Report
                         No = no.ToString()
                     });
                 }
+                string KodeProgramReguler = Organisasi.listProdi.Find(pr => pr.Uid == cmbProdi.SelectedValue.ToString()).KodeProgramReguler;
                 listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}\n{2}\nPROGRAM STUDI {3}\nPROGRAM {4}", LoginAccess.TahunAkademik, LoginAccess.Semester.ToString().ToUpper(), cmbFakultas.Text.ToUpper(), cmbProdi.Text.ToUpper(), cmbProgram.Text.ToUpper())));
+                listParams.Add(new ReportParameter("TanggalPengesahan", DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID"))));
+                listParams.Add(new ReportParameter("IsAllFakultas", "0"));
+                listParams.Add(new ReportParameter("Prodi", cmbProdi.Text));
+                listParams.Add(new ReportParameter("Kaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NamaKepala));
+                listParams.Add(new ReportParameter("NikKaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NikKepala));
             }
 
             string DataSetName = string.Empty;

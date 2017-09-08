@@ -186,6 +186,7 @@
     </Compile>
     <EmbeddedResource Include="ReportVieew\ReportAlokasiDosen.rdlc" />
     <EmbeddedResource Include="ReportVieew\ReportAlokasiDosenAll.rdlc" />
+    <EmbeddedResource Include="ReportVieew\ReportDosenWali.rdlc" />
     <EmbeddedResource Include="ReportVieew\ReportLabMK.rdlc" />
     <EmbeddedResource Include="ReportVieew\ReportMKDitawarkan.rdlc" />
     <EmbeddedResource Include="Report\FormReportAlokasiDosen.resx">

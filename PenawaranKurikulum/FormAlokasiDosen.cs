@@ -99,17 +99,17 @@ namespace PenawaranKurikulum
 
             //if (LoginAccess.KodeSemester % 2 == 1)
             //{
-                rad1.Text = "1";
-                rad2.Text = "2";
-                rad3.Text = "3";
-                rad4.Text = "4";
+            rad1.Text = "1";
+            rad2.Text = "2";
+            rad3.Text = "3";
+            rad4.Text = "4";
             //}
             //else
             //{
-                rad5.Text = "5";
-                rad6.Text = "6";
-                rad7.Text = "7";
-                rad8.Text = "8";
+            rad5.Text = "5";
+            rad6.Text = "6";
+            rad7.Text = "7";
+            rad8.Text = "8";
             //}
         }
 
@@ -320,7 +320,16 @@ namespace PenawaranKurikulum
             {
                 if (!isModeCampuran)
                 {
-                    listKelasAktif = JsonConvert.DeserializeObject<List<KelasAktif>>(response.Content.ReadAsStringAsync().Result).Where(kls => kls.SemesterDitawarkan == semDipilih).ToList();
+                    //semesntara hardcode, untuk transfer, kelas akan di tampilkan di seluruh semester
+                    if (kodeProgramDipilih == "21" || kodeProgramDipilih == "22")
+                    {
+                        listKelasAktif = JsonConvert.DeserializeObject<List<KelasAktif>>(response.Content.ReadAsStringAsync().Result).ToList();
+                    }
+                    else
+                    {
+                        listKelasAktif = JsonConvert.DeserializeObject<List<KelasAktif>>(response.Content.ReadAsStringAsync().Result).Where(kls => kls.SemesterDitawarkan == semDipilih).ToList();
+                    }
+
                     foreach (KelasAktif item in listKelasAktif)
                     {
                         dgvAlokasi.Rows.Add(null, item.IdKelas, item.NamaKelas);

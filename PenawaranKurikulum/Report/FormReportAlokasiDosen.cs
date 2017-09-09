@@ -209,7 +209,7 @@ namespace PenawaranKurikulum.Report
                 var tempNik = string.Empty;
                 foreach (var item in listNikDosen)
                 {
-                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang).ToList().Count;
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == cmbProgram.SelectedValue.ToString()).ToList().Count;
 
                     if (tempNik != item.NIK)
                     {

@@ -44,6 +44,12 @@ namespace KelasMahasiswa.Dialog
             this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
             this.dgvMKCampuran = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SingkatanKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SemesterKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtMataKuliah = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.txtKode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -57,12 +63,6 @@ namespace KelasMahasiswa.Dialog
             this.numKuota = new System.Windows.Forms.NumericUpDown();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblSemesterKelas = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SingkatanKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SemesterKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).BeginInit();
@@ -189,6 +189,50 @@ namespace KelasMahasiswa.Dialog
             this.dgvMKCampuran.TabIndex = 14;
             this.dgvMKCampuran.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMKCampuran_CellClick);
             this.dgvMKCampuran.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvMKCampuran_KeyUp);
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 60;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.ReadOnly = true;
+            this.Kode.Width = 80;
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliah.HeaderText = "Mata Kuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            this.MataKuliah.ReadOnly = true;
+            // 
+            // Jumlah
+            // 
+            this.Jumlah.HeaderText = "Jumlah";
+            this.Jumlah.Name = "Jumlah";
+            this.Jumlah.ReadOnly = true;
+            this.Jumlah.Visible = false;
+            this.Jumlah.Width = 70;
+            // 
+            // SingkatanKelas
+            // 
+            this.SingkatanKelas.HeaderText = "Singkatan Kelas";
+            this.SingkatanKelas.Name = "SingkatanKelas";
+            this.SingkatanKelas.ReadOnly = true;
+            this.SingkatanKelas.Visible = false;
+            // 
+            // SemesterKelas
+            // 
+            this.SemesterKelas.HeaderText = "SemesterKelas";
+            this.SemesterKelas.Name = "SemesterKelas";
+            this.SemesterKelas.ReadOnly = true;
+            this.SemesterKelas.Visible = false;
+            this.SemesterKelas.Width = 40;
             // 
             // tableLayoutPanel1
             // 
@@ -361,51 +405,6 @@ namespace KelasMahasiswa.Dialog
             this.lblSemesterKelas.Size = new System.Drawing.Size(72, 17);
             this.lblSemesterKelas.TabIndex = 12;
             this.lblSemesterKelas.Text = "autoLabel7";
-            this.lblSemesterKelas.Visible = false;
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 60;
-            // 
-            // Kode
-            // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.Name = "Kode";
-            this.Kode.ReadOnly = true;
-            this.Kode.Width = 80;
-            // 
-            // MataKuliah
-            // 
-            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliah.HeaderText = "Mata Kuliah";
-            this.MataKuliah.Name = "MataKuliah";
-            this.MataKuliah.ReadOnly = true;
-            // 
-            // Jumlah
-            // 
-            this.Jumlah.HeaderText = "Jumlah";
-            this.Jumlah.Name = "Jumlah";
-            this.Jumlah.ReadOnly = true;
-            this.Jumlah.Visible = false;
-            this.Jumlah.Width = 70;
-            // 
-            // SingkatanKelas
-            // 
-            this.SingkatanKelas.HeaderText = "Singkatan Kelas";
-            this.SingkatanKelas.Name = "SingkatanKelas";
-            this.SingkatanKelas.ReadOnly = true;
-            this.SingkatanKelas.Visible = false;
-            // 
-            // SemesterKelas
-            // 
-            this.SemesterKelas.HeaderText = "SemesterKelas";
-            this.SemesterKelas.Name = "SemesterKelas";
-            this.SemesterKelas.ReadOnly = true;
-            this.SemesterKelas.Visible = false;
-            this.SemesterKelas.Width = 40;
             // 
             // DialogCreateKelasCampuran
             // 

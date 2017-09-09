@@ -393,19 +393,31 @@ namespace PenawaranKurikulum
                         int sks = int.Parse(dgColumn.HeaderText[0].ToString());
                         if (!isModeCampuran)
                         {
-                            alokasi = listAlokasiDosenMengajar.Find(
-                                                                    a => a.IdKelas == idKelas
-                                                                    && a.Kode == kode
-                                                                    && a.SemesterDitawarkan == semDipilih
-                                                                    && a.JenisMataKuliah == jenisMataKuliah
-                                                                    && a.Sks == sks);
+                            if (kodeProgramDipilih == "21" || kodeProgramDipilih == "22")
+                            {
+                                alokasi = listAlokasiDosenMengajar.Find(
+                                                                        a => a.IdKelas == idKelas
+                                                                        && a.Kode == kode
+                                                                        && a.SemesterDitawarkan == LoginAccess.KodeSemester
+                                                                        && a.JenisMataKuliah == jenisMataKuliah
+                                                                        && a.Sks == sks);
+                            }
+                            else
+                            {
+                                alokasi = listAlokasiDosenMengajar.Find(
+                                                                        a => a.IdKelas == idKelas
+                                                                        && a.Kode == kode
+                                                                        && a.SemesterDitawarkan == semDipilih
+                                                                        && a.JenisMataKuliah == jenisMataKuliah
+                                                                        && a.Sks == sks);
+                            }
                         }
                         else
                         {
                             alokasi = listAlokasiDosenMengajar.Find(
                                                                     a => a.IdKelas == idKelas
                                                                     && a.Kode == kode
-                                                                    && a.SemesterDitawarkan == 0
+                                                                    //&& a.SemesterDitawarkan == 0
                                                                     && a.JenisMataKuliah == jenisMataKuliah
                                                                     && a.Sks == sks);
                         }
@@ -590,10 +602,10 @@ namespace PenawaranKurikulum
 
                 contextMenuStrip1.Items[0].Enabled = true;
                 contextMenuStrip1.Items[1].Enabled = true;
-                if (isModeCampuran)
-                {
-                    contextMenuStrip1.Items[1].Enabled = false;
-                }
+                //if (isModeCampuran)
+                //{
+                //    contextMenuStrip1.Items[1].Enabled = false;
+                //}
                 contextMenuStrip1.Items[0].Text = string.Format("Hapus Alokasi {0} kelas {1}", kode, namaKelas);
 
                 valueDeleteOrSet = new
@@ -717,9 +729,19 @@ namespace PenawaranKurikulum
 
         private void setSemuaKelasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var dialogSetDosen = new DialogSetDosenKelas(this, listKelasAktif, valueDeleteOrSet))
+            if (!isModeCampuran)
             {
-                dialogSetDosen.ShowDialog(this);
+                using (var dialogSetDosen = new DialogSetDosenKelas(this, listKelasAktif, listKelasCampuranAktif, false, valueDeleteOrSet))
+                {
+                    dialogSetDosen.ShowDialog(this);
+                }
+            }
+            else
+            {
+                using (var dialogSetDosen = new DialogSetDosenKelas(this, listKelasAktif, listKelasCampuranAktif, true, valueDeleteOrSet))
+                {
+                    dialogSetDosen.ShowDialog(this);
+                }
             }
         }
 

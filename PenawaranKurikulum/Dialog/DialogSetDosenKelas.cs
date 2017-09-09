@@ -22,7 +22,7 @@ namespace PenawaranKurikulum.Dialog
     {
         private IRefreshAlokasiDosen iRefreshAlokasi;
 
-        public DialogSetDosenKelas(IRefreshAlokasiDosen iRefreshAlokasi, List<KelasAktif> listKelasAktif, dynamic data)
+        public DialogSetDosenKelas(IRefreshAlokasiDosen iRefreshAlokasi, List<KelasAktif> listKelasAktif, List<KelasCampuranAktif> listKelasCampuranAktif, bool isModeCampuran, dynamic data)
         {
             InitializeComponent();
 
@@ -31,9 +31,19 @@ namespace PenawaranKurikulum.Dialog
             txtNik.Text = data.Nik;
 
             this.iRefreshAlokasi = iRefreshAlokasi;
-            foreach (KelasAktif k in listKelasAktif)
+            if (!isModeCampuran)
             {
-                dgvKelas.Rows.Add(false, k.IdKelas, k.NamaKelas);
+                foreach (KelasAktif k in listKelasAktif)
+                {
+                    dgvKelas.Rows.Add(false, k.IdKelas, k.NamaKelas);
+                }
+            }
+            else
+            {
+                foreach (KelasCampuranAktif k in listKelasCampuranAktif)
+                {
+                    dgvKelas.Rows.Add(false, k.IdKelas, k.NamaKelas);
+                }
             }
         }
 

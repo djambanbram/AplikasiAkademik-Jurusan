@@ -535,6 +535,12 @@ namespace PenawaranKurikulum
         private void dgvDataDosen_MouseDown(object sender, MouseEventArgs e)
         {
             HitTestInfo hittest = dragAndDropAdd.DragMouseDownFirst(e, dgvDataDosen);
+
+            if (hittest == null)
+            {
+                return;
+            }
+
             if (hittest != null)
             {
                 valueAdd = new { Nik = dgvDataDosen.Rows[hittest.RowIndex].Cells["Nik"].Value.ToString(), NamaDosen = dgvDataDosen.Rows[hittest.RowIndex].Cells["NamaDosen"].Value.ToString() };

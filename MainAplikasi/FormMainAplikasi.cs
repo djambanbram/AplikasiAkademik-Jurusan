@@ -60,6 +60,7 @@ namespace MainAplikasi
         private FormReportAlokasiDosen formReportAlokasiDosen;
         private FormReportKesanggupanDosen formReportKesanggupanDosen;
         private FormReportKesediaanDosen formReportKesediaanDosen;
+        private FormReportDosenWali formReportDosenWali;
         private FormReportHonorDosenMengajar formReportHonorDosenMengajar;
         private FormReportHasilMatrikulasi formReportHasilMatrikulasi;
 
@@ -364,6 +365,17 @@ namespace MainAplikasi
             }
             formReportKesediaanDosen.Show();
             tabbedMDIManager1.UpdateActiveTabHost(formReportKesediaanDosen);
+        }
+
+        private void dosenWaliToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formReportDosenWali == null || formReportDosenWali.IsDisposed)
+            {
+                formReportDosenWali = new FormReportDosenWali();
+                formReportDosenWali.MdiParent = this;
+            }
+            formReportDosenWali.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formReportDosenWali);
         }
     }
 }

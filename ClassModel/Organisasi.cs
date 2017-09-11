@@ -35,6 +35,7 @@ namespace ClassModel
         public string NamaProdi { get; set; }
         public string Jenjang { get; set; }
         public string KodeProgramReguler { get; set; }
+        public string SingkatanProdi { get; set; }
         public Fakultas Fakultas { get; set; }
     }
 

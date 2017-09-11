@@ -458,12 +458,14 @@ namespace MainAplikasi
             this.koordinatorMataKuliahToolStripMenuItem.Name = "koordinatorMataKuliahToolStripMenuItem";
             this.koordinatorMataKuliahToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.koordinatorMataKuliahToolStripMenuItem.Text = "Koordinator Mata Kuliah";
+            this.koordinatorMataKuliahToolStripMenuItem.Visible = false;
             // 
             // dosenWaliToolStripMenuItem
             // 
             this.dosenWaliToolStripMenuItem.Name = "dosenWaliToolStripMenuItem";
             this.dosenWaliToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.dosenWaliToolStripMenuItem.Text = "Dosen Wali";
+            this.dosenWaliToolStripMenuItem.Click += new System.EventHandler(this.dosenWaliToolStripMenuItem_Click);
             // 
             // FormMainAplikasi
             // 

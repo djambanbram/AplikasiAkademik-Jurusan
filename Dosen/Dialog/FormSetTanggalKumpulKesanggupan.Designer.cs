@@ -99,7 +99,7 @@ namespace Dosen.Dialog
             this.MinimizeBox = false;
             this.Name = "FormSetTanggalKumpulKesanggupan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "MetroForm1";
+            this.Text = "Tanggal Pengumpulan Berkas";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

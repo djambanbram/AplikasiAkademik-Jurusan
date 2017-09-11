@@ -115,6 +115,8 @@ namespace PenawaranKurikulum
 
         private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvAlokasi.Rows.Clear();
+
             if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
@@ -129,6 +131,7 @@ namespace PenawaranKurikulum
 
         private void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvAlokasi.Rows.Clear();
             if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
             {
                 string idProdi = cmbProdi.SelectedValue.ToString();
@@ -144,6 +147,7 @@ namespace PenawaranKurikulum
         private async void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
             Loading(true);
+            dgvAlokasi.Rows.Clear();
             if (cmbProgram.SelectedIndex > 0)
             {
                 int sem = 0;

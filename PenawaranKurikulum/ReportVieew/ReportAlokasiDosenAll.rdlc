@@ -9,7 +9,7 @@
               <Width>0.35156in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.98698in</Width>
+              <Width>2.78906in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.22656in</Width>
@@ -18,7 +18,7 @@
               <Width>0.38281in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.39323in</Width>
+              <Width>0.59114in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.52864in</Width>
@@ -388,7 +388,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TotalSks.Value</Value>
+                              <Value>=string.Format("{0}T / {1}P", Fields!SksTeori.Value, Fields!SksPraktikum.Value)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -499,7 +499,6 @@
                       <PaddingBottom>2pt</PaddingBottom>
                     </Style>
                   </Textbox>
-                  <rd:Selected>true</rd:Selected>
                 </CellContents>
               </TablixHeader>
               <TablixMembers>
@@ -645,7 +644,7 @@
         <Top>0.69667in</Top>
         <Left>0.17583in</Left>
         <Height>0.6375in</Height>
-        <Width>8.14062in</Width>
+        <Width>8.14061in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -942,6 +941,14 @@
         </Field>
         <Field Name="No">
           <DataField>No</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SksTeori">
+          <DataField>SksTeori</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SksPraktikum">
+          <DataField>SksPraktikum</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

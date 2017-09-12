@@ -1349,6 +1349,10 @@ namespace PenawaranKurikulum.Data {
             
             private global::System.Data.DataColumn columnNo;
             
+            private global::System.Data.DataColumn columnSksTeori;
+            
+            private global::System.Data.DataColumn columnSksPraktikum;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KesediaanDosenMengajarDataTable() {
@@ -1496,6 +1500,22 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SksTeoriColumn {
+                get {
+                    return this.columnSksTeori;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SksPraktikumColumn {
+                get {
+                    return this.columnSksPraktikum;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1531,7 +1551,23 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KesediaanDosenMengajarRow AddKesediaanDosenMengajarRow(string NIK, string NamaDosen, string Jenjang, string MataKuliah, string Kode, string Sks, string JenisMataKuliah, string JumlahKelas, string TotalSks, string NamaProgram, string SemesterDitawarkan, string KodeFakultas, string KodeKelas, string No) {
+            public KesediaanDosenMengajarRow AddKesediaanDosenMengajarRow(
+                        string NIK, 
+                        string NamaDosen, 
+                        string Jenjang, 
+                        string MataKuliah, 
+                        string Kode, 
+                        string Sks, 
+                        string JenisMataKuliah, 
+                        string JumlahKelas, 
+                        string TotalSks, 
+                        string NamaProgram, 
+                        string SemesterDitawarkan, 
+                        string KodeFakultas, 
+                        string KodeKelas, 
+                        string No, 
+                        string SksTeori, 
+                        string SksPraktikum) {
                 KesediaanDosenMengajarRow rowKesediaanDosenMengajarRow = ((KesediaanDosenMengajarRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NIK,
@@ -1547,7 +1583,9 @@ namespace PenawaranKurikulum.Data {
                         SemesterDitawarkan,
                         KodeFakultas,
                         KodeKelas,
-                        No};
+                        No,
+                        SksTeori,
+                        SksPraktikum};
                 rowKesediaanDosenMengajarRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowKesediaanDosenMengajarRow);
                 return rowKesediaanDosenMengajarRow;
@@ -1584,6 +1622,8 @@ namespace PenawaranKurikulum.Data {
                 this.columnKodeFakultas = base.Columns["KodeFakultas"];
                 this.columnKodeKelas = base.Columns["KodeKelas"];
                 this.columnNo = base.Columns["No"];
+                this.columnSksTeori = base.Columns["SksTeori"];
+                this.columnSksPraktikum = base.Columns["SksPraktikum"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1617,6 +1657,10 @@ namespace PenawaranKurikulum.Data {
                 base.Columns.Add(this.columnKodeKelas);
                 this.columnNo = new global::System.Data.DataColumn("No", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNo);
+                this.columnSksTeori = new global::System.Data.DataColumn("SksTeori", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSksTeori);
+                this.columnSksPraktikum = new global::System.Data.DataColumn("SksPraktikum", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSksPraktikum);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2506,6 +2550,38 @@ namespace PenawaranKurikulum.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SksTeori {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.SksTeoriColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SksTeori\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.SksTeoriColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SksPraktikum {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.SksPraktikumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SksPraktikum\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.SksPraktikumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNIKNull() {
                 return this.IsNull(this.tableKesediaanDosenMengajar.NIKColumn);
             }
@@ -2670,6 +2746,30 @@ namespace PenawaranKurikulum.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNoNull() {
                 this[this.tableKesediaanDosenMengajar.NoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSksTeoriNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.SksTeoriColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSksTeoriNull() {
+                this[this.tableKesediaanDosenMengajar.SksTeoriColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSksPraktikumNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.SksPraktikumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSksPraktikumNull() {
+                this[this.tableKesediaanDosenMengajar.SksPraktikumColumn] = global::System.Convert.DBNull;
             }
         }
         

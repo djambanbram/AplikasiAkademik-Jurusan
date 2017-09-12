@@ -31,8 +31,8 @@ namespace MainAplikasi
             InitializeComponent();
             webApi = new WebApi();
 #if DEBUG
-            txtUsername.Text = "190302038";
-            txtPassword.Text = "FW7u@Mv!";
+            txtUsername.Text = "190302063";
+            txtPassword.Text = "DdJW@P3!";
 #else
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;

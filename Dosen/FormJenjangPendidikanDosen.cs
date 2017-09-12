@@ -24,7 +24,9 @@ namespace Dosen
     public partial class FormJenjangPendidikanDosen : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLGetDetailJenjangPendidikanDosen = baseAddress + "/karyawan_api/api/dosen/get_detail_jenjang_pendidikan_dosen";
+        private string URLGetDetailJenjangPendidikanDosen = baseAddress + "/karyawan_api/api/jenjang_pendidikan/get_detail_jenjang_pendidikan_karyawan";
+        private string URLSaveDetailJenjangPendidikanDosen = baseAddress + "/karyawan_api/api/jenjang_pendidikan/save_detail_jenjang_pendidikan_karyawan";
+        private string URLDeleteDetailJenjangPendidikanDosen = baseAddress + "/karyawan_api/api/jenjang_pendidikan/delete_detail_jenjang_pendidikan_karyawan";
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -65,11 +67,11 @@ namespace Dosen
 
             dgvJenjangDosen.Nodes.Clear();
             listDetailJPDosen = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
-            var listDetailJPDosenDistinct = listDetailJPDosen.Select(jp => new { jp.Nik, jp.NamaDosen }).ToList().Distinct();
+            var listDetailJPDosenDistinct = listDetailJPDosen.Where(d => d.IsDosen == true && d.IsAktif == true).Select(jp => new { jp.Nik, jp.NamaKaryawan }).ToList().Distinct();
 
             foreach (var item in listDetailJPDosenDistinct)
             {
-                dgvJenjangDosen.Nodes.Add(null, null, item.Nik, item.NamaDosen);
+                dgvJenjangDosen.Nodes.Add(null, null, item.Nik, item.NamaKaryawan);
             }
 
             foreach (var tree in dgvJenjangDosen.Nodes)
@@ -78,7 +80,7 @@ namespace Dosen
                 {
                     if (tree.Cells["Nik"].Value.ToString().Trim() == item.Nik.ToString().Trim() as string)
                     {
-                        var tgn = tree.Nodes.Add(null, item.IdTransJenjang, null, null, item.NamaJenjang, item.NamaProgramStudi, item.NamaUniversitas) as TreeGridNode;
+                        var tgn = tree.Nodes.Add(null, item.IdTransJenjang, null, null, item.NamaJenjang, item.NamaProgramStudi, item.NamaUniversitas, item.TanggalMulai, item.TanggalSelesai) as TreeGridNode;
                         tgn.DefaultCellStyle.BackColor = Color.LightGray;
                     }
                 }
@@ -90,15 +92,15 @@ namespace Dosen
 
         private void txtCari_TextChanged(object sender, EventArgs e)
         {
-            List<dynamic> listTemp = listDetailJPDosen.Where(jp => (jp.NamaDosen.ToString() as string).ToLower().Contains(txtCari.Text.ToLower()) ||
+            List<dynamic> listTemp = listDetailJPDosen.Where(jp => (jp.NamaKaryawan.ToString() as string).ToLower().Contains(txtCari.Text.ToLower()) ||
             (jp.Nik.ToString() as string).ToLower().Contains(txtCari.Text.ToLower())).ToList();
 
-            var listDetailJPDosenDistinct = listTemp.Select(jp => new { jp.Nik, jp.NamaDosen }).ToList().Distinct();
+            var listDetailJPDosenDistinct = listTemp.Select(jp => new { jp.Nik, jp.NamaKaryawan }).ToList().Distinct();
 
             dgvJenjangDosen.Nodes.Clear();
             foreach (var item in listDetailJPDosenDistinct)
             {
-                dgvJenjangDosen.Nodes.Add(null, null, item.Nik, item.NamaDosen);
+                dgvJenjangDosen.Nodes.Add(null, null, item.Nik, item.NamaKaryawan);
             }
 
             foreach (var tree in dgvJenjangDosen.Nodes)
@@ -107,12 +109,47 @@ namespace Dosen
                 {
                     if (tree.Cells["Nik"].Value.ToString().Trim() == item.Nik.ToString().Trim() as string)
                     {
-                        var tgn = tree.Nodes.Add(null, item.IdTransJenjang, null, null, item.NamaJenjang, item.NamaProgramStudi, item.NamaUniversitas)as TreeGridNode;
+                        var tgn = tree.Nodes.Add(null, item.IdTransJenjang, null, null, item.NamaJenjang, item.NamaProgramStudi, item.NamaUniversitas) as TreeGridNode;
                         tgn.DefaultCellStyle.BackColor = Color.LightGray;
                     }
                 }
                 tree.Expand();
             }
+        }
+
+        private void btntambah_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvJenjangDosen_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //var hittest = dgvJenjangDosen.HitTest(e.X, e.Y);
+            dgvJenjangDosen.Rows[e.RowIndex].Selected = true;
+            if (dgvJenjangDosen.Rows[e.RowIndex].Cells["IdTransJenjang"].Value != null)
+            {
+                var namaDosen = dgvJenjangDosen.Nodes[dgvJenjangDosen.GetNodeForRow(e.RowIndex).Parent.Index].Cells["NamaDosen"].Value.ToString();// .Nodes.IndexOf(dgvJenjangDosen.Rows[e.RowIndex] as TreeGridNode);
+                var jenjang = dgvJenjangDosen.Rows[e.RowIndex].Cells["JenjangPendidikan"].Value.ToString();
+                var univ = dgvJenjangDosen.Rows[e.RowIndex].Cells["Universitas"].Value.ToString();
+                var idTransJenjang = dgvJenjangDosen.Rows[e.RowIndex].Cells["IdTransJenjang"].Value.ToString();
+                contextMenuStrip1.Items[0].Text = string.Format("Hapus a.n. {0} | jenjang {1} | {2}", namaDosen, jenjang, univ);
+                contextMenuStrip1.Items[0].Enabled = true;
+                contextMenuStrip1.Items[0].Tag = idTransJenjang;
+            }
+            else
+            {
+                contextMenuStrip1.Items[0].Text = "Hapus Jenjang Pendidikan";
+                contextMenuStrip1.Items[0].Enabled = false;
+            }
+        }
+
+        private async void hapusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int idTransJenjang = int.Parse(contextMenuStrip1.Items[0].Tag.ToString());
+
+            var dataDel = new { Id = idTransJenjang };
+            var jsonData = JsonConvert.SerializeObject(dataDel);
+            response = await webApi.Post(URLDeleteDetailJenjangPendidikanDosen, jsonData, true);
         }
     }
 }

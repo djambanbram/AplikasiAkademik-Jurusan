@@ -113,6 +113,20 @@ namespace Dosen
 
         private async void btnHapus_Click(object sender, EventArgs e)
         {
+            bool isAdaDataHapus = false;
+            foreach (DataGridViewRow dgRow in dgvHonorDosen.Rows)
+            {
+                if (Convert.ToBoolean(dgRow.Cells["Hapus"].Value))
+                {
+                    isAdaDataHapus = true;
+                }
+            }
+
+            if (!isAdaDataHapus)
+            {
+                return;
+            }
+
             DialogResult dr = MessageBox.Show("Data HR akan di hapus. Apakah akan di proses?", "Perhatian", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.No)
             {
@@ -121,7 +135,7 @@ namespace Dosen
             Loading(true);
             foreach (DataGridViewRow dgRow in dgvHonorDosen.Rows)
             {
-                if(Convert.ToBoolean(dgRow.Cells["Hapus"].Value))
+                if (Convert.ToBoolean(dgRow.Cells["Hapus"].Value))
                 {
                     int IdHonorDosen = int.Parse(dgRow.Cells["IdHonorDosen"].Value.ToString());
                     HonorJenjangDosen h = new HonorJenjangDosen();
@@ -137,18 +151,6 @@ namespace Dosen
                 }
             }
             Loading(false);
-            //DataGridViewRow row = dgvHonorDosen.SelectedRows[0];
-            //int IdHonorDosen = int.Parse(row.Cells["IdHonorDosen"].Value.ToString());
-            //HonorJenjangDosen h = new HonorJenjangDosen();
-            //h.IdHonorDosen = IdHonorDosen;
-            //string jsonData = JsonConvert.SerializeObject(h);
-            //response = await webApi.Post(URLDelJenjangPendidikanDosen, jsonData, true);
-            //if (!response.IsSuccessStatusCode)
-            //{
-            //    MessageBox.Show(webApi.ReturnMessage(response));
-            //    return;
-            //}
-
             await LoadHonor();
         }
     }

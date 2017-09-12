@@ -158,8 +158,8 @@ namespace PenawaranKurikulum.Report
             if (isSemuaFakultas)
             {
                 var listNikDosen = listDosenMengajarAll
-                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.Sks, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
-                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.Sks, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
                     .Distinct()
                     .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
 
@@ -184,7 +184,7 @@ namespace PenawaranKurikulum.Report
                         Jenjang = item.Jenjang,
                         JenisMataKuliah = item.JenisMataKuliah,
                         TotalSks = item.SksTotal,
-                        SksTeori = item.Sks,
+                        SksTeori = item.SksTeori,
                         SksPraktikum = item.SksPraktikum,
                         NamaProdi = item.NamaProdi,
                         KodeProgram = item.KodeProgram,
@@ -202,8 +202,8 @@ namespace PenawaranKurikulum.Report
             else
             {
                 var listNikDosen = listDosenMengajarAll
-                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.Sks, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
-                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.Sks, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
                     .Distinct().Where(w => w.KodeProgram == cmbProgram.SelectedValue.ToString())
                     .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
 
@@ -227,7 +227,7 @@ namespace PenawaranKurikulum.Report
                         Jenjang = item.Jenjang,
                         JenisMataKuliah = item.JenisMataKuliah,
                         TotalSks = item.SksTotal,
-                        SksTeori = item.Sks,
+                        SksTeori = item.SksTeori,
                         SksPraktikum = item.SksPraktikum,
                         NamaProdi = item.NamaProdi,
                         KodeProgram = item.KodeProgram,

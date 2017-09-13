@@ -11,7 +11,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>8.09688in</Height>
+              <Height>7.84688in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -553,7 +553,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="Textbox17">
+                        <Textbox Name="Textbox18">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -589,42 +589,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="Textbox18">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Program</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>11pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>4.40521in</Top>
-                          <Left>0.95833in</Left>
-                          <Height>0.25in</Height>
-                          <Width>1.80208in</Width>
-                          <ZIndex>16</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
                         <Textbox Name="Textbox19">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -646,11 +610,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>4.60521in</Top>
+                          <Top>4.40521in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>1.80208in</Width>
-                          <ZIndex>17</ZIndex>
+                          <ZIndex>16</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -682,11 +646,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>4.80521in</Top>
+                          <Top>4.60521in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>1.80208in</Width>
-                          <ZIndex>18</ZIndex>
+                          <ZIndex>17</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -718,11 +682,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.00521in</Top>
+                          <Top>4.80521in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>1.80208in</Width>
-                          <ZIndex>19</ZIndex>
+                          <ZIndex>18</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -754,11 +718,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.20521in</Top>
+                          <Top>5.00521in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>1.80208in</Width>
-                          <ZIndex>20</ZIndex>
+                          <ZIndex>19</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -790,11 +754,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.40521in</Top>
+                          <Top>5.20521in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>1.80208in</Width>
-                          <ZIndex>21</ZIndex>
+                          <ZIndex>20</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -826,11 +790,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.60521in</Top>
+                          <Top>5.40521in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>1.80208in</Width>
-                          <ZIndex>22</ZIndex>
+                          <ZIndex>21</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -862,11 +826,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>6.05521in</Top>
+                          <Top>5.80521in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.41667in</Height>
                           <Width>6.48958in</Width>
-                          <ZIndex>23</ZIndex>
+                          <ZIndex>22</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -897,11 +861,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>6.72188in</Top>
+                          <Top>6.47188in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>6.48958in</Width>
-                          <ZIndex>24</ZIndex>
+                          <ZIndex>23</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -932,11 +896,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>7.84688in</Top>
+                          <Top>7.59688in</Top>
                           <Left>0.95833in</Left>
                           <Height>0.25in</Height>
                           <Width>6.48958in</Width>
-                          <ZIndex>25</ZIndex>
+                          <ZIndex>24</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -972,43 +936,7 @@ telah ditetapkan.</Value>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>26</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox29">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=": "+Parameters!Prodi.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>11pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>4.20521in</Top>
-                          <Left>2.76041in</Left>
-                          <Height>0.25in</Height>
-                          <Width>4.6875in</Width>
-                          <ZIndex>27</ZIndex>
+                          <ZIndex>25</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1026,7 +954,7 @@ telah ditetapkan.</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+Parameters!Program.Value</Value>
+                                  <Value>=": "+Fields!NamaProgram.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>11pt</FontSize>
@@ -1040,11 +968,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>4.40521in</Top>
+                          <Top>4.20521in</Top>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>28</ZIndex>
+                          <ZIndex>26</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1076,11 +1004,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>4.60521in</Top>
+                          <Top>4.40521in</Top>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>29</ZIndex>
+                          <ZIndex>27</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1112,11 +1040,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>4.80521in</Top>
+                          <Top>4.60521in</Top>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>30</ZIndex>
+                          <ZIndex>28</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1148,11 +1076,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.00521in</Top>
+                          <Top>4.80521in</Top>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>31</ZIndex>
+                          <ZIndex>29</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1184,11 +1112,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.20521in</Top>
+                          <Top>5.00521in</Top>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>32</ZIndex>
+                          <ZIndex>30</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1220,11 +1148,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.40521in</Top>
+                          <Top>5.20521in</Top>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>33</ZIndex>
+                          <ZIndex>31</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1256,11 +1184,11 @@ telah ditetapkan.</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Top>5.60521in</Top>
+                          <Top>5.40521in</Top>
                           <Left>2.76041in</Left>
                           <Height>0.25in</Height>
                           <Width>4.6875in</Width>
-                          <ZIndex>34</ZIndex>
+                          <ZIndex>32</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1297,13 +1225,15 @@ telah ditetapkan.</Value>
                 <GroupExpressions>
                   <GroupExpression>=Fields!NIK.Value</GroupExpression>
                   <GroupExpression>=Fields!Kode.Value</GroupExpression>
+                  <GroupExpression>=Fields!JenisMataKuliah.Value</GroupExpression>
+                  <GroupExpression>=Fields!NamaProgram.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DsKesediaanDosen</DataSetName>
-        <Height>8.09688in</Height>
+        <Height>7.84688in</Height>
         <Width>8.5in</Width>
         <Style>
           <Border>
@@ -1312,7 +1242,7 @@ telah ditetapkan.</Value>
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>8.09688in</Height>
+    <Height>7.84688in</Height>
     <Style />
   </Body>
   <Width>8.5in</Width>
@@ -1370,6 +1300,10 @@ telah ditetapkan.</Value>
         </Field>
         <Field Name="TotalSKS">
           <DataField>TotalSKS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NamaProgram">
+          <DataField>NamaProgram</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

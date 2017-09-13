@@ -698,6 +698,8 @@ namespace Dosen.Data {
             
             private global::System.Data.DataColumn columnTotalSKS;
             
+            private global::System.Data.DataColumn columnNamaProgram;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KesediaanDosenMengajarDataTable() {
@@ -805,6 +807,14 @@ namespace Dosen.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NamaProgramColumn {
+                get {
+                    return this.columnNamaProgram;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -840,7 +850,7 @@ namespace Dosen.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KesediaanDosenMengajarRow AddKesediaanDosenMengajarRow(string NIK, string NamaDosen, string Jenjang, string MataKuliah, string Kode, string Sks, string JenisMataKuliah, string JumlahKelas, string TotalSKS) {
+            public KesediaanDosenMengajarRow AddKesediaanDosenMengajarRow(string NIK, string NamaDosen, string Jenjang, string MataKuliah, string Kode, string Sks, string JenisMataKuliah, string JumlahKelas, string TotalSKS, string NamaProgram) {
                 KesediaanDosenMengajarRow rowKesediaanDosenMengajarRow = ((KesediaanDosenMengajarRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NIK,
@@ -851,7 +861,8 @@ namespace Dosen.Data {
                         Sks,
                         JenisMataKuliah,
                         JumlahKelas,
-                        TotalSKS};
+                        TotalSKS,
+                        NamaProgram};
                 rowKesediaanDosenMengajarRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowKesediaanDosenMengajarRow);
                 return rowKesediaanDosenMengajarRow;
@@ -883,6 +894,7 @@ namespace Dosen.Data {
                 this.columnJenisMataKuliah = base.Columns["JenisMataKuliah"];
                 this.columnJumlahKelas = base.Columns["JumlahKelas"];
                 this.columnTotalSKS = base.Columns["TotalSKS"];
+                this.columnNamaProgram = base.Columns["NamaProgram"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -906,6 +918,8 @@ namespace Dosen.Data {
                 base.Columns.Add(this.columnJumlahKelas);
                 this.columnTotalSKS = new global::System.Data.DataColumn("TotalSKS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalSKS);
+                this.columnNamaProgram = new global::System.Data.DataColumn("NamaProgram", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNamaProgram);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1723,6 +1737,22 @@ namespace Dosen.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NamaProgram {
+                get {
+                    try {
+                        return ((string)(this[this.tableKesediaanDosenMengajar.NamaProgramColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NamaProgram\' in table \'KesediaanDosenMengajar\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKesediaanDosenMengajar.NamaProgramColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNIKNull() {
                 return this.IsNull(this.tableKesediaanDosenMengajar.NIKColumn);
             }
@@ -1827,6 +1857,18 @@ namespace Dosen.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotalSKSNull() {
                 this[this.tableKesediaanDosenMengajar.TotalSKSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNamaProgramNull() {
+                return this.IsNull(this.tableKesediaanDosenMengajar.NamaProgramColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNamaProgramNull() {
+                this[this.tableKesediaanDosenMengajar.NamaProgramColumn] = global::System.Convert.DBNull;
             }
         }
         

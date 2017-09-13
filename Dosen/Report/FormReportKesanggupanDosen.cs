@@ -11,6 +11,8 @@ using Dosen.Dialog;
 using Dosen.Lib;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +20,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -41,6 +44,8 @@ namespace Dosen.Report
 
         public static DateTime dateKesanggupan;
 
+        private bool isPreview;
+        private List<AlokasiDosenAll> listPreviewAlokasiDosenAll;
         public FormReportKesanggupanDosen()
         {
             InitializeComponent();
@@ -153,7 +158,7 @@ namespace Dosen.Report
 
         private void PreviewReport(bool isCetakSemua)
         {
-            List<AlokasiDosenAll> listAlokasiDosenAll = new List<AlokasiDosenAll>();
+            listPreviewAlokasiDosenAll = new List<AlokasiDosenAll>();
 
             if (dgvDataDosen.Rows.Count == 0)
             {
@@ -165,12 +170,13 @@ namespace Dosen.Report
                 form.ShowDialog();
             }
 
+            isPreview = true;
             dgvDataDosen.PerformLayout();
             if (isCetakSemua)
             {
                 foreach (DataGridViewRow row in dgvDataDosen.Rows)
                 {
-                    listAlokasiDosenAll.Add(new AlokasiDosenAll()
+                    listPreviewAlokasiDosenAll.Add(new AlokasiDosenAll()
                     {
                         NIK = row.Cells["NIK"].Value.ToString(),
                         NamaDosen = row.Cells["NamaDosen"].Value.ToString(),
@@ -179,7 +185,7 @@ namespace Dosen.Report
                         Dekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NamaKepala,
                         NikDekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NikKepala,
                         NoSurat = string.Format("{0}/{1}/AMIKOM/{2}/{3}",
-                                    row.Cells["NIK"].Value.ToString().Substring(row.Cells["NIK"].Value.ToString().Length - 3, 3),
+                                    row.Cells["No"].Value.ToString(),
                                     row.Cells["KodeFakultas"].Value.ToString(),
                                     CommonLib.NumberToRoman(DateTime.Now.Month),
                                     DateTime.Now.Year)
@@ -193,7 +199,7 @@ namespace Dosen.Report
                     DataGridViewCheckBoxCell cb = row.Cells["Pilih"] as DataGridViewCheckBoxCell;
                     if (bool.Parse(cb.Value.ToString()))
                     {
-                        listAlokasiDosenAll.Add(new AlokasiDosenAll()
+                        listPreviewAlokasiDosenAll.Add(new AlokasiDosenAll()
                         {
                             NIK = row.Cells["NIK"].Value.ToString(),
                             NamaDosen = row.Cells["NamaDosen"].Value.ToString(),
@@ -202,7 +208,7 @@ namespace Dosen.Report
                             Dekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NamaKepala,
                             NikDekan = listDepartment.Find(d => d.KodeDepartment == row.Cells["KodeFakultas"].Value.ToString()).NikKepala,
                             NoSurat = string.Format("{0}/{1}/AMIKOM/{2}/{3}",
-                                        row.Cells["NIK"].Value.ToString().Substring(row.Cells["NIK"].Value.ToString().Length - 3, 3),
+                                        row.Cells["No"].Value.ToString(),
                                         row.Cells["KodeFakultas"].Value.ToString(),
                                         CommonLib.NumberToRoman(DateTime.Now.Month),
                                         DateTime.Now.Year)
@@ -219,7 +225,7 @@ namespace Dosen.Report
             listParams.Add(new ReportParameter("Semester", LoginAccess.Semester));
             listParams.Add(new ReportParameter("TahunAkademik", LoginAccess.TahunAkademik));
 
-            DataTable dtAlokasiDosen = CommonLib.ToDataTable(listAlokasiDosenAll);
+            DataTable dtAlokasiDosen = CommonLib.ToDataTable(listPreviewAlokasiDosenAll);
 
             reportViewer1.LocalReport.SetParameters(listParams);
             IDataReader dr = dtAlokasiDosen.CreateDataReader();
@@ -241,6 +247,173 @@ namespace Dosen.Report
 
             DataGridViewCheckBoxCell cb = dgvDataDosen.Rows[e.RowIndex].Cells["Pilih"] as DataGridViewCheckBoxCell;
             cb.Value = !bool.Parse(cb.Value.ToString());
+        }
+
+        private void saveToWordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cmbFakultas.SelectedIndex == 0)
+            {
+                MessageBox.Show("Fakultas belum dipilih");
+                return;
+            }
+
+            if (!isPreview)
+            {
+                MessageBox.Show("Report harus di preview dahulu");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Report akan di konversi ke file PDF terpisah untuk setiap halaman. Lanjutkan?", "Export PDF", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
+                return;
+
+            string file = "KesanggupanMengajar.docx";
+            Warning[] warning = null;
+            string[] streamId = null;
+            string mimeType = null;
+            string encoding = null;
+            string extension = null;
+
+            byte[] bytes = reportViewer1.LocalReport.Render(
+                "WORDOPENXML", null, out mimeType, out encoding, out extension,
+                out streamId, out warning);
+
+            using (FileStream fs = new FileStream(file, FileMode.Create))
+            {
+                fs.Write(bytes, 0, bytes.Length);
+            }
+
+            string pathSave = string.Empty;
+            if (folderBrowserDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                pathSave = folderBrowserDialog1.SelectedPath;
+            }
+            else
+            {
+                return;
+            }
+
+            var app = new Microsoft.Office.Interop.Word.Application();
+            if (app == null)
+            {
+                MessageBox.Show("Word could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+
+            try
+            {
+                Loading(true); object missObj = System.Reflection.Missing.Value;
+                app.Visible = false;
+
+                string filename = @Application.StartupPath + "/" + file;
+                var doc = app.Documents.Open(@Application.StartupPath + "/" + file);
+                int pageCount = doc.Range().Information[Microsoft.Office.Interop.Word.WdInformation.wdNumberOfPagesInDocument];
+                int pageStart = 0;
+                for (int currentPageIndex = 1; currentPageIndex <= pageCount; currentPageIndex++)
+                {
+                    var page = doc.Range(pageStart);
+                    if (currentPageIndex < pageCount)
+                    {
+                        page.End = page.GoTo(
+                        What: Microsoft.Office.Interop.Word.WdGoToItem.wdGoToPage,
+                        Which: Microsoft.Office.Interop.Word.WdGoToDirection.wdGoToFirst,
+                        Count: currentPageIndex + 1).Start - 1;
+
+                        pageStart = page.End + 1;
+                        page.Copy();
+                        var doc2 = app.Documents.Add();
+                        doc2.PageSetup.BottomMargin = 0;
+                        doc2.PageSetup.TopMargin = 0;
+                        doc2.PageSetup.LeftMargin = 0;
+                        doc2.PageSetup.RightMargin = 0;
+                        doc2.Range().Paste();
+                        var namaDosen = listPreviewAlokasiDosenAll[currentPageIndex - 1].NamaDosen;
+                        var namaFakultas = listPreviewAlokasiDosenAll[currentPageIndex - 1].KodeFakultas;
+                        Directory.CreateDirectory(pathSave + @"\" + namaDosen);
+                        doc2.SaveAs(pathSave + "/" + namaDosen + "/" + namaDosen + "(" + KodeFakultas + ")-KesanggupanMengajar.docx");
+                    }
+                }
+
+                System.Diagnostics.Process.Start("explorer.exe", pathSave);
+                app.Quit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Loading(false);
+            }
+            Loading(false);
+        }
+
+        private void saveToPDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbFakultas.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Fakultas belum dipilih");
+                    return;
+                }
+
+                if (!isPreview)
+                {
+                    MessageBox.Show("Report harus di preview dahulu");
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Report akan di konversi ke file PDF terpisah untuk setiap halaman. Lanjutkan?", "Export PDF", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.Cancel)
+                    return;
+
+                string filename = "KesanggupanMengajar.pdf";
+                Warning[] warning = null;
+                string[] streamId = null;
+                string mimeType = null;
+                string encoding = null;
+                string extension = null;
+
+                byte[] bytes = reportViewer1.LocalReport.Render(
+                    "PDF", null, out mimeType, out encoding, out extension,
+                    out streamId, out warning);
+
+                using (FileStream fs = new FileStream(filename, FileMode.Create))
+                {
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+
+                string pathSave = string.Empty;
+                if (folderBrowserDialog1.ShowDialog(this) == DialogResult.OK)
+                {
+                    pathSave = folderBrowserDialog1.SelectedPath;
+                }
+                else
+                {
+                    return;
+                }
+                Loading(true);
+                PdfDocument inputDocument = PdfReader.Open(filename, PdfDocumentOpenMode.Import);
+                string path = pathSave.ToString();
+                int i = 0;
+                foreach (var item in listPreviewAlokasiDosenAll)
+                {
+                    PdfDocument output = new PdfDocument();
+                    output.Version = inputDocument.Version;
+                    output.Info.Title = item.NamaDosen + " (" + item.KodeFakultas + ")";
+                    output.Info.Creator = inputDocument.Info.Creator;
+
+                    output.AddPage(inputDocument.Pages[i]);
+                    Directory.CreateDirectory(path + @"\" + item.NamaDosen);
+                    output.Save(path + "/" + item.NamaDosen + "/" + item.NamaDosen + "(" + item.KodeFakultas + ")-KesanggupanMengajar.pdf");
+                    i++;
+                }
+                System.Diagnostics.Process.Start("explorer.exe", @path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Loading(false);
+            }
+            Loading(false);
         }
     }
 

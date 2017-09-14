@@ -36,7 +36,7 @@ namespace Dosen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvJenjangDosen = new AdvancedDataGridView.TreeGridView();
             this.Tree = new AdvancedDataGridView.TreeGridColumn();
             this.IdTransJenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +57,7 @@ namespace Dosen
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.tambahJenjangPendidikanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJenjangDosen)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -72,14 +73,14 @@ namespace Dosen
             this.dgvJenjangDosen.AllowUserToDeleteRows = false;
             this.dgvJenjangDosen.AllowUserToResizeRows = false;
             this.dgvJenjangDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJenjangDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJenjangDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvJenjangDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJenjangDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tree,
@@ -172,14 +173,15 @@ namespace Dosen
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hapusToolStripMenuItem});
+            this.hapusToolStripMenuItem,
+            this.tambahJenjangPendidikanToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(223, 70);
             // 
             // hapusToolStripMenuItem
             // 
             this.hapusToolStripMenuItem.Name = "hapusToolStripMenuItem";
-            this.hapusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hapusToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.hapusToolStripMenuItem.Text = "Hapus";
             this.hapusToolStripMenuItem.Click += new System.EventHandler(this.hapusToolStripMenuItem_Click);
             // 
@@ -218,7 +220,6 @@ namespace Dosen
             this.btntambah.Size = new System.Drawing.Size(113, 30);
             this.btntambah.TabIndex = 5;
             this.btntambah.Text = "Tambah";
-            this.btntambah.Visible = false;
             this.btntambah.Click += new System.EventHandler(this.btntambah_Click);
             // 
             // progressBar1
@@ -272,6 +273,13 @@ namespace Dosen
             this.txtCari.TabIndex = 1;
             this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
+            // tambahJenjangPendidikanToolStripMenuItem
+            // 
+            this.tambahJenjangPendidikanToolStripMenuItem.Name = "tambahJenjangPendidikanToolStripMenuItem";
+            this.tambahJenjangPendidikanToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.tambahJenjangPendidikanToolStripMenuItem.Text = "Tambah Jenjang Pendidikan";
+            this.tambahJenjangPendidikanToolStripMenuItem.Click += new System.EventHandler(this.tambahJenjangPendidikanToolStripMenuItem_Click);
+            // 
             // FormJenjangPendidikanDosen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -319,5 +327,6 @@ namespace Dosen
         private System.Windows.Forms.DataGridViewTextBoxColumn Universitas;
         private System.Windows.Forms.DataGridViewTextBoxColumn TglMulai;
         private System.Windows.Forms.DataGridViewTextBoxColumn TglSelesai;
+        private System.Windows.Forms.ToolStripMenuItem tambahJenjangPendidikanToolStripMenuItem;
     }
 }

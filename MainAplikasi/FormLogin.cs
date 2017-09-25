@@ -140,5 +140,13 @@ namespace MainAplikasi
 
             public string error_description { get; set; }
         }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }

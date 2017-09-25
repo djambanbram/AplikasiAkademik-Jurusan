@@ -164,6 +164,11 @@ namespace Dosen.Dialog
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(txtNIK.Text))
+            {
+                return;
+            }
+
             int idUniversitas = int.Parse(cmbUniv.SelectedValue.ToString());
             int idProdi = int.Parse(cmbProdi.SelectedValue.ToString());
             int idJenjang = int.Parse(cmbJenjang.SelectedValue.ToString());

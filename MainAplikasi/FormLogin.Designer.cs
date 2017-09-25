@@ -70,11 +70,11 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BeforeTouchSize = new System.Drawing.Size(95, 28);
+            this.btnLogin.BeforeTouchSize = new System.Drawing.Size(100, 28);
             this.btnLogin.IsBackStageButton = false;
-            this.btnLogin.Location = new System.Drawing.Point(122, 68);
+            this.btnLogin.Location = new System.Drawing.Point(117, 68);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(95, 28);
+            this.btnLogin.Size = new System.Drawing.Size(100, 28);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -103,6 +103,7 @@
             this.txtPassword.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtPassword.TabIndex = 7;
             this.txtPassword.Text = "FW7u@Mv!";
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // FormLogin
             // 

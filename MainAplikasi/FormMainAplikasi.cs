@@ -62,6 +62,7 @@ namespace MainAplikasi
         private FormReportKesediaanDosen formReportKesediaanDosen;
         private FormReportDosenWali formReportDosenWali;
         private FormReportHonorDosenMengajar formReportHonorDosenMengajar;
+        private FormReportHonorDosenMengajar2 formReportHonorDosenMengajar2;
         private FormReportHasilMatrikulasi formReportHasilMatrikulasi;
 
         private HttpResponseMessage response;
@@ -203,12 +204,12 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemLaporanHonorDosen")
             {
-                if (formReportHonorDosenMengajar == null || formReportHonorDosenMengajar.IsDisposed)
+                if (formReportHonorDosenMengajar2 == null || formReportHonorDosenMengajar2.IsDisposed)
                 {
-                    formReportHonorDosenMengajar = new FormReportHonorDosenMengajar();
-                    formReportHonorDosenMengajar.MdiParent = this;
+                    formReportHonorDosenMengajar2 = new FormReportHonorDosenMengajar2();
+                    formReportHonorDosenMengajar2.MdiParent = this;
                 }
-                form = formReportHonorDosenMengajar;
+                form = formReportHonorDosenMengajar2;
             }
             else if (e.XPTaskBarItem.Name == "itemLaporanAlihJalur")
             {

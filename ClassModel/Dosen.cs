@@ -42,4 +42,33 @@ namespace ClassModel
         public string Nik { get; set; }
         public string NamaDosen { get; set; }
     }
+
+    public class HonorMengajarDosen
+    {
+        public string Kode { get; set; }
+        public string MataKuliah { get; set; }
+        public string Kelas { get; set; }
+        public int SemesterDitawarkan { get; set; }
+        public string NIK { get; set; }
+        public bool IsPraktikumDosenLain { get; set; }
+        public string NamaDosen { get; set; }
+        public string JenisMataKuliah { get; set; }
+        public int Sks { get; set; }
+        public int SksTp { get; set; }
+        public int BebanSks { get; set; }
+        public int JumlahPertemuan { get; set; }
+        public string KodeFakultas { get; set; }
+        public string NamaFakultas { get; set; }
+        public string IdProdi { get; set; }
+        public string NamaProdi { get; set; }
+        public string KodeProgram { get; set; }
+        public string NamaProgram { get; set; }
+        public string JenjangPendidikan { get; set; }
+        public string Golongan { get; set; }
+        public string Npwp { get; set; }
+        public string NoRekeningBank { get; set; }
+        public string NamaBank { get; set; }
+        public decimal HFix { get; set; }
+        public decimal HVar { get; set; }
+    }
 }

@@ -8,6 +8,7 @@
 using ApiService;
 using ClassModel;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PenawaranKurikulum.DataBinding;
 using PenawaranKurikulum.Dialog;
 using PenawaranKurikulum.Lib;
@@ -35,6 +36,7 @@ namespace PenawaranKurikulum
         private string URLGetDosenMengajar = baseAddress + "/jurusan_api/api/pengajaran/get_dosen_mengajar";
         private string URLGetDataDosen = baseAddress + "/jurusan_api/api/pengajaran/get_dosen";
         private string URLSaveAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/save_dosen_mengajar";
+        private string URLCanDeleteAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/is_dosen_sudah_presensi";
         private string URLDeleteAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/del_dosen_mengajar";
         private string URLGetKelasCampuran = baseAddress + "/jurusan_api/api/kelas/get_kelas_campuran";
 
@@ -719,6 +721,28 @@ namespace PenawaranKurikulum
 
             Loading(true);
             string jsonData = JsonConvert.SerializeObject(valueDeleteOrSet);
+            //cek delete alokasi
+            response = await webApi.Post(URLCanDeleteAlokasiDosen, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+
+            var data = JObject.Parse(response.Content.ReadAsStringAsync().Result)["IsDosenSudahPresensi"].ToString();
+            bool IsDosenSudahPresensi = bool.Parse(data);
+
+            if (IsDosenSudahPresensi)
+            {
+                DialogResult dr = MessageBox.Show("Dosen sudah melakukan presensi kelas untuk mata kuliah ini, atau perkuliahan telah berlangsung.\nJika alokasi di hapus, maka presensi dosen dan mahasiswa akan ikut terhapus.\nApakah akan memproses hapus alokasi dosen?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.No)
+                {
+                    Loading(false);
+                    return;
+                }
+            }
+
             //Delete Alokasi
             response = await webApi.Post(URLDeleteAlokasiDosen, jsonData, true);
             if (response.IsSuccessStatusCode)

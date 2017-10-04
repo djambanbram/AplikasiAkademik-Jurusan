@@ -55,9 +55,11 @@ namespace Dosen.Report
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvHonor = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prodi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KategoriDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +69,9 @@ namespace Dosen.Report
             this.PendGol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HrFix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HrVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HRTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pajak = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HRDiterima = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Npwp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoRek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bank = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,6 +118,7 @@ namespace Dosen.Report
             this.btnProses.Size = new System.Drawing.Size(120, 28);
             this.btnProses.TabIndex = 20;
             this.btnProses.Text = "Proses";
+            this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
             // 
             // cmbKategoriDosen
             // 
@@ -120,14 +126,14 @@ namespace Dosen.Report
             this.cmbKategoriDosen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKategoriDosen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKategoriDosen.Items.AddRange(new object[] {
-            "Pilih",
+            "Semua Dosen",
             "Dosen Tetap",
             "Dosen Tidak Tetap"});
             this.cmbKategoriDosen.Location = new System.Drawing.Point(119, 69);
             this.cmbKategoriDosen.Name = "cmbKategoriDosen";
             this.cmbKategoriDosen.Size = new System.Drawing.Size(259, 25);
             this.cmbKategoriDosen.TabIndex = 17;
-            this.cmbKategoriDosen.Text = "Pilih";
+            this.cmbKategoriDosen.Text = "Semua Dosen";
             // 
             // autoLabel8
             // 
@@ -191,6 +197,7 @@ namespace Dosen.Report
             this.cmbProgram.Name = "cmbProgram";
             this.cmbProgram.Size = new System.Drawing.Size(293, 24);
             this.cmbProgram.TabIndex = 11;
+            this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
             // 
             // autoLabel4
             // 
@@ -240,6 +247,7 @@ namespace Dosen.Report
             this.btnExport.Size = new System.Drawing.Size(133, 28);
             this.btnExport.TabIndex = 21;
             this.btnExport.Text = "Export Excel";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -283,9 +291,11 @@ namespace Dosen.Report
             this.dgvHonor.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvHonor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHonor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.No,
             this.NIK,
             this.Nama,
             this.Prodi,
+            this.KategoriDosen,
             this.Kode,
             this.MataKuliah,
             this.SksMK,
@@ -295,6 +305,9 @@ namespace Dosen.Report
             this.PendGol,
             this.HrFix,
             this.HrVar,
+            this.HRTotal,
+            this.Pajak,
+            this.HRDiterima,
             this.Npwp,
             this.NoRek,
             this.Bank});
@@ -306,6 +319,13 @@ namespace Dosen.Report
             this.dgvHonor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHonor.Size = new System.Drawing.Size(819, 284);
             this.dgvHonor.TabIndex = 23;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 40;
             // 
             // NIK
             // 
@@ -328,6 +348,13 @@ namespace Dosen.Report
             this.Prodi.ReadOnly = true;
             this.Prodi.Width = 150;
             // 
+            // KategoriDosen
+            // 
+            this.KategoriDosen.HeaderText = "Kat. Dosen";
+            this.KategoriDosen.Name = "KategoriDosen";
+            this.KategoriDosen.ReadOnly = true;
+            this.KategoriDosen.Width = 130;
+            // 
             // Kode
             // 
             this.Kode.HeaderText = "Kode";
@@ -337,7 +364,7 @@ namespace Dosen.Report
             // 
             // MataKuliah
             // 
-            this.MataKuliah.HeaderText = "MataKuliah";
+            this.MataKuliah.HeaderText = "Mata Kuliah";
             this.MataKuliah.Name = "MataKuliah";
             this.MataKuliah.ReadOnly = true;
             this.MataKuliah.Width = 200;
@@ -382,14 +409,31 @@ namespace Dosen.Report
             this.HrFix.HeaderText = "HR Fix";
             this.HrFix.Name = "HrFix";
             this.HrFix.ReadOnly = true;
-            this.HrFix.Width = 120;
             // 
             // HrVar
             // 
             this.HrVar.HeaderText = "HR Var";
             this.HrVar.Name = "HrVar";
             this.HrVar.ReadOnly = true;
-            this.HrVar.Width = 120;
+            // 
+            // HRTotal
+            // 
+            this.HRTotal.HeaderText = "HR Total";
+            this.HRTotal.Name = "HRTotal";
+            this.HRTotal.ReadOnly = true;
+            // 
+            // Pajak
+            // 
+            this.Pajak.HeaderText = "Pajak";
+            this.Pajak.Name = "Pajak";
+            this.Pajak.ReadOnly = true;
+            // 
+            // HRDiterima
+            // 
+            this.HRDiterima.HeaderText = "HR Diterima";
+            this.HRDiterima.Name = "HRDiterima";
+            this.HRDiterima.ReadOnly = true;
+            this.HRDiterima.Width = 120;
             // 
             // Npwp
             // 
@@ -462,9 +506,11 @@ namespace Dosen.Report
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridView dgvHonor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prodi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KategoriDosen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksMK;
@@ -474,6 +520,9 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn PendGol;
         private System.Windows.Forms.DataGridViewTextBoxColumn HrFix;
         private System.Windows.Forms.DataGridViewTextBoxColumn HrVar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HRTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pajak;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HRDiterima;
         private System.Windows.Forms.DataGridViewTextBoxColumn Npwp;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoRek;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bank;

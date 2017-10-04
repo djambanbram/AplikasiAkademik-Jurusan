@@ -70,5 +70,6 @@ namespace ClassModel
         public string NamaBank { get; set; }
         public decimal HFix { get; set; }
         public decimal HVar { get; set; }
+        public string KategoriDosen { get; set; }
     }
 }

@@ -65,6 +65,8 @@ namespace Dosen.Report
             this.SksMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JmlKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BebanSks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksBayar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JmlPertemuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PendGol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HrFix = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -240,11 +242,11 @@ namespace Dosen.Report
             // 
             // btnExport
             // 
-            this.btnExport.BeforeTouchSize = new System.Drawing.Size(133, 28);
+            this.btnExport.BeforeTouchSize = new System.Drawing.Size(155, 28);
             this.btnExport.IsBackStageButton = false;
-            this.btnExport.Location = new System.Drawing.Point(564, 3);
+            this.btnExport.Location = new System.Drawing.Point(542, 3);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(133, 28);
+            this.btnExport.Size = new System.Drawing.Size(155, 28);
             this.btnExport.TabIndex = 21;
             this.btnExport.Text = "Export Excel";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -276,7 +278,7 @@ namespace Dosen.Report
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(344, 3);
+            this.progressBar1.Location = new System.Drawing.Point(322, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(214, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -288,6 +290,7 @@ namespace Dosen.Report
             this.dgvHonor.AllowUserToAddRows = false;
             this.dgvHonor.AllowUserToDeleteRows = false;
             this.dgvHonor.AllowUserToResizeRows = false;
+            this.dgvHonor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvHonor.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvHonor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHonor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -301,6 +304,8 @@ namespace Dosen.Report
             this.SksMK,
             this.JmlKelas,
             this.SksTotal,
+            this.BebanSks,
+            this.SksBayar,
             this.JmlPertemuan,
             this.PendGol,
             this.HrFix,
@@ -325,136 +330,154 @@ namespace Dosen.Report
             this.No.HeaderText = "No";
             this.No.Name = "No";
             this.No.ReadOnly = true;
-            this.No.Width = 40;
+            this.No.Width = 51;
             // 
             // NIK
             // 
             this.NIK.HeaderText = "NIK";
             this.NIK.Name = "NIK";
             this.NIK.ReadOnly = true;
-            this.NIK.Width = 80;
+            this.NIK.Width = 54;
             // 
             // Nama
             // 
             this.Nama.HeaderText = "Nama";
             this.Nama.Name = "Nama";
             this.Nama.ReadOnly = true;
-            this.Nama.Width = 250;
+            this.Nama.Width = 68;
             // 
             // Prodi
             // 
             this.Prodi.HeaderText = "Prodi";
             this.Prodi.Name = "Prodi";
             this.Prodi.ReadOnly = true;
-            this.Prodi.Width = 150;
+            this.Prodi.Width = 64;
             // 
             // KategoriDosen
             // 
             this.KategoriDosen.HeaderText = "Kat. Dosen";
             this.KategoriDosen.Name = "KategoriDosen";
             this.KategoriDosen.ReadOnly = true;
-            this.KategoriDosen.Width = 130;
+            this.KategoriDosen.Width = 96;
             // 
             // Kode
             // 
             this.Kode.HeaderText = "Kode";
             this.Kode.Name = "Kode";
             this.Kode.ReadOnly = true;
-            this.Kode.Width = 70;
+            this.Kode.Width = 64;
             // 
             // MataKuliah
             // 
             this.MataKuliah.HeaderText = "Mata Kuliah";
             this.MataKuliah.Name = "MataKuliah";
             this.MataKuliah.ReadOnly = true;
-            this.MataKuliah.Width = 200;
+            this.MataKuliah.Width = 102;
             // 
             // SksMK
             // 
             this.SksMK.HeaderText = "Sks MK";
             this.SksMK.Name = "SksMK";
             this.SksMK.ReadOnly = true;
-            this.SksMK.Width = 50;
+            this.SksMK.Width = 76;
             // 
             // JmlKelas
             // 
             this.JmlKelas.HeaderText = "Jml. Kelas";
             this.JmlKelas.Name = "JmlKelas";
             this.JmlKelas.ReadOnly = true;
-            this.JmlKelas.Width = 50;
+            this.JmlKelas.Width = 90;
             // 
             // SksTotal
             // 
             this.SksTotal.HeaderText = "Sks Total";
             this.SksTotal.Name = "SksTotal";
             this.SksTotal.ReadOnly = true;
-            this.SksTotal.Width = 50;
+            this.SksTotal.Width = 84;
+            // 
+            // BebanSks
+            // 
+            this.BebanSks.HeaderText = "Beban SKS";
+            this.BebanSks.Name = "BebanSks";
+            this.BebanSks.ReadOnly = true;
+            this.BebanSks.Width = 95;
+            // 
+            // SksBayar
+            // 
+            this.SksBayar.HeaderText = "SKS Bayar";
+            this.SksBayar.Name = "SksBayar";
+            this.SksBayar.ReadOnly = true;
+            this.SksBayar.Width = 91;
             // 
             // JmlPertemuan
             // 
             this.JmlPertemuan.HeaderText = "Jml. Ptm";
             this.JmlPertemuan.Name = "JmlPertemuan";
             this.JmlPertemuan.ReadOnly = true;
-            this.JmlPertemuan.Width = 50;
+            this.JmlPertemuan.Width = 81;
             // 
             // PendGol
             // 
             this.PendGol.HeaderText = "Pend/Gol";
             this.PendGol.Name = "PendGol";
             this.PendGol.ReadOnly = true;
-            this.PendGol.Width = 150;
+            this.PendGol.Width = 87;
             // 
             // HrFix
             // 
-            this.HrFix.HeaderText = "HR Fix";
+            this.HrFix.HeaderText = "HR Fix/Bulan";
             this.HrFix.Name = "HrFix";
             this.HrFix.ReadOnly = true;
+            this.HrFix.Width = 105;
             // 
             // HrVar
             // 
-            this.HrVar.HeaderText = "HR Var";
+            this.HrVar.HeaderText = "HR Var/Bulan";
             this.HrVar.Name = "HrVar";
             this.HrVar.ReadOnly = true;
+            this.HrVar.Width = 109;
             // 
             // HRTotal
             // 
             this.HRTotal.HeaderText = "HR Total";
             this.HRTotal.Name = "HRTotal";
             this.HRTotal.ReadOnly = true;
+            this.HRTotal.Width = 82;
             // 
             // Pajak
             // 
             this.Pajak.HeaderText = "Pajak";
             this.Pajak.Name = "Pajak";
             this.Pajak.ReadOnly = true;
+            this.Pajak.Width = 63;
             // 
             // HRDiterima
             // 
             this.HRDiterima.HeaderText = "HR Diterima";
             this.HRDiterima.Name = "HRDiterima";
             this.HRDiterima.ReadOnly = true;
-            this.HRDiterima.Width = 120;
+            this.HRDiterima.Width = 103;
             // 
             // Npwp
             // 
             this.Npwp.HeaderText = "Npwp";
             this.Npwp.Name = "Npwp";
             this.Npwp.ReadOnly = true;
-            this.Npwp.Width = 200;
+            this.Npwp.Width = 68;
             // 
             // NoRek
             // 
             this.NoRek.HeaderText = "No. Rekening";
             this.NoRek.Name = "NoRek";
             this.NoRek.ReadOnly = true;
-            this.NoRek.Width = 200;
+            this.NoRek.Width = 111;
             // 
             // Bank
             // 
             this.Bank.HeaderText = "Bank";
             this.Bank.Name = "Bank";
             this.Bank.ReadOnly = true;
-            this.Bank.Width = 200;
+            this.Bank.Width = 60;
             // 
             // FormReportHonorDosenMengajar2
             // 
@@ -516,6 +539,8 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn SksMK;
         private System.Windows.Forms.DataGridViewTextBoxColumn JmlKelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BebanSks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SksBayar;
         private System.Windows.Forms.DataGridViewTextBoxColumn JmlPertemuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn PendGol;
         private System.Windows.Forms.DataGridViewTextBoxColumn HrFix;

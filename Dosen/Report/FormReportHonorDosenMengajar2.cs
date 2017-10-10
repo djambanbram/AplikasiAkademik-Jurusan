@@ -37,7 +37,6 @@ namespace Dosen.Report
         private List<Prodi> listProdi;
         private List<Program> listProgram;
         private List<HonorMengajarDosen> listHonorDosenMengajar;
-        //private List<HonorMengajarDosen> listTemp;
         private List<DataHonorDosenMengajar> listDataHonorDosenMengajar;
 
         private string KodeFakultas;
@@ -104,16 +103,6 @@ namespace Dosen.Report
             cmbTahunAkademik.Text = LoginAccess.TahunAkademik;
             cmbSemester.Text = LoginAccess.Semester;
 
-            var getData = new { TahunAkademik = cmbTahunAkademik.Text, Semester = cmbSemester.SelectedValue.ToString() };
-            var jsonData = JsonConvert.SerializeObject(getData);
-            response = await webApi.Post(URLGethonorDosenMengajar, jsonData, true);
-            if (!response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(webApi.ReturnMessage(response));
-                Loading(false);
-                return;
-            }
-
             dgvHonor.Rows.Clear();
 
             Loading(false);
@@ -161,32 +150,23 @@ namespace Dosen.Report
             Close();
         }
 
-        private void LoadHonorDosen(string kodeFakultas, string kodeProdi, string kodeProgram)
+        private async Task LoadHonorDosen(string kodeFakultas, string kodeProdi, string kodeProgram)
         {
             Loading(true);
+
+            var getData = new { TahunAkademik = cmbTahunAkademik.Text, Semester = cmbSemester.SelectedValue.ToString() };
+            var jsonData = JsonConvert.SerializeObject(getData);
+            response = await webApi.Post(URLGethonorDosenMengajar, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
             listHonorDosenMengajar = JsonConvert.DeserializeObject<List<HonorMengajarDosen>>(response.Content.ReadAsStringAsync().Result);
             listDataHonorDosenMengajar = new List<DataHonorDosenMengajar>();
             dgvHonor.Columns.Clear();
             List<HonorMengajarDosen> listTemp = new List<HonorMengajarDosen>();
-            //if (!string.IsNullOrWhiteSpace(KodeProgram))
-            //{
-            //    listTemp = listHonorDosenMengajar.Where(h => h.KodeProgram == KodeProgram).ToList();
-            //}
-            //else if (!string.IsNullOrWhiteSpace(IdProdi))
-            //{
-            //    listTemp = listHonorDosenMengajar.Where(h => h.IdProdi == IdProdi).ToList();
-            //}
-            //else if (!string.IsNullOrWhiteSpace(KodeFakultas))
-            //{
-            //    if (KodeFakultas == "Semua")
-            //    {
-            //        listTemp = listHonorDosenMengajar;
-            //    }
-            //    else
-            //    {
-            //        listTemp = listHonorDosenMengajar.Where(h => h.KodeFakultas == KodeFakultas).ToList();
-            //    }
-            //}
 
             listTemp = listHonorDosenMengajar;
             if (cmbKategoriDosen.SelectedIndex > 0)
@@ -210,9 +190,9 @@ namespace Dosen.Report
                 if (tempNik != h.NIK)
                 {
                     tempNik = h.NIK;
-                    tempBeban = listTemp.Find(j => j.NIK == tempNik).BebanSks = 6;
+                    tempBeban = listTemp.Find(j => j.NIK == tempNik).BebanSks;
                 }
-                var jmlSksBayar = 0;
+                decimal jmlSksBayar = 0;
                 if (tempBeban <= jmlSksTotal && tempBeban != 0)
                 {
                     jmlSksBayar = jmlSksTotal - tempBeban;
@@ -226,7 +206,7 @@ namespace Dosen.Report
                     jmlSksBayar = jmlSksTotal;
                     tempBeban = 0;
                 }
-                int jmlPertemuanMengajar = jmlSksTotal * pertemuanPerSKs;
+                decimal jmlPertemuanMengajar = jmlSksTotal * pertemuanPerSKs;
                 var hrFixBulan = (jmlSksBayar * h.HFix);
                 decimal hrVarBulan = 0;
                 if (h.KodeProgram == "60" || h.KodeProgram == "61" || h.KodeProgram == "62")
@@ -278,10 +258,15 @@ namespace Dosen.Report
                 d.JumlahPertemuan = jmlPertemuanMengajar;
                 d.PendidikanGolongan = string.Format("{0}/{1}", h.JenjangPendidikan, h.Golongan);
                 d.HrVarPerBulan = hrVarBulan;
+                d.HrVarPerBulanFormat = hrVarBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrFixPerBulan = hrFixBulan;
+                d.HrFixPerBulanFormat = hrFixBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrTotalPerBulan = hrTotal;
+                d.HrTotalPerBulanFormat = hrTotal.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.PajakTotal = pajakTotal;
+                d.PajakTotalFormat = pajakTotal.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrDiterimaPerBulan = hrDiterima;
+                d.HrDiterimaPerBulanFormat = hrDiterima.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.Npwp = h.Npwp;
                 d.NoRekening = h.NoRekeningBank;
                 d.NamaBank = h.NamaBank;
@@ -305,137 +290,63 @@ namespace Dosen.Report
             if (!string.IsNullOrWhiteSpace(KodeProgram))
             {
                 dgvHonor.DataSource = listDataHonorDosenMengajar.Where(p => p.KodeProgram == KodeProgram).ToList();
+                CekHonorKosong(listDataHonorDosenMengajar.Where(p => p.KodeProgram == KodeProgram).ToList());
             }
             else if (!string.IsNullOrWhiteSpace(IdProdi))
             {
                 dgvHonor.DataSource = listDataHonorDosenMengajar.Where(i => i.IdProdi == IdProdi).ToList();
+                CekHonorKosong(listDataHonorDosenMengajar.Where(i => i.IdProdi == IdProdi).ToList());
             }
             else if (!string.IsNullOrWhiteSpace(KodeFakultas))
             {
                 if (KodeFakultas == "Semua")
                 {
                     dgvHonor.DataSource = listDataHonorDosenMengajar;
+                    CekHonorKosong(listDataHonorDosenMengajar);
                 }
                 else
                 {
                     dgvHonor.DataSource = listDataHonorDosenMengajar.Where(f => f.KodeFakultas == KodeFakultas).ToList();
+                    CekHonorKosong(listDataHonorDosenMengajar.Where(f => f.KodeFakultas == KodeFakultas).ToList());
                 }
             }
 
             dgvHonor.Columns["KodeFakultas"].Visible = false;
             dgvHonor.Columns["IdProdi"].Visible = false;
             dgvHonor.Columns["KodeProgram"].Visible = false;
+            dgvHonor.Columns["HrVarPerBulan"].Visible = false;
+            dgvHonor.Columns["HrFixPerBulan"].Visible = false;
+            dgvHonor.Columns["HrTotalPerBulan"].Visible = false;
+            dgvHonor.Columns["PajakTotal"].Visible = false;
+            dgvHonor.Columns["HrDiterimaPerBulan"].Visible = false;
+            dgvHonor.Columns["Npwp"].Visible = false;
+            dgvHonor.Columns["NoRekening"].Visible = false;
+            dgvHonor.Columns["NamaBank"].Visible = false;
             dgvHonor.Columns["Nomor"].Frozen = true;
             dgvHonor.Columns["NIK"].Frozen = true;
             dgvHonor.Columns["NamaDosen"].Frozen = true;
             Loading(false);
         }
 
-        //private void LoadHonorDosen2(string kodeFakultas, string kodeProdi, string kodeProgram)
-        //{
-        //    Loading(true);
-        //    listTemp = null;
-        //    dgvHonor.Rows.Clear();
-        //    if (!string.IsNullOrWhiteSpace(KodeProgram))
-        //    {
-        //        listTemp = listHonorDosenMengajar.Where(h => h.KodeProgram == KodeProgram).ToList();
-        //    }
-        //    else if (!string.IsNullOrWhiteSpace(IdProdi))
-        //    {
-        //        listTemp = listHonorDosenMengajar.Where(h => h.IdProdi == IdProdi).ToList();
-        //    }
-        //    else if (!string.IsNullOrWhiteSpace(KodeFakultas))
-        //    {
-        //        if (KodeFakultas == "Semua")
-        //        {
-        //            listTemp = listHonorDosenMengajar;
-        //        }
-        //        else
-        //        {
-        //            listTemp = listHonorDosenMengajar.Where(h => h.KodeFakultas == KodeFakultas).ToList();
-        //        }
-        //    }
+        private void CekHonorKosong(List<DataHonorDosenMengajar> list)
+        {
+            foreach (DataGridViewRow dgRow in dgvHonor.Rows)
+            {
+                if (list[dgRow.Index].PendidikanGolongan.Split('/')[0] == string.Empty)
+                {
+                    dgRow.DefaultCellStyle.BackColor = Color.LightYellow;
+                }
+            }
+        }
 
-        //    if (cmbKategoriDosen.SelectedIndex > 0)
-        //    {
-        //        listTemp = listTemp.Where(h => h.KategoriDosen == cmbKategoriDosen.Text).ToList();
-        //    }
-
-        //    var listTemp2 = listTemp
-        //        .Select(h => new { h.NIK, h.NamaDosen, h.BebanSks, h.KategoriDosen, h.JenjangPendidikan, h.Golongan, h.HFix, h.HVar, h.Npwp, h.NoRekeningBank, h.NamaBank })
-        //        .Distinct()
-        //        .ToList();
-        //    int no = 1;
-        //    decimal pajak = 0;
-        //    int pertemuanPerSKs = 7;
-        //    foreach (var h in listTemp2)
-        //    {
-        //        var jmlKelas = listTemp.Where(j => j.NIK == h.NIK).ToList().Count;
-        //        var jmlSksTotal = listTemp.Where(k => k.NIK == h.NIK).Sum(s => s.SksTp);//jmlKelas * h.SksTp;
-        //        var jmlSksBayar = h.BebanSks >= jmlSksTotal ? 0 : jmlSksTotal - h.BebanSks;
-        //        decimal jmlPertemuanMengajar = jmlSksTotal * pertemuanPerSKs;
-        //        var hrFix = (jmlSksBayar * h.HFix);
-        //        var hrVar = (jmlPertemuanMengajar * h.HVar) / 6;
-        //        decimal hrTotal = hrFix + hrVar;
-        //        if (!string.IsNullOrWhiteSpace(h.Npwp))
-        //        {
-        //            pajak = Convert.ToDecimal(2.5);
-        //        }
-        //        else
-        //        {
-        //            pajak = 5;
-        //        }
-        //        var pajakTotal = hrTotal * (pajak / 100);
-        //        var hrDiterima = hrTotal - pajakTotal;
-        //        dgvHonor.Rows.Add(
-        //            no,
-        //            h.NIK,
-        //            h.NamaDosen,
-        //            "",
-        //            h.KategoriDosen.Replace("Dosen", ""),
-        //            "",
-        //            "",
-        //            "",
-        //            jmlKelas,
-        //            jmlSksTotal,
-        //            h.BebanSks,
-        //            jmlSksBayar,
-        //            jmlPertemuanMengajar,
-        //            string.Format("{0}/{1}", h.JenjangPendidikan, h.Golongan),
-        //            hrFix,
-        //            hrVar,
-        //            hrTotal,
-        //            pajakTotal,
-        //            hrDiterima,
-        //            h.Npwp,
-        //            h.NoRekeningBank,
-        //            h.NamaBank
-        //            );
-        //        no++;
-        //    }
-        //    Prodi.Visible = false;
-        //    Kode.Visible = false;
-        //    MataKuliah.Visible = false;
-        //    SksMK.Visible = false;
-
-        //    HrFix.Visible = true;
-        //    HrVar.Visible = true;
-        //    HRTotal.Visible = true;
-        //    Pajak.Visible = true;
-        //    HRDiterima.Visible = true;
-
-        //    Loading(false);
-        //}
-
-        private void btnProses_Click(object sender, EventArgs e)
+        private async void btnProses_Click(object sender, EventArgs e)
         {
             if (cmbTahunAkademik.SelectedIndex <= 0 || cmbSemester.SelectedIndex <= 0 || cmbFakultas.SelectedIndex <= 0)
             {
                 dgvHonor.Rows.Clear();
                 return;
             }
-            LoadHonorDosen(KodeFakultas, IdProdi, KodeProgram);
-            //LoadHonorDosen(KodeFakultas, IdProdi, KodeProgram);
+            await LoadHonorDosen(KodeFakultas, IdProdi, KodeProgram);
         }
 
         private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
@@ -475,10 +386,12 @@ namespace Dosen.Report
                 return;
             }
 
-            Microsoft.Office.Interop.Excel.Range rangeTitle = ws.get_Range("A1", "V1");
+            Microsoft.Office.Interop.Excel.Range rangeTitle = ws.get_Range("A1", "W1");
             rangeTitle.Merge();
             rangeTitle.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Cells[1, 1] = "HONOR DOSEN MENGAJAR " + string.Format("T.A. {0} {1}", cmbTahunAkademik.Text, cmbSemester.Text);
+            ws.Cells[1, 1].Font.Bold = true;
+            ws.Cells[1, 1].Font.Size = 14;
 
             Microsoft.Office.Interop.Excel.Range rangeNomor = ws.Range["A3", "A3"];
             ws.Cells[3, 1] = "NO";
@@ -537,46 +450,96 @@ namespace Dosen.Report
             Microsoft.Office.Interop.Excel.Range rangeHrDiterima = ws.Range["S3", "S3"];
             ws.Cells[3, 19] = "HR DITERIMA/BULAN";
 
-            Microsoft.Office.Interop.Excel.Range rangeNpwp = ws.Range["T3", "T3"];
-            ws.Cells[3, 20] = "NPWP";
+            Microsoft.Office.Interop.Excel.Range rangeHrDiterimaTotal = ws.Range["T3", "T3"];
+            ws.Cells[3, 20] = "HR DITERIMA TOTAL/BULAN";
 
-            Microsoft.Office.Interop.Excel.Range rangeRekBank = ws.Range["U3", "U3"];
-            ws.Cells[3, 21] = "NO. REKENING BANK";
+            Microsoft.Office.Interop.Excel.Range rangeNpwp = ws.Range["U3", "U3"];
+            ws.Cells[3, 21] = "NPWP";
 
-            Microsoft.Office.Interop.Excel.Range rangeBank = ws.Range["V3", "V3"];
-            ws.Cells[3, 22] = "BANK";
+            Microsoft.Office.Interop.Excel.Range rangeRekBank = ws.Range["V3", "V3"];
+            ws.Cells[3, 22] = "NO. REKENING BANK";
 
+            Microsoft.Office.Interop.Excel.Range rangeBank = ws.Range["W3", "W3"];
+            ws.Cells[3, 23] = "BANK";
+
+            Microsoft.Office.Interop.Excel.Range rangeHeader = ws.Range["A3", "W3"];
+            rangeHeader.Font.Bold = true;
+            //rangeHeader.Style.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            progressBar1.Style = ProgressBarStyle.Continuous;
 
             int startRow = 4;
-            foreach (DataGridViewRow item in dgvHonor.Rows)
+            string tempNik = string.Empty;
+            Microsoft.Office.Interop.Excel.Range rangeHrDiterimaTotalMerge;
+            Microsoft.Office.Interop.Excel.Range rangeNpwpMerge;
+            Microsoft.Office.Interop.Excel.Range rangeRekBankMerge;
+            Microsoft.Office.Interop.Excel.Range rangeBankMerge;
+            int tempStartMerge = 0;
+            decimal hrDiterimaPerBulanTotal = 0;
+            foreach (DataHonorDosenMengajar item in listDataHonorDosenMengajar)
             {
+                if (tempNik != item.NIK)
+                {
+                    tempNik = item.NIK;
+                    tempStartMerge = startRow;
+                    rangeHrDiterimaTotalMerge = ws.Range["T" + tempStartMerge, "T" + tempStartMerge];
+                    tempStartMerge = startRow;
+                    rangeNpwpMerge = ws.Range["U" + tempStartMerge, "U" + tempStartMerge];
+                    tempStartMerge = startRow;
+                    rangeRekBankMerge = ws.Range["V" + tempStartMerge, "V" + tempStartMerge];
+                    tempStartMerge = startRow;
+                    rangeBankMerge = ws.Range["W" + tempStartMerge, "W" + tempStartMerge];
+                    hrDiterimaPerBulanTotal = item.HrDiterimaPerBulan;
+                }
+                else
+                {
+                    rangeHrDiterimaTotalMerge = ws.Range["T" + tempStartMerge, "T" + startRow];
+                    rangeHrDiterimaTotalMerge.Merge();
+                    rangeNpwpMerge = ws.Range["U" + tempStartMerge, "U" + startRow];
+                    rangeNpwpMerge.Merge();
+                    rangeRekBankMerge = ws.Range["V" + tempStartMerge, "V" + startRow];
+                    rangeRekBankMerge.Merge();
+                    rangeBankMerge = ws.Range["W" + tempStartMerge, "W" + startRow];
+                    rangeBankMerge.Merge();
+                    hrDiterimaPerBulanTotal = hrDiterimaPerBulanTotal + item.HrDiterimaPerBulan;
+                }
                 ws.Cells[startRow, 1] = startRow - 3;
                 ws.Cells[startRow, 2].NumberFormat = "@";
-                ws.Cells[startRow, 2] = item.Cells["NIK"].Value.ToString();
-                ws.Cells[startRow, 3] = item.Cells["NamaDosen"].Value.ToString();
-                ws.Cells[startRow, 4] = item.Cells["NamaProgram"].Value.ToString();
-                ws.Cells[startRow, 5] = item.Cells["KategoriDosen"].Value.ToString();
-                ws.Cells[startRow, 6] = item.Cells["Kode"].Value.ToString();
-                ws.Cells[startRow, 7] = item.Cells["MataKuliah"].Value.ToString();
-                ws.Cells[startRow, 8] = item.Cells["JenisMataKuliah"].Value.ToString();
-                ws.Cells[startRow, 9] = item.Cells["JumlahKelas"].Value.ToString();
-                ws.Cells[startRow, 10] = item.Cells["JumlahSksTotal"].Value.ToString();
-                ws.Cells[startRow, 11] = item.Cells["BebanSks"].Value.ToString();
-                ws.Cells[startRow, 12] = item.Cells["JumlahSksBayar"].Value.ToString();
-                ws.Cells[startRow, 13] = item.Cells["JumlahPertemuan"].Value.ToString();
-                ws.Cells[startRow, 14] = item.Cells["PendidikanGolongan"].Value.ToString();
-                ws.Cells[startRow, 15] = item.Cells["HrFixPerBulan"].Value.ToString();
-                ws.Cells[startRow, 16] = item.Cells["HrVarPerBulan"].Value.ToString();
-                ws.Cells[startRow, 17] = item.Cells["HrTotalPerBulan"].Value.ToString();
-                ws.Cells[startRow, 18] = item.Cells["PajakTotal"].Value.ToString();
-                ws.Cells[startRow, 19] = item.Cells["HrDiterimaPerBulan"].Value.ToString();
-                ws.Cells[startRow, 20] = item.Cells["Npwp"].Value;
-                ws.Cells[startRow, 21] = item.Cells["NoRekening"].Value;
-                ws.Cells[startRow, 22] = item.Cells["NamaBank"].Value;
+                ws.Cells[startRow, 2] = item.NIK;
+                ws.Cells[startRow, 3] = item.NamaDosen;
+                ws.Cells[startRow, 4] = item.NamaProgram;
+                ws.Cells[startRow, 5] = item.KategoriDosen;
+                ws.Cells[startRow, 6] = item.Kode;
+                ws.Cells[startRow, 7] = item.MataKuliah;
+                ws.Cells[startRow, 8] = item.JenisMataKuliah;
+                ws.Cells[startRow, 9] = item.JumlahKelas;
+                ws.Cells[startRow, 10] = item.JumlahSksTotal;
+                ws.Cells[startRow, 11] = item.BebanSks;
+                ws.Cells[startRow, 12] = item.JumlahSksBayar;
+                ws.Cells[startRow, 13] = item.JumlahPertemuan;
+                ws.Cells[startRow, 14] = item.PendidikanGolongan;
+                ws.Cells[startRow, 15] = item.HrFixPerBulan;
+                ws.Cells[startRow, 16] = item.HrVarPerBulan;
+                ws.Cells[startRow, 17] = item.HrTotalPerBulan;
+                ws.Cells[startRow, 18] = item.PajakTotal;
+                ws.Cells[startRow, 19] = item.HrDiterimaPerBulan;
+                ws.Cells[tempStartMerge, 20] = hrDiterimaPerBulanTotal;
+                ws.Cells[startRow, 21] = item.Npwp;
+                ws.Cells[startRow, 21].NumberFormat = "@";
+                ws.Cells[startRow, 22] = item.NoRekening;
+                ws.Cells[startRow, 22].NumberFormat = "@";
+                ws.Cells[startRow, 23] = item.NamaBank;
                 startRow++;
+                progressBar1.Value = (int)(((double.Parse((startRow - 4).ToString())) / double.Parse(listDataHonorDosenMengajar.Count.ToString())) * 100);
             }
+
+            //Microsoft.Office.Interop.Excel.Range rangeBorder = ws.Range["A3", "W" + --startRow];
+            //Microsoft.Office.Interop.Excel.Borders borders = rangeBorder.Borders;
+            //borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+
             ws.Columns.AutoFit();
             xlApp.Visible = true;
+            progressBar1.Style = ProgressBarStyle.Marquee;
             Loading(false);
         }
     }
@@ -615,28 +578,33 @@ namespace Dosen.Report
         public int BebanSks { get; set; }
 
         [DisplayName("SKS Bayar")]
-        public int JumlahSksBayar { get; set; }
+        public decimal JumlahSksBayar { get; set; }
 
         [DisplayName("Jumlah Ptm")]
-        public int JumlahPertemuan { get; set; }
+        public decimal JumlahPertemuan { get; set; }
 
         [DisplayName("Pend/Golongan")]
         public string PendidikanGolongan { get; set; }
 
-        [DisplayName("HR Var/Bulan")]
         public decimal HrVarPerBulan { get; set; }
+        [DisplayName("HR Var/Bulan")]
+        public string HrVarPerBulanFormat { get; set; }
 
-        [DisplayName("HR Fix/Bulan")]
         public decimal HrFixPerBulan { get; set; }
+        [DisplayName("HR Fix/Bulan")]
+        public string HrFixPerBulanFormat { get; set; }
 
-        [DisplayName("Total HR/Bulan")]
         public decimal HrTotalPerBulan { get; set; }
+        [DisplayName("Total HR/Bulan")]
+        public string HrTotalPerBulanFormat { get; set; }
 
-        [DisplayName("Pajak")]
         public decimal PajakTotal { get; set; }
+        [DisplayName("Pajak")]
+        public string PajakTotalFormat { get; set; }
 
-        [DisplayName("HR Diterima/Bulan")]
         public decimal HrDiterimaPerBulan { get; set; }
+        [DisplayName("HR Diterima/Bulan")]
+        public string HrDiterimaPerBulanFormat { get; set; }
 
         public string Npwp { get; set; }
 

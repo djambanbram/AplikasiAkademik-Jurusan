@@ -53,7 +53,6 @@ namespace Dosen.Report
             this.btnExport = new Syncfusion.Windows.Forms.ButtonAdv();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvHonor = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +76,7 @@ namespace Dosen.Report
             this.Npwp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoRek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKategoriDosen)).BeginInit();
@@ -242,11 +242,11 @@ namespace Dosen.Report
             // 
             // btnExport
             // 
-            this.btnExport.BeforeTouchSize = new System.Drawing.Size(155, 28);
+            this.btnExport.BeforeTouchSize = new System.Drawing.Size(155, 31);
             this.btnExport.IsBackStageButton = false;
             this.btnExport.Location = new System.Drawing.Point(542, 3);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(155, 28);
+            this.btnExport.Size = new System.Drawing.Size(155, 31);
             this.btnExport.TabIndex = 21;
             this.btnExport.Text = "Export Excel";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -275,15 +275,6 @@ namespace Dosen.Report
             this.btnTutup.TabIndex = 0;
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(322, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(214, 30);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 1;
-            this.progressBar1.Visible = false;
             // 
             // dgvHonor
             // 
@@ -479,6 +470,15 @@ namespace Dosen.Report
             this.Bank.ReadOnly = true;
             this.Bank.Width = 60;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(277, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(259, 31);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 23;
+            this.progressBar1.Visible = false;
+            // 
             // FormReportHonorDosenMengajar2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -527,7 +527,6 @@ namespace Dosen.Report
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridView dgvHonor;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
@@ -551,5 +550,6 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn Npwp;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoRek;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bank;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

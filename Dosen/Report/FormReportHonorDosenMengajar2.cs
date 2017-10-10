@@ -125,7 +125,6 @@ namespace Dosen.Report
                 {
                     cmbProgram.SelectedIndex = 0;
                 }
-                KodeFakultas = cmbFakultas.SelectedValue.ToString();
             }
         }
 
@@ -141,7 +140,6 @@ namespace Dosen.Report
                 cmbProgram.DisplayMember = "NamaProgram";
                 cmbProgram.ValueMember = "KodeProgram";
                 cmbProgram.SelectedIndex = 0;
-                IdProdi = cmbProdi.SelectedValue.ToString();
             }
         }
 
@@ -257,8 +255,12 @@ namespace Dosen.Report
                 d.JumlahSksBayar = jmlSksBayar;
                 d.JumlahPertemuan = jmlPertemuanMengajar;
                 d.PendidikanGolongan = string.Format("{0}/{1}", h.JenjangPendidikan, h.Golongan);
+                d.HrVar = h.HVar;
+                d.HrVarFormat = h.HVar.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrVarPerBulan = hrVarBulan;
                 d.HrVarPerBulanFormat = hrVarBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                d.HrFix = h.HFix;
+                d.HrFixFormat = h.HFix.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrFixPerBulan = hrFixBulan;
                 d.HrFixPerBulanFormat = hrFixBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrTotalPerBulan = hrTotal;
@@ -316,6 +318,8 @@ namespace Dosen.Report
             dgvHonor.Columns["KodeProgram"].Visible = false;
             dgvHonor.Columns["HrVarPerBulan"].Visible = false;
             dgvHonor.Columns["HrFixPerBulan"].Visible = false;
+            dgvHonor.Columns["HrVar"].Visible = false;
+            dgvHonor.Columns["HrFix"].Visible = false;
             dgvHonor.Columns["HrTotalPerBulan"].Visible = false;
             dgvHonor.Columns["PajakTotal"].Visible = false;
             dgvHonor.Columns["HrDiterimaPerBulan"].Visible = false;
@@ -346,16 +350,24 @@ namespace Dosen.Report
                 dgvHonor.Rows.Clear();
                 return;
             }
+            if (cmbFakultas.SelectedIndex > 0)
+            {
+                KodeFakultas = cmbFakultas.SelectedValue.ToString();
+            }
+            if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
+            {
+                IdProdi = cmbProdi.SelectedValue.ToString();
+            }
+            if (cmbProgram.SelectedIndex > 0)
+            {
+                KodeProgram = cmbProgram.SelectedValue.ToString();
+            }
             await LoadHonorDosen(KodeFakultas, IdProdi, KodeProgram);
         }
 
         private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
             KodeProgram = null;
-            if (cmbProgram.SelectedIndex > 0)
-            {
-                KodeProgram = cmbProgram.SelectedValue.ToString();
-            }
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -436,31 +448,37 @@ namespace Dosen.Report
             ws.Cells[3, 14] = "PEND/GOLONGAN";
 
             Microsoft.Office.Interop.Excel.Range rangeHrFix = ws.Range["O3", "O3"];
-            ws.Cells[3, 15] = "HR FIX/BULAN";
+            ws.Cells[3, 15] = "HR FIX";
 
-            Microsoft.Office.Interop.Excel.Range rangeHrVar = ws.Range["P3", "P3"];
-            ws.Cells[3, 16] = "HR VAR/BULAN";
+            Microsoft.Office.Interop.Excel.Range rangeHrFixBulan = ws.Range["P3", "P3"];
+            ws.Cells[3, 16] = "HR FIX/BULAN";
 
-            Microsoft.Office.Interop.Excel.Range rangeHrTotal = ws.Range["Q3", "Q3"];
-            ws.Cells[3, 17] = "HR TOTAL";
+            Microsoft.Office.Interop.Excel.Range rangeHrVar = ws.Range["Q3", "Q3"];
+            ws.Cells[3, 17] = "HR VAR";
 
-            Microsoft.Office.Interop.Excel.Range rangePajak = ws.Range["R3", "R3"];
-            ws.Cells[3, 18] = "PAJAK";
+            Microsoft.Office.Interop.Excel.Range rangeHrVarBulan = ws.Range["R3", "R3"];
+            ws.Cells[3, 18] = "HR VAR/BULAN";
 
-            Microsoft.Office.Interop.Excel.Range rangeHrDiterima = ws.Range["S3", "S3"];
-            ws.Cells[3, 19] = "HR DITERIMA/BULAN";
+            Microsoft.Office.Interop.Excel.Range rangeHrTotal = ws.Range["S3", "S3"];
+            ws.Cells[3, 19] = "HR TOTAL";
 
-            Microsoft.Office.Interop.Excel.Range rangeHrDiterimaTotal = ws.Range["T3", "T3"];
-            ws.Cells[3, 20] = "HR DITERIMA TOTAL/BULAN";
+            Microsoft.Office.Interop.Excel.Range rangePajak = ws.Range["T3", "T3"];
+            ws.Cells[3, 20] = "PAJAK";
 
-            Microsoft.Office.Interop.Excel.Range rangeNpwp = ws.Range["U3", "U3"];
-            ws.Cells[3, 21] = "NPWP";
+            Microsoft.Office.Interop.Excel.Range rangeHrDiterima = ws.Range["U3", "U3"];
+            ws.Cells[3, 21] = "HR DITERIMA/BULAN";
 
-            Microsoft.Office.Interop.Excel.Range rangeRekBank = ws.Range["V3", "V3"];
-            ws.Cells[3, 22] = "NO. REKENING BANK";
+            Microsoft.Office.Interop.Excel.Range rangeHrDiterimaTotal = ws.Range["V3", "V3"];
+            ws.Cells[3, 22] = "HR DITERIMA TOTAL/BULAN";
 
-            Microsoft.Office.Interop.Excel.Range rangeBank = ws.Range["W3", "W3"];
-            ws.Cells[3, 23] = "BANK";
+            Microsoft.Office.Interop.Excel.Range rangeNpwp = ws.Range["W3", "W3"];
+            ws.Cells[3, 23] = "NPWP";
+
+            Microsoft.Office.Interop.Excel.Range rangeRekBank = ws.Range["X3", "X3"];
+            ws.Cells[3, 24] = "NO. REKENING BANK";
+
+            Microsoft.Office.Interop.Excel.Range rangeBank = ws.Range["Y3", "Y3"];
+            ws.Cells[3, 25] = "BANK";
 
             Microsoft.Office.Interop.Excel.Range rangeHeader = ws.Range["A3", "W3"];
             rangeHeader.Font.Bold = true;
@@ -476,30 +494,52 @@ namespace Dosen.Report
             Microsoft.Office.Interop.Excel.Range rangeBankMerge;
             int tempStartMerge = 0;
             decimal hrDiterimaPerBulanTotal = 0;
-            foreach (DataHonorDosenMengajar item in listDataHonorDosenMengajar)
+
+            List<DataHonorDosenMengajar> listTemp = null;
+            if (!string.IsNullOrWhiteSpace(KodeProgram))
+            {
+                listTemp = listDataHonorDosenMengajar.Where(p => p.KodeProgram == KodeProgram).ToList();
+            }
+            else if (!string.IsNullOrWhiteSpace(IdProdi))
+            {
+                listTemp = listDataHonorDosenMengajar.Where(i => i.IdProdi == IdProdi).ToList();
+            }
+            else if (!string.IsNullOrWhiteSpace(KodeFakultas))
+            {
+                if (KodeFakultas == "Semua")
+                {
+                    listTemp = listDataHonorDosenMengajar;
+                }
+                else
+                {
+                    listTemp = listDataHonorDosenMengajar.Where(f => f.KodeFakultas == KodeFakultas).ToList();
+                }
+            }
+
+            foreach (DataHonorDosenMengajar item in listTemp)
             {
                 if (tempNik != item.NIK)
                 {
                     tempNik = item.NIK;
                     tempStartMerge = startRow;
-                    rangeHrDiterimaTotalMerge = ws.Range["T" + tempStartMerge, "T" + tempStartMerge];
+                    rangeHrDiterimaTotalMerge = ws.Range["U" + tempStartMerge, "U" + tempStartMerge];
                     tempStartMerge = startRow;
-                    rangeNpwpMerge = ws.Range["U" + tempStartMerge, "U" + tempStartMerge];
+                    rangeNpwpMerge = ws.Range["W" + tempStartMerge, "W" + tempStartMerge];
                     tempStartMerge = startRow;
-                    rangeRekBankMerge = ws.Range["V" + tempStartMerge, "V" + tempStartMerge];
+                    rangeRekBankMerge = ws.Range["X" + tempStartMerge, "X" + tempStartMerge];
                     tempStartMerge = startRow;
-                    rangeBankMerge = ws.Range["W" + tempStartMerge, "W" + tempStartMerge];
+                    rangeBankMerge = ws.Range["Y" + tempStartMerge, "Y" + tempStartMerge];
                     hrDiterimaPerBulanTotal = item.HrDiterimaPerBulan;
                 }
                 else
                 {
-                    rangeHrDiterimaTotalMerge = ws.Range["T" + tempStartMerge, "T" + startRow];
+                    rangeHrDiterimaTotalMerge = ws.Range["U" + tempStartMerge, "U" + startRow];
                     rangeHrDiterimaTotalMerge.Merge();
-                    rangeNpwpMerge = ws.Range["U" + tempStartMerge, "U" + startRow];
+                    rangeNpwpMerge = ws.Range["W" + tempStartMerge, "W" + startRow];
                     rangeNpwpMerge.Merge();
-                    rangeRekBankMerge = ws.Range["V" + tempStartMerge, "V" + startRow];
+                    rangeRekBankMerge = ws.Range["X" + tempStartMerge, "X" + startRow];
                     rangeRekBankMerge.Merge();
-                    rangeBankMerge = ws.Range["W" + tempStartMerge, "W" + startRow];
+                    rangeBankMerge = ws.Range["Y" + tempStartMerge, "Y" + startRow];
                     rangeBankMerge.Merge();
                     hrDiterimaPerBulanTotal = hrDiterimaPerBulanTotal + item.HrDiterimaPerBulan;
                 }
@@ -518,17 +558,19 @@ namespace Dosen.Report
                 ws.Cells[startRow, 12] = item.JumlahSksBayar;
                 ws.Cells[startRow, 13] = item.JumlahPertemuan;
                 ws.Cells[startRow, 14] = item.PendidikanGolongan;
-                ws.Cells[startRow, 15] = item.HrFixPerBulan;
-                ws.Cells[startRow, 16] = item.HrVarPerBulan;
-                ws.Cells[startRow, 17] = item.HrTotalPerBulan;
-                ws.Cells[startRow, 18] = item.PajakTotal;
-                ws.Cells[startRow, 19] = item.HrDiterimaPerBulan;
-                ws.Cells[tempStartMerge, 20] = hrDiterimaPerBulanTotal;
-                ws.Cells[startRow, 21] = item.Npwp;
-                ws.Cells[startRow, 21].NumberFormat = "@";
-                ws.Cells[startRow, 22] = item.NoRekening;
-                ws.Cells[startRow, 22].NumberFormat = "@";
-                ws.Cells[startRow, 23] = item.NamaBank;
+                ws.Cells[startRow, 15] = item.HrFix;
+                ws.Cells[startRow, 16] = item.HrFixPerBulan;
+                ws.Cells[startRow, 17] = item.HrVar;
+                ws.Cells[startRow, 18] = item.HrVarPerBulan;
+                ws.Cells[startRow, 19] = item.HrTotalPerBulan;
+                ws.Cells[startRow, 20] = item.PajakTotal;
+                ws.Cells[startRow, 21] = item.HrDiterimaPerBulan;
+                ws.Cells[tempStartMerge, 22] = hrDiterimaPerBulanTotal;
+                ws.Cells[startRow, 23] = item.Npwp;
+                ws.Cells[startRow, 23].NumberFormat = "@";
+                ws.Cells[startRow, 24] = item.NoRekening;
+                ws.Cells[startRow, 24].NumberFormat = "@";
+                ws.Cells[startRow, 25] = item.NamaBank;
                 startRow++;
                 progressBar1.Value = (int)(((double.Parse((startRow - 4).ToString())) / double.Parse(listDataHonorDosenMengajar.Count.ToString())) * 100);
             }
@@ -586,10 +628,16 @@ namespace Dosen.Report
         [DisplayName("Pend/Golongan")]
         public string PendidikanGolongan { get; set; }
 
+        public decimal HrVar { get; set; }
+        [DisplayName("Hr Var")]
+        public string HrVarFormat { get; set; }
         public decimal HrVarPerBulan { get; set; }
         [DisplayName("HR Var/Bulan")]
         public string HrVarPerBulanFormat { get; set; }
 
+        public decimal HrFix { get; set; }
+        [DisplayName("HR Fix")]
+        public string HrFixFormat { get; set; }
         public decimal HrFixPerBulan { get; set; }
         [DisplayName("HR Fix/Bulan")]
         public string HrFixPerBulanFormat { get; set; }

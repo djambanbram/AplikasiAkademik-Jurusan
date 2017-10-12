@@ -92,6 +92,12 @@ namespace PenawaranKurikulum
 
         private void FormAlokasiDosen_Load(object sender, EventArgs e)
         {
+            if(LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
+            {
+                radCampuran.Text = "MK Remidial";
+                radCampuran.Checked = true;
+            }
+
             listFakultas = new List<Fakultas>(Organisasi.listFakultas);
             listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
             cmbFakultas.DataSource = listFakultas;

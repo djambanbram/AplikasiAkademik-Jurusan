@@ -30,6 +30,7 @@ namespace PenawaranKurikulum
         private string URLGetMKBelumDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_belum_ditawarkan";
         private string URLGetMKSudahDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan";
         private string URLSaveMKDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/save_penawaran_mk";
+        private string URLSaveMKDitawarkanRemidial = baseAddress + "/jurusan_api/api/kurikulum/save_penawaran_mk_remidial";
         private string URLDelMKDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/del_penawaran_mk";
         private string URLCekMKSudahDiambilMhs = baseAddress + "/jurusan_api/api/kurikulum/is_mk_diambil_mhs";
 
@@ -118,7 +119,7 @@ namespace PenawaranKurikulum
             Loading(true);
 
             //Force Data 
-            //var data = new { TahunAkademik = "2017/2018", KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = 1, IdProdi = cmbProdi.SelectedValue.ToString() };
+            //var data = new { TahunAkademik = "2017/2018", KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = 7, IdProdi = cmbProdi.SelectedValue.ToString() };
             var data = new { TahunAkademik = LoginAccess.TahunAkademik, KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
 
             string jsonData = JsonConvert.SerializeObject(data);
@@ -430,7 +431,14 @@ namespace PenawaranKurikulum
                 DaftarKelasMK = valueMKPrasyaratAdd.DaftarKelasMK
             };
             string jsonData = JsonConvert.SerializeObject(dataSave);
-            response = await webApi.Post(URLSaveMKDitawarkan, jsonData, true);
+            if (LoginAccess.KodeSemester == 3 || LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
+            {
+                response = await webApi.Post(URLSaveMKDitawarkanRemidial, jsonData, true);
+            }
+            else
+            {
+                response = await webApi.Post(URLSaveMKDitawarkan, jsonData, true);
+            }
             if (response.IsSuccessStatusCode)
             {
                 dgvMktsd.Rows.Add(
@@ -597,7 +605,14 @@ namespace PenawaranKurikulum
                         DaftarKelasMK = DaftarKelasMK
                     };
                     string jsonData = JsonConvert.SerializeObject(dataSave);
-                    response = await webApi.Post(URLSaveMKDitawarkan, jsonData, true);
+                    if (LoginAccess.KodeSemester == 3 || LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
+                    {
+                        response = await webApi.Post(URLSaveMKDitawarkanRemidial, jsonData, true);
+                    }
+                    else
+                    {
+                        response = await webApi.Post(URLSaveMKDitawarkan, jsonData, true);
+                    }
                     if (response.IsSuccessStatusCode)
                     {
                         dgvMktsd.Rows.Add(false, SemesterDitawarkan, Angkatan, Kode, MataKuliah, SifatMK, SksTeori, SksPraktikum, jenisMK, DaftarKelasMK);

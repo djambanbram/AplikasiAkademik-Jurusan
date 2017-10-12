@@ -522,7 +522,7 @@ namespace Dosen.Report
                 {
                     tempNik = item.NIK;
                     tempStartMerge = startRow;
-                    rangeHrDiterimaTotalMerge = ws.Range["U" + tempStartMerge, "U" + tempStartMerge];
+                    rangeHrDiterimaTotalMerge = ws.Range["V" + tempStartMerge, "V" + tempStartMerge];
                     tempStartMerge = startRow;
                     rangeNpwpMerge = ws.Range["W" + tempStartMerge, "W" + tempStartMerge];
                     tempStartMerge = startRow;
@@ -533,7 +533,7 @@ namespace Dosen.Report
                 }
                 else
                 {
-                    rangeHrDiterimaTotalMerge = ws.Range["U" + tempStartMerge, "U" + startRow];
+                    rangeHrDiterimaTotalMerge = ws.Range["V" + tempStartMerge, "V" + startRow];
                     rangeHrDiterimaTotalMerge.Merge();
                     rangeNpwpMerge = ws.Range["W" + tempStartMerge, "W" + startRow];
                     rangeNpwpMerge.Merge();

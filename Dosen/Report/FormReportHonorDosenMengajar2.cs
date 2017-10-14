@@ -232,13 +232,13 @@ namespace Dosen.Report
                 decimal hrTotal = hrFixBulan + hrVarBulan;
                 if (!string.IsNullOrWhiteSpace(h.Npwp))
                 {
-                    pajak = Convert.ToDecimal(2.5);
+                    pajak = Convert.ToDecimal((0.5 * 0.05));
                 }
                 else
                 {
-                    pajak = 5;
+                    pajak = Convert.ToDecimal((0.5 * 0.06));
                 }
-                var pajakTotal = hrTotal * (pajak / 100);
+                var pajakTotal = hrTotal * pajak;
                 var hrDiterima = hrTotal - pajakTotal;
                 DataHonorDosenMengajar d = new DataHonorDosenMengajar();
                 d.Nomor = no;

@@ -215,7 +215,14 @@ namespace Dosen.Report
                     }
                     else
                     {
-                        hrVarBulan = ((jmlPertemuanMengajar * h.HVar) / 3) * 2;
+                        if (cmbPeriode.SelectedIndex > 3)
+                        {
+                            hrVarBulan = 0;
+                        }
+                        else
+                        {
+                            hrVarBulan = ((jmlPertemuanMengajar * h.HVar) / 3) * 2;
+                        }
                     }
                 }
                 else
@@ -226,7 +233,14 @@ namespace Dosen.Report
                     }
                     else
                     {
-                        hrVarBulan = (jmlPertemuanMengajar * h.HVar) / 3;
+                        if (cmbPeriode.SelectedIndex > 3)
+                        {
+                            hrVarBulan = 0;
+                        }
+                        else
+                        {
+                            hrVarBulan = ((jmlPertemuanMengajar * h.HVar) / 3);
+                        }
                     }
                 }
                 decimal hrTotal = hrFixBulan + hrVarBulan;
@@ -256,19 +270,19 @@ namespace Dosen.Report
                 d.JumlahPertemuan = jmlPertemuanMengajar;
                 d.PendidikanGolongan = string.Format("{0}/{1}", h.JenjangPendidikan, h.Golongan);
                 d.HrVar = h.HVar;
-                d.HrVarFormat = h.HVar.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                d.HrVarFormat = d.HrVar.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrVarPerBulan = hrVarBulan;
-                d.HrVarPerBulanFormat = hrVarBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                d.HrVarPerBulanFormat = d.HrVarPerBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrFix = h.HFix;
                 d.HrFixFormat = h.HFix.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrFixPerBulan = hrFixBulan;
-                d.HrFixPerBulanFormat = hrFixBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                d.HrFixPerBulanFormat = d.HrFixPerBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrTotalPerBulan = hrTotal;
-                d.HrTotalPerBulanFormat = hrTotal.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                d.HrTotalPerBulanFormat = d.HrTotalPerBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.PajakTotal = pajakTotal;
-                d.PajakTotalFormat = pajakTotal.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                d.PajakTotalFormat = d.PajakTotal.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrDiterimaPerBulan = hrDiterima;
-                d.HrDiterimaPerBulanFormat = hrDiterima.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                d.HrDiterimaPerBulanFormat = d.HrDiterimaPerBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.Npwp = h.Npwp;
                 d.NoRekening = h.NoRekeningBank;
                 d.NamaBank = h.NamaBank;
@@ -338,7 +352,7 @@ namespace Dosen.Report
             {
                 if (list[dgRow.Index].PendidikanGolongan.Split('/')[0] == string.Empty)
                 {
-                    dgRow.DefaultCellStyle.BackColor = Color.LightYellow;
+                    dgRow.DefaultCellStyle.BackColor = Color.LightSalmon;
                 }
             }
         }

@@ -37,6 +37,8 @@ namespace Dosen.Report
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.cmbPeriode = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnProses = new Syncfusion.Windows.Forms.ButtonAdv();
             this.cmbKategoriDosen = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -53,6 +55,7 @@ namespace Dosen.Report
             this.btnExport = new Syncfusion.Windows.Forms.ButtonAdv();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvHonor = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,9 +79,9 @@ namespace Dosen.Report
             this.Npwp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoRek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPeriode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKategoriDosen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTahunAkademik)).BeginInit();
@@ -92,6 +95,8 @@ namespace Dosen.Report
             // gradientPanel1
             // 
             this.gradientPanel1.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel1.Controls.Add(this.cmbPeriode);
+            this.gradientPanel1.Controls.Add(this.autoLabel1);
             this.gradientPanel1.Controls.Add(this.btnProses);
             this.gradientPanel1.Controls.Add(this.cmbKategoriDosen);
             this.gradientPanel1.Controls.Add(this.autoLabel8);
@@ -111,11 +116,38 @@ namespace Dosen.Report
             this.gradientPanel1.Size = new System.Drawing.Size(819, 139);
             this.gradientPanel1.TabIndex = 21;
             // 
+            // cmbPeriode
+            // 
+            this.cmbPeriode.BeforeTouchSize = new System.Drawing.Size(259, 25);
+            this.cmbPeriode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPeriode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPeriode.Items.AddRange(new object[] {
+            "Pilih",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.cmbPeriode.Location = new System.Drawing.Point(119, 100);
+            this.cmbPeriode.Name = "cmbPeriode";
+            this.cmbPeriode.Size = new System.Drawing.Size(259, 25);
+            this.cmbPeriode.TabIndex = 21;
+            this.cmbPeriode.Text = "Pilih";
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Location = new System.Drawing.Point(11, 102);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(53, 17);
+            this.autoLabel1.TabIndex = 22;
+            this.autoLabel1.Text = "Periode";
+            // 
             // btnProses
             // 
             this.btnProses.BeforeTouchSize = new System.Drawing.Size(120, 28);
             this.btnProses.IsBackStageButton = false;
-            this.btnProses.Location = new System.Drawing.Point(119, 100);
+            this.btnProses.Location = new System.Drawing.Point(404, 100);
             this.btnProses.Name = "btnProses";
             this.btnProses.Size = new System.Drawing.Size(120, 28);
             this.btnProses.TabIndex = 20;
@@ -275,6 +307,15 @@ namespace Dosen.Report
             this.btnTutup.TabIndex = 0;
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(277, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(259, 31);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 23;
+            this.progressBar1.Visible = false;
             // 
             // dgvHonor
             // 
@@ -470,15 +511,6 @@ namespace Dosen.Report
             this.Bank.ReadOnly = true;
             this.Bank.Width = 60;
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(277, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(259, 31);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 23;
-            this.progressBar1.Visible = false;
-            // 
             // FormReportHonorDosenMengajar2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -496,6 +528,7 @@ namespace Dosen.Report
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPeriode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKategoriDosen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTahunAkademik)).EndInit();
@@ -551,5 +584,7 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn NoRek;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bank;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbPeriode;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
     }
 }

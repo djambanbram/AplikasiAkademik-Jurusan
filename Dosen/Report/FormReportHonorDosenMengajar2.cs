@@ -204,9 +204,10 @@ namespace Dosen.Report
                     jmlSksBayar = jmlSksTotal;
                     tempBeban = 0;
                 }
-                decimal jmlPertemuanMengajar = jmlSksTotal * pertemuanPerSKs;
+                decimal jmlPertemuanMengajar = jmlSksBayar * pertemuanPerSKs;
                 var hrFixBulan = (jmlSksBayar * h.HFix);
                 decimal hrVarBulan = 0;
+                
                 if (h.KodeProgram == "60" || h.KodeProgram == "61" || h.KodeProgram == "62")
                 {
                     if (h.KategoriDosen == "Dosen Tetap")
@@ -269,8 +270,16 @@ namespace Dosen.Report
                 d.JumlahSksBayar = jmlSksBayar;
                 d.JumlahPertemuan = jmlPertemuanMengajar;
                 d.PendidikanGolongan = string.Format("{0}/{1}", h.JenjangPendidikan, h.Golongan);
-                d.HrVar = h.HVar;
-                d.HrVarFormat = d.HrVar.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                if (h.KodeProgram == "60" || h.KodeProgram == "61" || h.KodeProgram == "62")
+                {
+                    d.HrVar = h.HVar * 2;
+                    d.HrVarFormat = d.HrVar.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                }
+                else
+                {
+                    d.HrVar = h.HVar;
+                    d.HrVarFormat = d.HrVar.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
+                }
                 d.HrVarPerBulan = hrVarBulan;
                 d.HrVarPerBulanFormat = d.HrVarPerBulan.ToString("C", CultureInfo.GetCultureInfo("id-ID"));
                 d.HrFix = h.HFix;

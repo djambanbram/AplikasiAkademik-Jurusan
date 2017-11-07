@@ -46,6 +46,8 @@ namespace MainAplikasi
             this.imgPenawaranMKBox = new System.Windows.Forms.ImageList(this.components);
             this.boxDosen = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.imgDosen = new System.Windows.Forms.ImageList(this.components);
+            this.boxAlihJalur = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
+            this.imgAlihJalur = new System.Windows.Forms.ImageList(this.components);
             this.BoxLaporan = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
             this.imgLaporanBox = new System.Windows.Forms.ImageList(this.components);
             this.BoxKeluar = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
@@ -78,6 +80,7 @@ namespace MainAplikasi
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxPenawaranMK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxDosen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boxAlihJalur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxLaporan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxKeluar)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -98,6 +101,7 @@ namespace MainAplikasi
             this.xpTaskBar1.Controls.Add(this.boxKelas);
             this.xpTaskBar1.Controls.Add(this.boxPenawaranMK);
             this.xpTaskBar1.Controls.Add(this.boxDosen);
+            this.xpTaskBar1.Controls.Add(this.boxAlihJalur);
             this.xpTaskBar1.Controls.Add(this.BoxLaporan);
             this.xpTaskBar1.Controls.Add(this.BoxKeluar);
             this.xpTaskBar1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -241,6 +245,34 @@ namespace MainAplikasi
             this.imgDosen.Images.SetKeyName(2, "graduate.png");
             this.imgDosen.Images.SetKeyName(3, "collaboration.png");
             // 
+            // boxAlihJalur
+            // 
+            this.boxAlihJalur.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
+            this.boxAlihJalur.HeaderForeColor = System.Drawing.Color.White;
+            this.boxAlihJalur.HeaderImageIndex = 0;
+            this.boxAlihJalur.HeaderImageList = this.imgAlihJalur;
+            this.boxAlihJalur.HitTaskBoxArea = false;
+            this.boxAlihJalur.HotTrackColor = System.Drawing.Color.Empty;
+            this.boxAlihJalur.ImageList = this.imgAlihJalur;
+            this.boxAlihJalur.ItemBackColor = System.Drawing.Color.WhiteSmoke;
+            this.boxAlihJalur.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Set Konversi MK", System.Drawing.Color.Empty, 1, null, "", true, true, "itemSetKonversiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Konversi Mhs", System.Drawing.Color.Empty, 2, null, "", true, true, "itemKonversiMhs", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            this.boxAlihJalur.Location = new System.Drawing.Point(0, 400);
+            this.boxAlihJalur.Name = "boxAlihJalur";
+            this.boxAlihJalur.Size = new System.Drawing.Size(264, 82);
+            this.boxAlihJalur.TabIndex = 6;
+            this.boxAlihJalur.Text = "Alih Jalur";
+            this.boxAlihJalur.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
+            // 
+            // imgAlihJalur
+            // 
+            this.imgAlihJalur.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgAlihJalur.ImageStream")));
+            this.imgAlihJalur.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgAlihJalur.Images.SetKeyName(0, "students.png");
+            this.imgAlihJalur.Images.SetKeyName(1, "language.png");
+            this.imgAlihJalur.Images.SetKeyName(2, "exam (1).png");
+            // 
             // BoxLaporan
             // 
             this.BoxLaporan.HeaderBackColor = System.Drawing.Color.CornflowerBlue;
@@ -256,7 +288,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen Mengajar", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxLaporan.Location = new System.Drawing.Point(0, 400);
+            this.BoxLaporan.Location = new System.Drawing.Point(0, 482);
             this.BoxLaporan.Name = "BoxLaporan";
             this.BoxLaporan.Size = new System.Drawing.Size(264, 130);
             this.BoxLaporan.TabIndex = 4;
@@ -286,7 +318,7 @@ namespace MainAplikasi
             this.BoxKeluar.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 530);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 612);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 58);
             this.BoxKeluar.TabIndex = 3;
@@ -430,7 +462,7 @@ namespace MainAplikasi
             this.koordinatorMataKuliahToolStripMenuItem,
             this.dosenWaliToolStripMenuItem});
             this.menuLaporanDosen.Name = "menuAlokasiDosen";
-            this.menuLaporanDosen.Size = new System.Drawing.Size(236, 136);
+            this.menuLaporanDosen.Size = new System.Drawing.Size(236, 114);
             // 
             // alokasiDosenMengajarToolStripMenuItem
             // 
@@ -492,6 +524,7 @@ namespace MainAplikasi
             ((System.ComponentModel.ISupportInitialize)(this.boxKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxPenawaranMK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxDosen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boxAlihJalur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxLaporan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoxKeluar)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -542,5 +575,7 @@ namespace MainAplikasi
         private System.Windows.Forms.ToolStripMenuItem kesediaanDosenMengajarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem koordinatorMataKuliahToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dosenWaliToolStripMenuItem;
+        private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxAlihJalur;
+        private System.Windows.Forms.ImageList imgAlihJalur;
     }
 }

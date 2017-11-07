@@ -29,6 +29,7 @@ using System.Deployment.Application;
 using Dosen;
 using Dosen.Report;
 using KonversiAlihJalur.Report;
+using KonversiAlihJalur;
 
 namespace MainAplikasi
 {
@@ -52,6 +53,8 @@ namespace MainAplikasi
         private FormTimDosen formTimDosen;
         private FormHonorDosen formHonorDosen;
         private FormJenjangPendidikanDosen formJenjangPendidikanDosen;
+        private FormSetKonversiMK formSetKonversiMK;
+        private FormMatrikulasiCalonAlihJalur formMatrikulasiCalonAlihJalur;
 
         private FormReportDataMK formReportDataMK;
         private FormReportMKPrasyarat formReportMKPrasyarat;
@@ -181,6 +184,24 @@ namespace MainAplikasi
                     formJenjangPendidikanDosen.MdiParent = this;
                 }
                 form = formJenjangPendidikanDosen;
+            }
+            else if (e.XPTaskBarItem.Name == "itemSetKonversiMK")
+            {
+                if (formSetKonversiMK == null || formSetKonversiMK.IsDisposed)
+                {
+                    formSetKonversiMK = new FormSetKonversiMK();
+                    formSetKonversiMK.MdiParent = this;
+                }
+                form = formSetKonversiMK;
+            }
+            else if (e.XPTaskBarItem.Name == "itemKonversiMhs")
+            {
+                if (formMatrikulasiCalonAlihJalur == null || formMatrikulasiCalonAlihJalur.IsDisposed)
+                {
+                    formMatrikulasiCalonAlihJalur = new FormMatrikulasiCalonAlihJalur();
+                    formMatrikulasiCalonAlihJalur.MdiParent = this;
+                }
+                form = formMatrikulasiCalonAlihJalur;
             }
             else if (e.XPTaskBarItem.Name == "itemLaporanMK")
             {

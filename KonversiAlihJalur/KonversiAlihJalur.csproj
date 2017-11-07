@@ -38,6 +38,9 @@
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ExpandableGridView">
+      <HintPath>..\dll Lib\ExpandableGridView.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -78,6 +81,12 @@
     <Compile Include="FormMatrikulasiCalonAlihJalur.Designer.cs">
       <DependentUpon>FormMatrikulasiCalonAlihJalur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSetKonversiMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetKonversiMK.Designer.cs">
+      <DependentUpon>FormSetKonversiMK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\CommonLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\FormReportHasilMatrikulasi.cs">
@@ -88,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="FormMatrikulasiCalonAlihJalur.resx">
       <DependentUpon>FormMatrikulasiCalonAlihJalur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetKonversiMK.resx">
+      <DependentUpon>FormSetKonversiMK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

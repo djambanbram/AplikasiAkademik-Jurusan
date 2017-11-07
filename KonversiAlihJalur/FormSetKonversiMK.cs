@@ -19,19 +19,19 @@ using System.Windows.Forms;
 
 namespace KonversiAlihJalur
 {
-    public partial class FormMatrikulasiCalonAlihJalur : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormSetKonversiMK : Syncfusion.Windows.Forms.MetroForm
     {
         private List<Program> listProgram;
 
         private WebApi webApi;
         private HttpResponseMessage response;
-        public FormMatrikulasiCalonAlihJalur()
+        public FormSetKonversiMK()
         {
             InitializeComponent();
             webApi = new WebApi();
         }
 
-        private void FormMatrikulasiCalonAlihJalur_Load(object sender, EventArgs e)
+        private void FormSetKonversiMK_Load(object sender, EventArgs e)
         {
             listProgram = Organisasi.listProgram.Where(program => program.KodeProgram == "21" || program.KodeProgram == "22").ToList();
             listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });

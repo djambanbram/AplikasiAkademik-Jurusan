@@ -36,6 +36,8 @@ namespace KonversiAlihJalur
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbAngkatan = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -45,15 +47,18 @@ namespace KonversiAlihJalur
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.treeGridView1 = new AdvancedDataGridView.TreeGridView();
+            this.dgvMKD3 = new System.Windows.Forms.DataGridView();
+            this.KodeD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.dgvMKS1 = new AdvancedDataGridView.TreeGridView();
             this.Tree = new AdvancedDataGridView.TreeGridColumn();
             this.KodeS1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliahS1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksS1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KodeD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliahD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAngkatan)).BeginInit();
@@ -63,8 +68,10 @@ namespace KonversiAlihJalur
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKD3)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCari)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKS1)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel2
@@ -101,6 +108,7 @@ namespace KonversiAlihJalur
             this.cmbAngkatan.Name = "cmbAngkatan";
             this.cmbAngkatan.Size = new System.Drawing.Size(114, 24);
             this.cmbAngkatan.TabIndex = 9;
+            this.cmbAngkatan.SelectedIndexChanged += new System.EventHandler(this.cmbAngkatan_SelectedIndexChanged);
             // 
             // autoLabel15
             // 
@@ -122,6 +130,7 @@ namespace KonversiAlihJalur
             this.cmbProgramAlihJalur.Name = "cmbProgramAlihJalur";
             this.cmbProgramAlihJalur.Size = new System.Drawing.Size(282, 24);
             this.cmbProgramAlihJalur.TabIndex = 2;
+            this.cmbProgramAlihJalur.SelectedIndexChanged += new System.EventHandler(this.cmbProgramAlihJalur_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -165,51 +174,121 @@ namespace KonversiAlihJalur
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel1.Controls.Add(this.dgvMKD3);
+            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel2);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.treeGridView1);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvMKS1);
             this.splitContainer1.Size = new System.Drawing.Size(883, 297);
             this.splitContainer1.SplitterDistance = 356;
             this.splitContainer1.TabIndex = 22;
             // 
-            // dataGridView1
+            // dgvMKD3
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMKD3.AllowUserToAddRows = false;
+            this.dgvMKD3.AllowUserToDeleteRows = false;
+            this.dgvMKD3.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvMKD3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMKD3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KodeD3,
             this.MataKuliahD3,
             this.SksD3});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(356, 297);
-            this.dataGridView1.TabIndex = 0;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMKD3.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvMKD3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMKD3.Location = new System.Drawing.Point(0, 34);
+            this.dgvMKD3.Name = "dgvMKD3";
+            this.dgvMKD3.ReadOnly = true;
+            this.dgvMKD3.RowHeadersVisible = false;
+            this.dgvMKD3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMKD3.Size = new System.Drawing.Size(356, 263);
+            this.dgvMKD3.TabIndex = 0;
             // 
-            // treeGridView1
+            // KodeD3
             // 
-            this.treeGridView1.AllowUserToAddRows = false;
-            this.treeGridView1.AllowUserToDeleteRows = false;
-            this.treeGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.treeGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.KodeD3.HeaderText = "Kode D3";
+            this.KodeD3.Name = "KodeD3";
+            this.KodeD3.ReadOnly = true;
+            // 
+            // MataKuliahD3
+            // 
+            this.MataKuliahD3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliahD3.HeaderText = "Mata Kuliah D3";
+            this.MataKuliahD3.Name = "MataKuliahD3";
+            this.MataKuliahD3.ReadOnly = true;
+            // 
+            // SksD3
+            // 
+            this.SksD3.HeaderText = "Sks D3";
+            this.SksD3.Name = "SksD3";
+            this.SksD3.ReadOnly = true;
+            this.SksD3.Width = 50;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.autoLabel2);
+            this.flowLayoutPanel2.Controls.Add(this.txtCari);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(356, 34);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoLabel2.Location = new System.Drawing.Point(3, 0);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(31, 31);
+            this.autoLabel2.TabIndex = 0;
+            this.autoLabel2.Text = "Cari";
+            this.autoLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtCari
+            // 
+            this.txtCari.BeforeTouchSize = new System.Drawing.Size(217, 25);
+            this.txtCari.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCari.Location = new System.Drawing.Point(40, 3);
+            this.txtCari.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtCari.Name = "txtCari";
+            this.txtCari.Size = new System.Drawing.Size(217, 25);
+            this.txtCari.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtCari.TabIndex = 1;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
+            // 
+            // dgvMKS1
+            // 
+            this.dgvMKS1.AllowUserToAddRows = false;
+            this.dgvMKS1.AllowUserToDeleteRows = false;
+            this.dgvMKS1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvMKS1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tree,
             this.KodeS1,
             this.MataKuliahS1,
             this.SksS1});
-            this.treeGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.treeGridView1.ImageList = null;
-            this.treeGridView1.Location = new System.Drawing.Point(0, 0);
-            this.treeGridView1.Name = "treeGridView1";
-            this.treeGridView1.RowHeadersVisible = false;
-            this.treeGridView1.Size = new System.Drawing.Size(523, 297);
-            this.treeGridView1.TabIndex = 0;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMKS1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvMKS1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMKS1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvMKS1.ImageList = null;
+            this.dgvMKS1.Location = new System.Drawing.Point(0, 0);
+            this.dgvMKS1.Name = "dgvMKS1";
+            this.dgvMKS1.RowHeadersVisible = false;
+            this.dgvMKS1.Size = new System.Drawing.Size(523, 297);
+            this.dgvMKS1.TabIndex = 0;
             // 
             // Tree
             // 
@@ -238,26 +317,6 @@ namespace KonversiAlihJalur
             this.SksS1.Name = "SksS1";
             this.SksS1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // KodeD3
-            // 
-            this.KodeD3.HeaderText = "Kode D3";
-            this.KodeD3.Name = "KodeD3";
-            this.KodeD3.ReadOnly = true;
-            // 
-            // MataKuliahD3
-            // 
-            this.MataKuliahD3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliahD3.HeaderText = "Mata Kuliah D3";
-            this.MataKuliahD3.Name = "MataKuliahD3";
-            this.MataKuliahD3.ReadOnly = true;
-            // 
-            // SksD3
-            // 
-            this.SksD3.HeaderText = "Sks D3";
-            this.SksD3.Name = "SksD3";
-            this.SksD3.ReadOnly = true;
-            this.SksD3.Width = 50;
-            // 
             // FormSetKonversiMK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -282,8 +341,11 @@ namespace KonversiAlihJalur
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKD3)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCari)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMKS1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,8 +361,8 @@ namespace KonversiAlihJalur
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private AdvancedDataGridView.TreeGridView treeGridView1;
+        private System.Windows.Forms.DataGridView dgvMKD3;
+        private AdvancedDataGridView.TreeGridView dgvMKS1;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeD3;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliahD3;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksD3;
@@ -308,5 +370,8 @@ namespace KonversiAlihJalur
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeS1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliahS1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksS1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCari;
     }
 }

@@ -75,6 +75,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetAlihJalur.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\FormCopyMKKonversi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormCopyMKKonversi.Designer.cs">
+      <DependentUpon>FormCopyMKKonversi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FormDetailNilaiMhsAlihJalur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormDetailNilaiMhsAlihJalur.Designer.cs">
+      <DependentUpon>FormDetailNilaiMhsAlihJalur.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMatrikulasiCalonAlihJalur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,9 @@
       <DependentUpon>FormSetKonversiMK.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\CommonLib.cs" />
+    <Compile Include="Lib\DragandDrop.cs" />
+    <Compile Include="Models\MataKuliahKonversi.cs" />
+    <Compile Include="Models\MhsAlihJalur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\FormReportHasilMatrikulasi.cs">
       <SubType>Form</SubType>
@@ -95,6 +110,12 @@
     <Compile Include="Report\FormReportHasilMatrikulasi.Designer.cs">
       <DependentUpon>FormReportHasilMatrikulasi.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialog\FormCopyMKKonversi.resx">
+      <DependentUpon>FormCopyMKKonversi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\FormDetailNilaiMhsAlihJalur.resx">
+      <DependentUpon>FormDetailNilaiMhsAlihJalur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMatrikulasiCalonAlihJalur.resx">
       <DependentUpon>FormMatrikulasiCalonAlihJalur.cs</DependentUpon>
     </EmbeddedResource>

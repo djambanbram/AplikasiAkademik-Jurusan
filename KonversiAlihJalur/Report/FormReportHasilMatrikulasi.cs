@@ -194,7 +194,6 @@ namespace KonversiAlihJalur.Report
                 {
                     if (Convert.ToBoolean(row.Cells["Pilih"].Value) == true)
                     {
-                        MessageBox.Show(row.Cells["Npm"].Value.ToString());
                         foreach (HasilMatrikulasiMhs h in listHasilMatrikulasi)
                         {
                             if (h.NpmLama == row.Cells["Npm"].Value.ToString())

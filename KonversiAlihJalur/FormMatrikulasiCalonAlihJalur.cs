@@ -28,6 +28,7 @@ namespace KonversiAlihJalur
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/get_calon_mhs_alih_jalur";
+        private string URLGenerateNilaiCalonMhs = baseAddress + "/jurusan_api/api/alih_jalur/generate_history_konversi_nilai";
 
         private List<Program> listProgram;
 
@@ -150,6 +151,42 @@ namespace KonversiAlihJalur
             {
                 form.ShowDialog(this);
             }
+        }
+
+        private async void btnKonversiOtomatis_Click(object sender, EventArgs e)
+        {
+            if (dgvPendaftar.Rows.Count <= 0)
+            {
+                return;
+            }
+
+            var message = string.Format("Konversi nilai otomatis semua mahasiswa dalam daftar tabel, dengan syarat:\n1. Nilai minimal adalah C.\n2. SKS D3 >= SKS S1.\nLanjutkan Proses?");
+            DialogResult dr = MessageBox.Show(message, "Perhatian", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.No)
+            {
+                return;
+            }
+
+            List<string> listNpm = new List<string>();
+            foreach (DataGridViewRow row in dgvPendaftar.Rows)
+            {
+                listNpm.Add(row.Cells["Npm"].Value.ToString());
+            }
+
+            Loading(true);
+            var data = new { ListNpm = listNpm };
+            var jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLGenerateNilaiCalonMhs, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+
+            await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgramAlihJalur.SelectedValue.ToString());
+            MessageBox.Show("Nilai berhasil di konversi. Silahkan cek konversi nilai di masing-masing mahasiswa");
+            Loading(false);
         }
     }
 }

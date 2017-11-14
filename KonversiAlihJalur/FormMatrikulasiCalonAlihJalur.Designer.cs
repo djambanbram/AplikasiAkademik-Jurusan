@@ -37,23 +37,23 @@ namespace KonversiAlihJalur
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbAngkatan = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProgramAlihJalur = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnKonversiOtomatis = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvPendaftar = new System.Windows.Forms.DataGridView();
-            this.buttonAdv1 = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lihatNilaiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nodaf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Npm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Approve = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lihatNilaiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAngkatan)).BeginInit();
@@ -77,6 +77,17 @@ namespace KonversiAlihJalur
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(840, 93);
             this.gradientPanel2.TabIndex = 19;
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.autoLabel2.Location = new System.Drawing.Point(127, 67);
+            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(439, 16);
+            this.autoLabel2.TabIndex = 11;
+            this.autoLabel2.Text = "Klik kanan pada baris => \"Lihat Nilai\" untuk melihat detail nilai mahasiswa";
             // 
             // autoLabel1
             // 
@@ -125,7 +136,7 @@ namespace KonversiAlihJalur
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
-            this.flowLayoutPanel1.Controls.Add(this.buttonAdv1);
+            this.flowLayoutPanel1.Controls.Add(this.btnKonversiOtomatis);
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -148,9 +159,22 @@ namespace KonversiAlihJalur
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
+            // btnKonversiOtomatis
+            // 
+            this.btnKonversiOtomatis.BeforeTouchSize = new System.Drawing.Size(166, 28);
+            this.btnKonversiOtomatis.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKonversiOtomatis.IsBackStageButton = false;
+            this.btnKonversiOtomatis.Location = new System.Drawing.Point(542, 5);
+            this.btnKonversiOtomatis.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btnKonversiOtomatis.Name = "btnKonversiOtomatis";
+            this.btnKonversiOtomatis.Size = new System.Drawing.Size(166, 28);
+            this.btnKonversiOtomatis.TabIndex = 3;
+            this.btnKonversiOtomatis.Text = "Konversi Nilai Otomatis";
+            this.btnKonversiOtomatis.Click += new System.EventHandler(this.btnKonversiOtomatis_Click);
+            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(324, 3);
+            this.progressBar1.Location = new System.Drawing.Point(284, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(253, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -180,43 +204,6 @@ namespace KonversiAlihJalur
             this.dgvPendaftar.Size = new System.Drawing.Size(840, 344);
             this.dgvPendaftar.TabIndex = 21;
             this.dgvPendaftar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvPendaftar_MouseDown);
-            // 
-            // buttonAdv1
-            // 
-            this.buttonAdv1.BeforeTouchSize = new System.Drawing.Size(126, 28);
-            this.buttonAdv1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdv1.IsBackStageButton = false;
-            this.buttonAdv1.Location = new System.Drawing.Point(582, 5);
-            this.buttonAdv1.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.buttonAdv1.Name = "buttonAdv1";
-            this.buttonAdv1.Size = new System.Drawing.Size(126, 28);
-            this.buttonAdv1.TabIndex = 3;
-            this.buttonAdv1.Text = "Konversi Nilai ";
-            // 
-            // autoLabel2
-            // 
-            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.autoLabel2.Location = new System.Drawing.Point(127, 67);
-            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(439, 16);
-            this.autoLabel2.TabIndex = 11;
-            this.autoLabel2.Text = "Klik kanan pada baris => \"Lihat Nilai\" untuk melihat detail nilai mahasiswa";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lihatNilaiToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
-            // 
-            // lihatNilaiToolStripMenuItem
-            // 
-            this.lihatNilaiToolStripMenuItem.Name = "lihatNilaiToolStripMenuItem";
-            this.lihatNilaiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.lihatNilaiToolStripMenuItem.Text = "Lihat Nilai";
-            this.lihatNilaiToolStripMenuItem.Click += new System.EventHandler(this.lihatNilaiToolStripMenuItem_Click);
             // 
             // No
             // 
@@ -252,6 +239,20 @@ namespace KonversiAlihJalur
             this.Approve.Name = "Approve";
             this.Approve.ReadOnly = true;
             this.Approve.Width = 70;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lihatNilaiToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
+            // 
+            // lihatNilaiToolStripMenuItem
+            // 
+            this.lihatNilaiToolStripMenuItem.Name = "lihatNilaiToolStripMenuItem";
+            this.lihatNilaiToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.lihatNilaiToolStripMenuItem.Text = "Lihat Nilai";
+            this.lihatNilaiToolStripMenuItem.Click += new System.EventHandler(this.lihatNilaiToolStripMenuItem_Click);
             // 
             // FormMatrikulasiCalonAlihJalur
             // 
@@ -290,7 +291,7 @@ namespace KonversiAlihJalur
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private System.Windows.Forms.DataGridView dgvPendaftar;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private Syncfusion.Windows.Forms.ButtonAdv buttonAdv1;
+        private Syncfusion.Windows.Forms.ButtonAdv btnKonversiOtomatis;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem lihatNilaiToolStripMenuItem;

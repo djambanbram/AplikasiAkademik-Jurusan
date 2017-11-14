@@ -37,15 +37,15 @@ namespace KonversiAlihJalur.Dialog
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.txtNama = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.txtNpmLama = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
-            this.txtNpmLama = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.txtNama = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KodeD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliahD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,17 +55,24 @@ namespace KonversiAlihJalur.Dialog
             this.SksS1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Approve = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.approveSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.approveKecualiNilaiDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hapusApproveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNama)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNpmLama)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNpmLama)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNama)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gradientPanel2
             // 
             this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel2.Controls.Add(this.autoLabel2);
             this.gradientPanel2.Controls.Add(this.txtNama);
             this.gradientPanel2.Controls.Add(this.txtNpmLama);
             this.gradientPanel2.Controls.Add(this.autoLabel1);
@@ -74,8 +81,32 @@ namespace KonversiAlihJalur.Dialog
             this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(870, 70);
+            this.gradientPanel2.Size = new System.Drawing.Size(870, 94);
             this.gradientPanel2.TabIndex = 20;
+            // 
+            // txtNama
+            // 
+            this.txtNama.BeforeTouchSize = new System.Drawing.Size(136, 25);
+            this.txtNama.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNama.Location = new System.Drawing.Point(86, 36);
+            this.txtNama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtNama.Name = "txtNama";
+            this.txtNama.ReadOnly = true;
+            this.txtNama.Size = new System.Drawing.Size(393, 25);
+            this.txtNama.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtNama.TabIndex = 12;
+            // 
+            // txtNpmLama
+            // 
+            this.txtNpmLama.BeforeTouchSize = new System.Drawing.Size(136, 25);
+            this.txtNpmLama.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNpmLama.Location = new System.Drawing.Point(86, 5);
+            this.txtNpmLama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtNpmLama.Name = "txtNpmLama";
+            this.txtNpmLama.ReadOnly = true;
+            this.txtNpmLama.Size = new System.Drawing.Size(136, 25);
+            this.txtNpmLama.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtNpmLama.TabIndex = 11;
             // 
             // autoLabel1
             // 
@@ -123,6 +154,19 @@ namespace KonversiAlihJalur.Dialog
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
+            // btnSimpan
+            // 
+            this.btnSimpan.BeforeTouchSize = new System.Drawing.Size(126, 28);
+            this.btnSimpan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimpan.IsBackStageButton = false;
+            this.btnSimpan.Location = new System.Drawing.Point(612, 5);
+            this.btnSimpan.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btnSimpan.Name = "btnSimpan";
+            this.btnSimpan.Size = new System.Drawing.Size(126, 28);
+            this.btnSimpan.TabIndex = 3;
+            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(354, 3);
@@ -149,50 +193,15 @@ namespace KonversiAlihJalur.Dialog
             this.SksS1,
             this.Nilai,
             this.Approve});
+            this.dgvNilai.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvNilai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNilai.Location = new System.Drawing.Point(0, 70);
+            this.dgvNilai.Location = new System.Drawing.Point(0, 94);
             this.dgvNilai.Name = "dgvNilai";
             this.dgvNilai.ReadOnly = true;
             this.dgvNilai.RowHeadersVisible = false;
             this.dgvNilai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNilai.Size = new System.Drawing.Size(870, 373);
+            this.dgvNilai.Size = new System.Drawing.Size(870, 349);
             this.dgvNilai.TabIndex = 22;
-            // 
-            // txtNpmLama
-            // 
-            this.txtNpmLama.BeforeTouchSize = new System.Drawing.Size(136, 25);
-            this.txtNpmLama.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNpmLama.Location = new System.Drawing.Point(86, 5);
-            this.txtNpmLama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtNpmLama.Name = "txtNpmLama";
-            this.txtNpmLama.ReadOnly = true;
-            this.txtNpmLama.Size = new System.Drawing.Size(136, 25);
-            this.txtNpmLama.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtNpmLama.TabIndex = 11;
-            // 
-            // txtNama
-            // 
-            this.txtNama.BeforeTouchSize = new System.Drawing.Size(136, 25);
-            this.txtNama.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNama.Location = new System.Drawing.Point(86, 36);
-            this.txtNama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtNama.Name = "txtNama";
-            this.txtNama.ReadOnly = true;
-            this.txtNama.Size = new System.Drawing.Size(393, 25);
-            this.txtNama.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtNama.TabIndex = 12;
-            // 
-            // btnSimpan
-            // 
-            this.btnSimpan.BeforeTouchSize = new System.Drawing.Size(126, 28);
-            this.btnSimpan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimpan.IsBackStageButton = false;
-            this.btnSimpan.Location = new System.Drawing.Point(612, 5);
-            this.btnSimpan.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.btnSimpan.Name = "btnSimpan";
-            this.btnSimpan.Size = new System.Drawing.Size(126, 28);
-            this.btnSimpan.TabIndex = 3;
-            this.btnSimpan.Text = "Simpan";
             // 
             // No
             // 
@@ -257,6 +266,47 @@ namespace KonversiAlihJalur.Dialog
             this.Approve.ReadOnly = true;
             this.Approve.Width = 70;
             // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.autoLabel2.Location = new System.Drawing.Point(86, 68);
+            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(304, 16);
+            this.autoLabel2.TabIndex = 13;
+            this.autoLabel2.Text = "Klik kanan pada baris untuk edit approve otomatis";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.approveSemuaToolStripMenuItem,
+            this.approveKecualiNilaiDToolStripMenuItem,
+            this.hapusApproveToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 70);
+            // 
+            // approveSemuaToolStripMenuItem
+            // 
+            this.approveSemuaToolStripMenuItem.Name = "approveSemuaToolStripMenuItem";
+            this.approveSemuaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.approveSemuaToolStripMenuItem.Text = "Approve Semua";
+            this.approveSemuaToolStripMenuItem.Click += new System.EventHandler(this.approveSemuaToolStripMenuItem_Click);
+            // 
+            // approveKecualiNilaiDToolStripMenuItem
+            // 
+            this.approveKecualiNilaiDToolStripMenuItem.Name = "approveKecualiNilaiDToolStripMenuItem";
+            this.approveKecualiNilaiDToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.approveKecualiNilaiDToolStripMenuItem.Text = "Approve Kecuali Nilai D";
+            this.approveKecualiNilaiDToolStripMenuItem.Click += new System.EventHandler(this.approveKecualiNilaiDToolStripMenuItem_Click);
+            // 
+            // hapusApproveToolStripMenuItem
+            // 
+            this.hapusApproveToolStripMenuItem.Name = "hapusApproveToolStripMenuItem";
+            this.hapusApproveToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.hapusApproveToolStripMenuItem.Text = "Hapus Approve";
+            this.hapusApproveToolStripMenuItem.Click += new System.EventHandler(this.hapusApproveToolStripMenuItem_Click);
+            // 
             // FormDetailNilaiMhsAlihJalur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -275,10 +325,11 @@ namespace KonversiAlihJalur.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNama)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNpmLama)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNpmLama)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNama)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -304,5 +355,10 @@ namespace KonversiAlihJalur.Dialog
         private System.Windows.Forms.DataGridViewTextBoxColumn SksS1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nilai;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Approve;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem approveSemuaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem approveKecualiNilaiDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hapusApproveToolStripMenuItem;
     }
 }

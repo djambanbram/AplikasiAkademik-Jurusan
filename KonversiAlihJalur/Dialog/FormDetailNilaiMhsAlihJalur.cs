@@ -25,6 +25,7 @@ namespace KonversiAlihJalur.Dialog
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDetailCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/get_detail_calon_mhs_alih_jalur";
+        private string URLSaveHistoryNilaiCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur";
 
         private string NpmLama;
         private string Nama;
@@ -79,11 +80,85 @@ namespace KonversiAlihJalur.Dialog
 
             dgvNilai.Rows.Clear();
             var no = 1;
+            var asciNilaiMinimal = Encoding.ASCII.GetBytes("C")[0];
             foreach (var item in listDetailNilai)
             {
                 dgvNilai.Rows.Add(no, item.KodeD3, item.MataKuliahD3, item.SksD3, item.KodeS1, item.MataKuliahS1, item.SksS1, item.Nilai, item.Approve);
+
+                byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
+                if (asciiNilai > asciNilaiMinimal)
+                {
+                    dgvNilai.Rows[no - 1].DefaultCellStyle.BackColor = Color.LightSalmon;
+                }
                 no++;
             }
+
+            Loading(false);
+        }
+
+        private void approveSemuaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvNilai.Rows)
+            {
+                row.Cells["Approve"].Value = true;
+            }
+        }
+
+        private void approveKecualiNilaiDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvNilai.Rows)
+            {
+                if (row.Cells["Nilai"].Value.ToString() == "D")
+                {
+                    row.Cells["Approve"].Value = false;
+                }
+                else
+                {
+                    row.Cells["Approve"].Value = true;
+                }
+            }
+        }
+
+        private void hapusApproveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvNilai.Rows)
+            {
+                row.Cells["Approve"].Value = false;
+            }
+        }
+
+        private async void btnSimpan_Click(object sender, EventArgs e)
+        {
+            if(dgvNilai.Rows.Count <= 0)
+            {
+                return;
+            }
+
+            Loading(true);
+
+            List<HistoryKonversiNilai> listHistoryKonversi = new List<HistoryKonversiNilai>();
+            foreach(DataGridViewRow row in dgvNilai.Rows)
+            {
+                HistoryKonversiNilai h = new HistoryKonversiNilai();
+                h.Npm = NpmLama;
+                h.KodeD3 = row.Cells["KodeD3"].Value.ToString();
+                h.MataKuliahD3 = row.Cells["MataKuliahD3"].Value.ToString();
+                h.SksD3 = int.Parse(row.Cells["SksD3"].Value.ToString());
+                h.KodeS1 = row.Cells["KodeS1"].Value.ToString();
+                h.Nilai = row.Cells["Nilai"].Value.ToString();
+                h.Approve = Convert.ToBoolean(row.Cells["Approve"].Value.ToString());
+                listHistoryKonversi.Add(h);
+            }
+
+            var jsondata = JsonConvert.SerializeObject(listHistoryKonversi);
+            response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalur, jsondata, true);
+            if(!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            MessageBox.Show("Konversi nilai berhasil disimpan");
 
             Loading(false);
         }

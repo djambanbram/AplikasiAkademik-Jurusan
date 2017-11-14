@@ -38,6 +38,7 @@ namespace PenawaranKurikulum
         private string URLSaveAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/save_dosen_mengajar";
         private string URLCanDeleteAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/is_dosen_sudah_presensi";
         private string URLDeleteAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/del_dosen_mengajar";
+        private string URLDeleteAlokasiDosenBySemester = baseAddress + "/jurusan_api/api/pengajaran/del_dosen_mengajar_by_semester";
         private string URLGetKelasCampuran = baseAddress + "/jurusan_api/api/kelas/get_kelas_campuran";
 
         private WebApi webApi;
@@ -92,7 +93,7 @@ namespace PenawaranKurikulum
 
         private void FormAlokasiDosen_Load(object sender, EventArgs e)
         {
-            if(LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
+            if (LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
             {
                 radCampuran.Text = "MK Remidial";
                 radCampuran.Checked = true;
@@ -227,6 +228,14 @@ namespace PenawaranKurikulum
             await LoadKelas(jsonData);
             await LoadAlokasiDosen(jsonData);
             await LoadDataDosen(jsonData);
+            if (radCampuran.Checked)
+            {
+                btnHapusAlokasi.Text = "Hapus Alokasi MK Campuran";
+            }
+            else
+            {
+                btnHapusAlokasi.Text = string.Format("Hapus Alokasi Semester {0}", semester);
+            }
         }
 
         private async Task LoadMKDitawarkan(string jsonData)
@@ -828,6 +837,48 @@ namespace PenawaranKurikulum
                 dgvDataDosen.Rows.Add(no, d.Nik, d.NamaDosen, d.Sks);
                 no++;
             }
+        }
+
+        private async void btnHapusAlokasi_Click(object sender, EventArgs e)
+        {
+            var message = string.Empty;
+            if (radCampuran.Checked)
+            {
+                message = string.Format("Hapus seluruh alokasi dosen mengajar untuk {0}?", radCampuran.Text);
+            }
+            else
+            {
+                message = string.Format("Hapus seluruh alokasi dosen mengajar untuk semester {0}?", semDipilih);
+            }
+
+            DialogResult dr = MessageBox.Show(message, "Perhatian", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.No)
+            {
+                return;
+            }
+
+            Loading(true);
+
+            var data = new
+            {
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.Semester,
+                IdProdi = cmbProdi.SelectedValue.ToString(),
+                KodeJurusan = kodeProgramDipilih,
+                SemesterDitawarkan = radCampuran.Checked ? 0 : semDipilih
+            };
+
+            var jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLDeleteAlokasiDosenBySemester, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            await LoadAlokasiDosen(semDipilih, kodeProgramDipilih);
+            MessageBox.Show("Alokasi berhasil dihapus");
+            Loading(false);
         }
     }
 }

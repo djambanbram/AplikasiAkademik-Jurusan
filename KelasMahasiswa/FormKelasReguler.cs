@@ -29,6 +29,8 @@ namespace KelasMahasiswa
         private string URLGetKelasMhs = baseAddress + "/jurusan_api/api/kelas/get_kelas_mhs";
         private string URLGetKelasAktif = baseAddress + "/jurusan_api/api/kelas/get_kelas_reguler";
         private string URLGenerateKelasReguler = baseAddress + "/jurusan_api/api/kelas/generate_kelas_reguler";
+        private string URLGenerateKelasRegulerByAngkatan = baseAddress + "/jurusan_api/api/kelas/generate_kelas_by_angkatan";
+        private string URLDeleteKelasRegulerByAngkatan = baseAddress + "/jurusan_api/api/kelas/del_kelas_by_angkatan";
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -187,6 +189,95 @@ namespace KelasMahasiswa
             kodeProgramDipilih = string.Empty;
             Loading(false);
 
+        }
+
+        private void dgvJumlahKelas_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (dgvJumlahKelas.Rows.Count <= 0)
+            {
+                aktifkanKelasToolStripMenuItem.Enabled = false;
+                aktifkanKelasToolStripMenuItem.Text = "Aktifkan Kelas";
+                hapusKelasToolStripMenuItem.Enabled = false;
+                hapusKelasToolStripMenuItem.Text = "Hapus Kelas";
+            }
+
+            dgvJumlahKelas.ClearSelection();
+            var hit = dgvJumlahKelas.HitTest(e.X, e.Y);
+            if (hit == null)
+            {
+                aktifkanKelasToolStripMenuItem.Enabled = false;
+                aktifkanKelasToolStripMenuItem.Text = "Aktifkan Kelas";
+                hapusKelasToolStripMenuItem.Enabled = false;
+                hapusKelasToolStripMenuItem.Text = "Hapus Kelas";
+                return;
+            }
+            if (hit.RowIndex < 0)
+            {
+                aktifkanKelasToolStripMenuItem.Enabled = false;
+                aktifkanKelasToolStripMenuItem.Text = "Aktifkan Kelas";
+                hapusKelasToolStripMenuItem.Enabled = false;
+                hapusKelasToolStripMenuItem.Text = "Hapus Kelas";
+                return;
+            }
+
+            dgvJumlahKelas.Rows[hit.RowIndex].Selected = true;
+            var angkatan = int.Parse(dgvJumlahKelas.SelectedRows[0].Cells["AngkatanKelas"].Value.ToString());
+            if (bool.Parse(dgvJumlahKelas.Rows[hit.RowIndex].Cells["Aktif"].Value.ToString()))
+            {
+                aktifkanKelasToolStripMenuItem.Enabled = false;
+                aktifkanKelasToolStripMenuItem.Text = "Kelas sudah di aktifkan";
+                hapusKelasToolStripMenuItem.Enabled = true;
+                hapusKelasToolStripMenuItem.Tag = angkatan;
+                hapusKelasToolStripMenuItem.Text = string.Format("Hapus kelas angkatan {0}", angkatan);
+            }
+            else
+            {
+                aktifkanKelasToolStripMenuItem.Enabled = true;
+                aktifkanKelasToolStripMenuItem.Text = string.Format("Aktifkan Kelas Angkatan {0}", angkatan);
+                aktifkanKelasToolStripMenuItem.Tag = angkatan;
+                hapusKelasToolStripMenuItem.Enabled = false;
+                hapusKelasToolStripMenuItem.Text = "Kelas belum di aktifkan";
+            }
+        }
+
+        private async void aktifkanKelasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Loading(true);
+
+            var kodeJurusan = int.Parse(cmbProgram.SelectedValue.ToString());
+            var angkatan = int.Parse(aktifkanKelasToolStripMenuItem.Tag.ToString());
+
+            var data = new { Angkatan = angkatan, KodeJurusan = kodeJurusan, TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
+            var jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLGenerateKelasRegulerByAngkatan, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            await LoadKelas(kodeProgramDipilih);
+            Loading(false);
+        }
+
+        private async void hapusKelasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Loading(true);
+
+            var kodeJurusan = int.Parse(cmbProgram.SelectedValue.ToString());
+            var angkatan = int.Parse(hapusKelasToolStripMenuItem.Tag.ToString());
+
+            var data = new { Angkatan = angkatan, KodeJurusan = kodeJurusan, TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
+            var jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLDeleteKelasRegulerByAngkatan, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            await LoadKelas(kodeProgramDipilih);
+            Loading(false);
         }
     }
 }

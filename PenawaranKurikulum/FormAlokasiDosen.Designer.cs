@@ -38,6 +38,10 @@ namespace PenawaranKurikulum
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.rad8 = new System.Windows.Forms.RadioButton();
+            this.rad7 = new System.Windows.Forms.RadioButton();
+            this.rad5 = new System.Windows.Forms.RadioButton();
+            this.rad6 = new System.Windows.Forms.RadioButton();
             this.radCampuran = new System.Windows.Forms.RadioButton();
             this.rad4 = new System.Windows.Forms.RadioButton();
             this.rad3 = new System.Windows.Forms.RadioButton();
@@ -68,10 +72,7 @@ namespace PenawaranKurikulum
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCariDosen = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.rad6 = new System.Windows.Forms.RadioButton();
-            this.rad5 = new System.Windows.Forms.RadioButton();
-            this.rad7 = new System.Windows.Forms.RadioButton();
-            this.rad8 = new System.Windows.Forms.RadioButton();
+            this.btnHapusAlokasi = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -115,6 +116,54 @@ namespace PenawaranKurikulum
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(875, 156);
             this.gradientPanel2.TabIndex = 11;
+            // 
+            // rad8
+            // 
+            this.rad8.AutoSize = true;
+            this.rad8.Location = new System.Drawing.Point(328, 124);
+            this.rad8.Name = "rad8";
+            this.rad8.Size = new System.Drawing.Size(65, 21);
+            this.rad8.TabIndex = 21;
+            this.rad8.TabStop = true;
+            this.rad8.Text = "Sem. 1";
+            this.rad8.UseVisualStyleBackColor = true;
+            this.rad8.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad7
+            // 
+            this.rad7.AutoSize = true;
+            this.rad7.Location = new System.Drawing.Point(257, 124);
+            this.rad7.Name = "rad7";
+            this.rad7.Size = new System.Drawing.Size(65, 21);
+            this.rad7.TabIndex = 20;
+            this.rad7.TabStop = true;
+            this.rad7.Text = "Sem. 1";
+            this.rad7.UseVisualStyleBackColor = true;
+            this.rad7.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad5
+            // 
+            this.rad5.AutoSize = true;
+            this.rad5.Location = new System.Drawing.Point(115, 124);
+            this.rad5.Name = "rad5";
+            this.rad5.Size = new System.Drawing.Size(65, 21);
+            this.rad5.TabIndex = 19;
+            this.rad5.TabStop = true;
+            this.rad5.Text = "Sem. 1";
+            this.rad5.UseVisualStyleBackColor = true;
+            this.rad5.CheckedChanged += new System.EventHandler(this.radioChecked);
+            // 
+            // rad6
+            // 
+            this.rad6.AutoSize = true;
+            this.rad6.Location = new System.Drawing.Point(186, 124);
+            this.rad6.Name = "rad6";
+            this.rad6.Size = new System.Drawing.Size(65, 21);
+            this.rad6.TabIndex = 18;
+            this.rad6.TabStop = true;
+            this.rad6.Text = "Sem. 1";
+            this.rad6.UseVisualStyleBackColor = true;
+            this.rad6.CheckedChanged += new System.EventHandler(this.radioChecked);
             // 
             // radCampuran
             // 
@@ -248,6 +297,7 @@ namespace PenawaranKurikulum
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
+            this.flowLayoutPanel1.Controls.Add(this.btnHapusAlokasi);
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -271,7 +321,7 @@ namespace PenawaranKurikulum
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(539, 3);
+            this.progressBar1.Location = new System.Drawing.Point(332, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(214, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -467,53 +517,18 @@ namespace PenawaranKurikulum
             this.txtCariDosen.TabIndex = 1;
             this.txtCariDosen.TextChanged += new System.EventHandler(this.txtCariDosen_TextChanged);
             // 
-            // rad6
+            // btnHapusAlokasi
             // 
-            this.rad6.AutoSize = true;
-            this.rad6.Location = new System.Drawing.Point(186, 124);
-            this.rad6.Name = "rad6";
-            this.rad6.Size = new System.Drawing.Size(65, 21);
-            this.rad6.TabIndex = 18;
-            this.rad6.TabStop = true;
-            this.rad6.Text = "Sem. 1";
-            this.rad6.UseVisualStyleBackColor = true;
-            this.rad6.CheckedChanged += new System.EventHandler(this.radioChecked);
-            // 
-            // rad5
-            // 
-            this.rad5.AutoSize = true;
-            this.rad5.Location = new System.Drawing.Point(115, 124);
-            this.rad5.Name = "rad5";
-            this.rad5.Size = new System.Drawing.Size(65, 21);
-            this.rad5.TabIndex = 19;
-            this.rad5.TabStop = true;
-            this.rad5.Text = "Sem. 1";
-            this.rad5.UseVisualStyleBackColor = true;
-            this.rad5.CheckedChanged += new System.EventHandler(this.radioChecked);
-            // 
-            // rad7
-            // 
-            this.rad7.AutoSize = true;
-            this.rad7.Location = new System.Drawing.Point(257, 124);
-            this.rad7.Name = "rad7";
-            this.rad7.Size = new System.Drawing.Size(65, 21);
-            this.rad7.TabIndex = 20;
-            this.rad7.TabStop = true;
-            this.rad7.Text = "Sem. 1";
-            this.rad7.UseVisualStyleBackColor = true;
-            this.rad7.CheckedChanged += new System.EventHandler(this.radioChecked);
-            // 
-            // rad8
-            // 
-            this.rad8.AutoSize = true;
-            this.rad8.Location = new System.Drawing.Point(328, 124);
-            this.rad8.Name = "rad8";
-            this.rad8.Size = new System.Drawing.Size(65, 21);
-            this.rad8.TabIndex = 21;
-            this.rad8.TabStop = true;
-            this.rad8.Text = "Sem. 1";
-            this.rad8.UseVisualStyleBackColor = true;
-            this.rad8.CheckedChanged += new System.EventHandler(this.radioChecked);
+            this.btnHapusAlokasi.BackColor = System.Drawing.Color.Salmon;
+            this.btnHapusAlokasi.BeforeTouchSize = new System.Drawing.Size(201, 30);
+            this.btnHapusAlokasi.IsBackStageButton = false;
+            this.btnHapusAlokasi.Location = new System.Drawing.Point(552, 4);
+            this.btnHapusAlokasi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnHapusAlokasi.Name = "btnHapusAlokasi";
+            this.btnHapusAlokasi.Size = new System.Drawing.Size(201, 30);
+            this.btnHapusAlokasi.TabIndex = 2;
+            this.btnHapusAlokasi.Text = "Hapus Alokasi Semester";
+            this.btnHapusAlokasi.Click += new System.EventHandler(this.btnHapusAlokasi_Click);
             // 
             // FormAlokasiDosen
             // 
@@ -589,5 +604,6 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.RadioButton rad6;
         private System.Windows.Forms.RadioButton rad8;
         private System.Windows.Forms.RadioButton rad7;
+        private Syncfusion.Windows.Forms.ButtonAdv btnHapusAlokasi;
     }
 }

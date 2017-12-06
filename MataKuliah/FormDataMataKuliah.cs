@@ -37,6 +37,7 @@ namespace MataKuliah
         private string URLGetKategoriMK = baseAddress + "/jurusan_api/api/kurikulum/get_kategori_mk";
         private string URLGetSifatMK = baseAddress + "/jurusan_api/api/kurikulum/get_sifat_mk";
         private string URLSaveMK = baseAddress + "/jurusan_api/api/kurikulum/save_mk";
+        private string URLCekMkSudahDitranskrip = baseAddress + "/jurusan_api/api/kurikulum/is_mk_sudah_cetak_transkrip";
         private string URLDeleteMK = baseAddress + "/jurusan_api/api/kurikulum/non_aktifkan_mk";
 
         private List<Fakultas> listFakultas;
@@ -169,7 +170,7 @@ namespace MataKuliah
             ResetField();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgvMataKuliah.Rows.Count <= 0 || string.IsNullOrWhiteSpace(txtNamaMK.Text))
             {
@@ -182,8 +183,23 @@ namespace MataKuliah
             btnTambah.Visible = false;
             btnNonAktifMK.Visible = false;
 
+
             IsEditField(true);
             KodeMKDipilih = dgvMataKuliah.SelectedRows[0].Cells["Kode"].Value.ToString();
+
+            var data = new { Kode = KodeMKDipilih };
+            var jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLCekMkSudahDitranskrip, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                txtNamaMK.Enabled = true;
+                txtNamaMKEn.Enabled = true;
+            }
+            else
+            {
+                txtNamaMK.Enabled = false;
+                txtNamaMKEn.Enabled = false;
+            }
         }
 
         private void btnBatal_Click(object sender, EventArgs e)
@@ -241,6 +257,8 @@ namespace MataKuliah
                 mk.SemesterDitawarkan = int.Parse(cmbSemesterPenawaran.Text);
                 mk.SingkatanKelas = txtSingkatanMK.Text;
                 mk.IsTugasAkhir = cbIsSkripsi.Checked;
+                mk.MataKuliah = txtNamaMK.Text;
+                mk.MataKuliahEn = txtNamaMKEn.Text;
 
                 string jsonData = JsonConvert.SerializeObject(mk);
                 response = await webApi.Post(URLSaveMK, jsonData, true);

@@ -87,6 +87,10 @@ namespace MainAplikasi
             Form form = null;
             if (e.XPTaskBarItem.Name == "itemKelasReguler")
             {
+                if(IsSemesterRemidial())
+                {
+                    return;
+                }
                 if (formKelasReguler == null || formKelasReguler.IsDisposed)
                 {
                     formKelasReguler = new FormKelasReguler();
@@ -128,6 +132,10 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemGrupMK")
             {
+                if (IsSemesterRemidial())
+                {
+                    return;
+                }
                 if (formGrupMK == null || formGrupMK.IsDisposed)
                 {
                     formGrupMK = new FormGrupMK();
@@ -151,6 +159,10 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiLabMK")
             {
+                if (IsSemesterRemidial())
+                {
+                    return;
+                }
                 if (formAlokasiLabMK == null || formAlokasiLabMK.IsDisposed)
                 {
                     formAlokasiLabMK = new FormAlokasiLabMK();
@@ -160,6 +172,10 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemTimDosen")
             {
+                if (IsSemesterRemidial())
+                {
+                    return;
+                }
                 if (formTimDosen == null || formTimDosen.IsDisposed)
                 {
                     formTimDosen = new FormTimDosen();
@@ -398,6 +414,16 @@ namespace MainAplikasi
             }
             formReportDosenWali.Show();
             tabbedMDIManager1.UpdateActiveTabHost(formReportDosenWali);
+        }
+
+        private bool IsSemesterRemidial()
+        {
+            if (LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
+            {
+                MessageBox.Show("Fitur hanya untuk semester reguler");
+                return true;
+            }
+            return false;
         }
     }
 }

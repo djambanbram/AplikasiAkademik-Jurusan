@@ -19,7 +19,8 @@ namespace MainAplikasi
     public partial class FormLogin : Form
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLLogin = baseAddress + "/account_api/verify";
+        public static string baseLogin = ConfigurationManager.AppSettings["baseLogin"];
+        private string URLLogin = baseLogin + "/account_api/verify";
         private string URLInitTahun = baseAddress + "/jurusan_api/api/data_support/init_tahun_aktif";
         private string URLInitSemester = baseAddress + "/jurusan_api/api/data_support/init_data_semester";
 

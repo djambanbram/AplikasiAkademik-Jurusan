@@ -647,7 +647,7 @@
         <Top>7.57292in</Top>
         <Left>1.20833in</Left>
         <Height>0.23958in</Height>
-        <Width>6.08333in</Width>
+        <Width>2.59375in</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
@@ -682,7 +682,7 @@
         <Top>7.775in</Top>
         <Left>1.20833in</Left>
         <Height>0.23958in</Height>
-        <Width>6.08333in</Width>
+        <Width>2.59375in</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -717,7 +717,7 @@
         <Top>7.97708in</Top>
         <Left>1.20833in</Left>
         <Height>0.23958in</Height>
-        <Width>6.08333in</Width>
+        <Width>2.59375in</Width>
         <ZIndex>19</ZIndex>
         <Style>
           <Border>
@@ -753,7 +753,7 @@
         <Top>9.09166in</Top>
         <Left>1.20834in</Left>
         <Height>0.23958in</Height>
-        <Width>6.08333in</Width>
+        <Width>2.59375in</Width>
         <ZIndex>20</ZIndex>
         <Style>
           <Border>
@@ -788,7 +788,7 @@
         <Top>9.29374in</Top>
         <Left>1.20834in</Left>
         <Height>0.23958in</Height>
-        <Width>6.08333in</Width>
+        <Width>2.59375in</Width>
         <ZIndex>21</ZIndex>
         <Style>
           <Border>
@@ -856,7 +856,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1243,6 +1242,77 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox27">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!Dekan.Value</Value>
+                <Style>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <TextDecoration>Underline</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>9.09166in</Top>
+        <Left>5.32292in</Left>
+        <Height>0.23958in</Height>
+        <Width>2.59375in</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox28">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!NikDekan.Value</Value>
+                <Style>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>11pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>9.29374in</Top>
+        <Left>5.32292in</Left>
+        <Height>0.23958in</Height>
+        <Width>2.59375in</Width>
+        <ZIndex>25</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>10.97792in</Height>
     <Style />
@@ -1337,6 +1407,18 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="NikKaprodi">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dekan">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="NikDekan">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>

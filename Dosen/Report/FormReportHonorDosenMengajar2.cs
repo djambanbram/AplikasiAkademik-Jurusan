@@ -180,6 +180,7 @@ namespace Dosen.Report
             decimal pajak = 0;
             var pertemuanPerSKs = 7;
             var tempBeban = 0;
+            var viewTempBeban = 0;
             var tempNik = string.Empty;
             foreach (var h in listDataFix)
             {
@@ -194,20 +195,23 @@ namespace Dosen.Report
                 if (tempBeban <= jmlSksTotal && tempBeban != 0)
                 {
                     jmlSksBayar = jmlSksTotal - tempBeban;
+                    viewTempBeban = tempBeban;
                 }
                 else if (tempBeban > jmlSksTotal)
                 {
                     jmlSksBayar = 0;
+                    viewTempBeban = int.Parse(jmlSksTotal.ToString());
                 }
                 else if (tempBeban == 0)
                 {
                     jmlSksBayar = jmlSksTotal;
                     tempBeban = 0;
+                    viewTempBeban = 0;
                 }
                 decimal jmlPertemuanMengajar = jmlSksBayar * pertemuanPerSKs;
                 var hrFixBulan = (jmlSksBayar * h.HFix);
                 decimal hrVarBulan = 0;
-                
+
                 if (h.KodeProgram == "60" || h.KodeProgram == "61" || h.KodeProgram == "62")
                 {
                     if (h.KategoriDosen == "Dosen Tetap")
@@ -266,7 +270,7 @@ namespace Dosen.Report
                 d.JenisMataKuliah = string.Format("{0}{1}", h.SksTp, h.JenisMataKuliah);
                 d.JumlahKelas = jmlKelas;
                 d.JumlahSksTotal = jmlSksTotal;
-                d.BebanSks = tempBeban;
+                d.BebanSks = viewTempBeban;
                 d.JumlahSksBayar = jmlSksBayar;
                 d.JumlahPertemuan = jmlPertemuanMengajar;
                 d.PendidikanGolongan = string.Format("{0}/{1}", h.JenjangPendidikan, h.Golongan);

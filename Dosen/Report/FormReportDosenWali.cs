@@ -141,6 +141,7 @@ namespace Dosen.Report
             var singkatanProdi = Organisasi.listProgram.Find(p => p.Prodi.Uid == cmbProdi.SelectedValue.ToString()).Prodi.SingkatanProdi;
 
             string KodeProgramReguler = Organisasi.listProdi.Find(pr => pr.Uid == cmbProdi.SelectedValue.ToString()).KodeProgramReguler;
+            string KodeFakultas = Organisasi.listFakultas.Find(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).KodeFakultas;
             List<ReportParameter> listParams = new List<ReportParameter>();
             listParams.Add(new ReportParameter("TglPengesahaan", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
             listParams.Add(new ReportParameter("TahunAkademik", LoginAccess.TahunAkademik));
@@ -149,6 +150,8 @@ namespace Dosen.Report
             listParams.Add(new ReportParameter("NikKaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NikKepala));
             listParams.Add(new ReportParameter("NoSurat", string.Format("{0}/{1}/AMIKOM/{2}/{3}",
                                                             DateTime.Now.Day, singkatanProdi, CommonLib.NumberToRoman(DateTime.Now.Month), DateTime.Now.Year)));
+            listParams.Add(new ReportParameter("Dekan", listDepartment.Find(d => d.KodeDepartment == KodeFakultas).NamaKepala));
+            listParams.Add(new ReportParameter("NikDekan", listDepartment.Find(d => d.KodeDepartment == KodeFakultas).NikKepala));
 
             List<DosenWali> listTemp = listDosenWali.Where(w => w.IdProdi == cmbProdi.SelectedValue.ToString()).ToList();
             DataTable dtDosenWaliPerProdi = CommonLib.ToDataTable(listTemp);

@@ -97,6 +97,15 @@ namespace PenawaranKurikulum
             {
                 radCampuran.Text = "MK Remidial";
                 radCampuran.Checked = true;
+
+                rad1.Enabled = false;
+                rad2.Enabled = false;
+                rad3.Enabled = false;
+                rad4.Enabled = false;
+                rad5.Enabled = false;
+                rad6.Enabled = false;
+                rad7.Enabled = false;
+                rad8.Enabled = false;
             }
 
             listFakultas = new List<Fakultas>(Organisasi.listFakultas);
@@ -290,8 +299,16 @@ namespace PenawaranKurikulum
                 }
                 else
                 {
-                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" || m.DaftarKelasMK == true ||
-                                m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
+                    if (LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
+                    {
+                        listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" || m.KodeSifatMK == "W" ||
+                                    m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
+                    }
+                    else
+                    {
+                        listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" || m.DaftarKelasMK == true ||
+                                    m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
+                    }
                 }
 
                 foreach (MataKuliahDitawarkan mk in listTemp)
@@ -372,18 +389,38 @@ namespace PenawaranKurikulum
 
             foreach (DataGridViewTextBoxColumn dgc in dgvAlokasi.Columns)
             {
-                if (dgc.HeaderText.Contains("0"))
-                {
-                    dgc.DefaultCellStyle.BackColor = Color.LightGray;
-                }
-
-                if (isModeCampuran)
+                if (LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8)
                 {
                     foreach (DataGridViewRow dgr in dgvAlokasi.Rows)
                     {
                         if (dgr.Cells["Kode"].Value.ToString() != dgc.Name.Split('-')[0].ToString())
                         {
-                            dgr.Cells[dgc.DisplayIndex].Style.BackColor = Color.LightGray;
+                                dgr.Cells[dgc.DisplayIndex].Style.BackColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            if (dgc.HeaderText.Contains("P"))
+                            {
+                                dgr.Cells[dgc.DisplayIndex].Style.BackColor = Color.LightGray;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (dgc.HeaderText.Contains("0"))
+                    {
+                        dgc.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+
+                    if (isModeCampuran)
+                    {
+                        foreach (DataGridViewRow dgr in dgvAlokasi.Rows)
+                        {
+                            if (dgr.Cells["Kode"].Value.ToString() != dgc.Name.Split('-')[0].ToString())
+                            {
+                                dgr.Cells[dgc.DisplayIndex].Style.BackColor = Color.LightGray;
+                            }
                         }
                     }
                 }

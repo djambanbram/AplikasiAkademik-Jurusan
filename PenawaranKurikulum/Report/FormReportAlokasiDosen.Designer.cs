@@ -36,7 +36,7 @@ namespace PenawaranKurikulum.Report
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -48,6 +48,7 @@ namespace PenawaranKurikulum.Report
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnManual = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -59,8 +60,9 @@ namespace PenawaranKurikulum.Report
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "dsAlokasiDosen";
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "dsAlokasiDosen";
+            reportDataSource2.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PenawaranKurikulum.ReportVieew.ReportAlokasiDosen.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 104);
             this.reportViewer1.Name = "reportViewer1";
@@ -144,6 +146,7 @@ namespace PenawaranKurikulum.Report
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
+            this.flowLayoutPanel1.Controls.Add(this.btnManual);
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -167,12 +170,24 @@ namespace PenawaranKurikulum.Report
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(430, 3);
+            this.progressBar1.Location = new System.Drawing.Point(342, 3);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(268, 23);
+            this.progressBar1.Size = new System.Drawing.Size(268, 31);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 3;
             this.progressBar1.Visible = false;
+            // 
+            // btnManual
+            // 
+            this.btnManual.BeforeTouchSize = new System.Drawing.Size(82, 30);
+            this.btnManual.IsBackStageButton = false;
+            this.btnManual.Location = new System.Drawing.Point(616, 4);
+            this.btnManual.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnManual.Name = "btnManual";
+            this.btnManual.Size = new System.Drawing.Size(82, 30);
+            this.btnManual.TabIndex = 4;
+            this.btnManual.Text = "Manual";
+            this.btnManual.Click += new System.EventHandler(this.btnManual_Click);
             // 
             // FormReportAlokasiDosen
             // 
@@ -212,5 +227,6 @@ namespace PenawaranKurikulum.Report
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private Syncfusion.Windows.Forms.ButtonAdv btnManual;
     }
 }

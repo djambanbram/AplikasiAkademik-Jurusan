@@ -99,6 +99,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetAlokasi.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\DialogManualAlokasiDosen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogManualAlokasiDosen.Designer.cs">
+      <DependentUpon>DialogManualAlokasiDosen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\DialogSetDosenKelas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     <Compile Include="Report\FormReportAlokasiMK.Designer.cs">
       <DependentUpon>FormReportAlokasiMK.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialog\DialogManualAlokasiDosen.resx">
+      <DependentUpon>DialogManualAlokasiDosen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DialogSetDosenKelas.resx">
       <DependentUpon>DialogSetDosenKelas.cs</DependentUpon>
     </EmbeddedResource>

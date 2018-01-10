@@ -9,6 +9,7 @@ using ApiService;
 using ClassModel;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
+using PenawaranKurikulum.Dialog;
 using PenawaranKurikulum.Lib;
 using System;
 using System.Collections.Generic;
@@ -119,6 +120,7 @@ namespace PenawaranKurikulum.Report
                 }
                 else
                 {
+                    cmbProgram.Enabled = true;
                     string idProdi = cmbProdi.SelectedValue.ToString();
                     listProgram = Organisasi.listProgram.Where(program => program.Prodi.Uid == idProdi).ToList();
                     listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
@@ -321,6 +323,15 @@ namespace PenawaranKurikulum.Report
             reportViewer1.LocalReport.Refresh();
             reportViewer1.RefreshReport();
 
+        }
+
+        private void btnManual_Click(object sender, EventArgs e)
+        {
+            using (var form = new DialogManualAlokasiDosen())
+            {
+                form.ShowDialog(this);
+                form.StartPosition = FormStartPosition.CenterParent;
+            }
         }
     }
 

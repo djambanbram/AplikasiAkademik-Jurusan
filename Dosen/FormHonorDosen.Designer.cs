@@ -50,9 +50,11 @@ namespace Dosen
             this.Golongan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HonorFix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HonorVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HonorRemidial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pajak = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TanggalBerlaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnRemidial = new Syncfusion.Windows.Forms.ButtonAdv();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).BeginInit();
@@ -64,6 +66,7 @@ namespace Dosen
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
             this.flowLayoutPanel1.Controls.Add(this.btnHapus);
             this.flowLayoutPanel1.Controls.Add(this.btntambah);
+            this.flowLayoutPanel1.Controls.Add(this.btnRemidial);
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -112,7 +115,7 @@ namespace Dosen
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(293, 3);
+            this.progressBar1.Location = new System.Drawing.Point(86, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(214, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -141,7 +144,7 @@ namespace Dosen
             // 
             // txtCari
             // 
-            this.txtCari.BeforeTouchSize = new System.Drawing.Size(239, 25);
+            this.txtCari.BeforeTouchSize = new System.Drawing.Size(271, 25);
             this.txtCari.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCari.Location = new System.Drawing.Point(40, 3);
             this.txtCari.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -164,6 +167,7 @@ namespace Dosen
             this.Golongan,
             this.HonorFix,
             this.HonorVar,
+            this.HonorRemidial,
             this.Pajak,
             this.TanggalBerlaku,
             this.Hapus});
@@ -175,6 +179,7 @@ namespace Dosen
             this.dgvHonorDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHonorDosen.Size = new System.Drawing.Size(867, 414);
             this.dgvHonorDosen.TabIndex = 14;
+            this.dgvHonorDosen.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHonorDosen_CellEndEdit);
             // 
             // IdHonorDosen
             // 
@@ -210,11 +215,18 @@ namespace Dosen
             this.HonorVar.ReadOnly = true;
             this.HonorVar.Width = 150;
             // 
+            // HonorRemidial
+            // 
+            this.HonorRemidial.HeaderText = "Honor Remidial";
+            this.HonorRemidial.Name = "HonorRemidial";
+            this.HonorRemidial.Width = 150;
+            // 
             // Pajak
             // 
             this.Pajak.HeaderText = "Pajak";
             this.Pajak.Name = "Pajak";
             this.Pajak.ReadOnly = true;
+            this.Pajak.Visible = false;
             this.Pajak.Width = 60;
             // 
             // TanggalBerlaku
@@ -229,6 +241,18 @@ namespace Dosen
             this.Hapus.HeaderText = "Hapus";
             this.Hapus.Name = "Hapus";
             this.Hapus.Width = 55;
+            // 
+            // btnRemidial
+            // 
+            this.btnRemidial.BeforeTouchSize = new System.Drawing.Size(201, 30);
+            this.btnRemidial.IsBackStageButton = false;
+            this.btnRemidial.Location = new System.Drawing.Point(306, 4);
+            this.btnRemidial.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRemidial.Name = "btnRemidial";
+            this.btnRemidial.Size = new System.Drawing.Size(201, 30);
+            this.btnRemidial.TabIndex = 4;
+            this.btnRemidial.Text = "HR Soal dan Koreksi Remidial";
+            this.btnRemidial.Click += new System.EventHandler(this.btnRemidial_Click);
             // 
             // FormHonorDosen
             // 
@@ -269,8 +293,10 @@ namespace Dosen
         private System.Windows.Forms.DataGridViewTextBoxColumn Golongan;
         private System.Windows.Forms.DataGridViewTextBoxColumn HonorFix;
         private System.Windows.Forms.DataGridViewTextBoxColumn HonorVar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HonorRemidial;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pajak;
         private System.Windows.Forms.DataGridViewTextBoxColumn TanggalBerlaku;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Hapus;
+        private Syncfusion.Windows.Forms.ButtonAdv btnRemidial;
     }
 }

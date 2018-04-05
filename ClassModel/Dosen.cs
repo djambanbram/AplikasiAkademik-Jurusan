@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,19 @@ namespace ClassModel
         public string Golongan { get; set; }
         public decimal HonorFix { get; set; }
         public decimal HonorVariable { get; set; }
+        public decimal HonorRemidial { get; set; }
         public string TanggalBerlaku { get; set; }
         public string TanggalSelesai { get; set; }
         public decimal Pajak { get; set; }
         public string UserAdd { get; set; }
         public string DateAdd { get; set; }
+    }
+    public class HonorSoalKoreksiRemidial
+    {
+        public decimal HonorSoal { get; set; }
+        public decimal HonorKoreksi { get; set; }
+        public string TanggalMulai { get; set; }
+        public string TanggalSelesai { get; set; }
     }
 
     public class JenjangPendidikanDosen
@@ -71,5 +80,52 @@ namespace ClassModel
         public decimal HFix { get; set; }
         public decimal HVar { get; set; }
         public string KategoriDosen { get; set; }
+    }
+
+    public class HonorDosenRemidial
+    {
+        [DisplayName("No")]
+        public int Nomor { get; set; }
+        [Browsable(false)]
+        public string KodeFakultas { get; set; }
+        [Browsable(false)]
+        public string NamaFakultas { get; set; }
+        [Browsable(false)]
+        public string IdProdi { get; set; }
+        [Browsable(false)]
+        public string NamaProdi { get; set; }
+        public string NIK { get; set; }
+        [DisplayName("Nama Dosen")]
+        public string NamaDosen { get; set; }
+        public int Semester { get; set; }
+        public string Jenjang { get; set; }
+        public string Kode { get; set; }
+        [DisplayName("Mata Kuliah")]
+        public string MataKuliah { get; set; }
+        public int Sks { get; set; }
+        [DisplayName("Jumlah Peserta Ujian")]
+        public int JumlahPesertaUjian { get; set; }
+        [Browsable(false)]
+        public string JenjangPendidikan { get; set; }
+        [Browsable(false)]
+        public string Golongan { get; set; }
+        [DisplayName("Pend/Gol")]
+        public string JenjangGolongan { get; set; }
+        [Browsable(false)]
+        public string Npwp { get; set; }
+        [Browsable(false)]
+        public string NoRekeningBank { get; set; }
+        [Browsable(false)]
+        public string NamaBank { get; set; }
+        [DisplayName("HR Standar")]
+        public decimal HrRemidial { get; set; }
+        [DisplayName("HR Kisi-Kisi")]
+        public decimal HrKisi { get; set; }
+        [DisplayName("HR Soal Ujian")]
+        public decimal HonorSoalUjian { get; set; }
+        [DisplayName("HR Koreksi")]
+        public decimal HonorKoreksiUjian { get; set; }
+        [DisplayName("HR Total")]
+        public decimal HonorTotal { get; set; }
     }
 }

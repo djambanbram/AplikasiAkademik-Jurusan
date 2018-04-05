@@ -69,12 +69,12 @@ namespace MainAplikasi
                 {
 #if !DEBUG
                     var kodeSemester = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Kode"].ToString());
-                    if (kodeSemester == 7 || kodeSemester == 8)
-                    {
-                        MessageBox.Show("Aplikasi belum support untuk semester remidial");
-                        Enabled = true;
-                        return;
-                    }
+                    //if (kodeSemester == 7 || kodeSemester == 8)
+                    //{
+                    //    MessageBox.Show("Aplikasi belum support untuk semester remidial");
+                    //    Enabled = true;
+                    //    return;
+                    //}
 
                     LoginAccess.TahunAkademik = JObject.Parse(response.Content.ReadAsStringAsync().Result)["TahunAkademik"].ToString();
                     LoginAccess.Semester = JObject.Parse(response.Content.ReadAsStringAsync().Result)["Semester"]["Nama"].ToString();
@@ -93,9 +93,9 @@ namespace MainAplikasi
                     //LoginAccess.KodeSemester = kodeSemester;
 
                     LoginAccess.TahunAkademik = "2017/2018";
-                    LoginAccess.Semester = "Remidial Ganjil";
-                    LoginAccess.IdTahun = 52;
-                    LoginAccess.KodeSemester = 7;
+                    LoginAccess.Semester = "Genap";
+                    LoginAccess.IdTahun = 53;
+                    LoginAccess.KodeSemester = 2;
 #endif
 
                     Hide();

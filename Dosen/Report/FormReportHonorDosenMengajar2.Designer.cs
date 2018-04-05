@@ -37,6 +37,9 @@ namespace Dosen.Report
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.rbHrRemidial = new System.Windows.Forms.RadioButton();
+            this.rbHrMengajar = new System.Windows.Forms.RadioButton();
             this.cmbPeriode = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnProses = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -79,6 +82,20 @@ namespace Dosen.Report
             this.Npwp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoRek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvHonorRemidial = new System.Windows.Forms.DataGridView();
+            this.NikR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaDosenR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SemesterR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JumlahPesertaR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PendidikanGolonganR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StandarHrR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HrKisiR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HrSoalR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HrKoreksiR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HrTotalR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPeriode)).BeginInit();
@@ -90,11 +107,15 @@ namespace Dosen.Report
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHonor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHonorRemidial)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel1
             // 
             this.gradientPanel1.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel1.Controls.Add(this.autoLabel2);
+            this.gradientPanel1.Controls.Add(this.rbHrRemidial);
+            this.gradientPanel1.Controls.Add(this.rbHrMengajar);
             this.gradientPanel1.Controls.Add(this.cmbPeriode);
             this.gradientPanel1.Controls.Add(this.autoLabel1);
             this.gradientPanel1.Controls.Add(this.btnProses);
@@ -113,8 +134,40 @@ namespace Dosen.Report
             this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(819, 139);
+            this.gradientPanel1.Size = new System.Drawing.Size(819, 176);
             this.gradientPanel1.TabIndex = 21;
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Location = new System.Drawing.Point(11, 10);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(77, 17);
+            this.autoLabel2.TabIndex = 25;
+            this.autoLabel2.Text = "Jenis Honor";
+            // 
+            // rbHrRemidial
+            // 
+            this.rbHrRemidial.AutoSize = true;
+            this.rbHrRemidial.Location = new System.Drawing.Point(248, 10);
+            this.rbHrRemidial.Name = "rbHrRemidial";
+            this.rbHrRemidial.Size = new System.Drawing.Size(117, 21);
+            this.rbHrRemidial.TabIndex = 24;
+            this.rbHrRemidial.TabStop = true;
+            this.rbHrRemidial.Text = "Honor Remidial";
+            this.rbHrRemidial.UseVisualStyleBackColor = true;
+            this.rbHrRemidial.CheckedChanged += new System.EventHandler(this.rbChecked);
+            // 
+            // rbHrMengajar
+            // 
+            this.rbHrMengajar.AutoSize = true;
+            this.rbHrMengajar.Checked = true;
+            this.rbHrMengajar.Location = new System.Drawing.Point(119, 10);
+            this.rbHrMengajar.Name = "rbHrMengajar";
+            this.rbHrMengajar.Size = new System.Drawing.Size(123, 21);
+            this.rbHrMengajar.TabIndex = 23;
+            this.rbHrMengajar.TabStop = true;
+            this.rbHrMengajar.Text = "Honor Mengajar";
+            this.rbHrMengajar.UseVisualStyleBackColor = true;
             // 
             // cmbPeriode
             // 
@@ -129,7 +182,7 @@ namespace Dosen.Report
             "4",
             "5",
             "6"});
-            this.cmbPeriode.Location = new System.Drawing.Point(119, 100);
+            this.cmbPeriode.Location = new System.Drawing.Point(119, 131);
             this.cmbPeriode.Name = "cmbPeriode";
             this.cmbPeriode.Size = new System.Drawing.Size(259, 25);
             this.cmbPeriode.TabIndex = 21;
@@ -137,7 +190,7 @@ namespace Dosen.Report
             // 
             // autoLabel1
             // 
-            this.autoLabel1.Location = new System.Drawing.Point(11, 102);
+            this.autoLabel1.Location = new System.Drawing.Point(11, 133);
             this.autoLabel1.Name = "autoLabel1";
             this.autoLabel1.Size = new System.Drawing.Size(53, 17);
             this.autoLabel1.TabIndex = 22;
@@ -147,7 +200,7 @@ namespace Dosen.Report
             // 
             this.btnProses.BeforeTouchSize = new System.Drawing.Size(120, 28);
             this.btnProses.IsBackStageButton = false;
-            this.btnProses.Location = new System.Drawing.Point(404, 100);
+            this.btnProses.Location = new System.Drawing.Point(404, 131);
             this.btnProses.Name = "btnProses";
             this.btnProses.Size = new System.Drawing.Size(120, 28);
             this.btnProses.TabIndex = 20;
@@ -163,7 +216,7 @@ namespace Dosen.Report
             "Semua Dosen",
             "Dosen Tetap",
             "Dosen Tidak Tetap"});
-            this.cmbKategoriDosen.Location = new System.Drawing.Point(119, 69);
+            this.cmbKategoriDosen.Location = new System.Drawing.Point(119, 100);
             this.cmbKategoriDosen.Name = "cmbKategoriDosen";
             this.cmbKategoriDosen.Size = new System.Drawing.Size(259, 25);
             this.cmbKategoriDosen.TabIndex = 17;
@@ -171,7 +224,7 @@ namespace Dosen.Report
             // 
             // autoLabel8
             // 
-            this.autoLabel8.Location = new System.Drawing.Point(11, 71);
+            this.autoLabel8.Location = new System.Drawing.Point(11, 102);
             this.autoLabel8.Name = "autoLabel8";
             this.autoLabel8.Size = new System.Drawing.Size(99, 17);
             this.autoLabel8.TabIndex = 18;
@@ -182,14 +235,14 @@ namespace Dosen.Report
             this.cmbSemester.BeforeTouchSize = new System.Drawing.Size(259, 25);
             this.cmbSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSemester.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSemester.Location = new System.Drawing.Point(119, 40);
+            this.cmbSemester.Location = new System.Drawing.Point(119, 71);
             this.cmbSemester.Name = "cmbSemester";
             this.cmbSemester.Size = new System.Drawing.Size(259, 25);
             this.cmbSemester.TabIndex = 15;
             // 
             // autoLabel7
             // 
-            this.autoLabel7.Location = new System.Drawing.Point(11, 42);
+            this.autoLabel7.Location = new System.Drawing.Point(11, 73);
             this.autoLabel7.Name = "autoLabel7";
             this.autoLabel7.Size = new System.Drawing.Size(62, 17);
             this.autoLabel7.TabIndex = 16;
@@ -200,14 +253,14 @@ namespace Dosen.Report
             this.cmbTahunAkademik.BeforeTouchSize = new System.Drawing.Size(259, 25);
             this.cmbTahunAkademik.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTahunAkademik.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTahunAkademik.Location = new System.Drawing.Point(119, 9);
+            this.cmbTahunAkademik.Location = new System.Drawing.Point(119, 40);
             this.cmbTahunAkademik.Name = "cmbTahunAkademik";
             this.cmbTahunAkademik.Size = new System.Drawing.Size(259, 25);
             this.cmbTahunAkademik.TabIndex = 13;
             // 
             // autoLabel6
             // 
-            this.autoLabel6.Location = new System.Drawing.Point(11, 11);
+            this.autoLabel6.Location = new System.Drawing.Point(11, 42);
             this.autoLabel6.Name = "autoLabel6";
             this.autoLabel6.Size = new System.Drawing.Size(102, 17);
             this.autoLabel6.TabIndex = 14;
@@ -216,7 +269,7 @@ namespace Dosen.Report
             // autoLabel3
             // 
             this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel3.Location = new System.Drawing.Point(403, 73);
+            this.autoLabel3.Location = new System.Drawing.Point(403, 104);
             this.autoLabel3.Name = "autoLabel3";
             this.autoLabel3.Size = new System.Drawing.Size(60, 16);
             this.autoLabel3.TabIndex = 12;
@@ -227,7 +280,7 @@ namespace Dosen.Report
             this.cmbProgram.BeforeTouchSize = new System.Drawing.Size(293, 24);
             this.cmbProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProgram.Location = new System.Drawing.Point(512, 71);
+            this.cmbProgram.Location = new System.Drawing.Point(512, 102);
             this.cmbProgram.Name = "cmbProgram";
             this.cmbProgram.Size = new System.Drawing.Size(293, 24);
             this.cmbProgram.TabIndex = 11;
@@ -236,7 +289,7 @@ namespace Dosen.Report
             // autoLabel4
             // 
             this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel4.Location = new System.Drawing.Point(403, 43);
+            this.autoLabel4.Location = new System.Drawing.Point(403, 74);
             this.autoLabel4.Name = "autoLabel4";
             this.autoLabel4.Size = new System.Drawing.Size(93, 16);
             this.autoLabel4.TabIndex = 8;
@@ -247,7 +300,7 @@ namespace Dosen.Report
             this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(293, 24);
             this.cmbProdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProdi.Location = new System.Drawing.Point(512, 41);
+            this.cmbProdi.Location = new System.Drawing.Point(512, 72);
             this.cmbProdi.Name = "cmbProdi";
             this.cmbProdi.Size = new System.Drawing.Size(293, 24);
             this.cmbProdi.TabIndex = 2;
@@ -258,7 +311,7 @@ namespace Dosen.Report
             this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(293, 25);
             this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFakultas.Location = new System.Drawing.Point(512, 10);
+            this.cmbFakultas.Location = new System.Drawing.Point(512, 41);
             this.cmbFakultas.Name = "cmbFakultas";
             this.cmbFakultas.Size = new System.Drawing.Size(293, 25);
             this.cmbFakultas.TabIndex = 1;
@@ -266,7 +319,7 @@ namespace Dosen.Report
             // 
             // autoLabel5
             // 
-            this.autoLabel5.Location = new System.Drawing.Point(404, 12);
+            this.autoLabel5.Location = new System.Drawing.Point(404, 43);
             this.autoLabel5.Name = "autoLabel5";
             this.autoLabel5.Size = new System.Drawing.Size(54, 17);
             this.autoLabel5.TabIndex = 1;
@@ -349,12 +402,12 @@ namespace Dosen.Report
             this.NoRek,
             this.Bank});
             this.dgvHonor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHonor.Location = new System.Drawing.Point(0, 139);
+            this.dgvHonor.Location = new System.Drawing.Point(0, 176);
             this.dgvHonor.Name = "dgvHonor";
             this.dgvHonor.ReadOnly = true;
             this.dgvHonor.RowHeadersVisible = false;
             this.dgvHonor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHonor.Size = new System.Drawing.Size(819, 284);
+            this.dgvHonor.Size = new System.Drawing.Size(819, 247);
             this.dgvHonor.TabIndex = 23;
             // 
             // No
@@ -511,12 +564,119 @@ namespace Dosen.Report
             this.Bank.ReadOnly = true;
             this.Bank.Width = 60;
             // 
+            // dgvHonorRemidial
+            // 
+            this.dgvHonorRemidial.AllowUserToAddRows = false;
+            this.dgvHonorRemidial.AllowUserToDeleteRows = false;
+            this.dgvHonorRemidial.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvHonorRemidial.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvHonorRemidial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHonorRemidial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NikR,
+            this.NamaDosenR,
+            this.KodeR,
+            this.MataKuliahR,
+            this.SemesterR,
+            this.SksR,
+            this.JumlahPesertaR,
+            this.PendidikanGolonganR,
+            this.StandarHrR,
+            this.HrKisiR,
+            this.HrSoalR,
+            this.HrKoreksiR,
+            this.HrTotalR});
+            this.dgvHonorRemidial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHonorRemidial.Location = new System.Drawing.Point(0, 176);
+            this.dgvHonorRemidial.Name = "dgvHonorRemidial";
+            this.dgvHonorRemidial.RowHeadersVisible = false;
+            this.dgvHonorRemidial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHonorRemidial.Size = new System.Drawing.Size(819, 247);
+            this.dgvHonorRemidial.TabIndex = 24;
+            // 
+            // NikR
+            // 
+            this.NikR.HeaderText = "Nik";
+            this.NikR.Name = "NikR";
+            this.NikR.Width = 52;
+            // 
+            // NamaDosenR
+            // 
+            this.NamaDosenR.HeaderText = "Nama Dosen";
+            this.NamaDosenR.Name = "NamaDosenR";
+            // 
+            // KodeR
+            // 
+            this.KodeR.HeaderText = "Kode";
+            this.KodeR.Name = "KodeR";
+            this.KodeR.Width = 64;
+            // 
+            // MataKuliahR
+            // 
+            this.MataKuliahR.HeaderText = "Mata Kuliah";
+            this.MataKuliahR.Name = "MataKuliahR";
+            this.MataKuliahR.Width = 94;
+            // 
+            // SemesterR
+            // 
+            this.SemesterR.HeaderText = "Semester";
+            this.SemesterR.Name = "SemesterR";
+            this.SemesterR.Width = 87;
+            // 
+            // SksR
+            // 
+            this.SksR.HeaderText = "Sks";
+            this.SksR.Name = "SksR";
+            this.SksR.Width = 52;
+            // 
+            // JumlahPesertaR
+            // 
+            this.JumlahPesertaR.HeaderText = "Jumlah Peserta";
+            this.JumlahPesertaR.Name = "JumlahPesertaR";
+            this.JumlahPesertaR.Width = 110;
+            // 
+            // PendidikanGolonganR
+            // 
+            this.PendidikanGolonganR.HeaderText = "Pend/Gol";
+            this.PendidikanGolonganR.Name = "PendidikanGolonganR";
+            this.PendidikanGolonganR.Width = 87;
+            // 
+            // StandarHrR
+            // 
+            this.StandarHrR.HeaderText = "Standar HR";
+            this.StandarHrR.Name = "StandarHrR";
+            this.StandarHrR.Width = 91;
+            // 
+            // HrKisiR
+            // 
+            this.HrKisiR.HeaderText = "HR Kisi-Kisi";
+            this.HrKisiR.Name = "HrKisiR";
+            this.HrKisiR.Width = 91;
+            // 
+            // HrSoalR
+            // 
+            this.HrSoalR.HeaderText = "HR Soal";
+            this.HrSoalR.Name = "HrSoalR";
+            this.HrSoalR.Width = 73;
+            // 
+            // HrKoreksiR
+            // 
+            this.HrKoreksiR.HeaderText = "HR Koreksi";
+            this.HrKoreksiR.Name = "HrKoreksiR";
+            this.HrKoreksiR.Width = 89;
+            // 
+            // HrTotalR
+            // 
+            this.HrTotalR.HeaderText = "HR Total";
+            this.HrTotalR.Name = "HrTotalR";
+            this.HrTotalR.Width = 76;
+            // 
             // FormReportHonorDosenMengajar2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(819, 461);
+            this.Controls.Add(this.dgvHonorRemidial);
             this.Controls.Add(this.dgvHonor);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gradientPanel1);
@@ -537,6 +697,7 @@ namespace Dosen.Report
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHonor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHonorRemidial)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -586,5 +747,22 @@ namespace Dosen.Report
         private System.Windows.Forms.ProgressBar progressBar1;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbPeriode;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
+        private System.Windows.Forms.DataGridView dgvHonorRemidial;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
+        private System.Windows.Forms.RadioButton rbHrRemidial;
+        private System.Windows.Forms.RadioButton rbHrMengajar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NikR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosenR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KodeR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliahR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SemesterR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SksR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JumlahPesertaR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PendidikanGolonganR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StandarHrR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HrKisiR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HrSoalR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HrKoreksiR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HrTotalR;
     }
 }

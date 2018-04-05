@@ -37,26 +37,14 @@ namespace Dosen.Report
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportKesanggupanDosen));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.kesanggupanDosenMengajarBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsDosen = new Dosen.Data.DsDosen();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.cetakSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cetakDipilihToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.saveToWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvDataDosen = new System.Windows.Forms.DataGridView();
-            this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.kesanggupanDosenMengajarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsDosen = new Dosen.Data.DsDosen();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,17 +54,39 @@ namespace Dosen.Report
             this.Jenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KodeKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.cetakSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cetakDipilihToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.saveToWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).BeginInit();
             this.SuspendLayout();
+            // 
+            // kesanggupanDosenMengajarBindingSource
+            // 
+            this.kesanggupanDosenMengajarBindingSource.DataMember = "KesanggupanDosenMengajar";
+            this.kesanggupanDosenMengajarBindingSource.DataSource = this.dsDosen;
+            // 
+            // dsDosen
+            // 
+            this.dsDosen.DataSetName = "DsDosen";
+            this.dsDosen.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // flowLayoutPanel1
             // 
@@ -123,70 +133,6 @@ namespace Dosen.Report
             this.gradientPanel1.Size = new System.Drawing.Size(371, 408);
             this.gradientPanel1.TabIndex = 12;
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripDropDownButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 34);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(367, 25);
-            this.toolStrip1.TabIndex = 15;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cetakSemuaToolStripMenuItem,
-            this.cetakDipilihToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(81, 22);
-            this.toolStripDropDownButton1.Text = "Cetak Form";
-            // 
-            // cetakSemuaToolStripMenuItem
-            // 
-            this.cetakSemuaToolStripMenuItem.Name = "cetakSemuaToolStripMenuItem";
-            this.cetakSemuaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cetakSemuaToolStripMenuItem.Text = "Cetak Semua";
-            this.cetakSemuaToolStripMenuItem.Click += new System.EventHandler(this.cetakSemuaToolStripMenuItem_Click);
-            // 
-            // cetakDipilihToolStripMenuItem
-            // 
-            this.cetakDipilihToolStripMenuItem.Name = "cetakDipilihToolStripMenuItem";
-            this.cetakDipilihToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cetakDipilihToolStripMenuItem.Text = "Cetak Dipilih";
-            this.cetakDipilihToolStripMenuItem.Click += new System.EventHandler(this.cetakDipilihToolStripMenuItem_Click);
-            // 
-            // toolStripDropDownButton2
-            // 
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToWordToolStripMenuItem,
-            this.saveToPDFToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(44, 22);
-            this.toolStripDropDownButton2.Text = "Save";
-            // 
-            // saveToWordToolStripMenuItem
-            // 
-            this.saveToWordToolStripMenuItem.Name = "saveToWordToolStripMenuItem";
-            this.saveToWordToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToWordToolStripMenuItem.Text = "Save to Word";
-            this.saveToWordToolStripMenuItem.Visible = false;
-            this.saveToWordToolStripMenuItem.Click += new System.EventHandler(this.saveToWordToolStripMenuItem_Click);
-            // 
-            // saveToPDFToolStripMenuItem
-            // 
-            this.saveToPDFToolStripMenuItem.Name = "saveToPDFToolStripMenuItem";
-            this.saveToPDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToPDFToolStripMenuItem.Text = "Save to PDF";
-            this.saveToPDFToolStripMenuItem.Click += new System.EventHandler(this.saveToPDFToolStripMenuItem_Click);
-            // 
             // dgvDataDosen
             // 
             this.dgvDataDosen.AllowUserToAddRows = false;
@@ -213,58 +159,6 @@ namespace Dosen.Report
             this.dgvDataDosen.Size = new System.Drawing.Size(367, 345);
             this.dgvDataDosen.TabIndex = 14;
             this.dgvDataDosen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDataDosen_CellContentClick);
-            // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
-            this.gradientPanel2.Controls.Add(this.cmbFakultas);
-            this.gradientPanel2.Controls.Add(this.autoLabel1);
-            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(367, 34);
-            this.gradientPanel2.TabIndex = 16;
-            // 
-            // cmbFakultas
-            // 
-            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(256, 25);
-            this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFakultas.Location = new System.Drawing.Point(86, 2);
-            this.cmbFakultas.Name = "cmbFakultas";
-            this.cmbFakultas.Size = new System.Drawing.Size(256, 25);
-            this.cmbFakultas.TabIndex = 1;
-            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
-            // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Location = new System.Drawing.Point(8, 5);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(54, 17);
-            this.autoLabel1.TabIndex = 0;
-            this.autoLabel1.Text = "Fakultas";
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource5.Name = "DsKesanggupanMengajar";
-            reportDataSource5.Value = this.kesanggupanDosenMengajarBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Dosen.ReportView.ReportKesanggupanDosen.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(371, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(444, 408);
-            this.reportViewer1.TabIndex = 13;
-            // 
-            // kesanggupanDosenMengajarBindingSource
-            // 
-            this.kesanggupanDosenMengajarBindingSource.DataMember = "KesanggupanDosenMengajar";
-            this.kesanggupanDosenMengajarBindingSource.DataSource = this.dsDosen;
-            // 
-            // dsDosen
-            // 
-            this.dsDosen.DataSetName = "DsDosen";
-            this.dsDosen.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // No
             // 
@@ -320,6 +214,112 @@ namespace Dosen.Report
             this.IdKuliah.Name = "IdKuliah";
             this.IdKuliah.Visible = false;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1,
+            this.toolStripDropDownButton2});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 34);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(367, 25);
+            this.toolStrip1.TabIndex = 15;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cetakSemuaToolStripMenuItem,
+            this.cetakDipilihToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(81, 22);
+            this.toolStripDropDownButton1.Text = "Cetak Form";
+            // 
+            // cetakSemuaToolStripMenuItem
+            // 
+            this.cetakSemuaToolStripMenuItem.Name = "cetakSemuaToolStripMenuItem";
+            this.cetakSemuaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cetakSemuaToolStripMenuItem.Text = "Cetak Semua";
+            this.cetakSemuaToolStripMenuItem.Click += new System.EventHandler(this.cetakSemuaToolStripMenuItem_Click);
+            // 
+            // cetakDipilihToolStripMenuItem
+            // 
+            this.cetakDipilihToolStripMenuItem.Name = "cetakDipilihToolStripMenuItem";
+            this.cetakDipilihToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cetakDipilihToolStripMenuItem.Text = "Cetak Dipilih";
+            this.cetakDipilihToolStripMenuItem.Click += new System.EventHandler(this.cetakDipilihToolStripMenuItem_Click);
+            // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToWordToolStripMenuItem,
+            this.saveToPDFToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(44, 22);
+            this.toolStripDropDownButton2.Text = "Save";
+            // 
+            // saveToWordToolStripMenuItem
+            // 
+            this.saveToWordToolStripMenuItem.Name = "saveToWordToolStripMenuItem";
+            this.saveToWordToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveToWordToolStripMenuItem.Text = "Save to Word";
+            this.saveToWordToolStripMenuItem.Visible = false;
+            this.saveToWordToolStripMenuItem.Click += new System.EventHandler(this.saveToWordToolStripMenuItem_Click);
+            // 
+            // saveToPDFToolStripMenuItem
+            // 
+            this.saveToPDFToolStripMenuItem.Name = "saveToPDFToolStripMenuItem";
+            this.saveToPDFToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveToPDFToolStripMenuItem.Text = "Save to PDF";
+            this.saveToPDFToolStripMenuItem.Click += new System.EventHandler(this.saveToPDFToolStripMenuItem_Click);
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel2.Controls.Add(this.cmbFakultas);
+            this.gradientPanel2.Controls.Add(this.autoLabel1);
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(367, 34);
+            this.gradientPanel2.TabIndex = 16;
+            // 
+            // cmbFakultas
+            // 
+            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(256, 25);
+            this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFakultas.Location = new System.Drawing.Point(86, 2);
+            this.cmbFakultas.Name = "cmbFakultas";
+            this.cmbFakultas.Size = new System.Drawing.Size(256, 25);
+            this.cmbFakultas.TabIndex = 1;
+            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Location = new System.Drawing.Point(8, 5);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(54, 17);
+            this.autoLabel1.TabIndex = 0;
+            this.autoLabel1.Text = "Fakultas";
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DsKesanggupanMengajar";
+            reportDataSource1.Value = this.kesanggupanDosenMengajarBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Dosen.ReportView.ReportKesanggupanDosen_v2.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(371, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(444, 408);
+            this.reportViewer1.TabIndex = 13;
+            // 
             // FormReportKesanggupanDosen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -334,19 +334,19 @@ namespace Dosen.Report
             this.Name = "FormReportKesanggupanDosen";
             this.Text = "Kesanggupan Dosen Mengajar";
             this.Load += new System.EventHandler(this.FormReportKesanggupanDosen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataDosen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).EndInit();
             this.ResumeLayout(false);
 
         }

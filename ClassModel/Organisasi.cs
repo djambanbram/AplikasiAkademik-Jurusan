@@ -10,6 +10,8 @@ namespace ClassModel
     {
         public static List<Program> listProgram;
         public static List<Prodi> listProdi;
+        public static List<Prodi> listProdiPlusStudentExchange;
+        public static List<Prodi> listProdiStudentExchange;
         public static List<Fakultas> listFakultas;
     }
 

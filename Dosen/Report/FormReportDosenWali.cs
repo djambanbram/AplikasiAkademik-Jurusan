@@ -152,6 +152,7 @@ namespace Dosen.Report
                                                             DateTime.Now.Day, singkatanProdi, CommonLib.NumberToRoman(DateTime.Now.Month), DateTime.Now.Year)));
             listParams.Add(new ReportParameter("Dekan", listDepartment.Find(d => d.KodeDepartment == KodeFakultas).NamaKepala));
             listParams.Add(new ReportParameter("NikDekan", listDepartment.Find(d => d.KodeDepartment == KodeFakultas).NikKepala));
+            listParams.Add(new ReportParameter("Fakultas", cmbFakultas.Text));
 
             List<DosenWali> listTemp = listDosenWali.Where(w => w.IdProdi == cmbProdi.SelectedValue.ToString()).ToList();
             DataTable dtDosenWaliPerProdi = CommonLib.ToDataTable(listTemp);

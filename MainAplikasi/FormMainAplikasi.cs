@@ -48,6 +48,7 @@ namespace MainAplikasi
         private FormMataKuliahKonsentrasi formMataKuliahKonsentrasi;
         private FormGrupMK formGrupMK;
         private FormAlokasiMK formAlokasiMK;
+        private FormAlokasiMKStudentExchange formAlokasiMKStudentExchange;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
         private FormTimDosen formTimDosen;
@@ -145,12 +146,14 @@ namespace MainAplikasi
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiMK")
             {
-                if (formAlokasiMK == null || formAlokasiMK.IsDisposed)
-                {
-                    formAlokasiMK = new FormAlokasiMK();
-                    formAlokasiMK.MdiParent = this;
-                }
-                form = formAlokasiMK;
+                //if (formAlokasiMK == null || formAlokasiMK.IsDisposed)
+                //{
+                //    formAlokasiMK = new FormAlokasiMK();
+                //    formAlokasiMK.MdiParent = this;
+                //}
+                //form = formAlokasiMK;
+                XPTaskBarItem item = e.XPTaskBarItem;
+                menuAlokasiMataKuliah.Show(item.Parent as Control, new Point(item.Bounds.Width, item.Bounds.Y));
             }
             else if (e.XPTaskBarItem.Name == "itemAlokasiDosen")
             {
@@ -424,6 +427,28 @@ namespace MainAplikasi
                 return true;
             }
             return false;
+        }
+
+        private void prodiRegulerToolStripItem_Click(object sender, EventArgs e)
+        {
+            if (formAlokasiMK == null || formAlokasiMK.IsDisposed)
+            {
+                formAlokasiMK = new FormAlokasiMK();
+                formAlokasiMK.MdiParent = this;
+            }
+            formAlokasiMK.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formAlokasiMK);
+        }
+
+        private void ProdiStudentExchangeToolStripItem_Click(object sender, EventArgs e)
+        {
+            if (formAlokasiMKStudentExchange == null || formAlokasiMKStudentExchange.IsDisposed)
+            {
+                formAlokasiMKStudentExchange = new FormAlokasiMKStudentExchange();
+                formAlokasiMKStudentExchange.MdiParent = this;
+            }
+            formAlokasiMKStudentExchange.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formAlokasiMKStudentExchange);
         }
     }
 }

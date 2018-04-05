@@ -30,6 +30,7 @@ namespace Dosen
         private string URLGetHonorJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/get_honor_jenjang_dosen";
         private string URLSaveHonorJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/save_honor_jenjang_dosen";
         private string URLDelHonorJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/del_honor_jenjang_dosen";
+        private string URLUpdateHonorJenjangPendidikanDosen = baseAddress + "/jurusan_api/api/dosen/update_honor_jenjang_dosen";
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -86,7 +87,7 @@ namespace Dosen
             listHonorDosen = JsonConvert.DeserializeObject<List<HonorJenjangDosen>>(response.Content.ReadAsStringAsync().Result);
             foreach (HonorJenjangDosen h in listHonorDosen)
             {
-                dgvHonorDosen.Rows.Add(h.IdHonorDosen, h.JenjangPendidikan, h.Golongan, h.HonorFix, h.HonorVariable, h.Pajak, DateTime.Parse(h.TanggalBerlaku).ToString("d-MM-yyyy"));
+                dgvHonorDosen.Rows.Add(h.IdHonorDosen, h.JenjangPendidikan, h.Golongan, h.HonorFix, h.HonorVariable, h.HonorRemidial, h.Pajak, DateTime.Parse(h.TanggalBerlaku).ToString("d-MM-yyyy"));
             }
             Loading(false);
         }
@@ -152,6 +153,40 @@ namespace Dosen
             }
             Loading(false);
             await LoadHonor();
+        }
+
+        private async void dgvHonorDosen_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var idHonorDosen = int.Parse(dgvHonorDosen.Rows[e.RowIndex].Cells["IdHonorDosen"].Value.ToString());
+            var hrFix = decimal.Parse(dgvHonorDosen.Rows[e.RowIndex].Cells["HonorFix"].Value.ToString());
+            var hrVar = decimal.Parse(dgvHonorDosen.Rows[e.RowIndex].Cells["HonorVar"].Value.ToString());
+            var hrRemidial = decimal.Parse(dgvHonorDosen.Rows[e.RowIndex].Cells["HonorRemidial"].Value.ToString());
+
+            HonorJenjangDosen hr = new HonorJenjangDosen();
+            hr.IdHonorDosen = idHonorDosen;
+            hr.HonorFix = hrFix;
+            hr.HonorVariable = hrVar;
+            hr.HonorRemidial = hrRemidial;
+
+            Loading(true);
+            var jsonData = JsonConvert.SerializeObject(hr);
+            response = await webApi.Post(URLUpdateHonorJenjangPendidikanDosen, jsonData, true);
+            if(!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            await LoadHonor();
+            Loading(false);
+        }
+
+        private void btnRemidial_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormHrRemidial())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

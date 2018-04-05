@@ -899,7 +899,7 @@ namespace PenawaranKurikulum
             var data = new
             {
                 TahunAkademik = LoginAccess.TahunAkademik,
-                Semester = LoginAccess.Semester,
+                Semester = LoginAccess.KodeSemester,
                 IdProdi = cmbProdi.SelectedValue.ToString(),
                 KodeJurusan = kodeProgramDipilih,
                 SemesterDitawarkan = radCampuran.Checked ? 0 : semDipilih

@@ -48,11 +48,14 @@ namespace Dosen.Dialog
             this.txtPajak = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.txtHonorRemidial = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.cmbJenjangPendidikan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbGolongan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHonorFix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHonorVar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPajak)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHonorRemidial)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel1
@@ -68,7 +71,7 @@ namespace Dosen.Dialog
             this.cmbJenjangPendidikan.BeforeTouchSize = new System.Drawing.Size(271, 25);
             this.cmbJenjangPendidikan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJenjangPendidikan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbJenjangPendidikan.Location = new System.Drawing.Point(103, 12);
+            this.cmbJenjangPendidikan.Location = new System.Drawing.Point(123, 12);
             this.cmbJenjangPendidikan.Name = "cmbJenjangPendidikan";
             this.cmbJenjangPendidikan.Size = new System.Drawing.Size(271, 25);
             this.cmbJenjangPendidikan.TabIndex = 1;
@@ -78,7 +81,7 @@ namespace Dosen.Dialog
             this.cmbGolongan.BeforeTouchSize = new System.Drawing.Size(271, 25);
             this.cmbGolongan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGolongan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbGolongan.Location = new System.Drawing.Point(103, 43);
+            this.cmbGolongan.Location = new System.Drawing.Point(123, 43);
             this.cmbGolongan.Name = "cmbGolongan";
             this.cmbGolongan.Size = new System.Drawing.Size(271, 25);
             this.cmbGolongan.TabIndex = 3;
@@ -101,9 +104,9 @@ namespace Dosen.Dialog
             // 
             // txtHonorFix
             // 
-            this.txtHonorFix.BeforeTouchSize = new System.Drawing.Size(239, 25);
+            this.txtHonorFix.BeforeTouchSize = new System.Drawing.Size(271, 25);
             this.txtHonorFix.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtHonorFix.Location = new System.Drawing.Point(103, 74);
+            this.txtHonorFix.Location = new System.Drawing.Point(123, 74);
             this.txtHonorFix.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtHonorFix.Name = "txtHonorFix";
             this.txtHonorFix.Size = new System.Drawing.Size(271, 25);
@@ -113,9 +116,9 @@ namespace Dosen.Dialog
             // 
             // txtHonorVar
             // 
-            this.txtHonorVar.BeforeTouchSize = new System.Drawing.Size(239, 25);
+            this.txtHonorVar.BeforeTouchSize = new System.Drawing.Size(271, 25);
             this.txtHonorVar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtHonorVar.Location = new System.Drawing.Point(103, 105);
+            this.txtHonorVar.Location = new System.Drawing.Point(123, 105);
             this.txtHonorVar.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtHonorVar.Name = "txtHonorVar";
             this.txtHonorVar.Size = new System.Drawing.Size(271, 25);
@@ -133,7 +136,7 @@ namespace Dosen.Dialog
             // 
             // autoLabel5
             // 
-            this.autoLabel5.Location = new System.Drawing.Point(12, 140);
+            this.autoLabel5.Location = new System.Drawing.Point(12, 172);
             this.autoLabel5.Name = "autoLabel5";
             this.autoLabel5.Size = new System.Drawing.Size(38, 17);
             this.autoLabel5.TabIndex = 8;
@@ -141,9 +144,9 @@ namespace Dosen.Dialog
             // 
             // txtPajak
             // 
-            this.txtPajak.BeforeTouchSize = new System.Drawing.Size(239, 25);
+            this.txtPajak.BeforeTouchSize = new System.Drawing.Size(271, 25);
             this.txtPajak.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPajak.Location = new System.Drawing.Point(103, 136);
+            this.txtPajak.Location = new System.Drawing.Point(123, 168);
             this.txtPajak.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPajak.Name = "txtPajak";
             this.txtPajak.Size = new System.Drawing.Size(271, 25);
@@ -155,7 +158,7 @@ namespace Dosen.Dialog
             // 
             this.btnTutup.BeforeTouchSize = new System.Drawing.Size(109, 28);
             this.btnTutup.IsBackStageButton = false;
-            this.btnTutup.Location = new System.Drawing.Point(265, 167);
+            this.btnTutup.Location = new System.Drawing.Point(285, 199);
             this.btnTutup.Name = "btnTutup";
             this.btnTutup.Size = new System.Drawing.Size(109, 28);
             this.btnTutup.TabIndex = 10;
@@ -166,19 +169,40 @@ namespace Dosen.Dialog
             // 
             this.btnSimpan.BeforeTouchSize = new System.Drawing.Size(109, 28);
             this.btnSimpan.IsBackStageButton = false;
-            this.btnSimpan.Location = new System.Drawing.Point(150, 167);
+            this.btnSimpan.Location = new System.Drawing.Point(170, 199);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(109, 28);
             this.btnSimpan.TabIndex = 11;
             this.btnSimpan.Text = "Simpan";
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
+            // txtHonorRemidial
+            // 
+            this.txtHonorRemidial.BeforeTouchSize = new System.Drawing.Size(271, 25);
+            this.txtHonorRemidial.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtHonorRemidial.Location = new System.Drawing.Point(123, 137);
+            this.txtHonorRemidial.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtHonorRemidial.Name = "txtHonorRemidial";
+            this.txtHonorRemidial.Size = new System.Drawing.Size(271, 25);
+            this.txtHonorRemidial.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtHonorRemidial.TabIndex = 13;
+            // 
+            // autoLabel6
+            // 
+            this.autoLabel6.Location = new System.Drawing.Point(12, 141);
+            this.autoLabel6.Name = "autoLabel6";
+            this.autoLabel6.Size = new System.Drawing.Size(99, 17);
+            this.autoLabel6.TabIndex = 12;
+            this.autoLabel6.Text = "Honor Remidial";
+            // 
             // FormTambahHonorDosen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(378, 198);
+            this.ClientSize = new System.Drawing.Size(402, 237);
+            this.Controls.Add(this.txtHonorRemidial);
+            this.Controls.Add(this.autoLabel6);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.btnTutup);
             this.Controls.Add(this.txtPajak);
@@ -204,6 +228,7 @@ namespace Dosen.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.txtHonorFix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHonorVar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPajak)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHonorRemidial)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +248,7 @@ namespace Dosen.Dialog
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPajak;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private Syncfusion.Windows.Forms.ButtonAdv btnSimpan;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtHonorRemidial;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
     }
 }

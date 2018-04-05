@@ -84,6 +84,7 @@ namespace Dosen.Dialog
             honor.IdJenjangPendidikan = int.Parse(cmbJenjangPendidikan.SelectedValue.ToString());
             honor.HonorFix = decimal.Parse(txtHonorFix.Text);
             honor.HonorVariable = decimal.Parse(txtHonorVar.Text);
+            honor.HonorRemidial = decimal.Parse(txtHonorRemidial.Text);
             honor.Pajak = decimal.Parse(txtPajak.Text);
 
             iHonorDosen.SaveHonorDosen(honor);

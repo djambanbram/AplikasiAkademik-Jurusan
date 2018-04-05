@@ -15,4 +15,9 @@ namespace ClassModel
         public int Kode { get; set; }
         public string Nama { get; set; }
     }
+
+    public class ThnAkademik
+    {
+        public string TahunAkademik { get; set; }
+    }
 }

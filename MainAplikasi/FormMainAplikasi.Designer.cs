@@ -74,6 +74,9 @@ namespace MainAplikasi
             this.kesediaanDosenMengajarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.koordinatorMataKuliahToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dosenWaliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAlokasiMataKuliah = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.prodiRegulerToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProdiStudentExchangeToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -88,6 +91,7 @@ namespace MainAplikasi
             this.menuAlokasiDosen.SuspendLayout();
             this.menuLaporanMataKuliah.SuspendLayout();
             this.menuLaporanDosen.SuspendLayout();
+            this.menuAlokasiMataKuliah.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpTaskBar1
@@ -499,6 +503,28 @@ namespace MainAplikasi
             this.dosenWaliToolStripMenuItem.Text = "Dosen Wali";
             this.dosenWaliToolStripMenuItem.Click += new System.EventHandler(this.dosenWaliToolStripMenuItem_Click);
             // 
+            // menuAlokasiMataKuliah
+            // 
+            this.menuAlokasiMataKuliah.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prodiRegulerToolStripItem,
+            this.ProdiStudentExchangeToolStripItem});
+            this.menuAlokasiMataKuliah.Name = "menuAlokasiDosen";
+            this.menuAlokasiMataKuliah.Size = new System.Drawing.Size(200, 70);
+            // 
+            // prodiRegulerToolStripItem
+            // 
+            this.prodiRegulerToolStripItem.Name = "prodiRegulerToolStripItem";
+            this.prodiRegulerToolStripItem.Size = new System.Drawing.Size(199, 22);
+            this.prodiRegulerToolStripItem.Text = "Prodi Reguler";
+            this.prodiRegulerToolStripItem.Click += new System.EventHandler(this.prodiRegulerToolStripItem_Click);
+            // 
+            // ProdiStudentExchangeToolStripItem
+            // 
+            this.ProdiStudentExchangeToolStripItem.Name = "ProdiStudentExchangeToolStripItem";
+            this.ProdiStudentExchangeToolStripItem.Size = new System.Drawing.Size(199, 22);
+            this.ProdiStudentExchangeToolStripItem.Text = "Prodi Student Exchange";
+            this.ProdiStudentExchangeToolStripItem.Click += new System.EventHandler(this.ProdiStudentExchangeToolStripItem_Click);
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -533,6 +559,7 @@ namespace MainAplikasi
             this.menuAlokasiDosen.ResumeLayout(false);
             this.menuLaporanMataKuliah.ResumeLayout(false);
             this.menuLaporanDosen.ResumeLayout(false);
+            this.menuAlokasiMataKuliah.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -577,5 +604,8 @@ namespace MainAplikasi
         private System.Windows.Forms.ToolStripMenuItem dosenWaliToolStripMenuItem;
         private Syncfusion.Windows.Forms.Tools.XPTaskBarBox boxAlihJalur;
         private System.Windows.Forms.ImageList imgAlihJalur;
+        private System.Windows.Forms.ContextMenuStrip menuAlokasiMataKuliah;
+        private System.Windows.Forms.ToolStripMenuItem prodiRegulerToolStripItem;
+        private System.Windows.Forms.ToolStripMenuItem ProdiStudentExchangeToolStripItem;
     }
 }

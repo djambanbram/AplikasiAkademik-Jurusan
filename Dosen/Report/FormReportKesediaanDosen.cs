@@ -306,7 +306,7 @@ namespace Dosen.Report
 
             List<ReportParameter> listParams = new List<ReportParameter>();
 
-            listParams.Add(new ReportParameter("TglPengesahan", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("    MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
+            listParams.Add(new ReportParameter("TglPengesahan", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));
             listParams.Add(new ReportParameter("Semester", LoginAccess.Semester));
             listParams.Add(new ReportParameter("TahunAkademik", LoginAccess.TahunAkademik));
             listParams.Add(new ReportParameter("Prodi", cmbProdi.Text));

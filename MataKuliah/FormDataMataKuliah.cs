@@ -137,8 +137,8 @@ namespace MataKuliah
             if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
-                listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
-                listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
+                listProdi = Organisasi.listProdiPlusStudentExchange.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
+                listProdi.Insert(0, new Prodi() { Uid = "", IdProdi = "-", NamaProdi = "Pilih" });
                 cmbProdi.DataSource = listProdi;
                 cmbProdi.DisplayMember = "NamaProdi";
                 cmbProdi.ValueMember = "Uid";
@@ -331,9 +331,10 @@ namespace MataKuliah
         private async void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvMataKuliah.Rows.Clear();
+
             if (cmbProdi.SelectedIndex > 0)
             {
-                string jenjang = Organisasi.listProdi.Find(p => p.Uid == cmbProdi.SelectedValue.ToString()).Jenjang;
+                string jenjang = Organisasi.listProdiPlusStudentExchange.Find(p => p.Uid == cmbProdi.SelectedValue.ToString()).Jenjang;
 
                 if (jenjang == "D3")
                 {

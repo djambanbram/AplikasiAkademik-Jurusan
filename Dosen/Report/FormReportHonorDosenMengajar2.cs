@@ -29,6 +29,7 @@ namespace Dosen.Report
         private string URLGetTahunAkademik = baseAddress + "/jurusan_api/api/data_support/init_tahun_akademik";
         private string URLGetSemester = baseAddress + "/jurusan_api/api/data_support/init_data_semester";
         private string URLGethonorDosenMengajar = baseAddress + "/jurusan_api/api/dosen/get_honor_dosen_mengajar";
+        private string URLGethonorDosenRemidial = baseAddress + "/jurusan_api/api/dosen/get_honor_dosen_remidial";
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -38,6 +39,8 @@ namespace Dosen.Report
         private List<Program> listProgram;
         private List<HonorMengajarDosen> listHonorDosenMengajar;
         private List<DataHonorDosenMengajar> listDataHonorDosenMengajar;
+        private List<HonorDosenRemidial> listHonorRemidial;
+        private List<HonorDosenRemidial> listDataHonorRemidial;
 
         private string KodeFakultas;
         private string IdProdi;
@@ -77,11 +80,11 @@ namespace Dosen.Report
                 return;
             }
 
-            List<string> listTahunAkademik = JsonConvert.DeserializeObject<List<string>>(response.Content.ReadAsStringAsync().Result);
-            listTahunAkademik.Insert(0, "Pilih");
-            listTahunAkademik.ForEach(delegate (string thnAkademik)
+            List<ThnAkademik> listTahunAkademik = JsonConvert.DeserializeObject<List<ThnAkademik>>(response.Content.ReadAsStringAsync().Result);
+            listTahunAkademik.Insert(0, new ThnAkademik() { TahunAkademik = "Pilih" });
+            listTahunAkademik.ForEach(delegate (ThnAkademik thnAkademik)
             {
-                cmbTahunAkademik.Items.Add(thnAkademik);
+                cmbTahunAkademik.Items.Add(thnAkademik.TahunAkademik);
             });
             cmbTahunAkademik.SelectedIndex = 0;
 
@@ -104,7 +107,7 @@ namespace Dosen.Report
             cmbSemester.Text = LoginAccess.Semester;
 
             dgvHonor.Rows.Clear();
-
+            rbChecked(sender, e);
             Loading(false);
         }
 
@@ -146,6 +149,57 @@ namespace Dosen.Report
         private void btnTutup_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private async Task LoadHonorRemidial(string kodeFakultas, string kodeProdi)
+        {
+            Loading(true);
+
+            var getData = new { TahunAkademik = cmbTahunAkademik.Text, Semester = cmbSemester.SelectedValue.ToString() };
+            var jsonData = JsonConvert.SerializeObject(getData);
+            response = await webApi.Post(URLGethonorDosenRemidial, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            listHonorRemidial = JsonConvert.DeserializeObject<List<HonorDosenRemidial>>(response.Content.ReadAsStringAsync().Result);
+            listHonorRemidial.ForEach(delegate (HonorDosenRemidial hr)
+            {
+                hr.JenjangGolongan = string.Format("{0}/{1}", hr.JenjangPendidikan, hr.Golongan);
+                hr.HonorTotal = hr.HonorKoreksiUjian + hr.HonorSoalUjian + hr.HrKisi + hr.HrRemidial;
+            });
+            dgvHonorRemidial.Columns.Clear();
+            listDataHonorRemidial = listHonorRemidial;
+            var no = 1;
+            foreach (var item in listHonorRemidial)
+            {
+                item.Nomor = no;
+                no++;
+            }
+
+            if (!string.IsNullOrWhiteSpace(kodeProdi))
+            {
+                listDataHonorRemidial = listHonorRemidial.Where(i => i.IdProdi == kodeProdi).ToList();
+                dgvHonorRemidial.DataSource = listDataHonorRemidial;
+            }
+            else if (!string.IsNullOrWhiteSpace(kodeFakultas))
+            {
+                if (kodeFakultas == "Semua")
+                {
+                    ;
+                    dgvHonorRemidial.DataSource = listHonorRemidial;
+                }
+                else
+                {
+                    listDataHonorRemidial = listHonorRemidial.Where(hr => hr.KodeFakultas == kodeFakultas).ToList();
+                    dgvHonorRemidial.DataSource = listDataHonorRemidial;
+                }
+            }
+            dgvHonorRemidial.Columns["NIK"].Frozen = true;
+            dgvHonorRemidial.Columns["NamaDosen"].Frozen = true;
+            Loading(false);
         }
 
         private async Task LoadHonorDosen(string kodeFakultas, string kodeProdi, string kodeProgram)
@@ -389,7 +443,14 @@ namespace Dosen.Report
             {
                 KodeProgram = cmbProgram.SelectedValue.ToString();
             }
-            await LoadHonorDosen(KodeFakultas, IdProdi, KodeProgram);
+            if (rbHrMengajar.Checked)
+            {
+                await LoadHonorDosen(KodeFakultas, IdProdi, KodeProgram);
+            }
+            else
+            {
+                await LoadHonorRemidial(KodeFakultas, IdProdi);
+            }
         }
 
         private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
@@ -398,6 +459,18 @@ namespace Dosen.Report
         }
 
         private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (rbHrMengajar.Checked)
+            {
+                ExportExcelHrMengajar();
+            }
+            else
+            {
+                ExportExcelHrRemidial();
+            }
+        }
+
+        private void ExportExcelHrMengajar()
         {
             if (listHonorDosenMengajar == null || dgvHonor.Rows.Count == 0)
             {
@@ -610,6 +683,137 @@ namespace Dosen.Report
             xlApp.Visible = true;
             progressBar1.Style = ProgressBarStyle.Marquee;
             Loading(false);
+        }
+
+        private void ExportExcelHrRemidial()
+        {
+            if (listDataHonorRemidial == null || dgvHonorRemidial.Rows.Count == 0)
+            {
+                return;
+            }
+
+
+            Loading(true);
+            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("EXCEL could not be started. Check that your office installation and project references are correct.");
+                Loading(false);
+                return;
+            }
+
+            Microsoft.Office.Interop.Excel.Workbook wb = xlApp.Workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
+            Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets[1];
+
+            if (ws == null)
+            {
+                MessageBox.Show("Worksheet could not be created. Check that your office installation and project references are correct.");
+                Loading(false);
+                return;
+            }
+
+            progressBar1.Style = ProgressBarStyle.Continuous;
+
+            Microsoft.Office.Interop.Excel.Range rangeTitle = ws.get_Range("A1", "O1");
+            rangeTitle.Merge();
+            rangeTitle.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Cells[1, 1] = "HONOR DOSEN REMIDIAL " + string.Format("T.A. {0} {1}", cmbTahunAkademik.Text, cmbSemester.Text);
+            ws.Cells[1, 1].Font.Bold = true;
+            ws.Cells[1, 1].Font.Size = 14;
+
+            Microsoft.Office.Interop.Excel.Range rangeNomor = ws.Range["A3", "A3"];
+            ws.Cells[3, 1] = "NO";
+
+            Microsoft.Office.Interop.Excel.Range rangeNik = ws.Range["B3", "B3"];
+            ws.Cells[3, 2] = "NIK";
+
+            Microsoft.Office.Interop.Excel.Range rangeNama = ws.Range["C3", "C3"];
+            ws.Cells[3, 3] = "NAMA DOSEN";
+
+            Microsoft.Office.Interop.Excel.Range rangeNamaProgram = ws.Range["D3", "D3"];
+            ws.Cells[3, 4] = "SEMESTER";
+
+            Microsoft.Office.Interop.Excel.Range rangeKategoriDosen = ws.Range["E3", "E3"];
+            ws.Cells[3, 5] = "JENJANG";
+
+            Microsoft.Office.Interop.Excel.Range rangeKode = ws.Range["F3", "F3"];
+            ws.Cells[3, 6] = "KODE";
+
+            Microsoft.Office.Interop.Excel.Range rangeMataKuliah = ws.Range["G3", "G3"];
+            ws.Cells[3, 7] = "MATA KULIAH";
+
+            Microsoft.Office.Interop.Excel.Range rangeJenisMK = ws.Range["H3", "H3"];
+            ws.Cells[3, 8] = "SKS";
+
+            Microsoft.Office.Interop.Excel.Range rangeJumlahKelas = ws.Range["I3", "I3"];
+            ws.Cells[3, 9] = "JUMLAH PESERTA UJIAN";
+
+            Microsoft.Office.Interop.Excel.Range rangeSksTotal = ws.Range["J3", "J3"];
+            ws.Cells[3, 10] = "PEND/GOL";
+
+            Microsoft.Office.Interop.Excel.Range rangeSksBeban = ws.Range["K3", "K3"];
+            ws.Cells[3, 11] = "HR STANDAR";
+
+            Microsoft.Office.Interop.Excel.Range rangeSksBayar = ws.Range["L3", "L3"];
+            ws.Cells[3, 12] = "HR KISI-KISI";
+
+            Microsoft.Office.Interop.Excel.Range rangeJmlPertemuan = ws.Range["M3", "M3"];
+            ws.Cells[3, 13] = "HR SOAL";
+
+            Microsoft.Office.Interop.Excel.Range rangePendidikan = ws.Range["N3", "N3"];
+            ws.Cells[3, 14] = "HR KOREKSI";
+
+            Microsoft.Office.Interop.Excel.Range rangeHrFix = ws.Range["O3", "O3"];
+            ws.Cells[3, 15] = "HR TOTAL";
+
+            int startRow = 4;
+            foreach (var item in listDataHonorRemidial)
+            {
+                ws.Cells[startRow, 1] = startRow - 3;
+                ws.Cells[startRow, 2].NumberFormat = "@";
+                ws.Cells[startRow, 2] = item.NIK;
+                ws.Cells[startRow, 3] = item.NamaDosen;
+                ws.Cells[startRow, 4] = item.Semester;
+                ws.Cells[startRow, 5] = item.Jenjang;
+                ws.Cells[startRow, 6] = item.Kode;
+                ws.Cells[startRow, 7] = item.MataKuliah;
+                ws.Cells[startRow, 8] = item.Sks;
+                ws.Cells[startRow, 9] = item.JumlahPesertaUjian;
+                ws.Cells[startRow, 10] = item.JenjangGolongan;
+                ws.Cells[startRow, 11] = item.HrRemidial;
+                ws.Cells[startRow, 12] = item.HrKisi;
+                ws.Cells[startRow, 13] = item.HonorSoalUjian;
+                ws.Cells[startRow, 14] = item.HonorKoreksiUjian;
+                ws.Cells[startRow, 15] = item.HonorTotal;
+                startRow++;
+                progressBar1.Value = (int)(((double.Parse((startRow - 4).ToString())) / double.Parse(listHonorRemidial.Count.ToString())) * 100);
+            }
+            ws.Columns.AutoFit();
+            xlApp.Visible = true;
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            Loading(false);
+
+        }
+
+        private void rbChecked(object sender, EventArgs e)
+        {
+            if (cmbProgram.DataSource != null)
+            {
+                cmbProgram.SelectedIndex = 0;
+            }
+            if (rbHrMengajar.Checked)
+            {
+                cmbProgram.Enabled = true;
+                dgvHonor.Visible = true;
+                dgvHonorRemidial.Visible = false;
+            }
+            else
+            {
+                cmbProgram.Enabled = false;
+                dgvHonor.Visible = false;
+                dgvHonorRemidial.Visible = true;
+            }
         }
     }
 

@@ -85,7 +85,7 @@ namespace PenawaranKurikulum
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                 listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
-                listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
+                listProdi.Insert(0, new Prodi() {Uid = "", IdProdi = "-", NamaProdi = "Pilih" });
                 cmbProdi.DataSource = listProdi;
                 cmbProdi.DisplayMember = "NamaProdi";
                 cmbProdi.ValueMember = "Uid";
@@ -153,6 +153,10 @@ namespace PenawaranKurikulum
                         isTP,
                         isDaftarKelas);
                 }
+                if(LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8 || LoginAccess.KodeSemester == 3)
+                {
+                    dgvMK.Columns["Angkatan"].Visible = false;
+                }
             }
             else
             {
@@ -181,6 +185,10 @@ namespace PenawaranKurikulum
                         mk.JenisMK,
                         mk.DaftarKelasMK);
                     no++;
+                }
+                if (LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8 || LoginAccess.KodeSemester == 3)
+                {
+                    dgvMktsd.Columns["AngkatanBerlaku"].Visible = false;
                 }
             }
             else

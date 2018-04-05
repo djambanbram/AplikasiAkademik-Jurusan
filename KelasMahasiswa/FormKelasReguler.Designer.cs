@@ -37,6 +37,7 @@ namespace KelasMahasiswa
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -56,15 +57,14 @@ namespace KelasMahasiswa
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvJumlahKelas = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aktifkanKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hapusKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AngkatanKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Aktif = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.hapusKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -78,8 +78,8 @@ namespace KelasMahasiswa
             this.splitContainerAdv1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJumlahKelas)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gradientPanel2
@@ -97,6 +97,16 @@ namespace KelasMahasiswa
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(860, 127);
             this.gradientPanel2.TabIndex = 8;
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.autoLabel3.Location = new System.Drawing.Point(8, 99);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(417, 16);
+            this.autoLabel3.TabIndex = 11;
+            this.autoLabel3.Text = "Klik kanan => \"Aktifkan kelas\" untuk mengaktifkan kelas per angkatan";
             // 
             // autoLabel2
             // 
@@ -311,6 +321,28 @@ namespace KelasMahasiswa
             this.dgvJumlahKelas.TabIndex = 11;
             this.dgvJumlahKelas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvJumlahKelas_MouseDown);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aktifkanKelasToolStripMenuItem,
+            this.hapusKelasToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+            // 
+            // aktifkanKelasToolStripMenuItem
+            // 
+            this.aktifkanKelasToolStripMenuItem.Name = "aktifkanKelasToolStripMenuItem";
+            this.aktifkanKelasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.aktifkanKelasToolStripMenuItem.Text = "Aktifkan Kelas";
+            this.aktifkanKelasToolStripMenuItem.Click += new System.EventHandler(this.aktifkanKelasToolStripMenuItem_Click);
+            // 
+            // hapusKelasToolStripMenuItem
+            // 
+            this.hapusKelasToolStripMenuItem.Name = "hapusKelasToolStripMenuItem";
+            this.hapusKelasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.hapusKelasToolStripMenuItem.Text = "Hapus Kelas";
+            this.hapusKelasToolStripMenuItem.Click += new System.EventHandler(this.hapusKelasToolStripMenuItem_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvKelasAktif);
@@ -321,21 +353,6 @@ namespace KelasMahasiswa
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kelas Aktif";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aktifkanKelasToolStripMenuItem,
-            this.hapusKelasToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
-            // 
-            // aktifkanKelasToolStripMenuItem
-            // 
-            this.aktifkanKelasToolStripMenuItem.Name = "aktifkanKelasToolStripMenuItem";
-            this.aktifkanKelasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aktifkanKelasToolStripMenuItem.Text = "Aktifkan Kelas";
-            this.aktifkanKelasToolStripMenuItem.Click += new System.EventHandler(this.aktifkanKelasToolStripMenuItem_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -356,6 +373,7 @@ namespace KelasMahasiswa
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.Visible = false;
             this.dataGridViewTextBoxColumn3.Width = 130;
             // 
             // Aktif
@@ -364,23 +382,6 @@ namespace KelasMahasiswa
             this.Aktif.Name = "Aktif";
             this.Aktif.ReadOnly = true;
             this.Aktif.Width = 60;
-            // 
-            // autoLabel3
-            // 
-            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.autoLabel3.Location = new System.Drawing.Point(8, 99);
-            this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(417, 16);
-            this.autoLabel3.TabIndex = 11;
-            this.autoLabel3.Text = "Klik kanan => \"Aktifkan kelas\" untuk mengaktifkan kelas per angkatan";
-            // 
-            // hapusKelasToolStripMenuItem
-            // 
-            this.hapusKelasToolStripMenuItem.Name = "hapusKelasToolStripMenuItem";
-            this.hapusKelasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hapusKelasToolStripMenuItem.Text = "Hapus Kelas";
-            this.hapusKelasToolStripMenuItem.Click += new System.EventHandler(this.hapusKelasToolStripMenuItem_Click);
             // 
             // FormKelasReguler
             // 
@@ -410,8 +411,8 @@ namespace KelasMahasiswa
             this.splitContainerAdv1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJumlahKelas)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -441,11 +442,11 @@ namespace KelasMahasiswa
         private System.Windows.Forms.DataGridViewTextBoxColumn JumlahMahasiswa;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aktifkanKelasToolStripMenuItem;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
+        private System.Windows.Forms.ToolStripMenuItem hapusKelasToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn AngkatanKelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Aktif;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
-        private System.Windows.Forms.ToolStripMenuItem hapusKelasToolStripMenuItem;
     }
 }

@@ -753,7 +753,7 @@
         <Top>9.09166in</Top>
         <Left>1.20834in</Left>
         <Height>0.23958in</Height>
-        <Width>2.59375in</Width>
+        <Width>3.19665in</Width>
         <ZIndex>20</ZIndex>
         <Style>
           <Border>
@@ -788,7 +788,7 @@
         <Top>9.29374in</Top>
         <Left>1.20834in</Left>
         <Height>0.23958in</Height>
-        <Width>2.59375in</Width>
+        <Width>3.19665in</Width>
         <ZIndex>21</ZIndex>
         <Style>
           <Border>
@@ -1313,6 +1313,41 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox30">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Dekan "+Parameters!Fakultas.Value</Value>
+                <Style>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>11pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>7.97708in</Top>
+        <Left>5.32292in</Left>
+        <Height>0.23958in</Height>
+        <Width>2.59375in</Width>
+        <ZIndex>26</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>10.97792in</Height>
     <Style />
@@ -1419,6 +1454,12 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="NikDekan">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Fakultas">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>

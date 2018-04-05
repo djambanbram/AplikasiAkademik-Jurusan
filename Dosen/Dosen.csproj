@@ -11,6 +11,7 @@
     <AssemblyName>Dosen</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -73,13 +76,13 @@
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\PdfSharp.Charting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Grid.Windows, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Windows, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SpellChecker.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Base, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Windows, Version=14.2450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Base, Version=14.2400.0.28, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=14.2400.0.28, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Base, Version=14.2400.0.28, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=14.2400.0.28, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=14.2400.0.28, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=14.2400.0.28, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=14.2400.0.28, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -100,6 +103,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DsDosen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FormHrRemidial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormHrRemidial.Designer.cs">
+      <DependentUpon>FormHrRemidial.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialog\FormSetTanggalKumpulKesanggupan.cs">
       <SubType>Form</SubType>
@@ -172,6 +181,9 @@
     <Compile Include="Report\FormReportKesediaanDosen.Designer.cs">
       <DependentUpon>FormReportKesediaanDosen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialog\FormHrRemidial.resx">
+      <DependentUpon>FormHrRemidial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\FormSetTanggalKumpulKesanggupan.resx">
       <DependentUpon>FormSetTanggalKumpulKesanggupan.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,9 +210,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportView\ReportDosenWali.rdlc" />
     <EmbeddedResource Include="ReportView\ReportKesanggupanDosen.rdlc" />
+    <EmbeddedResource Include="ReportView\ReportKesanggupanDosen_v2.rdlc" />
     <EmbeddedResource Include="ReportView\ReportKesediaanDosen.rdlc" />
     <EmbeddedResource Include="Report\FormReportHonorDosenMengajar2.resx">
       <DependentUpon>FormReportHonorDosenMengajar2.cs</DependentUpon>

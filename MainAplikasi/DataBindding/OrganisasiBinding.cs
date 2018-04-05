@@ -40,7 +40,8 @@ namespace MataKuliah.DataBindding
                 p.NamaProdi = string.Format("{0} - {1}", program.Prodi.NamaProdi.Split(';')[0], program.Prodi.Jenjang);
                 p.KodeProgramReguler = program.Prodi.KodeProgramReguler;
                 listProdi.Add(p);
-                listProdi = listProdi.OrderBy(pr1 => pr1.Jenjang).OrderBy(pr2 => pr2.NamaProdi).ToList();
+                listProdi = listProdi
+                            .OrderBy(pr1 => pr1.Jenjang).OrderBy(pr2 => pr2.NamaProdi).ToList();
 
                 Fakultas f = new Fakultas();
                 f.KodeFakultas = program.Prodi.Fakultas.KodeFakultas;
@@ -53,7 +54,11 @@ namespace MataKuliah.DataBindding
             listProdi = listProdi.GroupBy(f => f.IdProdi).Select(g => g.First()).ToList();
 
             Organisasi.listFakultas = listFakultas;
-            Organisasi.listProdi = listProdi;
+            Organisasi.listProdi = listProdi
+                                    .Where(pr => pr.SingkatanProdi != "CSSE").ToList();
+            Organisasi.listProdiPlusStudentExchange = listProdi;
+            Organisasi.listProdiStudentExchange = listProdi
+                                    .Where(pr => pr.SingkatanProdi == "CSSE").ToList();
             Organisasi.listProgram = listProgram;
         }
     }

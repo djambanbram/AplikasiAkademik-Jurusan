@@ -39,6 +39,7 @@ namespace MataKuliah
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -67,7 +68,6 @@ namespace MataKuliah
             this.KodeMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gMataKuliahMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -108,6 +108,18 @@ namespace MataKuliah
             this.btnTutup.TabIndex = 0;
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.BeforeTouchSize = new System.Drawing.Size(113, 30);
+            this.btnHapus.IsBackStageButton = false;
+            this.btnHapus.Location = new System.Drawing.Point(600, 4);
+            this.btnHapus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(113, 30);
+            this.btnHapus.TabIndex = 2;
+            this.btnHapus.Text = "Hapus";
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // progressBar1
             // 
@@ -426,18 +438,6 @@ namespace MataKuliah
             this.Hapus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Hapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Hapus.Width = 60;
-            // 
-            // btnHapus
-            // 
-            this.btnHapus.BeforeTouchSize = new System.Drawing.Size(113, 30);
-            this.btnHapus.IsBackStageButton = false;
-            this.btnHapus.Location = new System.Drawing.Point(600, 4);
-            this.btnHapus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnHapus.Name = "btnHapus";
-            this.btnHapus.Size = new System.Drawing.Size(113, 30);
-            this.btnHapus.TabIndex = 2;
-            this.btnHapus.Text = "Hapus";
-            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // FormGrupMK
             // 

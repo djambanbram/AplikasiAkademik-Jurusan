@@ -295,12 +295,17 @@ namespace MataKuliah
             var semester = LoginAccess.KodeSemester;
             var namaGrup = txtNamaGrup.Text.Trim(); ;
             string kode = dgvGrupMK.Rows[0].Cells["Kode"].Value.ToString();
-            string[] arrKodeJoin = new string[dgvGrupMK.Rows.Count];
+            string[] arrKodeJoin = new string[dgvGrupMK.Rows.Count - 1];
 
             int i = 0;
             foreach (DataGridViewRow row in dgvGrupMK.Rows)
             {
-                arrKodeJoin[i] = row.Cells["Kode"].Value.ToString();
+                if (i == 0)
+                {
+                    i++;
+                    continue;
+                }
+                arrKodeJoin[i - 1] = row.Cells["Kode"].Value.ToString();
                 i++;
             }
 

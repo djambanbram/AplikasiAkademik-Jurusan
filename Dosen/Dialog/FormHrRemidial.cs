@@ -76,7 +76,7 @@ namespace Dosen.Dialog
 
             Loading(true);
             response = await webApi.Post(URLSaveHonorSoalKoreksiRemidial, jsonData, true);
-            if(response.IsSuccessStatusCode)
+            if(!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
                 Loading(false);

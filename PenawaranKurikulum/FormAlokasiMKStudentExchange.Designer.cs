@@ -64,6 +64,7 @@ namespace PenawaranKurikulum
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnManual = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -78,7 +79,6 @@ namespace PenawaranKurikulum
             this.SksPraktikumDitawarkan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JenisMKDitawarkan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaftarKelasDitawarkan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnManual = new Syncfusion.Windows.Forms.ButtonAdv();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -152,7 +152,7 @@ namespace PenawaranKurikulum
             this.groupBox2.Size = new System.Drawing.Size(766, 200);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Mata Kuliah Akan Ditawarkan";
+            this.groupBox2.Text = "Mata Kuliah Ditawarkan untuk Prodi Student Exchange";
             // 
             // dgvMKDitawarkanStudentExchange
             // 
@@ -383,6 +383,18 @@ namespace PenawaranKurikulum
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
+            // btnManual
+            // 
+            this.btnManual.BeforeTouchSize = new System.Drawing.Size(113, 30);
+            this.btnManual.IsBackStageButton = false;
+            this.btnManual.Location = new System.Drawing.Point(531, 4);
+            this.btnManual.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnManual.Name = "btnManual";
+            this.btnManual.Size = new System.Drawing.Size(113, 30);
+            this.btnManual.TabIndex = 2;
+            this.btnManual.Text = "Manual";
+            this.btnManual.Click += new System.EventHandler(this.btnManual_Click);
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(242, 3);
@@ -519,18 +531,6 @@ namespace PenawaranKurikulum
             this.DaftarKelasDitawarkan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.DaftarKelasDitawarkan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.DaftarKelasDitawarkan.Visible = false;
-            // 
-            // btnManual
-            // 
-            this.btnManual.BeforeTouchSize = new System.Drawing.Size(113, 30);
-            this.btnManual.IsBackStageButton = false;
-            this.btnManual.Location = new System.Drawing.Point(531, 4);
-            this.btnManual.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnManual.Name = "btnManual";
-            this.btnManual.Size = new System.Drawing.Size(113, 30);
-            this.btnManual.TabIndex = 2;
-            this.btnManual.Text = "Manual";
-            this.btnManual.Click += new System.EventHandler(this.btnManual_Click);
             // 
             // FormAlokasiMKStudentExchange
             // 

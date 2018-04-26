@@ -231,8 +231,8 @@ namespace MainAplikasi
             this.boxDosen.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.boxDosen.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("TimDosen", System.Drawing.Color.Empty, 3, null, "", true, true, "itemTimDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Honor Dosen", System.Drawing.Color.Empty, 1, null, "", true, true, "itemHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Jenjang Pendidikan", System.Drawing.Color.Empty, 2, null, "", true, true, "itemJPDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Jenjang Pendidikan", System.Drawing.Color.Empty, 2, null, "", true, true, "itemJPDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Struktur Honor Dosen", System.Drawing.Color.Empty, 1, null, "", true, true, "itemHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.boxDosen.Location = new System.Drawing.Point(0, 294);
             this.boxDosen.Name = "boxDosen";
             this.boxDosen.Size = new System.Drawing.Size(264, 106);
@@ -290,7 +290,7 @@ namespace MainAplikasi
             this.BoxLaporan.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, 1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen Mengajar", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxLaporan.Location = new System.Drawing.Point(0, 482);
             this.BoxLaporan.Name = "BoxLaporan";
@@ -509,7 +509,7 @@ namespace MainAplikasi
             this.prodiRegulerToolStripItem,
             this.ProdiStudentExchangeToolStripItem});
             this.menuAlokasiMataKuliah.Name = "menuAlokasiDosen";
-            this.menuAlokasiMataKuliah.Size = new System.Drawing.Size(200, 70);
+            this.menuAlokasiMataKuliah.Size = new System.Drawing.Size(200, 48);
             // 
             // prodiRegulerToolStripItem
             // 

@@ -48,17 +48,17 @@ namespace PenawaranKurikulum.Dialog
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 211);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 201);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(647, 38);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(768, 38);
             this.flowLayoutPanel1.TabIndex = 14;
             // 
             // btnTutup
             // 
             this.btnTutup.BeforeTouchSize = new System.Drawing.Size(113, 30);
             this.btnTutup.IsBackStageButton = false;
-            this.btnTutup.Location = new System.Drawing.Point(531, 4);
+            this.btnTutup.Location = new System.Drawing.Point(652, 4);
             this.btnTutup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTutup.Name = "btnTutup";
             this.btnTutup.Size = new System.Drawing.Size(113, 30);
@@ -73,7 +73,7 @@ namespace PenawaranKurikulum.Dialog
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.ShowSelectionMargin = true;
-            this.richTextBox1.Size = new System.Drawing.Size(647, 211);
+            this.richTextBox1.Size = new System.Drawing.Size(768, 201);
             this.richTextBox1.TabIndex = 15;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -82,7 +82,7 @@ namespace PenawaranKurikulum.Dialog
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(647, 249);
+            this.ClientSize = new System.Drawing.Size(768, 239);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

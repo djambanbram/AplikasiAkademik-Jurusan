@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>1. Tabel atas merupakan tabel penawaran mata kuliah yang telah di alokasikan dosen pengampu.
-2. Tabel bawah adalah tabel mata kuliah yang ditawarkan untuk prodi student exchange
-3. Jika sudah di tawarkan, maka sistem akan secara otomatis melakukan generate kelas dan alokasi dosen,
+    <value>1. Tabel atas merupakan tabel penawaran mata kuliah yang telah di alokasikan dosen pengampu pada prodi internasional.
+2. Tabel bawah adalah tabel mata kuliah yang ditawarkan untuk prodi student exchange.
+3. Drag dari tabel atas ke tabel bawah untuk menawarkan mata kuliah prodi student exchange.
+4. Jika sudah di tawarkan, maka sistem akan secara otomatis melakukan generate kelas dan alokasi dosen,
 sehingga user tidak perlu lagi untuk:
 	a. Membuat kelas (baik reguler maupun campuran)
 	b. Melakukan alokasi dosen setiap kelas
-4. Jika sudah selesai, maka mahasiswa student exchange dapat melakukan pengisian KRS sesuai dengan 
-jadwal yang ditentukan. Jika tidak ada jadwal KRS, maka harap menghubungi DAAK untuk melakukan
-by pass KRS
-5. DAAK dapat mengalokasikan jadwal perkuliahan mahasiswa student exchange bersamaan dengan 
+5. Jika sudah selesai, maka mahasiswa student exchange dapat melakukan pengisian KRS sesuai dengan jadwal 
+yang ditentukan. Jika tidak ada jadwal KRS, maka harap menghubungi DAAK untuk melakukan by pass KRS
+6. DAAK dapat mengalokasikan jadwal perkuliahan mahasiswa student exchange bersamaan dengan 
 jadwal perkuliahan mahasiswa internasional (info lebih lanjut dapat enghubungi DAAK)</value>
   </data>
 </root>

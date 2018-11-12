@@ -77,6 +77,9 @@ namespace MainAplikasi
             this.menuAlokasiMataKuliah = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.prodiRegulerToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProdiStudentExchangeToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHonorDosen = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -92,6 +95,7 @@ namespace MainAplikasi
             this.menuLaporanMataKuliah.SuspendLayout();
             this.menuLaporanDosen.SuspendLayout();
             this.menuAlokasiMataKuliah.SuspendLayout();
+            this.menuHonorDosen.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpTaskBar1
@@ -321,10 +325,11 @@ namespace MainAplikasi
             this.BoxKeluar.ImageList = this.imgKeluarBox;
             this.BoxKeluar.ItemBackColor = System.Drawing.Color.WhiteSmoke;
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Cek Update Aplikasi", System.Drawing.Color.Empty, 2, null, "", true, true, "itemUpdate", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxKeluar.Location = new System.Drawing.Point(0, 612);
             this.BoxKeluar.Name = "BoxKeluar";
-            this.BoxKeluar.Size = new System.Drawing.Size(264, 58);
+            this.BoxKeluar.Size = new System.Drawing.Size(264, 82);
             this.BoxKeluar.TabIndex = 3;
             this.BoxKeluar.Text = "Keluar";
             this.BoxKeluar.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
@@ -335,6 +340,7 @@ namespace MainAplikasi
             this.imgKeluarBox.TransparentColor = System.Drawing.Color.Transparent;
             this.imgKeluarBox.Images.SetKeyName(0, "exit.png");
             this.imgKeluarBox.Images.SetKeyName(1, "door.png");
+            this.imgKeluarBox.Images.SetKeyName(2, "reload.png");
             // 
             // tabbedMDIManager1
             // 
@@ -525,6 +531,28 @@ namespace MainAplikasi
             this.ProdiStudentExchangeToolStripItem.Text = "Prodi Student Exchange";
             this.ProdiStudentExchangeToolStripItem.Click += new System.EventHandler(this.ProdiStudentExchangeToolStripItem_Click);
             // 
+            // menuHonorDosen
+            // 
+            this.menuHonorDosen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            this.menuHonorDosen.Name = "menuAlokasiDosen";
+            this.menuHonorDosen.Size = new System.Drawing.Size(198, 70);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(197, 22);
+            this.toolStripMenuItem3.Text = "Honor Dosen Mengajar";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(197, 22);
+            this.toolStripMenuItem4.Text = "Honor Dosen Ujian";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -560,6 +588,7 @@ namespace MainAplikasi
             this.menuLaporanMataKuliah.ResumeLayout(false);
             this.menuLaporanDosen.ResumeLayout(false);
             this.menuAlokasiMataKuliah.ResumeLayout(false);
+            this.menuHonorDosen.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -607,5 +636,8 @@ namespace MainAplikasi
         private System.Windows.Forms.ContextMenuStrip menuAlokasiMataKuliah;
         private System.Windows.Forms.ToolStripMenuItem prodiRegulerToolStripItem;
         private System.Windows.Forms.ToolStripMenuItem ProdiStudentExchangeToolStripItem;
+        private System.Windows.Forms.ContextMenuStrip menuHonorDosen;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
     }
 }

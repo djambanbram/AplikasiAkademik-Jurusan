@@ -142,7 +142,6 @@ namespace KonversiAlihJalur
             listMataKuliahKonversi = JsonConvert.DeserializeObject<List<MataKuliahKonversi>>(response.Content.ReadAsStringAsync().Result);
             if (listMataKuliahKonversi.Count == 0)
             {
-                MessageBox.Show(webApi.ReturnMessage(response));
                 Loading(false);
                 return;
             }

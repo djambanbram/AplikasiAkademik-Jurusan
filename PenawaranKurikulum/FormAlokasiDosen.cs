@@ -295,7 +295,7 @@ namespace PenawaranKurikulum
 
                 if (!isModeCampuran)
                 {
-                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.SemesterDitawarkan == semDipilih && m.KodeSifatMK == "W").ToList();
+                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.SemesterDitawarkan == semDipilih && m.KodeSifatMK == "W" && !m.MataKuliah.Contains("NON MUSLIM")).ToList();
                 }
                 else
                 {
@@ -395,7 +395,7 @@ namespace PenawaranKurikulum
                     {
                         if (dgr.Cells["Kode"].Value.ToString() != dgc.Name.Split('-')[0].ToString())
                         {
-                                dgr.Cells[dgc.DisplayIndex].Style.BackColor = Color.LightGray;
+                            dgr.Cells[dgc.DisplayIndex].Style.BackColor = Color.LightGray;
                         }
                         else
                         {
@@ -442,9 +442,19 @@ namespace PenawaranKurikulum
                     int idKelas = int.Parse(dgRow.Cells["IdKelas"].Value.ToString());
                     foreach (DataGridViewColumn dgColumn in dgvAlokasi.Columns)
                     {
-                        if (dgColumn.HeaderText.Contains('0') || dgColumn.Name.ToLower().Contains("kelas") || dgColumn.DisplayIndex == 0)
+                        if (LoginAccess.KodeSemester == 1 || LoginAccess.KodeSemester == 2)
                         {
-                            continue;
+                            if (dgColumn.HeaderText.Contains('0') || dgColumn.Name.ToLower().Contains("kelas") || dgColumn.DisplayIndex == 0)
+                            {
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            if(dgColumn.Name.ToLower().Contains("kelas") || dgColumn.DisplayIndex == 0)
+                            {
+                                continue;
+                            }
                         }
                         string kode = dgColumn.Name.Split('-')[0];
                         string jenisMataKuliah = dgColumn.HeaderText.Contains('T') ? "T" : "P";
@@ -626,10 +636,13 @@ namespace PenawaranKurikulum
 
             if (dgvAlokasi.Columns[hittest.ColumnIndex].HeaderText.Contains("0"))
             {
-                contextMenuStrip1.Items[0].Text = "Hapus Alokasi";
-                contextMenuStrip1.Items[0].Enabled = false;
-                contextMenuStrip1.Items[1].Enabled = false;
-                return;
+                if (LoginAccess.KodeSemester == 1 || LoginAccess.KodeSemester == 2)
+                {
+                    contextMenuStrip1.Items[0].Text = "Hapus Alokasi";
+                    contextMenuStrip1.Items[0].Enabled = false;
+                    contextMenuStrip1.Items[1].Enabled = false;
+                    return;
+                }
             }
             if (dgvAlokasi.Rows[hittest.RowIndex].Cells[hittest.ColumnIndex].Value == null)
             {
@@ -714,7 +727,10 @@ namespace PenawaranKurikulum
 
             if (dgvAlokasi.Columns[hittest.ColumnIndex].HeaderText.Contains("0"))
             {
-                return;
+                if (LoginAccess.KodeSemester == 1 || LoginAccess.KodeSemester == 2)
+                {
+                    return;
+                }
             }
 
             if (isModeCampuran)

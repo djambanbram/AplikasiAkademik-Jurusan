@@ -71,7 +71,7 @@ namespace KonversiAlihJalur.Dialog
             listMataKuliahKonversi = JsonConvert.DeserializeObject<List<MataKuliahKonversi>>(response.Content.ReadAsStringAsync().Result);
             if (listMataKuliahKonversi.Count == 0)
             {
-                MessageBox.Show(webApi.ReturnMessage(response));
+                dgv.Rows.Clear();
                 Loading(false);
                 return;
             }

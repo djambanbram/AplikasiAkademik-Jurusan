@@ -94,6 +94,10 @@ namespace ClassModel
         public string IdProdi { get; set; }
         [Browsable(false)]
         public string NamaProdi { get; set; }
+        [Browsable(false)]
+        public string KodeProgram { get; set; }
+        [DisplayName("Nama Program")]
+        public string NamaProgram { get; set; }
         public string NIK { get; set; }
         [DisplayName("Nama Dosen")]
         public string NamaDosen { get; set; }
@@ -127,5 +131,36 @@ namespace ClassModel
         public decimal HonorKoreksiUjian { get; set; }
         [DisplayName("HR Total")]
         public decimal HonorTotal { get; set; }
+    }
+
+    public class HonorDosenKoreksi
+    {
+        public string KodeFakultas { get; set; }
+        public string NamaFakultas { get; set; }
+        public Guid Uid { get; set; }
+        public string IdProdi { get; set; }
+        public string NamaProdi { get; set; }
+        public string Jenjang { get; set; }
+        public string KodeProgram { get; set; }
+        public string KodeProgramPerkuliahan { get; set; }
+        public bool IsKuliahKelasLain { get; set; }
+        public string NamaProgram { get; set; }
+        public string Nik { get; set; }
+        public string NamaDosen { get; set; }
+        public int BebanSks { get; set; }
+        public string Npwp { get; set; }
+        public string Kode { get; set; }
+        public string MataKuliah { get; set; }
+        public int Sks { get; set; }
+        public string SifatMk { get; set; }
+        public int JumlahKoreksi { get; set; }
+        public decimal HonorSoal { get; set; }
+        public decimal HonorKehadiran { get; set; }
+        public decimal HonorKoreksi { get; set; }
+        public decimal HonorTotal { get; set; }
+        public decimal Pajak { get; set; }
+        public decimal HonorDiterima { get; set; }
+        public int Kehadiran { get; set; }
+        public string Kelas { get; set; }
     }
 }

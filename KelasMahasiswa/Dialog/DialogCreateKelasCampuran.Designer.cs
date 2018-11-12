@@ -63,6 +63,7 @@ namespace KelasMahasiswa.Dialog
             this.numKuota = new System.Windows.Forms.NumericUpDown();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblSemesterKelas = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtKodeKelas = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).BeginInit();
@@ -77,6 +78,7 @@ namespace KelasMahasiswa.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.txtNamaKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlahKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKuota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKodeKelas)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -88,14 +90,14 @@ namespace KelasMahasiswa.Dialog
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 358);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(857, 38);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(903, 38);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
             // btnTutup
             // 
             this.btnTutup.BeforeTouchSize = new System.Drawing.Size(113, 30);
             this.btnTutup.IsBackStageButton = false;
-            this.btnTutup.Location = new System.Drawing.Point(741, 4);
+            this.btnTutup.Location = new System.Drawing.Point(787, 4);
             this.btnTutup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTutup.Name = "btnTutup";
             this.btnTutup.Size = new System.Drawing.Size(113, 30);
@@ -105,7 +107,7 @@ namespace KelasMahasiswa.Dialog
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(521, 3);
+            this.progressBar1.Location = new System.Drawing.Point(567, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(214, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -119,7 +121,7 @@ namespace KelasMahasiswa.Dialog
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(447, 31);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(431, 31);
             this.flowLayoutPanel2.TabIndex = 13;
             // 
             // autoLabel1
@@ -134,7 +136,7 @@ namespace KelasMahasiswa.Dialog
             // 
             // txtCari
             // 
-            this.txtCari.BeforeTouchSize = new System.Drawing.Size(288, 25);
+            this.txtCari.BeforeTouchSize = new System.Drawing.Size(72, 25);
             this.txtCari.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCari.Location = new System.Drawing.Point(128, 3);
             this.txtCari.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -160,8 +162,8 @@ namespace KelasMahasiswa.Dialog
             // splitContainerAdv1.Panel2
             // 
             this.splitContainerAdv1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainerAdv1.Size = new System.Drawing.Size(857, 358);
-            this.splitContainerAdv1.SplitterDistance = 449;
+            this.splitContainerAdv1.Size = new System.Drawing.Size(903, 358);
+            this.splitContainerAdv1.SplitterDistance = 433;
             this.splitContainerAdv1.TabIndex = 14;
             this.splitContainerAdv1.Text = "splitContainerAdv1";
             // 
@@ -185,7 +187,7 @@ namespace KelasMahasiswa.Dialog
             this.dgvMKCampuran.ReadOnly = true;
             this.dgvMKCampuran.RowHeadersVisible = false;
             this.dgvMKCampuran.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMKCampuran.Size = new System.Drawing.Size(447, 325);
+            this.dgvMKCampuran.Size = new System.Drawing.Size(431, 325);
             this.dgvMKCampuran.TabIndex = 14;
             this.dgvMKCampuran.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMKCampuran_CellClick);
             this.dgvMKCampuran.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvMKCampuran_KeyUp);
@@ -236,21 +238,23 @@ namespace KelasMahasiswa.Dialog
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 294F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 279F));
             this.tableLayoutPanel1.Controls.Add(this.txtMataKuliah, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtKode, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel6, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtNamaKelas, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.numJumlahKelas, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnCreate, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.numKuota, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblSemesterKelas, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txtNamaKelas, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtKodeKelas, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -262,32 +266,34 @@ namespace KelasMahasiswa.Dialog
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 356);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(461, 356);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // txtMataKuliah
             // 
-            this.txtMataKuliah.BeforeTouchSize = new System.Drawing.Size(288, 25);
+            this.txtMataKuliah.BeforeTouchSize = new System.Drawing.Size(285, 25);
+            this.tableLayoutPanel1.SetColumnSpan(this.txtMataKuliah, 2);
             this.txtMataKuliah.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtMataKuliah.Enabled = false;
             this.txtMataKuliah.Location = new System.Drawing.Point(108, 33);
             this.txtMataKuliah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtMataKuliah.Name = "txtMataKuliah";
-            this.txtMataKuliah.Size = new System.Drawing.Size(288, 25);
+            this.txtMataKuliah.Size = new System.Drawing.Size(350, 25);
             this.txtMataKuliah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtMataKuliah.TabIndex = 11;
             // 
             // txtKode
             // 
-            this.txtKode.BeforeTouchSize = new System.Drawing.Size(288, 25);
+            this.txtKode.BeforeTouchSize = new System.Drawing.Size(285, 25);
+            this.tableLayoutPanel1.SetColumnSpan(this.txtKode, 2);
             this.txtKode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtKode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKode.Enabled = false;
             this.txtKode.Location = new System.Drawing.Point(108, 3);
             this.txtKode.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtKode.Name = "txtKode";
-            this.txtKode.Size = new System.Drawing.Size(288, 25);
+            this.txtKode.Size = new System.Drawing.Size(350, 25);
             this.txtKode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtKode.TabIndex = 10;
             // 
@@ -333,18 +339,19 @@ namespace KelasMahasiswa.Dialog
             // 
             // txtNamaKelas
             // 
-            this.txtNamaKelas.BeforeTouchSize = new System.Drawing.Size(288, 25);
+            this.txtNamaKelas.BeforeTouchSize = new System.Drawing.Size(285, 25);
             this.txtNamaKelas.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaKelas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNamaKelas.Location = new System.Drawing.Point(108, 63);
+            this.txtNamaKelas.Location = new System.Drawing.Point(173, 63);
             this.txtNamaKelas.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtNamaKelas.Name = "txtNamaKelas";
-            this.txtNamaKelas.Size = new System.Drawing.Size(288, 25);
+            this.txtNamaKelas.Size = new System.Drawing.Size(285, 25);
             this.txtNamaKelas.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtNamaKelas.TabIndex = 3;
             // 
             // numJumlahKelas
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.numJumlahKelas, 2);
             this.numJumlahKelas.Location = new System.Drawing.Point(108, 93);
             this.numJumlahKelas.Minimum = new decimal(new int[] {
             1,
@@ -362,17 +369,18 @@ namespace KelasMahasiswa.Dialog
             // 
             // btnCreate
             // 
-            this.btnCreate.BeforeTouchSize = new System.Drawing.Size(99, 29);
+            this.btnCreate.BeforeTouchSize = new System.Drawing.Size(59, 29);
             this.btnCreate.IsBackStageButton = false;
             this.btnCreate.Location = new System.Drawing.Point(108, 153);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(99, 29);
+            this.btnCreate.Size = new System.Drawing.Size(59, 29);
             this.btnCreate.TabIndex = 5;
             this.btnCreate.Text = "Create";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // numKuota
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.numKuota, 2);
             this.numKuota.Location = new System.Drawing.Point(108, 123);
             this.numKuota.Minimum = new decimal(new int[] {
             1,
@@ -405,13 +413,26 @@ namespace KelasMahasiswa.Dialog
             this.lblSemesterKelas.Size = new System.Drawing.Size(72, 17);
             this.lblSemesterKelas.TabIndex = 12;
             this.lblSemesterKelas.Text = "autoLabel7";
+            this.lblSemesterKelas.Visible = false;
+            // 
+            // txtKodeKelas
+            // 
+            this.txtKodeKelas.BeforeTouchSize = new System.Drawing.Size(285, 25);
+            this.txtKodeKelas.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtKodeKelas.Location = new System.Drawing.Point(108, 63);
+            this.txtKodeKelas.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtKodeKelas.Name = "txtKodeKelas";
+            this.txtKodeKelas.ReadOnly = true;
+            this.txtKodeKelas.Size = new System.Drawing.Size(59, 25);
+            this.txtKodeKelas.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtKodeKelas.TabIndex = 13;
             // 
             // DialogCreateKelasCampuran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(857, 396);
+            this.ClientSize = new System.Drawing.Size(903, 396);
             this.Controls.Add(this.splitContainerAdv1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -438,6 +459,7 @@ namespace KelasMahasiswa.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.txtNamaKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlahKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKuota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKodeKelas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -471,5 +493,6 @@ namespace KelasMahasiswa.Dialog
         private System.Windows.Forms.DataGridViewTextBoxColumn Jumlah;
         private System.Windows.Forms.DataGridViewTextBoxColumn SingkatanKelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn SemesterKelas;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtKodeKelas;
     }
 }

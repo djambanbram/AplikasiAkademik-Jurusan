@@ -34,14 +34,16 @@ namespace KonversiAlihJalur.Dialog
         private HttpResponseMessage response;
 
         private List<DetailNilaiPendaftarAlihJalur> listDetailNilai;
+        private int angkatan;
 
-        public FormDetailNilaiMhsAlihJalur(string npmLama, string nama)
+        public FormDetailNilaiMhsAlihJalur(string npmLama, string nama, int angkatan)
         {
             InitializeComponent();
             webApi = new WebApi();
             NpmLama = npmLama;
             txtNama.Text = nama;
             txtNpmLama.Text = npmLama;
+            this.angkatan = angkatan;
         }
 
         private void Loading(bool isLoading)
@@ -61,7 +63,7 @@ namespace KonversiAlihJalur.Dialog
         {
             Loading(true);
 
-            var data = new { Npm = NpmLama };
+            var data = new { Npm = NpmLama, Angkatan = angkatan };
             var jsonData = JsonConvert.SerializeObject(data);
             response = await webApi.Post(URLGetDetailCalonMhsAlihJalur, jsonData, true);
             if (!response.IsSuccessStatusCode)

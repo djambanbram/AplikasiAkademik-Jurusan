@@ -151,6 +151,12 @@
     <Compile Include="Listener\IHonorDosen.cs" />
     <Compile Include="Listener\IjenjangPendidikan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\FormReportHonorDosenKoreksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormReportHonorDosenKoreksi.Designer.cs">
+      <DependentUpon>FormReportHonorDosenKoreksi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\FormReportHonorDosenMengajar2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     <EmbeddedResource Include="ReportView\ReportKesanggupanDosen.rdlc" />
     <EmbeddedResource Include="ReportView\ReportKesanggupanDosen_v2.rdlc" />
     <EmbeddedResource Include="ReportView\ReportKesediaanDosen.rdlc" />
+    <EmbeddedResource Include="Report\FormReportHonorDosenKoreksi.resx">
+      <DependentUpon>FormReportHonorDosenKoreksi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\FormReportHonorDosenMengajar2.resx">
       <DependentUpon>FormReportHonorDosenMengajar2.cs</DependentUpon>
     </EmbeddedResource>

@@ -29,7 +29,7 @@ namespace MataKuliah
     public partial class FormMataKuliahKonsentrasi : Syncfusion.Windows.Forms.MetroForm, IMKKonsentrasi
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk";
+        private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk_all";
         private string URLGetMasterKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/get_master_konsentrasi";
         private string URLSaveMasterKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/save_master_konsentrasi";
         private string URLSaveMKKonsentrasi = baseAddress + "/jurusan_api/api/kurikulum/save_mk_konsentrasi";
@@ -118,7 +118,8 @@ namespace MataKuliah
 
                 dgvMataKuliah.Rows.Clear();
                 int nomor = 1;
-                foreach (DataMataKuliah dataMK in ClassModel.MataKuliah.listDataMataKuliah)
+                var tempList = ClassModel.MataKuliah.listDataMataKuliah.Where(mk => mk.KodeSifatMK.Trim() == "K").ToList();
+                foreach (DataMataKuliah dataMK in tempList)
                 {
                     dgvMataKuliah.Rows.Add(nomor, dataMK.Kode, dataMK.MataKuliah);
                     nomor++;
@@ -240,6 +241,10 @@ namespace MataKuliah
         private void dgvMataKuliah_MouseDown(object sender, MouseEventArgs e)
         {
             var hittest = dragAndDropAdd.DragMouseDownFirst(e, dgvMataKuliah);
+            if(hittest == null)
+            {
+                return;
+            }
             if (hittest.RowIndex < 0 || hittest.ColumnIndex < 0)
             {
                 return;
@@ -319,6 +324,12 @@ namespace MataKuliah
 
         private async void dgvMKKonsentrasi_DragDrop(object sender, DragEventArgs e)
         {
+            if(cmbKonsentrasi.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Pilih dahulu konsentrasinya");
+                return;
+            }
+
             var hittest = dragAndDropAdd.DragDrop(e, dgvMKKonsentrasi);
             if (valueAdd == null)
             {

@@ -244,7 +244,7 @@ namespace KelasMahasiswa
         {
             Loading(true);
 
-            var kodeJurusan = int.Parse(cmbProgram.SelectedValue.ToString());
+            var kodeJurusan = cmbProgram.SelectedValue.ToString();
             var angkatan = int.Parse(aktifkanKelasToolStripMenuItem.Tag.ToString());
 
             var data = new { Angkatan = angkatan, KodeJurusan = kodeJurusan, TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
@@ -264,7 +264,7 @@ namespace KelasMahasiswa
         {
             Loading(true);
 
-            var kodeJurusan = int.Parse(cmbProgram.SelectedValue.ToString());
+            var kodeJurusan = cmbProgram.SelectedValue.ToString();
             var angkatan = int.Parse(hapusKelasToolStripMenuItem.Tag.ToString());
 
             var data = new { Angkatan = angkatan, KodeJurusan = kodeJurusan, TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };

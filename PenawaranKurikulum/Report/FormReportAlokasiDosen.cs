@@ -171,16 +171,15 @@ namespace PenawaranKurikulum.Report
             {
                 var listNikDosen = listDosenMengajarAll
                     .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
-                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
                     .Distinct()
                     .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
-
 
                 int no = 0;
                 var tempNik = string.Empty;
                 foreach (var item in listNikDosen)
                 {
-                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas).ToList().Count;
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
 
                     if (tempNik != item.NIK)
                     {
@@ -216,16 +215,15 @@ namespace PenawaranKurikulum.Report
             {
                 var listNikDosen = listDosenMengajarAll
                     .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
-                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
                     .Distinct()
                     .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
-
 
                 int no = 0;
                 var tempNik = string.Empty;
                 foreach (var item in listNikDosen)
                 {
-                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas).ToList().Count;
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
 
                     if (tempNik != item.NIK)
                     {
@@ -265,7 +263,7 @@ namespace PenawaranKurikulum.Report
             {
                 var listNikDosen = listDosenMengajarAll
                     .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
-                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksPraktikum == y.SksTotal ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
                     .Distinct().Where(w => w.KodeProgram == cmbProgram.SelectedValue.ToString())
                     .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
 
@@ -273,7 +271,7 @@ namespace PenawaranKurikulum.Report
                 var tempNik = string.Empty;
                 foreach (var item in listNikDosen)
                 {
-                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas).ToList().Count;
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
 
                     if (tempNik != item.NIK)
                     {
@@ -322,7 +320,6 @@ namespace PenawaranKurikulum.Report
             reportViewer1.ZoomMode = ZoomMode.Percent;
             reportViewer1.LocalReport.Refresh();
             reportViewer1.RefreshReport();
-
         }
 
         private void btnManual_Click(object sender, EventArgs e)

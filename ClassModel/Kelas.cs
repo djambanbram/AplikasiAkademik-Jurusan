@@ -44,4 +44,11 @@ namespace ClassModel
         public string Ruang { get; set; }
         public int SksPraktikum { get; set; }
     }
+
+    public class KelasProgramProdi
+    {
+        public string KodeProgram { get; set; }
+        public string NamaProgram { get; set; }
+        public string KodeKelas { get; set; }
+    }
 }

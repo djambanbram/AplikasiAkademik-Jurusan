@@ -22,6 +22,7 @@ namespace KelasMahasiswa.Dialog
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLSaveKelasCampuran = baseAddress + "/jurusan_api/api/kelas/save_kelas_campuran";
+        private string URLGetKodeKelas = baseAddress + "/jurusan_api/api/kelas/get_kode_kelas";
 
         private List<DataMataKuliahCampuran> listTemp1;
         private List<DataMataKuliahCampuran> listTemp2;
@@ -62,10 +63,16 @@ namespace KelasMahasiswa.Dialog
                 return;
             }
 
+            if (txtNamaKelas.Text.Length > 14)
+            {
+                MessageBox.Show("Panjang nama kelas maksismal 14 karakter");
+                return;
+            }
+
             Loading(true);
             var data = new
             {
-                PrefiksNamaKelas = txtNamaKelas.Text,
+                PrefiksNamaKelas = string.Format("{0}_{1}", txtKodeKelas.Text, txtNamaKelas.Text),
                 Kode = txtKode.Text.Trim(),
                 Kuota = int.Parse(numKuota.Value.ToString()),
                 JumlahKelas = int.Parse(numJumlahKelas.Value.ToString()),
@@ -100,7 +107,7 @@ namespace KelasMahasiswa.Dialog
             Close();
         }
 
-        private void DialogCreateKelasCampuran_Load(object sender, EventArgs e)
+        private async void DialogCreateKelasCampuran_Load(object sender, EventArgs e)
         {
             if (ClassModel.MataKuliah.listDataMataKuliahCampuran.Count > 0)
             {
@@ -121,6 +128,15 @@ namespace KelasMahasiswa.Dialog
                     dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas, mk.SingkatanKelas, mk.SemesterDitawarkan);
                     no++;
                 }
+
+                response = await webApi.Post(URLGetKodeKelas, string.Empty, true);
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(webApi.ReturnMessage(response));
+                }
+                var listKodeKelas = JsonConvert.DeserializeObject<List<KelasProgramProdi>>(response.Content.ReadAsStringAsync().Result);
+                var kodeKelas = listKodeKelas.Find(k => k.KodeProgram == KodeProgram).KodeKelas;
+                txtKodeKelas.Text = kodeKelas.Substring(kodeKelas.Length - 2, 2); ;
             }
         }
 

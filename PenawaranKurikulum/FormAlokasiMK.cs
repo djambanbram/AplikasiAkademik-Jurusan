@@ -10,6 +10,7 @@ using ClassModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PenawaranKurikulum.DataBinding;
+using PenawaranKurikulum.Dialog;
 using PenawaranKurikulum.Lib;
 using System;
 using System.Collections.Generic;
@@ -85,7 +86,7 @@ namespace PenawaranKurikulum
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                 listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
-                listProdi.Insert(0, new Prodi() {Uid = "", IdProdi = "-", NamaProdi = "Pilih" });
+                listProdi.Insert(0, new Prodi() { Uid = "", IdProdi = "-", NamaProdi = "Pilih" });
                 cmbProdi.DataSource = listProdi;
                 cmbProdi.DisplayMember = "NamaProdi";
                 cmbProdi.ValueMember = "Uid";
@@ -153,7 +154,7 @@ namespace PenawaranKurikulum
                         isTP,
                         isDaftarKelas);
                 }
-                if(LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8 || LoginAccess.KodeSemester == 3)
+                if (LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8 || LoginAccess.KodeSemester == 3)
                 {
                     dgvMK.Columns["Angkatan"].Visible = false;
                 }
@@ -258,6 +259,24 @@ namespace PenawaranKurikulum
         private void dgvMktsd_MouseDown(object sender, MouseEventArgs e)
         {
             var hitTestInfo = dragAndDropDelete.DragMouseDownFirst(e, dgvMktsd);
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgvMktsd.Rows.Count <= 0)
+                {
+                    menuStripTawarkan.Items[0].Enabled = false;
+                    return;
+                }
+                menuStripTawarkan.Items[0].Enabled = true;
+                dgvMktsd.Rows[hitTestInfo.RowIndex].Selected = true;
+                MataKuliahDitawarkan mktsd = new MataKuliahDitawarkan();
+                mktsd.Kode = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mKode"].Value.ToString();
+                mktsd.MataKuliah = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mMataKuliah"].Value.ToString();
+                mktsd.DaftarKelasMK = bool.Parse(dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["mDaftarKelasMK"].Value.ToString());
+                mktsd.JenisMK = dgvMktsd.Rows[hitTestInfo.RowIndex].Cells["JenisMK"].Value.ToString();
+                menuStripTawarkan.Items[0].Tag = mktsd;
+                return;
+            }
+
             if (hitTestInfo != null)
             {
                 //Mandatory Data
@@ -345,7 +364,8 @@ namespace PenawaranKurikulum
                 TahunAkademik = LoginAccess.TahunAkademik,
                 Semester = LoginAccess.KodeSemester,
                 KodeJurusan = cmbProgram.SelectedValue.ToString(),
-                Kode = valueMKPrasyaratDelete.Kode
+                Kode = valueMKPrasyaratDelete.Kode,
+                Angkatan = valueMKPrasyaratDelete.Angkatan
             };
             string jsonData = JsonConvert.SerializeObject(dataDelete);
             int isMKSudahDiambil = 1;
@@ -507,7 +527,8 @@ namespace PenawaranKurikulum
                         TahunAkademik = LoginAccess.TahunAkademik,
                         Semester = LoginAccess.KodeSemester,
                         KodeJurusan = cmbProgram.SelectedValue.ToString(),
-                        Kode = Kode
+                        Kode = Kode,
+                        Angkatan = Angkatan
                     };
                     string jsonData = JsonConvert.SerializeObject(dataDelete);
 
@@ -655,6 +676,55 @@ namespace PenawaranKurikulum
         private void dgvMK_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             dgvMK.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dgvMktsd_MouseClick(object sender, MouseEventArgs e)
+        {
+        }
+
+        private async void tawarkanUntukAngkatanLainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MataKuliahDitawarkan dataMataKuliah = (sender as ToolStripItem).Tag as MataKuliahDitawarkan;
+            using (var form = new FormCopyMktsdAngkatanLain(dataMataKuliah, cmbProgram.SelectedValue.ToString()))
+            {
+                form.ShowDialog();
+            }
+
+            var data = new { TahunAkademik = LoginAccess.TahunAkademik, KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = LoginAccess.KodeSemester, IdProdi = cmbProdi.SelectedValue.ToString() };
+
+            string jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLGetMKSudahDitawarkan, jsonData, true);
+            if (response.IsSuccessStatusCode)
+            {
+                List<dynamic> oListMkSudahDitawarkan = JsonConvert.DeserializeObject<List<dynamic>>(response.Content.ReadAsStringAsync().Result);
+                MataKuliahSudahDitawarkanBinding mkBinding = new MataKuliahSudahDitawarkanBinding(oListMkSudahDitawarkan);
+                dgvMktsd.Rows.Clear();
+
+                int no = 1;
+                foreach (MataKuliahDitawarkan mk in ClassModel.MataKuliah.listMataKuliahSudahDitawarkan)
+                {
+                    dgvMktsd.Rows.Add(
+                        false,
+                        mk.SemesterDitawarkan,
+                        mk.Angkatan,
+                        mk.Kode,
+                        mk.MataKuliah,
+                        mk.SifatMK,
+                        mk.SksTeori,
+                        mk.SksPraktikum,
+                        mk.JenisMK,
+                        mk.DaftarKelasMK);
+                    no++;
+                }
+                if (LoginAccess.KodeSemester == 7 || LoginAccess.KodeSemester == 8 || LoginAccess.KodeSemester == 3)
+                {
+                    dgvMktsd.Columns["AngkatanBerlaku"].Visible = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+            }
         }
     }
 }

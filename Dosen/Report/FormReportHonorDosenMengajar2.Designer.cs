@@ -603,6 +603,7 @@ namespace Dosen.Report
             // 
             this.NamaDosenR.HeaderText = "Nama Dosen";
             this.NamaDosenR.Name = "NamaDosenR";
+            this.NamaDosenR.Width = 109;
             // 
             // KodeR
             // 
@@ -614,7 +615,7 @@ namespace Dosen.Report
             // 
             this.MataKuliahR.HeaderText = "Mata Kuliah";
             this.MataKuliahR.Name = "MataKuliahR";
-            this.MataKuliahR.Width = 94;
+            this.MataKuliahR.Width = 102;
             // 
             // SemesterR
             // 
@@ -632,7 +633,7 @@ namespace Dosen.Report
             // 
             this.JumlahPesertaR.HeaderText = "Jumlah Peserta";
             this.JumlahPesertaR.Name = "JumlahPesertaR";
-            this.JumlahPesertaR.Width = 110;
+            this.JumlahPesertaR.Width = 120;
             // 
             // PendidikanGolonganR
             // 
@@ -644,31 +645,31 @@ namespace Dosen.Report
             // 
             this.StandarHrR.HeaderText = "Standar HR";
             this.StandarHrR.Name = "StandarHrR";
-            this.StandarHrR.Width = 91;
+            this.StandarHrR.Width = 99;
             // 
             // HrKisiR
             // 
             this.HrKisiR.HeaderText = "HR Kisi-Kisi";
             this.HrKisiR.Name = "HrKisiR";
-            this.HrKisiR.Width = 91;
+            this.HrKisiR.Width = 99;
             // 
             // HrSoalR
             // 
             this.HrSoalR.HeaderText = "HR Soal";
             this.HrSoalR.Name = "HrSoalR";
-            this.HrSoalR.Width = 73;
+            this.HrSoalR.Width = 79;
             // 
             // HrKoreksiR
             // 
             this.HrKoreksiR.HeaderText = "HR Koreksi";
             this.HrKoreksiR.Name = "HrKoreksiR";
-            this.HrKoreksiR.Width = 89;
+            this.HrKoreksiR.Width = 97;
             // 
             // HrTotalR
             // 
             this.HrTotalR.HeaderText = "HR Total";
             this.HrTotalR.Name = "HrTotalR";
-            this.HrTotalR.Width = 76;
+            this.HrTotalR.Width = 82;
             // 
             // FormReportHonorDosenMengajar2
             // 

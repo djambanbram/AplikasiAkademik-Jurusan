@@ -147,7 +147,7 @@ namespace KonversiAlihJalur
         {
             var nama = (sender as ToolStripItem).Text.Replace("Lihat nilai ", "");
             var npm = (sender as ToolStripItem).Tag.ToString();
-            using (var form = new FormDetailNilaiMhsAlihJalur(npm, nama))
+            using (var form = new FormDetailNilaiMhsAlihJalur(npm, nama, int.Parse(cmbAngkatan.Text)))
             {
                 form.ShowDialog(this);
             }
@@ -174,7 +174,7 @@ namespace KonversiAlihJalur
             }
 
             Loading(true);
-            var data = new { ListNpm = listNpm };
+            var data = new { ListNpm = listNpm, Angkatan = int.Parse(cmbAngkatan.Text) };
             var jsonData = JsonConvert.SerializeObject(data);
             response = await webApi.Post(URLGenerateNilaiCalonMhs, jsonData, true);
             if (!response.IsSuccessStatusCode)

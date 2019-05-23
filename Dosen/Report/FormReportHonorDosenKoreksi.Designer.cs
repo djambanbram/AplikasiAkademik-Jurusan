@@ -38,6 +38,7 @@ namespace Dosen.Report
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnExportExcel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.cmbJenisUjian = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -54,7 +55,6 @@ namespace Dosen.Report
             this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.dgvHonorDosenKoreksi = new System.Windows.Forms.DataGridView();
-            this.btnExportExcel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +63,7 @@ namespace Dosen.Report
             this.Kehadiran = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProgramStudi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Program = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TanggalUjian = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,6 +118,18 @@ namespace Dosen.Report
             this.btnTutup.TabIndex = 0;
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
+            // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.BeforeTouchSize = new System.Drawing.Size(113, 30);
+            this.btnExportExcel.IsBackStageButton = false;
+            this.btnExportExcel.Location = new System.Drawing.Point(795, 4);
+            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(113, 30);
+            this.btnExportExcel.TabIndex = 2;
+            this.btnExportExcel.Text = "Export Excel";
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // progressBar1
             // 
@@ -294,6 +307,7 @@ namespace Dosen.Report
             this.Kehadiran,
             this.ProgramStudi,
             this.Program,
+            this.TanggalUjian,
             this.Kode,
             this.MataKuliah,
             this.Sks,
@@ -320,18 +334,6 @@ namespace Dosen.Report
             this.dgvHonorDosenKoreksi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHonorDosenKoreksi.Size = new System.Drawing.Size(1030, 288);
             this.dgvHonorDosenKoreksi.TabIndex = 23;
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.BeforeTouchSize = new System.Drawing.Size(113, 30);
-            this.btnExportExcel.IsBackStageButton = false;
-            this.btnExportExcel.Location = new System.Drawing.Point(795, 4);
-            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(113, 30);
-            this.btnExportExcel.TabIndex = 2;
-            this.btnExportExcel.Text = "Export Excel";
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // No
             // 
@@ -366,6 +368,7 @@ namespace Dosen.Report
             this.BebanSks.HeaderText = "BebanSks";
             this.BebanSks.Name = "BebanSks";
             this.BebanSks.ReadOnly = true;
+            this.BebanSks.Visible = false;
             this.BebanSks.Width = 88;
             // 
             // Kehadiran
@@ -373,14 +376,15 @@ namespace Dosen.Report
             this.Kehadiran.HeaderText = "Kehadiran Dosen";
             this.Kehadiran.Name = "Kehadiran";
             this.Kehadiran.ReadOnly = true;
-            this.Kehadiran.Width = 122;
+            this.Kehadiran.Visible = false;
+            this.Kehadiran.Width = 133;
             // 
             // ProgramStudi
             // 
             this.ProgramStudi.HeaderText = "Program Srudi";
             this.ProgramStudi.Name = "ProgramStudi";
             this.ProgramStudi.ReadOnly = true;
-            this.ProgramStudi.Width = 108;
+            this.ProgramStudi.Width = 118;
             // 
             // Program
             // 
@@ -388,6 +392,13 @@ namespace Dosen.Report
             this.Program.Name = "Program";
             this.Program.ReadOnly = true;
             this.Program.Width = 84;
+            // 
+            // TanggalUjian
+            // 
+            this.TanggalUjian.HeaderText = "Tanggal Ujian";
+            this.TanggalUjian.Name = "TanggalUjian";
+            this.TanggalUjian.ReadOnly = true;
+            this.TanggalUjian.Width = 112;
             // 
             // Kode
             // 
@@ -401,7 +412,7 @@ namespace Dosen.Report
             this.MataKuliah.HeaderText = "Mata Kuliah";
             this.MataKuliah.Name = "MataKuliah";
             this.MataKuliah.ReadOnly = true;
-            this.MataKuliah.Width = 94;
+            this.MataKuliah.Width = 102;
             // 
             // Sks
             // 
@@ -415,7 +426,7 @@ namespace Dosen.Report
             this.SifatMk.HeaderText = "Sifat MK";
             this.SifatMk.Name = "SifatMk";
             this.SifatMk.ReadOnly = true;
-            this.SifatMk.Width = 58;
+            this.SifatMk.Width = 82;
             // 
             // Kelas
             // 
@@ -429,14 +440,14 @@ namespace Dosen.Report
             this.JumlahKoreksi.HeaderText = "Jumlah Koreksi";
             this.JumlahKoreksi.Name = "JumlahKoreksi";
             this.JumlahKoreksi.ReadOnly = true;
-            this.JumlahKoreksi.Width = 110;
+            this.JumlahKoreksi.Width = 120;
             // 
             // HonorSoal
             // 
             this.HonorSoal.HeaderText = "Honor Soal";
             this.HonorSoal.Name = "HonorSoal";
             this.HonorSoal.ReadOnly = true;
-            this.HonorSoal.Width = 91;
+            this.HonorSoal.Width = 99;
             // 
             // HonorSoalVal
             // 
@@ -579,6 +590,7 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn Kehadiran;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProgramStudi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Program;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TanggalUjian;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sks;

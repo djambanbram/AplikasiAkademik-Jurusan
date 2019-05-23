@@ -18,7 +18,7 @@ namespace MataKuliah.DataBinding
                 m.Kode = item.Kode;
                 m.MataKuliah = item.MataKuliah;
                 m.MataKuliahEn = item.MataKuliahEn;
-                m.SingkatanMK = item.Alias;
+                m.SingkatanMK = item.SingkatanMK;
                 m.SingkatanKelas = item.SingkatanKelas;
                 m.Sks = item.Sks;
                 m.SksPraktikum = item.SksPraktikum;

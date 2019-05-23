@@ -128,7 +128,6 @@ namespace MataKuliah
             }
             listTahunBerlaku.Insert(0, "Pilih");
             cmbTahunBerlaku.DataSource = listTahunBerlaku;
-
             EnableField(false);
         }
 
@@ -253,12 +252,16 @@ namespace MataKuliah
                 //update
                 mk.Kode = KodeMKDipilih;
                 mk.IdProdi = UidProdiDipilih;
+                mk.Sks = int.Parse(txtSksTotal.Text);
                 mk.SksPraktikum = int.Parse(txtSksPraktikum.Text);
                 mk.SemesterDitawarkan = int.Parse(cmbSemesterPenawaran.Text);
+                mk.SingkatanMK = txtSingkatanMK.Text;
+                mk.KategoriMK = cmbKategoriMK.Text;
                 mk.SingkatanKelas = txtSingkatanMK.Text;
                 mk.IsTugasAkhir = cbIsSkripsi.Checked;
                 mk.MataKuliah = txtNamaMK.Text;
                 mk.MataKuliahEn = txtNamaMKEn.Text;
+                mk.SifatMK = cmbSifatMK.SelectedValue.ToString();
 
                 string jsonData = JsonConvert.SerializeObject(mk);
                 response = await webApi.Post(URLSaveMK, jsonData, true);
@@ -291,6 +294,8 @@ namespace MataKuliah
             cmbKategoriMK.Enabled = isEnable;
             cmbSifatMK.Enabled = isEnable;
             cmbTahunBerlaku.Enabled = isEnable;
+            //txtKodeMK.Enabled = isEnable;
+            //cbKodeOtomatis.Enabled = isEnable;
 
             groupBox1.Enabled = isEnable;
             txtKodeMKPengganti.Text = string.Empty;
@@ -309,6 +314,8 @@ namespace MataKuliah
             txtNamaMKEn.Text = string.Empty;
             txtNamaMK.Text = string.Empty;
             cmbTahunBerlaku.SelectedIndex = 0;
+            //txtKodeMK.Text = string.Empty;
+            //cbKodeOtomatis.Checked = true;
         }
 
         private void IsEditField(bool isEdit)
@@ -529,6 +536,14 @@ namespace MataKuliah
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
             cbIsSkripsi.Checked = dataMk.IsTugasAkhir;
+        }
+
+        private void cbKodeOtomatis_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private async void txtKodeMK_KeyPress(object sender, KeyPressEventArgs e)
+        {
         }
     }
 }

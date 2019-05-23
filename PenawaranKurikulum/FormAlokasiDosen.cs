@@ -36,6 +36,7 @@ namespace PenawaranKurikulum
         private string URLGetDosenMengajar = baseAddress + "/jurusan_api/api/pengajaran/get_dosen_mengajar";
         private string URLGetDataDosen = baseAddress + "/jurusan_api/api/pengajaran/get_dosen";
         private string URLSaveAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/save_dosen_mengajar";
+        private string URLValidasiKuliahGabung = baseAddress + "/jurusan_api/api/pengajaran/validasi_kuliah_gabung";
         private string URLCanDeleteAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/is_dosen_sudah_presensi";
         private string URLDeleteAlokasiDosen = baseAddress + "/jurusan_api/api/pengajaran/del_dosen_mengajar";
         private string URLDeleteAlokasiDosenBySemester = baseAddress + "/jurusan_api/api/pengajaran/del_dosen_mengajar_by_semester";
@@ -295,7 +296,7 @@ namespace PenawaranKurikulum
 
                 if (!isModeCampuran)
                 {
-                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.SemesterDitawarkan == semDipilih && m.KodeSifatMK == "W" && !m.MataKuliah.Contains("NON MUSLIM")).ToList();
+                    listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.SemesterDitawarkan == semDipilih && m.KodeSifatMK == "W" && m.DaftarKelasMK == false /*&& m.MataKuliah.Contains("NON MUSLIM")*/).ToList();
                 }
                 else
                 {
@@ -306,8 +307,8 @@ namespace PenawaranKurikulum
                     }
                     else
                     {
-                        listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" || m.DaftarKelasMK == true ||
-                                    m.MataKuliah.Contains("NON MUSLIM")).OrderBy(mk => mk.Kode).ToList();
+                        listTemp = MataKuliah.listMataKuliahSudahDitawarkan.Where(m => m.KodeSifatMK == "P" || m.KodeSifatMK == "K" || m.DaftarKelasMK == true
+                        /*|| m.MataKuliah.Contains("NON MUSLIM")*/).OrderBy(mk => mk.Kode).ToList();
                     }
                 }
 
@@ -451,7 +452,7 @@ namespace PenawaranKurikulum
                         }
                         else
                         {
-                            if(dgColumn.Name.ToLower().Contains("kelas") || dgColumn.DisplayIndex == 0)
+                            if (dgColumn.Name.ToLower().Contains("kelas") || dgColumn.DisplayIndex == 0)
                             {
                                 continue;
                             }
@@ -518,7 +519,7 @@ namespace PenawaranKurikulum
                 dgvDataDosen.Rows.Clear();
                 foreach (var item in listDataDosen)
                 {
-                    dgvDataDosen.Rows.Add(no, item.Nik, item.NamaDosen, item.Sks);
+                    dgvDataDosen.Rows.Add(no, item.Nik, item.NamaDosen, item.Sks, item.IsTeachingTeam);
                     no++;
                 }
 
@@ -607,7 +608,7 @@ namespace PenawaranKurikulum
 
             if (hittest != null)
             {
-                valueAdd = new { Nik = dgvDataDosen.Rows[hittest.RowIndex].Cells["Nik"].Value.ToString(), NamaDosen = dgvDataDosen.Rows[hittest.RowIndex].Cells["NamaDosen"].Value.ToString() };
+                valueAdd = new { Nik = dgvDataDosen.Rows[hittest.RowIndex].Cells["Nik"].Value.ToString(), NamaDosen = dgvDataDosen.Rows[hittest.RowIndex].Cells["NamaDosen"].Value.ToString(), IsTeachingTeam = Convert.ToBoolean(dgvDataDosen.Rows[hittest.RowIndex].Cells["TimPengajar"].Value.ToString()) };
             }
             dragAndDropAdd.DragMouseDownSecond(e, dgvAlokasi, hittest, valueAdd);
         }
@@ -759,10 +760,23 @@ namespace PenawaranKurikulum
                 Kode = kode,
                 Nik = valueAdd.Nik,
                 IdKelas = idKelas,
-                KodeJurusan = kodeProgramDipilih
+                KodeJurusan = kodeProgramDipilih,
+                IsTeachingTeam = valueAdd.IsTeachingTeam
             };
 
             string jsonData = JsonConvert.SerializeObject(dataSave);
+            response = await webApi.Post(URLValidasiKuliahGabung, jsonData, true);
+            if(!response.IsSuccessStatusCode)
+            {
+                var message = string.Format("{0}\nApakah alokasi dosen akan di lanjutkan?",webApi.ReturnMessage(response));
+                DialogResult dr = MessageBox.Show(message, "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(dr == DialogResult.No)
+                {
+                    Loading(false);
+                    return;
+                }
+            }
+
             //Save alokasi dosen
             response = await webApi.Post(URLSaveAlokasiDosen, jsonData, true);
             if (response.IsSuccessStatusCode)
@@ -887,7 +901,7 @@ namespace PenawaranKurikulum
             int no = 1;
             foreach (DataDosen d in listDataDosen.Where(ds => ds.NamaDosen.ToLower().Contains(txtCariDosen.Text.ToLower()) || ds.Nik.Contains(txtCariDosen.Text)).ToList())
             {
-                dgvDataDosen.Rows.Add(no, d.Nik, d.NamaDosen, d.Sks);
+                dgvDataDosen.Rows.Add(no, d.Nik, d.NamaDosen, d.Sks, d.IsTeachingTeam);
                 no++;
             }
         }

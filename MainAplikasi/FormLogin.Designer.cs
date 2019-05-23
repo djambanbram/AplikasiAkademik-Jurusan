@@ -56,6 +56,7 @@
             this.autoLabel2.Size = new System.Drawing.Size(68, 16);
             this.autoLabel2.TabIndex = 1;
             this.autoLabel2.Text = "Password";
+            this.autoLabel2.Click += new System.EventHandler(this.autoLabel2_Click);
             // 
             // btnClose
             // 
@@ -87,7 +88,6 @@
             this.txtUsername.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(205, 22);
-            this.txtUsername.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtUsername.TabIndex = 6;
             this.txtUsername.Text = "190302038";
             // 
@@ -100,7 +100,6 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(205, 22);
-            this.txtPassword.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtPassword.TabIndex = 7;
             this.txtPassword.Text = "FW7u@Mv!";
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
@@ -123,6 +122,8 @@
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormLogin_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).EndInit();
             this.ResumeLayout(false);

@@ -147,7 +147,7 @@ namespace Dosen.Report
                     int i = 1;
                     foreach (var item in listNikDosen)
                     {
-                        int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas).ToList().Count;
+                        int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
                         int sks = item.SksPraktikum == 0 ? item.SksTeori : item.SksPraktikum;
                         dgvDataDosen.Rows.Add(i, item.NamaProgram, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, sks, countKelas, item.JenisMataKuliah, item.KodeKelas);
                         i++;

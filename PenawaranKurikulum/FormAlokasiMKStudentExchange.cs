@@ -110,7 +110,7 @@ namespace PenawaranKurikulum
                 string idProdi = cmbProdi.SelectedValue.ToString();
                 listProgram = Organisasi.listProgram
                     .Where(program => program.Prodi.Uid == idProdi)
-                    .Where(program => program.KodeProgram.Contains("6"))
+                    //.Where(program => program.KodeProgram.Contains("6"))
                     .ToList();
                 listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
                 cmbProgram.DataSource = listProgram;

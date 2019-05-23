@@ -42,5 +42,6 @@ namespace ClassModel
         public string Nik { get; set; }
         public string NamaDosen { get; set; }
         public int Sks { get; set; }
+        public bool IsTeachingTeam { get; set; }
     }
 }

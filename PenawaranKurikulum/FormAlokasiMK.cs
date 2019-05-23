@@ -467,29 +467,33 @@ namespace PenawaranKurikulum
             {
                 response = await webApi.Post(URLSaveMKDitawarkan, jsonData, true);
             }
-            if (response.IsSuccessStatusCode)
-            {
-                dgvMktsd.Rows.Add(
-                    false,
-                    valueMKPrasyaratAdd.SemesterDitawarkan,
-                    valueMKPrasyaratAdd.Angkatan,
-                    valueMKPrasyaratAdd.Kode,
-                    valueMKPrasyaratAdd.MataKuliah,
-                    valueMKPrasyaratAdd.SifatMK,
-                    valueMKPrasyaratAdd.SksTeori,
-                    valueMKPrasyaratAdd.SksPraktikum,
-                    jenisMK,
-                    valueMKPrasyaratAdd.DaftarKelasMK);
-
-                dgvMK.Rows.RemoveAt(valueMKPrasyaratAdd.numRow);
-            }
-            else
+            if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
             }
+            dgvMktsd.Rows.Add(
+                false,
+                valueMKPrasyaratAdd.SemesterDitawarkan,
+                valueMKPrasyaratAdd.Angkatan,
+                valueMKPrasyaratAdd.Kode,
+                valueMKPrasyaratAdd.MataKuliah,
+                valueMKPrasyaratAdd.SifatMK,
+                valueMKPrasyaratAdd.SksTeori,
+                valueMKPrasyaratAdd.SksPraktikum,
+                jenisMK,
+                valueMKPrasyaratAdd.DaftarKelasMK);
 
-            valueMKPrasyaratAdd = null;
+            dgvMK.Rows.RemoveAt(valueMKPrasyaratAdd.numRow);
+
+            //using (var form = new DialogAlokasiKelasCampuran(cmbProgram.SelectedValue.ToString(), valueMKPrasyaratAdd.Kode, valueMKPrasyaratAdd.MataKuliah))
+            //{
+            //    form.ShowDialog();
+            //}
+
             Loading(false);
+            valueMKPrasyaratAdd = null;
         }
 
         private async void btnHapus_Click(object sender, EventArgs e)

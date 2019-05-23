@@ -178,10 +178,9 @@ namespace Dosen.Report
                     {
                         listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).JumlahKoreksi = honorKoreksiDosen.JumlahKoreksi + item.JumlahKoreksi;
                         listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).HonorKoreksi = honorKoreksiDosen.HonorKoreksi + item.HonorKoreksi;
-                        listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).HonorTotal = honorKoreksiDosen.JumlahKoreksi + item.HonorTotal;
-                        listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).Pajak = honorKoreksiDosen.JumlahKoreksi + item.Pajak;
-                        listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).HonorDiterima = honorKoreksiDosen.JumlahKoreksi + item.HonorDiterima;
-                        //listTempHonorDosenKoreksi.Add(honorKoreksiDosen);
+                        listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).HonorTotal = honorKoreksiDosen.HonorTotal + item.HonorTotal;
+                        listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).Pajak = honorKoreksiDosen.Pajak + item.Pajak;
+                        listHonorDosenKoreksi.Find(p => p.KodeProgram == item.KodeProgramPerkuliahan && p.Kode == item.Kode && p.Nik == item.Nik).HonorDiterima = honorKoreksiDosen.HonorDiterima + item.HonorDiterima;
                         listHonorDosenKoreksi.Remove(item);
                     }
                 }
@@ -227,6 +226,7 @@ namespace Dosen.Report
                         item.Kehadiran,
                         item.NamaProdi.Split(';')[0],
                         item.NamaProgram,
+                        DateTime.Parse(item.TanggalUjian).ToString("dd-MM-yyyy"), 
                         item.Kode,
                         item.MataKuliah,
                         item.Sks,
@@ -292,53 +292,56 @@ namespace Dosen.Report
             Microsoft.Office.Interop.Excel.Range rangeNamaProgram = ws.Range["D3", "D3"];
             ws.Cells[3, 4] = "NPWP";
 
-            Microsoft.Office.Interop.Excel.Range rangeBebanSks = ws.Range["E3", "E3"];
-            ws.Cells[3, 5] = "BEBAN SKS";
+            //Microsoft.Office.Interop.Excel.Range rangeBebanSks = ws.Range["E3", "E3"];
+            //ws.Cells[3, 5] = "BEBAN SKS";
 
-            Microsoft.Office.Interop.Excel.Range rangeKehadiran = ws.Range["F3", "F3"];
-            ws.Cells[3, 6] = "KEHADIRAN";
+            //Microsoft.Office.Interop.Excel.Range rangeKehadiran = ws.Range["F3", "F3"];
+            //ws.Cells[3, 6] = "KEHADIRAN";
 
             Microsoft.Office.Interop.Excel.Range rangeKategoriDosen = ws.Range["G3", "G3"];
-            ws.Cells[3, 7] = "PRODI";
+            ws.Cells[3, 5] = "PRODI";
 
             Microsoft.Office.Interop.Excel.Range rangeKode = ws.Range["H3", "H3"];
-            ws.Cells[3, 8] = "PROGRAM";
+            ws.Cells[3, 6] = "PROGRAM";
+
+            Microsoft.Office.Interop.Excel.Range rangeTglUjian = ws.Range["H3", "H3"];
+            ws.Cells[3, 7] = "TANGGAL UJIAN";
 
             Microsoft.Office.Interop.Excel.Range rangeMataKuliah = ws.Range["I3", "I3"];
-            ws.Cells[3, 9] = "KODE";
+            ws.Cells[3, 8] = "KODE";
 
             Microsoft.Office.Interop.Excel.Range rangeJenisMK = ws.Range["J3", "J3"];
-            ws.Cells[3, 10] = "MATA KULIAH";
+            ws.Cells[3, 9] = "MATA KULIAH";
 
             Microsoft.Office.Interop.Excel.Range rangeJumlahKelas = ws.Range["K3", "K3"];
-            ws.Cells[3, 11] = "SKS";
+            ws.Cells[3, 10] = "SKS";
 
             Microsoft.Office.Interop.Excel.Range rangeSksTotal = ws.Range["L3", "L3"];
-            ws.Cells[3, 12] = "SIFAT MK";
+            ws.Cells[3, 11] = "SIFAT MK";
 
             Microsoft.Office.Interop.Excel.Range rangeSksBeban = ws.Range["M3", "M3"];
-            ws.Cells[3, 13] = "KELAS";
+            ws.Cells[3, 12] = "KELAS";
 
             Microsoft.Office.Interop.Excel.Range rangeSksBayar = ws.Range["N3", "N3"];
-            ws.Cells[3, 14] = "JUMLAH KOREKSI";
+            ws.Cells[3, 13] = "JUMLAH KOREKSI";
 
             Microsoft.Office.Interop.Excel.Range rangeJmlPertemuan = ws.Range["O3", "O3"];
-            ws.Cells[3, 15] = "HONOR SOAL";
+            ws.Cells[3, 14] = "HONOR SOAL";
 
             Microsoft.Office.Interop.Excel.Range rangePendidikan = ws.Range["P3", "P3"];
-            ws.Cells[3, 16] = "HONOR KEHADIRAN";
+            ws.Cells[3, 15] = "HONOR KEHADIRAN";
 
             Microsoft.Office.Interop.Excel.Range rangeHrFix = ws.Range["Q3", "Q3"];
-            ws.Cells[3, 17] = "HONOR KOREKSI";
+            ws.Cells[3, 16] = "HONOR KOREKSI";
 
             Microsoft.Office.Interop.Excel.Range rangeHrFixBulan = ws.Range["R3", "R3"];
-            ws.Cells[3, 18] = "HONOR TOTAL";
+            ws.Cells[3, 17] = "HONOR TOTAL";
 
             Microsoft.Office.Interop.Excel.Range rangeHrVar = ws.Range["S3", "S3"];
-            ws.Cells[3, 19] = "PAJAK";
+            ws.Cells[3, 18] = "PAJAK";
 
             Microsoft.Office.Interop.Excel.Range rangeHrVarBulan = ws.Range["T3", "T3"];
-            ws.Cells[3, 20] = "HONOR DITERIMA";
+            ws.Cells[3, 19] = "HONOR DITERIMA";
 
 
             int startRow = 4;
@@ -350,22 +353,23 @@ namespace Dosen.Report
                 ws.Cells[startRow, 2] = dgRow.Cells["Nik"].Value;// Nik;
                 ws.Cells[startRow, 3] = dgRow.Cells["Nama"].Value;// .NamaDosen;
                 ws.Cells[startRow, 4] = dgRow.Cells["Npwp"].Value;// .Npwp;
-                ws.Cells[startRow, 5] = dgRow.Cells["BebanSks"].Value;// .BebanSks;
-                ws.Cells[startRow, 6] = dgRow.Cells["Kehadiran"].Value;// .Kehadiran;
-                ws.Cells[startRow, 7] = dgRow.Cells["ProgramSTudi"].Value;// .NamaProdi;
-                ws.Cells[startRow, 8] = dgRow.Cells["Program"].Value;// .NamaProgram;
-                ws.Cells[startRow, 9] = dgRow.Cells["Kode"].Value;// .Kode;
-                ws.Cells[startRow, 10] = dgRow.Cells["MataKuliah"].Value;// .MataKuliah;
-                ws.Cells[startRow, 11] = dgRow.Cells["Sks"].Value;// .Sks;
-                ws.Cells[startRow, 12] = dgRow.Cells["SifatMk"].Value;// .SifatMk;
-                ws.Cells[startRow, 13] = dgRow.Cells["Kelas"].Value;// .Kelas;
-                ws.Cells[startRow, 14] = dgRow.Cells["JumlahKoreksi"].Value;// .JumlahKoreksi;
-                ws.Cells[startRow, 15] = dgRow.Cells["HonorSoalVal"].Value;// .HonorSoal;
-                ws.Cells[startRow, 16] = dgRow.Cells["HonorKehadiranVal"].Value;// .HonorKehadiran;
-                ws.Cells[startRow, 17] = dgRow.Cells["HonorKoreksiVal"].Value;// .HonorKoreksi;
-                ws.Cells[startRow, 18] = dgRow.Cells["HonorTotalVal"].Value;// .HonorTotal;
-                ws.Cells[startRow, 19] = dgRow.Cells["PajakVal"].Value;// .Pajak;
-                ws.Cells[startRow, 20] = dgRow.Cells["HonorDiterimaVal"].Value;// .HonorDiterima;
+                //ws.Cells[startRow, 5] = dgRow.Cells["BebanSks"].Value;// .BebanSks;
+                //ws.Cells[startRow, 6] = dgRow.Cells["Kehadiran"].Value;// .Kehadiran;
+                ws.Cells[startRow, 5] = dgRow.Cells["ProgramSTudi"].Value;// .NamaProdi;
+                ws.Cells[startRow, 6] = dgRow.Cells["Program"].Value;// .NamaProgram;
+                ws.Cells[startRow, 7] = dgRow.Cells["TanggalUjian"].Value;// .NamaProgram;
+                ws.Cells[startRow, 8] = dgRow.Cells["Kode"].Value;// .Kode;
+                ws.Cells[startRow, 9] = dgRow.Cells["MataKuliah"].Value;// .MataKuliah;
+                ws.Cells[startRow, 10] = dgRow.Cells["Sks"].Value;// .Sks;
+                ws.Cells[startRow, 11] = dgRow.Cells["SifatMk"].Value;// .SifatMk;
+                ws.Cells[startRow, 12] = dgRow.Cells["Kelas"].Value;// .Kelas;
+                ws.Cells[startRow, 13] = dgRow.Cells["JumlahKoreksi"].Value;// .JumlahKoreksi;
+                ws.Cells[startRow, 14] = dgRow.Cells["HonorSoalVal"].Value;// .HonorSoal;
+                ws.Cells[startRow, 15] = dgRow.Cells["HonorKehadiranVal"].Value;// .HonorKehadiran;
+                ws.Cells[startRow, 16] = dgRow.Cells["HonorKoreksiVal"].Value;// .HonorKoreksi;
+                ws.Cells[startRow, 17] = dgRow.Cells["HonorTotalVal"].Value;// .HonorTotal;
+                ws.Cells[startRow, 18] = dgRow.Cells["PajakVal"].Value;// .Pajak;
+                ws.Cells[startRow, 19] = dgRow.Cells["HonorDiterimaVal"].Value;// .HonorDiterima;
                 startRow++;
                 progressBar1.Value = (int)(((double.Parse((startRow - 4).ToString())) / double.Parse(listTempHonorDosenKoreksi.Count.ToString())) * 100);
             }

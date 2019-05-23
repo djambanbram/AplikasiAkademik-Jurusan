@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -102,6 +102,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetAlokasi.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\DialogAlokasiKelasCampuran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogAlokasiKelasCampuran.Designer.cs">
+      <DependentUpon>DialogAlokasiKelasCampuran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\DialogManualAlokasiDosen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     <Compile Include="Report\FormReportAlokasiMK.Designer.cs">
       <DependentUpon>FormReportAlokasiMK.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialog\DialogAlokasiKelasCampuran.resx">
+      <DependentUpon>DialogAlokasiKelasCampuran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DialogManualAlokasiDosen.resx">
       <DependentUpon>DialogManualAlokasiDosen.cs</DependentUpon>
     </EmbeddedResource>

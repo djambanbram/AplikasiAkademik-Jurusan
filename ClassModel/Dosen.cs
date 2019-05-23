@@ -149,6 +149,7 @@ namespace ClassModel
         public string NamaDosen { get; set; }
         public int BebanSks { get; set; }
         public string Npwp { get; set; }
+        public string TanggalUjian { get; set; }
         public string Kode { get; set; }
         public string MataKuliah { get; set; }
         public int Sks { get; set; }

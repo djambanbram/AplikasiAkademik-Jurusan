@@ -72,7 +72,7 @@ namespace KelasMahasiswa.Dialog
             Loading(true);
             var data = new
             {
-                PrefiksNamaKelas = string.Format("{0}_{1}", txtKodeKelas.Text, txtNamaKelas.Text),
+                PrefiksNamaKelas = string.Format("{0}", txtNamaKelas.Text),
                 Kode = txtKode.Text.Trim(),
                 Kuota = int.Parse(numKuota.Value.ToString()),
                 JumlahKelas = int.Parse(numJumlahKelas.Value.ToString()),
@@ -125,7 +125,7 @@ namespace KelasMahasiswa.Dialog
                 int no = 1;
                 foreach (DataMataKuliahCampuran mk in listTemp1)
                 {
-                    dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas, mk.SingkatanKelas, mk.SemesterDitawarkan);
+                    dgvMKCampuran.Rows.Add(no, mk.Kode, mk.MataKuliah, mk.JumlahKelas, mk.SingkatanKelas, mk.SemesterDitawarkan, mk.KodeSifatMK);
                     no++;
                 }
 
@@ -133,6 +133,7 @@ namespace KelasMahasiswa.Dialog
                 if (!response.IsSuccessStatusCode)
                 {
                     MessageBox.Show(webApi.ReturnMessage(response));
+                    return;
                 }
                 var listKodeKelas = JsonConvert.DeserializeObject<List<KelasProgramProdi>>(response.Content.ReadAsStringAsync().Result);
                 var kodeKelas = listKodeKelas.Find(k => k.KodeProgram == KodeProgram).KodeKelas;

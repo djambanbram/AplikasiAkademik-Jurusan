@@ -56,6 +56,7 @@ namespace PenawaranKurikulum
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnHapusAlokasi = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvAlokasi = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -69,10 +70,10 @@ namespace PenawaranKurikulum
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SKSMengajar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimPengajar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCariDosen = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.btnHapusAlokasi = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -170,10 +171,10 @@ namespace PenawaranKurikulum
             this.radCampuran.AutoSize = true;
             this.radCampuran.Location = new System.Drawing.Point(399, 124);
             this.radCampuran.Name = "radCampuran";
-            this.radCampuran.Size = new System.Drawing.Size(110, 21);
+            this.radCampuran.Size = new System.Drawing.Size(383, 21);
             this.radCampuran.TabIndex = 17;
             this.radCampuran.TabStop = true;
-            this.radCampuran.Text = "MK Campuran";
+            this.radCampuran.Text = "MK Campuran (Pilihan, Konsentrasi, dan Agama Non Muslim)";
             this.radCampuran.UseVisualStyleBackColor = true;
             this.radCampuran.CheckedChanged += new System.EventHandler(this.radioChecked);
             // 
@@ -319,6 +320,19 @@ namespace PenawaranKurikulum
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
+            // btnHapusAlokasi
+            // 
+            this.btnHapusAlokasi.BackColor = System.Drawing.Color.Salmon;
+            this.btnHapusAlokasi.BeforeTouchSize = new System.Drawing.Size(201, 30);
+            this.btnHapusAlokasi.IsBackStageButton = false;
+            this.btnHapusAlokasi.Location = new System.Drawing.Point(552, 4);
+            this.btnHapusAlokasi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnHapusAlokasi.Name = "btnHapusAlokasi";
+            this.btnHapusAlokasi.Size = new System.Drawing.Size(201, 30);
+            this.btnHapusAlokasi.TabIndex = 2;
+            this.btnHapusAlokasi.Text = "Hapus Alokasi Semester";
+            this.btnHapusAlokasi.Click += new System.EventHandler(this.btnHapusAlokasi_Click);
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(332, 3);
@@ -442,7 +456,8 @@ namespace PenawaranKurikulum
             this.No,
             this.NIK,
             this.NamaDosen,
-            this.SKSMengajar});
+            this.SKSMengajar,
+            this.TimPengajar});
             this.dgvDataDosen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDataDosen.Location = new System.Drawing.Point(3, 52);
             this.dgvDataDosen.MultiSelect = false;
@@ -485,6 +500,12 @@ namespace PenawaranKurikulum
             this.SKSMengajar.ReadOnly = true;
             this.SKSMengajar.Width = 80;
             // 
+            // TimPengajar
+            // 
+            this.TimPengajar.HeaderText = "Tim Pengajar";
+            this.TimPengajar.Name = "TimPengajar";
+            this.TimPengajar.ReadOnly = true;
+            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.autoLabel4);
@@ -513,22 +534,8 @@ namespace PenawaranKurikulum
             this.txtCariDosen.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtCariDosen.Name = "txtCariDosen";
             this.txtCariDosen.Size = new System.Drawing.Size(280, 25);
-            this.txtCariDosen.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCariDosen.TabIndex = 1;
             this.txtCariDosen.TextChanged += new System.EventHandler(this.txtCariDosen_TextChanged);
-            // 
-            // btnHapusAlokasi
-            // 
-            this.btnHapusAlokasi.BackColor = System.Drawing.Color.Salmon;
-            this.btnHapusAlokasi.BeforeTouchSize = new System.Drawing.Size(201, 30);
-            this.btnHapusAlokasi.IsBackStageButton = false;
-            this.btnHapusAlokasi.Location = new System.Drawing.Point(552, 4);
-            this.btnHapusAlokasi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnHapusAlokasi.Name = "btnHapusAlokasi";
-            this.btnHapusAlokasi.Size = new System.Drawing.Size(201, 30);
-            this.btnHapusAlokasi.TabIndex = 2;
-            this.btnHapusAlokasi.Text = "Hapus Alokasi Semester";
-            this.btnHapusAlokasi.Click += new System.EventHandler(this.btnHapusAlokasi_Click);
             // 
             // FormAlokasiDosen
             // 
@@ -595,15 +602,16 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem hapusAlokasiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setSemuaKelasToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SKSMengajar;
         private System.Windows.Forms.RadioButton radCampuran;
         private System.Windows.Forms.RadioButton rad5;
         private System.Windows.Forms.RadioButton rad6;
         private System.Windows.Forms.RadioButton rad8;
         private System.Windows.Forms.RadioButton rad7;
         private Syncfusion.Windows.Forms.ButtonAdv btnHapusAlokasi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SKSMengajar;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TimPengajar;
     }
 }

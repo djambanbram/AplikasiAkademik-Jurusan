@@ -1,4 +1,11 @@
-﻿using ApiService;
+#region Copyright Syncfusion Inc. 2001-2018.
+// Copyright Syncfusion Inc. 2001-2018. All rights reserved.
+// Use of this code is subject to the terms of our license.
+// A copy of the current license can be obtained at any time by e-mailing
+// licensing@syncfusion.com. Any infringement will be prosecuted under
+// applicable laws. 
+#endregion
+using ApiService;
 using ClassModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -8,47 +15,35 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MainAplikasi
 {
-    public partial class FormLogin : Form, IListenerByPass
+    public partial class FormPilihTahun : Syncfusion.Windows.Forms.MetroForm
     {
+        private IListenerByPass il;
+        private HttpResponseMessage response;
+        private WebApi webApi;
+
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         public static string baseLogin = ConfigurationManager.AppSettings["baseLogin"];
         private string URLLogin = baseLogin + "/account_api/verify";
         private string URLInitTahun = baseAddress + "/jurusan_api/api/data_support/init_tahun_aktif";
         private string URLInitSemester = baseAddress + "/jurusan_api/api/data_support/init_data_semester";
 
-        private HttpResponseMessage response;
-        private WebApi webApi;
-
-        public FormLogin()
+        public FormPilihTahun(IListenerByPass il)
         {
             InitializeComponent();
             webApi = new WebApi();
-#if DEBUG
-            txtUsername.Text = "190302038";
-            txtPassword.Text = "FW7u@Mv!";
-#else
-            txtUsername.Text = string.Empty;
-            txtPassword.Text = string.Empty;
-#endif
+            this.il = il;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private async void btnLogin_Click(object sender, EventArgs e)
-        {
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            string username = "190302038";
+            string password = "FW7u@Mv!";
 
             List<KeyValuePair<string, string>> listValue = new List<KeyValuePair<string, string>>();
             listValue.Add(new KeyValuePair<string, string>("grant_type", "password"));
@@ -92,9 +87,9 @@ namespace MainAplikasi
                     //LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
                     //LoginAccess.KodeSemester = kodeSemester;
 
-                    LoginAccess.TahunAkademik = "2018/2019";
+                    LoginAccess.TahunAkademik = "2017/2018";
                     LoginAccess.Semester = "Genap";
-                    LoginAccess.IdTahun = 57;
+                    LoginAccess.IdTahun = 53;
                     LoginAccess.KodeSemester = 2;
 #endif
 
@@ -132,52 +127,18 @@ namespace MainAplikasi
                 }
             }
 
-            Enabled = true;
+            LoginAccess.TahunAkademik = txtTahunAkademik.Text;
+            LoginAccess.Semester = txtNamaSemester.Text;
+            LoginAccess.IdTahun = int.Parse(txtIdTahun.Text);
+            LoginAccess.KodeSemester = int.Parse(txtKodeSemester.Text);
+            il.ByPass();
         }
+    }
 
-        class Error
-        {
-            public string error { get; set; }
+    class Error
+    {
+        public string error { get; set; }
 
-            public string error_description { get; set; }
-        }
-
-        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                btnLogin_Click(sender, e);
-            }
-        }
-
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormLogin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.F10)
-            {
-                using (var form = new FormPilihTahun(this))
-                {
-                    form.ShowDialog(this);
-                }
-            }
-        }
-
-        public void ByPass()
-        {
-            this.Hide();
-        }
-
-        private void autoLabel2_Click(object sender, EventArgs e)
-        {
-            using (var form = new FormPilihTahun(this))
-            {
-                form.ShowDialog(this);
-            }
-
-        }
+        public string error_description { get; set; }
     }
 }

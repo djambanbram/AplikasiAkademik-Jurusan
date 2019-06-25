@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -84,11 +84,23 @@
     <Compile Include="Dialog\FormCopyMKKonversi.Designer.cs">
       <DependentUpon>FormCopyMKKonversi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\FormDetailNilaiMhsPemutihan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormDetailNilaiMhsPemutihan.Designer.cs">
+      <DependentUpon>FormDetailNilaiMhsPemutihan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\FormDetailNilaiMhsAlihJalur.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialog\FormDetailNilaiMhsAlihJalur.Designer.cs">
       <DependentUpon>FormDetailNilaiMhsAlihJalur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKonversiNilaiCalonPemutihan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKonversiNilaiCalonPemutihan.Designer.cs">
+      <DependentUpon>FormKonversiNilaiCalonPemutihan.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMatrikulasiCalonAlihJalur.cs">
       <SubType>Form</SubType>
@@ -118,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\FormDetailNilaiMhsAlihJalur.resx">
       <DependentUpon>FormDetailNilaiMhsAlihJalur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\FormDetailNilaiMhsPemutihan.resx">
+      <DependentUpon>FormDetailNilaiMhsPemutihan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKonversiNilaiCalonPemutihan.resx">
+      <DependentUpon>FormKonversiNilaiCalonPemutihan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMatrikulasiCalonAlihJalur.resx">
       <DependentUpon>FormMatrikulasiCalonAlihJalur.cs</DependentUpon>

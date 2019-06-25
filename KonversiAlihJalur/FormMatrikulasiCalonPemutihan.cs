@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace KonversiAlihJalur
 {
-    public partial class FormMatrikulasiCalonAlihJalur : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormMatrikulasiCalonPemutihan : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/get_calon_mhs_alih_jalur";
@@ -37,7 +37,7 @@ namespace KonversiAlihJalur
 
         private List<PendaftarAlihJalur> listPendaftarAlihJalur;
 
-        public FormMatrikulasiCalonAlihJalur()
+        public FormMatrikulasiCalonPemutihan()
         {
             InitializeComponent();
             webApi = new WebApi();
@@ -86,10 +86,10 @@ namespace KonversiAlihJalur
         {
             listProgram = Organisasi.listProgram.Where(program => program.KodeProgram == "21" || program.KodeProgram == "22").ToList();
             listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
-            cmbProgramAlihJalur.DataSource = listProgram;
-            cmbProgramAlihJalur.DisplayMember = "NamaProgram";
-            cmbProgramAlihJalur.ValueMember = "KodeProgram";
-            cmbProgramAlihJalur.SelectedIndex = 0;
+            cmbProgram.DataSource = listProgram;
+            cmbProgram.DisplayMember = "NamaProgram";
+            cmbProgram.ValueMember = "KodeProgram";
+            cmbProgram.SelectedIndex = 0;
 
             for (int i = DateTime.Now.Year; i > DateTime.Now.Year - 10; i--)
             {
@@ -107,22 +107,22 @@ namespace KonversiAlihJalur
 
         private async void cmbProgramAlihJalur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbProgramAlihJalur.SelectedIndex <= 0 || cmbAngkatan.SelectedIndex <= 0)
+            if (cmbProgram.SelectedIndex <= 0 || cmbAngkatan.SelectedIndex <= 0)
             {
                 return;
             }
 
-            await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgramAlihJalur.SelectedValue.ToString());
+            await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgram.SelectedValue.ToString());
         }
 
         private async void cmbAngkatan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbProgramAlihJalur.SelectedIndex <= 0 || cmbAngkatan.SelectedIndex <= 0)
+            if (cmbProgram.SelectedIndex <= 0 || cmbAngkatan.SelectedIndex <= 0)
             {
                 return;
             }
 
-            await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgramAlihJalur.SelectedValue.ToString());
+            await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgram.SelectedValue.ToString());
         }
 
         private void dgvPendaftar_MouseDown(object sender, MouseEventArgs e)
@@ -138,18 +138,16 @@ namespace KonversiAlihJalur
             dgvPendaftar.Rows[hit.RowIndex].Selected = true;
             var nama = dgvPendaftar.Rows[hit.RowIndex].Cells["Nama"].Value.ToString();
             var npm = dgvPendaftar.Rows[hit.RowIndex].Cells["Npm"].Value.ToString();
-            var nodaf = dgvPendaftar.Rows[hit.RowIndex].Cells["Nodaf"].Value.ToString();
             contextMenuStrip1.Items[0].Text = string.Format("Lihat nilai {0}", nama);
-            contextMenuStrip1.Items[0].Tag = new { Npm = npm, Nodaf = nodaf };
+            contextMenuStrip1.Items[0].Tag = npm;
             contextMenuStrip1.Items[0].Enabled = true;
         }
 
         private void lihatNilaiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var nama = (sender as ToolStripItem).Text.Replace("Lihat nilai ", "");
-            var npm = ((sender as ToolStripItem).Tag as dynamic).Npm as string;
-            var nodaf = ((sender as ToolStripItem).Tag as dynamic).Nodaf as string;
-            using (var form = new FormDetailNilaiMhsAlihJalur(npm, nama, int.Parse(cmbAngkatan.Text), nodaf))
+            var npm = (sender as ToolStripItem).Tag.ToString();
+            using (var form = new FormDetailNilaiMhsAlihJalur(npm, nama, int.Parse(cmbAngkatan.Text)))
             {
                 form.ShowDialog(this);
             }
@@ -169,14 +167,14 @@ namespace KonversiAlihJalur
                 return;
             }
 
-            List<string> listNodaf = new List<string>();
+            List<string> listNpm = new List<string>();
             foreach (DataGridViewRow row in dgvPendaftar.Rows)
             {
-                listNodaf.Add(row.Cells["Nodaf"].Value.ToString());
+                listNpm.Add(row.Cells["Npm"].Value.ToString());
             }
 
             Loading(true);
-            var data = new { ListNodaf = listNodaf, Angkatan = int.Parse(cmbAngkatan.Text) };
+            var data = new { ListNpm = listNpm, Angkatan = int.Parse(cmbAngkatan.Text) };
             var jsonData = JsonConvert.SerializeObject(data);
             response = await webApi.Post(URLGenerateNilaiCalonMhs, jsonData, true);
             if (!response.IsSuccessStatusCode)
@@ -186,7 +184,7 @@ namespace KonversiAlihJalur
                 return;
             }
 
-            await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgramAlihJalur.SelectedValue.ToString());
+            await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgram.SelectedValue.ToString());
             MessageBox.Show("Nilai berhasil di konversi. Silahkan cek konversi nilai di masing-masing mahasiswa");
             Loading(false);
         }

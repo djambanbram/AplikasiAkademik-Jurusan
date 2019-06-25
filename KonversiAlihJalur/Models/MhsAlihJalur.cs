@@ -26,9 +26,23 @@ namespace KonversiAlihJalur.Models
         public string Nilai { get; set; }
         public bool Approve { get; set; }
     }
-    
+
+    class DetailNilaiPendaftarPemutihan
+    {
+        public string KodeLama { get; set; }
+        public string MataKuliahLama { get; set; }
+        public int SksLama { get; set; }
+        public string KodeBaru { get; set; }
+        public string MataKuliahBaru { get; set; }
+        public int SksBaru { get; set; }
+        public string Nilai { get; set; }
+        public bool Approve { get; set; }
+    }
+
+
     public class HistoryKonversiNilai
     {
+        public string Nodaf { get; set; }
         public string Npm { get; set; }
         public string KodeD3 { get; set; }
         public string MataKuliahD3 { get; set; }

@@ -1,5 +1,5 @@
-#region Copyright Syncfusion Inc. 2001 - 2016
-// Copyright Syncfusion Inc. 2001 - 2016. All rights reserved.
+#region Copyright Syncfusion Inc. 2001-2018.
+// Copyright Syncfusion Inc. 2001-2018. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -14,18 +14,17 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 
 namespace KonversiAlihJalur.Dialog
 {
-    public partial class FormDetailNilaiMhsAlihJalur : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormDetailNilaiMhsPemutihan : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLGetDetailCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/get_detail_calon_mhs_alih_jalur";
-        private string URLSaveHistoryNilaiCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur";
+        private string URLGetDetailCalonMhsPemutihan = baseAddress + "/jurusan_api/api/pemutihan/get_detail_calon_mhs_pemutihan";
+        private string URLSaveHistoryNilaiCalonMhsPemutihan = baseAddress + "/jurusan_api/api/pemutihan/save_nilai_calon_mhs_pemutihan";
 
         private string NpmLama;
         private string Nodaf;
@@ -33,10 +32,10 @@ namespace KonversiAlihJalur.Dialog
         private WebApi webApi;
         private HttpResponseMessage response;
 
-        private List<DetailNilaiPendaftarAlihJalur> listDetailNilai;
+        private List<DetailNilaiPendaftarPemutihan> listDetailNilai;
         private int angkatan;
 
-        public FormDetailNilaiMhsAlihJalur(string npmLama, string nama, int angkatan, string nodaf)
+        public FormDetailNilaiMhsPemutihan(string npmLama, string nama, int angkatan, string nodaf)
         {
             InitializeComponent();
             webApi = new WebApi();
@@ -60,13 +59,13 @@ namespace KonversiAlihJalur.Dialog
             Close();
         }
 
-        private async void FormDetailNilaiMhsAlihJalur_Load(object sender, EventArgs e)
+        private async void FormDetailNilaiMhsPemutihan_Load(object sender, EventArgs e)
         {
             Loading(true);
 
             var data = new { Npm = NpmLama, Angkatan = angkatan, Nodaf };
             var jsonData = JsonConvert.SerializeObject(data);
-            response = await webApi.Post(URLGetDetailCalonMhsAlihJalur, jsonData, true);
+            response = await webApi.Post(URLGetDetailCalonMhsPemutihan, jsonData, true);
             if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
@@ -74,7 +73,7 @@ namespace KonversiAlihJalur.Dialog
                 return;
             }
 
-            listDetailNilai = JsonConvert.DeserializeObject<List<DetailNilaiPendaftarAlihJalur>>(response.Content.ReadAsStringAsync().Result);
+            listDetailNilai = JsonConvert.DeserializeObject<List<DetailNilaiPendaftarPemutihan>>(response.Content.ReadAsStringAsync().Result);
             if (listDetailNilai.Count <= 0)
             {
                 Loading(false);
@@ -86,7 +85,16 @@ namespace KonversiAlihJalur.Dialog
             var asciNilaiMinimal = Encoding.ASCII.GetBytes("C")[0];
             foreach (var item in listDetailNilai)
             {
-                dgvNilai.Rows.Add(no, item.KodeD3, item.MataKuliahD3, item.SksD3, item.KodeS1, item.MataKuliahS1, item.SksS1, item.Nilai, item.Approve);
+                dgvNilai.Rows.Add(
+                    no,
+                    item.KodeLama,
+                    item.MataKuliahLama,
+                    item.SksLama,
+                    string.IsNullOrWhiteSpace(item.KodeBaru) ? item.KodeLama : item.KodeBaru,
+                    string.IsNullOrWhiteSpace(item.MataKuliahBaru) ? item.MataKuliahLama : item.MataKuliahBaru,
+                    item.SksBaru == 0 ? item.SksLama : item.SksBaru,
+                    item.Nilai,
+                    item.Approve);
 
                 byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
                 if (asciiNilai > asciNilaiMinimal)
@@ -95,6 +103,48 @@ namespace KonversiAlihJalur.Dialog
                 }
                 no++;
             }
+
+            Loading(false);
+        }
+
+        private void dgvNilai_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private async void btnSimpan_Click(object sender, EventArgs e)
+        {
+            if (dgvNilai.Rows.Count <= 0)
+            {
+                return;
+            }
+
+            Loading(true);
+
+            List<HistoryKonversiNilai> listHistoryKonversi = new List<HistoryKonversiNilai>();
+            foreach (DataGridViewRow row in dgvNilai.Rows)
+            {
+                HistoryKonversiNilai h = new HistoryKonversiNilai();
+                h.Nodaf = Nodaf;
+                h.Npm = NpmLama;
+                h.KodeD3 = row.Cells["KodeLama"].Value.ToString();
+                h.MataKuliahD3 = row.Cells["MataKuliahLama"].Value.ToString();
+                h.SksD3 = int.Parse(row.Cells["SksLama"].Value.ToString());
+                h.KodeS1 = row.Cells["KodeBaru"].Value.ToString();
+                h.Nilai = row.Cells["Nilai"].Value.ToString();
+                h.Approve = Convert.ToBoolean(row.Cells["Approve"].Value.ToString());
+                listHistoryKonversi.Add(h);
+            }
+
+            var jsondata = JsonConvert.SerializeObject(listHistoryKonversi);
+            response = await webApi.Post(URLSaveHistoryNilaiCalonMhsPemutihan, jsondata, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            MessageBox.Show("Konversi nilai berhasil disimpan");
 
             Loading(false);
         }
@@ -128,43 +178,6 @@ namespace KonversiAlihJalur.Dialog
             {
                 row.Cells["Approve"].Value = false;
             }
-        }
-
-        private async void btnSimpan_Click(object sender, EventArgs e)
-        {
-            if(dgvNilai.Rows.Count <= 0)
-            {
-                return;
-            }
-
-            Loading(true);
-
-            List<HistoryKonversiNilai> listHistoryKonversi = new List<HistoryKonversiNilai>();
-            foreach(DataGridViewRow row in dgvNilai.Rows)
-            {
-                HistoryKonversiNilai h = new HistoryKonversiNilai();
-                h.Nodaf = Nodaf;
-                h.Npm = NpmLama;
-                h.KodeD3 = row.Cells["KodeD3"].Value.ToString();
-                h.MataKuliahD3 = row.Cells["MataKuliahD3"].Value.ToString();
-                h.SksD3 = int.Parse(row.Cells["SksD3"].Value.ToString());
-                h.KodeS1 = row.Cells["KodeS1"].Value.ToString();
-                h.Nilai = row.Cells["Nilai"].Value.ToString();
-                h.Approve = Convert.ToBoolean(row.Cells["Approve"].Value.ToString());
-                listHistoryKonversi.Add(h);
-            }
-
-            var jsondata = JsonConvert.SerializeObject(listHistoryKonversi);
-            response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalur, jsondata, true);
-            if(!response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(webApi.ReturnMessage(response));
-                Loading(false);
-                return;
-            }
-            MessageBox.Show("Konversi nilai berhasil disimpan");
-
-            Loading(false);
         }
     }
 }

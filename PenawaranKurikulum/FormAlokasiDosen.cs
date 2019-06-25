@@ -139,7 +139,10 @@ namespace PenawaranKurikulum
             if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
-                listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
+                listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).
+                            OrderBy(pr => pr.Jenjang)
+                            .ThenBy(pr => pr.NamaProdi)
+                            .ToList();
                 listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
                 cmbProdi.DataSource = listProdi;
                 cmbProdi.DisplayMember = "NamaProdi";

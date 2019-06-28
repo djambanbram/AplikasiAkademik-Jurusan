@@ -17,6 +17,7 @@ namespace KonversiAlihJalur.Models
 
     class DetailNilaiPendaftarAlihJalur
     {
+        public Guid Id { get; set; }
         public string KodeD3 { get; set; }
         public string MataKuliahD3 { get; set; }
         public int SksD3 { get; set; }
@@ -42,6 +43,7 @@ namespace KonversiAlihJalur.Models
 
     public class HistoryKonversiNilai
     {
+        public Guid Id { get; set; }
         public string Nodaf { get; set; }
         public string Npm { get; set; }
         public string KodeD3 { get; set; }

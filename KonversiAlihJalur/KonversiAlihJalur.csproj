@@ -84,6 +84,12 @@
     <Compile Include="Dialog\FormCopyMKKonversi.Designer.cs">
       <DependentUpon>FormCopyMKKonversi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\FormDetailNilaiMhsAlihJalurNonAmikom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormDetailNilaiMhsAlihJalurNonAmikom.Designer.cs">
+      <DependentUpon>FormDetailNilaiMhsAlihJalurNonAmikom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\FormDetailNilaiMhsPemutihan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </Compile>
     <Compile Include="Dialog\FormDetailNilaiMhsAlihJalur.Designer.cs">
       <DependentUpon>FormDetailNilaiMhsAlihJalur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FormMataKuliah.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormMataKuliah.Designer.cs">
+      <DependentUpon>FormMataKuliah.cs</DependentUpon>
     </Compile>
     <Compile Include="FormKonversiNilaiCalonPemutihan.cs">
       <SubType>Form</SubType>
@@ -114,6 +126,7 @@
     <Compile Include="FormSetKonversiMK.Designer.cs">
       <DependentUpon>FormSetKonversiMK.cs</DependentUpon>
     </Compile>
+    <Compile Include="IListener.cs" />
     <Compile Include="Lib\CommonLib.cs" />
     <Compile Include="Lib\DragandDrop.cs" />
     <Compile Include="Models\MataKuliahKonversi.cs" />
@@ -128,11 +141,17 @@
     <EmbeddedResource Include="Dialog\FormCopyMKKonversi.resx">
       <DependentUpon>FormCopyMKKonversi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\FormDetailNilaiMhsAlihJalurNonAmikom.resx">
+      <DependentUpon>FormDetailNilaiMhsAlihJalurNonAmikom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\FormDetailNilaiMhsAlihJalur.resx">
       <DependentUpon>FormDetailNilaiMhsAlihJalur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\FormDetailNilaiMhsPemutihan.resx">
       <DependentUpon>FormDetailNilaiMhsPemutihan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\FormMataKuliah.resx">
+      <DependentUpon>FormMataKuliah.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormKonversiNilaiCalonPemutihan.resx">
       <DependentUpon>FormKonversiNilaiCalonPemutihan.cs</DependentUpon>

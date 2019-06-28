@@ -64,7 +64,20 @@ namespace KonversiAlihJalur
                 return;
             }
 
-            listPendaftarAlihJalur = JsonConvert.DeserializeObject<List<PendaftarAlihJalur>>(response.Content.ReadAsStringAsync().Result).OrderBy(p => p.NpmLama).ToList();
+            if(cmbLulusan.SelectedIndex == 1)
+            {
+                listPendaftarAlihJalur = JsonConvert.DeserializeObject<List<PendaftarAlihJalur>>(response.Content.ReadAsStringAsync().Result)
+                                        .Where(p => !string.IsNullOrWhiteSpace(p.NpmLama))
+                                        .OrderBy(p => p.NpmLama)
+                                        .ToList();
+            }
+            else
+            {
+                listPendaftarAlihJalur = JsonConvert.DeserializeObject<List<PendaftarAlihJalur>>(response.Content.ReadAsStringAsync().Result)
+                                        .Where(p => string.IsNullOrWhiteSpace(p.NpmLama))
+                                        .OrderBy(p => p.NpmLama)
+                                        .ToList();
+            }
             if (listPendaftarAlihJalur.Count <= 0)
             {
                 Loading(false);
@@ -117,11 +130,19 @@ namespace KonversiAlihJalur
 
         private async void cmbAngkatan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbProgramAlihJalur.SelectedIndex <= 0 || cmbAngkatan.SelectedIndex <= 0)
+            if (cmbProgramAlihJalur.SelectedIndex <= 0 || cmbAngkatan.SelectedIndex <= 0 || cmbLulusan.SelectedIndex <= 0)
             {
                 return;
             }
 
+            if(cmbLulusan.SelectedIndex == 1)
+            {
+                btnKonversiOtomatis.Visible = true;
+            }
+            else
+            {
+                btnKonversiOtomatis.Visible = false;
+            }
             await LoadPendaftarAlihJalur(int.Parse(cmbAngkatan.Text), cmbProgramAlihJalur.SelectedValue.ToString());
         }
 
@@ -137,7 +158,16 @@ namespace KonversiAlihJalur
             dgvPendaftar.ClearSelection();
             dgvPendaftar.Rows[hit.RowIndex].Selected = true;
             var nama = dgvPendaftar.Rows[hit.RowIndex].Cells["Nama"].Value.ToString();
-            var npm = dgvPendaftar.Rows[hit.RowIndex].Cells["Npm"].Value.ToString();
+            var npm = string.Empty;
+            if(dgvPendaftar.Rows[hit.RowIndex].Cells["Npm"].Value == null)
+            {
+                npm = string.Empty;
+            }
+            else
+            {
+                npm = dgvPendaftar.Rows[hit.RowIndex].Cells["Npm"].Value.ToString();
+            }
+            
             var nodaf = dgvPendaftar.Rows[hit.RowIndex].Cells["Nodaf"].Value.ToString();
             contextMenuStrip1.Items[0].Text = string.Format("Lihat nilai {0}", nama);
             contextMenuStrip1.Items[0].Tag = new { Npm = npm, Nodaf = nodaf };
@@ -149,9 +179,24 @@ namespace KonversiAlihJalur
             var nama = (sender as ToolStripItem).Text.Replace("Lihat nilai ", "");
             var npm = ((sender as ToolStripItem).Tag as dynamic).Npm as string;
             var nodaf = ((sender as ToolStripItem).Tag as dynamic).Nodaf as string;
-            using (var form = new FormDetailNilaiMhsAlihJalur(npm, nama, int.Parse(cmbAngkatan.Text), nodaf))
+            if(string.IsNullOrWhiteSpace(npm))
             {
-                form.ShowDialog(this);
+                using (var form = new FormDetailNilaiMhsAlihJalurNonAmikom(
+                                    npm, 
+                                    nama, 
+                                    int.Parse(cmbAngkatan.Text), 
+                                    nodaf,
+                                    Organisasi.listProgram.Find(p => p.KodeProgram == cmbProgramAlihJalur.SelectedValue.ToString()).Prodi.Uid.ToString().ToLower()))
+                {
+                    form.ShowDialog(this);
+                }
+            }
+            else
+            {
+                using (var form = new FormDetailNilaiMhsAlihJalur(npm, nama, int.Parse(cmbAngkatan.Text), nodaf))
+                {
+                    form.ShowDialog(this);
+                }
             }
         }
 

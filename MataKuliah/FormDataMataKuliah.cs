@@ -367,7 +367,6 @@ namespace MataKuliah
 
         private async Task LoadMK()
         {
-
             MKByIdProdi m = new MKByIdProdi() { IdProdi = UidProdiDipilih };
             string jsonData = JsonConvert.SerializeObject(m);
 

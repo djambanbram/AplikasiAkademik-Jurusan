@@ -42,7 +42,7 @@ namespace KonversiAlihJalur.Dialog
             webApi = new WebApi();
             NpmLama = npmLama;
             txtNama.Text = nama;
-            txtNpmLama.Text = npmLama;
+            txtNpmLama.Text = string.IsNullOrWhiteSpace(npmLama) ? "Non AMIKOM" : npmLama;
             this.angkatan = angkatan;
             Nodaf = nodaf;
         }
@@ -86,7 +86,7 @@ namespace KonversiAlihJalur.Dialog
             var asciNilaiMinimal = Encoding.ASCII.GetBytes("C")[0];
             foreach (var item in listDetailNilai)
             {
-                dgvNilai.Rows.Add(no, item.KodeD3, item.MataKuliahD3, item.SksD3, item.KodeS1, item.MataKuliahS1, item.SksS1, item.Nilai, item.Approve);
+                dgvNilai.Rows.Add(no, item.KodeD3, item.MataKuliahD3, item.SksD3, item.KodeS1, item.MataKuliahS1, item.SksS1, item.Nilai, item.Approve, item.Id);
 
                 byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
                 if (asciiNilai > asciNilaiMinimal)

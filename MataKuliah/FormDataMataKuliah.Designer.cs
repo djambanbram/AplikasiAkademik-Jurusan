@@ -301,7 +301,7 @@ namespace MataKuliah
             this.autoLabel4.Name = "autoLabel4";
             this.autoLabel4.Size = new System.Drawing.Size(139, 30);
             this.autoLabel4.TabIndex = 4;
-            this.autoLabel4.Text = "Nama MK (English)*";
+            this.autoLabel4.Text = "Nama MK (English)";
             this.autoLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // autoLabel5

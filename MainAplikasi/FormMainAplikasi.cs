@@ -51,6 +51,7 @@ namespace MainAplikasi
         private FormAlokasiMKStudentExchange formAlokasiMKStudentExchange;
         private FormAlokasiDosen formAlokasiDosen;
         private FormAlokasiLabMK formAlokasiLabMK;
+        private FormKoordinatorMataKuliah formKoordinatorMataKuliah;
         private FormTimDosen formTimDosen;
         private FormHonorDosen formHonorDosen;
         private FormJenjangPendidikanDosen formJenjangPendidikanDosen;
@@ -175,6 +176,19 @@ namespace MainAplikasi
                 }
                 form = formAlokasiLabMK;
             }
+            else if(e.XPTaskBarItem.Name == "itemKoordinatorMk")
+            {
+                if (IsSemesterRemidial())
+                {
+                    return;
+                }
+                if (formKoordinatorMataKuliah == null || formKoordinatorMataKuliah.IsDisposed)
+                {
+                    formKoordinatorMataKuliah = new FormKoordinatorMataKuliah();
+                    formKoordinatorMataKuliah.MdiParent = this;
+                }
+                form = formKoordinatorMataKuliah;
+            }
             else if (e.XPTaskBarItem.Name == "itemTimDosen")
             {
                 if (IsSemesterRemidial())
@@ -289,6 +303,7 @@ namespace MainAplikasi
         {
             Loading(true);
             stripLabel.Text = "Loading...";
+            lblTahunAkademik.Text = string.Format("Tahun Akademik: {0}, Semester: {1}", LoginAccess.TahunAkademik, LoginAccess.Semester);
             response = await webApi.Post(URLGetProgramAll, string.Empty, false);
             if (response.IsSuccessStatusCode)
             {

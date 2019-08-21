@@ -65,8 +65,8 @@ namespace MataKuliah.DataBinding
         }
     }
 
-    class MKByIdProdi
-    {
-        public string IdProdi { get; set; }
-    }
+    //class MKByIdProdi
+    //{
+    //    public string IdProdi { get; set; }
+    //}
 }

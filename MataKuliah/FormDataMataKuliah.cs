@@ -216,7 +216,7 @@ namespace MataKuliah
         private async void btnSimpan_Click(object sender, EventArgs e)
         {
             Loading(true);
-            Tuple<bool, string> t = CommonLib.IsValidControlValidation(txtNamaMK, txtNamaMKEn, txtAliasMK, txtSksTotal, txtSksPraktikum,
+            Tuple<bool, string> t = CommonLib.IsValidControlValidation(txtNamaMK, txtAliasMK, txtSksTotal, txtSksPraktikum,
                                     cmbSemesterPenawaran, cmbTahunBerlaku, cmbKategoriMK, cmbSifatMK);
             if (!t.Item1)
             {

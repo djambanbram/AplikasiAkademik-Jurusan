@@ -33,10 +33,16 @@ namespace PenawaranKurikulum.Report
         private string URLGetDosenMengajar = baseAddress + "/jurusan_api/api/pengajaran/get_dosen_mengajar";
         private string URLGetDosenMengajarAll = baseAddress + "/jurusan_api/api/pengajaran/get_dosen_mengajar_all";
 
+        private string URLGetTahunAkademik = baseAddress + "/jurusan_api/api/data_support/init_tahun_akademik";
+        private string URLGetSemester = baseAddress + "/jurusan_api/api/data_support/init_data_semester";
+
         private List<Fakultas> listFakultas;
         private List<Prodi> listProdi;
         private List<Program> listProgram;
         private List<Department> listDepartment;
+        private List<ThnAkademik> listTahunAkademik;
+        private List<DataSemester> listSemester;
+
         private WebApi webApi;
         private HttpResponseMessage response;
         private List<KesanggupanMengajar> listDosenMengajarAll;
@@ -81,6 +87,39 @@ namespace PenawaranKurikulum.Report
                 MessageBox.Show(webApi.ReturnMessage(response));
             }
 
+            response = await webApi.Post(URLGetTahunAkademik, string.Empty, false);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Data tahun akademik gagal di tampilkan");
+                Loading(false);
+                return;
+            }
+
+            List<ThnAkademik> listTahunAkademik = JsonConvert.DeserializeObject<List<ThnAkademik>>(response.Content.ReadAsStringAsync().Result);
+            listTahunAkademik.Insert(0, new ThnAkademik() { TahunAkademik = "Pilih" });
+            listTahunAkademik.ForEach(delegate (ThnAkademik thnAkademik)
+            {
+                cmbTahunAkademik.Items.Add(thnAkademik.TahunAkademik);
+            });
+            cmbTahunAkademik.SelectedIndex = 0;
+
+            response = await webApi.Post(URLGetSemester, string.Empty, false);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Data semester gagal di tampilkan");
+                Loading(false);
+                return;
+            }
+
+            List<DataSemester> listSemester = JsonConvert.DeserializeObject<List<DataSemester>>(response.Content.ReadAsStringAsync().Result);
+            listSemester.Insert(0, new DataSemester() { Kode = 1, Nama = "Pilih" });
+            cmbSemester.DataSource = listSemester;
+            cmbSemester.DisplayMember = "Nama";
+            cmbSemester.ValueMember = "Kode";
+            cmbSemester.SelectedIndex = 0;
+
+            cmbTahunAkademik.Text = LoginAccess.TahunAkademik;
+            cmbSemester.Text = LoginAccess.Semester;
         }
 
         private async void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,12 +173,12 @@ namespace PenawaranKurikulum.Report
 
         private async void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
-            await PreviewDosen(false, false);
+            //await PreviewDosen(false, false);
         }
 
         private async Task PreviewDosen(bool isSemuaFakultas, bool isPerFakultas)
         {
-            var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester };
+            var data = new { TahunAkademik = cmbTahunAkademik.Text, Semester = int.Parse(cmbSemester.SelectedValue.ToString()) };
             string jsonData = JsonConvert.SerializeObject(data);
 
             response = await webApi.Post(URLGetDosenMengajarAll, jsonData, true);
@@ -207,7 +246,7 @@ namespace PenawaranKurikulum.Report
                     });
                 }
                 listReportKesediaanDosen = listKesediaanDosen;
-                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}", LoginAccess.TahunAkademik, LoginAccess.Semester.ToString().ToUpper())));
+                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}", cmbTahunAkademik.Text, cmbSemester.Text.ToUpper())));
                 listParams.Add(new ReportParameter("TanggalPengesahan", DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID"))));
                 listParams.Add(new ReportParameter("IsAllFakultas", "1"));
             }
@@ -251,7 +290,7 @@ namespace PenawaranKurikulum.Report
                     });
                 }
                 listReportKesediaanDosen = listKesediaanDosen.Where(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).ToList();
-                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}", LoginAccess.TahunAkademik, LoginAccess.Semester.ToString().ToUpper())));
+                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}", cmbTahunAkademik.Text, cmbSemester.Text.ToUpper())));
                 listParams.Add(new ReportParameter("TanggalPengesahan", DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID"))));
                 listParams.Add(new ReportParameter("IsAllFakultas", "2"));
                 listParams.Add(new ReportParameter("Dekan", listDepartment.Find(d => d.KodeDepartment == cmbFakultas.SelectedValue.ToString()).NamaKepala));
@@ -300,7 +339,7 @@ namespace PenawaranKurikulum.Report
                 }
                 listReportKesediaanDosen = listKesediaanDosen;
                 string KodeProgramReguler = Organisasi.listProdi.Find(pr => pr.Uid == cmbProdi.SelectedValue.ToString()).KodeProgramReguler;
-                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}\n{2}\nPROGRAM STUDI {3}\nPROGRAM {4}", LoginAccess.TahunAkademik, LoginAccess.Semester.ToString().ToUpper(), cmbFakultas.Text.ToUpper(), cmbProdi.Text.ToUpper(), cmbProgram.Text.ToUpper())));
+                listParams.Add(new ReportParameter("HeaderTahun", string.Format("LAMPIRAN TUGAS MENGAJAR DOSEN \nTAHUN AKADEMIK {0} SEMESTER {1}\n{2}\nPROGRAM STUDI {3}\nPROGRAM {4}", cmbTahunAkademik.Text, cmbSemester.Text.ToUpper(), cmbFakultas.Text.ToUpper(), cmbProdi.Text.ToUpper(), cmbProgram.Text.ToUpper())));
                 listParams.Add(new ReportParameter("TanggalPengesahan", DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID"))));
                 listParams.Add(new ReportParameter("IsAllFakultas", "0"));
                 listParams.Add(new ReportParameter("Prodi", cmbProdi.Text));
@@ -328,6 +367,22 @@ namespace PenawaranKurikulum.Report
             {
                 form.ShowDialog(this);
                 form.StartPosition = FormStartPosition.CenterParent;
+            }
+        }
+
+        private async void btnProses_Click(object sender, EventArgs e)
+        {
+            if (cmbFakultas.SelectedIndex == 1)
+            {
+                await PreviewDosen(true, false);
+            }
+            else if (cmbProdi.SelectedIndex == 1)
+            {
+                await PreviewDosen(false, true);
+            }
+            else
+            {
+                await PreviewDosen(false, false);
             }
         }
     }

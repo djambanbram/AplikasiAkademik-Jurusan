@@ -162,6 +162,12 @@
     <Compile Include="FormAlokasiMKStudentExchange.Designer.cs">
       <DependentUpon>FormAlokasiMKStudentExchange.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormKoordinatorMataKuliah.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKoordinatorMataKuliah.Designer.cs">
+      <DependentUpon>FormKoordinatorMataKuliah.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSampleMergeDGV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAlokasiMKStudentExchange.resx">
       <DependentUpon>FormAlokasiMKStudentExchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKoordinatorMataKuliah.resx">
+      <DependentUpon>FormKoordinatorMataKuliah.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSampleMergeDGV.resx">
       <DependentUpon>FormSampleMergeDGV.cs</DependentUpon>

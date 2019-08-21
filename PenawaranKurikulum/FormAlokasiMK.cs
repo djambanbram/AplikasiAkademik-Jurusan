@@ -595,8 +595,6 @@ namespace PenawaranKurikulum
             {
                 if (Convert.ToBoolean(dgvRow.Cells["Pilih"].Value))
                 {
-                    listRemoveRow.Add(dgvRow);
-
                     var jenisMK = string.Empty;
                     if (Convert.ToBoolean(dgvRow.Cells["T"].Value))
                     {
@@ -649,6 +647,7 @@ namespace PenawaranKurikulum
                     if (response.IsSuccessStatusCode)
                     {
                         dgvMktsd.Rows.Add(false, SemesterDitawarkan, Angkatan, Kode, MataKuliah, SifatMK, SksTeori, SksPraktikum, jenisMK, DaftarKelasMK);
+                        listRemoveRow.Add(dgvRow);
                     }
                     else
                     {

@@ -31,6 +31,8 @@ namespace Dosen.Report
     public partial class FormReportKesanggupanDosen : Syncfusion.Windows.Forms.MetroForm
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
+        private string URLGetTahunAkademik = baseAddress + "/jurusan_api/api/data_support/init_tahun_akademik";
+        private string URLGetSemester = baseAddress + "/jurusan_api/api/data_support/init_data_semester";
         private string URLGetDepartment = baseAddress + "/jurusan_api/api/organisasi/get_department";
         private string URLGetDosenMengajar = baseAddress + "/jurusan_api/api/pengajaran/get_dosen_mengajar_all";
 
@@ -65,6 +67,39 @@ namespace Dosen.Report
         {
             Loading(true);
 
+
+            response = await webApi.Post(URLGetTahunAkademik, string.Empty, false);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Data tahun akademik gagal di tampilkan");
+                return;
+            }
+
+            List<ThnAkademik> listTahunAkademik = JsonConvert.DeserializeObject<List<ThnAkademik>>(response.Content.ReadAsStringAsync().Result);
+            listTahunAkademik.Insert(0, new ThnAkademik() { TahunAkademik = "Pilih" });
+            listTahunAkademik.ForEach(delegate (ThnAkademik thnAkademik)
+            {
+                cmbTahunAkademik.Items.Add(thnAkademik.TahunAkademik);
+            });
+            cmbTahunAkademik.SelectedIndex = 0;
+
+            response = await webApi.Post(URLGetSemester, string.Empty, false);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Data semester gagal di tampilkan");
+                return;
+            }
+
+            List<DataSemester> listSemester = JsonConvert.DeserializeObject<List<DataSemester>>(response.Content.ReadAsStringAsync().Result);
+            listSemester.Insert(0, new DataSemester() { Kode = 1, Nama = "Pilih" });
+            cmbSemester.DataSource = listSemester;
+            cmbSemester.DisplayMember = "Nama";
+            cmbSemester.ValueMember = "Kode";
+            cmbSemester.SelectedIndex = 0;
+
+            cmbTahunAkademik.Text = LoginAccess.TahunAkademik;
+            cmbSemester.Text = LoginAccess.Semester;
+
             listFakultas = new List<Fakultas>(Organisasi.listFakultas);
             listFakultas.Insert(0, new Fakultas() { KodeFakultas = "-", NamaFakultas = "Pilih" });
             cmbFakultas.DataSource = listFakultas;
@@ -96,31 +131,6 @@ namespace Dosen.Report
                 return;
             }
 
-            var data = new { TahunAkademik = LoginAccess.TahunAkademik, Semester = LoginAccess.KodeSemester };
-
-            string jsonData = JsonConvert.SerializeObject(data);
-
-            response = await webApi.Post(URLGetDosenMengajar, jsonData, true);
-            if (!response.IsSuccessStatusCode)
-            {
-                Loading(false);
-                MessageBox.Show(webApi.ReturnMessage(response));
-                return;
-            }
-
-            listDosenMengajarAll = JsonConvert.DeserializeObject<List<AlokasiDosenMengajar>>(response.Content.ReadAsStringAsync().Result);
-            if (listDosenMengajarAll == null)
-            {
-                Loading(false);
-                MessageBox.Show("Dosen belum teralokasi oleh prodi");
-                return;
-            }
-            if (listDosenMengajarAll.Count == 0)
-            {
-                Loading(false);
-                MessageBox.Show("Dosen belum teralokasi oleh prodi");
-                return;
-            }
 
             Loading(false);
         }
@@ -130,11 +140,35 @@ namespace Dosen.Report
             PreviewReport(true);
         }
 
-        private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvDataDosen.Rows.Clear();
             if (cmbFakultas.SelectedIndex > 0)
             {
+                var data = new { TahunAkademik = cmbTahunAkademik.Text, Semester = int.Parse(cmbSemester.SelectedValue.ToString()) };
+                string jsonData = JsonConvert.SerializeObject(data);
+                response = await webApi.Post(URLGetDosenMengajar, jsonData, true);
+                if (!response.IsSuccessStatusCode)
+                {
+                    Loading(false);
+                    MessageBox.Show(webApi.ReturnMessage(response));
+                    return;
+                }
+
+                listDosenMengajarAll = JsonConvert.DeserializeObject<List<AlokasiDosenMengajar>>(response.Content.ReadAsStringAsync().Result);
+                if (listDosenMengajarAll == null)
+                {
+                    Loading(false);
+                    MessageBox.Show("Dosen belum teralokasi oleh prodi");
+                    return;
+                }
+                if (listDosenMengajarAll.Count == 0)
+                {
+                    Loading(false);
+                    MessageBox.Show("Dosen belum teralokasi oleh prodi");
+                    return;
+                }
+
                 var listNikDosen = listDosenMengajarAll.Select(d => new { d.NIK, d.NamaDosen, d.KodeFakultas, d.NamaFakultas }).Distinct().OrderBy(o => o.NIK).ToList().Where(f => f.KodeFakultas == cmbFakultas.SelectedValue.ToString()).ToList();
                 int i = 1;
                 foreach (var item in listNikDosen)

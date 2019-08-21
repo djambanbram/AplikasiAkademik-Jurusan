@@ -35,50 +35,52 @@ namespace MainAplikasi
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainAplikasi));
             this.xpTaskBar1 = new Syncfusion.Windows.Forms.Tools.XPTaskBar();
             this.boxMataKuliah = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgListMataKuliahBox = new System.Windows.Forms.ImageList();
+            this.imgListMataKuliahBox = new System.Windows.Forms.ImageList(this.components);
             this.boxKelas = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgListKelasBox = new System.Windows.Forms.ImageList();
+            this.imgListKelasBox = new System.Windows.Forms.ImageList(this.components);
             this.boxPenawaranMK = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgPenawaranMKBox = new System.Windows.Forms.ImageList();
+            this.imgPenawaranMKBox = new System.Windows.Forms.ImageList(this.components);
             this.boxDosen = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgDosen = new System.Windows.Forms.ImageList();
+            this.imgDosen = new System.Windows.Forms.ImageList(this.components);
             this.boxAlihJalur = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgAlihJalur = new System.Windows.Forms.ImageList();
+            this.imgAlihJalur = new System.Windows.Forms.ImageList(this.components);
             this.BoxLaporan = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgLaporanBox = new System.Windows.Forms.ImageList();
+            this.imgLaporanBox = new System.Windows.Forms.ImageList(this.components);
             this.BoxKeluar = new Syncfusion.Windows.Forms.Tools.XPTaskBarBox();
-            this.imgKeluarBox = new System.Windows.Forms.ImageList();
-            this.tabbedMDIManager1 = new Syncfusion.Windows.Forms.Tools.TabbedMDIManager();
+            this.imgKeluarBox = new System.Windows.Forms.ImageList(this.components);
+            this.tabbedMDIManager1 = new Syncfusion.Windows.Forms.Tools.TabbedMDIManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.stripLabelSession = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuKelasCampuran = new System.Windows.Forms.ContextMenuStrip();
+            this.menuKelasCampuran = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemSatuProgramKelasCampuran = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLintasProgramKelasCampuran = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAlokasiDosen = new System.Windows.Forms.ContextMenuStrip();
+            this.menuAlokasiDosen = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemSatuProgramAlokasiDosen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLintasProgramAlokasiDosen = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLaporanMataKuliah = new System.Windows.Forms.ContextMenuStrip();
+            this.menuLaporanMataKuliah = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mataKuliahPrasyaratToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.alokasiLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer();
-            this.menuLaporanDosen = new System.Windows.Forms.ContextMenuStrip();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.menuLaporanDosen = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alokasiDosenMengajarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kesanggupanDosenMengajarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kesediaanDosenMengajarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.koordinatorMataKuliahToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dosenWaliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAlokasiMataKuliah = new System.Windows.Forms.ContextMenuStrip();
+            this.menuAlokasiMataKuliah = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.prodiRegulerToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProdiStudentExchangeToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHonorDosen = new System.Windows.Forms.ContextMenuStrip();
+            this.menuHonorDosen = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTahunAkademik = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -204,11 +206,12 @@ namespace MainAplikasi
             this.boxPenawaranMK.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Mata Kuliah", System.Drawing.Color.Empty, 1, null, "", true, true, "itemAlokasiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemAlokasiDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Lab. dan Mata Kuliah", System.Drawing.Color.Empty, 3, null, "", true, true, "itemAlokasiLabMK", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Lab. dan Mata Kuliah", System.Drawing.Color.Empty, 3, null, "", true, true, "itemAlokasiLabMK", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Koordinator Mata Kuliah", System.Drawing.Color.Empty, 4, null, "", true, true, "itemKoordinatorMk", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
             this.boxPenawaranMK.Location = new System.Drawing.Point(0, 196);
             this.boxPenawaranMK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxPenawaranMK.Name = "boxPenawaranMK";
-            this.boxPenawaranMK.Size = new System.Drawing.Size(264, 98);
+            this.boxPenawaranMK.Size = new System.Drawing.Size(264, 120);
             this.boxPenawaranMK.TabIndex = 2;
             this.boxPenawaranMK.Text = "Penawaran MK";
             this.boxPenawaranMK.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
@@ -221,6 +224,7 @@ namespace MainAplikasi
             this.imgPenawaranMKBox.Images.SetKeyName(1, "open-book-2.png");
             this.imgPenawaranMKBox.Images.SetKeyName(2, "teacher.png");
             this.imgPenawaranMKBox.Images.SetKeyName(3, "laptop.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(4, "lunchroom.png");
             // 
             // boxDosen
             // 
@@ -236,7 +240,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("TimDosen", System.Drawing.Color.Empty, 3, null, "", true, true, "itemTimDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Jenjang Pendidikan", System.Drawing.Color.Empty, 2, null, "", true, true, "itemJPDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Struktur Honor Dosen", System.Drawing.Color.Empty, 1, null, "", true, true, "itemHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.boxDosen.Location = new System.Drawing.Point(0, 294);
+            this.boxDosen.Location = new System.Drawing.Point(0, 316);
             this.boxDosen.Name = "boxDosen";
             this.boxDosen.Size = new System.Drawing.Size(264, 106);
             this.boxDosen.TabIndex = 5;
@@ -266,7 +270,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Set Konversi MK Alih Jalur", System.Drawing.Color.Empty, 1, null, "", true, true, "itemSetKonversiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Konversi Mhs Alih Jalur", System.Drawing.Color.Empty, 2, null, "", true, true, "itemKonversiMhs", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Konversi Mhs Pemutihan", System.Drawing.Color.Empty, 2, null, "", true, true, "itemKonversiMhsPemutihan", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.boxAlihJalur.Location = new System.Drawing.Point(0, 400);
+            this.boxAlihJalur.Location = new System.Drawing.Point(0, 422);
             this.boxAlihJalur.Name = "boxAlihJalur";
             this.boxAlihJalur.Size = new System.Drawing.Size(264, 106);
             this.boxAlihJalur.TabIndex = 6;
@@ -296,7 +300,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxLaporan.Location = new System.Drawing.Point(0, 506);
+            this.BoxLaporan.Location = new System.Drawing.Point(0, 528);
             this.BoxLaporan.Name = "BoxLaporan";
             this.BoxLaporan.Size = new System.Drawing.Size(264, 130);
             this.BoxLaporan.TabIndex = 4;
@@ -327,7 +331,7 @@ namespace MainAplikasi
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Cek Update Aplikasi", System.Drawing.Color.Empty, 2, null, "", true, true, "itemUpdate", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 636);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 658);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 82);
             this.BoxKeluar.TabIndex = 3;
@@ -357,7 +361,8 @@ namespace MainAplikasi
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stripLabel,
-            this.stripLabelSession});
+            this.stripLabelSession,
+            this.lblTahunAkademik});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(822, 26);
@@ -555,6 +560,12 @@ namespace MainAplikasi
             this.toolStripMenuItem4.Text = "Honor Dosen Ujian";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
+            // lblTahunAkademik
+            // 
+            this.lblTahunAkademik.Name = "lblTahunAkademik";
+            this.lblTahunAkademik.Size = new System.Drawing.Size(157, 21);
+            this.lblTahunAkademik.Text = "toolStripStatusLabel1";
+            // 
             // FormMainAplikasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -641,5 +652,6 @@ namespace MainAplikasi
         private System.Windows.Forms.ContextMenuStrip menuHonorDosen;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripStatusLabel lblTahunAkademik;
     }
 }

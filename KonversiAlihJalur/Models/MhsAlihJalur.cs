@@ -21,6 +21,7 @@ namespace KonversiAlihJalur.Models
         public string KodeD3 { get; set; }
         public string MataKuliahD3 { get; set; }
         public int SksD3 { get; set; }
+        public string NilaiD3 { get; set; }
         public string KodeS1 { get; set; }
         public string MataKuliahS1 { get; set; }
         public int SksS1 { get; set; }
@@ -49,6 +50,7 @@ namespace KonversiAlihJalur.Models
         public string KodeD3 { get; set; }
         public string MataKuliahD3 { get; set; }
         public int SksD3 { get; set; }
+        public string NilaiD3 { get; set; }
         public string KodeS1 { get; set; }
         public string Nilai { get; set; }
         public bool Approve { get; set; }

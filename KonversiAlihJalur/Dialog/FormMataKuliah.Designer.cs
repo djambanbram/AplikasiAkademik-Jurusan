@@ -48,15 +48,17 @@ namespace KonversiAlihJalur.Dialog
             this.txtKodeLama = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvMataKuliah = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCari = new System.Windows.Forms.TextBox();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nilai = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCari = new System.Windows.Forms.TextBox();
+            this.txtNilaiLama = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).BeginInit();
@@ -114,6 +116,8 @@ namespace KonversiAlihJalur.Dialog
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtNilaiLama);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtSksLama);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtMataKuliahLama);
@@ -123,7 +127,7 @@ namespace KonversiAlihJalur.Dialog
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(569, 102);
+            this.panel1.Size = new System.Drawing.Size(569, 137);
             this.panel1.TabIndex = 26;
             // 
             // txtSksLama
@@ -197,49 +201,10 @@ namespace KonversiAlihJalur.Dialog
             this.dgvMataKuliah.Name = "dgvMataKuliah";
             this.dgvMataKuliah.RowHeadersVisible = false;
             this.dgvMataKuliah.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMataKuliah.Size = new System.Drawing.Size(569, 188);
+            this.dgvMataKuliah.Size = new System.Drawing.Size(569, 153);
             this.dgvMataKuliah.TabIndex = 27;
             this.dgvMataKuliah.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMataKuliah_CellClick);
             this.dgvMataKuliah.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMataKuliah_CellDoubleClick);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dgvMataKuliah);
-            this.panel2.Controls.Add(this.flowLayoutPanel2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 102);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(569, 223);
-            this.panel2.TabIndex = 4;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.label3);
-            this.flowLayoutPanel2.Controls.Add(this.txtCari);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(569, 35);
-            this.flowLayoutPanel2.TabIndex = 28;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 31);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Cari";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtCari
-            // 
-            this.txtCari.Location = new System.Drawing.Point(40, 3);
-            this.txtCari.Name = "txtCari";
-            this.txtCari.Size = new System.Drawing.Size(324, 25);
-            this.txtCari.TabIndex = 2;
-            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
             // No
             // 
@@ -282,6 +247,62 @@ namespace KonversiAlihJalur.Dialog
             this.Nilai.Name = "Nilai";
             this.Nilai.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Nilai.Width = 40;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvMataKuliah);
+            this.panel2.Controls.Add(this.flowLayoutPanel2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 137);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(569, 188);
+            this.panel2.TabIndex = 4;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.label3);
+            this.flowLayoutPanel2.Controls.Add(this.txtCari);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(569, 35);
+            this.flowLayoutPanel2.TabIndex = 28;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 31);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Cari";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtCari
+            // 
+            this.txtCari.Location = new System.Drawing.Point(40, 3);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.Size = new System.Drawing.Size(324, 25);
+            this.txtCari.TabIndex = 2;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
+            // 
+            // txtNilaiLama
+            // 
+            this.txtNilaiLama.Location = new System.Drawing.Point(130, 105);
+            this.txtNilaiLama.Name = "txtNilaiLama";
+            this.txtNilaiLama.ReadOnly = true;
+            this.txtNilaiLama.Size = new System.Drawing.Size(125, 25);
+            this.txtNilaiLama.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 17);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Nilai Lama";
             // 
             // FormMataKuliah
             // 
@@ -335,5 +356,7 @@ namespace KonversiAlihJalur.Dialog
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sks;
         private System.Windows.Forms.DataGridViewComboBoxColumn Nilai;
+        private System.Windows.Forms.TextBox txtNilaiLama;
+        private System.Windows.Forms.Label label5;
     }
 }

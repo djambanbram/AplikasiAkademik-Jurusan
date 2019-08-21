@@ -74,6 +74,7 @@ namespace PenawaranKurikulum
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCariDosen = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.setSebagaiKoordinatorMKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -115,7 +116,7 @@ namespace PenawaranKurikulum
             this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(875, 156);
+            this.gradientPanel2.Size = new System.Drawing.Size(875, 158);
             this.gradientPanel2.TabIndex = 11;
             // 
             // rad8
@@ -368,7 +369,7 @@ namespace PenawaranKurikulum
             this.dgvAlokasi.RowHeadersVisible = false;
             this.dgvAlokasi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvAlokasi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAlokasi.Size = new System.Drawing.Size(869, 123);
+            this.dgvAlokasi.Size = new System.Drawing.Size(869, 122);
             this.dgvAlokasi.TabIndex = 13;
             this.dgvAlokasi.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvAlokasi_CellPainting);
             this.dgvAlokasi.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvAlokasi_ColumnWidthChanged);
@@ -382,22 +383,23 @@ namespace PenawaranKurikulum
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setSebagaiKoordinatorMKToolStripMenuItem,
             this.hapusAlokasiToolStripMenuItem,
             this.setSemuaKelasToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(221, 70);
             // 
             // hapusAlokasiToolStripMenuItem
             // 
             this.hapusAlokasiToolStripMenuItem.Name = "hapusAlokasiToolStripMenuItem";
-            this.hapusAlokasiToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.hapusAlokasiToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.hapusAlokasiToolStripMenuItem.Text = "Hapus Alokasi";
             this.hapusAlokasiToolStripMenuItem.Click += new System.EventHandler(this.hapusAlokasiToolStripMenuItem_Click);
             // 
             // setSemuaKelasToolStripMenuItem
             // 
             this.setSemuaKelasToolStripMenuItem.Name = "setSemuaKelasToolStripMenuItem";
-            this.setSemuaKelasToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.setSemuaKelasToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.setSemuaKelasToolStripMenuItem.Text = "Set Dosen ke Semua Kelas...";
             this.setSemuaKelasToolStripMenuItem.Click += new System.EventHandler(this.setSemuaKelasToolStripMenuItem_Click);
             // 
@@ -407,7 +409,7 @@ namespace PenawaranKurikulum
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(875, 147);
+            this.groupBox1.Size = new System.Drawing.Size(875, 146);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alokasi Dosen";
@@ -416,7 +418,7 @@ namespace PenawaranKurikulum
             // 
             this.splitContainerAdv1.BeforeTouchSize = 7;
             this.splitContainerAdv1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerAdv1.Location = new System.Drawing.Point(0, 156);
+            this.splitContainerAdv1.Location = new System.Drawing.Point(0, 158);
             this.splitContainerAdv1.Name = "splitContainerAdv1";
             this.splitContainerAdv1.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
@@ -427,8 +429,8 @@ namespace PenawaranKurikulum
             // splitContainerAdv1.Panel2
             // 
             this.splitContainerAdv1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainerAdv1.Size = new System.Drawing.Size(875, 302);
-            this.splitContainerAdv1.SplitterDistance = 147;
+            this.splitContainerAdv1.Size = new System.Drawing.Size(875, 300);
+            this.splitContainerAdv1.SplitterDistance = 146;
             this.splitContainerAdv1.TabIndex = 16;
             this.splitContainerAdv1.Text = "splitContainerAdv1";
             // 
@@ -439,7 +441,7 @@ namespace PenawaranKurikulum
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(875, 148);
+            this.groupBox2.Size = new System.Drawing.Size(875, 147);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data Dosen";
@@ -466,7 +468,7 @@ namespace PenawaranKurikulum
             this.dgvDataDosen.RowHeadersVisible = false;
             this.dgvDataDosen.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDataDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataDosen.Size = new System.Drawing.Size(869, 93);
+            this.dgvDataDosen.Size = new System.Drawing.Size(869, 92);
             this.dgvDataDosen.TabIndex = 0;
             this.dgvDataDosen.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvDataDosen_DragEnter);
             this.dgvDataDosen.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvDataDosen_DragOver);
@@ -536,6 +538,13 @@ namespace PenawaranKurikulum
             this.txtCariDosen.Size = new System.Drawing.Size(280, 25);
             this.txtCariDosen.TabIndex = 1;
             this.txtCariDosen.TextChanged += new System.EventHandler(this.txtCariDosen_TextChanged);
+            // 
+            // setSebagaiKoordinatorMKToolStripMenuItem
+            // 
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Name = "setSebagaiKoordinatorMKToolStripMenuItem";
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Text = "Set sebagai Koordinator MK";
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Click += new System.EventHandler(this.setSebagaiKoordinatorMKToolStripMenuItem_Click);
             // 
             // FormAlokasiDosen
             // 
@@ -613,5 +622,6 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosen;
         private System.Windows.Forms.DataGridViewTextBoxColumn SKSMengajar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TimPengajar;
+        private System.Windows.Forms.ToolStripMenuItem setSebagaiKoordinatorMKToolStripMenuItem;
     }
 }

@@ -42,6 +42,7 @@ namespace KonversiAlihJalur.Dialog
             NpmLama = npmLama;
             txtNama.Text = nama;
             txtNpmLama.Text = npmLama;
+            txtNodaf.Text = nodaf;
             this.angkatan = angkatan;
             Nodaf = nodaf;
         }

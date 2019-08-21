@@ -6,6 +6,7 @@
 // applicable laws. 
 #endregion
 using ApiService;
+using ClassModel;
 using KonversiAlihJalur.Models;
 using Newtonsoft.Json;
 using System;
@@ -16,7 +17,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KonversiAlihJalur.Dialog
@@ -28,6 +31,7 @@ namespace KonversiAlihJalur.Dialog
         private string URLSaveHistoryNilaiCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur";
         private string URLSaveHistoryNilaiCalonMhsAlihJalurSingle = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur_single";
         private string URLDeleteHistoryNilaiCalonMhsAlihJalurSingle = baseAddress + "/jurusan_api/api/alih_jalur/delete_nilai_calon_mhs_alih_jalur_single";
+        private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk";
 
         private string NpmLama;
         private string Nodaf;
@@ -36,6 +40,7 @@ namespace KonversiAlihJalur.Dialog
         private HttpResponseMessage response;
 
         private List<DetailNilaiPendaftarAlihJalur> listDetailNilai;
+        private List<DataMataKuliah> listDataMatakuliah;
         private int angkatan;
         private string idProdi;
 
@@ -46,6 +51,7 @@ namespace KonversiAlihJalur.Dialog
             NpmLama = npmLama;
             txtNama.Text = nama;
             txtNpmLama.Text = string.IsNullOrWhiteSpace(npmLama) ? "Non AMIKOM" : npmLama;
+            txtNodaf.Text = nodaf;
             this.angkatan = angkatan;
             Nodaf = nodaf;
             dgvNilai.Rows[0].Cells["No"].Value = 1;
@@ -68,6 +74,8 @@ namespace KonversiAlihJalur.Dialog
         private async void FormDetailNilaiMhsAlihJalur_Load(object sender, EventArgs e)
         {
             Loading(true);
+
+            await LoadMk();
 
             var data = new { Npm = NpmLama, Angkatan = angkatan, Nodaf };
             var jsonData = JsonConvert.SerializeObject(data);
@@ -96,22 +104,41 @@ namespace KonversiAlihJalur.Dialog
                     item.KodeD3,
                     item.MataKuliahD3,
                     item.SksD3,
+                    item.NilaiD3,
                     item.KodeS1,
                     item.MataKuliahS1,
                     item.SksS1,
                     item.Nilai,
                     "Hapus",
                     item.Id);
-
-                byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
-                if (asciiNilai > asciNilaiMinimal)
+                if (item.Nilai != null)
                 {
-                    dgvNilai.Rows[no - 1].DefaultCellStyle.BackColor = Color.LightSalmon;
+                    byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
+                    if (asciiNilai > asciNilaiMinimal)
+                    {
+                        dgvNilai.Rows[no - 1].DefaultCellStyle.BackColor = Color.LightSalmon;
+                    }
                 }
                 no++;
             }
 
             Loading(false);
+        }
+
+        private async Task LoadMk()
+        {
+            MKByIdProdi m = new MKByIdProdi() { IdProdi = idProdi };
+            string jsonData = JsonConvert.SerializeObject(m);
+
+            response = await webApi.Post(URLGetMK, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+
+            listDataMatakuliah = JsonConvert.DeserializeObject<List<DataMataKuliah>>(response.Content.ReadAsStringAsync().Result);
         }
 
         private void approveSemuaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,28 +181,38 @@ namespace KonversiAlihJalur.Dialog
 
             Loading(true);
 
-            List<HistoryKonversiNilai> listHistoryKonversi = new List<HistoryKonversiNilai>();
+            var jsondata = string.Empty;
             foreach (DataGridViewRow row in dgvNilai.Rows)
             {
+                if (row.Cells["KodeD3"].Value == null)
+                {
+                    continue;
+                }
                 HistoryKonversiNilai h = new HistoryKonversiNilai();
                 h.Nodaf = Nodaf;
                 h.Npm = NpmLama;
                 h.KodeD3 = row.Cells["KodeD3"].Value.ToString();
                 h.MataKuliahD3 = row.Cells["MataKuliahD3"].Value.ToString();
                 h.SksD3 = int.Parse(row.Cells["SksD3"].Value.ToString());
-                h.KodeS1 = row.Cells["KodeS1"].Value.ToString();
-                h.Nilai = row.Cells["Nilai"].Value.ToString();
-                h.Approve = Convert.ToBoolean(row.Cells["Approve"].Value.ToString());
-                listHistoryKonversi.Add(h);
-            }
+                h.NilaiD3 = row.Cells["NilaiD3"].Value.ToString();
+                h.KodeS1 = row.Cells["KodeS1"].Value == null ? null : row.Cells["KodeS1"].Value.ToString();
+                h.Nilai = row.Cells["Nilai"].Value == null ? null : row.Cells["Nilai"].Value.ToString();
+                h.Approve = row.Cells["KodeS1"].Value == null ? false : true;
+                h.Id = row.Cells["Id"].Value == null ? Guid.Empty : new Guid(row.Cells["Id"].Value.ToString());
 
-            var jsondata = JsonConvert.SerializeObject(listHistoryKonversi);
-            response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalur, jsondata, true);
-            if (!response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(webApi.ReturnMessage(response));
-                Loading(false);
-                return;
+                jsondata = JsonConvert.SerializeObject(h);
+                response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalurSingle, jsondata, true);
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(webApi.ReturnMessage(response));
+                    Loading(false);
+                    return;
+                }
+
+                var idKonversi = JsonConvert.DeserializeObject<HistoryKonversiNilai>(response.Content.ReadAsStringAsync().Result).Id;
+                row.Cells["Id"].Value = idKonversi;
+                row.Cells["Hapus"].Value = "Hapus";
+                row.Cells["SksS1"].Value = row.Cells["SksS1"].Value == null ? 0 : row.Cells["SksS1"].Value;
             }
             MessageBox.Show("Konversi nilai berhasil disimpan");
 
@@ -192,21 +229,22 @@ namespace KonversiAlihJalur.Dialog
 
         private async void dgvNilai_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 4 && e.ColumnIndex != 5 && e.ColumnIndex != 8)
+            if (e.ColumnIndex != 5 && e.ColumnIndex != 6 && e.ColumnIndex != 9)
             {
                 return;
             }
 
             var kodeLama = dgvNilai.Rows[e.RowIndex].Cells["KodeD3"].Value;
             var mataKuliahLama = dgvNilai.Rows[e.RowIndex].Cells["MataKuliahD3"].Value;
-            var sksLama = dgvNilai.Rows[e.RowIndex].Cells["sksD3"].Value;
+            var sksLama = dgvNilai.Rows[e.RowIndex].Cells["SksD3"].Value;
+            var nilaiLama = dgvNilai.Rows[e.RowIndex].Cells["NilaiD3"].Value;
             var rowIndex = e.RowIndex;
 
-            if (e.ColumnIndex != 8)
+            if (e.ColumnIndex != 9)
             {
-                if (kodeLama == null || mataKuliahLama == null || sksLama == null)
+                if (kodeLama == null || mataKuliahLama == null || sksLama == null || nilaiLama == null)
                 {
-                    MessageBox.Show("Kode, mata kuliah dan sks diisi dulu");
+                    MessageBox.Show("Kode D3, mata kuliah D3, sks D3, dan nilai D3 diisi dulu");
                     return;
                 }
 
@@ -226,6 +264,7 @@ namespace KonversiAlihJalur.Dialog
                                     kodeLama.ToString(),
                                     mataKuliahLama.ToString(),
                                     int.Parse(sksLama.ToString()),
+                                    nilaiLama.ToString(),
                                     rowIndex,
                                     this))
                 {
@@ -266,6 +305,7 @@ namespace KonversiAlihJalur.Dialog
                 KodeD3 = dgvNilai.Rows[rowIndex].Cells["KodeD3"].Value.ToString(),
                 MataKuliahD3 = dgvNilai.Rows[rowIndex].Cells["MataKuliahD3"].Value.ToString(),
                 SksD3 = int.Parse(dgvNilai.Rows[rowIndex].Cells["SksD3"].Value.ToString()),
+                NilaiD3 = dgvNilai.Rows[rowIndex].Cells["NilaiD3"].Value.ToString(),
                 KodeS1 = kode,
                 Nilai = nilai,
                 Nodaf = Nodaf,
@@ -299,6 +339,154 @@ namespace KonversiAlihJalur.Dialog
             {
                 dgvNilai.Rows[i].Cells["No"].Value = i + 1;
             }
+        }
+
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Excel file (*.xlsx)|*.xlsx";
+            openFileDialog1.ShowDialog();
+        }
+
+        private void btnGenerateExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Kolom-kolom yang di dalam file excel agar tidak di ubah.\nLanjutkan proses?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.No)
+            {
+                return;
+            }
+
+            Loading(true);
+            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("EXCEL could not be started. Check that your office installation and project references are correct.");
+                Loading(false);
+                return;
+            }
+
+            Microsoft.Office.Interop.Excel.Workbook wb = xlApp.Workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
+            Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets[1];
+
+            if (ws == null)
+            {
+                MessageBox.Show("Worksheet could not be created. Check that your office installation and project references are correct.");
+                Loading(false);
+                return;
+            }
+
+            Microsoft.Office.Interop.Excel.Range rangeKodeD3 = ws.Range["A1", "A1"];
+            ws.Cells[1, 1] = "KODE D3";
+
+            Microsoft.Office.Interop.Excel.Range rangeMkD3 = ws.Range["A1", "B1"];
+            ws.Cells[1, 2] = "MATA KULIAH D3";
+
+            Microsoft.Office.Interop.Excel.Range rangeSksD3 = ws.Range["A1", "C1"];
+            ws.Cells[1, 3] = "SKS D3";
+
+            Microsoft.Office.Interop.Excel.Range rangeNilaiD3 = ws.Range["A1", "D1"];
+            ws.Cells[1, 4] = "NILAI D3";
+
+            Microsoft.Office.Interop.Excel.Range rangeKodeS1 = ws.Range["A1", "E1"];
+            ws.Cells[1, 5] = "KODE S1";
+
+            Microsoft.Office.Interop.Excel.Range rangeMkS1 = ws.Range["A1", "F1"];
+            ws.Cells[1, 6] = "MATA KULIAH S1";
+
+            Microsoft.Office.Interop.Excel.Range rangeSksS1 = ws.Range["A1", "G1"];
+            ws.Cells[1, 7] = "SKS S1";
+
+            Microsoft.Office.Interop.Excel.Range rangeNilaiS1 = ws.Range["A1", "H1"];
+            ws.Cells[1, 8] = "NILAI S1";
+
+            var row = 2;
+            foreach (var mataKuliah in listDataMatakuliah)
+            {
+                ws.Cells[row, 5] = mataKuliah.Kode;
+                ws.Cells[row, 6] = mataKuliah.MataKuliah;
+                ws.Cells[row, 7] = mataKuliah.Sks;
+                row++;
+            }
+
+            ws.Columns.AutoFit();
+            xlApp.Visible = true;
+            Loading(false);
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            var filename = openFileDialog1.FileName;
+
+            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("EXCEL could not be started. Check that your office installation and project references are correct.");
+                Loading(false);
+                return;
+            }
+
+            Microsoft.Office.Interop.Excel.Workbook wb = xlApp.Workbooks.Open(filename);
+            Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets[1];
+
+            if (ws == null)
+            {
+                MessageBox.Show("Worksheet could not be created. Check that your office installation and project references are correct.");
+                Loading(false);
+                return;
+            }
+
+            Microsoft.Office.Interop.Excel.Range xlRange = ws.UsedRange;
+            int rowCount = xlRange.Rows.Count;
+            int colCount = xlRange.Columns.Count;
+            dgvNilai.Rows.Clear();
+            for (int i = 2; i <= rowCount; i++)
+            {
+                dgvNilai.Rows.Add();
+                for (int j = 1; j <= colCount; j++)
+                {
+                    if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
+                    {
+                        var kodeS1 = xlRange.Cells[i, 5].Value2.ToString();
+                        var dataMk = listDataMatakuliah.Find(mk => mk.Kode.Trim().ToLower() == kodeS1.Trim().ToLower());
+                        if (dataMk != null)
+                        {
+                            dgvNilai.Rows[i - 2].Cells[1].Value = xlRange.Cells[i, 1].Value2.ToString();
+                            dgvNilai.Rows[i - 2].Cells[2].Value = xlRange.Cells[i, 2].Value2.ToString();
+                            dgvNilai.Rows[i - 2].Cells[3].Value = xlRange.Cells[i, 3].Value2.ToString();
+                            dgvNilai.Rows[i - 2].Cells[4].Value = xlRange.Cells[i, 4].Value2.ToString();
+                            dgvNilai.Rows[i - 2].Cells[5].Value = dataMk.Kode;
+                            dgvNilai.Rows[i - 2].Cells[6].Value = dataMk.MataKuliah;
+                            dgvNilai.Rows[i - 2].Cells[7].Value = dataMk.Sks;
+                            dgvNilai.Rows[i - 2].Cells[8].Value = xlRange.Cells[i, 8].Value2.ToString();
+                        }
+                        else
+                        {
+                            dgvNilai.Rows[i - 2].Cells[j].Value = xlRange.Cells[i, j].Value2.ToString();
+                        }
+
+                    }
+                }
+            }
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            //rule of thumb for releasing com objects:
+            //  never use two dots, all COM objects must be referenced and released individually
+            //  ex: [somthing].[something].[something] is bad
+
+            //release com objects to fully kill excel process from running in the background
+            Marshal.ReleaseComObject(xlRange);
+            Marshal.ReleaseComObject(ws);
+
+            //close and release
+            wb.Close();
+            Marshal.ReleaseComObject(wb);
+
+            //quit and release
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
         }
     }
 }

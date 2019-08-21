@@ -34,13 +34,14 @@ namespace KonversiAlihJalur.Dialog
         private IMataKuliah im;
         private int rowIndex;
 
-        public FormMataKuliah(string idProdi, string kodeLama, string mataKuliahlama, int sksLama, int rowIndex, IMataKuliah im)
+        public FormMataKuliah(string idProdi, string kodeLama, string mataKuliahlama, int sksLama, string nilaiLama, int rowIndex, IMataKuliah im)
         {
             InitializeComponent();
             webApi = new WebApi();
             txtKodeLama.Text = kodeLama;
             txtMataKuliahLama.Text = mataKuliahlama;
             txtSksLama.Text = sksLama.ToString();
+            txtNilaiLama.Text = nilaiLama;
             this.idProdi = idProdi;
             this.rowIndex = rowIndex;
             this.im = im;

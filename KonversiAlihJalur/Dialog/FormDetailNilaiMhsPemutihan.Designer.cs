@@ -41,6 +41,15 @@ namespace KonversiAlihJalur.Dialog
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.approveKecualiNilaiDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Approve = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -51,15 +60,8 @@ namespace KonversiAlihJalur.Dialog
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KodeLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliahLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KodeBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliahBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Approve = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtNodaf = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -67,6 +69,7 @@ namespace KonversiAlihJalur.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.txtNpmLama)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNodaf)).BeginInit();
             this.SuspendLayout();
             // 
             // hapusApproveToolStripMenuItem
@@ -118,130 +121,14 @@ namespace KonversiAlihJalur.Dialog
             this.Approve});
             this.dgvNilai.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvNilai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNilai.Location = new System.Drawing.Point(0, 94);
+            this.dgvNilai.Location = new System.Drawing.Point(0, 122);
             this.dgvNilai.Name = "dgvNilai";
             this.dgvNilai.ReadOnly = true;
             this.dgvNilai.RowHeadersVisible = false;
             this.dgvNilai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNilai.Size = new System.Drawing.Size(939, 288);
+            this.dgvNilai.Size = new System.Drawing.Size(939, 260);
             this.dgvNilai.TabIndex = 25;
             this.dgvNilai.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNilai_CellContentClick);
-            // 
-            // btnTutup
-            // 
-            this.btnTutup.BeforeTouchSize = new System.Drawing.Size(126, 28);
-            this.btnTutup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTutup.IsBackStageButton = false;
-            this.btnTutup.Location = new System.Drawing.Point(811, 5);
-            this.btnTutup.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.btnTutup.Name = "btnTutup";
-            this.btnTutup.Size = new System.Drawing.Size(126, 28);
-            this.btnTutup.TabIndex = 0;
-            this.btnTutup.Text = "Tutup";
-            this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
-            // 
-            // btnSimpan
-            // 
-            this.btnSimpan.BeforeTouchSize = new System.Drawing.Size(126, 28);
-            this.btnSimpan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimpan.IsBackStageButton = false;
-            this.btnSimpan.Location = new System.Drawing.Point(681, 5);
-            this.btnSimpan.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.btnSimpan.Name = "btnSimpan";
-            this.btnSimpan.Size = new System.Drawing.Size(126, 28);
-            this.btnSimpan.TabIndex = 3;
-            this.btnSimpan.Text = "Simpan";
-            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(423, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(253, 30);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 2;
-            this.progressBar1.Visible = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnTutup);
-            this.flowLayoutPanel1.Controls.Add(this.btnSimpan);
-            this.flowLayoutPanel1.Controls.Add(this.progressBar1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 382);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(939, 38);
-            this.flowLayoutPanel1.TabIndex = 24;
-            // 
-            // autoLabel2
-            // 
-            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.autoLabel2.Location = new System.Drawing.Point(86, 68);
-            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(304, 16);
-            this.autoLabel2.TabIndex = 13;
-            this.autoLabel2.Text = "Klik kanan pada baris untuk edit approve otomatis";
-            // 
-            // txtNama
-            // 
-            this.txtNama.BeforeTouchSize = new System.Drawing.Size(136, 25);
-            this.txtNama.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNama.Location = new System.Drawing.Point(86, 36);
-            this.txtNama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtNama.Name = "txtNama";
-            this.txtNama.ReadOnly = true;
-            this.txtNama.Size = new System.Drawing.Size(393, 25);
-            this.txtNama.TabIndex = 12;
-            // 
-            // txtNpmLama
-            // 
-            this.txtNpmLama.BeforeTouchSize = new System.Drawing.Size(136, 25);
-            this.txtNpmLama.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNpmLama.Location = new System.Drawing.Point(86, 5);
-            this.txtNpmLama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtNpmLama.Name = "txtNpmLama";
-            this.txtNpmLama.ReadOnly = true;
-            this.txtNpmLama.Size = new System.Drawing.Size(136, 25);
-            this.txtNpmLama.TabIndex = 11;
-            // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel1.Location = new System.Drawing.Point(6, 42);
-            this.autoLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(45, 16);
-            this.autoLabel1.TabIndex = 10;
-            this.autoLabel1.Text = "Nama";
-            // 
-            // autoLabel15
-            // 
-            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel15.Location = new System.Drawing.Point(6, 10);
-            this.autoLabel15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(75, 16);
-            this.autoLabel15.TabIndex = 8;
-            this.autoLabel15.Text = "NPM Lama";
-            // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
-            this.gradientPanel2.Controls.Add(this.autoLabel2);
-            this.gradientPanel2.Controls.Add(this.txtNama);
-            this.gradientPanel2.Controls.Add(this.txtNpmLama);
-            this.gradientPanel2.Controls.Add(this.autoLabel1);
-            this.gradientPanel2.Controls.Add(this.autoLabel15);
-            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.gradientPanel2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(939, 94);
-            this.gradientPanel2.TabIndex = 23;
             // 
             // No
             // 
@@ -306,6 +193,145 @@ namespace KonversiAlihJalur.Dialog
             this.Approve.ReadOnly = true;
             this.Approve.Width = 70;
             // 
+            // btnTutup
+            // 
+            this.btnTutup.BeforeTouchSize = new System.Drawing.Size(126, 28);
+            this.btnTutup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTutup.IsBackStageButton = false;
+            this.btnTutup.Location = new System.Drawing.Point(811, 5);
+            this.btnTutup.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btnTutup.Name = "btnTutup";
+            this.btnTutup.Size = new System.Drawing.Size(126, 28);
+            this.btnTutup.TabIndex = 0;
+            this.btnTutup.Text = "Tutup";
+            this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
+            // 
+            // btnSimpan
+            // 
+            this.btnSimpan.BeforeTouchSize = new System.Drawing.Size(126, 28);
+            this.btnSimpan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimpan.IsBackStageButton = false;
+            this.btnSimpan.Location = new System.Drawing.Point(681, 5);
+            this.btnSimpan.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btnSimpan.Name = "btnSimpan";
+            this.btnSimpan.Size = new System.Drawing.Size(126, 28);
+            this.btnSimpan.TabIndex = 3;
+            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(423, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(253, 30);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 2;
+            this.progressBar1.Visible = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnTutup);
+            this.flowLayoutPanel1.Controls.Add(this.btnSimpan);
+            this.flowLayoutPanel1.Controls.Add(this.progressBar1);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 382);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(939, 38);
+            this.flowLayoutPanel1.TabIndex = 24;
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.autoLabel2.Location = new System.Drawing.Point(86, 99);
+            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(304, 16);
+            this.autoLabel2.TabIndex = 13;
+            this.autoLabel2.Text = "Klik kanan pada baris untuk edit approve otomatis";
+            // 
+            // txtNama
+            // 
+            this.txtNama.BeforeTouchSize = new System.Drawing.Size(136, 25);
+            this.txtNama.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNama.Location = new System.Drawing.Point(86, 67);
+            this.txtNama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtNama.Name = "txtNama";
+            this.txtNama.ReadOnly = true;
+            this.txtNama.Size = new System.Drawing.Size(393, 25);
+            this.txtNama.TabIndex = 12;
+            // 
+            // txtNpmLama
+            // 
+            this.txtNpmLama.BeforeTouchSize = new System.Drawing.Size(136, 25);
+            this.txtNpmLama.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNpmLama.Location = new System.Drawing.Point(86, 5);
+            this.txtNpmLama.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtNpmLama.Name = "txtNpmLama";
+            this.txtNpmLama.ReadOnly = true;
+            this.txtNpmLama.Size = new System.Drawing.Size(136, 25);
+            this.txtNpmLama.TabIndex = 11;
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Location = new System.Drawing.Point(6, 73);
+            this.autoLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(45, 16);
+            this.autoLabel1.TabIndex = 10;
+            this.autoLabel1.Text = "Nama";
+            // 
+            // autoLabel15
+            // 
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Location = new System.Drawing.Point(6, 10);
+            this.autoLabel15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel15.Name = "autoLabel15";
+            this.autoLabel15.Size = new System.Drawing.Size(75, 16);
+            this.autoLabel15.TabIndex = 8;
+            this.autoLabel15.Text = "NPM Lama";
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel2.Controls.Add(this.txtNodaf);
+            this.gradientPanel2.Controls.Add(this.autoLabel3);
+            this.gradientPanel2.Controls.Add(this.autoLabel2);
+            this.gradientPanel2.Controls.Add(this.txtNama);
+            this.gradientPanel2.Controls.Add(this.txtNpmLama);
+            this.gradientPanel2.Controls.Add(this.autoLabel1);
+            this.gradientPanel2.Controls.Add(this.autoLabel15);
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(939, 122);
+            this.gradientPanel2.TabIndex = 23;
+            // 
+            // txtNodaf
+            // 
+            this.txtNodaf.BeforeTouchSize = new System.Drawing.Size(136, 25);
+            this.txtNodaf.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNodaf.Location = new System.Drawing.Point(86, 36);
+            this.txtNodaf.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtNodaf.Name = "txtNodaf";
+            this.txtNodaf.ReadOnly = true;
+            this.txtNodaf.Size = new System.Drawing.Size(136, 25);
+            this.txtNodaf.TabIndex = 15;
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Location = new System.Drawing.Point(6, 41);
+            this.autoLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(45, 16);
+            this.autoLabel3.TabIndex = 14;
+            this.autoLabel3.Text = "Nodaf";
+            // 
             // FormDetailNilaiMhsPemutihan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -329,6 +355,7 @@ namespace KonversiAlihJalur.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNodaf)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,5 +386,7 @@ namespace KonversiAlihJalur.Dialog
         private System.Windows.Forms.DataGridViewTextBoxColumn SksBaru;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nilai;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Approve;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtNodaf;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
     }
 }

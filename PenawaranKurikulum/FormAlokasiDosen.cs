@@ -950,5 +950,10 @@ namespace PenawaranKurikulum
             MessageBox.Show("Alokasi berhasil dihapus");
             Loading(false);
         }
+
+        private void setSebagaiKoordinatorMKToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

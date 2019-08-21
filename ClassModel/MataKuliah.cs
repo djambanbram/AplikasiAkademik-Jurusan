@@ -103,4 +103,9 @@ namespace ClassModel
         public string KodeChild { get; set; }
         public string MataKuliahChild { get; set; }
     }
+
+    public class MKByIdProdi
+    {
+        public string IdProdi { get; set; }
+    }
 }

@@ -92,10 +92,10 @@ namespace MainAplikasi
                     //LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
                     //LoginAccess.KodeSemester = kodeSemester;
 
-                    LoginAccess.TahunAkademik = "2018/2019";
-                    LoginAccess.Semester = "Genap";
-                    LoginAccess.IdTahun = 57;
-                    LoginAccess.KodeSemester = 2;
+                    LoginAccess.TahunAkademik = "2019/2020";
+                    LoginAccess.Semester = "Ganjil";
+                    LoginAccess.IdTahun = 59;
+                    LoginAccess.KodeSemester = 1;
 #endif
 
                     Hide();

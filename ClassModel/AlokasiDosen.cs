@@ -35,6 +35,7 @@ namespace ClassModel
         public int SksTotal { get; set; }
         public int SksTeori { get; set; }
         public int SksPraktikum { get; set; }
+        public string Email { get; set; }
     }
 
     public class DataDosen

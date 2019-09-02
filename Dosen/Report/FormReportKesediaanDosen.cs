@@ -49,6 +49,7 @@ namespace Dosen.Report
 
         private bool isPreview;
         private bool isDipilihSemua;
+        private bool isSavePdf;
         public FormReportKesediaanDosen()
         {
             InitializeComponent();
@@ -139,27 +140,29 @@ namespace Dosen.Report
                 {
                     dgvDataDosen.Rows.Clear();
                     var listNikDosen = listDosenMengajarAll
-                        .Select(x => new { x.NIK, x.NamaProgram, x.NamaDosen, x.Kode, x.KodeKelas, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.KodeProgram })
-                        .Select(y => new { y.NIK, y.NamaProgram, y.NamaDosen, y.Kode, y.KodeKelas, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.KodeProgram })
+                        .Select(x => new { x.NIK, x.NamaProgram, x.NamaDosen, x.Kode, x.KodeKelas, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.KodeProgram, x.NamaFakultas, x.Email })
+                        .Select(y => new { y.NIK, y.NamaProgram, y.NamaDosen, y.Kode, y.KodeKelas, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.KodeProgram, y.NamaFakultas, y.Email })
                         .Distinct()//.Where(z => z.KodeProgram == kodeProgramDipilih)
                         .OrderBy(o => o.NamaDosen);
 
                     int i = 1;
+                    dgvDataDosen.Rows.Clear();
                     foreach (var item in listNikDosen)
                     {
                         int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
                         int sks = item.SksPraktikum == 0 ? item.SksTeori : item.SksPraktikum;
-                        dgvDataDosen.Rows.Add(i, item.NamaProgram, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, sks, countKelas, item.JenisMataKuliah, item.KodeKelas);
+                        dgvDataDosen.Rows.Add(i, item.NamaProgram, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, sks, countKelas, item.JenisMataKuliah, item.KodeKelas, item.NamaFakultas, item.Email);
                         i++;
                     }
                     isPreview = false;
                     dgvDataDosen.PerformLayout();
-
+                    cmbProdi.DataSource = null;
                 }
                 else
                 {
                     string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                     listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
+                    listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Semua Prodi" });
                     listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
                     cmbProdi.DataSource = listProdi;
                     cmbProdi.DisplayMember = "NamaProdi";
@@ -176,13 +179,39 @@ namespace Dosen.Report
             idProdiDipilih = null;
             if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
             {
-                string idProdi = cmbProdi.SelectedValue.ToString();
-                listProgram = Organisasi.listProgram.Where(program => program.Prodi.Uid == idProdi).ToList();
-                listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
-                cmbProgram.DataSource = listProgram;
-                cmbProgram.DisplayMember = "NamaProgram";
-                cmbProgram.ValueMember = "KodeProgram";
-                cmbProgram.SelectedIndex = 0;
+                if (cmbProdi.SelectedIndex == 1)
+                {
+                    var listNikDosen = listDosenMengajarAll
+                        .Where(l => l.KodeFakultas == cmbFakultas.SelectedValue.ToString())
+                        .Select(x => new { x.NIK, x.NamaProgram, x.NamaDosen, x.Kode, x.KodeKelas, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.KodeProgram, x.NamaFakultas, x.Email })
+                        .Select(y => new { y.NIK, y.NamaProgram, y.NamaDosen, y.Kode, y.KodeKelas, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.KodeProgram, y.NamaFakultas, y.Email })
+                        .Distinct()//.Where(z => z.KodeProgram == kodeProgramDipilih)
+                        .OrderBy(o => o.NamaDosen);
+
+                    int i = 1;
+                    dgvDataDosen.Rows.Clear();
+                    foreach (var item in listNikDosen)
+                    {
+                        int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
+                        int sks = item.SksPraktikum == 0 ? item.SksTeori : item.SksPraktikum;
+                        dgvDataDosen.Rows.Add(i, item.NamaProgram, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, sks, countKelas, item.JenisMataKuliah, item.KodeKelas, item.NamaFakultas, item.Email);
+                        i++;
+                    }
+                    isPreview = false;
+                    dgvDataDosen.PerformLayout();
+                    cmbProgram.DataSource = null;
+                }
+                else
+                {
+                    string idProdi = cmbProdi.SelectedValue.ToString();
+                    listProgram = Organisasi.listProgram.Where(program => program.Prodi.Uid == idProdi).ToList();
+                    listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Semua Program" });
+                    listProgram.Insert(0, new Program() { KodeProgram = "-", NamaProgram = "Pilih" });
+                    cmbProgram.DataSource = listProgram;
+                    cmbProgram.DisplayMember = "NamaProgram";
+                    cmbProgram.ValueMember = "KodeProgram";
+                    cmbProgram.SelectedIndex = 0;
+                }
             }
         }
 
@@ -197,24 +226,47 @@ namespace Dosen.Report
             kodeProgramDipilih = cmbProgram.SelectedValue.ToString();
             idProdiDipilih = cmbProdi.SelectedValue.ToString();
 
-
-            dgvDataDosen.Rows.Clear();
-            var listNikDosen = listDosenMengajarAll
-                .Select(x => new { x.NIK, x.NamaProgram, x.NamaDosen, x.Kode, x.KodeKelas, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.KodeProgram })
-                .Select(y => new { y.NIK, y.NamaProgram, y.NamaDosen, y.Kode, y.KodeKelas, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.KodeProgram })
-                .Distinct().Where(z => z.KodeProgram == kodeProgramDipilih)
-                .OrderBy(o => o.NamaDosen);
-
-            int i = 1;
-            foreach (var item in listNikDosen)
+            if (cmbProgram.SelectedIndex == 1)
             {
-                int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == kodeProgramDipilih && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
-                int sks = item.SksPraktikum == 0 ? item.SksTeori : item.SksPraktikum;
-                dgvDataDosen.Rows.Add(i, item.NamaProgram, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, sks, countKelas, item.JenisMataKuliah, item.KodeKelas);
-                i++;
+                var listNikDosen = listDosenMengajarAll
+                    .Where(l => l.IdProdi.ToLower() == idProdiDipilih)
+                    .Select(x => new { x.NIK, x.NamaProgram, x.NamaDosen, x.Kode, x.KodeKelas, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.KodeProgram, x.NamaFakultas, x.Email })
+                    .Select(y => new { y.NIK, y.NamaProgram, y.NamaDosen, y.Kode, y.KodeKelas, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.KodeProgram, y.NamaFakultas, y.Email })
+                    .Distinct()//.Where(z => z.KodeProgram == kodeProgramDipilih)
+                    .OrderBy(o => o.NamaDosen);
+
+                int i = 1;
+                dgvDataDosen.Rows.Clear();
+                foreach (var item in listNikDosen)
+                {
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == item.KodeProgram && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
+                    int sks = item.SksPraktikum == 0 ? item.SksTeori : item.SksPraktikum;
+                    dgvDataDosen.Rows.Add(i, item.NamaProgram, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, sks, countKelas, item.JenisMataKuliah, item.KodeKelas, item.NamaFakultas, item.Email);
+                    i++;
+                }
+                isPreview = false;
+                dgvDataDosen.PerformLayout();
             }
-            isPreview = false;
-            dgvDataDosen.PerformLayout();
+            else
+            {
+                var listNikDosen = listDosenMengajarAll
+                    .Select(x => new { x.NIK, x.NamaProgram, x.NamaDosen, x.Kode, x.KodeKelas, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.KodeProgram, x.NamaFakultas, x.Email })
+                    .Select(y => new { y.NIK, y.NamaProgram, y.NamaDosen, y.Kode, y.KodeKelas, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.KodeProgram, y.NamaFakultas, y.Email})
+                    .Distinct().Where(z => z.KodeProgram == kodeProgramDipilih)
+                    .OrderBy(o => o.NamaDosen);
+
+                int i = 1;
+                dgvDataDosen.Rows.Clear();
+                foreach (var item in listNikDosen)
+                {
+                    int countKelas = listDosenMengajarAll.Where(w => w.NIK == item.NIK && w.Kode == item.Kode && w.Jenjang == item.Jenjang && w.KodeProgram == kodeProgramDipilih && w.KodeKelas == item.KodeKelas && w.JenisMataKuliah == item.JenisMataKuliah).ToList().Count;
+                    int sks = item.SksPraktikum == 0 ? item.SksTeori : item.SksPraktikum;
+                    dgvDataDosen.Rows.Add(i, item.NamaProgram, item.NIK, item.NamaDosen, item.MataKuliah, false, item.Jenjang, item.Kode, sks, countKelas, item.JenisMataKuliah, item.KodeKelas, item.NamaFakultas, item.Email);
+                    i++;
+                }
+                isPreview = false;
+                dgvDataDosen.PerformLayout();
+            }
         }
 
         private void cetakSemuaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -272,7 +324,9 @@ namespace Dosen.Report
                         JumlahKelas = int.Parse(row.Cells["Jumlahkelas"].Value.ToString()),
                         TotalSks = int.Parse(row.Cells["Sks"].Value.ToString()) * int.Parse(row.Cells["Jumlahkelas"].Value.ToString()),
                         NamaProgram = row.Cells["NamaProgram"].Value.ToString(),
-                        KodeKelas = row.Cells["KodeKelas"].Value.ToString()
+                        KodeKelas = row.Cells["KodeKelas"].Value.ToString(),
+                        NamaFakultas = row.Cells["Fakultas"].Value.ToString(),
+                        Email = row.Cells["Email"].Value == null ? string.Empty : row.Cells["Email"].Value.ToString()
                     });
                 }
             }
@@ -295,7 +349,9 @@ namespace Dosen.Report
                             JumlahKelas = int.Parse(row.Cells["Jumlahkelas"].Value.ToString()),
                             TotalSks = int.Parse(row.Cells["Sks"].Value.ToString()) * int.Parse(row.Cells["Jumlahkelas"].Value.ToString()),
                             NamaProgram = row.Cells["NamaProgram"].Value.ToString(),
-                            KodeKelas = row.Cells["KodeKelas"].Value.ToString()
+                            KodeKelas = row.Cells["KodeKelas"].Value.ToString(),
+                            NamaFakultas = row.Cells["Fakultas"].Value.ToString(),
+                            Email = row.Cells["Email"].Value == null ? string.Empty : row.Cells["Email"].Value.ToString()
                         });
                     }
                 }
@@ -327,7 +383,7 @@ namespace Dosen.Report
 
         private void dgvDataDosen_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 5)
+            if (e.ColumnIndex != 5 || e.RowIndex < 0)
             {
                 return;
             }
@@ -422,7 +478,7 @@ namespace Dosen.Report
                         var namaProgram = listPreviewKesediaanDosen[currentPageIndex - 1].NamaProgram;
                         var kodeKelas = listPreviewKesediaanDosen[currentPageIndex - 1].KodeKelas;
                         Directory.CreateDirectory(pathsave + @"\" + namaDosen);
-                        doc2.SaveAs(pathsave + "/" + NamaDosen + "/" + namaDosen + "(" + kode + "-" + sks + jenisKuliah + "-" + namaProgram + ")-KEsediaanMengajar.docx");
+                        doc2.SaveAs(pathsave + "/" + NamaDosen + "/" + namaDosen + "(" + kode + "-" + sks + jenisKuliah + "-" + namaProgram + ")-KesediaanMengajar.docx");
                     }
                 }
 
@@ -488,20 +544,71 @@ namespace Dosen.Report
                 Loading(true);
                 PdfDocument inputDocument = PdfReader.Open(filename, PdfDocumentOpenMode.Import);
                 string path = pathSave.ToString();
+                var fullPath = string.Empty;
                 int i = 0;
+
+                Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+                if (xlApp == null)
+                {
+                    MessageBox.Show("EXCEL could not be started. Check that your office installation and project references are correct.");
+                    Loading(false);
+                    return;
+                }
+
+                Microsoft.Office.Interop.Excel.Workbook wb = xlApp.Workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
+                Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets[1];
+
+                if (ws == null)
+                {
+                    MessageBox.Show("Worksheet could not be created. Check that your office installation and project references are correct.");
+                    Loading(false);
+                    return;
+                }
+
+                //Microsoft.Office.Interop.Excel.Range rangeTitle = ws.get_Range("A1", "E1");
+                //rangeTitle.Merge();
+                //rangeTitle.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+
+                Microsoft.Office.Interop.Excel.Range rangeNomor = ws.Range["A1", "A1"];
+                ws.Cells[1, 1] = "NO";
+
+                Microsoft.Office.Interop.Excel.Range rangeNama = ws.Range["B1", "B1"];
+                ws.Cells[1, 2] = "NAMA DOSEN";
+
+                Microsoft.Office.Interop.Excel.Range rangeEmail = ws.Range["C1", "C1"];
+                ws.Cells[1, 3] = "EMAIL";
+
+                Microsoft.Office.Interop.Excel.Range rangeFile = ws.Range["D1", "D1"];
+                ws.Cells[1, 4] = "FILE";
+
+                Microsoft.Office.Interop.Excel.Range rangeFakultas = ws.Range["E1", "E1"];
+                ws.Cells[1, 5] = "FAKULTAS";
+                var startRow = 2;
                 foreach (var item in listPreviewKesediaanDosen)
                 {
                     PdfDocument output = new PdfDocument();
+
                     output.Version = inputDocument.Version;
                     output.Info.Title = item.NamaDosen + " (" + item.Kode + "-" + item.Sks + item.JenisMataKuliah + "-" + item.NamaProgram + ")";
                     output.Info.Creator = inputDocument.Info.Creator;
 
                     output.AddPage(inputDocument.Pages[i]);
                     Directory.CreateDirectory(path + @"\" + item.NamaDosen);
-                    output.Save(path + "/" + item.NamaDosen + "/" + item.NamaDosen + " (" + item.Kode + "-" + item.Sks + item.JenisMataKuliah + "-" + item.NamaProgram + ")-KesediaanMengajar.pdf");
+                    fullPath = path + "\\" + item.NamaDosen + "\\" + item.NamaDosen + " (" + item.Kode + "-" + item.Sks + item.JenisMataKuliah + "-" + item.NamaProgram + ")-KesediaanMengajar.pdf";
+                    output.Save(fullPath);
+                    rangeNomor.Cells[startRow, 1] = startRow - 1;
+                    rangeNama.Cells[startRow, 1] = item.NamaDosen;
+                    rangeEmail.Cells[startRow, 1] = item.Email;
+                    rangeFile.Cells[startRow, 1] = fullPath;
+                    rangeFakultas.Cells[startRow, 1] = item.NamaFakultas;
                     i++;
+                    startRow++;
                 }
                 System.Diagnostics.Process.Start("explorer.exe", @path);
+                ws.Columns.AutoFit();
+                xlApp.Visible = true;
             }
             catch (Exception ex)
             {

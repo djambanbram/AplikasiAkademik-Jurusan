@@ -467,5 +467,6 @@ namespace Dosen.Report
         public string KodeProgramReguler { get; set; }
         public string KodeProgram { get; set; }
         public string NamaProgram { get; set; }
+        public string Email { get; set; }
     }
 }

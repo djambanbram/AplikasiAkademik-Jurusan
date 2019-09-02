@@ -37,7 +37,7 @@ namespace Dosen.Report
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportKesediaanDosen));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.kesediaanDosenMengajarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsDosen = new Dosen.Data.DsDosen();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -45,18 +45,6 @@ namespace Dosen.Report
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.dgvDataDosen = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NamaProgram = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pilih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Jenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JenisKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KodeKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.cetakSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +61,20 @@ namespace Dosen.Report
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaProgram = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pilih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Jenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JenisKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fakultas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kesediaanDosenMengajarBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -161,7 +163,9 @@ namespace Dosen.Report
             this.Sks,
             this.JumlahKelas,
             this.JenisKuliah,
-            this.KodeKelas});
+            this.KodeKelas,
+            this.Fakultas,
+            this.Email});
             this.dgvDataDosen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDataDosen.Location = new System.Drawing.Point(0, 127);
             this.dgvDataDosen.MultiSelect = false;
@@ -171,79 +175,6 @@ namespace Dosen.Report
             this.dgvDataDosen.Size = new System.Drawing.Size(502, 212);
             this.dgvDataDosen.TabIndex = 14;
             this.dgvDataDosen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDataDosen_CellContentClick);
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.Width = 40;
-            // 
-            // NamaProgram
-            // 
-            this.NamaProgram.HeaderText = "Nama Program";
-            this.NamaProgram.Name = "NamaProgram";
-            this.NamaProgram.Visible = false;
-            // 
-            // NIK
-            // 
-            this.NIK.HeaderText = "NIK";
-            this.NIK.Name = "NIK";
-            this.NIK.Width = 85;
-            // 
-            // NamaDosen
-            // 
-            this.NamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NamaDosen.HeaderText = "Nama Dosen";
-            this.NamaDosen.Name = "NamaDosen";
-            // 
-            // MataKuliah
-            // 
-            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliah.HeaderText = "MataKuliah";
-            this.MataKuliah.Name = "MataKuliah";
-            // 
-            // Pilih
-            // 
-            this.Pilih.HeaderText = "Pilih";
-            this.Pilih.Name = "Pilih";
-            this.Pilih.Width = 50;
-            // 
-            // Jenjang
-            // 
-            this.Jenjang.HeaderText = "Jenjang";
-            this.Jenjang.Name = "Jenjang";
-            this.Jenjang.Visible = false;
-            // 
-            // Kode
-            // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.Name = "Kode";
-            this.Kode.Visible = false;
-            // 
-            // Sks
-            // 
-            this.Sks.HeaderText = "Sks";
-            this.Sks.Name = "Sks";
-            this.Sks.Visible = false;
-            // 
-            // JumlahKelas
-            // 
-            this.JumlahKelas.HeaderText = "Jumlah Kelas";
-            this.JumlahKelas.Name = "JumlahKelas";
-            this.JumlahKelas.Visible = false;
-            this.JumlahKelas.Width = 50;
-            // 
-            // JenisKuliah
-            // 
-            this.JenisKuliah.HeaderText = "JenisKuliah";
-            this.JenisKuliah.Name = "JenisKuliah";
-            this.JenisKuliah.Visible = false;
-            // 
-            // KodeKelas
-            // 
-            this.KodeKelas.HeaderText = "Kode Kelas";
-            this.KodeKelas.Name = "KodeKelas";
-            this.KodeKelas.Visible = false;
             // 
             // toolStrip1
             // 
@@ -297,7 +228,7 @@ namespace Dosen.Report
             // saveToWordToolStripMenuItem
             // 
             this.saveToWordToolStripMenuItem.Name = "saveToWordToolStripMenuItem";
-            this.saveToWordToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveToWordToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToWordToolStripMenuItem.Text = "Save to Word";
             this.saveToWordToolStripMenuItem.Visible = false;
             this.saveToWordToolStripMenuItem.Click += new System.EventHandler(this.saveToWordToolStripMenuItem_Click);
@@ -305,7 +236,7 @@ namespace Dosen.Report
             // saveToPDFToolStripMenuItem
             // 
             this.saveToPDFToolStripMenuItem.Name = "saveToPDFToolStripMenuItem";
-            this.saveToPDFToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveToPDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToPDFToolStripMenuItem.Text = "Save to PDF";
             this.saveToPDFToolStripMenuItem.Click += new System.EventHandler(this.saveToPDFToolStripMenuItem_Click);
             // 
@@ -384,14 +315,99 @@ namespace Dosen.Report
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DsKesediaanDosen";
-            reportDataSource1.Value = this.kesediaanDosenMengajarBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DsKesediaanDosen";
+            reportDataSource2.Value = this.kesediaanDosenMengajarBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Dosen.ReportView.ReportKesediaanDosen.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(506, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(353, 343);
             this.reportViewer1.TabIndex = 14;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.Width = 40;
+            // 
+            // NamaProgram
+            // 
+            this.NamaProgram.HeaderText = "Nama Program";
+            this.NamaProgram.Name = "NamaProgram";
+            this.NamaProgram.Visible = false;
+            // 
+            // NIK
+            // 
+            this.NIK.HeaderText = "NIK";
+            this.NIK.Name = "NIK";
+            this.NIK.Width = 85;
+            // 
+            // NamaDosen
+            // 
+            this.NamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NamaDosen.HeaderText = "Nama Dosen";
+            this.NamaDosen.Name = "NamaDosen";
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliah.HeaderText = "MataKuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            // 
+            // Pilih
+            // 
+            this.Pilih.HeaderText = "Pilih";
+            this.Pilih.Name = "Pilih";
+            this.Pilih.Width = 50;
+            // 
+            // Jenjang
+            // 
+            this.Jenjang.HeaderText = "Jenjang";
+            this.Jenjang.Name = "Jenjang";
+            this.Jenjang.Visible = false;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.Visible = false;
+            // 
+            // Sks
+            // 
+            this.Sks.HeaderText = "Sks";
+            this.Sks.Name = "Sks";
+            this.Sks.Visible = false;
+            // 
+            // JumlahKelas
+            // 
+            this.JumlahKelas.HeaderText = "Jumlah Kelas";
+            this.JumlahKelas.Name = "JumlahKelas";
+            this.JumlahKelas.Visible = false;
+            this.JumlahKelas.Width = 50;
+            // 
+            // JenisKuliah
+            // 
+            this.JenisKuliah.HeaderText = "JenisKuliah";
+            this.JenisKuliah.Name = "JenisKuliah";
+            this.JenisKuliah.Visible = false;
+            // 
+            // KodeKelas
+            // 
+            this.KodeKelas.HeaderText = "Kode Kelas";
+            this.KodeKelas.Name = "KodeKelas";
+            this.KodeKelas.Visible = false;
+            // 
+            // Fakultas
+            // 
+            this.Fakultas.HeaderText = "Fakultas";
+            this.Fakultas.Name = "Fakultas";
+            this.Fakultas.Visible = false;
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Visible = false;
             // 
             // FormReportKesediaanDosen
             // 
@@ -463,5 +479,7 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn JumlahKelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn JenisKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeKelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fakultas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
     }
 }

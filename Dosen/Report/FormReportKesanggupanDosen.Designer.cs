@@ -37,7 +37,7 @@ namespace Dosen.Report
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportKesanggupanDosen));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.kesanggupanDosenMengajarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsDosen = new Dosen.Data.DsDosen();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -45,6 +45,22 @@ namespace Dosen.Report
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.dgvDataDosen = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.cetakSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cetakDipilihToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.saveToWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.cmbSemester = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.cmbTahunAkademik = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,22 +70,6 @@ namespace Dosen.Report
             this.Jenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KodeKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.cetakSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cetakDipilihToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.saveToWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.cmbSemester = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.cmbTahunAkademik = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             ((System.ComponentModel.ISupportInitialize)(this.kesanggupanDosenMengajarBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsDosen)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -79,9 +79,9 @@ namespace Dosen.Report
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTahunAkademik)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             this.SuspendLayout();
             // 
             // kesanggupanDosenMengajarBindingSource
@@ -166,60 +166,6 @@ namespace Dosen.Report
             this.dgvDataDosen.TabIndex = 14;
             this.dgvDataDosen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDataDosen_CellContentClick);
             // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.Width = 40;
-            // 
-            // NIK
-            // 
-            this.NIK.HeaderText = "NIK";
-            this.NIK.Name = "NIK";
-            this.NIK.Width = 85;
-            // 
-            // NamaDosen
-            // 
-            this.NamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NamaDosen.HeaderText = "Nama Dosen";
-            this.NamaDosen.Name = "NamaDosen";
-            // 
-            // Pilih
-            // 
-            this.Pilih.HeaderText = "Pilih";
-            this.Pilih.Name = "Pilih";
-            this.Pilih.Width = 50;
-            // 
-            // KodeFakultas
-            // 
-            this.KodeFakultas.HeaderText = "Kode Fakultas";
-            this.KodeFakultas.Name = "KodeFakultas";
-            this.KodeFakultas.Visible = false;
-            // 
-            // NamaFakultas
-            // 
-            this.NamaFakultas.HeaderText = "NamaFakultas";
-            this.NamaFakultas.Name = "NamaFakultas";
-            this.NamaFakultas.Visible = false;
-            // 
-            // Jenjang
-            // 
-            this.Jenjang.HeaderText = "Jenjang";
-            this.Jenjang.Name = "Jenjang";
-            this.Jenjang.Visible = false;
-            // 
-            // KodeKelas
-            // 
-            this.KodeKelas.HeaderText = "KodeKelas";
-            this.KodeKelas.Name = "KodeKelas";
-            this.KodeKelas.Visible = false;
-            // 
-            // IdKuliah
-            // 
-            this.IdKuliah.HeaderText = "IdKuliah";
-            this.IdKuliah.Name = "IdKuliah";
-            this.IdKuliah.Visible = false;
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -299,37 +245,6 @@ namespace Dosen.Report
             this.gradientPanel2.Size = new System.Drawing.Size(367, 108);
             this.gradientPanel2.TabIndex = 16;
             // 
-            // cmbFakultas
-            // 
-            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(246, 25);
-            this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFakultas.Location = new System.Drawing.Point(114, 70);
-            this.cmbFakultas.Name = "cmbFakultas";
-            this.cmbFakultas.Size = new System.Drawing.Size(246, 25);
-            this.cmbFakultas.TabIndex = 1;
-            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
-            // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Location = new System.Drawing.Point(8, 73);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(54, 17);
-            this.autoLabel1.TabIndex = 0;
-            this.autoLabel1.Text = "Fakultas";
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "DsKesanggupanMengajar";
-            reportDataSource3.Value = this.kesanggupanDosenMengajarBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Dosen.ReportView.ReportKesanggupanDosen_v2.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(371, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(444, 408);
-            this.reportViewer1.TabIndex = 13;
-            // 
             // autoLabel7
             // 
             this.autoLabel7.Location = new System.Drawing.Point(7, 43);
@@ -366,6 +281,91 @@ namespace Dosen.Report
             this.cmbTahunAkademik.Size = new System.Drawing.Size(246, 25);
             this.cmbTahunAkademik.TabIndex = 26;
             // 
+            // cmbFakultas
+            // 
+            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(246, 25);
+            this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFakultas.Location = new System.Drawing.Point(114, 70);
+            this.cmbFakultas.Name = "cmbFakultas";
+            this.cmbFakultas.Size = new System.Drawing.Size(246, 25);
+            this.cmbFakultas.TabIndex = 1;
+            this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Location = new System.Drawing.Point(8, 73);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(54, 17);
+            this.autoLabel1.TabIndex = 0;
+            this.autoLabel1.Text = "Fakultas";
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "DsKesanggupanMengajar";
+            reportDataSource2.Value = this.kesanggupanDosenMengajarBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Dosen.ReportView.ReportKesanggupanDosen_v2.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(371, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(444, 408);
+            this.reportViewer1.TabIndex = 13;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.Width = 40;
+            // 
+            // NIK
+            // 
+            this.NIK.HeaderText = "NIK";
+            this.NIK.Name = "NIK";
+            this.NIK.Width = 85;
+            // 
+            // NamaDosen
+            // 
+            this.NamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NamaDosen.HeaderText = "Nama Dosen";
+            this.NamaDosen.Name = "NamaDosen";
+            // 
+            // Pilih
+            // 
+            this.Pilih.HeaderText = "Pilih";
+            this.Pilih.Name = "Pilih";
+            this.Pilih.Width = 50;
+            // 
+            // KodeFakultas
+            // 
+            this.KodeFakultas.HeaderText = "Kode Fakultas";
+            this.KodeFakultas.Name = "KodeFakultas";
+            this.KodeFakultas.Visible = false;
+            // 
+            // NamaFakultas
+            // 
+            this.NamaFakultas.HeaderText = "NamaFakultas";
+            this.NamaFakultas.Name = "NamaFakultas";
+            this.NamaFakultas.Visible = false;
+            // 
+            // Jenjang
+            // 
+            this.Jenjang.HeaderText = "Jenjang";
+            this.Jenjang.Name = "Jenjang";
+            this.Jenjang.Visible = false;
+            // 
+            // KodeKelas
+            // 
+            this.KodeKelas.HeaderText = "KodeKelas";
+            this.KodeKelas.Name = "KodeKelas";
+            this.KodeKelas.Visible = false;
+            // 
+            // IdKuliah
+            // 
+            this.IdKuliah.HeaderText = "IdKuliah";
+            this.IdKuliah.Name = "IdKuliah";
+            this.IdKuliah.Visible = false;
+            // 
             // FormReportKesanggupanDosen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -392,9 +392,9 @@ namespace Dosen.Report
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTahunAkademik)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,6 +420,10 @@ namespace Dosen.Report
         private System.Windows.Forms.ToolStripMenuItem saveToWordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToPDFToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbSemester;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbTahunAkademik;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIK;
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaDosen;
@@ -429,9 +433,5 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn Jenjang;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeKelas;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdKuliah;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbSemester;
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbTahunAkademik;
     }
 }

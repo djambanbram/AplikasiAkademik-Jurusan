@@ -182,6 +182,7 @@ namespace KonversiAlihJalur.Dialog
             Loading(true);
 
             var jsondata = string.Empty;
+            var tempList = new List<HistoryKonversiNilai>();
             foreach (DataGridViewRow row in dgvNilai.Rows)
             {
                 if (row.Cells["KodeD3"].Value == null)
@@ -199,21 +200,31 @@ namespace KonversiAlihJalur.Dialog
                 h.Nilai = row.Cells["Nilai"].Value == null ? null : row.Cells["Nilai"].Value.ToString();
                 h.Approve = row.Cells["KodeS1"].Value == null ? false : true;
                 h.Id = row.Cells["Id"].Value == null ? Guid.Empty : new Guid(row.Cells["Id"].Value.ToString());
+                tempList.Add(h);
+                //jsondata = JsonConvert.SerializeObject(h);
+                //response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalurSingle, jsondata, true);
+                //if (!response.IsSuccessStatusCode)
+                //{
+                //    MessageBox.Show(webApi.ReturnMessage(response));
+                //    Loading(false);
+                //    return;
+                //}
 
-                jsondata = JsonConvert.SerializeObject(h);
-                response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalurSingle, jsondata, true);
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show(webApi.ReturnMessage(response));
-                    Loading(false);
-                    return;
-                }
-
-                var idKonversi = JsonConvert.DeserializeObject<HistoryKonversiNilai>(response.Content.ReadAsStringAsync().Result).Id;
-                row.Cells["Id"].Value = idKonversi;
-                row.Cells["Hapus"].Value = "Hapus";
-                row.Cells["SksS1"].Value = row.Cells["SksS1"].Value == null ? 0 : row.Cells["SksS1"].Value;
+                //var idKonversi = JsonConvert.DeserializeObject<HistoryKonversiNilai>(response.Content.ReadAsStringAsync().Result).Id;
+                //row.Cells["Id"].Value = idKonversi;
+                //row.Cells["Hapus"].Value = "Hapus";
+                //row.Cells["SksS1"].Value = row.Cells["SksS1"].Value == null ? 0 : row.Cells["SksS1"].Value;
             }
+
+            jsondata = JsonConvert.SerializeObject(tempList);
+            response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalur, jsondata, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+
             MessageBox.Show("Konversi nilai berhasil disimpan");
 
             Loading(false);
@@ -447,24 +458,30 @@ namespace KonversiAlihJalur.Dialog
                 {
                     if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
                     {
-                        var kodeS1 = xlRange.Cells[i, 5].Value2.ToString();
-                        var dataMk = listDataMatakuliah.Find(mk => mk.Kode.Trim().ToLower() == kodeS1.Trim().ToLower());
-                        if (dataMk != null)
+                        try
                         {
-                            dgvNilai.Rows[i - 2].Cells[1].Value = xlRange.Cells[i, 1].Value2.ToString();
-                            dgvNilai.Rows[i - 2].Cells[2].Value = xlRange.Cells[i, 2].Value2.ToString();
-                            dgvNilai.Rows[i - 2].Cells[3].Value = xlRange.Cells[i, 3].Value2.ToString();
-                            dgvNilai.Rows[i - 2].Cells[4].Value = xlRange.Cells[i, 4].Value2.ToString();
-                            dgvNilai.Rows[i - 2].Cells[5].Value = dataMk.Kode;
-                            dgvNilai.Rows[i - 2].Cells[6].Value = dataMk.MataKuliah;
-                            dgvNilai.Rows[i - 2].Cells[7].Value = dataMk.Sks;
-                            dgvNilai.Rows[i - 2].Cells[8].Value = xlRange.Cells[i, 8].Value2.ToString();
+                            var kodeS1 = xlRange.Cells[i, 5].Value2.ToString();
+                            var dataMk = listDataMatakuliah.Find(mk => mk.Kode.Trim().ToLower() == kodeS1.Trim().ToLower());
+                            if (dataMk != null)
+                            {
+                                dgvNilai.Rows[i - 2].Cells[1].Value = xlRange.Cells[i, 1].Value2.ToString();
+                                dgvNilai.Rows[i - 2].Cells[2].Value = xlRange.Cells[i, 2].Value2.ToString();
+                                dgvNilai.Rows[i - 2].Cells[3].Value = xlRange.Cells[i, 3].Value2.ToString();
+                                dgvNilai.Rows[i - 2].Cells[4].Value = xlRange.Cells[i, 4].Value2.ToString();
+                                dgvNilai.Rows[i - 2].Cells[5].Value = dataMk.Kode;
+                                dgvNilai.Rows[i - 2].Cells[6].Value = dataMk.MataKuliah;
+                                dgvNilai.Rows[i - 2].Cells[7].Value = dataMk.Sks;
+                                dgvNilai.Rows[i - 2].Cells[8].Value = xlRange.Cells[i, 8].Value2.ToString();
+                            }
+                            else
+                            {
+                                dgvNilai.Rows[i - 2].Cells[j].Value = xlRange.Cells[i, j].Value2.ToString();
+                            }
                         }
-                        else
+                        catch(Exception ex)
                         {
-                            dgvNilai.Rows[i - 2].Cells[j].Value = xlRange.Cells[i, j].Value2.ToString();
+                            continue;
                         }
-
                     }
                 }
             }

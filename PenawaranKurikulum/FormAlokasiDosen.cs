@@ -747,8 +747,13 @@ namespace PenawaranKurikulum
 
             if (dgvAlokasi.Rows[hittest.RowIndex].Cells[hittest.ColumnIndex].Value != null)
             {
-                MessageBox.Show("Dosen sudah teralokasi sebelumya. Silahkan hapus dulu alokasi dosen sebelumnya");
-                return;
+                var message = "Dosen sudah teralokasi. Apakah alokasi dosen akan di lanjutkan?";
+                DialogResult dr = MessageBox.Show(message, "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    Loading(false);
+                    return;
+                }
             }
 
             Loading(true);

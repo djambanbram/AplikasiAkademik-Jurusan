@@ -17,7 +17,7 @@ namespace KonversiAlihJalur.Models
 
     class DetailNilaiPendaftarAlihJalur
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string KodeD3 { get; set; }
         public string MataKuliahD3 { get; set; }
         public int SksD3 { get; set; }

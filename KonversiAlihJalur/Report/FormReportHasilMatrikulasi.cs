@@ -110,11 +110,11 @@ namespace KonversiAlihJalur.Report
             var tempNomor = 0;
             foreach (HasilMatrikulasiMhs h in listHasilMatrikulasi)
             {
-                if (tempNpm != h.NpmLama)
+                if (tempNpm != h.Nodaf)
                 {
                     tempNomor = 1;
                     h.Nomor = tempNomor;
-                    tempNpm = h.NpmLama;
+                    tempNpm = h.Nodaf;
                 }
                 else
                 {
@@ -122,12 +122,17 @@ namespace KonversiAlihJalur.Report
                     h.Nomor = tempNomor;
                 }
             }
-            var listTemp = listHasilMatrikulasi.Select(h => new { h.NpmLama, h.Nama }).Distinct().ToList();
+            var listTemp = listHasilMatrikulasi.Select(h => new { h.Nodaf, h.NpmLama, h.Nama }).Distinct().ToList();
             dgvMhs.Rows.Clear();
             int no = 1;
             foreach (var item in listTemp)
             {
-                dgvMhs.Rows.Add(no, item.NpmLama, item.Nama, false);
+                var tempSksTotal = listHasilMatrikulasi.Where(h => h.Nodaf == item.Nodaf).Select(h => new { h.Kode, h.MataKuliah, h.Sks }).Distinct().Sum(h => int.Parse(h.Sks));
+                listHasilMatrikulasi.Where(h => h.Nodaf == item.Nodaf).ToList().ForEach(delegate(HasilMatrikulasiMhs hasil)
+                {
+                    hasil.SksTotalKonversi = tempSksTotal;
+                });
+                dgvMhs.Rows.Add(no, item.Nodaf, item.NpmLama, item.Nama, false, tempSksTotal);
                 no++;
             }
 
@@ -196,8 +201,9 @@ namespace KonversiAlihJalur.Report
                     {
                         foreach (HasilMatrikulasiMhs h in listHasilMatrikulasi)
                         {
-                            if (h.NpmLama == row.Cells["Npm"].Value.ToString())
+                            if (h.Nodaf == row.Cells["Nodaf"].Value.ToString())
                             {
+                                h.SksTotalKonversi = int.Parse(row.Cells["SksTotal"].Value.ToString());
                                 listTemp.Add(h);
                             }
                         }
@@ -220,13 +226,14 @@ namespace KonversiAlihJalur.Report
 
         private void dgvMhs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 3)
+            if (e.ColumnIndex != 4)
             {
                 return;
             }
 
-            DataGridViewCheckBoxCell cb = dgvMhs.Rows[e.RowIndex].Cells["Pilih"] as DataGridViewCheckBoxCell;
-            cb.Value = !bool.Parse(cb.Value.ToString());
+            //DataGridViewCheckBoxCell cb = dgvMhs.Rows[e.RowIndex].Cells["Pilih"] as DataGridViewCheckBoxCell;
+            //cb.Value = !bool.Parse(cb.Value.ToString());
+            dgvMhs.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
     }
 }

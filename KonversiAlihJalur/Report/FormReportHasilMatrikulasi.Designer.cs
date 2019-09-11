@@ -37,7 +37,7 @@ namespace KonversiAlihJalur.Report
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportHasilMatrikulasi));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.hasilMatrikulasiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetAlihJalur = new KonversiAlihJalur.Data.DataSetAlihJalur();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,15 +49,17 @@ namespace KonversiAlihJalur.Report
             this.cmbProgramAlihJalur = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.dgvMhs = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Npm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pilih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.printSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDipilihToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nodaf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Npm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pilih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SksTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.hasilMatrikulasiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetAlihJalur)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -176,9 +178,11 @@ namespace KonversiAlihJalur.Report
             this.dgvMhs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMhs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
+            this.Nodaf,
             this.Npm,
             this.Nama,
-            this.Pilih});
+            this.Pilih,
+            this.SksTotal});
             this.dgvMhs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMhs.Location = new System.Drawing.Point(0, 25);
             this.dgvMhs.MultiSelect = false;
@@ -189,32 +193,6 @@ namespace KonversiAlihJalur.Report
             this.dgvMhs.TabIndex = 20;
             this.dgvMhs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMhs_CellContentClick);
             this.dgvMhs.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMhs_ColumnHeaderMouseClick);
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.Width = 40;
-            // 
-            // Npm
-            // 
-            this.Npm.HeaderText = "NPM";
-            this.Npm.Name = "Npm";
-            this.Npm.Width = 90;
-            // 
-            // Nama
-            // 
-            this.Nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            // 
-            // Pilih
-            // 
-            this.Pilih.HeaderText = "Pilih";
-            this.Pilih.Name = "Pilih";
-            this.Pilih.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Pilih.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Pilih.Width = 50;
             // 
             // toolStrip1
             // 
@@ -241,28 +219,66 @@ namespace KonversiAlihJalur.Report
             // printSemuaToolStripMenuItem
             // 
             this.printSemuaToolStripMenuItem.Name = "printSemuaToolStripMenuItem";
-            this.printSemuaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printSemuaToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.printSemuaToolStripMenuItem.Text = "Print Semua";
             this.printSemuaToolStripMenuItem.Click += new System.EventHandler(this.printSemuaToolStripMenuItem_Click);
             // 
             // printDipilihToolStripMenuItem
             // 
             this.printDipilihToolStripMenuItem.Name = "printDipilihToolStripMenuItem";
-            this.printDipilihToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printDipilihToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.printDipilihToolStripMenuItem.Text = "Print Dipilih";
             this.printDipilihToolStripMenuItem.Click += new System.EventHandler(this.printDipilihToolStripMenuItem_Click);
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DsHasilMatrikulasi";
-            reportDataSource1.Value = this.hasilMatrikulasiBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource4.Name = "DsHasilMatrikulasi";
+            reportDataSource4.Value = this.hasilMatrikulasiBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "KonversiAlihJalur.ReportView.ReportKonversiPerMhs.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(402, 74);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(411, 294);
             this.reportViewer1.TabIndex = 20;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.Width = 40;
+            // 
+            // Nodaf
+            // 
+            this.Nodaf.HeaderText = "Nodaf";
+            this.Nodaf.Name = "Nodaf";
+            // 
+            // Npm
+            // 
+            this.Npm.HeaderText = "NPM";
+            this.Npm.Name = "Npm";
+            this.Npm.Visible = false;
+            this.Npm.Width = 90;
+            // 
+            // Nama
+            // 
+            this.Nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            // 
+            // Pilih
+            // 
+            this.Pilih.HeaderText = "Pilih";
+            this.Pilih.Name = "Pilih";
+            this.Pilih.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pilih.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Pilih.Width = 50;
+            // 
+            // SksTotal
+            // 
+            this.SksTotal.HeaderText = "SksTotal";
+            this.SksTotal.Name = "SksTotal";
+            this.SksTotal.Visible = false;
             // 
             // FormReportHasilMatrikulasi
             // 
@@ -316,8 +332,10 @@ namespace KonversiAlihJalur.Report
         private System.Windows.Forms.ToolStripMenuItem printSemuaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printDipilihToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nodaf;
         private System.Windows.Forms.DataGridViewTextBoxColumn Npm;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Pilih;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SksTotal;
     }
 }

@@ -37,6 +37,8 @@ namespace KonversiAlihJalur
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.cmbLulusan = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbAngkatan = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -54,16 +56,14 @@ namespace KonversiAlihJalur
             this.Approve = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lihatNilaiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.cmbLulusan = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLulusan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAngkatan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgramAlihJalur)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendaftar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbLulusan)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel2
@@ -82,6 +82,33 @@ namespace KonversiAlihJalur
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(840, 130);
             this.gradientPanel2.TabIndex = 19;
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Location = new System.Drawing.Point(6, 74);
+            this.autoLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(54, 16);
+            this.autoLabel3.TabIndex = 13;
+            this.autoLabel3.Text = "Lulusan";
+            // 
+            // cmbLulusan
+            // 
+            this.cmbLulusan.BeforeTouchSize = new System.Drawing.Size(114, 24);
+            this.cmbLulusan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLulusan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLulusan.Items.AddRange(new object[] {
+            "Pilih",
+            "AMIKOM",
+            "Non AMIKOM"});
+            this.cmbLulusan.Location = new System.Drawing.Point(127, 71);
+            this.cmbLulusan.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.cmbLulusan.Name = "cmbLulusan";
+            this.cmbLulusan.Size = new System.Drawing.Size(114, 24);
+            this.cmbLulusan.TabIndex = 12;
+            this.cmbLulusan.Text = "Pilih";
+            this.cmbLulusan.SelectedIndexChanged += new System.EventHandler(this.cmbAngkatan_SelectedIndexChanged);
             // 
             // autoLabel2
             // 
@@ -259,33 +286,6 @@ namespace KonversiAlihJalur
             this.lihatNilaiToolStripMenuItem.Text = "Lihat Nilai";
             this.lihatNilaiToolStripMenuItem.Click += new System.EventHandler(this.lihatNilaiToolStripMenuItem_Click);
             // 
-            // autoLabel3
-            // 
-            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel3.Location = new System.Drawing.Point(6, 74);
-            this.autoLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(54, 16);
-            this.autoLabel3.TabIndex = 13;
-            this.autoLabel3.Text = "Lulusan";
-            // 
-            // cmbLulusan
-            // 
-            this.cmbLulusan.BeforeTouchSize = new System.Drawing.Size(114, 24);
-            this.cmbLulusan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLulusan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLulusan.Items.AddRange(new object[] {
-            "Pilih",
-            "AMIKOM",
-            "Non AMIKOM"});
-            this.cmbLulusan.Location = new System.Drawing.Point(127, 71);
-            this.cmbLulusan.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.cmbLulusan.Name = "cmbLulusan";
-            this.cmbLulusan.Size = new System.Drawing.Size(114, 24);
-            this.cmbLulusan.TabIndex = 12;
-            this.cmbLulusan.Text = "Pilih";
-            this.cmbLulusan.SelectedIndexChanged += new System.EventHandler(this.cmbAngkatan_SelectedIndexChanged);
-            // 
             // FormMatrikulasiCalonAlihJalur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -298,17 +298,17 @@ namespace KonversiAlihJalur
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormMatrikulasiCalonAlihJalur";
-            this.Text = "Data Mahasiswa Alih Jalur AMIKOM";
+            this.Text = "Data Pendaftar Mahasiswa Alih Jalur AMIKOM";
             this.Load += new System.EventHandler(this.FormMatrikulasiCalonAlihJalur_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLulusan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAngkatan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgramAlihJalur)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendaftar)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbLulusan)).EndInit();
             this.ResumeLayout(false);
 
         }

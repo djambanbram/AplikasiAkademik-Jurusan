@@ -148,6 +148,7 @@ namespace KonversiAlihJalur.Dialog
                 h.KodeD3 = row.Cells["KodeD3"].Value.ToString();
                 h.MataKuliahD3 = row.Cells["MataKuliahD3"].Value.ToString();
                 h.SksD3 = int.Parse(row.Cells["SksD3"].Value.ToString());
+                h.NilaiD3 = row.Cells["Nilai"].Value.ToString();
                 h.KodeS1 = row.Cells["KodeS1"].Value.ToString();
                 h.Nilai = row.Cells["Nilai"].Value.ToString();
                 h.Approve = Convert.ToBoolean(row.Cells["Approve"].Value.ToString());

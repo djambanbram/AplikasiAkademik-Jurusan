@@ -301,6 +301,10 @@ namespace KonversiAlihJalur.Data {
             
             private global::System.Data.DataColumn columnNomor;
             
+            private global::System.Data.DataColumn columnSksTotalKonversi;
+            
+            private global::System.Data.DataColumn columnNodaf;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public HasilMatrikulasiDataTable() {
@@ -424,6 +428,22 @@ namespace KonversiAlihJalur.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SksTotalKonversiColumn {
+                get {
+                    return this.columnSksTotalKonversi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NodafColumn {
+                get {
+                    return this.columnNodaf;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +479,7 @@ namespace KonversiAlihJalur.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public HasilMatrikulasiRow AddHasilMatrikulasiRow(string NpmLama, string Nama, string KodeD3, string MataKuliahD3, string SksD3, string Kode, string MataKuliah, string Sks, string Nilai, string Sekolah, string Nomor) {
+            public HasilMatrikulasiRow AddHasilMatrikulasiRow(string NpmLama, string Nama, string KodeD3, string MataKuliahD3, string SksD3, string Kode, string MataKuliah, string Sks, string Nilai, string Sekolah, string Nomor, string SksTotalKonversi, string Nodaf) {
                 HasilMatrikulasiRow rowHasilMatrikulasiRow = ((HasilMatrikulasiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NpmLama,
@@ -472,7 +492,9 @@ namespace KonversiAlihJalur.Data {
                         Sks,
                         Nilai,
                         Sekolah,
-                        Nomor};
+                        Nomor,
+                        SksTotalKonversi,
+                        Nodaf};
                 rowHasilMatrikulasiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowHasilMatrikulasiRow);
                 return rowHasilMatrikulasiRow;
@@ -506,6 +528,8 @@ namespace KonversiAlihJalur.Data {
                 this.columnNilai = base.Columns["Nilai"];
                 this.columnSekolah = base.Columns["Sekolah"];
                 this.columnNomor = base.Columns["Nomor"];
+                this.columnSksTotalKonversi = base.Columns["SksTotalKonversi"];
+                this.columnNodaf = base.Columns["Nodaf"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +557,10 @@ namespace KonversiAlihJalur.Data {
                 base.Columns.Add(this.columnSekolah);
                 this.columnNomor = new global::System.Data.DataColumn("Nomor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNomor);
+                this.columnSksTotalKonversi = new global::System.Data.DataColumn("SksTotalKonversi", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSksTotalKonversi);
+                this.columnNodaf = new global::System.Data.DataColumn("Nodaf", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNodaf);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -851,6 +879,38 @@ namespace KonversiAlihJalur.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SksTotalKonversi {
+                get {
+                    try {
+                        return ((string)(this[this.tableHasilMatrikulasi.SksTotalKonversiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SksTotalKonversi\' in table \'HasilMatrikulasi\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHasilMatrikulasi.SksTotalKonversiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nodaf {
+                get {
+                    try {
+                        return ((string)(this[this.tableHasilMatrikulasi.NodafColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nodaf\' in table \'HasilMatrikulasi\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHasilMatrikulasi.NodafColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNpmLamaNull() {
                 return this.IsNull(this.tableHasilMatrikulasi.NpmLamaColumn);
             }
@@ -979,6 +1039,30 @@ namespace KonversiAlihJalur.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNomorNull() {
                 this[this.tableHasilMatrikulasi.NomorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSksTotalKonversiNull() {
+                return this.IsNull(this.tableHasilMatrikulasi.SksTotalKonversiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSksTotalKonversiNull() {
+                this[this.tableHasilMatrikulasi.SksTotalKonversiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNodafNull() {
+                return this.IsNull(this.tableHasilMatrikulasi.NodafColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNodafNull() {
+                this[this.tableHasilMatrikulasi.NodafColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -26,6 +26,8 @@
               <xs:element name="Nilai" msprop:Generator_ColumnVarNameInTable="columnNilai" msprop:Generator_ColumnPropNameInRow="Nilai" msprop:Generator_ColumnPropNameInTable="NilaiColumn" msprop:Generator_UserColumnName="Nilai" type="xs:string" minOccurs="0" />
               <xs:element name="Sekolah" msprop:Generator_ColumnVarNameInTable="columnSekolah" msprop:Generator_ColumnPropNameInRow="Sekolah" msprop:Generator_ColumnPropNameInTable="SekolahColumn" msprop:Generator_UserColumnName="Sekolah" type="xs:string" minOccurs="0" />
               <xs:element name="Nomor" msprop:Generator_ColumnVarNameInTable="columnNomor" msprop:Generator_ColumnPropNameInRow="Nomor" msprop:Generator_ColumnPropNameInTable="NomorColumn" msprop:Generator_UserColumnName="Nomor" type="xs:string" minOccurs="0" />
+              <xs:element name="SksTotalKonversi" msprop:Generator_ColumnVarNameInTable="columnSksTotalKonversi" msprop:Generator_ColumnPropNameInRow="SksTotalKonversi" msprop:Generator_ColumnPropNameInTable="SksTotalKonversiColumn" msprop:Generator_UserColumnName="SksTotalKonversi" type="xs:string" minOccurs="0" />
+              <xs:element name="Nodaf" msprop:Generator_ColumnVarNameInTable="columnNodaf" msprop:Generator_ColumnPropNameInRow="Nodaf" msprop:Generator_ColumnPropNameInTable="NodafColumn" msprop:Generator_UserColumnName="Nodaf" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

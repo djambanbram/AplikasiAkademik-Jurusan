@@ -252,11 +252,19 @@ namespace PenawaranKurikulum.Report
             }
             else if (!isSemuaFakultas && isPerFakultas)
             {
-                var listNikDosen = listDosenMengajarAll
+                //var listNikDosen = new List<>
+                var listNikDosen = rbSortNama.Checked ? listDosenMengajarAll
                     .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
                     .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
                     .Distinct()
-                    .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
+                    .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah)
+                    .ToList() :
+                    listDosenMengajarAll
+                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Distinct()
+                    .OrderBy(o => o.SemesterDitawarkan).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah)
+                    .ToList();
 
                 int no = 0;
                 var tempNik = string.Empty;
@@ -300,11 +308,18 @@ namespace PenawaranKurikulum.Report
             }
             else
             {
-                var listNikDosen = listDosenMengajarAll
+                var listNikDosen = rbSortNama.Checked ? listDosenMengajarAll
                     .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
                     .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
                     .Distinct().Where(w => w.KodeProgram == cmbProgram.SelectedValue.ToString())
-                    .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah);
+                    .OrderBy(o => o.NamaDosen).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah)
+                    .ToList() :
+                    listDosenMengajarAll
+                    .Select(x => new { x.NamaAlias, x.KodeKelas, x.KodeFakultas, x.NIK, x.NamaDosen, x.Kode, x.MataKuliah, x.Jenjang, x.JenisMataKuliah, x.SksTeori, x.SksTotal, x.SksPraktikum, x.IdProdi, x.NamaProdi, x.KodeProgram, x.SemesterDitawarkan, x.NamaProgram })
+                    .Select(y => new { y.NamaAlias, y.KodeKelas, y.KodeFakultas, y.NIK, y.NamaDosen, y.Kode, y.MataKuliah, y.Jenjang, JenisMataKuliah = (y.SksPraktikum == 0 ? "T" : y.SksTeori == 0 ? "P" : "TP"), y.SksTeori, y.SksPraktikum, y.SksTotal, y.IdProdi, y.NamaProdi, y.KodeProgram, y.SemesterDitawarkan, y.NamaProgram })
+                    .Distinct().Where(w => w.KodeProgram == cmbProgram.SelectedValue.ToString())
+                    .OrderBy(o => o.SemesterDitawarkan).ThenBy(p => p.KodeKelas).ThenBy(q => q.MataKuliah)
+                    .ToList();
 
                 int no = 0;
                 var tempNik = string.Empty;
@@ -349,8 +364,22 @@ namespace PenawaranKurikulum.Report
             string DataSetName = string.Empty;
             string ReportPath = string.Empty;
             ReportDataSource rds = null;
-            ReportPath = "PenawaranKurikulum.ReportVieew.ReportAlokasiDosenAll.rdlc";
-            rds = new ReportDataSource("DsAlokasiDosenAll", listReportKesediaanDosen);
+            if (rbSortNama.Checked)
+            {
+                ReportPath = "PenawaranKurikulum.ReportVieew.ReportAlokasiDosenAll.rdlc";
+            }
+            else
+            {
+                ReportPath = "PenawaranKurikulum.ReportVieew.ReportAlokasiDosenAllBySemester.rdlc";
+            }
+            if (rbSortNama.Checked)
+            {
+                rds = new ReportDataSource("DsAlokasiDosenAll", listReportKesediaanDosen);
+            }
+            else
+            {
+                rds = new ReportDataSource("DsAlokasiDosenAll", listReportKesediaanDosen);
+            }
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(rds);
             reportViewer1.LocalReport.ReportEmbeddedResource = ReportPath;

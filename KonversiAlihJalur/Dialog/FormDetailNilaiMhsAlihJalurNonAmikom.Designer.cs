@@ -37,6 +37,8 @@ namespace KonversiAlihJalur.Dialog
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.txtNodaf = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtNama = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.txtNpmLama = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -44,6 +46,7 @@ namespace KonversiAlihJalur.Dialog
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnGenerateExcel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnImportExcel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
@@ -51,9 +54,6 @@ namespace KonversiAlihJalur.Dialog
             this.approveSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.approveKecualiNilaiDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hapusApproveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtNodaf = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnGenerateExcel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KodeD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,12 +68,12 @@ namespace KonversiAlihJalur.Dialog
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNodaf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNama)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNpmLama)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNodaf)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel2
@@ -91,6 +91,27 @@ namespace KonversiAlihJalur.Dialog
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Size = new System.Drawing.Size(870, 103);
             this.gradientPanel2.TabIndex = 20;
+            // 
+            // txtNodaf
+            // 
+            this.txtNodaf.BeforeTouchSize = new System.Drawing.Size(136, 25);
+            this.txtNodaf.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNodaf.Location = new System.Drawing.Point(86, 36);
+            this.txtNodaf.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtNodaf.Name = "txtNodaf";
+            this.txtNodaf.ReadOnly = true;
+            this.txtNodaf.Size = new System.Drawing.Size(136, 25);
+            this.txtNodaf.TabIndex = 14;
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Location = new System.Drawing.Point(6, 41);
+            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(45, 16);
+            this.autoLabel2.TabIndex = 13;
+            this.autoLabel2.Text = "Nodaf";
             // 
             // txtNama
             // 
@@ -175,6 +196,19 @@ namespace KonversiAlihJalur.Dialog
             this.btnSimpan.Text = "Simpan";
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
+            // btnGenerateExcel
+            // 
+            this.btnGenerateExcel.BeforeTouchSize = new System.Drawing.Size(140, 28);
+            this.btnGenerateExcel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateExcel.IsBackStageButton = false;
+            this.btnGenerateExcel.Location = new System.Drawing.Point(468, 5);
+            this.btnGenerateExcel.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btnGenerateExcel.Name = "btnGenerateExcel";
+            this.btnGenerateExcel.Size = new System.Drawing.Size(140, 28);
+            this.btnGenerateExcel.TabIndex = 5;
+            this.btnGenerateExcel.Text = "Generate File Excel";
+            this.btnGenerateExcel.Click += new System.EventHandler(this.btnGenerateExcel_Click);
+            // 
             // btnImportExcel
             // 
             this.btnImportExcel.BeforeTouchSize = new System.Drawing.Size(126, 28);
@@ -257,40 +291,6 @@ namespace KonversiAlihJalur.Dialog
             this.hapusApproveToolStripMenuItem.Text = "Hapus Approve";
             this.hapusApproveToolStripMenuItem.Click += new System.EventHandler(this.hapusApproveToolStripMenuItem_Click);
             // 
-            // txtNodaf
-            // 
-            this.txtNodaf.BeforeTouchSize = new System.Drawing.Size(136, 25);
-            this.txtNodaf.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNodaf.Location = new System.Drawing.Point(86, 36);
-            this.txtNodaf.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtNodaf.Name = "txtNodaf";
-            this.txtNodaf.ReadOnly = true;
-            this.txtNodaf.Size = new System.Drawing.Size(136, 25);
-            this.txtNodaf.TabIndex = 14;
-            // 
-            // autoLabel2
-            // 
-            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.Location = new System.Drawing.Point(6, 41);
-            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(45, 16);
-            this.autoLabel2.TabIndex = 13;
-            this.autoLabel2.Text = "Nodaf";
-            // 
-            // btnGenerateExcel
-            // 
-            this.btnGenerateExcel.BeforeTouchSize = new System.Drawing.Size(140, 28);
-            this.btnGenerateExcel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateExcel.IsBackStageButton = false;
-            this.btnGenerateExcel.Location = new System.Drawing.Point(468, 5);
-            this.btnGenerateExcel.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
-            this.btnGenerateExcel.Name = "btnGenerateExcel";
-            this.btnGenerateExcel.Size = new System.Drawing.Size(140, 28);
-            this.btnGenerateExcel.TabIndex = 5;
-            this.btnGenerateExcel.Text = "Generate File Excel";
-            this.btnGenerateExcel.Click += new System.EventHandler(this.btnGenerateExcel_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -362,6 +362,7 @@ namespace KonversiAlihJalur.Dialog
             this.Hapus.Name = "Hapus";
             this.Hapus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Hapus.Text = "Hapus";
+            this.Hapus.Visible = false;
             this.Hapus.VisitedLinkColor = System.Drawing.Color.Blue;
             this.Hapus.Width = 51;
             // 
@@ -393,12 +394,12 @@ namespace KonversiAlihJalur.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).EndInit();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNodaf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNama)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNpmLama)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtNodaf)).EndInit();
             this.ResumeLayout(false);
 
         }

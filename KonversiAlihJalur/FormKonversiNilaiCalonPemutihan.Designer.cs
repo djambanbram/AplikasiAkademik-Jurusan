@@ -37,11 +37,6 @@ namespace KonversiAlihJalur
         {
             this.components = new System.ComponentModel.Container();
             this.lihatNilaiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Approve = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Npm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nodaf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -57,6 +52,11 @@ namespace KonversiAlihJalur
             this.cmbProdi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nodaf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Npm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Approve = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAngkatan)).BeginInit();
@@ -71,51 +71,16 @@ namespace KonversiAlihJalur
             // lihatNilaiToolStripMenuItem
             // 
             this.lihatNilaiToolStripMenuItem.Name = "lihatNilaiToolStripMenuItem";
-            this.lihatNilaiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lihatNilaiToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.lihatNilaiToolStripMenuItem.Text = "Lihat Nilai";
             this.lihatNilaiToolStripMenuItem.Click += new System.EventHandler(this.lihatNilaiToolStripMenuItem_Click);
-            // 
-            // Approve
-            // 
-            this.Approve.HeaderText = "Approve";
-            this.Approve.Name = "Approve";
-            this.Approve.ReadOnly = true;
-            this.Approve.Width = 70;
-            // 
-            // Nama
-            // 
-            this.Nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            // 
-            // Npm
-            // 
-            this.Npm.HeaderText = "NPM";
-            this.Npm.Name = "Npm";
-            this.Npm.ReadOnly = true;
-            this.Npm.Width = 80;
-            // 
-            // Nodaf
-            // 
-            this.Nodaf.HeaderText = "Nodaf";
-            this.Nodaf.Name = "Nodaf";
-            this.Nodaf.ReadOnly = true;
-            this.Nodaf.Width = 80;
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 50;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lihatNilaiToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
             // 
             // btnTutup
             // 
@@ -293,6 +258,41 @@ namespace KonversiAlihJalur
             this.cmbFakultas.TabIndex = 12;
             this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
             // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 50;
+            // 
+            // Nodaf
+            // 
+            this.Nodaf.HeaderText = "Nodaf";
+            this.Nodaf.Name = "Nodaf";
+            this.Nodaf.ReadOnly = true;
+            this.Nodaf.Width = 80;
+            // 
+            // Npm
+            // 
+            this.Npm.HeaderText = "NPM LAMA";
+            this.Npm.Name = "Npm";
+            this.Npm.ReadOnly = true;
+            this.Npm.Width = 80;
+            // 
+            // Nama
+            // 
+            this.Nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            // 
+            // Approve
+            // 
+            this.Approve.HeaderText = "Approve";
+            this.Approve.Name = "Approve";
+            this.Approve.ReadOnly = true;
+            this.Approve.Width = 70;
+            // 
             // FormKonversiNilaiCalonPemutihan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -324,11 +324,6 @@ namespace KonversiAlihJalur
         #endregion
 
         private System.Windows.Forms.ToolStripMenuItem lihatNilaiToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Approve;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Npm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nodaf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProgram;
@@ -344,5 +339,10 @@ namespace KonversiAlihJalur
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProdi;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbFakultas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nodaf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Npm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Approve;
     }
 }

@@ -36,9 +36,13 @@ namespace PenawaranKurikulum.Report
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.rbSortSemester = new System.Windows.Forms.RadioButton();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.rbSortNama = new System.Windows.Forms.RadioButton();
+            this.btnProses = new Syncfusion.Windows.Forms.ButtonAdv();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbSemester = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -53,7 +57,6 @@ namespace PenawaranKurikulum.Report
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnManual = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.btnProses = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester)).BeginInit();
@@ -67,18 +70,21 @@ namespace PenawaranKurikulum.Report
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "dsAlokasiDosen";
-            reportDataSource3.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource2.Name = "dsAlokasiDosen";
+            reportDataSource2.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PenawaranKurikulum.ReportVieew.ReportAlokasiDosen.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 204);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 142);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(820, 175);
+            this.reportViewer1.Size = new System.Drawing.Size(820, 237);
             this.reportViewer1.TabIndex = 20;
             // 
             // gradientPanel2
             // 
             this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel2.Controls.Add(this.rbSortSemester);
+            this.gradientPanel2.Controls.Add(this.autoLabel3);
+            this.gradientPanel2.Controls.Add(this.rbSortNama);
             this.gradientPanel2.Controls.Add(this.btnProses);
             this.gradientPanel2.Controls.Add(this.autoLabel7);
             this.gradientPanel2.Controls.Add(this.autoLabel6);
@@ -93,8 +99,51 @@ namespace PenawaranKurikulum.Report
             this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(820, 204);
+            this.gradientPanel2.Size = new System.Drawing.Size(820, 142);
             this.gradientPanel2.TabIndex = 19;
+            // 
+            // rbSortSemester
+            // 
+            this.rbSortSemester.AutoSize = true;
+            this.rbSortSemester.Location = new System.Drawing.Point(238, 71);
+            this.rbSortSemester.Name = "rbSortSemester";
+            this.rbSortSemester.Size = new System.Drawing.Size(80, 21);
+            this.rbSortSemester.TabIndex = 23;
+            this.rbSortSemester.TabStop = true;
+            this.rbSortSemester.Text = "Semester";
+            this.rbSortSemester.UseVisualStyleBackColor = true;
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Location = new System.Drawing.Point(3, 71);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(130, 17);
+            this.autoLabel3.TabIndex = 22;
+            this.autoLabel3.Text = "Urutkan berdasarkan";
+            // 
+            // rbSortNama
+            // 
+            this.rbSortNama.AutoSize = true;
+            this.rbSortNama.Checked = true;
+            this.rbSortNama.Location = new System.Drawing.Point(171, 71);
+            this.rbSortNama.Name = "rbSortNama";
+            this.rbSortNama.Size = new System.Drawing.Size(61, 21);
+            this.rbSortNama.TabIndex = 21;
+            this.rbSortNama.TabStop = true;
+            this.rbSortNama.Text = "Nama";
+            this.rbSortNama.UseVisualStyleBackColor = true;
+            // 
+            // btnProses
+            // 
+            this.btnProses.BeforeTouchSize = new System.Drawing.Size(82, 30);
+            this.btnProses.IsBackStageButton = false;
+            this.btnProses.Location = new System.Drawing.Point(171, 99);
+            this.btnProses.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnProses.Name = "btnProses";
+            this.btnProses.Size = new System.Drawing.Size(82, 30);
+            this.btnProses.TabIndex = 20;
+            this.btnProses.Text = "Proses";
+            this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
             // 
             // autoLabel7
             // 
@@ -114,28 +163,28 @@ namespace PenawaranKurikulum.Report
             // 
             // cmbSemester
             // 
-            this.cmbSemester.BeforeTouchSize = new System.Drawing.Size(361, 25);
+            this.cmbSemester.BeforeTouchSize = new System.Drawing.Size(225, 25);
             this.cmbSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSemester.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSemester.Location = new System.Drawing.Point(110, 34);
+            this.cmbSemester.Location = new System.Drawing.Point(171, 34);
             this.cmbSemester.Name = "cmbSemester";
-            this.cmbSemester.Size = new System.Drawing.Size(361, 25);
+            this.cmbSemester.Size = new System.Drawing.Size(225, 25);
             this.cmbSemester.TabIndex = 17;
             // 
             // cmbTahunAkademik
             // 
-            this.cmbTahunAkademik.BeforeTouchSize = new System.Drawing.Size(361, 25);
+            this.cmbTahunAkademik.BeforeTouchSize = new System.Drawing.Size(225, 25);
             this.cmbTahunAkademik.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTahunAkademik.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTahunAkademik.Location = new System.Drawing.Point(110, 3);
+            this.cmbTahunAkademik.Location = new System.Drawing.Point(171, 3);
             this.cmbTahunAkademik.Name = "cmbTahunAkademik";
-            this.cmbTahunAkademik.Size = new System.Drawing.Size(361, 25);
+            this.cmbTahunAkademik.Size = new System.Drawing.Size(225, 25);
             this.cmbTahunAkademik.TabIndex = 16;
             // 
             // autoLabel2
             // 
             this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.Location = new System.Drawing.Point(2, 128);
+            this.autoLabel2.Location = new System.Drawing.Point(424, 66);
             this.autoLabel2.Name = "autoLabel2";
             this.autoLabel2.Size = new System.Drawing.Size(60, 16);
             this.autoLabel2.TabIndex = 12;
@@ -143,19 +192,19 @@ namespace PenawaranKurikulum.Report
             // 
             // cmbProgram
             // 
-            this.cmbProgram.BeforeTouchSize = new System.Drawing.Size(361, 24);
+            this.cmbProgram.BeforeTouchSize = new System.Drawing.Size(225, 24);
             this.cmbProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProgram.Location = new System.Drawing.Point(110, 126);
+            this.cmbProgram.Location = new System.Drawing.Point(532, 64);
             this.cmbProgram.Name = "cmbProgram";
-            this.cmbProgram.Size = new System.Drawing.Size(361, 24);
+            this.cmbProgram.Size = new System.Drawing.Size(225, 24);
             this.cmbProgram.TabIndex = 11;
             this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
             // 
             // autoLabel15
             // 
             this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel15.Location = new System.Drawing.Point(2, 98);
+            this.autoLabel15.Location = new System.Drawing.Point(424, 36);
             this.autoLabel15.Name = "autoLabel15";
             this.autoLabel15.Size = new System.Drawing.Size(93, 16);
             this.autoLabel15.TabIndex = 8;
@@ -163,29 +212,29 @@ namespace PenawaranKurikulum.Report
             // 
             // cmbProdi
             // 
-            this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(361, 24);
+            this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(225, 24);
             this.cmbProdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProdi.Location = new System.Drawing.Point(110, 96);
+            this.cmbProdi.Location = new System.Drawing.Point(532, 34);
             this.cmbProdi.Name = "cmbProdi";
-            this.cmbProdi.Size = new System.Drawing.Size(361, 24);
+            this.cmbProdi.Size = new System.Drawing.Size(225, 24);
             this.cmbProdi.TabIndex = 2;
             this.cmbProdi.SelectedIndexChanged += new System.EventHandler(this.cmbProdi_SelectedIndexChanged);
             // 
             // cmbFakultas
             // 
-            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(361, 25);
+            this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(225, 25);
             this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFakultas.Location = new System.Drawing.Point(110, 65);
+            this.cmbFakultas.Location = new System.Drawing.Point(532, 3);
             this.cmbFakultas.Name = "cmbFakultas";
-            this.cmbFakultas.Size = new System.Drawing.Size(361, 25);
+            this.cmbFakultas.Size = new System.Drawing.Size(225, 25);
             this.cmbFakultas.TabIndex = 1;
             this.cmbFakultas.SelectedIndexChanged += new System.EventHandler(this.cmbFakultas_SelectedIndexChanged);
             // 
             // autoLabel1
             // 
-            this.autoLabel1.Location = new System.Drawing.Point(3, 67);
+            this.autoLabel1.Location = new System.Drawing.Point(425, 5);
             this.autoLabel1.Name = "autoLabel1";
             this.autoLabel1.Size = new System.Drawing.Size(54, 17);
             this.autoLabel1.TabIndex = 1;
@@ -238,18 +287,6 @@ namespace PenawaranKurikulum.Report
             this.progressBar1.TabIndex = 3;
             this.progressBar1.Visible = false;
             // 
-            // btnProses
-            // 
-            this.btnProses.BeforeTouchSize = new System.Drawing.Size(82, 30);
-            this.btnProses.IsBackStageButton = false;
-            this.btnProses.Location = new System.Drawing.Point(110, 157);
-            this.btnProses.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnProses.Name = "btnProses";
-            this.btnProses.Size = new System.Drawing.Size(82, 30);
-            this.btnProses.TabIndex = 20;
-            this.btnProses.Text = "Proses";
-            this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
-            // 
             // FormReportAlokasiDosen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -296,5 +333,8 @@ namespace PenawaranKurikulum.Report
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private Syncfusion.Windows.Forms.ButtonAdv btnProses;
+        private System.Windows.Forms.RadioButton rbSortSemester;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
+        private System.Windows.Forms.RadioButton rbSortNama;
     }
 }

@@ -58,7 +58,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>NPM Diploma</Value>
+                                  <Value>No. Pendaftaran</Value>
                                   <Style>
                                     <FontFamily>times New Roman</FontFamily>
                                   </Style>
@@ -71,7 +71,7 @@
                           <Top>0.27861in</Top>
                           <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>0.96245in</Width>
+                          <Width>1.09092in</Width>
                           <ZIndex>1</ZIndex>
                           <Style>
                             <Border>
@@ -104,7 +104,7 @@
                           <Top>0.47861in</Top>
                           <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>0.96245in</Width>
+                          <Width>1.09092in</Width>
                           <ZIndex>2</ZIndex>
                           <Style>
                             <Border>
@@ -137,7 +137,7 @@
                           <Top>0.67861in</Top>
                           <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>0.96244in</Width>
+                          <Width>1.09091in</Width>
                           <ZIndex>3</ZIndex>
                           <Style>
                             <Border>
@@ -170,7 +170,7 @@
                           <Top>0.87861in</Top>
                           <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>0.96245in</Width>
+                          <Width>1.09092in</Width>
                           <ZIndex>4</ZIndex>
                           <Style>
                             <Border>
@@ -203,7 +203,7 @@
                           <Top>1.07861in</Top>
                           <Left>0.25in</Left>
                           <Height>0.25in</Height>
-                          <Width>0.96245in</Width>
+                          <Width>1.09092in</Width>
                           <ZIndex>5</ZIndex>
                           <Style>
                             <Border>
@@ -223,7 +223,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+Fields!NpmLama.Value</Value>
+                                  <Value>=": "+Fields!Nodaf.Value</Value>
                                   <Style>
                                     <FontFamily>times New Roman</FontFamily>
                                   </Style>
@@ -234,9 +234,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.27861in</Top>
-                          <Left>1.21245in</Left>
+                          <Left>1.41037in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.60338in</Width>
+                          <Width>6.40546in</Width>
                           <ZIndex>6</ZIndex>
                           <Style>
                             <Border>
@@ -267,9 +267,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.47861in</Top>
-                          <Left>1.21245in</Left>
+                          <Left>1.41037in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.60338in</Width>
+                          <Width>6.40546in</Width>
                           <ZIndex>7</ZIndex>
                           <Style>
                             <Border>
@@ -300,9 +300,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.67861in</Top>
-                          <Left>1.21245in</Left>
+                          <Left>1.41037in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.60338in</Width>
+                          <Width>6.40546in</Width>
                           <ZIndex>8</ZIndex>
                           <Style>
                             <Border>
@@ -333,9 +333,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>0.87861in</Top>
-                          <Left>1.21245in</Left>
+                          <Left>1.41037in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.60338in</Width>
+                          <Width>6.40546in</Width>
                           <ZIndex>9</ZIndex>
                           <Style>
                             <Border>
@@ -366,9 +366,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Top>1.07861in</Top>
-                          <Left>1.21245in</Left>
+                          <Left>1.41037in</Left>
                           <Height>0.25in</Height>
-                          <Width>6.60338in</Width>
+                          <Width>6.40546in</Width>
                           <ZIndex>10</ZIndex>
                           <Style>
                             <Border>
@@ -715,9 +715,10 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Fields!Nomor.Value</Value>
+                                                <Value>=RowNumber("Details")</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -752,6 +753,7 @@
                                                 <Value>=Fields!KodeD3.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -784,6 +786,7 @@
                                                 <Value>=Fields!MataKuliahD3.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -816,6 +819,7 @@
                                                 <Value>=Fields!SksD3.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -850,6 +854,7 @@
                                                 <Value>=Fields!Kode.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -882,6 +887,7 @@
                                                 <Value>=Fields!MataKuliah.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -914,6 +920,7 @@
                                                 <Value>=Fields!Sks.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -948,6 +955,7 @@
                                                 <Value>=Fields!Nilai.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -1017,14 +1025,14 @@
                                   <TablixCell />
                                   <TablixCell>
                                     <CellContents>
-                                      <Textbox Name="Textbox43">
+                                      <Textbox Name="SksTotalKonversi">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=SUM(int32.Parse(Fields!Sks.Value.ToString()))</Value>
+                                                <Value>=Fields!SksTotalKonversi.Value</Value>
                                                 <Style>
                                                   <FontFamily>Times New Roman</FontFamily>
                                                 </Style>
@@ -1035,7 +1043,7 @@
                                             </Style>
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>Textbox43</rd:DefaultName>
+                                        <rd:DefaultName>SksTotalKonversi</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Style>Solid</Style>
@@ -1097,219 +1105,240 @@
                             </Border>
                           </Style>
                         </Tablix>
-                        <Textbox Name="Textbox17">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Calon Mahasiswa</Value>
+                        <Rectangle Name="Rectangle1">
+                          <ReportItems>
+                            <Textbox Name="Textbox18">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Nama.Value</Value>
+                                      <Style>
+                                        <FontFamily>times New Roman</FontFamily>
+                                        <TextDecoration>Underline</TextDecoration>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
                                   <Style>
-                                    <FontFamily>times New Roman</FontFamily>
+                                    <TextAlign>Center</TextAlign>
                                   </Style>
-                                </TextRun>
-                              </TextRuns>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox6</rd:DefaultName>
+                              <Top>1.075in</Top>
+                              <Height>0.25in</Height>
+                              <Width>3.11666in</Width>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                            </Textbox>
+                            <Textbox Name="Textbox17">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Calon Mahasiswa</Value>
+                                      <Style>
+                                        <FontFamily>times New Roman</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox6</rd:DefaultName>
+                              <Left>0.01688in</Left>
+                              <Height>0.25in</Height>
+                              <Width>3.11666in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
                           <Top>2.41979in</Top>
-                          <Left>0.17313in</Left>
-                          <Height>0.25in</Height>
-                          <Width>3.11666in</Width>
+                          <Left>0.15625in</Left>
+                          <Height>1.325in</Height>
+                          <Width>3.13354in</Width>
                           <ZIndex>12</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox18">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Nama.Value</Value>
+                        </Rectangle>
+                        <Rectangle Name="Rectangle3">
+                          <ReportItems>
+                            <Textbox Name="Textbox22">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Parameters!NikKaprodi.Value</Value>
+                                      <Style>
+                                        <FontFamily>times New Roman</FontFamily>
+                                        <TextDecoration>None</TextDecoration>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
                                   <Style>
-                                    <FontFamily>times New Roman</FontFamily>
-                                    <TextDecoration>Underline</TextDecoration>
+                                    <TextAlign>Center</TextAlign>
                                   </Style>
-                                </TextRun>
-                              </TextRuns>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox6</rd:DefaultName>
+                              <Top>1.475in</Top>
+                              <Height>0.25in</Height>
+                              <Width>3.36979in</Width>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>3.49479in</Top>
-                          <Left>0.15625in</Left>
-                          <Height>0.25in</Height>
-                          <Width>3.11666in</Width>
+                            </Textbox>
+                            <Textbox Name="Textbox19">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Parameters!Kaprodi.Value</Value>
+                                      <Style>
+                                        <FontFamily>times New Roman</FontFamily>
+                                        <TextDecoration>Underline</TextDecoration>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox6</rd:DefaultName>
+                              <Top>1.275in</Top>
+                              <Height>0.25in</Height>
+                              <Width>3.36979in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox20">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>="Kepala Program Studi "+Parameters!Prodi.Value</Value>
+                                      <Style>
+                                        <FontFamily>times New Roman</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox6</rd:DefaultName>
+                              <Top>0.2in</Top>
+                              <Height>0.25in</Height>
+                              <Width>3.38667in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox21">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>="Yogyakarta, "+Parameters!TanggalCetak.Value</Value>
+                                      <Style>
+                                        <FontFamily>times New Roman</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox6</rd:DefaultName>
+                              <Height>0.25in</Height>
+                              <Width>3.38667in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Top>2.21979in</Top>
+                          <Left>4.44604in</Left>
+                          <Height>1.725in</Height>
+                          <Width>3.38667in</Width>
                           <ZIndex>13</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox19">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Parameters!Kaprodi.Value</Value>
-                                  <Style>
-                                    <FontFamily>times New Roman</FontFamily>
-                                    <TextDecoration>Underline</TextDecoration>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>3.49479in</Top>
-                          <Left>4.44604in</Left>
-                          <Height>0.25in</Height>
-                          <Width>3.36979in</Width>
-                          <ZIndex>14</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox20">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>="Kepala Program Studi "+Parameters!Prodi.Value</Value>
-                                  <Style>
-                                    <FontFamily>times New Roman</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>2.41979in</Top>
-                          <Left>4.44604in</Left>
-                          <Height>0.25in</Height>
-                          <Width>3.38667in</Width>
-                          <ZIndex>15</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox21">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>="Yogyakarta, "+Parameters!TanggalCetak.Value</Value>
-                                  <Style>
-                                    <FontFamily>times New Roman</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>2.21979in</Top>
-                          <Left>4.44604in</Left>
-                          <Height>0.25in</Height>
-                          <Width>3.38667in</Width>
-                          <ZIndex>16</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox22">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Parameters!NikKaprodi.Value</Value>
-                                  <Style>
-                                    <FontFamily>times New Roman</FontFamily>
-                                    <TextDecoration>None</TextDecoration>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
-                          <Top>3.69479in</Top>
-                          <Left>4.44604in</Left>
-                          <Height>0.25in</Height>
-                          <Width>3.36979in</Width>
-                          <ZIndex>17</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
+                        </Rectangle>
                       </ReportItems>
                       <KeepTogether>true</KeepTogether>
                       <Style>
@@ -1318,6 +1347,7 @@
                         </Border>
                       </Style>
                     </Rectangle>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -1334,7 +1364,7 @@
             <TablixMember>
               <Group Name="Details">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!NpmLama.Value</GroupExpression>
+                  <GroupExpression>=Fields!Nodaf.Value</GroupExpression>
                 </GroupExpressions>
                 <PageBreak>
                   <BreakLocation>Between</BreakLocation>
@@ -1600,10 +1630,18 @@
           <DataField>Nomor</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SksTotalKonversi">
+          <DataField>SksTotalKonversi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nodaf">
+          <DataField>Nodaf</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSetAlihJalur</rd:DataSetName>
-        <rd:SchemaPath>D:\Upgrade Aplikasi Desktop 2015\AplikasiAkademik-Jurusan\KonversiAlihJalur\Data\DataSetAlihJalur.xsd</rd:SchemaPath>
+        <rd:SchemaPath>E:\Upgrade Aplikasi Desktop 2015\AplikasiAkademik-Jurusan\KonversiAlihJalur\Data\DataSetAlihJalur.xsd</rd:SchemaPath>
         <rd:TableName>HasilMatrikulasi</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

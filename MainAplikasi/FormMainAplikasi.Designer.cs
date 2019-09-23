@@ -56,6 +56,7 @@ namespace MainAplikasi
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.stripLabelSession = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblTahunAkademik = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuKelasCampuran = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemSatuProgramKelasCampuran = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLintasProgramKelasCampuran = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,7 +81,6 @@ namespace MainAplikasi
             this.menuHonorDosen = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblTahunAkademik = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xpTaskBar1)).BeginInit();
             this.xpTaskBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxMataKuliah)).BeginInit();
@@ -299,10 +299,11 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Mata Kuliah ", System.Drawing.Color.Empty, 1, null, "", true, true, "itemLaporanMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemLaporanDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Laporan Pemutihan", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanPemutihan", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
             this.BoxLaporan.Location = new System.Drawing.Point(0, 528);
             this.BoxLaporan.Name = "BoxLaporan";
-            this.BoxLaporan.Size = new System.Drawing.Size(264, 130);
+            this.BoxLaporan.Size = new System.Drawing.Size(264, 154);
             this.BoxLaporan.TabIndex = 4;
             this.BoxLaporan.Text = "Laporan";
             this.BoxLaporan.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
@@ -331,7 +332,7 @@ namespace MainAplikasi
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Cek Update Aplikasi", System.Drawing.Color.Empty, 2, null, "", true, true, "itemUpdate", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 658);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 682);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 82);
             this.BoxKeluar.TabIndex = 3;
@@ -381,6 +382,12 @@ namespace MainAplikasi
             this.stripLabelSession.Name = "stripLabelSession";
             this.stripLabelSession.Size = new System.Drawing.Size(157, 21);
             this.stripLabelSession.Text = "toolStripStatusLabel1";
+            // 
+            // lblTahunAkademik
+            // 
+            this.lblTahunAkademik.Name = "lblTahunAkademik";
+            this.lblTahunAkademik.Size = new System.Drawing.Size(157, 21);
+            this.lblTahunAkademik.Text = "toolStripStatusLabel1";
             // 
             // menuKelasCampuran
             // 
@@ -522,19 +529,19 @@ namespace MainAplikasi
             this.prodiRegulerToolStripItem,
             this.ProdiStudentExchangeToolStripItem});
             this.menuAlokasiMataKuliah.Name = "menuAlokasiDosen";
-            this.menuAlokasiMataKuliah.Size = new System.Drawing.Size(200, 48);
+            this.menuAlokasiMataKuliah.Size = new System.Drawing.Size(201, 48);
             // 
             // prodiRegulerToolStripItem
             // 
             this.prodiRegulerToolStripItem.Name = "prodiRegulerToolStripItem";
-            this.prodiRegulerToolStripItem.Size = new System.Drawing.Size(199, 22);
+            this.prodiRegulerToolStripItem.Size = new System.Drawing.Size(200, 22);
             this.prodiRegulerToolStripItem.Text = "Prodi Reguler";
             this.prodiRegulerToolStripItem.Click += new System.EventHandler(this.prodiRegulerToolStripItem_Click);
             // 
             // ProdiStudentExchangeToolStripItem
             // 
             this.ProdiStudentExchangeToolStripItem.Name = "ProdiStudentExchangeToolStripItem";
-            this.ProdiStudentExchangeToolStripItem.Size = new System.Drawing.Size(199, 22);
+            this.ProdiStudentExchangeToolStripItem.Size = new System.Drawing.Size(200, 22);
             this.ProdiStudentExchangeToolStripItem.Text = "Prodi Student Exchange";
             this.ProdiStudentExchangeToolStripItem.Click += new System.EventHandler(this.ProdiStudentExchangeToolStripItem_Click);
             // 
@@ -559,12 +566,6 @@ namespace MainAplikasi
             this.toolStripMenuItem4.Size = new System.Drawing.Size(197, 22);
             this.toolStripMenuItem4.Text = "Honor Dosen Ujian";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // lblTahunAkademik
-            // 
-            this.lblTahunAkademik.Name = "lblTahunAkademik";
-            this.lblTahunAkademik.Size = new System.Drawing.Size(157, 21);
-            this.lblTahunAkademik.Text = "toolStripStatusLabel1";
             // 
             // FormMainAplikasi
             // 

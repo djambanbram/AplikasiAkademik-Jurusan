@@ -105,6 +105,7 @@ namespace Dosen.Report
 
             cmbTahunAkademik.Text = LoginAccess.TahunAkademik;
             cmbSemester.Text = LoginAccess.Semester;
+            cmbTimPengajar.SelectedIndex = 0;
 
             dgvHonor.Rows.Clear();
             rbChecked(sender, e);
@@ -235,13 +236,13 @@ namespace Dosen.Report
             }
 
             var listDataFix = listTemp
-                .Select(h => new { h.NIK, h.NamaDosen, h.BebanSks, h.KategoriDosen, h.NamaProgram, h.JenisMataKuliah, h.Kode, h.MataKuliah, h.SksTp, h.JenjangPendidikan, h.Golongan, h.HFix, h.HVar, h.Npwp, h.NoRekeningBank, h.NamaBank, h.KodeProgram, h.IdProdi, h.KodeFakultas })
+                .Select(h => new { h.IsTeachingTeam, h.NIK, h.NamaDosen, h.BebanSks, h.KategoriDosen, h.NamaProgram, h.JenisMataKuliah, h.Kode, h.MataKuliah, h.SksTp, h.JenjangPendidikan, h.Golongan, h.HFix, h.HVar, h.Npwp, h.NoRekeningBank, h.NamaBank, h.KodeProgram, h.IdProdi, h.KodeFakultas })
                 .Distinct()
                 .ToList();
             decimal pajak = 0;
             var pertemuanPerSKs = 7;
-            var tempBeban = 0;
-            var viewTempBeban = 0;
+            decimal tempBeban = 0;
+            decimal viewTempBeban = 0;
             var tempNik = string.Empty;
             foreach (var h in listDataFix)
             {
@@ -362,6 +363,7 @@ namespace Dosen.Report
                 d.KodeProgram = h.KodeProgram;
                 d.IdProdi = h.IdProdi;
                 d.KodeFakultas = h.KodeFakultas;
+                d.IsTeachingTeam = h.IsTeachingTeam;
                 listDataHonorDosenMengajar.Add(d);
 
                 if (tempBeban <= jmlSksTotal && tempBeban != 0)
@@ -374,28 +376,41 @@ namespace Dosen.Report
                 }
             }
 
-            DataTable dtHonor = Lib.CommonLib.ToDataTable(listDataHonorDosenMengajar);
+            //DataTable dtHonor = Lib.CommonLib.ToDataTable(listDataHonorDosenMengajar);
+            var tempListByJenisPengajar = new List<DataHonorDosenMengajar>();
+            if(cmbTimPengajar.SelectedIndex == 0)
+            {
+                tempListByJenisPengajar = listDataHonorDosenMengajar;
+            }
+            else if(cmbTimPengajar.SelectedIndex == 1)
+            {
+                tempListByJenisPengajar = listDataHonorDosenMengajar.Where(d => d.IsTeachingTeam).ToList();
+            }
+            else if (cmbTimPengajar.SelectedIndex == 2)
+            {
+                tempListByJenisPengajar = listDataHonorDosenMengajar.Where(d => !d.IsTeachingTeam).ToList();
+            }
             if (!string.IsNullOrWhiteSpace(KodeProgram))
             {
-                dgvHonor.DataSource = listDataHonorDosenMengajar.Where(p => p.KodeProgram == KodeProgram).ToList();
-                CekHonorKosong(listDataHonorDosenMengajar.Where(p => p.KodeProgram == KodeProgram).ToList());
+                dgvHonor.DataSource = tempListByJenisPengajar.Where(p => p.KodeProgram == KodeProgram).ToList();
+                CekHonorKosong(tempListByJenisPengajar.Where(p => p.KodeProgram == KodeProgram).ToList());
             }
             else if (!string.IsNullOrWhiteSpace(IdProdi))
             {
-                dgvHonor.DataSource = listDataHonorDosenMengajar.Where(i => i.IdProdi == IdProdi).ToList();
-                CekHonorKosong(listDataHonorDosenMengajar.Where(i => i.IdProdi == IdProdi).ToList());
+                dgvHonor.DataSource = tempListByJenisPengajar.Where(i => i.IdProdi == IdProdi).ToList();
+                CekHonorKosong(tempListByJenisPengajar.Where(i => i.IdProdi == IdProdi).ToList());
             }
             else if (!string.IsNullOrWhiteSpace(KodeFakultas))
             {
                 if (KodeFakultas == "Semua")
                 {
-                    dgvHonor.DataSource = listDataHonorDosenMengajar;
-                    CekHonorKosong(listDataHonorDosenMengajar);
+                    dgvHonor.DataSource = tempListByJenisPengajar;
+                    CekHonorKosong(tempListByJenisPengajar);
                 }
                 else
                 {
-                    dgvHonor.DataSource = listDataHonorDosenMengajar.Where(f => f.KodeFakultas == KodeFakultas).ToList();
-                    CekHonorKosong(listDataHonorDosenMengajar.Where(f => f.KodeFakultas == KodeFakultas).ToList());
+                    dgvHonor.DataSource = tempListByJenisPengajar.Where(f => f.KodeFakultas == KodeFakultas).ToList();
+                    CekHonorKosong(tempListByJenisPengajar.Where(f => f.KodeFakultas == KodeFakultas).ToList());
                 }
             }
 
@@ -873,10 +888,10 @@ namespace Dosen.Report
         public int JumlahKelas { get; set; }
 
         [DisplayName("SKS Total")]
-        public int JumlahSksTotal { get; set; }
+        public decimal JumlahSksTotal { get; set; }
 
         [DisplayName("Beban SKS")]
-        public int BebanSks { get; set; }
+        public decimal BebanSks { get; set; }
 
         [DisplayName("SKS Bayar")]
         public decimal JumlahSksBayar { get; set; }
@@ -929,5 +944,8 @@ namespace Dosen.Report
 
         [DisplayName("Kode Fakultas")]
         public string KodeFakultas { get; set; }
+
+        [Browsable(false)]
+        public bool IsTeachingTeam { get; set; }
     }
 }

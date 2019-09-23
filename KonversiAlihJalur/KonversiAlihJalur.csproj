@@ -135,6 +135,12 @@
     <Compile Include="Models\MataKuliahKonversi.cs" />
     <Compile Include="Models\MhsAlihJalur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\FormReportHasilMatrikulasiPemutihan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormReportHasilMatrikulasiPemutihan.Designer.cs">
+      <DependentUpon>FormReportHasilMatrikulasiPemutihan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\FormReportHasilMatrikulasi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,7 +181,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportView\ReportKonversiPerMhsPemutihan.rdlc" />
     <EmbeddedResource Include="ReportView\ReportKonversiPerMhs.rdlc" />
+    <EmbeddedResource Include="Report\FormReportHasilMatrikulasiPemutihan.resx">
+      <DependentUpon>FormReportHasilMatrikulasiPemutihan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\FormReportHasilMatrikulasi.resx">
       <DependentUpon>FormReportHasilMatrikulasi.cs</DependentUpon>
     </EmbeddedResource>

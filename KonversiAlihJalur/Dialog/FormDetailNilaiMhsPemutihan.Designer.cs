@@ -40,16 +40,9 @@ namespace KonversiAlihJalur.Dialog
             this.approveSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.approveKecualiNilaiDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.approveKecualiNIlaiDDanEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.approveKecualiNilaiEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KodeLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliahLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KodeBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliahBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Approve = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -62,6 +55,16 @@ namespace KonversiAlihJalur.Dialog
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.txtNodaf = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GantiMk = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.KodeBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Approve = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -75,14 +78,14 @@ namespace KonversiAlihJalur.Dialog
             // hapusApproveToolStripMenuItem
             // 
             this.hapusApproveToolStripMenuItem.Name = "hapusApproveToolStripMenuItem";
-            this.hapusApproveToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.hapusApproveToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.hapusApproveToolStripMenuItem.Text = "Hapus Approve";
             this.hapusApproveToolStripMenuItem.Click += new System.EventHandler(this.hapusApproveToolStripMenuItem_Click);
             // 
             // approveSemuaToolStripMenuItem
             // 
             this.approveSemuaToolStripMenuItem.Name = "approveSemuaToolStripMenuItem";
-            this.approveSemuaToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.approveSemuaToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.approveSemuaToolStripMenuItem.Text = "Approve Semua";
             this.approveSemuaToolStripMenuItem.Click += new System.EventHandler(this.approveSemuaToolStripMenuItem_Click);
             // 
@@ -91,16 +94,33 @@ namespace KonversiAlihJalur.Dialog
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.approveSemuaToolStripMenuItem,
             this.approveKecualiNilaiDToolStripMenuItem,
+            this.approveKecualiNIlaiDDanEToolStripMenuItem,
+            this.approveKecualiNilaiEToolStripMenuItem,
             this.hapusApproveToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(231, 114);
             // 
             // approveKecualiNilaiDToolStripMenuItem
             // 
             this.approveKecualiNilaiDToolStripMenuItem.Name = "approveKecualiNilaiDToolStripMenuItem";
-            this.approveKecualiNilaiDToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.approveKecualiNilaiDToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.approveKecualiNilaiDToolStripMenuItem.Text = "Approve Kecuali Nilai D";
+            this.approveKecualiNilaiDToolStripMenuItem.Visible = false;
             this.approveKecualiNilaiDToolStripMenuItem.Click += new System.EventHandler(this.approveKecualiNilaiDToolStripMenuItem_Click);
+            // 
+            // approveKecualiNIlaiDDanEToolStripMenuItem
+            // 
+            this.approveKecualiNIlaiDDanEToolStripMenuItem.Name = "approveKecualiNIlaiDDanEToolStripMenuItem";
+            this.approveKecualiNIlaiDDanEToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.approveKecualiNIlaiDDanEToolStripMenuItem.Text = "Approve Kecuali NIlai D dan E";
+            this.approveKecualiNIlaiDDanEToolStripMenuItem.Click += new System.EventHandler(this.approveKecualiNIlaiDDanEToolStripMenuItem_Click);
+            // 
+            // approveKecualiNilaiEToolStripMenuItem
+            // 
+            this.approveKecualiNilaiEToolStripMenuItem.Name = "approveKecualiNilaiEToolStripMenuItem";
+            this.approveKecualiNilaiEToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.approveKecualiNilaiEToolStripMenuItem.Text = "Approve Kecuali Nilai E";
+            this.approveKecualiNilaiEToolStripMenuItem.Click += new System.EventHandler(this.approveKecualiNilaiEToolStripMenuItem_Click);
             // 
             // dgvNilai
             // 
@@ -114,6 +134,7 @@ namespace KonversiAlihJalur.Dialog
             this.KodeLama,
             this.MataKuliahLama,
             this.SksLama,
+            this.GantiMk,
             this.KodeBaru,
             this.MataKuliahBaru,
             this.SksBaru,
@@ -123,75 +144,11 @@ namespace KonversiAlihJalur.Dialog
             this.dgvNilai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNilai.Location = new System.Drawing.Point(0, 122);
             this.dgvNilai.Name = "dgvNilai";
-            this.dgvNilai.ReadOnly = true;
             this.dgvNilai.RowHeadersVisible = false;
             this.dgvNilai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNilai.Size = new System.Drawing.Size(939, 260);
+            this.dgvNilai.Size = new System.Drawing.Size(939, 327);
             this.dgvNilai.TabIndex = 25;
             this.dgvNilai.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNilai_CellContentClick);
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 50;
-            // 
-            // KodeLama
-            // 
-            this.KodeLama.HeaderText = "Kode Lama";
-            this.KodeLama.Name = "KodeLama";
-            this.KodeLama.ReadOnly = true;
-            this.KodeLama.Width = 60;
-            // 
-            // MataKuliahLama
-            // 
-            this.MataKuliahLama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliahLama.HeaderText = "Mata Kuliah Lama";
-            this.MataKuliahLama.Name = "MataKuliahLama";
-            this.MataKuliahLama.ReadOnly = true;
-            // 
-            // SksLama
-            // 
-            this.SksLama.HeaderText = "Sks Lama";
-            this.SksLama.Name = "SksLama";
-            this.SksLama.ReadOnly = true;
-            this.SksLama.Width = 60;
-            // 
-            // KodeBaru
-            // 
-            this.KodeBaru.HeaderText = "Kode Baru";
-            this.KodeBaru.Name = "KodeBaru";
-            this.KodeBaru.ReadOnly = true;
-            this.KodeBaru.Width = 60;
-            // 
-            // MataKuliahBaru
-            // 
-            this.MataKuliahBaru.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliahBaru.HeaderText = "Mata Kuliah Baru";
-            this.MataKuliahBaru.Name = "MataKuliahBaru";
-            this.MataKuliahBaru.ReadOnly = true;
-            // 
-            // SksBaru
-            // 
-            this.SksBaru.HeaderText = "Sks Baru";
-            this.SksBaru.Name = "SksBaru";
-            this.SksBaru.ReadOnly = true;
-            this.SksBaru.Width = 60;
-            // 
-            // Nilai
-            // 
-            this.Nilai.HeaderText = "Nilai";
-            this.Nilai.Name = "Nilai";
-            this.Nilai.ReadOnly = true;
-            this.Nilai.Width = 70;
-            // 
-            // Approve
-            // 
-            this.Approve.HeaderText = "Approve";
-            this.Approve.Name = "Approve";
-            this.Approve.ReadOnly = true;
-            this.Approve.Width = 70;
             // 
             // btnTutup
             // 
@@ -235,7 +192,7 @@ namespace KonversiAlihJalur.Dialog
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 382);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 449);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(939, 38);
@@ -332,12 +289,80 @@ namespace KonversiAlihJalur.Dialog
             this.autoLabel3.TabIndex = 14;
             this.autoLabel3.Text = "Nodaf";
             // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 50;
+            // 
+            // KodeLama
+            // 
+            this.KodeLama.HeaderText = "Kode Lama";
+            this.KodeLama.Name = "KodeLama";
+            this.KodeLama.ReadOnly = true;
+            this.KodeLama.Width = 60;
+            // 
+            // MataKuliahLama
+            // 
+            this.MataKuliahLama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliahLama.HeaderText = "Mata Kuliah Lama";
+            this.MataKuliahLama.Name = "MataKuliahLama";
+            this.MataKuliahLama.ReadOnly = true;
+            // 
+            // SksLama
+            // 
+            this.SksLama.HeaderText = "Sks Lama";
+            this.SksLama.Name = "SksLama";
+            this.SksLama.ReadOnly = true;
+            this.SksLama.Width = 60;
+            // 
+            // GantiMk
+            // 
+            this.GantiMk.HeaderText = "";
+            this.GantiMk.Name = "GantiMk";
+            this.GantiMk.VisitedLinkColor = System.Drawing.Color.Blue;
+            // 
+            // KodeBaru
+            // 
+            this.KodeBaru.HeaderText = "Kode Baru";
+            this.KodeBaru.Name = "KodeBaru";
+            this.KodeBaru.ReadOnly = true;
+            this.KodeBaru.Width = 60;
+            // 
+            // MataKuliahBaru
+            // 
+            this.MataKuliahBaru.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliahBaru.HeaderText = "Mata Kuliah Baru";
+            this.MataKuliahBaru.Name = "MataKuliahBaru";
+            this.MataKuliahBaru.ReadOnly = true;
+            // 
+            // SksBaru
+            // 
+            this.SksBaru.HeaderText = "Sks Baru";
+            this.SksBaru.Name = "SksBaru";
+            this.SksBaru.ReadOnly = true;
+            this.SksBaru.Width = 60;
+            // 
+            // Nilai
+            // 
+            this.Nilai.HeaderText = "Nilai";
+            this.Nilai.Name = "Nilai";
+            this.Nilai.ReadOnly = true;
+            this.Nilai.Width = 70;
+            // 
+            // Approve
+            // 
+            this.Approve.HeaderText = "Approve";
+            this.Approve.Name = "Approve";
+            this.Approve.Width = 70;
+            // 
             // FormDetailNilaiMhsPemutihan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(939, 420);
+            this.ClientSize = new System.Drawing.Size(939, 487);
             this.Controls.Add(this.dgvNilai);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gradientPanel2);
@@ -377,16 +402,19 @@ namespace KonversiAlihJalur.Dialog
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel15;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtNodaf;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
+        private System.Windows.Forms.ToolStripMenuItem approveKecualiNIlaiDDanEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem approveKecualiNilaiEToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeLama;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliahLama;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksLama;
+        private System.Windows.Forms.DataGridViewLinkColumn GantiMk;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeBaru;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliahBaru;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksBaru;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nilai;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Approve;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtNodaf;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
     }
 }

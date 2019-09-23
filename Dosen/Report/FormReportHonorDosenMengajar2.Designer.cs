@@ -37,6 +37,8 @@ namespace Dosen.Report
         {
             this.components = new System.ComponentModel.Container();
             this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.cmbTimPengajar = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.rbHrRemidial = new System.Windows.Forms.RadioButton();
             this.rbHrMengajar = new System.Windows.Forms.RadioButton();
@@ -98,6 +100,7 @@ namespace Dosen.Report
             this.HrTotalR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimPengajar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPeriode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKategoriDosen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester)).BeginInit();
@@ -113,6 +116,8 @@ namespace Dosen.Report
             // gradientPanel1
             // 
             this.gradientPanel1.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.gradientPanel1.Controls.Add(this.autoLabel9);
+            this.gradientPanel1.Controls.Add(this.cmbTimPengajar);
             this.gradientPanel1.Controls.Add(this.autoLabel2);
             this.gradientPanel1.Controls.Add(this.rbHrRemidial);
             this.gradientPanel1.Controls.Add(this.rbHrMengajar);
@@ -134,8 +139,32 @@ namespace Dosen.Report
             this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(819, 176);
+            this.gradientPanel1.Size = new System.Drawing.Size(819, 200);
             this.gradientPanel1.TabIndex = 21;
+            // 
+            // autoLabel9
+            // 
+            this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel9.Location = new System.Drawing.Point(403, 135);
+            this.autoLabel9.Name = "autoLabel9";
+            this.autoLabel9.Size = new System.Drawing.Size(98, 16);
+            this.autoLabel9.TabIndex = 27;
+            this.autoLabel9.Text = "Jenis Pengajar";
+            // 
+            // cmbTimPengajar
+            // 
+            this.cmbTimPengajar.BeforeTouchSize = new System.Drawing.Size(293, 24);
+            this.cmbTimPengajar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTimPengajar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTimPengajar.Items.AddRange(new object[] {
+            "Semua",
+            "Tim Pengajar",
+            "Bukan Tim Pengajar"});
+            this.cmbTimPengajar.Location = new System.Drawing.Point(512, 133);
+            this.cmbTimPengajar.Name = "cmbTimPengajar";
+            this.cmbTimPengajar.Size = new System.Drawing.Size(293, 24);
+            this.cmbTimPengajar.TabIndex = 26;
+            this.cmbTimPengajar.Text = "Semua";
             // 
             // autoLabel2
             // 
@@ -200,7 +229,7 @@ namespace Dosen.Report
             // 
             this.btnProses.BeforeTouchSize = new System.Drawing.Size(120, 28);
             this.btnProses.IsBackStageButton = false;
-            this.btnProses.Location = new System.Drawing.Point(404, 131);
+            this.btnProses.Location = new System.Drawing.Point(119, 162);
             this.btnProses.Name = "btnProses";
             this.btnProses.Size = new System.Drawing.Size(120, 28);
             this.btnProses.TabIndex = 20;
@@ -402,12 +431,12 @@ namespace Dosen.Report
             this.NoRek,
             this.Bank});
             this.dgvHonor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHonor.Location = new System.Drawing.Point(0, 176);
+            this.dgvHonor.Location = new System.Drawing.Point(0, 200);
             this.dgvHonor.Name = "dgvHonor";
             this.dgvHonor.ReadOnly = true;
             this.dgvHonor.RowHeadersVisible = false;
             this.dgvHonor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHonor.Size = new System.Drawing.Size(819, 247);
+            this.dgvHonor.Size = new System.Drawing.Size(819, 223);
             this.dgvHonor.TabIndex = 23;
             // 
             // No
@@ -586,11 +615,11 @@ namespace Dosen.Report
             this.HrKoreksiR,
             this.HrTotalR});
             this.dgvHonorRemidial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHonorRemidial.Location = new System.Drawing.Point(0, 176);
+            this.dgvHonorRemidial.Location = new System.Drawing.Point(0, 200);
             this.dgvHonorRemidial.Name = "dgvHonorRemidial";
             this.dgvHonorRemidial.RowHeadersVisible = false;
             this.dgvHonorRemidial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHonorRemidial.Size = new System.Drawing.Size(819, 247);
+            this.dgvHonorRemidial.Size = new System.Drawing.Size(819, 223);
             this.dgvHonorRemidial.TabIndex = 24;
             // 
             // NikR
@@ -689,6 +718,7 @@ namespace Dosen.Report
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimPengajar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPeriode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKategoriDosen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester)).EndInit();
@@ -765,5 +795,7 @@ namespace Dosen.Report
         private System.Windows.Forms.DataGridViewTextBoxColumn HrSoalR;
         private System.Windows.Forms.DataGridViewTextBoxColumn HrKoreksiR;
         private System.Windows.Forms.DataGridViewTextBoxColumn HrTotalR;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel9;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbTimPengajar;
     }
 }

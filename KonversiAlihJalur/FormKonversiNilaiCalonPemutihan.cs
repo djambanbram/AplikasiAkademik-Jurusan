@@ -160,8 +160,9 @@ namespace KonversiAlihJalur
             var hit = dgvPendaftar.HitTest(e.X, e.Y);
             if (hit.RowIndex <= -1 || hit.ColumnIndex <= -1)
             {
-                contextMenuStrip1.Items[0].Text = "Lihat";
+                //contextMenuStrip1.Items[0].Text = "Lihat";
                 contextMenuStrip1.Items[0].Enabled = false;
+                contextMenuStrip1.Items[1].Enabled = false;
                 return;
             }
             dgvPendaftar.ClearSelection();
@@ -169,9 +170,11 @@ namespace KonversiAlihJalur
             var nama = dgvPendaftar.Rows[hit.RowIndex].Cells["Nama"].Value.ToString();
             var npm = dgvPendaftar.Rows[hit.RowIndex].Cells["Npm"].Value.ToString();
             var nodaf = dgvPendaftar.Rows[hit.RowIndex].Cells["Nodaf"].Value.ToString();
-            contextMenuStrip1.Items[0].Text = string.Format("Lihat nilai {0}", nama);
+            //contextMenuStrip1.Items[0].Text = string.Format("Lihat nilai {0}", nama);
             contextMenuStrip1.Items[0].Tag = new { Npm = npm, Nodaf = nodaf };
             contextMenuStrip1.Items[0].Enabled = true;
+            contextMenuStrip1.Items[1].Tag = new { Npm = npm, Nodaf = nodaf };
+            contextMenuStrip1.Items[1].Enabled = true;
         }
 
         private void lihatNilaiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -179,7 +182,27 @@ namespace KonversiAlihJalur
             var nama = (sender as ToolStripItem).Text.Replace("Lihat nilai ", "");
             var npm = ((sender as ToolStripItem).Tag as dynamic).Npm as string;
             var nodaf = ((sender as ToolStripItem).Tag as dynamic).Nodaf as string;
-            using (var form = new FormDetailNilaiMhsPemutihan(npm, nama, int.Parse(cmbAngkatan.Text), nodaf))
+            //using (var form = new FormDetailNilaiMhsPemutihan(npm, nama, int.Parse(cmbAngkatan.Text), nodaf, cmbProdi.SelectedValue.ToString()))
+            //{
+            //    form.ShowDialog(this);
+            //}
+            using (var form = new FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan(
+                                npm,
+                                nama,
+                                int.Parse(cmbAngkatan.Text),
+                                nodaf,
+                                Organisasi.listProgram.Find(p => p.KodeProgram == cmbProgram.SelectedValue.ToString()).Prodi.Uid.ToString().ToLower()))
+            {
+                form.ShowDialog(this);
+            }
+        }
+
+        private void konversiNilaiOtomatisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var nama = (sender as ToolStripItem).Text.Replace("Lihat nilai ", "");
+            var npm = ((sender as ToolStripItem).Tag as dynamic).Npm as string;
+            var nodaf = ((sender as ToolStripItem).Tag as dynamic).Nodaf as string;
+            using (var form = new FormDetailNilaiMhsPemutihan(npm, nama, int.Parse(cmbAngkatan.Text), nodaf, cmbProdi.SelectedValue.ToString()))
             {
                 form.ShowDialog(this);
             }

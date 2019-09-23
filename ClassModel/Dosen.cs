@@ -62,10 +62,10 @@ namespace ClassModel
         public bool IsPraktikumDosenLain { get; set; }
         public string NamaDosen { get; set; }
         public string JenisMataKuliah { get; set; }
-        public int Sks { get; set; }
-        public int SksTp { get; set; }
+        public decimal Sks { get; set; }
+        public decimal SksTp { get; set; }
         public int BebanSks { get; set; }
-        public int JumlahPertemuan { get; set; }
+        public decimal JumlahPertemuan { get; set; }
         public string KodeFakultas { get; set; }
         public string NamaFakultas { get; set; }
         public string IdProdi { get; set; }
@@ -80,6 +80,7 @@ namespace ClassModel
         public decimal HFix { get; set; }
         public decimal HVar { get; set; }
         public string KategoriDosen { get; set; }
+        public bool IsTeachingTeam { get; set; }
     }
 
     public class HonorDosenRemidial

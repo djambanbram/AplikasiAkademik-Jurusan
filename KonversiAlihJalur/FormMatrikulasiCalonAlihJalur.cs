@@ -181,7 +181,7 @@ namespace KonversiAlihJalur
             var nodaf = ((sender as ToolStripItem).Tag as dynamic).Nodaf as string;
             if(string.IsNullOrWhiteSpace(npm))
             {
-                using (var form = new FormDetailNilaiMhsAlihJalurNonAmikom(
+                using (var form = new FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan(
                                     npm, 
                                     nama, 
                                     int.Parse(cmbAngkatan.Text), 
@@ -193,7 +193,11 @@ namespace KonversiAlihJalur
             }
             else
             {
-                using (var form = new FormDetailNilaiMhsAlihJalur(npm, nama, int.Parse(cmbAngkatan.Text), nodaf))
+                using (var form = new FormDetailNilaiMhsAlihJalur(
+                    npm, 
+                    nama, 
+                    int.Parse(cmbAngkatan.Text), 
+                    nodaf))
                 {
                     form.ShowDialog(this);
                 }

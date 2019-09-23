@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace KonversiAlihJalur.Dialog
 {
-    public partial class FormDetailNilaiMhsAlihJalurNonAmikom : Syncfusion.Windows.Forms.MetroForm, IMataKuliah
+    public partial class FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan : Syncfusion.Windows.Forms.MetroForm, IMataKuliah
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDetailCalonMhsAlihJalurNonAmikom = baseAddress + "/jurusan_api/api/alih_jalur/get_detail_calon_mhs_alih_jalur_non_amikom";
@@ -44,7 +44,7 @@ namespace KonversiAlihJalur.Dialog
         private int angkatan;
         private string idProdi;
 
-        public FormDetailNilaiMhsAlihJalurNonAmikom(string npmLama, string nama, int angkatan, string nodaf, string idProdi)
+        public FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan(string npmLama, string nama, int angkatan, string nodaf, string idProdi)
         {
             InitializeComponent();
             webApi = new WebApi();
@@ -323,23 +323,23 @@ namespace KonversiAlihJalur.Dialog
                 Npm = NpmLama,
                 Id = dgvNilai.Rows[rowIndex].Cells["Id"].Value != null ? new Guid(dgvNilai.Rows[rowIndex].Cells["Id"].Value.ToString()) : Guid.Empty
             };
-            var jsonData = JsonConvert.SerializeObject(hk);
-            response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalurSingle, jsonData, true);
-            if (!response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(webApi.ReturnMessage(response));
-                Loading(false);
-                return;
-            }
+            //var jsonData = JsonConvert.SerializeObject(hk);
+            //response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalurSingle, jsonData, true);
+            //if (!response.IsSuccessStatusCode)
+            //{
+            //    MessageBox.Show(webApi.ReturnMessage(response));
+            //    Loading(false);
+            //    return;
+            //}
 
-            var idKonversi = JsonConvert.DeserializeObject<HistoryKonversiNilai>(response.Content.ReadAsStringAsync().Result).Id;
+            //var idKonversi = JsonConvert.DeserializeObject<HistoryKonversiNilai>(response.Content.ReadAsStringAsync().Result).Id;
 
             dgvNilai.Rows[rowIndex].Cells["KodeS1"].Value = kode;
             dgvNilai.Rows[rowIndex].Cells["MataKuliahS1"].Value = mataKuliah;
             dgvNilai.Rows[rowIndex].Cells["SksS1"].Value = sks;
             dgvNilai.Rows[rowIndex].Cells["Nilai"].Value = nilai;
             dgvNilai.Rows[rowIndex].Cells["Hapus"].Value = "Hapus";
-            dgvNilai.Rows[rowIndex].Cells["Id"].Value = idKonversi.ToString();
+            //dgvNilai.Rows[rowIndex].Cells["Id"].Value = idKonversi.ToString();
 
             Loading(false);
         }

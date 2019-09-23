@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace KonversiAlihJalur.Dialog
 {
-    public partial class FormDetailNilaiMhsPemutihan : Syncfusion.Windows.Forms.MetroForm
+    public partial class FormDetailNilaiMhsPemutihan : Syncfusion.Windows.Forms.MetroForm, IMataKuliah
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDetailCalonMhsPemutihan = baseAddress + "/jurusan_api/api/pemutihan/get_detail_calon_mhs_pemutihan";
@@ -34,8 +34,9 @@ namespace KonversiAlihJalur.Dialog
 
         private List<DetailNilaiPendaftarPemutihan> listDetailNilai;
         private int angkatan;
+        private string idProdi;
 
-        public FormDetailNilaiMhsPemutihan(string npmLama, string nama, int angkatan, string nodaf)
+        public FormDetailNilaiMhsPemutihan(string npmLama, string nama, int angkatan, string nodaf, string idProdi)
         {
             InitializeComponent();
             webApi = new WebApi();
@@ -45,6 +46,7 @@ namespace KonversiAlihJalur.Dialog
             txtNodaf.Text = nodaf;
             this.angkatan = angkatan;
             Nodaf = nodaf;
+            this.idProdi = idProdi;
         }
 
         private void Loading(bool isLoading)
@@ -91,6 +93,7 @@ namespace KonversiAlihJalur.Dialog
                     item.KodeLama,
                     item.MataKuliahLama,
                     item.SksLama,
+                    "Ganti MK Baru",
                     string.IsNullOrWhiteSpace(item.KodeBaru) ? item.KodeLama : item.KodeBaru,
                     string.IsNullOrWhiteSpace(item.MataKuliahBaru) ? item.MataKuliahLama : item.MataKuliahBaru,
                     item.SksBaru == 0 ? item.SksLama : item.SksBaru,
@@ -110,7 +113,19 @@ namespace KonversiAlihJalur.Dialog
 
         private void dgvNilai_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 4)
+            {
+                var kodeLama = dgvNilai.Rows[e.RowIndex].Cells["KodeLama"].Value.ToString();
+                var mkLama = dgvNilai.Rows[e.RowIndex].Cells["MataKuliahLama"].Value.ToString();
+                int sksLama = int.Parse(dgvNilai.Rows[e.RowIndex].Cells["SksLama"].Value.ToString());
+                var nilaiLama = dgvNilai.Rows[e.RowIndex].Cells["Nilai"].Value.ToString();
+                using (var form = new FormMataKuliah(idProdi, kodeLama, mkLama, sksLama, nilaiLama, e.RowIndex, this))
+                {
+                    form.ShowDialog();
+                }
+            }
 
+            dgvNilai.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
         private async void btnSimpan_Click(object sender, EventArgs e)
@@ -125,16 +140,19 @@ namespace KonversiAlihJalur.Dialog
             List<HistoryKonversiNilai> listHistoryKonversi = new List<HistoryKonversiNilai>();
             foreach (DataGridViewRow row in dgvNilai.Rows)
             {
-                HistoryKonversiNilai h = new HistoryKonversiNilai();
-                h.Nodaf = Nodaf;
-                h.Npm = NpmLama;
-                h.KodeD3 = row.Cells["KodeLama"].Value.ToString();
-                h.MataKuliahD3 = row.Cells["MataKuliahLama"].Value.ToString();
-                h.SksD3 = int.Parse(row.Cells["SksLama"].Value.ToString());
-                h.KodeS1 = row.Cells["KodeBaru"].Value.ToString();
-                h.Nilai = row.Cells["Nilai"].Value.ToString();
-                h.Approve = Convert.ToBoolean(row.Cells["Approve"].Value.ToString());
-                listHistoryKonversi.Add(h);
+                if (Convert.ToBoolean(row.Cells["Approve"].Value))
+                {
+                    HistoryKonversiNilai h = new HistoryKonversiNilai();
+                    h.Nodaf = Nodaf;
+                    h.Npm = NpmLama;
+                    h.KodeD3 = row.Cells["KodeLama"].Value.ToString();
+                    h.MataKuliahD3 = row.Cells["MataKuliahLama"].Value.ToString();
+                    h.SksD3 = int.Parse(row.Cells["SksLama"].Value.ToString());
+                    h.KodeS1 = row.Cells["KodeBaru"].Value.ToString();
+                    h.Nilai = row.Cells["Nilai"].Value.ToString();
+                    h.Approve = Convert.ToBoolean(row.Cells["Approve"].Value.ToString());
+                    listHistoryKonversi.Add(h);
+                }
             }
 
             var jsondata = JsonConvert.SerializeObject(listHistoryKonversi);
@@ -179,6 +197,74 @@ namespace KonversiAlihJalur.Dialog
             {
                 row.Cells["Approve"].Value = false;
             }
+        }
+
+        private void approveKecualiNIlaiDDanEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvNilai.Rows)
+            {
+                if (row.Cells["Nilai"].Value.ToString() == "D" || row.Cells["Nilai"].Value.ToString() == "E")
+                {
+                    row.Cells["Approve"].Value = false;
+                }
+                else
+                {
+                    row.Cells["Approve"].Value = true;
+                }
+            }
+        }
+
+        private void approveKecualiNilaiEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvNilai.Rows)
+            {
+                if (row.Cells["Nilai"].Value.ToString() == "E")
+                {
+                    row.Cells["Approve"].Value = false;
+                }
+                else
+                {
+                    row.Cells["Approve"].Value = true;
+                }
+            }
+        }
+
+        public void TambahMataKuliah(string kode, string mataKuliah, int sks, string nilai, int rowIndex)
+        {
+            Loading(true);
+
+            HistoryKonversiNilai hk = new HistoryKonversiNilai()
+            {
+                Approve = true,
+                KodeD3 = dgvNilai.Rows[rowIndex].Cells["KodeLama"].Value.ToString(),
+                MataKuliahD3 = dgvNilai.Rows[rowIndex].Cells["MataKuliahLama"].Value.ToString(),
+                SksD3 = int.Parse(dgvNilai.Rows[rowIndex].Cells["SksLama"].Value.ToString()),
+                NilaiD3 = dgvNilai.Rows[rowIndex].Cells["Nilai"].Value.ToString(),
+                KodeS1 = kode,
+                Nilai = nilai,
+                Nodaf = Nodaf,
+                Npm = NpmLama,
+                //Id = dgvNilai.Rows[rowIndex].Cells["Id"].Value != null ? new Guid(dgvNilai.Rows[rowIndex].Cells["Id"].Value.ToString()) : Guid.Empty
+            };
+            //var jsonData = JsonConvert.SerializeObject(hk);
+            //response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalurSingle, jsonData, true);
+            //if (!response.IsSuccessStatusCode)
+            //{
+            //    MessageBox.Show(webApi.ReturnMessage(response));
+            //    Loading(false);
+            //    return;
+            //}
+
+            //var idKonversi = JsonConvert.DeserializeObject<HistoryKonversiNilai>(response.Content.ReadAsStringAsync().Result).Id;
+
+            dgvNilai.Rows[rowIndex].Cells["KodeBaru"].Value = kode;
+            dgvNilai.Rows[rowIndex].Cells["MataKuliahBaru"].Value = mataKuliah;
+            dgvNilai.Rows[rowIndex].Cells["SksBaru"].Value = sks;
+            dgvNilai.Rows[rowIndex].Cells["Nilai"].Value = nilai;
+            //dgvNilai.Rows[rowIndex].Cells["Hapus"].Value = "Hapus";
+            //dgvNilai.Rows[rowIndex].Cells["Id"].Value = idKonversi.ToString();
+
+            Loading(false);
         }
     }
 }

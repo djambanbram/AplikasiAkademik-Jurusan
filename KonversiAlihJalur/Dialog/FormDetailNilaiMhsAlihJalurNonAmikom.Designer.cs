@@ -7,7 +7,7 @@
 #endregion
 namespace KonversiAlihJalur.Dialog
 {
-    partial class FormDetailNilaiMhsAlihJalurNonAmikom
+    partial class FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan
     {
         /// <summary>
         /// Required designer variable.

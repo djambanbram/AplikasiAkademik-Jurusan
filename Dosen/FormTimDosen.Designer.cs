@@ -36,7 +36,7 @@ namespace Dosen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnHapus = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -66,11 +66,14 @@ namespace Dosen
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.dgvTimDosen = new System.Windows.Forms.DataGridView();
+            this.comboBoxAdv1 = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.IdTim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaTim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aNik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aNamaDosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsKoordinator = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Hapus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.comboBoxAdv1 = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
@@ -283,7 +286,6 @@ namespace Dosen
             this.txtCari.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtCari.Name = "txtCari";
             this.txtCari.Size = new System.Drawing.Size(217, 25);
-            this.txtCari.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCari.TabIndex = 1;
             this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
@@ -294,6 +296,7 @@ namespace Dosen
             this.gradientPanel3.BorderSingle = System.Windows.Forms.ButtonBorderStyle.None;
             this.gradientPanel3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableLayoutPanel1.SetColumnSpan(this.gradientPanel3, 2);
+            this.gradientPanel3.Controls.Add(this.autoLabel6);
             this.gradientPanel3.Controls.Add(this.btnClear);
             this.gradientPanel3.Controls.Add(this.btnSimpan);
             this.gradientPanel3.Controls.Add(this.txtNamaGrup);
@@ -337,7 +340,6 @@ namespace Dosen
             this.txtNamaGrup.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtNamaGrup.Name = "txtNamaGrup";
             this.txtNamaGrup.Size = new System.Drawing.Size(352, 25);
-            this.txtNamaGrup.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtNamaGrup.TabIndex = 1;
             // 
             // autoLabel1
@@ -428,63 +430,92 @@ namespace Dosen
             this.dgvTimDosen.AllowUserToAddRows = false;
             this.dgvTimDosen.AllowUserToDeleteRows = false;
             this.dgvTimDosen.AllowUserToResizeRows = false;
+            this.dgvTimDosen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvTimDosen.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTimDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTimDosen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTimDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimDosen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdTim,
             this.NamaTim,
             this.aNik,
             this.aNamaDosen,
+            this.IsKoordinator,
             this.Hapus});
             this.dgvTimDosen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTimDosen.Location = new System.Drawing.Point(0, 316);
+            this.dgvTimDosen.MultiSelect = false;
             this.dgvTimDosen.Name = "dgvTimDosen";
             this.dgvTimDosen.RowHeadersVisible = false;
             this.dgvTimDosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTimDosen.Size = new System.Drawing.Size(807, 129);
             this.dgvTimDosen.TabIndex = 19;
+            this.dgvTimDosen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTimDosen_CellContentClick);
+            // 
+            // comboBoxAdv1
+            // 
+            this.comboBoxAdv1.BeforeTouchSize = new System.Drawing.Size(341, 24);
+            this.comboBoxAdv1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAdv1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxAdv1.Location = new System.Drawing.Point(128, 71);
+            this.comboBoxAdv1.Name = "comboBoxAdv1";
+            this.comboBoxAdv1.Size = new System.Drawing.Size(341, 24);
+            this.comboBoxAdv1.TabIndex = 13;
+            // 
+            // IdTim
+            // 
+            this.IdTim.HeaderText = "IdTim";
+            this.IdTim.Name = "IdTim";
+            this.IdTim.Visible = false;
+            this.IdTim.Width = 46;
             // 
             // NamaTim
             // 
             this.NamaTim.HeaderText = "Nama Tim";
             this.NamaTim.Name = "NamaTim";
-            this.NamaTim.Width = 150;
+            this.NamaTim.ReadOnly = true;
+            this.NamaTim.Width = 93;
             // 
             // aNik
             // 
             this.aNik.HeaderText = "Nik";
             this.aNik.Name = "aNik";
+            this.aNik.ReadOnly = true;
+            this.aNik.Width = 52;
             // 
             // aNamaDosen
             // 
-            this.aNamaDosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.aNamaDosen.HeaderText = "Nama Dosen";
             this.aNamaDosen.Name = "aNamaDosen";
+            this.aNamaDosen.ReadOnly = true;
+            this.aNamaDosen.Width = 109;
+            // 
+            // IsKoordinator
+            // 
+            this.IsKoordinator.HeaderText = "Koordinator";
+            this.IsKoordinator.Name = "IsKoordinator";
+            this.IsKoordinator.Width = 85;
             // 
             // Hapus
             // 
             this.Hapus.HeaderText = "Hapus";
             this.Hapus.Name = "Hapus";
-            this.Hapus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Hapus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Hapus.Width = 60;
+            this.Hapus.Width = 70;
             // 
-            // comboBoxAdv1
+            // autoLabel6
             // 
-            this.comboBoxAdv1.BeforeTouchSize = new System.Drawing.Size(341, 21);
-            this.comboBoxAdv1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAdv1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxAdv1.Location = new System.Drawing.Point(128, 71);
-            this.comboBoxAdv1.Name = "comboBoxAdv1";
-            this.comboBoxAdv1.Size = new System.Drawing.Size(341, 21);
-            this.comboBoxAdv1.TabIndex = 13;
+            this.autoLabel6.Location = new System.Drawing.Point(243, 44);
+            this.autoLabel6.Name = "autoLabel6";
+            this.autoLabel6.Size = new System.Drawing.Size(461, 17);
+            this.autoLabel6.TabIndex = 4;
+            this.autoLabel6.Text = "Pada kolom koordinator, berikan \"v\" (ceklist) untuk di set sebagai koordinator";
             // 
             // FormTimDosen
             // 
@@ -545,10 +576,6 @@ namespace Dosen
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCari;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv comboBoxAdv1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NamaTim;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aNik;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aNamaDosen;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Hapus;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
         private Syncfusion.Windows.Forms.ButtonAdv btnClear;
         private Syncfusion.Windows.Forms.ButtonAdv btnSimpan;
@@ -561,5 +588,12 @@ namespace Dosen
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProgram;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProdi;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbFakultas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdTim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaTim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aNik;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aNamaDosen;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsKoordinator;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Hapus;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
     }
 }

@@ -160,7 +160,6 @@ namespace Dosen.Dialog
             this.txtCari.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtCari.Name = "txtCari";
             this.txtCari.Size = new System.Drawing.Size(236, 25);
-            this.txtCari.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCari.TabIndex = 1;
             this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
@@ -340,7 +339,6 @@ namespace Dosen.Dialog
             this.txtNIK.Name = "txtNIK";
             this.txtNIK.ReadOnly = true;
             this.txtNIK.Size = new System.Drawing.Size(387, 25);
-            this.txtNIK.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtNIK.TabIndex = 9;
             // 
             // txtNama
@@ -353,7 +351,6 @@ namespace Dosen.Dialog
             this.txtNama.Name = "txtNama";
             this.txtNama.ReadOnly = true;
             this.txtNama.Size = new System.Drawing.Size(387, 25);
-            this.txtNama.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtNama.TabIndex = 10;
             // 
             // txtNoIjazah
@@ -365,7 +362,6 @@ namespace Dosen.Dialog
             this.txtNoIjazah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtNoIjazah.Name = "txtNoIjazah";
             this.txtNoIjazah.Size = new System.Drawing.Size(387, 25);
-            this.txtNoIjazah.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtNoIjazah.TabIndex = 13;
             // 
             // dateMulai

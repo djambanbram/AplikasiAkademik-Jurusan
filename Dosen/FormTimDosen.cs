@@ -28,6 +28,7 @@ namespace Dosen
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDataDosen = baseAddress + "/jurusan_api/api/pengajaran/get_dosen";
         private string URLSaveTimDosen = baseAddress + "/jurusan_api/api/dosen/save_tim_dosen";
+        private string URLSetKoordinatorTimDosen = baseAddress + "/jurusan_api/api/dosen/set_koordinator_tim_dosen";
         private string URLGetTimDosen = baseAddress + "/jurusan_api/api/dosen/get_tim_dosen";
         private string URLDelTimDosen = baseAddress + "/jurusan_api/api/dosen/del_tim_dosen";
 
@@ -308,7 +309,7 @@ namespace Dosen
             dgvTimDosen.Rows.Clear();
             foreach (TimDosen td in listTimDosen)
             {
-                dgvTimDosen.Rows.Add(td.NamaTim, td.Nik, td.NamaDosen, false);
+                dgvTimDosen.Rows.Add(td.IdTim, td.NamaTim, td.Nik, td.NamaDosen, td.IsKoordinator, false);
             }
         }
 
@@ -329,7 +330,7 @@ namespace Dosen
 
                     var jsonData = JsonConvert.SerializeObject(dataDel);
                     response = await webApi.Post(URLDelTimDosen, jsonData, true);
-                    if(!response.IsSuccessStatusCode)
+                    if (!response.IsSuccessStatusCode)
                     {
                         MessageBox.Show(webApi.ReturnMessage(response));
                         break;
@@ -343,6 +344,69 @@ namespace Dosen
         {
             dgvAddTim.Rows.Clear();
             txtNamaGrup.Text = string.Empty;
+        }
+
+        private async void dgvTimDosen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex != 4)
+            {
+                return;
+            }
+
+            var namaTim = dgvTimDosen.Rows[e.RowIndex].Cells["NamaTim"].Value.ToString();
+            var nik = dgvTimDosen.Rows[e.RowIndex].Cells["aNik"].Value.ToString();
+            var kodeProgram = cmbProgram.SelectedValue.ToString();
+            var idTahun = LoginAccess.IdTahun;
+            var isKoordinatorSelected = Convert.ToBoolean(dgvTimDosen.Rows[e.RowIndex].Cells["IsKoordinator"].Value);
+
+            dgvTimDosen.EndEdit(DataGridViewDataErrorContexts.Commit);
+            var message = string.Empty;
+            if (!isKoordinatorSelected)
+            {
+                message = string.Format("SET sebagai koordinator pada {0}", namaTim);
+                DialogResult dr = MessageBox.Show(message, "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    dgvTimDosen.Rows[e.RowIndex].Cells["IsKoordinator"].Value = false;
+                    return;
+                }
+            }
+            else
+            {
+                message = string.Format("BATALKAN sebagai koordinator pada {0}", namaTim);
+                DialogResult dr = MessageBox.Show(message, "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    dgvTimDosen.Rows[e.RowIndex].Cells["IsKoordinator"].Value = true;
+                    return;
+                }
+            }
+
+            var dataSave = new
+            {
+                KodeJurusan = kodeProgram,
+                TahunAkademik = LoginAccess.TahunAkademik,
+                Semester = LoginAccess.KodeSemester,
+                Nik = nik,
+                NamaTim = namaTim,
+                IsKoordinator = !isKoordinatorSelected
+            };
+            var jsonData = JsonConvert.SerializeObject(dataSave);
+            response = await webApi.Post(URLSetKoordinatorTimDosen, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            if(!isKoordinatorSelected)
+            {
+                MessageBox.Show("Koordinator berhasil di set");
+            }
+            else
+            {
+                MessageBox.Show("Koordinator berhasil di batalkan");
+            }
         }
     }
 }

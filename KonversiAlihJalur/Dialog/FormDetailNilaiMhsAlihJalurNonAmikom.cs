@@ -29,7 +29,7 @@ namespace KonversiAlihJalur.Dialog
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDetailCalonMhsAlihJalurNonAmikom = baseAddress + "/jurusan_api/api/alih_jalur/get_detail_calon_mhs_alih_jalur_non_amikom";
         private string URLSaveHistoryNilaiCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur";
-        private string URLSaveHistoryNilaiCalonMhsAlihJalurSingle = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur_single";
+        //private string URLSaveHistoryNilaiCalonMhsAlihJalurSingle = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur_single";
         private string URLDeleteHistoryNilaiCalonMhsAlihJalurSingle = baseAddress + "/jurusan_api/api/alih_jalur/delete_nilai_calon_mhs_alih_jalur_single";
         private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk";
 

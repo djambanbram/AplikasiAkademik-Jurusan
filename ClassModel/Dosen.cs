@@ -47,9 +47,11 @@ namespace ClassModel
 
     public class TimDosen
     {
+        public int IdTim { get; set; }
         public string NamaTim { get; set; }
         public string Nik { get; set; }
         public string NamaDosen { get; set; }
+        public bool IsKoordinator { get; set; }
     }
 
     public class HonorMengajarDosen

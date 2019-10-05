@@ -49,6 +49,7 @@ namespace Dosen
             this.TglSelesai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.hapusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tambahJenjangPendidikanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btntambah = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -57,7 +58,6 @@ namespace Dosen
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.tambahJenjangPendidikanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJenjangDosen)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -176,14 +176,21 @@ namespace Dosen
             this.hapusToolStripMenuItem,
             this.tambahJenjangPendidikanToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(223, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(222, 48);
             // 
             // hapusToolStripMenuItem
             // 
             this.hapusToolStripMenuItem.Name = "hapusToolStripMenuItem";
-            this.hapusToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.hapusToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.hapusToolStripMenuItem.Text = "Hapus";
             this.hapusToolStripMenuItem.Click += new System.EventHandler(this.hapusToolStripMenuItem_Click);
+            // 
+            // tambahJenjangPendidikanToolStripMenuItem
+            // 
+            this.tambahJenjangPendidikanToolStripMenuItem.Name = "tambahJenjangPendidikanToolStripMenuItem";
+            this.tambahJenjangPendidikanToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.tambahJenjangPendidikanToolStripMenuItem.Text = "Tambah Jenjang Pendidikan";
+            this.tambahJenjangPendidikanToolStripMenuItem.Click += new System.EventHandler(this.tambahJenjangPendidikanToolStripMenuItem_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -269,16 +276,8 @@ namespace Dosen
             this.txtCari.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtCari.Name = "txtCari";
             this.txtCari.Size = new System.Drawing.Size(250, 25);
-            this.txtCari.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCari.TabIndex = 1;
             this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
-            // 
-            // tambahJenjangPendidikanToolStripMenuItem
-            // 
-            this.tambahJenjangPendidikanToolStripMenuItem.Name = "tambahJenjangPendidikanToolStripMenuItem";
-            this.tambahJenjangPendidikanToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.tambahJenjangPendidikanToolStripMenuItem.Text = "Tambah Jenjang Pendidikan";
-            this.tambahJenjangPendidikanToolStripMenuItem.Click += new System.EventHandler(this.tambahJenjangPendidikanToolStripMenuItem_Click);
             // 
             // FormJenjangPendidikanDosen
             // 

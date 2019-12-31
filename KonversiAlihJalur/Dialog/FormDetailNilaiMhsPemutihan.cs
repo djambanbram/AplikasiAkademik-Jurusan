@@ -35,8 +35,9 @@ namespace KonversiAlihJalur.Dialog
         private List<DetailNilaiPendaftarPemutihan> listDetailNilai;
         private int angkatan;
         private string idProdi;
+        private string jenjang;
 
-        public FormDetailNilaiMhsPemutihan(string npmLama, string nama, int angkatan, string nodaf, string idProdi)
+        public FormDetailNilaiMhsPemutihan(string jenjang, string npmLama, string nama, int angkatan, string nodaf, string idProdi)
         {
             InitializeComponent();
             webApi = new WebApi();
@@ -47,6 +48,7 @@ namespace KonversiAlihJalur.Dialog
             this.angkatan = angkatan;
             Nodaf = nodaf;
             this.idProdi = idProdi;
+            this.jenjang = jenjang;
         }
 
         private void Loading(bool isLoading)
@@ -65,6 +67,17 @@ namespace KonversiAlihJalur.Dialog
         private async void FormDetailNilaiMhsPemutihan_Load(object sender, EventArgs e)
         {
             Loading(true);
+
+            if (jenjang == "S2")
+            {
+                txtNpmLama.ReadOnly = false;
+                labelForS2.Text = "(enter)";
+            }
+            else
+            {
+                txtNpmLama.ReadOnly = true;
+                labelForS2.Text = string.Empty;
+            }
 
             var data = new { Npm = NpmLama, Angkatan = angkatan, Nodaf };
             var jsonData = JsonConvert.SerializeObject(data);
@@ -94,9 +107,9 @@ namespace KonversiAlihJalur.Dialog
                     item.MataKuliahLama,
                     item.SksLama,
                     "Ganti MK Baru",
-                    string.IsNullOrWhiteSpace(item.KodeBaru) ? item.KodeLama : item.KodeBaru,
-                    string.IsNullOrWhiteSpace(item.MataKuliahBaru) ? item.MataKuliahLama : item.MataKuliahBaru,
-                    item.SksBaru == 0 ? item.SksLama : item.SksBaru,
+                    string.IsNullOrWhiteSpace(item.KodePemutihan) ? item.KodeLama : item.KodePemutihan,
+                    string.IsNullOrWhiteSpace(item.MataKuliahPemutihan) ? item.MataKuliahLama : item.MataKuliahPemutihan,
+                    item.SksPemutihan == 0 ? item.SksLama : item.SksPemutihan,
                     item.Nilai,
                     item.Approve);
 
@@ -265,6 +278,62 @@ namespace KonversiAlihJalur.Dialog
             //dgvNilai.Rows[rowIndex].Cells["Id"].Value = idKonversi.ToString();
 
             Loading(false);
+        }
+
+        private async void txtNpmLama_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (jenjang != "S2")
+            {
+                return;
+            }
+
+            if (e.KeyChar != (char)Keys.Enter)
+            {
+                return;
+            }
+
+            NpmLama = txtNpmLama.Text;
+            var data = new { Npm = NpmLama, Angkatan = angkatan, Nodaf };
+            var jsonData = JsonConvert.SerializeObject(data);
+            response = await webApi.Post(URLGetDetailCalonMhsPemutihan, jsonData, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+
+            listDetailNilai = JsonConvert.DeserializeObject<List<DetailNilaiPendaftarPemutihan>>(response.Content.ReadAsStringAsync().Result);
+            if (listDetailNilai.Count <= 0)
+            {
+                Loading(false);
+                return;
+            }
+
+            dgvNilai.Rows.Clear();
+            var no = 1;
+            var asciNilaiMinimal = Encoding.ASCII.GetBytes("C")[0];
+            foreach (var item in listDetailNilai)
+            {
+                dgvNilai.Rows.Add(
+                    no,
+                    item.KodeLama,
+                    item.MataKuliahLama,
+                    item.SksLama,
+                    "Ganti MK Baru",
+                    string.IsNullOrWhiteSpace(item.KodePemutihan) ? item.KodeLama : item.KodePemutihan,
+                    string.IsNullOrWhiteSpace(item.MataKuliahPemutihan) ? item.MataKuliahLama : item.MataKuliahPemutihan,
+                    item.SksPemutihan == 0 ? item.SksLama : item.SksPemutihan,
+                    item.Nilai,
+                    item.Approve);
+
+                byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
+                if (asciiNilai > asciNilaiMinimal)
+                {
+                    dgvNilai.Rows[no - 1].DefaultCellStyle.BackColor = Color.LightSalmon;
+                }
+                no++;
+            }
         }
     }
 }

@@ -88,7 +88,7 @@ namespace KonversiAlihJalur
             dgvPendaftar.Rows.Clear();
             foreach (var item in listPendaftarAlihJalur)
             {
-                dgvPendaftar.Rows.Add(no, item.Nodaf, item.NpmLama, item.Nama, item.Approve);
+                dgvPendaftar.Rows.Add(no, item.Nodaf, item.NpmLama, item.Nama, item.Approve, item.Jenjang);
                 no++;
             }
 
@@ -169,8 +169,9 @@ namespace KonversiAlihJalur
             }
             
             var nodaf = dgvPendaftar.Rows[hit.RowIndex].Cells["Nodaf"].Value.ToString();
+            var jenjang = dgvPendaftar.Rows[hit.RowIndex].Cells["Jenjang"].Value == null ? null : dgvPendaftar.Rows[hit.RowIndex].Cells["Jenjang"].Value.ToString();
             contextMenuStrip1.Items[0].Text = string.Format("Lihat nilai {0}", nama);
-            contextMenuStrip1.Items[0].Tag = new { Npm = npm, Nodaf = nodaf };
+            contextMenuStrip1.Items[0].Tag = new { Npm = npm, Nodaf = nodaf, Jenjang = jenjang };
             contextMenuStrip1.Items[0].Enabled = true;
         }
 
@@ -179,9 +180,11 @@ namespace KonversiAlihJalur
             var nama = (sender as ToolStripItem).Text.Replace("Lihat nilai ", "");
             var npm = ((sender as ToolStripItem).Tag as dynamic).Npm as string;
             var nodaf = ((sender as ToolStripItem).Tag as dynamic).Nodaf as string;
-            if(string.IsNullOrWhiteSpace(npm))
+            var jenjang = ((sender as ToolStripItem).Tag as dynamic).Jenjang as string;
+            if (string.IsNullOrWhiteSpace(npm))
             {
                 using (var form = new FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan(
+                                    jenjang,
                                     npm, 
                                     nama, 
                                     int.Parse(cmbAngkatan.Text), 

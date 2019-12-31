@@ -13,6 +13,7 @@ namespace KonversiAlihJalur.Models
         public string Nama { get; set; }
         public string Pilihan1 { get; set; }
         public int Approve { get; set; }
+        public string Jenjang { get; set; }
     }
 
     class DetailNilaiPendaftarAlihJalur
@@ -34,9 +35,9 @@ namespace KonversiAlihJalur.Models
         public string KodeLama { get; set; }
         public string MataKuliahLama { get; set; }
         public int SksLama { get; set; }
-        public string KodeBaru { get; set; }
-        public string MataKuliahBaru { get; set; }
-        public int SksBaru { get; set; }
+        public string KodePemutihan { get; set; }
+        public string MataKuliahPemutihan { get; set; }
+        public int SksPemutihan { get; set; }
         public string Nilai { get; set; }
         public bool Approve { get; set; }
     }

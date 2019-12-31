@@ -43,19 +43,21 @@ namespace KonversiAlihJalur.Dialog
         private List<DataMataKuliah> listDataMatakuliah;
         private int angkatan;
         private string idProdi;
+        private string jenjang;
 
-        public FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan(string npmLama, string nama, int angkatan, string nodaf, string idProdi)
+        public FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan(string  jenjang, string npmLama, string nama, int angkatan, string nodaf, string idProdi)
         {
             InitializeComponent();
             webApi = new WebApi();
             NpmLama = npmLama;
             txtNama.Text = nama;
-            txtNpmLama.Text = string.IsNullOrWhiteSpace(npmLama) ? "Non AMIKOM" : npmLama;
+            txtNpmLama.Text = string.IsNullOrWhiteSpace(npmLama) ? "" : npmLama;
             txtNodaf.Text = nodaf;
             this.angkatan = angkatan;
             Nodaf = nodaf;
             dgvNilai.Rows[0].Cells["No"].Value = 1;
             this.idProdi = idProdi;
+            this.jenjang = jenjang;
         }
 
         private void Loading(bool isLoading)
@@ -74,6 +76,15 @@ namespace KonversiAlihJalur.Dialog
         private async void FormDetailNilaiMhsAlihJalur_Load(object sender, EventArgs e)
         {
             Loading(true);
+
+            //if(jenjang == "S2")
+            //{
+            //    txtNpmLama.ReadOnly = false;
+            //}
+            //else
+            //{
+            //    txtNpmLama.ReadOnly = true;
+            //}
 
             await LoadMk();
 
@@ -387,28 +398,28 @@ namespace KonversiAlihJalur.Dialog
             }
 
             Microsoft.Office.Interop.Excel.Range rangeKodeD3 = ws.Range["A1", "A1"];
-            ws.Cells[1, 1] = "KODE D3";
+            ws.Cells[1, 1] = "KODE LAMA";
 
             Microsoft.Office.Interop.Excel.Range rangeMkD3 = ws.Range["A1", "B1"];
-            ws.Cells[1, 2] = "MATA KULIAH D3";
+            ws.Cells[1, 2] = "MATA KULIAH LAMA";
 
             Microsoft.Office.Interop.Excel.Range rangeSksD3 = ws.Range["A1", "C1"];
-            ws.Cells[1, 3] = "SKS D3";
+            ws.Cells[1, 3] = "SKS LAMA";
 
             Microsoft.Office.Interop.Excel.Range rangeNilaiD3 = ws.Range["A1", "D1"];
-            ws.Cells[1, 4] = "NILAI D3";
+            ws.Cells[1, 4] = "NILAI LAMA";
 
             Microsoft.Office.Interop.Excel.Range rangeKodeS1 = ws.Range["A1", "E1"];
-            ws.Cells[1, 5] = "KODE S1";
+            ws.Cells[1, 5] = "KODE BARU";
 
             Microsoft.Office.Interop.Excel.Range rangeMkS1 = ws.Range["A1", "F1"];
-            ws.Cells[1, 6] = "MATA KULIAH S1";
+            ws.Cells[1, 6] = "MATA KULIAH BARU";
 
             Microsoft.Office.Interop.Excel.Range rangeSksS1 = ws.Range["A1", "G1"];
-            ws.Cells[1, 7] = "SKS S1";
+            ws.Cells[1, 7] = "SKS BARU";
 
             Microsoft.Office.Interop.Excel.Range rangeNilaiS1 = ws.Range["A1", "H1"];
-            ws.Cells[1, 8] = "NILAI S1";
+            ws.Cells[1, 8] = "NILAI BARU";
 
             var row = 2;
             foreach (var mataKuliah in listDataMatakuliah)

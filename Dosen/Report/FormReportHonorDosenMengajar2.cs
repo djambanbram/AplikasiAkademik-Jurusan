@@ -175,7 +175,7 @@ namespace Dosen.Report
             dgvHonorRemidial.Columns.Clear();
             listDataHonorRemidial = listHonorRemidial;
 
-            if(!string.IsNullOrWhiteSpace(kodeProgram))
+            if (!string.IsNullOrWhiteSpace(kodeProgram))
             {
                 listDataHonorRemidial = listHonorRemidial.Where(i => i.KodeProgram == kodeProgram).ToList();
                 dgvHonorRemidial.DataSource = listDataHonorRemidial;
@@ -274,7 +274,7 @@ namespace Dosen.Report
                 var hrFixBulan = (jmlSksBayar * h.HFix);
                 decimal hrVarBulan = 0;
 
-                if (h.KodeProgram == "60" || h.KodeProgram == "61" || h.KodeProgram == "62")
+                if (h.KodeProgram == "60" || h.KodeProgram == "61" || h.KodeProgram == "62" || h.KodeProgram == "67")
                 {
                     if (h.KategoriDosen == "Dosen Tetap")
                     {
@@ -282,14 +282,14 @@ namespace Dosen.Report
                     }
                     else
                     {
-                        if (cmbPeriode.SelectedIndex > 3)
-                        {
-                            hrVarBulan = 0;
-                        }
-                        else
-                        {
-                            hrVarBulan = ((jmlPertemuanMengajar * h.HVar) / 3) * 2;
-                        }
+                        //if (cmbPeriode.SelectedIndex > 3)
+                        //{
+                        //    hrVarBulan = 0;
+                        //}
+                        //else
+                        //{
+                        hrVarBulan = ((jmlPertemuanMengajar * h.HVar) / 6) * 2;
+                        //}
                     }
                 }
                 else
@@ -300,14 +300,14 @@ namespace Dosen.Report
                     }
                     else
                     {
-                        if (cmbPeriode.SelectedIndex > 3)
-                        {
-                            hrVarBulan = 0;
-                        }
-                        else
-                        {
-                            hrVarBulan = ((jmlPertemuanMengajar * h.HVar) / 3);
-                        }
+                        //if (cmbPeriode.SelectedIndex > 3)
+                        //{
+                        //    hrVarBulan = 0;
+                        //}
+                        //else
+                        //{
+                        hrVarBulan = ((jmlPertemuanMengajar * h.HVar) / 6);
+                        //}
                     }
                 }
                 decimal hrTotal = hrFixBulan + hrVarBulan;
@@ -378,11 +378,11 @@ namespace Dosen.Report
 
             //DataTable dtHonor = Lib.CommonLib.ToDataTable(listDataHonorDosenMengajar);
             var tempListByJenisPengajar = new List<DataHonorDosenMengajar>();
-            if(cmbTimPengajar.SelectedIndex == 0)
+            if (cmbTimPengajar.SelectedIndex == 0)
             {
                 tempListByJenisPengajar = listDataHonorDosenMengajar;
             }
-            else if(cmbTimPengajar.SelectedIndex == 1)
+            else if (cmbTimPengajar.SelectedIndex == 1)
             {
                 tempListByJenisPengajar = listDataHonorDosenMengajar.Where(d => d.IsTeachingTeam).ToList();
             }
@@ -453,7 +453,7 @@ namespace Dosen.Report
 
         private async void btnProses_Click(object sender, EventArgs e)
         {
-            if(rbHrMengajar.Checked && (int.Parse(cmbSemester.SelectedValue.ToString()) != 1 && int.Parse(cmbSemester.SelectedValue.ToString()) != 2))
+            if (rbHrMengajar.Checked && (int.Parse(cmbSemester.SelectedValue.ToString()) != 1 && int.Parse(cmbSemester.SelectedValue.ToString()) != 2))
             {
                 MessageBox.Show("Semester harus ganjil atau genap");
                 return;

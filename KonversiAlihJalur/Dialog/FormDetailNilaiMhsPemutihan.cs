@@ -111,7 +111,7 @@ namespace KonversiAlihJalur.Dialog
                     string.IsNullOrWhiteSpace(item.MataKuliahPemutihan) ? item.MataKuliahLama : item.MataKuliahPemutihan,
                     item.SksPemutihan == 0 ? item.SksLama : item.SksPemutihan,
                     item.Nilai,
-                    item.Approve);
+                    string.IsNullOrWhiteSpace(item.KodePemutihan) ? false : true);
 
                 byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
                 if (asciiNilai > asciNilaiMinimal)
@@ -120,8 +120,8 @@ namespace KonversiAlihJalur.Dialog
                 }
                 no++;
             }
-
             Loading(false);
+            dgvNilai.PerformLayout();
         }
 
         private void dgvNilai_CellContentClick(object sender, DataGridViewCellEventArgs e)

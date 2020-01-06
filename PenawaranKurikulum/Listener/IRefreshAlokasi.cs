@@ -16,4 +16,9 @@ namespace PenawaranKurikulum.Listener
         void saveJumlahKelas(string ruang, int jumlahKelas, string kode);
         void updateJumlahKelas(string ruang, int jumlahKelas, string kode);
     }
+
+    public interface IRefreshKurikulum
+    {
+        void RefreshKurikulum(string kodeProgram);
+    }
 }

@@ -59,6 +59,7 @@ namespace MainAplikasi
         private FormMatrikulasiCalonAlihJalur formMatrikulasiCalonAlihJalur;
         private FormKonversiNilaiCalonPemutihan formKonversiNilaiCalonPemutihan;
         private FormReportHasilMatrikulasiPemutihan formReportHasilMatrikulasiPemutihan;
+        private FormSetKurikulum formSetKurikulum;
 
         private FormReportDataMK formReportDataMK;
         private FormReportMKPrasyarat formReportMKPrasyarat;
@@ -247,6 +248,15 @@ namespace MainAplikasi
                     formKonversiNilaiCalonPemutihan.MdiParent = this;
                 }
                 form = formKonversiNilaiCalonPemutihan;
+            }
+            else if (e.XPTaskBarItem.Name == "itemSetKurikulum")
+            {
+                if (formSetKurikulum == null || formSetKurikulum.IsDisposed)
+                {
+                    formSetKurikulum = new FormSetKurikulum();
+                    formSetKurikulum.MdiParent = this;
+                }
+                form = formSetKurikulum;
             }
             else if (e.XPTaskBarItem.Name == "itemLaporanMK")
             {

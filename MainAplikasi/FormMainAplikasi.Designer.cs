@@ -207,11 +207,12 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Mata Kuliah", System.Drawing.Color.Empty, 1, null, "", true, true, "itemAlokasiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Dosen", System.Drawing.Color.Empty, 2, null, "", true, true, "itemAlokasiDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Alokasi Lab. dan Mata Kuliah", System.Drawing.Color.Empty, 3, null, "", true, true, "itemAlokasiLabMK", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0),
-            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Koordinator Mata Kuliah", System.Drawing.Color.Empty, 4, null, "", true, true, "itemKoordinatorMk", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0)});
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Koordinator Mata Kuliah", System.Drawing.Color.Empty, 4, null, "", true, true, "itemKoordinatorMk", new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), 0),
+            new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Set Kurikulum", System.Drawing.Color.Empty, 5, null, "", true, true, "itemSetKurikulum", new System.Drawing.Font("Microsoft Sans Serif", 9.75F), 0)});
             this.boxPenawaranMK.Location = new System.Drawing.Point(0, 196);
             this.boxPenawaranMK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxPenawaranMK.Name = "boxPenawaranMK";
-            this.boxPenawaranMK.Size = new System.Drawing.Size(264, 120);
+            this.boxPenawaranMK.Size = new System.Drawing.Size(264, 142);
             this.boxPenawaranMK.TabIndex = 2;
             this.boxPenawaranMK.Text = "Penawaran MK";
             this.boxPenawaranMK.ItemClick += new Syncfusion.Windows.Forms.Tools.XPTaskBarItemClickHandler(this.boxKelas_ItemClick);
@@ -225,6 +226,7 @@ namespace MainAplikasi
             this.imgPenawaranMKBox.Images.SetKeyName(2, "teacher.png");
             this.imgPenawaranMKBox.Images.SetKeyName(3, "laptop.png");
             this.imgPenawaranMKBox.Images.SetKeyName(4, "lunchroom.png");
+            this.imgPenawaranMKBox.Images.SetKeyName(5, "business.png");
             // 
             // boxDosen
             // 
@@ -240,7 +242,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("TimDosen", System.Drawing.Color.Empty, 3, null, "", true, true, "itemTimDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Jenjang Pendidikan", System.Drawing.Color.Empty, 2, null, "", true, true, "itemJPDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Struktur Honor Dosen", System.Drawing.Color.Empty, 1, null, "", true, true, "itemHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.boxDosen.Location = new System.Drawing.Point(0, 316);
+            this.boxDosen.Location = new System.Drawing.Point(0, 338);
             this.boxDosen.Name = "boxDosen";
             this.boxDosen.Size = new System.Drawing.Size(264, 106);
             this.boxDosen.TabIndex = 5;
@@ -270,7 +272,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Set Konversi MK Alih Jalur", System.Drawing.Color.Empty, 1, null, "", true, true, "itemSetKonversiMK", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Konversi Mhs Alih Jalur", System.Drawing.Color.Empty, 2, null, "", true, true, "itemKonversiMhs", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Konversi Mhs Pemutihan", System.Drawing.Color.Empty, 2, null, "", true, true, "itemKonversiMhsPemutihan", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.boxAlihJalur.Location = new System.Drawing.Point(0, 422);
+            this.boxAlihJalur.Location = new System.Drawing.Point(0, 444);
             this.boxAlihJalur.Name = "boxAlihJalur";
             this.boxAlihJalur.Size = new System.Drawing.Size(264, 106);
             this.boxAlihJalur.TabIndex = 6;
@@ -301,7 +303,7 @@ namespace MainAplikasi
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Honor Dosen", System.Drawing.Color.Empty, 3, null, "", true, true, "itemLaporanHonorDosen", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Lap. Alih Jalur", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanAlihJalur", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Laporan Pemutihan", System.Drawing.Color.Empty, 4, null, "", true, true, "itemLaporanPemutihan", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxLaporan.Location = new System.Drawing.Point(0, 528);
+            this.BoxLaporan.Location = new System.Drawing.Point(0, 550);
             this.BoxLaporan.Name = "BoxLaporan";
             this.BoxLaporan.Size = new System.Drawing.Size(264, 154);
             this.BoxLaporan.TabIndex = 4;
@@ -332,7 +334,7 @@ namespace MainAplikasi
             this.BoxKeluar.Items.AddRange(new Syncfusion.Windows.Forms.Tools.XPTaskBarItem[] {
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Cek Update Aplikasi", System.Drawing.Color.Empty, 2, null, "", true, true, "itemUpdate", new System.Drawing.Font("Segoe UI", 9.75F), 0),
             new Syncfusion.Windows.Forms.Tools.XPTaskBarItem("Keluar", System.Drawing.Color.Empty, 0, null, "", true, true, "itemKeluar", new System.Drawing.Font("Segoe UI", 9.75F), 0)});
-            this.BoxKeluar.Location = new System.Drawing.Point(0, 682);
+            this.BoxKeluar.Location = new System.Drawing.Point(0, 704);
             this.BoxKeluar.Name = "BoxKeluar";
             this.BoxKeluar.Size = new System.Drawing.Size(264, 82);
             this.BoxKeluar.TabIndex = 3;

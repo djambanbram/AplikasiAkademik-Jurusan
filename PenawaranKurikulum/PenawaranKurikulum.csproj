@@ -132,6 +132,12 @@
     <Compile Include="Dialog\DialogSetJumlahKelas.Designer.cs">
       <DependentUpon>DialogSetJumlahKelas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\DialogSetKurikulumPerAngkatan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogSetKurikulumPerAngkatan.Designer.cs">
+      <DependentUpon>DialogSetKurikulumPerAngkatan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\FormCopyMktsdAngkatanLain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,12 @@
     <Compile Include="FormSampleMergeDGV.Designer.cs">
       <DependentUpon>FormSampleMergeDGV.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSetKurikulum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetKurikulum.Designer.cs">
+      <DependentUpon>FormSetKurikulum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\CommonLib.cs" />
     <Compile Include="Lib\DragandDrop.cs" />
     <Compile Include="Listener\IRefreshAlokasi.cs" />
@@ -211,6 +223,9 @@
     <EmbeddedResource Include="Dialog\DialogSetJumlahKelas.resx">
       <DependentUpon>DialogSetJumlahKelas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\DialogSetKurikulumPerAngkatan.resx">
+      <DependentUpon>DialogSetKurikulumPerAngkatan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\FormCopyMktsdAngkatanLain.resx">
       <DependentUpon>FormCopyMktsdAngkatanLain.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSampleMergeDGV.resx">
       <DependentUpon>FormSampleMergeDGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetKurikulum.resx">
+      <DependentUpon>FormSetKurikulum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

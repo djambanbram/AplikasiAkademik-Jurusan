@@ -49,6 +49,15 @@ namespace ClassModel
         public bool IsTugasAkhir { get; set; }
     }
 
+    public class KurikulumProdi : DataMataKuliah
+    {
+        public Guid IdMasterKurikulum { get; set; }
+        public Guid IdKurikulum { get; set; }
+        public int Angkatan { get; set; }
+        public string NilaiMinimal { get; set; }
+        public Program Program { get; set; }
+    }
+
     public class DataMataKuliahPrasyarat : DataMataKuliah
     {
         public string KodePrasyarat { get; set; }

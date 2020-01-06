@@ -304,56 +304,56 @@ namespace KonversiAlihJalur.Dialog
             // 
             // KodeD3
             // 
-            this.KodeD3.HeaderText = "KODE D3";
+            this.KodeD3.HeaderText = "KODE LAMA";
             this.KodeD3.Name = "KodeD3";
-            this.KodeD3.Width = 86;
+            this.KodeD3.Width = 104;
             // 
             // MataKuliahD3
             // 
-            this.MataKuliahD3.HeaderText = "MATA KULIAH D3";
+            this.MataKuliahD3.HeaderText = "MATA KULIAH LAMA";
             this.MataKuliahD3.Name = "MataKuliahD3";
-            this.MataKuliahD3.Width = 107;
+            this.MataKuliahD3.Width = 138;
             // 
             // SksD3
             // 
-            this.SksD3.HeaderText = "SKS D3";
+            this.SksD3.HeaderText = "SKS LAMA";
             this.SksD3.Name = "SksD3";
-            this.SksD3.Width = 55;
+            this.SksD3.Width = 86;
             // 
             // NilaiD3
             // 
-            this.NilaiD3.HeaderText = "NILAI D3";
+            this.NilaiD3.HeaderText = "NILAI LAMA";
             this.NilaiD3.Name = "NilaiD3";
-            this.NilaiD3.Width = 77;
+            this.NilaiD3.Width = 93;
             // 
             // KodeS1
             // 
-            this.KodeS1.HeaderText = "KODE S1";
+            this.KodeS1.HeaderText = "KODE BARU";
             this.KodeS1.Name = "KodeS1";
             this.KodeS1.ReadOnly = true;
-            this.KodeS1.Width = 78;
+            this.KodeS1.Width = 94;
             // 
             // MataKuliahS1
             // 
-            this.MataKuliahS1.HeaderText = "MATA KULIAH S1";
+            this.MataKuliahS1.HeaderText = "MATA KULIAH BARU";
             this.MataKuliahS1.Name = "MataKuliahS1";
             this.MataKuliahS1.ReadOnly = true;
             this.MataKuliahS1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.MataKuliahS1.Width = 107;
+            this.MataKuliahS1.Width = 136;
             // 
             // SksS1
             // 
-            this.SksS1.HeaderText = "SKS S1";
+            this.SksS1.HeaderText = "SKS BARU";
             this.SksS1.Name = "SksS1";
             this.SksS1.ReadOnly = true;
-            this.SksS1.Width = 55;
+            this.SksS1.Width = 84;
             // 
             // Nilai
             // 
-            this.Nilai.HeaderText = "NILAI S1";
+            this.Nilai.HeaderText = "NILAI BARU";
             this.Nilai.Name = "Nilai";
             this.Nilai.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nilai.Width = 75;
+            this.Nilai.Width = 91;
             // 
             // Hapus
             // 
@@ -373,7 +373,7 @@ namespace KonversiAlihJalur.Dialog
             this.Id.Visible = false;
             this.Id.Width = 44;
             // 
-            // FormDetailNilaiMhsAlihJalurNonAmikom
+            // FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -387,7 +387,7 @@ namespace KonversiAlihJalur.Dialog
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormDetailNilaiMhsAlihJalurNonAmikom";
+            this.Name = "FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detail Nilai";
             this.Load += new System.EventHandler(this.FormDetailNilaiMhsAlihJalur_Load);

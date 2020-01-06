@@ -43,16 +43,6 @@ namespace KonversiAlihJalur.Dialog
             this.approveKecualiNIlaiDDanEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.approveKecualiNilaiEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KodeLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliahLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GantiMk = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.KodeBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliahBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Approve = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -63,9 +53,19 @@ namespace KonversiAlihJalur.Dialog
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.labelForS2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtNodaf = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.labelForS2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KodeLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksLama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GantiMk = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.KodeBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliahBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksBaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Approve = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -128,6 +128,7 @@ namespace KonversiAlihJalur.Dialog
             this.dgvNilai.AllowUserToAddRows = false;
             this.dgvNilai.AllowUserToDeleteRows = false;
             this.dgvNilai.AllowUserToResizeRows = false;
+            this.dgvNilai.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvNilai.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvNilai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNilai.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -150,74 +151,6 @@ namespace KonversiAlihJalur.Dialog
             this.dgvNilai.Size = new System.Drawing.Size(939, 327);
             this.dgvNilai.TabIndex = 25;
             this.dgvNilai.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNilai_CellContentClick);
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 50;
-            // 
-            // KodeLama
-            // 
-            this.KodeLama.HeaderText = "Kode Lama";
-            this.KodeLama.Name = "KodeLama";
-            this.KodeLama.ReadOnly = true;
-            this.KodeLama.Width = 60;
-            // 
-            // MataKuliahLama
-            // 
-            this.MataKuliahLama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliahLama.HeaderText = "Mata Kuliah Lama";
-            this.MataKuliahLama.Name = "MataKuliahLama";
-            this.MataKuliahLama.ReadOnly = true;
-            // 
-            // SksLama
-            // 
-            this.SksLama.HeaderText = "Sks Lama";
-            this.SksLama.Name = "SksLama";
-            this.SksLama.ReadOnly = true;
-            this.SksLama.Width = 60;
-            // 
-            // GantiMk
-            // 
-            this.GantiMk.HeaderText = "";
-            this.GantiMk.Name = "GantiMk";
-            this.GantiMk.VisitedLinkColor = System.Drawing.Color.Blue;
-            // 
-            // KodeBaru
-            // 
-            this.KodeBaru.HeaderText = "Kode Baru";
-            this.KodeBaru.Name = "KodeBaru";
-            this.KodeBaru.ReadOnly = true;
-            this.KodeBaru.Width = 60;
-            // 
-            // MataKuliahBaru
-            // 
-            this.MataKuliahBaru.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliahBaru.HeaderText = "Mata Kuliah Baru";
-            this.MataKuliahBaru.Name = "MataKuliahBaru";
-            this.MataKuliahBaru.ReadOnly = true;
-            // 
-            // SksBaru
-            // 
-            this.SksBaru.HeaderText = "Sks Baru";
-            this.SksBaru.Name = "SksBaru";
-            this.SksBaru.ReadOnly = true;
-            this.SksBaru.Width = 60;
-            // 
-            // Nilai
-            // 
-            this.Nilai.HeaderText = "Nilai";
-            this.Nilai.Name = "Nilai";
-            this.Nilai.ReadOnly = true;
-            this.Nilai.Width = 70;
-            // 
-            // Approve
-            // 
-            this.Approve.HeaderText = "Approve";
-            this.Approve.Name = "Approve";
-            this.Approve.Width = 70;
             // 
             // btnTutup
             // 
@@ -339,6 +272,16 @@ namespace KonversiAlihJalur.Dialog
             this.gradientPanel2.Size = new System.Drawing.Size(939, 122);
             this.gradientPanel2.TabIndex = 23;
             // 
+            // labelForS2
+            // 
+            this.labelForS2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelForS2.Location = new System.Drawing.Point(227, 10);
+            this.labelForS2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelForS2.Name = "labelForS2";
+            this.labelForS2.Size = new System.Drawing.Size(46, 16);
+            this.labelForS2.TabIndex = 16;
+            this.labelForS2.Text = "(enter)";
+            // 
             // txtNodaf
             // 
             this.txtNodaf.BeforeTouchSize = new System.Drawing.Size(136, 25);
@@ -360,15 +303,74 @@ namespace KonversiAlihJalur.Dialog
             this.autoLabel3.TabIndex = 14;
             this.autoLabel3.Text = "Nodaf";
             // 
-            // labelForS2
+            // No
             // 
-            this.labelForS2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForS2.Location = new System.Drawing.Point(227, 10);
-            this.labelForS2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelForS2.Name = "labelForS2";
-            this.labelForS2.Size = new System.Drawing.Size(46, 16);
-            this.labelForS2.TabIndex = 16;
-            this.labelForS2.Text = "(enter)";
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 51;
+            // 
+            // KodeLama
+            // 
+            this.KodeLama.HeaderText = "Kode Lama";
+            this.KodeLama.Name = "KodeLama";
+            this.KodeLama.ReadOnly = true;
+            this.KodeLama.Width = 91;
+            // 
+            // MataKuliahLama
+            // 
+            this.MataKuliahLama.HeaderText = "Mata Kuliah Lama";
+            this.MataKuliahLama.Name = "MataKuliahLama";
+            this.MataKuliahLama.ReadOnly = true;
+            this.MataKuliahLama.Width = 125;
+            // 
+            // SksLama
+            // 
+            this.SksLama.HeaderText = "Sks Lama";
+            this.SksLama.Name = "SksLama";
+            this.SksLama.ReadOnly = true;
+            this.SksLama.Width = 80;
+            // 
+            // GantiMk
+            // 
+            this.GantiMk.HeaderText = "";
+            this.GantiMk.Name = "GantiMk";
+            this.GantiMk.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.GantiMk.Width = 5;
+            // 
+            // KodeBaru
+            // 
+            this.KodeBaru.HeaderText = "Kode Baru";
+            this.KodeBaru.Name = "KodeBaru";
+            this.KodeBaru.ReadOnly = true;
+            this.KodeBaru.Width = 87;
+            // 
+            // MataKuliahBaru
+            // 
+            this.MataKuliahBaru.HeaderText = "Mata Kuliah Baru";
+            this.MataKuliahBaru.Name = "MataKuliahBaru";
+            this.MataKuliahBaru.ReadOnly = true;
+            this.MataKuliahBaru.Width = 121;
+            // 
+            // SksBaru
+            // 
+            this.SksBaru.HeaderText = "Sks Baru";
+            this.SksBaru.Name = "SksBaru";
+            this.SksBaru.ReadOnly = true;
+            this.SksBaru.Width = 76;
+            // 
+            // Nilai
+            // 
+            this.Nilai.HeaderText = "Nilai";
+            this.Nilai.Name = "Nilai";
+            this.Nilai.ReadOnly = true;
+            this.Nilai.Width = 59;
+            // 
+            // Approve
+            // 
+            this.Approve.HeaderText = "Approve";
+            this.Approve.Name = "Approve";
+            this.Approve.Width = 64;
             // 
             // FormDetailNilaiMhsPemutihan
             // 
@@ -419,6 +421,7 @@ namespace KonversiAlihJalur.Dialog
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private System.Windows.Forms.ToolStripMenuItem approveKecualiNIlaiDDanEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem approveKecualiNilaiEToolStripMenuItem;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelForS2;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeLama;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliahLama;
@@ -429,6 +432,5 @@ namespace KonversiAlihJalur.Dialog
         private System.Windows.Forms.DataGridViewTextBoxColumn SksBaru;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nilai;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Approve;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel labelForS2;
     }
 }

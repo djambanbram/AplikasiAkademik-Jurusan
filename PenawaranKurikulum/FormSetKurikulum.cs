@@ -134,6 +134,8 @@ namespace PenawaranKurikulum
             lblSksWajib.Text = ": 0";
             lblSksPilihan.Text = ": 0";
             lblSksKonsentrasi.Text = ": 0";
+            lblTotalMk.Text = "0";
+            lblTotalSks.Text = "0";
 
             var no = 1;
             var jumlahMkWajib = 0;
@@ -142,6 +144,7 @@ namespace PenawaranKurikulum
             var jumlahSksWajib = 0;
             var jumlahSksPilihan = 0;
             var jumlahSksKonsentrasi = 0;
+            dgvKurikulum.Rows.Clear();
             foreach (var item in listKurikulumProdi)
             {
                 if (angkatan == 0)
@@ -195,7 +198,7 @@ namespace PenawaranKurikulum
             lblSksWajib.Text = string.Format(": {0}", jumlahSksWajib.ToString());
             lblSksPilihan.Text = string.Format(": {0}", jumlahSksPilihan.ToString());
             lblSksKonsentrasi.Text = string.Format(": {0}", jumlahSksKonsentrasi.ToString());
-            lblTotalMk.Text = string.Format(": {0}", listKurikulumProdi.Count.ToString());
+            lblTotalMk.Text = string.Format(": {0}", listKurikulumProdi.Count(k => k.Angkatan == angkatan).ToString());
             lblTotalSks.Text = string.Format(": {0}", (jumlahSksKonsentrasi + jumlahSksPilihan + jumlahSksWajib).ToString());
         }
 

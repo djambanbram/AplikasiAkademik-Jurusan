@@ -189,21 +189,24 @@ namespace PenawaranKurikulum.Dialog
             Loading(true);
             foreach (DataGridViewRow dgRow in dgvMataKuliah.Rows)
             {
-                KurikulumProdi kp = new KurikulumProdi()
+                if (Convert.ToBoolean(dgRow.Cells["Pilih"].Value))
                 {
-                    Angkatan = int.Parse(cmbAngkatan.Text),
-                    KodeProgram = kodeProgram,
-                    Kode = dgRow.Cells["Kode"].Value.ToString(),
-                    NilaiMinimal = dgRow.Cells["NilaiMinimal"].Value.ToString() == "Pilih" ? null : dgRow.Cells["NilaiMinimal"].Value.ToString()
-                };
+                    KurikulumProdi kp = new KurikulumProdi()
+                    {
+                        Angkatan = int.Parse(cmbAngkatan.Text),
+                        KodeProgram = kodeProgram,
+                        Kode = dgRow.Cells["Kode"].Value.ToString(),
+                        NilaiMinimal = dgRow.Cells["NilaiMinimal"].Value.ToString() == "Pilih" ? null : dgRow.Cells["NilaiMinimal"].Value.ToString()
+                    };
 
-                var jsonData = JsonConvert.SerializeObject(kp);
-                response = await webApi.Post(URLSaveKurikulumPerAngkatan, jsonData, true);
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Proses penyimpanan gagal");
-                    Loading(false);
-                    return;
+                    var jsonData = JsonConvert.SerializeObject(kp);
+                    response = await webApi.Post(URLSaveKurikulumPerAngkatan, jsonData, true);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Proses penyimpanan gagal");
+                        Loading(false);
+                        return;
+                    }
                 }
             }
 

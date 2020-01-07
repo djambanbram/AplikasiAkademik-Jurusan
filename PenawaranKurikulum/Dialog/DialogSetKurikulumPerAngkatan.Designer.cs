@@ -48,6 +48,9 @@ namespace PenawaranKurikulum.Dialog
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSimpan = new System.Windows.Forms.Button();
             this.dgvMataKuliah = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPilihSemua = new System.Windows.Forms.Button();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pilih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,10 +58,6 @@ namespace PenawaranKurikulum.Dialog
             this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SifatMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NilaiMinimal = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnPilihSemua = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -89,7 +88,7 @@ namespace PenawaranKurikulum.Dialog
             "Pilih",
             "Penawaran Mata Kuliah",
             "Semua Mata Kuliah"});
-            this.cmbJenisMk.Location = new System.Drawing.Point(122, 74);
+            this.cmbJenisMk.Location = new System.Drawing.Point(122, 43);
             this.cmbJenisMk.Name = "cmbJenisMk";
             this.cmbJenisMk.Size = new System.Drawing.Size(213, 25);
             this.cmbJenisMk.TabIndex = 5;
@@ -98,7 +97,7 @@ namespace PenawaranKurikulum.Dialog
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 77);
+            this.label3.Location = new System.Drawing.Point(12, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 17);
             this.label3.TabIndex = 4;
@@ -110,7 +109,7 @@ namespace PenawaranKurikulum.Dialog
             this.cmbAngkatan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAngkatan.FormattingEnabled = true;
             this.cmbAngkatan.IntegralHeight = false;
-            this.cmbAngkatan.Location = new System.Drawing.Point(122, 43);
+            this.cmbAngkatan.Location = new System.Drawing.Point(122, 74);
             this.cmbAngkatan.Name = "cmbAngkatan";
             this.cmbAngkatan.Size = new System.Drawing.Size(131, 25);
             this.cmbAngkatan.TabIndex = 3;
@@ -119,7 +118,7 @@ namespace PenawaranKurikulum.Dialog
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 46);
+            this.label2.Location = new System.Drawing.Point(12, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 17);
             this.label2.TabIndex = 2;
@@ -215,6 +214,37 @@ namespace PenawaranKurikulum.Dialog
             this.dgvMataKuliah.Size = new System.Drawing.Size(902, 297);
             this.dgvMataKuliah.TabIndex = 4;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvMataKuliah);
+            this.groupBox1.Controls.Add(this.flowLayoutPanel3);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 108);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(908, 360);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Data Mata Kuliah";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnPilihSemua);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 21);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(902, 39);
+            this.flowLayoutPanel3.TabIndex = 5;
+            // 
+            // btnPilihSemua
+            // 
+            this.btnPilihSemua.Location = new System.Drawing.Point(3, 3);
+            this.btnPilihSemua.Name = "btnPilihSemua";
+            this.btnPilihSemua.Size = new System.Drawing.Size(97, 28);
+            this.btnPilihSemua.TabIndex = 6;
+            this.btnPilihSemua.Text = "Pilih Semua";
+            this.btnPilihSemua.UseVisualStyleBackColor = true;
+            this.btnPilihSemua.Click += new System.EventHandler(this.btnPilihSemua_Click);
+            // 
             // No
             // 
             this.No.HeaderText = "No";
@@ -262,51 +292,8 @@ namespace PenawaranKurikulum.Dialog
             "D",
             "E"});
             this.NilaiMinimal.Name = "NilaiMinimal";
+            this.NilaiMinimal.Visible = false;
             this.NilaiMinimal.Width = 90;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvMataKuliah);
-            this.groupBox1.Controls.Add(this.flowLayoutPanel3);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 108);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(908, 360);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Data Mata Kuliah";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.btnPilihSemua);
-            this.flowLayoutPanel3.Controls.Add(this.label4);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 21);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(902, 39);
-            this.flowLayoutPanel3.TabIndex = 5;
-            // 
-            // btnPilihSemua
-            // 
-            this.btnPilihSemua.Location = new System.Drawing.Point(3, 3);
-            this.btnPilihSemua.Name = "btnPilihSemua";
-            this.btnPilihSemua.Size = new System.Drawing.Size(97, 28);
-            this.btnPilihSemua.TabIndex = 6;
-            this.btnPilihSemua.Text = "Pilih Semua";
-            this.btnPilihSemua.UseVisualStyleBackColor = true;
-            this.btnPilihSemua.Click += new System.EventHandler(this.btnPilihSemua_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(106, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(336, 34);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Jika nilai minimal tidak di set, maka default nilai adalah E";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DialogSetKurikulumPerAngkatan
             // 
@@ -334,7 +321,6 @@ namespace PenawaranKurikulum.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -364,6 +350,5 @@ namespace PenawaranKurikulum.Dialog
         private System.Windows.Forms.DataGridViewTextBoxColumn Sks;
         private System.Windows.Forms.DataGridViewTextBoxColumn SifatMk;
         private System.Windows.Forms.DataGridViewComboBoxColumn NilaiMinimal;
-        private System.Windows.Forms.Label label4;
     }
 }

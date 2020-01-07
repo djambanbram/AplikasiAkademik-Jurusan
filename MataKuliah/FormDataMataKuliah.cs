@@ -128,6 +128,7 @@ namespace MataKuliah
             }
             listTahunBerlaku.Insert(0, "Pilih");
             cmbTahunBerlaku.DataSource = listTahunBerlaku;
+            cmbNilaiMinimal.SelectedIndex = 0;
             EnableField(false);
         }
 
@@ -242,6 +243,7 @@ namespace MataKuliah
                 mk.SingkatanKelas = txtSingkatanMK.Text;
                 mk.KodeKesetaraan = txtKodeMKPengganti.Text;
                 mk.IsTugasAkhir = cbIsSkripsi.Checked;
+                mk.NilaiMinimal = cmbNilaiMinimal.SelectedIndex == 0 ? null : cmbNilaiMinimal.Text;
 
                 string jsonData = JsonConvert.SerializeObject(mk);
                 response = await webApi.Post(URLSaveMK, jsonData, true);
@@ -255,13 +257,14 @@ namespace MataKuliah
                 mk.Sks = int.Parse(txtSksTotal.Text);
                 mk.SksPraktikum = int.Parse(txtSksPraktikum.Text);
                 mk.SemesterDitawarkan = int.Parse(cmbSemesterPenawaran.Text);
-                mk.SingkatanMK = txtSingkatanMK.Text;
+                mk.SingkatanMK = txtAliasMK.Text;
                 mk.KategoriMK = cmbKategoriMK.Text;
                 mk.SingkatanKelas = txtSingkatanMK.Text;
                 mk.IsTugasAkhir = cbIsSkripsi.Checked;
                 mk.MataKuliah = txtNamaMK.Text;
                 mk.MataKuliahEn = txtNamaMKEn.Text;
                 mk.SifatMK = cmbSifatMK.SelectedValue.ToString();
+                mk.NilaiMinimal = cmbNilaiMinimal.SelectedIndex == 0 ? null : cmbNilaiMinimal.Text;
 
                 string jsonData = JsonConvert.SerializeObject(mk);
                 response = await webApi.Post(URLSaveMK, jsonData, true);
@@ -294,6 +297,7 @@ namespace MataKuliah
             cmbKategoriMK.Enabled = isEnable;
             cmbSifatMK.Enabled = isEnable;
             cmbTahunBerlaku.Enabled = isEnable;
+            cmbNilaiMinimal.Enabled = isEnable;
             //txtKodeMK.Enabled = isEnable;
             //cbKodeOtomatis.Enabled = isEnable;
 
@@ -314,6 +318,7 @@ namespace MataKuliah
             txtNamaMKEn.Text = string.Empty;
             txtNamaMK.Text = string.Empty;
             cmbTahunBerlaku.SelectedIndex = 0;
+            cmbNilaiMinimal.SelectedIndex = 0;
             //txtKodeMK.Text = string.Empty;
             //cbKodeOtomatis.Checked = true;
         }
@@ -327,6 +332,7 @@ namespace MataKuliah
                 cmbSemesterPenawaran.Enabled = isEdit;
                 txtSingkatanMK.Enabled = isEdit;
                 txtAliasMK.Enabled = isEdit;
+                cmbNilaiMinimal.Enabled = isEdit;
             }
             else
             {
@@ -380,7 +386,7 @@ namespace MataKuliah
                 int nomor = 1;
                 foreach (DataMataKuliah dataMK in ClassModel.MataKuliah.listDataMataKuliah)
                 {
-                    dgvMataKuliah.Rows.Add(nomor, dataMK.Kode, dataMK.MataKuliah, dataMK.Sks, dataMK.SksPraktikum, dataMK.SemesterDitawarkan, dataMK.SifatMK, dataMK.TahunMulai, Convert.ToBoolean(dataMK.IsTugasAkhir));
+                    dgvMataKuliah.Rows.Add(nomor, dataMK.Kode, dataMK.MataKuliah, dataMK.Sks, dataMK.SksPraktikum, dataMK.SemesterDitawarkan, dataMK.SifatMK, dataMK.TahunMulai, Convert.ToBoolean(dataMK.IsTugasAkhir), dataMK.NilaiMinimal);
                     nomor++;
                 }
             }
@@ -413,6 +419,7 @@ namespace MataKuliah
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
             cbIsSkripsi.Checked = dataMk.IsTugasAkhir;
+            cmbNilaiMinimal.Text = string.IsNullOrWhiteSpace(dataMk.NilaiMinimal) ? "Pilih" : dataMk.NilaiMinimal;
 
         }
 
@@ -535,6 +542,7 @@ namespace MataKuliah
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
             cbIsSkripsi.Checked = dataMk.IsTugasAkhir;
+            cmbNilaiMinimal.Text = string.IsNullOrWhiteSpace(dataMk.NilaiMinimal) ? "Pilih" : dataMk.NilaiMinimal;
         }
 
         private void cbKodeOtomatis_CheckedChanged(object sender, EventArgs e)

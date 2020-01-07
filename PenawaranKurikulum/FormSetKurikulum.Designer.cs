@@ -36,7 +36,7 @@ namespace PenawaranKurikulum
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProgram = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
@@ -53,21 +53,12 @@ namespace PenawaranKurikulum
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnSetKurikulum = new System.Windows.Forms.Button();
             this.dgvKurikulum = new System.Windows.Forms.DataGridView();
-            this.IdKurikulum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Angkatan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NilaiMinimal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SifatMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.hapusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbKurikulum = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.lblTotalSks = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTotalMk = new System.Windows.Forms.Label();
@@ -84,6 +75,15 @@ namespace PenawaranKurikulum
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.IdKurikulum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Angkatan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NilaiMinimal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SifatMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAngkatan)).BeginInit();
@@ -285,74 +285,17 @@ namespace PenawaranKurikulum
             this.dgvKurikulum.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKurikulum_CellValueChanged);
             this.dgvKurikulum.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvKurikulum_MouseDown);
             // 
-            // IdKurikulum
-            // 
-            this.IdKurikulum.HeaderText = "IdKurikulum";
-            this.IdKurikulum.Name = "IdKurikulum";
-            this.IdKurikulum.Visible = false;
-            this.IdKurikulum.Width = 82;
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 51;
-            // 
-            // Angkatan
-            // 
-            this.Angkatan.HeaderText = "Angkatan";
-            this.Angkatan.Name = "Angkatan";
-            this.Angkatan.ReadOnly = true;
-            this.Angkatan.Width = 87;
-            // 
-            // Kode
-            // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.Name = "Kode";
-            this.Kode.ReadOnly = true;
-            this.Kode.Width = 64;
-            // 
-            // MataKuliah
-            // 
-            this.MataKuliah.HeaderText = "Mata Kuliah";
-            this.MataKuliah.Name = "MataKuliah";
-            this.MataKuliah.ReadOnly = true;
-            this.MataKuliah.Width = 102;
-            // 
-            // NilaiMinimal
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.NilaiMinimal.DefaultCellStyle = dataGridViewCellStyle1;
-            this.NilaiMinimal.HeaderText = "Nilai Minimal*";
-            this.NilaiMinimal.Name = "NilaiMinimal";
-            this.NilaiMinimal.Width = 114;
-            // 
-            // Sks
-            // 
-            this.Sks.HeaderText = "Sks";
-            this.Sks.Name = "Sks";
-            this.Sks.ReadOnly = true;
-            this.Sks.Width = 52;
-            // 
-            // SifatMk
-            // 
-            this.SifatMk.HeaderText = "Sifat MK";
-            this.SifatMk.Name = "SifatMk";
-            this.SifatMk.ReadOnly = true;
-            this.SifatMk.Width = 82;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hapusToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 26);
             // 
             // hapusToolStripMenuItem
             // 
             this.hapusToolStripMenuItem.Name = "hapusToolStripMenuItem";
-            this.hapusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hapusToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.hapusToolStripMenuItem.Text = "Hapus";
             this.hapusToolStripMenuItem.Click += new System.EventHandler(this.hapusToolStripMenuItem_Click);
             // 
@@ -403,8 +346,8 @@ namespace PenawaranKurikulum
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -414,20 +357,12 @@ namespace PenawaranKurikulum
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 28);
+            this.label9.ForeColor = System.Drawing.Color.Blue;
+            this.label9.Location = new System.Drawing.Point(9, 29);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(467, 17);
             this.label9.TabIndex = 1;
             this.label9.Text = "- Untuk menghapus salah satu kode MK, klik kanan pada baris, dan pilih hapus";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(401, 17);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "- Untuk mengisi nilai minimal, isi langsung pada kolom nilai minimal";
             // 
             // lblTotalSks
             // 
@@ -573,6 +508,74 @@ namespace PenawaranKurikulum
             this.label1.TabIndex = 0;
             this.label1.Text = "Jumlah MK Wajib";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Blue;
+            this.label11.Location = new System.Drawing.Point(9, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(433, 17);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "- Untuk merubah nilai minimal, silahkan ubah di menu \"Data Mata Kuliah\"";
+            // 
+            // IdKurikulum
+            // 
+            this.IdKurikulum.HeaderText = "IdKurikulum";
+            this.IdKurikulum.Name = "IdKurikulum";
+            this.IdKurikulum.Visible = false;
+            this.IdKurikulum.Width = 82;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 51;
+            // 
+            // Angkatan
+            // 
+            this.Angkatan.HeaderText = "Angkatan";
+            this.Angkatan.Name = "Angkatan";
+            this.Angkatan.ReadOnly = true;
+            this.Angkatan.Width = 87;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.ReadOnly = true;
+            this.Kode.Width = 64;
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.HeaderText = "Mata Kuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            this.MataKuliah.ReadOnly = true;
+            this.MataKuliah.Width = 102;
+            // 
+            // NilaiMinimal
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.NilaiMinimal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.NilaiMinimal.HeaderText = "Nilai Minimal";
+            this.NilaiMinimal.Name = "NilaiMinimal";
+            this.NilaiMinimal.ReadOnly = true;
+            this.NilaiMinimal.Width = 109;
+            // 
+            // Sks
+            // 
+            this.Sks.HeaderText = "Sks";
+            this.Sks.Name = "Sks";
+            this.Sks.ReadOnly = true;
+            this.Sks.Width = 52;
+            // 
+            // SifatMk
+            // 
+            this.SifatMk.HeaderText = "Sifat MK";
+            this.SifatMk.Name = "SifatMk";
+            this.SifatMk.ReadOnly = true;
+            this.SifatMk.Width = 82;
+            // 
             // FormSetKurikulum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -648,8 +651,9 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem hapusToolStripMenuItem;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdKurikulum;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Angkatan;
@@ -658,6 +662,5 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.DataGridViewTextBoxColumn NilaiMinimal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sks;
         private System.Windows.Forms.DataGridViewTextBoxColumn SifatMk;
-        private System.Windows.Forms.ToolStripMenuItem hapusToolStripMenuItem;
     }
 }

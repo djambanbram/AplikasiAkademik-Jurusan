@@ -43,15 +43,6 @@ namespace MataKuliah
             this.txtNamaMKEn = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.txtNamaMK = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.dgvMataKuliah = new System.Windows.Forms.DataGridView();
-            this.Nomor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SemesterDitawarkan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SifatMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TahunMulai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Skripsi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -89,6 +80,18 @@ namespace MataKuliah
             this.btnTambah = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnBatal = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnEdit = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbNilaiMinimal = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.Nomor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SksPraktikum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SemesterDitawarkan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SifatMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TahunMulai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Skripsi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NilaiMinimal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtSksPraktikum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSksTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAliasMK)).BeginInit();
@@ -110,11 +113,12 @@ namespace MataKuliah
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbNilaiMinimal)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSksPraktikum
             // 
-            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtSksPraktikum.BeforeTouchSize = new System.Drawing.Size(136, 25);
             this.txtSksPraktikum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksPraktikum.Location = new System.Drawing.Point(148, 123);
             this.txtSksPraktikum.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -127,7 +131,7 @@ namespace MataKuliah
             // 
             // txtSksTotal
             // 
-            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtSksTotal.BeforeTouchSize = new System.Drawing.Size(136, 25);
             this.txtSksTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSksTotal.Location = new System.Drawing.Point(148, 93);
             this.txtSksTotal.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -140,7 +144,7 @@ namespace MataKuliah
             // 
             // txtAliasMK
             // 
-            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtAliasMK.BeforeTouchSize = new System.Drawing.Size(136, 25);
             this.txtAliasMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAliasMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAliasMK.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -154,7 +158,7 @@ namespace MataKuliah
             // 
             // txtSingkatanMK
             // 
-            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtSingkatanMK.BeforeTouchSize = new System.Drawing.Size(136, 25);
             this.txtSingkatanMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSingkatanMK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSingkatanMK.Location = new System.Drawing.Point(589, 63);
@@ -166,7 +170,7 @@ namespace MataKuliah
             // 
             // txtNamaMKEn
             // 
-            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtNamaMKEn.BeforeTouchSize = new System.Drawing.Size(136, 25);
             this.txtNamaMKEn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMKEn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMKEn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -180,7 +184,7 @@ namespace MataKuliah
             // 
             // txtNamaMK
             // 
-            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.txtNamaMK.BeforeTouchSize = new System.Drawing.Size(136, 25);
             this.txtNamaMK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNamaMK.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNamaMK.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -208,81 +212,21 @@ namespace MataKuliah
             this.SemesterDitawarkan,
             this.SifatMk,
             this.TahunMulai,
-            this.Skripsi});
+            this.Skripsi,
+            this.NilaiMinimal});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMataKuliah, 4);
             this.dgvMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMataKuliah.Location = new System.Drawing.Point(3, 216);
+            this.dgvMataKuliah.Location = new System.Drawing.Point(3, 249);
             this.dgvMataKuliah.MultiSelect = false;
             this.dgvMataKuliah.Name = "dgvMataKuliah";
             this.dgvMataKuliah.ReadOnly = true;
             this.dgvMataKuliah.RowHeadersVisible = false;
+            this.tableLayoutPanel1.SetRowSpan(this.dgvMataKuliah, 2);
             this.dgvMataKuliah.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMataKuliah.Size = new System.Drawing.Size(946, 148);
+            this.dgvMataKuliah.Size = new System.Drawing.Size(946, 115);
             this.dgvMataKuliah.TabIndex = 0;
             this.dgvMataKuliah.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMataKuliah_CellClick);
             this.dgvMataKuliah.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvMataKuliah_KeyUp);
-            // 
-            // Nomor
-            // 
-            this.Nomor.HeaderText = "No.";
-            this.Nomor.Name = "Nomor";
-            this.Nomor.ReadOnly = true;
-            this.Nomor.Width = 50;
-            // 
-            // Kode
-            // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.Name = "Kode";
-            this.Kode.ReadOnly = true;
-            this.Kode.Width = 70;
-            // 
-            // MataKuliah
-            // 
-            this.MataKuliah.HeaderText = "Mata Kuliah";
-            this.MataKuliah.Name = "MataKuliah";
-            this.MataKuliah.ReadOnly = true;
-            this.MataKuliah.Width = 300;
-            // 
-            // Sks
-            // 
-            this.Sks.HeaderText = "Sks Total";
-            this.Sks.Name = "Sks";
-            this.Sks.ReadOnly = true;
-            // 
-            // SksPraktikum
-            // 
-            this.SksPraktikum.HeaderText = "Sks Praktikum";
-            this.SksPraktikum.Name = "SksPraktikum";
-            this.SksPraktikum.ReadOnly = true;
-            // 
-            // SemesterDitawarkan
-            // 
-            this.SemesterDitawarkan.HeaderText = "Semester";
-            this.SemesterDitawarkan.Name = "SemesterDitawarkan";
-            this.SemesterDitawarkan.ReadOnly = true;
-            this.SemesterDitawarkan.Width = 70;
-            // 
-            // SifatMk
-            // 
-            this.SifatMk.HeaderText = "Sifat MK";
-            this.SifatMk.Name = "SifatMk";
-            this.SifatMk.ReadOnly = true;
-            // 
-            // TahunMulai
-            // 
-            this.TahunMulai.HeaderText = "Tahun Berlaku";
-            this.TahunMulai.Name = "TahunMulai";
-            this.TahunMulai.ReadOnly = true;
-            this.TahunMulai.Width = 70;
-            // 
-            // Skripsi
-            // 
-            this.Skripsi.HeaderText = "TA / Skripsi";
-            this.Skripsi.Name = "Skripsi";
-            this.Skripsi.ReadOnly = true;
-            this.Skripsi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Skripsi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Skripsi.Width = 60;
             // 
             // autoLabel3
             // 
@@ -379,7 +323,7 @@ namespace MataKuliah
             this.autoLabel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoLabel11.Location = new System.Drawing.Point(3, 180);
             this.autoLabel11.Name = "autoLabel11";
-            this.autoLabel11.Size = new System.Drawing.Size(139, 33);
+            this.autoLabel11.Size = new System.Drawing.Size(139, 36);
             this.autoLabel11.TabIndex = 11;
             this.autoLabel11.Text = "Tahun Berlaku*";
             this.autoLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -392,7 +336,7 @@ namespace MataKuliah
             this.groupBox1.Location = new System.Drawing.Point(469, 123);
             this.groupBox1.Name = "groupBox1";
             this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 3);
-            this.groupBox1.Size = new System.Drawing.Size(480, 87);
+            this.groupBox1.Size = new System.Drawing.Size(480, 90);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kesetaraan / Pengganti Mata Kuliah (kosongkan bila tidak ada)";
@@ -416,7 +360,7 @@ namespace MataKuliah
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(474, 63);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(474, 66);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // txtKodeMKPengganti
@@ -435,7 +379,7 @@ namespace MataKuliah
             this.autoLabel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoLabel14.Location = new System.Drawing.Point(3, 32);
             this.autoLabel14.Name = "autoLabel14";
-            this.autoLabel14.Size = new System.Drawing.Size(139, 31);
+            this.autoLabel14.Size = new System.Drawing.Size(139, 34);
             this.autoLabel14.TabIndex = 13;
             this.autoLabel14.Text = "Nama MK";
             this.autoLabel14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -496,8 +440,9 @@ namespace MataKuliah
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 321F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 366F));
+            this.tableLayoutPanel1.Controls.Add(this.cmbNilaiMinimal, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.cmbSifatMK, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dgvMataKuliah, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.dgvMataKuliah, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel9, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.autoLabel10, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtSingkatanMK, 3, 2);
@@ -519,17 +464,19 @@ namespace MataKuliah
             this.tableLayoutPanel1.Controls.Add(this.autoLabel11, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.cmbTahunBerlaku, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.cbIsSkripsi, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 77);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(952, 367);
@@ -754,6 +701,103 @@ namespace MataKuliah
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 216);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 30);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Nilai Minimal";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbNilaiMinimal
+            // 
+            this.cmbNilaiMinimal.BeforeTouchSize = new System.Drawing.Size(75, 25);
+            this.cmbNilaiMinimal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNilaiMinimal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNilaiMinimal.Items.AddRange(new object[] {
+            "Pilih",
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"});
+            this.cmbNilaiMinimal.Location = new System.Drawing.Point(148, 219);
+            this.cmbNilaiMinimal.Name = "cmbNilaiMinimal";
+            this.cmbNilaiMinimal.Size = new System.Drawing.Size(75, 25);
+            this.cmbNilaiMinimal.TabIndex = 18;
+            this.cmbNilaiMinimal.Tag = "cb";
+            // 
+            // Nomor
+            // 
+            this.Nomor.HeaderText = "No.";
+            this.Nomor.Name = "Nomor";
+            this.Nomor.ReadOnly = true;
+            this.Nomor.Width = 50;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.ReadOnly = true;
+            this.Kode.Width = 70;
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.HeaderText = "Mata Kuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            this.MataKuliah.ReadOnly = true;
+            this.MataKuliah.Width = 300;
+            // 
+            // Sks
+            // 
+            this.Sks.HeaderText = "Sks Total";
+            this.Sks.Name = "Sks";
+            this.Sks.ReadOnly = true;
+            // 
+            // SksPraktikum
+            // 
+            this.SksPraktikum.HeaderText = "Sks Praktikum";
+            this.SksPraktikum.Name = "SksPraktikum";
+            this.SksPraktikum.ReadOnly = true;
+            // 
+            // SemesterDitawarkan
+            // 
+            this.SemesterDitawarkan.HeaderText = "Semester";
+            this.SemesterDitawarkan.Name = "SemesterDitawarkan";
+            this.SemesterDitawarkan.ReadOnly = true;
+            this.SemesterDitawarkan.Width = 70;
+            // 
+            // SifatMk
+            // 
+            this.SifatMk.HeaderText = "Sifat MK";
+            this.SifatMk.Name = "SifatMk";
+            this.SifatMk.ReadOnly = true;
+            // 
+            // TahunMulai
+            // 
+            this.TahunMulai.HeaderText = "Tahun Berlaku";
+            this.TahunMulai.Name = "TahunMulai";
+            this.TahunMulai.ReadOnly = true;
+            this.TahunMulai.Width = 70;
+            // 
+            // Skripsi
+            // 
+            this.Skripsi.HeaderText = "TA / Skripsi";
+            this.Skripsi.Name = "Skripsi";
+            this.Skripsi.ReadOnly = true;
+            this.Skripsi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Skripsi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Skripsi.Width = 60;
+            // 
+            // NilaiMinimal
+            // 
+            this.NilaiMinimal.HeaderText = "Nilai Minimal";
+            this.NilaiMinimal.Name = "NilaiMinimal";
+            this.NilaiMinimal.ReadOnly = true;
+            // 
             // FormDataMataKuliah
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -792,6 +836,7 @@ namespace MataKuliah
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbNilaiMinimal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -842,6 +887,8 @@ namespace MataKuliah
         private Syncfusion.Windows.Forms.ButtonAdv btnEdit;
         private Syncfusion.Windows.Forms.ButtonAdv btnNonAktifMK;
         private System.Windows.Forms.CheckBox cbIsSkripsi;
+        private System.Windows.Forms.Label label1;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbNilaiMinimal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nomor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
@@ -851,5 +898,6 @@ namespace MataKuliah
         private System.Windows.Forms.DataGridViewTextBoxColumn SifatMk;
         private System.Windows.Forms.DataGridViewTextBoxColumn TahunMulai;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Skripsi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NilaiMinimal;
     }
 }

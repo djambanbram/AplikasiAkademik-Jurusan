@@ -47,6 +47,7 @@ namespace ClassModel
         public int Sampai { get; set; }
         public string KodeKesetaraan { get; set; }
         public bool IsTugasAkhir { get; set; }
+        public string NilaiMinimal { get; set; }
     }
 
     public class KurikulumProdi : DataMataKuliah

@@ -93,9 +93,9 @@ namespace MainAplikasi
                     //LoginAccess.KodeSemester = kodeSemester;
 
                     LoginAccess.TahunAkademik = "2019/2020";
-                    LoginAccess.Semester = "Ganjil";
-                    LoginAccess.IdTahun = 59;
-                    LoginAccess.KodeSemester = 1;
+                    LoginAccess.Semester = "Genap";
+                    LoginAccess.IdTahun = 60;
+                    LoginAccess.KodeSemester = 2;
 #endif
 
                     Hide();

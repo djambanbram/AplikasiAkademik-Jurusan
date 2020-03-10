@@ -205,7 +205,7 @@ namespace KonversiAlihJalur.Dialog
                 h.Npm = NpmLama;
                 h.KodeD3 = row.Cells["KodeD3"].Value.ToString();
                 h.MataKuliahD3 = row.Cells["MataKuliahD3"].Value.ToString();
-                h.SksD3 = int.Parse(row.Cells["SksD3"].Value.ToString());
+                h.SksD3 = int.Parse(row.Cells["SksD3"].Value.ToString().Trim());
                 h.NilaiD3 = row.Cells["NilaiD3"].Value.ToString();
                 h.KodeS1 = row.Cells["KodeS1"].Value == null ? null : row.Cells["KodeS1"].Value.ToString();
                 h.Nilai = row.Cells["Nilai"].Value == null ? null : row.Cells["Nilai"].Value.ToString();

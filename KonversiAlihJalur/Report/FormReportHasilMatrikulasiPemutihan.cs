@@ -188,15 +188,19 @@ namespace KonversiAlihJalur.Report
         private void LoadReport(bool isPilihSemua)
         {
             string kodeProdiAsal = string.Empty;
-            if (cmbProgramAlihJalur.SelectedValue.ToString() == "21")
-            {
-                kodeProdiAsal = "11";
-            }
-            else if (cmbProgramAlihJalur.SelectedValue.ToString() == "22")
-            {
-                kodeProdiAsal = "12";
-            }
+            //if (cmbProgramAlihJalur.SelectedValue.ToString() == "21")
+            //{
+            //    kodeProdiAsal = "11";
+            //}
+            //else if (cmbProgramAlihJalur.SelectedValue.ToString() == "22")
+            //{
+            //    kodeProdiAsal = "12";
+            //}
+            //else
+            //{
 
+            //}
+            kodeProdiAsal = cmbProgramAlihJalur.SelectedValue.ToString();
             List<ReportParameter> listParams = new List<ReportParameter>();
             listParams.Add(new ReportParameter("Prodi", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(listDepartment.Find(d => d.KodeDepartment == kodeProdiAsal).NamaDepartment.ToLower())));
             listParams.Add(new ReportParameter("TanggalCetak", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(DateTime.Now.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")))));

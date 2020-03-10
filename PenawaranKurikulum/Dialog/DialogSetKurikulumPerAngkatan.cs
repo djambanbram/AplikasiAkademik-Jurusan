@@ -27,7 +27,7 @@ namespace PenawaranKurikulum.Dialog
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetMKSudahDitawarkan = baseAddress + "/jurusan_api/api/kurikulum/get_mk_sudah_ditawarkan_by_angkatan";
         private string URLGetMK = baseAddress + "/jurusan_api/api/kurikulum/get_mk";
-        private string URLSaveKurikulumPerAngkatan = baseAddress + "/jurusan_api/api/kurikulum/save_kurikulum_program_prodi";
+        private string URLSaveKurikulumPerAngkatan = baseAddress + "/jurusan_api/api/kurikulum/save_kurikulum_matakuliah";
 
         private WebApi webApi;
         private HttpResponseMessage response;

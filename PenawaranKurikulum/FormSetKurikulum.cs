@@ -26,9 +26,9 @@ namespace PenawaranKurikulum
     public partial class FormSetKurikulum : Syncfusion.Windows.Forms.MetroForm, IRefreshKurikulum
     {
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-        private string URLGetKurikulumByProgramProdi = baseAddress + "/jurusan_api/api/kurikulum/list_kurikulum_program_prodi";
-        private string URLSaveKurikulumPerAngkatan = baseAddress + "/jurusan_api/api/kurikulum/save_kurikulum_program_prodi";
-        private string URLDeleteKurikulumProdi = baseAddress + "/jurusan_api/api/kurikulum/delete_kurikulum_program_prodi";
+        private string URLGetKurikulumMataKuliah = baseAddress + "/jurusan_api/api/kurikulum/list_kurikulum_matakuliah";
+        private string URLSaveKurikulumPerAngkatan = baseAddress + "/jurusan_api/api/kurikulum/save_kurikulum_matakuliah";
+        private string URLDeleteKurikulumProdi = baseAddress + "/jurusan_api/api/kurikulum/delete_kurikulum_matakuliah";
 
         private WebApi webApi;
         private HttpResponseMessage response;
@@ -218,7 +218,7 @@ namespace PenawaranKurikulum
             Loading(true);
             var data = new { KodeProgram = cmbProgram.SelectedValue.ToString() };
             var jsonData = JsonConvert.SerializeObject(data);
-            response = await webApi.Post(URLGetKurikulumByProgramProdi, jsonData, true);
+            response = await webApi.Post(URLGetKurikulumMataKuliah, jsonData, true);
             if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
@@ -270,7 +270,7 @@ namespace PenawaranKurikulum
             var jsonData = JsonConvert.SerializeObject(data);
 
             Loading(true);
-            response = await webApi.Post(URLGetKurikulumByProgramProdi, jsonData, true);
+            response = await webApi.Post(URLGetKurikulumMataKuliah, jsonData, true);
             if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));

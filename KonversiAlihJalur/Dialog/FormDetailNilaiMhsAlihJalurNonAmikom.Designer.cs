@@ -50,11 +50,6 @@ namespace KonversiAlihJalur.Dialog
             this.btnImportExcel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.approveSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.approveKecualiNilaiDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hapusApproveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KodeD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliahD3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +61,11 @@ namespace KonversiAlihJalur.Dialog
             this.Nilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hapus = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.approveSemuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.approveKecualiNilaiDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hapusApproveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNodaf)).BeginInit();
@@ -252,7 +252,6 @@ namespace KonversiAlihJalur.Dialog
             this.dgvNilai.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvNilai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNilai.Location = new System.Drawing.Point(0, 103);
-            this.dgvNilai.MultiSelect = false;
             this.dgvNilai.Name = "dgvNilai";
             this.dgvNilai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvNilai.Size = new System.Drawing.Size(870, 340);
@@ -260,41 +259,6 @@ namespace KonversiAlihJalur.Dialog
             this.dgvNilai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNilai_CellClick);
             this.dgvNilai.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvNilai_RowsAdded);
             this.dgvNilai.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvNilai_RowsRemoved);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.approveSemuaToolStripMenuItem,
-            this.approveKecualiNilaiDToolStripMenuItem,
-            this.hapusApproveToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 70);
-            // 
-            // approveSemuaToolStripMenuItem
-            // 
-            this.approveSemuaToolStripMenuItem.Name = "approveSemuaToolStripMenuItem";
-            this.approveSemuaToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.approveSemuaToolStripMenuItem.Text = "Approve Semua";
-            this.approveSemuaToolStripMenuItem.Click += new System.EventHandler(this.approveSemuaToolStripMenuItem_Click);
-            // 
-            // approveKecualiNilaiDToolStripMenuItem
-            // 
-            this.approveKecualiNilaiDToolStripMenuItem.Name = "approveKecualiNilaiDToolStripMenuItem";
-            this.approveKecualiNilaiDToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.approveKecualiNilaiDToolStripMenuItem.Text = "Approve Kecuali Nilai D";
-            this.approveKecualiNilaiDToolStripMenuItem.Click += new System.EventHandler(this.approveKecualiNilaiDToolStripMenuItem_Click);
-            // 
-            // hapusApproveToolStripMenuItem
-            // 
-            this.hapusApproveToolStripMenuItem.Name = "hapusApproveToolStripMenuItem";
-            this.hapusApproveToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.hapusApproveToolStripMenuItem.Text = "Hapus Approve";
-            this.hapusApproveToolStripMenuItem.Click += new System.EventHandler(this.hapusApproveToolStripMenuItem_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // No
             // 
@@ -306,7 +270,7 @@ namespace KonversiAlihJalur.Dialog
             // 
             this.KodeD3.HeaderText = "KODE LAMA";
             this.KodeD3.Name = "KodeD3";
-            this.KodeD3.Width = 104;
+            this.KodeD3.Width = 96;
             // 
             // MataKuliahD3
             // 
@@ -372,6 +336,41 @@ namespace KonversiAlihJalur.Dialog
             this.Id.Name = "Id";
             this.Id.Visible = false;
             this.Id.Width = 44;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.approveSemuaToolStripMenuItem,
+            this.approveKecualiNilaiDToolStripMenuItem,
+            this.hapusApproveToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 70);
+            // 
+            // approveSemuaToolStripMenuItem
+            // 
+            this.approveSemuaToolStripMenuItem.Name = "approveSemuaToolStripMenuItem";
+            this.approveSemuaToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.approveSemuaToolStripMenuItem.Text = "Approve Semua";
+            this.approveSemuaToolStripMenuItem.Click += new System.EventHandler(this.approveSemuaToolStripMenuItem_Click);
+            // 
+            // approveKecualiNilaiDToolStripMenuItem
+            // 
+            this.approveKecualiNilaiDToolStripMenuItem.Name = "approveKecualiNilaiDToolStripMenuItem";
+            this.approveKecualiNilaiDToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.approveKecualiNilaiDToolStripMenuItem.Text = "Approve Kecuali Nilai D";
+            this.approveKecualiNilaiDToolStripMenuItem.Click += new System.EventHandler(this.approveKecualiNilaiDToolStripMenuItem_Click);
+            // 
+            // hapusApproveToolStripMenuItem
+            // 
+            this.hapusApproveToolStripMenuItem.Name = "hapusApproveToolStripMenuItem";
+            this.hapusApproveToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.hapusApproveToolStripMenuItem.Text = "Hapus Approve";
+            this.hapusApproveToolStripMenuItem.Click += new System.EventHandler(this.hapusApproveToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // FormDetailNilaiMhsAlihJalurNonAmikomAtauPemutihan
             // 

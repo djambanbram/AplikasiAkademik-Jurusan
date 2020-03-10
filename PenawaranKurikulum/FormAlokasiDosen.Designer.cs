@@ -60,6 +60,7 @@ namespace PenawaranKurikulum
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvAlokasi = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.setSebagaiKoordinatorMKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hapusAlokasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setSemuaKelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -74,7 +75,6 @@ namespace PenawaranKurikulum
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCariDosen = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.setSebagaiKoordinatorMKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram)).BeginInit();
@@ -387,7 +387,15 @@ namespace PenawaranKurikulum
             this.hapusAlokasiToolStripMenuItem,
             this.setSemuaKelasToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(221, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(221, 92);
+            // 
+            // setSebagaiKoordinatorMKToolStripMenuItem
+            // 
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Name = "setSebagaiKoordinatorMKToolStripMenuItem";
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Text = "Set sebagai Koordinator MK";
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Visible = false;
+            this.setSebagaiKoordinatorMKToolStripMenuItem.Click += new System.EventHandler(this.setSebagaiKoordinatorMKToolStripMenuItem_Click);
             // 
             // hapusAlokasiToolStripMenuItem
             // 
@@ -538,13 +546,6 @@ namespace PenawaranKurikulum
             this.txtCariDosen.Size = new System.Drawing.Size(280, 25);
             this.txtCariDosen.TabIndex = 1;
             this.txtCariDosen.TextChanged += new System.EventHandler(this.txtCariDosen_TextChanged);
-            // 
-            // setSebagaiKoordinatorMKToolStripMenuItem
-            // 
-            this.setSebagaiKoordinatorMKToolStripMenuItem.Name = "setSebagaiKoordinatorMKToolStripMenuItem";
-            this.setSebagaiKoordinatorMKToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.setSebagaiKoordinatorMKToolStripMenuItem.Text = "Set sebagai Koordinator MK";
-            this.setSebagaiKoordinatorMKToolStripMenuItem.Click += new System.EventHandler(this.setSebagaiKoordinatorMKToolStripMenuItem_Click);
             // 
             // FormAlokasiDosen
             // 

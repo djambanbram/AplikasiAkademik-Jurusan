@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>ftp://172.16.24.10/jurusan_apps/</PublishUrl>
+    <PublishUrl>ftp://172.16.15.43/jurusan_apps/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,15 +23,15 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://172.16.24.10/jurusan_apps/</InstallUrl>
-    <UpdateUrl>http://172.16.24.10/jurusan_apps/</UpdateUrl>
+    <InstallUrl>http://172.16.15.43/jurusan_apps/</InstallUrl>
+    <UpdateUrl>http://172.16.15.43/jurusan_apps/</UpdateUrl>
     <SupportUrl>http://www.amikom.ac.id</SupportUrl>
     <ProductName>Aplikasi Program Studi</ProductName>
     <PublisherName>Direktorat Innovation Center AMIKOM Yogyakarta</PublisherName>
     <SuiteName>IC</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>aplikasi_program_studi.htm</WebPage>
-    <ApplicationRevision>46</ApplicationRevision>
+    <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

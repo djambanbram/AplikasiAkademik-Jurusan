@@ -21,6 +21,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PenawaranKurikulum
@@ -80,8 +81,10 @@ namespace PenawaranKurikulum
             cmbFakultas.SelectedIndex = 0;
         }
 
-        private void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbFakultas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvMK.Rows.Clear();
+            dgvMktsd.Rows.Clear();
             if (cmbFakultas.SelectedIndex > 0)
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
@@ -91,11 +94,15 @@ namespace PenawaranKurikulum
                 cmbProdi.DisplayMember = "NamaProdi";
                 cmbProdi.ValueMember = "Uid";
                 cmbProdi.SelectedIndex = 0;
+
+                await LoadData();
             }
         }
 
-        private void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbProdi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvMK.Rows.Clear();
+            dgvMktsd.Rows.Clear();
             if (cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0)
             {
                 string idProdi = cmbProdi.SelectedValue.ToString();
@@ -105,11 +112,15 @@ namespace PenawaranKurikulum
                 cmbProgram.DisplayMember = "NamaProgram";
                 cmbProgram.ValueMember = "KodeProgram";
                 cmbProgram.SelectedIndex = 0;
+
+                await LoadData();
             }
         }
 
         private async void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvMK.Rows.Clear();
+            dgvMktsd.Rows.Clear();
             if (cmbProdi.SelectedIndex == 0 || cmbProgram.SelectedIndex == 0)
             {
                 dgvMK.Rows.Clear();
@@ -118,6 +129,15 @@ namespace PenawaranKurikulum
             }
 
             Loading(true);
+            await LoadData();
+        }
+
+        private async Task LoadData()
+        {
+            if(!(cmbFakultas.SelectedIndex > 0 && cmbProdi.SelectedIndex > 0 && cmbProgram.SelectedIndex > 0))
+            {
+                return;
+            }
 
             //Force Data 
             //var data = new { TahunAkademik = "2017/2018", KodeJurusan = cmbProgram.SelectedValue.ToString(), Semester = 7, IdProdi = cmbProdi.SelectedValue.ToString() };
@@ -213,6 +233,9 @@ namespace PenawaranKurikulum
 
         private void dgvMK_MouseDown(object sender, MouseEventArgs e)
         {
+            return;
+
+            //Sementara disable (2020-01-28)
             var hitTestInfo = dragAndDropAdd.DragMouseDownFirst(e, dgvMK);
             if (hitTestInfo != null)
             {
@@ -258,6 +281,8 @@ namespace PenawaranKurikulum
 
         private void dgvMktsd_MouseDown(object sender, MouseEventArgs e)
         {
+
+            //sementara disable (2020-01-28)
             var hitTestInfo = dragAndDropDelete.DragMouseDownFirst(e, dgvMktsd);
             if (e.Button == MouseButtons.Right)
             {
@@ -277,6 +302,7 @@ namespace PenawaranKurikulum
                 return;
             }
 
+            return;
             if (hitTestInfo != null)
             {
                 //Mandatory Data
@@ -351,6 +377,9 @@ namespace PenawaranKurikulum
 
         private async void dgvMK_DragDrop(object sender, DragEventArgs e)
         {
+            return;
+
+            //Sementara disable (2020-01-28)
             if (valueMKPrasyaratDelete == null)
             {
                 return;
@@ -426,6 +455,9 @@ namespace PenawaranKurikulum
 
         private async void dgvMktsd_DragDrop(object sender, DragEventArgs e)
         {
+            return;
+
+            //Sementara disable (2020-01-28)
             if (valueMKPrasyaratAdd == null)
             {
                 return;

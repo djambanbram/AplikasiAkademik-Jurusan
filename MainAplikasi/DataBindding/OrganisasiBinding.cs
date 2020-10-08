@@ -55,10 +55,12 @@ namespace MataKuliah.DataBindding
 
             Organisasi.listFakultas = listFakultas;
             Organisasi.listProdi = listProdi
-                                    .Where(pr => pr.SingkatanProdi != "CSSE").ToList();
+                                    .Where(pr => pr.SingkatanProdi != "CSSE")
+                                    .ToList();
             Organisasi.listProdiPlusStudentExchange = listProdi;
             Organisasi.listProdiStudentExchange = listProdi
-                                    .Where(pr => pr.SingkatanProdi == "CSSE").ToList();
+                                    .Where(pr => pr.SingkatanProdi == "CSSE")
+                                    .ToList();
             Organisasi.listProgram = listProgram;
         }
     }

@@ -27,9 +27,13 @@ namespace MataKuliah.DataBinding
                 m.KodeSifatMK = item.KodeSifatMK;
                 m.SifatMK = item.SifatMK;
                 m.TahunMulai = item.TahunMulai;
+                m.Sampai = item.Sampai;
                 m.IdProdi = item.IdProdi;
                 m.IsTugasAkhir = item.IsTugasAkhir;
+                m.IsBerlakuSemuaSemester = item.IsBerlakuSemuaSemester;
                 m.NilaiMinimal = item.NilaiMinimal;
+                m.KodeKesetaraan = item.KodeKesetaraan;
+                m.NamaKesetaraan = item.NamaKesetaraan;
                 listMK.Add(m);
             }
             ClassModel.MataKuliah.listDataMataKuliah = listMK;

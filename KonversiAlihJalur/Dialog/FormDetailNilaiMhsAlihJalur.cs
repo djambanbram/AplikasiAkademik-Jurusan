@@ -26,6 +26,7 @@ namespace KonversiAlihJalur.Dialog
         public static string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
         private string URLGetDetailCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/get_detail_calon_mhs_alih_jalur";
         private string URLSaveHistoryNilaiCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur";
+        private string URLDeleteHistoryNilaiCalonMhsAlihJalur = baseAddress + "/jurusan_api/api/alih_jalur/save_nilai_calon_mhs_alih_jalur_single";
 
         private string NpmLama;
         private string Nodaf;
@@ -139,6 +140,13 @@ namespace KonversiAlihJalur.Dialog
 
             Loading(true);
 
+            DialogResult dr = MessageBox.Show("Hasil konversi nilai yang sudah masuk akan di reset. Lanjutkan proses?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(dr == DialogResult.No)
+            {
+                Loading(false);
+                return;
+            }
+
             List<HistoryKonversiNilai> listHistoryKonversi = new List<HistoryKonversiNilai>();
             foreach(DataGridViewRow row in dgvNilai.Rows)
             {
@@ -157,7 +165,7 @@ namespace KonversiAlihJalur.Dialog
 
             var jsondata = JsonConvert.SerializeObject(listHistoryKonversi);
             response = await webApi.Post(URLSaveHistoryNilaiCalonMhsAlihJalur, jsondata, true);
-            if(!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show(webApi.ReturnMessage(response));
                 Loading(false);
@@ -166,6 +174,33 @@ namespace KonversiAlihJalur.Dialog
             MessageBox.Show("Konversi nilai berhasil disimpan");
 
             Loading(false);
+        }
+
+        private async void buttonAdv1_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Hasil konversi nilai yang sudah masuk akan di reset. Lanjutkan proses?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.No)
+            {
+                Loading(false);
+                return;
+            }
+
+            HistoryKonversiNilai hk = new HistoryKonversiNilai()
+            {
+                 Nodaf = this.Nodaf
+            };
+
+            var jsondata = JsonConvert.SerializeObject(hk);
+            response = await webApi.Post(URLDeleteHistoryNilaiCalonMhsAlihJalur, jsondata, true);
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show(webApi.ReturnMessage(response));
+                Loading(false);
+                return;
+            }
+            dgvNilai.Rows.Clear();
+            MessageBox.Show("Konversi nilai berhasil dihapus");
+
         }
     }
 }

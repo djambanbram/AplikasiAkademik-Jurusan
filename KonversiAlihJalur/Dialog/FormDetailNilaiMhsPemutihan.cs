@@ -116,7 +116,7 @@ namespace KonversiAlihJalur.Dialog
                 byte asciiNilai = Encoding.ASCII.GetBytes(item.Nilai)[0];
                 if (asciiNilai > asciNilaiMinimal)
                 {
-                    dgvNilai.Rows[no - 1].DefaultCellStyle.BackColor = Color.LightSalmon;
+                    dgvNilai.Rows[no - 1].Cells["Nilai"].Style.BackColor = Color.LightSalmon;
                 }
                 no++;
             }

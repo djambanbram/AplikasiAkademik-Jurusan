@@ -149,7 +149,7 @@ namespace KonversiAlihJalur.Dialog
                 return;
             }
 
-            listDataMatakuliah = JsonConvert.DeserializeObject<List<DataMataKuliah>>(response.Content.ReadAsStringAsync().Result);
+            listDataMatakuliah = JsonConvert.DeserializeObject<List<DataMataKuliah>>(response.Content.ReadAsStringAsync().Result).Where(w => w.Sampai > 0).ToList();
         }
 
         private void approveSemuaToolStripMenuItem_Click(object sender, EventArgs e)

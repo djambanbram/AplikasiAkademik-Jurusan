@@ -46,7 +46,9 @@ namespace ClassModel
         public string KodeProgram { get; set; }
         public int Sampai { get; set; }
         public string KodeKesetaraan { get; set; }
+        public string NamaKesetaraan { get; set; }
         public bool IsTugasAkhir { get; set; }
+        public bool IsBerlakuSemuaSemester { get; set; }
         public string NilaiMinimal { get; set; }
     }
 

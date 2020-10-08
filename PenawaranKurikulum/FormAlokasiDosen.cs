@@ -143,6 +143,7 @@ namespace PenawaranKurikulum
                             OrderBy(pr => pr.Jenjang)
                             .ThenBy(pr => pr.NamaProdi)
                             .ToList();
+                listProdi.AddRange(Organisasi.listProdiStudentExchange);
                 listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
                 cmbProdi.DataSource = listProdi;
                 cmbProdi.DisplayMember = "NamaProdi";
@@ -365,7 +366,7 @@ namespace PenawaranKurikulum
                     //semesntara hardcode, untuk transfer, kelas akan di tampilkan di seluruh semester
                     if (kodeProgramDipilih == "21" || kodeProgramDipilih == "22")
                     {
-                        listKelasAktif = JsonConvert.DeserializeObject<List<KelasAktif>>(response.Content.ReadAsStringAsync().Result).ToList();
+                        listKelasAktif = JsonConvert.DeserializeObject<List<KelasAktif>>(response.Content.ReadAsStringAsync().Result).Where(kls => kls.SemesterDitawarkan == semDipilih).ToList();
                     }
                     else
                     {

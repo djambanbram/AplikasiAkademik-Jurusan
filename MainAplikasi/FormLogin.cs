@@ -32,8 +32,8 @@ namespace MainAplikasi
             InitializeComponent();
             webApi = new WebApi();
 #if DEBUG
-            txtUsername.Text = "190302038";
-            txtPassword.Text = "FW7u@Mv!";
+            txtUsername.Text = "190302219";
+            txtPassword.Text = "Br@mPr4t0wO";
 #else
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
@@ -92,10 +92,10 @@ namespace MainAplikasi
                     //LoginAccess.IdTahun = int.Parse(JObject.Parse(response.Content.ReadAsStringAsync().Result)["IdTahun"].ToString());
                     //LoginAccess.KodeSemester = kodeSemester;
 
-                    LoginAccess.TahunAkademik = "2019/2020";
-                    LoginAccess.Semester = "Genap";
-                    LoginAccess.IdTahun = 60;
-                    LoginAccess.KodeSemester = 2;
+                    LoginAccess.TahunAkademik = "2020/2021";
+                    LoginAccess.Semester = "Ganjil";
+                    LoginAccess.IdTahun = 63;
+                    LoginAccess.KodeSemester = 1;
 #endif
 
                     Hide();

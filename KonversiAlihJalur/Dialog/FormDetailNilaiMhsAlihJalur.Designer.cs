@@ -45,6 +45,7 @@ namespace KonversiAlihJalur.Dialog
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSimpan = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnResetKonversi = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -142,6 +143,7 @@ namespace KonversiAlihJalur.Dialog
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnTutup);
             this.flowLayoutPanel1.Controls.Add(this.btnSimpan);
+            this.flowLayoutPanel1.Controls.Add(this.btnResetKonversi);
             this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -177,9 +179,24 @@ namespace KonversiAlihJalur.Dialog
             this.btnSimpan.Text = "Simpan";
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
+            // btnResetKonversi
+            // 
+            this.btnResetKonversi.BackColor = System.Drawing.Color.Red;
+            this.btnResetKonversi.BeforeTouchSize = new System.Drawing.Size(126, 28);
+            this.btnResetKonversi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetKonversi.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnResetKonversi.IsBackStageButton = false;
+            this.btnResetKonversi.Location = new System.Drawing.Point(482, 5);
+            this.btnResetKonversi.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.btnResetKonversi.Name = "btnResetKonversi";
+            this.btnResetKonversi.Size = new System.Drawing.Size(126, 28);
+            this.btnResetKonversi.TabIndex = 4;
+            this.btnResetKonversi.Text = "Reset Konversi";
+            this.btnResetKonversi.Click += new System.EventHandler(this.buttonAdv1_Click);
+            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(354, 3);
+            this.progressBar1.Location = new System.Drawing.Point(224, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(253, 30);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -208,7 +225,6 @@ namespace KonversiAlihJalur.Dialog
             this.dgvNilai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNilai.Location = new System.Drawing.Point(0, 94);
             this.dgvNilai.Name = "dgvNilai";
-            this.dgvNilai.ReadOnly = true;
             this.dgvNilai.RowHeadersVisible = false;
             this.dgvNilai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNilai.Size = new System.Drawing.Size(870, 349);
@@ -304,7 +320,6 @@ namespace KonversiAlihJalur.Dialog
             // 
             this.Approve.HeaderText = "Approve";
             this.Approve.Name = "Approve";
-            this.Approve.ReadOnly = true;
             this.Approve.Width = 70;
             // 
             // Id
@@ -358,6 +373,7 @@ namespace KonversiAlihJalur.Dialog
         private System.Windows.Forms.ToolStripMenuItem approveSemuaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem approveKecualiNilaiDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hapusApproveToolStripMenuItem;
+        private Syncfusion.Windows.Forms.ButtonAdv btnResetKonversi;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn KodeD3;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliahD3;

@@ -203,6 +203,7 @@ namespace Dosen
             {
                 string kodeFakultas = cmbFakultas.SelectedValue.ToString();
                 listProdi = Organisasi.listProdi.Where(pr => pr.Fakultas.KodeFakultas == kodeFakultas).ToList();
+                listProdi.AddRange(Organisasi.listProdiStudentExchange);
                 listProdi.Insert(0, new Prodi() { IdProdi = "-", NamaProdi = "Pilih" });
                 cmbProdi.DataSource = listProdi;
                 cmbProdi.DisplayMember = "NamaProdi";

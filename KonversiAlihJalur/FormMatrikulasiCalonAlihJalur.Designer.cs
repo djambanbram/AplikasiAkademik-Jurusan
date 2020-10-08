@@ -49,14 +49,14 @@ namespace KonversiAlihJalur
             this.btnKonversiOtomatis = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dgvPendaftar = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lihatNilaiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nodaf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Npm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Approve = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jenjang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lihatNilaiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel2)).BeginInit();
             this.gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbLulusan)).BeginInit();
@@ -203,6 +203,7 @@ namespace KonversiAlihJalur
             this.btnKonversiOtomatis.Size = new System.Drawing.Size(166, 28);
             this.btnKonversiOtomatis.TabIndex = 3;
             this.btnKonversiOtomatis.Text = "Konversi Nilai Otomatis";
+            this.btnKonversiOtomatis.Visible = false;
             this.btnKonversiOtomatis.Click += new System.EventHandler(this.btnKonversiOtomatis_Click);
             // 
             // progressBar1
@@ -238,20 +239,6 @@ namespace KonversiAlihJalur
             this.dgvPendaftar.Size = new System.Drawing.Size(840, 307);
             this.dgvPendaftar.TabIndex = 21;
             this.dgvPendaftar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvPendaftar_MouseDown);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lihatNilaiToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
-            // 
-            // lihatNilaiToolStripMenuItem
-            // 
-            this.lihatNilaiToolStripMenuItem.Name = "lihatNilaiToolStripMenuItem";
-            this.lihatNilaiToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.lihatNilaiToolStripMenuItem.Text = "Lihat Nilai";
-            this.lihatNilaiToolStripMenuItem.Click += new System.EventHandler(this.lihatNilaiToolStripMenuItem_Click);
             // 
             // No
             // 
@@ -294,6 +281,20 @@ namespace KonversiAlihJalur
             this.Jenjang.Name = "Jenjang";
             this.Jenjang.ReadOnly = true;
             this.Jenjang.Visible = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lihatNilaiToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
+            // 
+            // lihatNilaiToolStripMenuItem
+            // 
+            this.lihatNilaiToolStripMenuItem.Name = "lihatNilaiToolStripMenuItem";
+            this.lihatNilaiToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.lihatNilaiToolStripMenuItem.Text = "Lihat Nilai";
+            this.lihatNilaiToolStripMenuItem.Click += new System.EventHandler(this.lihatNilaiToolStripMenuItem_Click);
             // 
             // FormMatrikulasiCalonAlihJalur
             // 

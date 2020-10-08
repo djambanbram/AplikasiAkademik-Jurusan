@@ -185,6 +185,7 @@ namespace MataKuliah
 
 
             IsEditField(true);
+            groupBox1.Enabled = true;
             KodeMKDipilih = dgvMataKuliah.SelectedRows[0].Cells["Kode"].Value.ToString();
 
             var data = new { Kode = KodeMKDipilih };
@@ -194,11 +195,23 @@ namespace MataKuliah
             {
                 txtNamaMK.Enabled = true;
                 txtNamaMKEn.Enabled = true;
+                txtSksTotal.Enabled = true;
+                txtSksPraktikum.Enabled = true;
+                cmbSifatMK.Enabled = true;
+                cmbKategoriMK.Enabled = true;
+                cbIsTugasAkhir.Enabled = true;
+                cbIsBerlakuSemuaSemester.Enabled = true;
             }
             else
             {
                 txtNamaMK.Enabled = false;
                 txtNamaMKEn.Enabled = false;
+                txtSksTotal.Enabled = false;
+                txtSksPraktikum.Enabled = true;
+                cmbSifatMK.Enabled = false;
+                cmbKategoriMK.Enabled = false;
+                cbIsTugasAkhir.Enabled = true;
+                cbIsBerlakuSemuaSemester.Enabled = true;
             }
         }
 
@@ -226,6 +239,34 @@ namespace MataKuliah
                 return;
             }
 
+            if (cbIsTugasAkhir.Checked && cbIsBerlakuSemuaSemester.Checked)
+            {
+                var dr = MessageBox.Show("MK ini adalah Skripsi/TA/Tesis yang berlaku sebagai syarat mutlak Yudisium. MK ini akan muncul di semester ganjil dan genap.\n\nLanjutkan proses?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    Loading(false);
+                    return;
+                }
+            }
+            else if (cbIsBerlakuSemuaSemester.Checked)
+            {
+                var dr = MessageBox.Show("MK ini akan muncul di semester ganjil dan genap.\n\nLanjutkan proses?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    Loading(false);
+                    return;
+                }
+            }
+            else if (cbIsTugasAkhir.Checked)
+            {
+                var dr = MessageBox.Show("MK ini adalah Skripsi/TA/Tesis yang berlaku sebagai syarat mutlak Yudisium.\n\nLanjutkan proses?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                {
+                    Loading(false);
+                    return;
+                }
+            }
+
             DataMataKuliah mk = new DataMataKuliah();
             if (string.IsNullOrWhiteSpace(KodeMKDipilih))
             {
@@ -242,7 +283,8 @@ namespace MataKuliah
                 mk.IdProdi = UidProdiDipilih;
                 mk.SingkatanKelas = txtSingkatanMK.Text;
                 mk.KodeKesetaraan = txtKodeMKPengganti.Text;
-                mk.IsTugasAkhir = cbIsSkripsi.Checked;
+                mk.IsBerlakuSemuaSemester = cbIsBerlakuSemuaSemester.Checked;
+                mk.IsTugasAkhir = cbIsTugasAkhir.Checked;
                 mk.NilaiMinimal = cmbNilaiMinimal.SelectedIndex == 0 ? null : cmbNilaiMinimal.Text;
 
                 string jsonData = JsonConvert.SerializeObject(mk);
@@ -260,7 +302,8 @@ namespace MataKuliah
                 mk.SingkatanMK = txtAliasMK.Text;
                 mk.KategoriMK = cmbKategoriMK.Text;
                 mk.SingkatanKelas = txtSingkatanMK.Text;
-                mk.IsTugasAkhir = cbIsSkripsi.Checked;
+                mk.IsBerlakuSemuaSemester = cbIsBerlakuSemuaSemester.Checked;
+                mk.IsTugasAkhir = cbIsTugasAkhir.Checked;
                 mk.MataKuliah = txtNamaMK.Text;
                 mk.MataKuliahEn = txtNamaMKEn.Text;
                 mk.SifatMK = cmbSifatMK.SelectedValue.ToString();
@@ -298,12 +341,14 @@ namespace MataKuliah
             cmbSifatMK.Enabled = isEnable;
             cmbTahunBerlaku.Enabled = isEnable;
             cmbNilaiMinimal.Enabled = isEnable;
+            cbIsTugasAkhir.Enabled = isEnable;
+            cbIsBerlakuSemuaSemester.Enabled = isEnable;
             //txtKodeMK.Enabled = isEnable;
             //cbKodeOtomatis.Enabled = isEnable;
 
             groupBox1.Enabled = isEnable;
-            txtKodeMKPengganti.Text = string.Empty;
-            txtNamaMKPengganti.Text = string.Empty;
+            //txtKodeMKPengganti.Text = string.Empty;
+            //txtNamaMKPengganti.Text = string.Empty;
         }
 
         private void ResetField()
@@ -319,6 +364,10 @@ namespace MataKuliah
             txtNamaMK.Text = string.Empty;
             cmbTahunBerlaku.SelectedIndex = 0;
             cmbNilaiMinimal.SelectedIndex = 0;
+            cbIsBerlakuSemuaSemester.Checked = false;
+            cbIsTugasAkhir.Checked = false;
+            txtKodeMKPengganti.Text = string.Empty;
+            txtNamaMKPengganti.Text = string.Empty;
             //txtKodeMK.Text = string.Empty;
             //cbKodeOtomatis.Checked = true;
         }
@@ -386,8 +435,21 @@ namespace MataKuliah
                 int nomor = 1;
                 foreach (DataMataKuliah dataMK in ClassModel.MataKuliah.listDataMataKuliah)
                 {
-                    dgvMataKuliah.Rows.Add(nomor, dataMK.Kode, dataMK.MataKuliah, dataMK.Sks, dataMK.SksPraktikum, dataMK.SemesterDitawarkan, dataMK.SifatMK, dataMK.TahunMulai, Convert.ToBoolean(dataMK.IsTugasAkhir), dataMK.NilaiMinimal);
-                    nomor++;
+                    if (dataMK.Sampai == 0)
+                    {
+                        dgvMataKuliah.Rows.Add(
+                            nomor,
+                            dataMK.Kode,
+                            dataMK.MataKuliah,
+                            dataMK.Sks,
+                            dataMK.SksPraktikum,
+                            dataMK.SemesterDitawarkan,
+                            dataMK.SifatMK,
+                            dataMK.TahunMulai,
+                            Convert.ToBoolean(dataMK.IsTugasAkhir),
+                            dataMK.NilaiMinimal);
+                        nomor++;
+                    }
                 }
             }
             else
@@ -418,9 +480,11 @@ namespace MataKuliah
             cmbKategoriMK.Text = dataMk.KategoriMK == null ? string.Empty : dataMk.KategoriMK.Trim();
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
-            cbIsSkripsi.Checked = dataMk.IsTugasAkhir;
+            cbIsBerlakuSemuaSemester.Checked = dataMk.IsBerlakuSemuaSemester;
+            cbIsTugasAkhir.Checked = dataMk.IsTugasAkhir;
             cmbNilaiMinimal.Text = string.IsNullOrWhiteSpace(dataMk.NilaiMinimal) ? "Pilih" : dataMk.NilaiMinimal;
-
+            txtKodeMKPengganti.Text = dataMk.KodeKesetaraan;
+            txtNamaMKPengganti.Text = dataMk.NamaKesetaraan;
         }
 
         private void numeric_only(object sender, KeyPressEventArgs e)
@@ -541,8 +605,11 @@ namespace MataKuliah
             cmbKategoriMK.Text = dataMk.KategoriMK == null ? string.Empty : dataMk.KategoriMK.Trim();
             cmbSifatMK.SelectedValue = dataMk.KodeSifatMK.Trim();
             cmbTahunBerlaku.Text = dataMk.TahunMulai.ToString();
-            cbIsSkripsi.Checked = dataMk.IsTugasAkhir;
+            cbIsBerlakuSemuaSemester.Checked = dataMk.IsBerlakuSemuaSemester;
+            cbIsTugasAkhir.Checked = dataMk.IsTugasAkhir;
             cmbNilaiMinimal.Text = string.IsNullOrWhiteSpace(dataMk.NilaiMinimal) ? "Pilih" : dataMk.NilaiMinimal;
+            txtKodeMKPengganti.Text = dataMk.KodeKesetaraan;
+            txtNamaMKPengganti.Text = dataMk.NamaKesetaraan;
         }
 
         private void cbKodeOtomatis_CheckedChanged(object sender, EventArgs e)
@@ -551,6 +618,14 @@ namespace MataKuliah
 
         private async void txtKodeMK_KeyPress(object sender, KeyPressEventArgs e)
         {
+        }
+
+        private void cbIsTugasAkhir_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbIsTugasAkhir.Checked)
+            {
+                cbIsBerlakuSemuaSemester.Checked = cbIsTugasAkhir.Checked;
+            }
         }
     }
 }

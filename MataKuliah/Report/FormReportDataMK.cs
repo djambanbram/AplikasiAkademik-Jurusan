@@ -113,7 +113,7 @@ namespace MataKuliah.Report
                 listParams.Add(new ReportParameter("Kaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NamaKepala));
                 listParams.Add(new ReportParameter("NikKaprodi", listDepartment.Find(d => d.KodeDepartment == KodeProgramReguler).NikKepala));
 
-                DataTable dtMataKuliah = CommonLib.ToDataTable(ClassModel.MataKuliah.listDataMataKuliah.OrderBy(o => o.SemesterDitawarkan).ToList());
+                DataTable dtMataKuliah = CommonLib.ToDataTable(ClassModel.MataKuliah.listDataMataKuliah.Where(w => w.Sampai == 0).OrderBy(o => o.SemesterDitawarkan).ToList());
 
                 reportViewer1.LocalReport.SetParameters(listParams);
                 IDataReader dr = dtMataKuliah.CreateDataReader();

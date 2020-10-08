@@ -144,11 +144,11 @@ namespace KonversiAlihJalur.Dialog
             this.Approve});
             this.dgvNilai.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvNilai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNilai.Location = new System.Drawing.Point(0, 122);
+            this.dgvNilai.Location = new System.Drawing.Point(0, 148);
             this.dgvNilai.Name = "dgvNilai";
             this.dgvNilai.RowHeadersVisible = false;
             this.dgvNilai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvNilai.Size = new System.Drawing.Size(939, 327);
+            this.dgvNilai.Size = new System.Drawing.Size(939, 301);
             this.dgvNilai.TabIndex = 25;
             this.dgvNilai.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNilai_CellContentClick);
             // 
@@ -338,7 +338,7 @@ namespace KonversiAlihJalur.Dialog
             this.gradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(939, 122);
+            this.gradientPanel2.Size = new System.Drawing.Size(939, 148);
             this.gradientPanel2.TabIndex = 23;
             // 
             // labelForS2

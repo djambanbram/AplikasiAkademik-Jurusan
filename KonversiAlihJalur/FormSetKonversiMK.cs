@@ -279,7 +279,7 @@ namespace KonversiAlihJalur
             var data = new
             {
                 KodeD3 = dataAdd.KodeD3,
-                KodeS1 = dgvMKS1.Nodes[hit.RowIndex].Cells["KodeS1"].Value.ToString(),
+                KodeS1 = dgvMKS1.GetNodeForRow(hit.RowIndex).Cells["KodeS1"].Value.ToString(),
                 KodeProgram = cmbProgramAlihJalur.SelectedValue.ToString(),
                 Angkatan = int.Parse(cmbAngkatan.Text),
                 IsCopy = false

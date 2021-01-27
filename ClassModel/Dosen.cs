@@ -167,4 +167,24 @@ namespace ClassModel
         public int Kehadiran { get; set; }
         public string Kelas { get; set; }
     }
+
+    public class DosenKoordinatorMk
+    {
+        public string IdKoordinator { get; set; }
+        public string Kode { get; set; }
+        public string MataKuliah { get; set; }
+        public string Nik { get; set; }
+        public string NamaDosen { get; set; }
+
+    }
+
+    public class DosenPengajarMk
+    {
+        public string Kode { get; set; }
+        public string MataKuliah { get; set; }
+        public string Nik { get; set; }
+        public string NamaDosen { get; set; }
+        public int JumlahKelas { get; set; }
+        public int TotalSks { get; set; }
+    }
 }

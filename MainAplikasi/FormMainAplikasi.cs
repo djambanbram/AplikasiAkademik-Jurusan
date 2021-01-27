@@ -180,16 +180,16 @@ namespace MainAplikasi
             }
             else if(e.XPTaskBarItem.Name == "itemKoordinatorMk")
             {
-                if (IsSemesterRemidial())
-                {
-                    return;
-                }
-                if (formKoordinatorMataKuliah == null || formKoordinatorMataKuliah.IsDisposed)
-                {
-                    formKoordinatorMataKuliah = new FormKoordinatorMataKuliah();
-                    formKoordinatorMataKuliah.MdiParent = this;
-                }
-                form = formKoordinatorMataKuliah;
+                //if (IsSemesterRemidial())
+                //{
+                //    return;
+                //}
+                //if (formKoordinatorMataKuliah == null || formKoordinatorMataKuliah.IsDisposed)
+                //{
+                //    formKoordinatorMataKuliah = new FormKoordinatorMataKuliah();
+                //    formKoordinatorMataKuliah.MdiParent = this;
+                //}
+                //form = formKoordinatorMataKuliah;
             }
             else if (e.XPTaskBarItem.Name == "itemTimDosen")
             {
@@ -587,6 +587,21 @@ namespace MainAplikasi
             }
             formReportHonorDosenKoreksi.Show();
             tabbedMDIManager1.UpdateActiveTabHost(formReportHonorDosenKoreksi);
+        }
+
+        private void menuItemLintasProgramAlokasiDosen_Click(object sender, EventArgs e)
+        {
+            if (IsSemesterRemidial())
+            {
+                return;
+            }
+            if (formKoordinatorMataKuliah == null || formKoordinatorMataKuliah.IsDisposed)
+            {
+                formKoordinatorMataKuliah = new FormKoordinatorMataKuliah();
+                formKoordinatorMataKuliah.MdiParent = this;
+            }
+            formKoordinatorMataKuliah.Show();
+            tabbedMDIManager1.UpdateActiveTabHost(formKoordinatorMataKuliah);
         }
     }
 }

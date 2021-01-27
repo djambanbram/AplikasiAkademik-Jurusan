@@ -36,36 +36,31 @@ namespace PenawaranKurikulum
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.cmbProdi = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.cmbFakultas = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnProses = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.dgvMataKuliah = new AdvancedDataGridView.TreeGridView();
+            this.Tree = new AdvancedDataGridView.TreeGridColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AdaKoordinator = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.JumlahKelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalSks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Koordinator = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Dosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -101,64 +96,10 @@ namespace PenawaranKurikulum
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Visible = false;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(840, 424);
-            this.splitContainer1.SplitterDistance = 568;
-            this.splitContainer1.TabIndex = 15;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.autoLabel15);
-            this.panel1.Controls.Add(this.cmbProdi);
-            this.panel1.Controls.Add(this.cmbFakultas);
-            this.panel1.Controls.Add(this.autoLabel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(568, 78);
-            this.panel1.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No,
-            this.Kode,
-            this.MataKuliah,
-            this.AdaKoordinator});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 78);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(568, 346);
-            this.dataGridView1.TabIndex = 1;
-            // 
             // autoLabel15
             // 
             this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel15.Location = new System.Drawing.Point(12, 45);
+            this.autoLabel15.Location = new System.Drawing.Point(20, 45);
             this.autoLabel15.Name = "autoLabel15";
             this.autoLabel15.Size = new System.Drawing.Size(93, 16);
             this.autoLabel15.TabIndex = 12;
@@ -169,17 +110,18 @@ namespace PenawaranKurikulum
             this.cmbProdi.BeforeTouchSize = new System.Drawing.Size(329, 24);
             this.cmbProdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbProdi.Location = new System.Drawing.Point(136, 43);
+            this.cmbProdi.Location = new System.Drawing.Point(144, 43);
             this.cmbProdi.Name = "cmbProdi";
             this.cmbProdi.Size = new System.Drawing.Size(329, 24);
             this.cmbProdi.TabIndex = 11;
+            this.cmbProdi.SelectedIndexChanged += new System.EventHandler(this.cmbProdi_SelectedIndexChanged);
             // 
             // cmbFakultas
             // 
             this.cmbFakultas.BeforeTouchSize = new System.Drawing.Size(329, 25);
             this.cmbFakultas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFakultas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFakultas.Location = new System.Drawing.Point(136, 12);
+            this.cmbFakultas.Location = new System.Drawing.Point(144, 12);
             this.cmbFakultas.Name = "cmbFakultas";
             this.cmbFakultas.Size = new System.Drawing.Size(329, 25);
             this.cmbFakultas.TabIndex = 9;
@@ -187,78 +129,152 @@ namespace PenawaranKurikulum
             // 
             // autoLabel1
             // 
-            this.autoLabel1.Location = new System.Drawing.Point(13, 14);
+            this.autoLabel1.Location = new System.Drawing.Point(21, 14);
             this.autoLabel1.Name = "autoLabel1";
             this.autoLabel1.Size = new System.Drawing.Size(54, 17);
             this.autoLabel1.TabIndex = 10;
             this.autoLabel1.Text = "Fakultas";
             // 
-            // splitContainer2
+            // panel2
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.panel2.Controls.Add(this.btnProses);
+            this.panel2.Controls.Add(this.autoLabel15);
+            this.panel2.Controls.Add(this.cmbFakultas);
+            this.panel2.Controls.Add(this.cmbProdi);
+            this.panel2.Controls.Add(this.autoLabel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(840, 111);
+            this.panel2.TabIndex = 16;
             // 
-            // splitContainer2.Panel1
+            // btnProses
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
+            this.btnProses.BeforeTouchSize = new System.Drawing.Size(113, 30);
+            this.btnProses.IsBackStageButton = false;
+            this.btnProses.Location = new System.Drawing.Point(144, 74);
+            this.btnProses.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnProses.Name = "btnProses";
+            this.btnProses.Size = new System.Drawing.Size(113, 30);
+            this.btnProses.TabIndex = 13;
+            this.btnProses.Text = "Proses";
+            this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
             // 
-            // splitContainer2.Panel2
+            // dgvMataKuliah
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(268, 424);
-            this.splitContainer2.SplitterDistance = 287;
-            this.splitContainer2.TabIndex = 0;
+            this.dgvMataKuliah.AllowUserToAddRows = false;
+            this.dgvMataKuliah.AllowUserToDeleteRows = false;
+            this.dgvMataKuliah.AllowUserToResizeColumns = false;
+            this.dgvMataKuliah.AllowUserToResizeRows = false;
+            this.dgvMataKuliah.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMataKuliah.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvMataKuliah.ColumnHeadersHeight = 40;
+            this.dgvMataKuliah.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tree,
+            this.Id,
+            this.No,
+            this.Kode,
+            this.MataKuliah,
+            this.JumlahKelas,
+            this.TotalSks,
+            this.Koordinator,
+            this.Dosen});
+            this.dgvMataKuliah.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMataKuliah.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvMataKuliah.ImageList = null;
+            this.dgvMataKuliah.Location = new System.Drawing.Point(0, 111);
+            this.dgvMataKuliah.Name = "dgvMataKuliah";
+            this.dgvMataKuliah.RowHeadersVisible = false;
+            this.dgvMataKuliah.Size = new System.Drawing.Size(840, 313);
+            this.dgvMataKuliah.TabIndex = 17;
+            this.dgvMataKuliah.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMataKuliah_CellContentClick);
+            this.dgvMataKuliah.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvMataKuliah_CellPainting);
+            this.dgvMataKuliah.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvMataKuliah_ColumnWidthChanged);
+            this.dgvMataKuliah.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvMataKuliah_Scroll);
+            this.dgvMataKuliah.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvMataKuliah_Paint);
             // 
-            // groupBox1
+            // Tree
             // 
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(268, 287);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dosen";
+            this.Tree.DefaultNodeImage = null;
+            this.Tree.Frozen = true;
+            this.Tree.HeaderText = "";
+            this.Tree.Name = "Tree";
+            this.Tree.ReadOnly = true;
+            this.Tree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tree.Width = 30;
             // 
-            // groupBox2
+            // Id
             // 
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(268, 133);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Koordinator";
+            this.Id.Frozen = true;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Id.Visible = false;
             // 
             // No
             // 
+            this.No.Frozen = true;
             this.No.HeaderText = "No";
             this.No.Name = "No";
             this.No.ReadOnly = true;
-            this.No.Width = 51;
+            this.No.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.No.Width = 45;
             // 
             // Kode
             // 
+            this.Kode.Frozen = true;
             this.Kode.HeaderText = "Kode";
             this.Kode.Name = "Kode";
             this.Kode.ReadOnly = true;
-            this.Kode.Width = 64;
+            this.Kode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Kode.Width = 80;
             // 
             // MataKuliah
             // 
+            this.MataKuliah.Frozen = true;
             this.MataKuliah.HeaderText = "Mata Kuliah";
             this.MataKuliah.Name = "MataKuliah";
             this.MataKuliah.ReadOnly = true;
-            this.MataKuliah.Width = 102;
+            this.MataKuliah.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MataKuliah.Width = 300;
             // 
-            // AdaKoordinator
+            // JumlahKelas
             // 
-            this.AdaKoordinator.HeaderText = "Ada Koordinator?";
-            this.AdaKoordinator.Name = "AdaKoordinator";
-            this.AdaKoordinator.ReadOnly = true;
-            this.AdaKoordinator.Width = 106;
+            this.JumlahKelas.HeaderText = "Jumlah Kelas";
+            this.JumlahKelas.Name = "JumlahKelas";
+            this.JumlahKelas.ReadOnly = true;
+            this.JumlahKelas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.JumlahKelas.Width = 75;
+            // 
+            // TotalSks
+            // 
+            this.TotalSks.HeaderText = "Total Sks";
+            this.TotalSks.Name = "TotalSks";
+            this.TotalSks.ReadOnly = true;
+            this.TotalSks.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TotalSks.Width = 75;
+            // 
+            // Koordinator
+            // 
+            this.Koordinator.HeaderText = "Pilih";
+            this.Koordinator.Name = "Koordinator";
+            this.Koordinator.Width = 75;
+            // 
+            // Dosen
+            // 
+            this.Dosen.HeaderText = "Dosen";
+            this.Dosen.Name = "Dosen";
+            this.Dosen.ReadOnly = true;
+            this.Dosen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Dosen.Width = 300;
             // 
             // FormKoordinatorMataKuliah
             // 
@@ -266,7 +282,8 @@ namespace PenawaranKurikulum
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(840, 462);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.dgvMataKuliah);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -274,19 +291,11 @@ namespace PenawaranKurikulum
             this.Text = "Koordinator Mata Kuliah";
             this.Load += new System.EventHandler(this.FormKoordinatorMataKuliah_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProdi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFakultas)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMataKuliah)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -296,19 +305,21 @@ namespace PenawaranKurikulum
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel15;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbProdi;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbFakultas;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panel2;
+        private AdvancedDataGridView.TreeGridView dgvMataKuliah;
+        private Syncfusion.Windows.Forms.ButtonAdv btnProses;
+        private AdvancedDataGridView.TreeGridColumn Tree;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn AdaKoordinator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JumlahKelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalSks;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Koordinator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dosen;
     }
 }
